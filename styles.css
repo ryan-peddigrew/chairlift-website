@@ -76,11 +76,13 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .hero .wrap, .page-hero .wrap { position: relative; z-index: 1; }
 .hero .wrap { padding-top: 96px; padding-bottom: 88px; }
 .hero h1 { font-size: clamp(42px, 6.4vw, 76px); line-height: 1.0; max-width: 13ch; }
-.climb-arrow { display: inline-block; width: 0.8em; height: 0.8em; margin-left: 0.1em; vertical-align: -0.04em; fill: none; stroke: currentColor; stroke-width: 3.6; stroke-linecap: square; }
+.climb-arrow { display: inline-block; width: 0.8em; height: 0.8em; margin-left: 0.1em; vertical-align: -0.04em; fill: none; stroke: var(--neon); stroke-width: 3.6; stroke-linecap: square; }
 .lede { font-size: 21px; color: var(--muted); max-width: 40ch; margin-top: 24px; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .hero-note { margin-top: 26px; font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
-.hero-note::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--neon); box-shadow: 0 0 0 2px var(--ink); flex: none; }
+.hero-note svg { width: 22px; height: 22px; flex: none; }
+.hero-note svg circle { fill: var(--neon); }
+.hero-note svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .page-hero .wrap { padding-top: 80px; padding-bottom: 72px; }
 .page-hero h1 { font-size: clamp(38px, 5.4vw, 64px); max-width: 16ch; }
 .page-hero .hero-bg { width: 40%; opacity: 0.9; }
@@ -341,15 +343,6 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .section, .cta, .jump { background: var(--page); }
 .section--soft { background: var(--soft); }
 .section--ink { background: var(--ink); }
-
-/* Stepped edge: a section climbs into the one above it */
-.rise { position: relative; }
-.rise::before {
-  content: ""; position: absolute; left: 0; right: 0; top: -55px; height: 56px;
-  background: inherit; pointer-events: none;
-  clip-path: polygon(0 100%, 0 83.4%, 16.66% 83.4%, 16.66% 66.7%, 33.33% 66.7%, 33.33% 50%, 50% 50%, 50% 33.4%, 66.66% 33.4%, 66.66% 16.7%, 83.33% 16.7%, 83.33% 0, 100% 0, 100% 100%);
-}
-@media (max-width: 640px) { .rise::before { top: -31px; height: 32px; } }
 
 /* Tinted page header on inner pages */
 .page-hero { background: var(--soft); }
