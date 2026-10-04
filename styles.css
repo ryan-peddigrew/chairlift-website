@@ -358,3 +358,6 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 /* FAQ side note */
 .faq-aside { margin-top: 18px; color: var(--muted); font-size: 19px; }
 .faq-aside a { color: var(--text); font-weight: 600; }
+
+/* Small personal note at the bottom of the home page */
+.love-note { text-align: center; padding: 0 20px 40px; font-size: 15px; font-weight: 600; color: var(--muted); }
