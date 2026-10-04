@@ -1,0 +1,7 @@
+# Old page addresses forward to the new ones
+/services   /what-we-do/    301
+/services/  /what-we-do/    301
+/about      /who-we-are/    301
+/about/     /who-we-are/    301
+/contact    /get-in-touch/  301
+/contact/   /get-in-touch/  301

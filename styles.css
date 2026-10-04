@@ -334,3 +334,84 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 52px; padding-bottom: 36px; gap: 32px 20px; }
   .footer-bottom .wrap { flex-direction: column; }
 }
+
+/* ---------- Section flow and variety ---------- */
+
+/* Default backgrounds so stepped edges can inherit them */
+.section, .cta, .jump { background: var(--page); }
+.section--soft { background: var(--soft); }
+.section--ink { background: var(--ink); }
+
+/* Stepped edge: a section climbs into the one above it */
+.rise { position: relative; }
+.rise::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -55px; height: 56px;
+  background: inherit; pointer-events: none;
+  clip-path: polygon(0 100%, 0 83.4%, 16.66% 83.4%, 16.66% 66.7%, 33.33% 66.7%, 33.33% 50%, 50% 50%, 50% 33.4%, 66.66% 33.4%, 66.66% 16.7%, 83.33% 16.7%, 83.33% 0, 100% 0, 100% 100%);
+}
+@media (max-width: 640px) { .rise::before { top: -31px; height: 32px; } }
+
+/* Tinted page header on inner pages */
+.page-hero { background: var(--soft); }
+.page-hero .hero-bg path { fill: #FFFFFF; }
+.page-hero .wrap { padding-bottom: 104px; }
+@media (max-width: 640px) { .page-hero .wrap { padding-bottom: 68px; } }
+
+/* Home headline: second line steps in */
+.hero h1 { max-width: none; }
+.h1-line { display: block; }
+.h1-step { padding-left: 1.4em; white-space: nowrap; }
+@media (max-width: 640px) { .h1-step { padding-left: 1em; } }
+
+/* Home: the three stops joined by a cable */
+.steps--cable { position: relative; }
+.steps--cable::before { content: ""; position: absolute; left: 0; right: 0; top: 45px; border-top: 2px dashed rgba(20, 27, 42, 0.25); }
+.steps--cable .step { z-index: 1; }
+@media (max-width: 860px) { .steps--cable::before { left: 45px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed rgba(20, 27, 42, 0.25); } }
+
+/* Bands (one per service / example), alternating and mirrored */
+.band .stage { border: 0; padding: 0; }
+.stage--band { position: relative; }
+.band-num { position: absolute; right: 0; top: -18px; font-size: clamp(88px, 12vw, 150px); font-weight: 800; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(20, 27, 42, 0.1); pointer-events: none; }
+.stage--flip > div:first-of-type { order: 2; }
+.stage--flip .band-num { right: auto; left: 0; }
+.stage--band .stage-detail { background: #FFFFFF; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; position: relative; z-index: 1; }
+.section--soft .stage--band .stage-detail { border-color: transparent; box-shadow: 0 18px 40px -28px rgba(20, 27, 42, 0.35); }
+.band .example + .example { margin-top: 0; padding-top: 0; border-top: 0; }
+.band .example { scroll-margin-top: 110px; }
+.section--soft .ba-before { background: #FFFFFF; }
+.section--soft .ba-wide { background: transparent !important; }
+@media (max-width: 860px) {
+  .stage--flip > div:first-of-type { order: 0; }
+  .band-num { top: -10px; }
+  .stage--flip .band-num { left: auto; right: 0; }
+  .stage--band .stage-detail { padding: 24px; }
+}
+
+/* Jump list (In practice page) */
+.jump .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-top: 36px; padding-bottom: 8px; }
+.jump span { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.jump a { text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: #FFFFFF; }
+.jump a:hover { border-color: var(--ink); }
+
+/* How it works: lift line connecting the stops */
+.lift { position: relative; }
+.lift::before { content: ""; position: absolute; left: 47px; top: 64px; bottom: 64px; border-left: 2px dashed rgba(20, 27, 42, 0.25); }
+.lift .stage { border: 0; padding-left: 80px; position: relative; }
+.lift-marker { position: absolute; left: 24px; top: 52px; width: 48px; height: 48px; border-radius: 12px; background: var(--ink); color: #FFFFFF; display: grid; place-items: center; font-weight: 800; font-size: 20px; z-index: 1; box-shadow: 0 0 0 6px var(--page); }
+.lift-stop:first-child .lift-marker { background: var(--neon); color: var(--ink); }
+.lift .stage-detail { background: var(--soft); border-radius: var(--radius); padding: 28px; }
+@media (max-width: 860px) {
+  .lift::before { left: 19px; top: 40px; bottom: 40px; }
+  .lift .stage { padding-left: 56px; }
+  .lift-marker { left: 0; top: 34px; width: 40px; height: 40px; font-size: 17px; border-radius: 10px; }
+  .lift .stage-detail { padding: 22px; }
+}
+
+/* FAQ on dark band */
+.faq-aside { margin-top: 18px; color: var(--on-ink-muted); font-size: 19px; }
+.faq-aside a { color: #FFFFFF; font-weight: 600; }
+.section--ink .faq, .section--ink .faq details { border-color: var(--on-ink-line); }
+.section--ink .faq summary { color: #FFFFFF; }
+.section--ink .faq summary::after { border-color: var(--neon); }
+.section--ink .faq details > div { color: var(--on-ink-muted); }
