@@ -46,7 +46,7 @@ def sig(dark):
             <p style="margin:0;font-size:18px;line-height:21px;font-weight:bold;letter-spacing:1.1px;color:{namec};white-space:nowrap;">RYAN PEDDIGREW</p>
             <p style="margin:0;font-size:10px;line-height:13px;font-weight:bold;letter-spacing:2.2px;color:{role};">FOUNDER</p>
             <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:5px;">
-              {row("phone", "Phone", "tel:+16474537926", "(647) 453 7926")}
+              {row("phone", "Phone", "tel:+16474537926", "(647) 453-7926")}
               {row("mail", "Email", "mailto:ryan@usechairlift.com", "ryan@usechairlift.com")}
               {row("web", "Website", "https://usechairlift.com", "usechairlift.com")}
             </table>
