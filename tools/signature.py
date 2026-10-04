@@ -14,6 +14,7 @@ def sig(dark):
     namec = "#FFFFFF" if dark else "#141B2A"
     role = "#3DFFC1"
     tag = "#B9C0CC" if dark else "#55595F"
+    sep = "#FFFFFF" if dark else "#141B2A"
     logo = "email-logo-dark.png" if dark else "email-logo.png"
     pad = "22px 26px" if dark else "0"
     box = (f'bgcolor="{bg}" style="border-collapse:collapse;background:{bg};font-family:{FONT};"'
@@ -54,8 +55,8 @@ def sig(dark):
               <tr>
                 <td style="vertical-align:middle;padding:0 10px 0 0;"><a href="https://usechairlift.com"><img src="{BASE}/{logo}" width="38" height="38" alt="Chairlift" style="display:block;width:38px;height:38px;border:0;"></a></td>
                 <td style="vertical-align:middle;">
-                  <p style="margin:0;font-size:14px;line-height:18px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>
-                  <p style="margin:1px 0 0;font-size:10px;line-height:12px;font-style:italic;color:{tag};">Make the climb easier.</p>
+                  <p style="margin:0;font-size:13px;line-height:17px;font-weight:bold;letter-spacing:1.6px;color:{text};">CH<span style="color:#3DFFC1;">AI</span>RLIFT</p>
+                  <p style="margin:3px 0 0;padding-top:3px;border-top:1px solid {sep};font-size:10px;line-height:12px;font-style:italic;color:{tag};">Make the climb easier.</p>
                 </td>
               </tr>
             </table>
