@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brand Guidelines · Chairlift</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141B2A">
+<link rel="icon" href="/brand/logo-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #141B2A; --ink-2: #1E2638; --neon: #3DFFC1; --mist: #F4F5F7; --line: #E4E6EA; --slate: #55595F; --fog: #B9C0CC; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: #FFFFFF; color: var(--ink); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 17px; line-height: 1.6; border-top: 5px solid var(--ink); }
+  a { color: inherit; }
+  h1, h2, h3 { margin: 0; font-weight: 800; text-transform: uppercase; line-height: 1.05; }
+  p { margin: 0; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  header.top { background: var(--ink); color: #fff; }
+  header.top .wrap { padding-top: 56px; padding-bottom: 56px; display: grid; gap: 14px; }
+  header.top img { width: 220px; height: auto; }
+  header.top h1 { font-size: clamp(36px, 6vw, 60px); margin-top: 18px; }
+  header.top p { color: var(--fog); max-width: 60ch; }
+  .meta { font-size: 14px; color: var(--fog); }
+  nav.toc { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 5; }
+  nav.toc .wrap { display: flex; gap: 6px 18px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; font-size: 14px; font-weight: 600; }
+  nav.toc a { text-decoration: none; color: var(--slate); }
+  nav.toc a:hover { color: var(--ink); }
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 56px; }
+  section:nth-of-type(even) { background: var(--mist); }
+  .sec-head { display: grid; gap: 8px; margin-bottom: 28px; max-width: 64ch; }
+  .sec-head h2 { font-size: clamp(26px, 3.6vw, 36px); }
+  .sec-head h2::before { content: ""; display: block; width: 48px; height: 5px; border-radius: 3px; background: var(--ink); margin-bottom: 16px; }
+  .sec-head p { color: var(--slate); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: var(--ink); color: var(--neon); vertical-align: middle; margin-left: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .tile { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+  .tile h3 { font-size: 15px; letter-spacing: 0.04em; }
+  .tile p, .tile li { color: var(--slate); font-size: 15px; }
+  .tile ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+  .logo-box { border-radius: 12px; display: grid; place-items: center; padding: 28px; min-height: 150px; }
+  .logo-box img { max-width: 100%; height: auto; max-height: 72px; }
+  .on-light { background: #fff; border: 1px solid var(--line); }
+  .on-dark { background: var(--ink); }
+  .dl { font-size: 14px; font-weight: 700; }
+  .swatch { height: 96px; border-radius: 12px; border: 1px solid rgba(20,27,42,0.12); }
+  .hex { font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
+  .type-sample { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: grid; gap: 18px; }
+  .t-h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; text-transform: uppercase; line-height: 1; }
+  .t-h2 { font-size: 30px; font-weight: 800; text-transform: uppercase; line-height: 1.05; }
+  .t-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+  .t-body { font-size: 18px; color: var(--slate); max-width: 60ch; }
+  .spec { font-size: 13px; color: var(--slate); font-family: ui-monospace, Menlo, monospace; }
+  .hl { background: linear-gradient(transparent 60%, rgba(61,255,193,0.55) 60%, rgba(61,255,193,0.55) 92%, transparent 92%); }
+  .dark-demo { background: var(--ink); color: #fff; border-radius: 16px; padding: 28px; }
+  .dark-demo .n { color: var(--neon); }
+  .do-dont { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .do, .dont { border-radius: 16px; padding: 22px; background: #fff; border: 1px solid var(--line); }
+  .do { border-top: 5px solid var(--ink); }
+  .dont { border-top: 5px solid #C9CDD3; }
+  .do h3::before { content: "✓ "; }
+  .dont h3::before { content: "✕ "; }
+  .do h3, .dont h3 { font-size: 15px; margin-bottom: 10px; letter-spacing: 0.04em; }
+  .do ul, .dont ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--slate); font-size: 15px; }
+  .sig { display: grid; gap: 10px; }
+  .sig img { width: 100%; max-width: 420px; height: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 12px; }
+  table.list { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 15px; }
+  table.list th, table.list td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.list th { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); background: var(--mist); }
+  table.list td:first-child { font-weight: 700; white-space: nowrap; }
+  table.list td { overflow-wrap: anywhere; }
+  .log li { margin-bottom: 8px; color: var(--slate); }
+  .log b { color: var(--ink); }
+  footer { background: var(--ink); color: var(--fog); font-size: 14px; }
+  footer .wrap { padding-top: 28px; padding-bottom: 28px; }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 18px; }
+    section { padding: 44px 0; }
+    table.list td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="/brand/logo-lockup-on-dark.png" alt="Chairlift">
+    <h1>Brand guidelines</h1>
+    <p>Everything that makes up the Chairlift brand, in one place. Confirmed choices only. When something changes, this page and the change log at the bottom are updated.</p>
+    <p class="meta">Last updated October 4, 2026 · Internal reference · Not linked from the website</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="#essentials">Essentials</a>
+    <a href="#logo">Logo</a>
+    <a href="#colour">Colour</a>
+    <a href="#type">Typography</a>
+    <a href="#accents">Neon accents</a>
+    <a href="#layout">Website layout</a>
+    <a href="#voice">Voice</a>
+    <a href="#signature">Email signature</a>
+    <a href="#assets">All assets</a>
+    <a href="#log">Change log</a>
+  </div>
+</nav>
+
+<section id="essentials">
+  <div class="wrap">
+    <div class="sec-head"><h2>Essentials <span class="tag">Confirmed</span></h2><p>The basics everyone should get right every time.</p></div>
+    <div class="grid">
+      <div class="tile"><h3>Company name</h3><p><strong>Chairlift</strong>. One word, capital C. Never "ChairLift", "Chair Lift" or "The Marketing Consulting Company".</p></div>
+      <div class="tile"><h3>Tagline</h3><p><strong>Make the climb easier.</strong> Used with the up arrow on the website and in the email signature.</p></div>
+      <div class="tile"><h3>What we do</h3><p>Chairlift works alongside growing companies to find the repetitive work slowing their teams down, then builds the automations that take it off their plate.</p></div>
+      <div class="tile"><h3>Founder</h3><p>Ryan Peddigrew, Founder<br>ryan@usechairlift.com<br>647-453-7926<br>usechairlift.com</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="logo">
+  <div class="wrap">
+    <div class="sec-head"><h2>Logo <span class="tag">Confirmed</span></h2><p>A Midnight Ink square with three rising steps: two white, the top one Chairlift Neon. The steps are the climb; the Neon step is the summit.</p></div>
+    <div class="grid">
+      <div class="tile"><div class="logo-box on-light"><img src="/brand/logo-lockup.png" alt="Chairlift logo with wordmark"></div><h3>Full logo · light backgrounds</h3><a class="dl" href="/brand/logo-lockup.png" download>Download PNG</a></div>
+      <div class="tile"><div class="logo-box on-dark"><img src="/brand/logo-lockup-on-dark.png" alt="Chairlift logo with wordmark, for dark backgrounds"></div><h3>Full logo · dark backgrounds</h3><a class="dl" href="/brand/logo-lockup-on-dark.png" download>Download PNG</a></div>
+      <div class="tile"><div class="logo-box on-light"><img src="/brand/logo-mark.svg" alt="Chairlift mark" style="max-height:88px"></div><h3>Mark only</h3><p>For app icons, favicons, profile pictures.</p><a class="dl" href="/brand/logo-mark.svg" download>SVG</a> <a class="dl" href="/brand/logo-mark.png" download>PNG 512px</a></div>
+      <div class="tile"><div class="logo-box on-dark"><img src="/brand/logo-mark-on-dark.svg" alt="Chairlift mark for dark backgrounds" style="max-height:88px"></div><h3>Mark · dark backgrounds</h3><p>Same mark with a faint white outline so it doesn't disappear on Ink.</p><a class="dl" href="/brand/logo-mark-on-dark.svg" download>Download SVG</a></div>
+    </div>
+    <div class="do-dont" style="margin-top:20px">
+      <div class="do"><h3>Do</h3><ul><li>Keep clear space around the logo at least the height of one step.</li><li>Use the outlined version on Ink backgrounds.</li><li>Wordmark is Hanken Grotesk ExtraBold (800).</li></ul></div>
+      <div class="dont"><h3>Don't</h3><ul><li>Recolour, stretch, rotate or add effects.</li><li>Change which step is Neon.</li><li>Use staircase illustrations as decoration elsewhere. The steps live in the logo only.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="colour">
+  <div class="wrap">
+    <div class="sec-head"><h2>Colour <span class="tag">Confirmed</span></h2><p>Two brand colours do the work. Everything else is neutral support.</p></div>
+    <div class="grid">
+      <div class="tile"><div class="swatch" style="background:#141B2A"></div><h3>Midnight Ink</h3><p class="hex">#141B2A · RGB 20 27 42</p><p>Primary brand colour. Logo, headings, dark sections, buttons. Call it <strong>Ink</strong>.</p></div>
+      <div class="tile"><div class="swatch" style="background:#3DFFC1"></div><h3>Chairlift Neon</h3><p class="hex">#3DFFC1 · RGB 61 255 193</p><p>Accent only, used sparingly. Call it <strong>Neon</strong>. See the rules below.</p></div>
+      <div class="tile"><div class="swatch" style="background:#F4F5F7"></div><h3>Mist</h3><p class="hex">#F4F5F7</p><p>Light grey section backgrounds.</p></div>
+      <div class="tile"><div class="swatch" style="background:#FFFFFF"></div><h3>White</h3><p class="hex">#FFFFFF</p><p>Page background, cards on dark sections.</p></div>
+      <div class="tile"><div class="swatch" style="background:#55595F"></div><h3>Slate</h3><p class="hex">#55595F</p><p>Body text and supporting copy on light backgrounds.</p></div>
+      <div class="tile"><div class="swatch" style="background:#B9C0CC"></div><h3>Fog</h3><p class="hex">#B9C0CC</p><p>Supporting text on Ink backgrounds.</p></div>
+      <div class="tile"><div class="swatch" style="background:#1E2638"></div><h3>Ink Light</h3><p class="hex">#1E2638</p><p>Subtle panels inside Ink areas (form messages).</p></div>
+      <div class="tile"><div class="swatch" style="background:#E4E6EA"></div><h3>Line</h3><p class="hex">#E4E6EA</p><p>Borders and dividers.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="sec-head"><h2>Typography <span class="tag">Confirmed</span></h2><p>One typeface: <strong>Hanken Grotesk</strong> (free, from Google Fonts). Email uses Helvetica / Arial because inboxes can't load custom fonts.</p></div>
+    <div class="type-sample">
+      <div><div class="t-h1">Make the climb easier</div><p class="spec">Headline · ExtraBold 800 · ALL CAPS · tight line height</p></div>
+      <div><div class="t-h2">Journey to the top.</div><p class="spec">Section title · ExtraBold 800 · ALL CAPS · ends with a full stop</p></div>
+      <div><div class="t-label">Stop one · Inquiries · Founder</div><p class="spec">Label · Bold 700 · ALL CAPS · wide letter spacing</p></div>
+      <div><p class="t-body">Chairlift works alongside growing companies to find the repetitive work slowing their teams down, then builds the automations that take it off their plate.</p><p class="spec">Body · Regular 400 · sentence case · Slate on light, Fog on Ink</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="accents">
+  <div class="wrap">
+    <div class="sec-head"><h2>Neon accents <span class="tag">Confirmed</span></h2><p>Neon is a complement, never the main event. It doesn't read well as text on white, so on light backgrounds it sits behind words; on Ink it can be the text colour.</p></div>
+    <div class="grid">
+      <div class="tile"><h3>Key word · light background</h3><p style="font-size:22px;font-weight:800;text-transform:uppercase;color:var(--ink)">Where we usually <span class="hl">start</span>.</p><p>Neon highlighter behind one word per title.</p></div>
+      <div class="dark-demo"><h3 style="font-size:15px;letter-spacing:.04em">Key word · Ink background</h3><p style="font-size:22px;font-weight:800;text-transform:uppercase;margin-top:8px">Journey to the <span class="n">top</span>.</p><p style="color:var(--fog);font-size:15px;margin-top:8px">Neon text, one word per title.</p></div>
+    </div>
+    <div class="do-dont" style="margin-top:20px">
+      <div class="do"><h3>Where Neon is used</h3><ul><li>The up arrow after "Make the climb easier"</li><li>One key word in a title (run itself, start, top, practice, people, hours)</li><li>The check mark next to "Built inside the tools you already use"</li><li>Link underlines</li><li>Small numbers and labels on Ink (step numbers, "After")</li><li>Ring around the headshot, line and "Founder" in the Ink email signature</li><li>The top step of the logo</li></ul></div>
+      <div class="dont"><h3>Where Neon is not used</h3><ul><li>The short bars above titles (these are solid Ink, or white on Ink)</li><li>Body text, buttons or large areas</li><li>As text colour on white backgrounds</li><li>More than one accent word per title</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="layout">
+  <div class="wrap">
+    <div class="sec-head"><h2>Website layout <span class="tag">Confirmed</span></h2><p>Decisions made while building usechairlift.com.</p></div>
+    <div class="do-dont">
+      <div class="do"><h3>Do</h3><ul><li>Straight, full-width lines between sections</li><li>Alternate White, Mist and Ink sections so two Ink sections never touch</li><li>White cards on Ink sections (no dark-on-dark cards)</li><li>A short solid bar above each section title</li><li>Section titles in ALL CAPS ending with a full stop</li><li>"Sound familiar?" statements in prominent ALL CAPS</li></ul></div>
+      <div class="dont"><h3>Don't</h3><ul><li>Stepped or staircase edges between sections</li><li>Staircase illustrations in headers or boxes</li><li>Indented headlines</li><li>Italic words inside titles</li><li>Half-Neon title bars</li></ul></div>
+    </div>
+    <table class="list" style="margin-top:20px">
+      <tr><th>Page</th><th>Menu name</th><th>Address</th></tr>
+      <tr><td>Home</td><td>(logo)</td><td>/</td></tr>
+      <tr><td>Process</td><td>How it works</td><td>/how-it-works/</td></tr>
+      <tr><td>Services</td><td>What we do</td><td>/what-we-do/</td></tr>
+      <tr><td>Examples</td><td>In practice</td><td>/examples/</td></tr>
+      <tr><td>About</td><td>Who we are</td><td>/who-we-are/</td></tr>
+      <tr><td>Contact</td><td>Get in touch</td><td>/get-in-touch/</td></tr>
+      <tr><td>Main button</td><td>Start a conversation</td><td>Goes to the contact form</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <div class="sec-head"><h2>Voice <span class="tag">Confirmed</span></h2><p>Professional, but friendly and easy to read. Write like a capable person talking to a busy owner.</p></div>
+    <div class="do-dont">
+      <div class="do"><h3>Do</h3><ul><li>Say the benefit plainly and early (time back, lower costs)</li><li>Use "we" on the website; "I" only in the founder's own note</li><li>Keep sentences short and specific</li><li>Cite real, linkable sources for any industry claim</li><li>Let the reader decide what fits their business</li></ul></div>
+      <div class="dont"><h3>Don't</h3><ul><li>Assume a prospect's size, budget or competitors</li><li>Invent clients, results, statistics or testimonials</li><li>Call illustrative examples "case studies"</li><li>Use jargon or phrases like "big IT project"</li><li>Use "quietly" or "one process at a time" as headline copy</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="signature">
+  <div class="wrap">
+    <div class="sec-head"><h2>Email signature <span class="tag">Confirmed</span></h2><p>Two versions with the same layout. Open the file in a browser, copy the signature and paste it into Titan → Settings → Signature.</p></div>
+    <div class="grid">
+      <div class="tile sig"><img src="/brand/signature-white.png" alt="White email signature"><h3>White</h3><p>Ink divider line. Everyday email.</p><a class="dl" href="/brand/email-signature-white.html">Open signature file</a></div>
+      <div class="tile sig"><img src="/brand/signature-ink.png" alt="Ink email signature"><h3>Ink</h3><p>Ink box, Neon divider and "Founder". Stands out in outreach.</p><a class="dl" href="/brand/email-signature-ink.html">Open signature file</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <div class="sec-head"><h2>All assets</h2><p>Every brand file and where it's used.</p></div>
+    <table class="list">
+      <tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+      <tr><td><a href="/brand/logo-lockup.png">logo-lockup.png</a></td><td>Mark + wordmark, light backgrounds</td><td>Documents, decks</td></tr>
+      <tr><td><a href="/brand/logo-lockup-on-dark.png">logo-lockup-on-dark.png</a></td><td>Mark + wordmark, dark backgrounds</td><td>This guide, dark slides</td></tr>
+      <tr><td><a href="/brand/logo-mark.svg">logo-mark.svg</a> / <a href="/brand/logo-mark.png">.png</a></td><td>Mark only</td><td>Website header, browser tab icon, profile pictures</td></tr>
+      <tr><td><a href="/brand/logo-mark-on-dark.svg">logo-mark-on-dark.svg</a></td><td>Mark with faint outline</td><td>Website footer, dark backgrounds</td></tr>
+      <tr><td><a href="/images/email-logo.png">email-logo.png</a> / <a href="/images/email-logo-dark.png">email-logo-dark.png</a></td><td>Small mark for email</td><td>Email signatures</td></tr>
+      <tr><td><a href="/images/ryan-peddigrew.jpg">ryan-peddigrew.jpg</a></td><td>Founder headshot (square)</td><td>Home page, Who we are</td></tr>
+      <tr><td><a href="/images/email-headshot.jpg">email-headshot.jpg</a></td><td>Small headshot</td><td>Email signatures</td></tr>
+      <tr><td><a href="/og-image.png">og-image.png</a></td><td>Link preview card (1200 × 630)</td><td>Texts, LinkedIn and social shares</td></tr>
+      <tr><td><a href="/brand/email-signature-white.html">email-signature-white.html</a></td><td>Signature, white</td><td>Titan</td></tr>
+      <tr><td><a href="/brand/email-signature-ink.html">email-signature-ink.html</a></td><td>Signature, Ink</td><td>Titan</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="log">
+  <div class="wrap">
+    <div class="sec-head"><h2>Change log</h2><p>Every brand decision, newest first.</p></div>
+    <ul class="log">
+      <li><b>Oct 4, 2026</b>: Email signature finalised in White and Ink versions: Neon ring on headshot, "Founder" on its own line, M / E / W contact rows, phone added.</li>
+      <li><b>Oct 4, 2026</b>: Colour names set: <b>Chairlift Neon</b> (#3DFFC1) and <b>Midnight Ink</b> (#141B2A).</li>
+      <li><b>Oct 4, 2026</b>: Neon limited to accents; key words highlighted; title bars stay solid.</li>
+      <li><b>Oct 4, 2026</b>: Staircase edges and illustrations removed; straight section lines; white cards on Ink.</li>
+      <li><b>Oct 4, 2026</b>: Page names changed to How it works, What we do, In practice, Who we are, Get in touch.</li>
+      <li><b>Oct 4, 2026</b>: Process renamed "Journey to the top" (three stops: Onboard, Ride, Summit).</li>
+      <li><b>Oct 4, 2026</b>: Logo, Hanken Grotesk typeface and "Make the climb easier." tagline confirmed. Old name "The Marketing Consulting Company" retired.</li>
+    </ul>
+  </div>
+</section>
+
+<footer><div class="wrap">Chairlift brand guidelines · Internal reference · usechairlift.com/brand/</div></footer>
+
+</body>
+</html>
