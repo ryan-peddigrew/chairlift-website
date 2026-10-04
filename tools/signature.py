@@ -19,9 +19,9 @@ def sig(dark):
     title = "Ink" if dark else "White"
 
     def row(icon, alt, href, val):
-        return (f'<tr><td style="width:24px;padding:0 8px 0 0;vertical-align:middle;">'
-                f'<img src="{BASE}/signature/icon-{icon}-{t}.png" width="16" height="16" alt="{alt}" style="display:block;width:16px;height:16px;border:0;"></td>'
-                f'<td style="font-size:13px;line-height:20px;vertical-align:middle;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
+        return (f'<tr><td style="width:19px;padding:0 7px 0 0;vertical-align:middle;">'
+                f'<img src="{BASE}/signature/icon-{icon}-{t}.png" width="12" height="12" alt="{alt}" style="display:block;width:12px;height:12px;border:0;"></td>'
+                f'<td style="font-size:11.5px;line-height:16px;vertical-align:middle;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
 
     return f'''<!doctype html>
 <html lang="en">
@@ -38,22 +38,22 @@ def sig(dark):
       <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
         <tr>
           <td style="vertical-align:middle;padding:0 16px 0 0;">
-            <img src="{BASE}/email-headshot.jpg" width="84" height="84" alt="Ryan Peddigrew" style="display:block;width:84px;height:84px;border-radius:44px;border:2px solid #3DFFC1;">
+            <img src="{BASE}/email-headshot.jpg" width="92" height="92" alt="Ryan Peddigrew" style="display:block;width:92px;height:92px;border-radius:48px;border:2px solid #3DFFC1;">
           </td>
           <td style="vertical-align:middle;padding:0 0 0 16px;border-left:3px solid {line};">
-            <p style="margin:0;font-size:19px;line-height:22px;font-weight:bold;letter-spacing:1.2px;color:{text};white-space:nowrap;">RYAN PEDDIGREW</p>
-            <p style="margin:1px 0 0;font-size:11px;line-height:14px;font-weight:bold;letter-spacing:2.4px;color:{role};">FOUNDER</p>
-            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:6px;">
+            <p style="margin:0;font-size:18px;line-height:21px;font-weight:bold;letter-spacing:1.1px;color:{text};white-space:nowrap;">RYAN PEDDIGREW</p>
+            <p style="margin:0;font-size:10px;line-height:13px;font-weight:bold;letter-spacing:2.2px;color:{role};">FOUNDER</p>
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:5px;">
               {row("phone", "Phone", "tel:+16474537926", "(647) 453 7926")}
               {row("mail", "Email", "mailto:ryan@usechairlift.com", "ryan@usechairlift.com")}
               {row("web", "Website", "https://usechairlift.com", "usechairlift.com")}
             </table>
-            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:9px;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:8px;">
               <tr>
-                <td style="vertical-align:middle;padding:0 9px 0 0;"><a href="https://usechairlift.com"><img src="{BASE}/{logo}" width="34" height="34" alt="Chairlift" style="display:block;width:34px;height:34px;border:0;"></a></td>
+                <td style="vertical-align:middle;padding:0 10px 0 0;"><a href="https://usechairlift.com"><img src="{BASE}/{logo}" width="42" height="42" alt="Chairlift" style="display:block;width:42px;height:42px;border:0;"></a></td>
                 <td style="vertical-align:middle;">
-                  <p style="margin:0;font-size:15px;line-height:20px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>
-                  <p style="margin:2px 0 0;font-size:11px;line-height:14px;font-style:italic;color:{tag};">Make the climb easier.</p>
+                  <p style="margin:0;font-size:15px;line-height:19px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>
+                  <p style="margin:1px 0 0;font-size:10.5px;line-height:13px;font-style:italic;color:{tag};">Make the climb easier.</p>
                 </td>
               </tr>
             </table>
