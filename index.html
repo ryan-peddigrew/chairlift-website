@@ -334,6 +334,23 @@
   @media (min-width: 861px) { .mobile-menu { display: none !important; } }
   @media (max-width: 640px) { .mobile-menu { padding: 4px 20px 20px; } }
   @media (max-width: 400px) { .nav-cta { display: none !important; } }
+  /* Contact form */
+  .cta-box { align-items: flex-start; }
+  .cta-box > div { flex: 1 1 320px; }
+  .contact-form { position: relative; z-index: 1; flex: 1 1 420px; display: grid; gap: 14px; }
+  .contact-form .hp { position: absolute; left: -9999px; }
+  .field-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+  .field { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--on-ink); }
+  .field em { font-style: normal; font-weight: 400; color: var(--on-ink-muted); }
+  .field input, .field textarea { width: 100%; font: inherit; font-size: 16px; font-weight: 400; color: var(--ink); background: #FFFFFF; border: 2px solid transparent; border-radius: 12px; padding: 12px 14px; min-height: 48px; }
+  .field textarea { resize: vertical; min-height: 112px; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--neon); }
+  .contact-form .btn { justify-self: start; cursor: pointer; font-family: inherit; }
+  .contact-form .btn[disabled] { opacity: 0.6; cursor: wait; }
+  .form-status { margin: 0; font-size: 16px; color: var(--on-ink); min-height: 0; }
+  .form-status:empty { display: none; }
+  .form-done .field, .form-done .field-row, .form-done .btn { display: none; }
+  @media (max-width: 640px) { .field-row { grid-template-columns: minmax(0, 1fr); } .contact-form .btn { justify-self: stretch; } }
 </style>
 </head>
 <body>
@@ -348,7 +365,7 @@
       <a class="hide-sm" href="#how">How it works</a>
       <a class="hide-sm" href="#services">Services</a>
       <a class="hide-sm" href="#about">About</a>
-      <a class="btn btn-ink nav-cta" href="mailto:ryan@usechairlift.com?subject=Starting%20a%20conversation">Start a conversation</a>
+      <a class="btn btn-ink nav-cta" href="#contact">Start a conversation</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="menu-open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
     </nav>
   </div>
@@ -356,7 +373,7 @@
     <a href="#how">How it works</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
-    <a class="btn btn-ink" href="mailto:ryan@usechairlift.com?subject=Starting%20a%20conversation">Start a conversation</a>
+    <a class="btn btn-ink" href="#contact">Start a conversation</a>
   </nav>
 </header>
 
@@ -376,7 +393,7 @@
         <h1>Make the climb<br>easier<svg class="climb-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 18.5 L16.4 7.6"/><path d="M8.5 6.3 H17.7 V15.5"/></svg></h1>
         <p class="lede">Chairlift works alongside growing companies to find the repetitive work slowing their teams down, then quietly automates it, one process at a time.</p>
         <div class="ctas">
-          <a class="btn btn-ink" href="mailto:ryan@usechairlift.com?subject=Starting%20a%20conversation">Start a conversation</a>
+          <a class="btn btn-ink" href="#contact">Start a conversation</a>
           <a class="btn btn-line" href="#how">See how it works</a>
         </div>
       </div>
@@ -472,14 +489,25 @@
     </div>
   </section>
 
-  <section class="cta">
+  <section class="cta" id="contact">
     <div class="cta-box"><svg class="cta-art" viewBox="0 0 200 140" aria-hidden="true"><rect x="10" y="98" width="80" height="20" rx="3"/><rect x="52" y="62" width="80" height="20" rx="3"/><rect x="94" y="26" width="80" height="20" rx="3"/></svg>
       <div>
         <h2>Curious where your team's hours go?</h2>
         <p>Tell us a little about how your business runs. We'll come back with a few specific ideas, whether or not we end up working together.</p>
       </div>
-      <a class="btn btn-white" href="mailto:ryan@usechairlift.com?subject=Starting%20a%20conversation">Start a conversation</a>
-    </div>
+      <form class="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="company-website">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+        <div class="field-row">
+          <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label class="field"><span>Company <em>(optional)</em></span><input type="text" name="company" autocomplete="organization"></label>
+        <label class="field"><span>How can we help?</span><textarea name="message" rows="4" required placeholder="A sentence or two about your business and what's eating your team's time."></textarea></label>
+        <button class="btn btn-white" type="submit">Start a conversation</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+          </div>
   </section>
 </main>
 
@@ -505,6 +533,27 @@
     btn.addEventListener('click', function () { setOpen(menu.hidden); });
     menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); } });
+  })();
+  (function () {
+    var form = document.querySelector('.contact-form');
+    if (!form || !window.fetch) return;
+    var status = form.querySelector('.form-status');
+    var btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      btn.disabled = true;
+      status.textContent = 'Sending…';
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          form.classList.add('form-done');
+          status.textContent = "Thanks, we've got your message. We'll be in touch soon.";
+        })
+        .catch(function () {
+          btn.disabled = false;
+          status.innerHTML = 'Sorry, that didn\u2019t send. Please try again, or email <a href="mailto:ryan@usechairlift.com">ryan@usechairlift.com</a>.';
+        });
+    });
   })();
 </script>
 
