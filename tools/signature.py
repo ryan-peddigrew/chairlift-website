@@ -9,10 +9,10 @@ def sig(dark):
     t = "ink" if dark else "white"
     bg = "#141B2A" if dark else "#FFFFFF"
     text = "#FFFFFF" if dark else "#141B2A"
-    line = "#3DFFC1" if dark else "#141B2A"
+    line = "#3DFFC1"
     ring = "#3DFFC1"
-    namec = "#3DFFC1" if dark else "#141B2A"
-    role = "#FFFFFF" if dark else "#3DFFC1"
+    namec = "#FFFFFF" if dark else "#141B2A"
+    role = "#3DFFC1"
     tag = "#B9C0CC" if dark else "#55595F"
     logo = "email-logo-dark.png" if dark else "email-logo.png"
     pad = "22px 26px" if dark else "0"
@@ -21,9 +21,9 @@ def sig(dark):
     title = "Ink" if dark else "White"
 
     def row(icon, alt, href, val):
-        return (f'<tr><td style="width:17px;padding:0 6px 0 0;vertical-align:middle;">'
-                f'<img src="{BASE}/signature/icon-{icon}-{t}.png" width="11" height="11" alt="{alt}" style="display:block;width:11px;height:11px;border:0;"></td>'
-                f'<td style="font-size:10.5px;line-height:15px;vertical-align:middle;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
+        return (f'<tr><td style="width:18px;padding:0 4px 0 6px;vertical-align:middle;">'
+                f'<img src="{BASE}/signature/icon-{icon}-{t}.png" width="8" height="8" alt="{alt}" style="display:block;width:8px;height:8px;border:0;"></td>'
+                f'<td style="font-size:8px;line-height:12px;vertical-align:middle;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
 
     return f'''<!doctype html>
 <html lang="en">
