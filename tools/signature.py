@@ -11,7 +11,7 @@ def sig(dark):
     tag   = "#B9C0CC" if dark else "#55595F"
     logo  = "email-logo-dark.png" if dark else "email-logo.png"
     pad   = "20px 24px" if dark else "0"
-    box   = (f'bgcolor="{bg}" style="border-collapse:separate;background:{bg};border-radius:14px;font-family:Helvetica,Arial,sans-serif;"'
+    box   = (f'bgcolor="{bg}" style="border-collapse:separate;background:{bg};font-family:Helvetica,Arial,sans-serif;"'
              if dark else 'style="border-collapse:collapse;font-family:Helvetica,Arial,sans-serif;"')
     title = "Ink" if dark else "White"
     row = lambda l, href, val: (f'<tr><td style="width:22px;padding:0 6px 0 0;font-size:12px;line-height:19px;font-weight:bold;color:{label};">{l}:</td>'
