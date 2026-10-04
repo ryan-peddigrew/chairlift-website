@@ -12,7 +12,7 @@ def sig(dark):
     line = "#3DFFC1" if dark else "#141B2A"
     ring = "#3DFFC1"
     namec = "#3DFFC1" if dark else "#141B2A"
-    role = "#FFFFFF" if dark else "#141B2A"
+    role = "#FFFFFF" if dark else "#3DFFC1"
     tag = "#B9C0CC" if dark else "#55595F"
     logo = "email-logo-dark.png" if dark else "email-logo.png"
     pad = "22px 26px" if dark else "0"
@@ -21,9 +21,9 @@ def sig(dark):
     title = "Ink" if dark else "White"
 
     def row(icon, alt, href, val):
-        return (f'<tr><td style="width:19px;padding:0 7px 0 0;vertical-align:middle;">'
-                f'<img src="{BASE}/signature/icon-{icon}-{t}.png" width="12" height="12" alt="{alt}" style="display:block;width:12px;height:12px;border:0;"></td>'
-                f'<td style="font-size:11.5px;line-height:16px;vertical-align:middle;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
+        return (f'<tr><td style="width:17px;padding:0 6px 0 0;vertical-align:middle;">'
+                f'<img src="{BASE}/signature/icon-{icon}-{t}.png" width="11" height="11" alt="{alt}" style="display:block;width:11px;height:11px;border:0;"></td>'
+                f'<td style="font-size:10.5px;line-height:15px;vertical-align:middle;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
 
     return f'''<!doctype html>
 <html lang="en">
@@ -42,20 +42,20 @@ def sig(dark):
           <td style="vertical-align:middle;padding:0 16px 0 0;">
             <img src="{BASE}/email-headshot.jpg" width="92" height="92" alt="Ryan Peddigrew" style="display:block;width:92px;height:92px;border-radius:48px;border:2px solid {ring};">
           </td>
-          <td style="vertical-align:middle;padding:0 0 0 16px;border-left:3px solid {line};">
+          <td style="vertical-align:middle;padding:0 0 0 16px;border-left:2px solid {line};">
             <p style="margin:0;font-size:18px;line-height:21px;font-weight:bold;letter-spacing:1.1px;color:{namec};white-space:nowrap;">RYAN PEDDIGREW</p>
             <p style="margin:0;font-size:10px;line-height:13px;font-weight:bold;letter-spacing:2.2px;color:{role};">FOUNDER</p>
-            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:5px;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:4px;">
               {row("phone", "Phone", "tel:+16474537926", "(647) 453-7926")}
               {row("mail", "Email", "mailto:ryan@usechairlift.com", "ryan@usechairlift.com")}
               {row("web", "Website", "https://usechairlift.com", "usechairlift.com")}
             </table>
-            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:8px;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:7px;">
               <tr>
-                <td style="vertical-align:middle;padding:0 10px 0 0;"><a href="https://usechairlift.com"><img src="{BASE}/{logo}" width="42" height="42" alt="Chairlift" style="display:block;width:42px;height:42px;border:0;"></a></td>
+                <td style="vertical-align:middle;padding:0 10px 0 0;"><a href="https://usechairlift.com"><img src="{BASE}/{logo}" width="38" height="38" alt="Chairlift" style="display:block;width:38px;height:38px;border:0;"></a></td>
                 <td style="vertical-align:middle;">
-                  <p style="margin:0;font-size:15px;line-height:19px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>
-                  <p style="margin:1px 0 0;font-size:10.5px;line-height:13px;font-style:italic;color:{tag};">Make the climb easier.</p>
+                  <p style="margin:0;font-size:14px;line-height:18px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>
+                  <p style="margin:1px 0 0;font-size:10px;line-height:12px;font-style:italic;color:{tag};">Make the climb easier.</p>
                 </td>
               </tr>
             </table>
