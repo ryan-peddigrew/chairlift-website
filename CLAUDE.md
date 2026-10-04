@@ -18,6 +18,7 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 ## Brand guidelines: keep them current
 - The brand guide lives at `brand/index.html` (usechairlift.com/brand/, noindex, not linked from the site).
 - **Whenever a brand element is added or changed** (logo, colours, fonts, accent rules, layout rules, voice, signature, assets), update `brand/index.html` and add a dated line to its change log in the same change.
+- If Ryan says "teal" or "mint" he means Chairlift Neon.
 - Colour names: **Midnight Ink** `#141B2A` ("Ink") and **Chairlift Neon** `#3DFFC1` ("Neon"). Neon is an accent only: one key word per title, the hero arrow, link underlines, small labels on Ink. Never on title bars, never as text on white.
 - Layout: straight section edges, no staircase graphics outside the logo, white cards on Ink sections, two Ink sections never touch.
 - Font: Hanken Grotesk (headings ExtraBold 800, ALL CAPS). Email: Helvetica/Arial.

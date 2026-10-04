@@ -9,9 +9,10 @@ def sig(dark):
     t = "ink" if dark else "white"
     bg = "#141B2A" if dark else "#FFFFFF"
     text = "#FFFFFF" if dark else "#141B2A"
-    line = "#FFFFFF" if dark else "#141B2A"
-    ring = "#3DFFC1" if dark else "#141B2A"
-    role = "#3DFFC1"
+    line = "#3DFFC1" if dark else "#141B2A"
+    ring = "#3DFFC1"
+    namec = "#3DFFC1" if dark else "#141B2A"
+    role = "#FFFFFF" if dark else "#141B2A"
     tag = "#B9C0CC" if dark else "#55595F"
     logo = "email-logo-dark.png" if dark else "email-logo.png"
     pad = "22px 26px" if dark else "0"
@@ -42,7 +43,7 @@ def sig(dark):
             <img src="{BASE}/email-headshot.jpg" width="92" height="92" alt="Ryan Peddigrew" style="display:block;width:92px;height:92px;border-radius:48px;border:2px solid {ring};">
           </td>
           <td style="vertical-align:middle;padding:0 0 0 16px;border-left:3px solid {line};">
-            <p style="margin:0;font-size:18px;line-height:21px;font-weight:bold;letter-spacing:1.1px;color:{text};white-space:nowrap;">RYAN PEDDIGREW</p>
+            <p style="margin:0;font-size:18px;line-height:21px;font-weight:bold;letter-spacing:1.1px;color:{namec};white-space:nowrap;">RYAN PEDDIGREW</p>
             <p style="margin:0;font-size:10px;line-height:13px;font-weight:bold;letter-spacing:2.2px;color:{role};">FOUNDER</p>
             <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:5px;">
               {row("phone", "Phone", "tel:+16474537926", "(647) 453 7926")}
