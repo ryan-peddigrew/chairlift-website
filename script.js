@@ -24,13 +24,14 @@
       e.preventDefault();
       submit.disabled = true;
       status.textContent = 'Sending…';
-      fetch('/', {
+      fetch(form.getAttribute('data-ajax'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
       })
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
           form.classList.add('form-done');
           status.textContent = "Thanks, your message is in. We'll read it properly and reply by email soon.";
         })

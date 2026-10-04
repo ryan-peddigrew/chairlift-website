@@ -144,9 +144,11 @@
         </ul>
         <p class="cta-direct">Prefer email? <a href="mailto:ryan@usechairlift.com">ryan@usechairlift.com</a></p>
       </div>
-      <form class="contact-form" name="contact" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
-        <input type="hidden" name="form-name" value="contact">
-        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+      <form class="contact-form" name="contact" method="POST" action="https://formsubmit.co/ryan@usechairlift.com" data-ajax="https://formsubmit.co/ajax/ryan@usechairlift.com">
+        <input type="hidden" name="_subject" value="New message from usechairlift.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://usechairlift.com/thanks/">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
         <div class="field-row">
           <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
           <label class="field"><span>Work email</span><input type="email" name="email" autocomplete="email" required></label>
