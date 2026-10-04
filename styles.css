@@ -363,9 +363,9 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .love-note { text-align: center; padding: 0 20px 40px; font-size: 15px; font-weight: 600; color: var(--muted); }
 
 /* ---------- Brand accents: mint used sparingly and consistently ---------- */
-/* Title bar: ink with a mint tip (white with a mint tip on dark sections) */
-.rule { background: linear-gradient(90deg, var(--ink) 0 64%, var(--neon) 64% 100%); }
-.section--ink .rule { background: linear-gradient(90deg, #FFFFFF 0 64%, var(--neon) 64% 100%); }
+/* Key words: mint highlighter on light sections, mint text on dark sections */
+.hl { background: linear-gradient(transparent 60%, rgba(61, 255, 193, 0.55) 60%, rgba(61, 255, 193, 0.55) 92%, transparent 92%); padding: 0 0.04em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.section--ink .hl, .cta-box .hl { background: none; padding: 0; color: var(--neon); }
 /* Full stop at the end of titles: mint on dark backgrounds only */
 .section--ink .dot, .cta-box .dot { color: var(--neon); }
 /* Text links: mint underline */
