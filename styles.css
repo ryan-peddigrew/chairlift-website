@@ -76,13 +76,11 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .hero .wrap, .page-hero .wrap { position: relative; z-index: 1; }
 .hero .wrap { padding-top: 96px; padding-bottom: 88px; }
 .hero h1 { font-size: clamp(42px, 6.4vw, 76px); line-height: 1.0; max-width: 13ch; }
-.climb-arrow { display: inline-block; width: 0.8em; height: 0.8em; margin-left: 0.1em; vertical-align: -0.04em; fill: none; stroke: var(--neon); stroke-width: 3.6; stroke-linecap: square; }
+.climb-arrow { display: inline-block; width: 0.8em; height: 0.8em; margin-left: 0.1em; vertical-align: -0.04em; fill: none; stroke: currentColor; stroke-width: 3.6; stroke-linecap: square; }
 .lede { font-size: 21px; color: var(--muted); max-width: 40ch; margin-top: 24px; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .hero-note { margin-top: 26px; font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
-.hero-note svg { width: 22px; height: 22px; flex: none; }
-.hero-note svg circle { fill: var(--neon); }
-.hero-note svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.hero-note::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--neon); box-shadow: 0 0 0 2px var(--ink); flex: none; }
 .page-hero .wrap { padding-top: 80px; padding-bottom: 72px; }
 .page-hero h1 { font-size: clamp(38px, 5.4vw, 64px); max-width: 16ch; }
 .page-hero .hero-bg { width: 40%; opacity: 0.9; }
@@ -337,74 +335,26 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .footer-bottom .wrap { flex-direction: column; }
 }
 
-/* ---------- Section flow and variety ---------- */
+/* Home headline: mint arrow pointing up */
+.nowrap { white-space: nowrap; }
+.climb-arrow { stroke: var(--neon); stroke-width: 3.2; vertical-align: -0.02em; }
 
-/* Default backgrounds so stepped edges can inherit them */
-.section, .cta, .jump { background: var(--page); }
-.section--soft { background: var(--soft); }
-.section--ink { background: var(--ink); }
+/* Hero note: mint check */
+.hero-note::before { content: none; }
+.hero-note svg { width: 22px; height: 22px; flex: none; }
+.hero-note svg circle { fill: var(--neon); }
+.hero-note svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Tinted page header on inner pages */
-.page-hero { background: var(--soft); }
-.page-hero .hero-bg path { fill: #FFFFFF; }
-.page-hero .wrap { padding-bottom: 104px; }
-@media (max-width: 640px) { .page-hero .wrap { padding-bottom: 68px; } }
+/* "Sound familiar?" on midnight ink */
+.pains-band .pains li { border-color: var(--on-ink-line); }
+.pains-band .pains svg { stroke: var(--neon); }
+.pains-band .pains span { color: var(--on-ink-muted); }
+.pains-band .pains-close { color: #FFFFFF; }
 
-/* Home headline: second line steps in */
-.hero h1 { max-width: none; }
-.h1-line { display: block; }
-.h1-step { padding-left: 1.4em; white-space: nowrap; }
-@media (max-width: 640px) { .h1-step { padding-left: 1em; } }
+/* Plain numbered stop label (How it works) */
+.step-num--plain { color: var(--muted); }
+.step-num--plain b { background: var(--ink); color: #FFFFFF; }
 
-/* Home: the three stops joined by a cable */
-.steps--cable { position: relative; }
-.steps--cable::before { content: ""; position: absolute; left: 0; right: 0; top: 45px; border-top: 2px dashed rgba(20, 27, 42, 0.25); }
-.steps--cable .step { z-index: 1; }
-@media (max-width: 860px) { .steps--cable::before { left: 45px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed rgba(20, 27, 42, 0.25); } }
-
-/* Bands (one per service / example), alternating and mirrored */
-.band .stage { border: 0; padding: 0; }
-.stage--band { position: relative; }
-.band-num { position: absolute; right: 0; top: -18px; font-size: clamp(88px, 12vw, 150px); font-weight: 800; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(20, 27, 42, 0.1); pointer-events: none; }
-.stage--flip > div:first-of-type { order: 2; }
-.stage--flip .band-num { right: auto; left: 0; }
-.stage--band .stage-detail { background: #FFFFFF; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; position: relative; z-index: 1; }
-.section--soft .stage--band .stage-detail { border-color: transparent; box-shadow: 0 18px 40px -28px rgba(20, 27, 42, 0.35); }
-.band .example + .example { margin-top: 0; padding-top: 0; border-top: 0; }
-.band .example { scroll-margin-top: 110px; }
-.section--soft .ba-before { background: #FFFFFF; }
-.section--soft .ba-wide { background: transparent !important; }
-@media (max-width: 860px) {
-  .stage--flip > div:first-of-type { order: 0; }
-  .band-num { top: -10px; }
-  .stage--flip .band-num { left: auto; right: 0; }
-  .stage--band .stage-detail { padding: 24px; }
-}
-
-/* Jump list (In practice page) */
-.jump .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-top: 36px; padding-bottom: 8px; }
-.jump span { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
-.jump a { text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: #FFFFFF; }
-.jump a:hover { border-color: var(--ink); }
-
-/* How it works: lift line connecting the stops */
-.lift { position: relative; }
-.lift::before { content: ""; position: absolute; left: 47px; top: 64px; bottom: 64px; border-left: 2px dashed rgba(20, 27, 42, 0.25); }
-.lift .stage { border: 0; padding-left: 80px; position: relative; }
-.lift-marker { position: absolute; left: 24px; top: 52px; width: 48px; height: 48px; border-radius: 12px; background: var(--ink); color: #FFFFFF; display: grid; place-items: center; font-weight: 800; font-size: 20px; z-index: 1; box-shadow: 0 0 0 6px var(--page); }
-.lift-stop:first-child .lift-marker { background: var(--neon); color: var(--ink); }
-.lift .stage-detail { background: var(--soft); border-radius: var(--radius); padding: 28px; }
-@media (max-width: 860px) {
-  .lift::before { left: 19px; top: 40px; bottom: 40px; }
-  .lift .stage { padding-left: 56px; }
-  .lift-marker { left: 0; top: 34px; width: 40px; height: 40px; font-size: 17px; border-radius: 10px; }
-  .lift .stage-detail { padding: 22px; }
-}
-
-/* FAQ on dark band */
-.faq-aside { margin-top: 18px; color: var(--on-ink-muted); font-size: 19px; }
-.faq-aside a { color: #FFFFFF; font-weight: 600; }
-.section--ink .faq, .section--ink .faq details { border-color: var(--on-ink-line); }
-.section--ink .faq summary { color: #FFFFFF; }
-.section--ink .faq summary::after { border-color: var(--neon); }
-.section--ink .faq details > div { color: var(--on-ink-muted); }
+/* FAQ side note */
+.faq-aside { margin-top: 18px; color: var(--muted); font-size: 19px; }
+.faq-aside a { color: var(--text); font-weight: 600; }
