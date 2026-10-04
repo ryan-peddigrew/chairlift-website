@@ -77,6 +77,9 @@ def sig(dark):
 '''
 
 
-for dark, n in [(False, "white"), (True, "ink")]:
+import sys
+# Only the Ink signature is approved. Pass --include-white to also build the unapproved White draft.
+variants = [(True, "ink")] + ([(False, "white")] if "--include-white" in sys.argv else [])
+for dark, n in variants:
     open(os.path.join(OUT, f"email-signature-{n}.html"), "w").write(sig(dark))
 print("ok")

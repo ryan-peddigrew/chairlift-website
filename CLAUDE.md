@@ -26,5 +26,5 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 
 ## Open decisions (pinned)
 - Whether to highlight the "AI" in CH**AI**RLIFT (Neon on the Ink email signature only for now). Don't extend it to the website or the White signature until Ryan decides.
-- The White email signature design is not a favourite; leave it unchanged until Ryan says otherwise.
-- Only publish what Ryan approves: the White and Ink signatures are approved and published separately.
+- Only the Ink email signature is approved and published. The White signature is NOT approved: keep it off the live site. A draft lives on the `draft/white-signature` branch. Build it only with `python3 tools/signature.py --include-white`.
+- Only publish what Ryan approves.
