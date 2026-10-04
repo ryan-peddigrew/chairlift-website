@@ -6,7 +6,7 @@ def sig(dark):
     name  = "#FFFFFF" if dark else "#141B2A"
     role  = "#3DFFC1" if dark else "#55595F"
     text  = "#FFFFFF" if dark else "#141B2A"
-    label = "#B9C0CC" if dark else "#8A8F96"
+    label = "#3DFFC1" if dark else "#141B2A"
     line  = "#3DFFC1" if dark else "#141B2A"
     tag   = "#B9C0CC" if dark else "#55595F"
     logo  = "email-logo-dark.png" if dark else "email-logo.png"
@@ -14,7 +14,7 @@ def sig(dark):
     box   = (f'bgcolor="{bg}" style="border-collapse:separate;background:{bg};border-radius:14px;font-family:Helvetica,Arial,sans-serif;"'
              if dark else 'style="border-collapse:collapse;font-family:Helvetica,Arial,sans-serif;"')
     title = "Ink" if dark else "White"
-    row = lambda l, href, val: (f'<tr><td style="padding:0 10px 0 0;font-size:11px;line-height:19px;font-weight:bold;letter-spacing:1px;color:{label};">{l}</td>'
+    row = lambda l, href, val: (f'<tr><td style="width:22px;padding:0 6px 0 0;font-size:12px;line-height:19px;font-weight:bold;color:{label};">{l}:</td>'
                                 f'<td style="font-size:13px;line-height:19px;"><a href="{href}" style="color:{text};text-decoration:none;">{val}</a></td></tr>')
     return f'''<!doctype html>
 <html lang="en">
@@ -37,15 +37,17 @@ def sig(dark):
             <p style="margin:0;font-size:17px;line-height:21px;font-weight:bold;color:{name};">Ryan Peddigrew</p>
             <p style="margin:3px 0 10px;font-size:11px;line-height:14px;font-weight:bold;letter-spacing:1.5px;color:{role};">FOUNDER</p>
             <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
-              {row("M", "tel:+16474537926", "647-453-7926")}
+              {row("M", "tel:+16474537926", "(647) 453 7926")}
               {row("E", "mailto:ryan@usechairlift.com", "ryan@usechairlift.com")}
               {row("W", "https://usechairlift.com", "usechairlift.com")}
             </table>
-            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:12px;">
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin-top:14px;">
               <tr>
-                <td style="vertical-align:middle;padding:0 8px 0 0;"><a href="https://usechairlift.com"><img src="https://usechairlift.com/images/{logo}" width="24" height="24" alt="Chairlift" style="display:block;width:24px;height:24px;border:0;"></a></td>
-                <td style="vertical-align:middle;font-size:14px;line-height:18px;font-weight:bold;color:{name};padding:0 8px 0 0;">Chairlift</td>
-                <td style="vertical-align:middle;font-size:12px;line-height:18px;color:{tag};">Make the climb easier.</td>
+                <td style="vertical-align:middle;padding:0 10px 0 0;"><a href="https://usechairlift.com"><img src="https://usechairlift.com/images/{logo}" width="36" height="36" alt="Chairlift" style="display:block;width:36px;height:36px;border:0;"></a></td>
+                <td style="vertical-align:middle;">
+                  <p style="margin:0;font-size:13px;line-height:16px;font-weight:bold;letter-spacing:0.3px;color:{name};">Chairlift</p>
+                  <p style="margin:1px 0 0;font-size:11px;line-height:14px;font-style:italic;color:{tag};">Make the climb easier.</p>
+                </td>
               </tr>
             </table>
           </td>
