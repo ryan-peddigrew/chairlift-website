@@ -361,3 +361,31 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 
 /* Small personal note at the bottom of the home page */
 .love-note { text-align: center; padding: 0 20px 40px; font-size: 15px; font-weight: 600; color: var(--muted); }
+
+/* ---------- Brand accents: mint used sparingly and consistently ---------- */
+/* Title bar: ink with a mint tip (white with a mint tip on dark sections) */
+.rule { background: linear-gradient(90deg, var(--ink) 0 64%, var(--neon) 64% 100%); }
+.section--ink .rule { background: linear-gradient(90deg, #FFFFFF 0 64%, var(--neon) 64% 100%); }
+/* Full stop at the end of titles: mint on dark backgrounds only */
+.section--ink .dot, .cta-box .dot { color: var(--neon); }
+/* Text links: mint underline */
+.link-arrow { border-bottom-color: var(--neon); border-bottom-width: 3px; }
+/* Keyboard focus: ink on light, mint on dark */
+:focus-visible { outline-color: var(--ink); }
+.section--ink :focus-visible, .cta-box :focus-visible, .site-footer :focus-visible { outline-color: var(--neon); }
+/* Remove one-off mint uses so the accent stays consistent */
+.card--ink::before { background: #FFFFFF; }
+.pains-band .pains svg { stroke: #FFFFFF; }
+.step:first-child .step-num b { background: var(--ink); color: #FFFFFF; }
+
+/* White boxes on dark sections (no dark-on-dark cards) */
+.section--ink .card, .section--ink .step { background: #FFFFFF; border: 1px solid #FFFFFF; color: var(--text); }
+.section--ink .card::before { background: var(--ink); }
+.section--ink .card p, .section--ink .card .card-label, .section--ink .step p, .section--ink .step-num { color: var(--muted); }
+.section--ink .step-num b { background: var(--ink); color: #FFFFFF; }
+.section--ink .step h3 { color: var(--ink); }
+
+/* "Sound familiar?": prominent uppercase statements */
+.pains strong { display: block; text-transform: uppercase; font-size: 21px; font-weight: 800; line-height: 1.25; letter-spacing: 0.01em; margin-bottom: 8px; }
+.pains li { padding: 26px 0; }
+@media (max-width: 640px) { .pains strong { font-size: 18px; } }
