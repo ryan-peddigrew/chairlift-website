@@ -23,3 +23,8 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - Layout: straight section edges, no staircase graphics outside the logo, white cards on Ink sections, two Ink sections never touch.
 - Font: Hanken Grotesk (headings ExtraBold 800, ALL CAPS). Email: Helvetica/Arial.
 - Voice: professional and friendly. Don't assume a prospect's size, budget or competitors.
+
+## Open decisions (pinned)
+- Whether to highlight the "AI" in CH**AI**RLIFT (Neon on the Ink email signature only for now). Don't extend it to the website or the White signature until Ryan decides.
+- The White email signature design is not a favourite; leave it unchanged until Ryan says otherwise.
+- Only publish what Ryan approves: the White and Ink signatures are approved and published separately.
