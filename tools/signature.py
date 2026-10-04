@@ -4,9 +4,9 @@ OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 def sig(dark):
     bg    = "#141B2A" if dark else "#FFFFFF"
     name  = "#FFFFFF" if dark else "#141B2A"
-    role  = "#3DFFC1" if dark else "#55595F"
+    role  = "#B9C0CC" if dark else "#55595F"
     text  = "#FFFFFF" if dark else "#141B2A"
-    label = "#3DFFC1" if dark else "#141B2A"
+    label = "#B9C0CC" if dark else "#141B2A"
     line  = "#3DFFC1" if dark else "#141B2A"
     tag   = "#B9C0CC" if dark else "#55595F"
     logo  = "email-logo-dark.png" if dark else "email-logo.png"
