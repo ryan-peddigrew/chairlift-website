@@ -16,7 +16,6 @@ NAV = [
     ("how", "/how-it-works/", "How it works"),
     ("services", "/what-we-do/", "What we do"),
     ("industries", "/who-we-help/", "Who we help"),
-    ("examples", "/examples/", "In practice"),
     ("about", "/who-we-are/", "Who we are"),
 ]
 
@@ -74,7 +73,6 @@ def header(active=None):
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
 {mob}
-    <a href="/get-in-touch/"{cur("contact")}>Get in touch</a>
     <a class="btn btn-ink" href="/get-in-touch/">Start a conversation</a>
   </nav>
 </header>
@@ -99,7 +97,7 @@ def footer():
   <div class="wrap footer-top">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=34, stroke=' stroke="rgba(255,255,255,0.3)" stroke-width="2"')}<span>Chairlift</span></a>
-      <p>We help growing, people-run companies automate the repetitive work that slows their teams down.</p>
+      <p>We help growing companies take the routine work off their team's plate, so their people can focus on clients and growth.</p>
     </div>
     <nav aria-label="Footer">
       <ul class="footer-links">
@@ -173,7 +171,7 @@ def cta_section(title, flush=False, intro=True):
 '''
 
 
-CTA_TEXT = "Tell us a little about how your business runs. We'll come back with a few specific ideas, whether or not we end up working together."
+CTA_TEXT = "Send a few lines about how your business runs. We'll come back with specific ideas you can act on, whether or not we work together."
 
 
 def cta_band(title):

@@ -97,7 +97,7 @@ home = f'''
     <div class="wrap">
       <span class="rule"></span>
       <h1>Make the climb <span class="nowrap">easier{ARROW}</span></h1>
-      <p class="lede">Chairlift finds the repetitive work slowing your team down and automates it, one process at a time. Quotes get followed up, inquiries get answered, and your people get their time back.</p>
+      <p class="lede">Chairlift takes the follow-ups, quotes and admin off your team's plate, one process at a time, so your people can spend their time on the work that grows the business.</p>
       <div class="ctas">
         <a class="btn btn-ink" href="/get-in-touch/">Start a conversation</a>
         <a class="btn btn-line" href="/how-it-works/">See how it works</a>
@@ -111,14 +111,14 @@ home = f'''
       <div class="intro">
         <span class="rule"></span>
         <h2 id="plate-title">What we take off your team's plate.</h2>
-        <p>None of these feels like a big deal. Add them up and it's hours every week.</p>
+        <p>Small on their own. Add them up and it's hours every week.</p>
       </div>
       <div class="cards cards--mixed">
         <div class="card">{icon("chat")}<span class="card-label">Sales</span><h3>Client follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
         <div class="card">{icon("cal")}<span class="card-label">Operations</span><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
         <div class="card">{icon("people")}<span class="card-label">Leadership</span><h3>The full picture</h3><p class="problem">Someone's away, and their clients go quiet.</p><p>Every client relationship in one place. If someone is away or moves on, the next person picks up right where they left off.</p></div>
       </div>
-      <p class="pains-close">You don't need more people for this. You need the routine stuff to take care of itself.</p>
+      <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
     </div>
   </section>
@@ -151,8 +151,8 @@ home = f'''
         <h2 id="why-title">Why we started Chairlift.</h2>
       </div>
       <div class="prose">
-        <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">The tools to save a growing team hours every week already exist. Most companies just haven't had the time to put them to work.</p>
-        <p>After years in sales, working closely with companies of every size, we kept seeing the same thing: good teams losing time to follow-ups, scheduling and admin that technology could already handle. Chairlift exists to close that gap.</p>
+        <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Great teams shouldn't lose their best hours to follow-ups and admin.</p>
+        <p>Years in sales gave us a front-row seat to how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <a class="link-arrow" href="/who-we-are/">Read our story</a>
       </div>
     </div>
@@ -206,6 +206,7 @@ services = page_hero("What we do", "Automations that fit how you already work.",
   <section class="section section--soft section--tight" aria-label="How a project runs">
     <div class="wrap">
       <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Curious how a project runs from start to finish? <a class="link-arrow" href="/how-it-works/">See the three stops</a></p>
+      <p class="section-link"><a class="link-arrow" href="/examples/">See it in practice</a></p>
     </div>
   </section>
 {cta_band("Not sure where you'd start?")}'''
@@ -238,9 +239,9 @@ for s in STAGES:
 '''
 
 FAQ = [
-    ("Do we need to buy new software?", ["Usually not. We build inside the tools you already use: your inbox, calendar, CRM, spreadsheets, and the booking or quoting software you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
+    ("Do we need to buy new software?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, CRM, spreadsheets, and the booking or quoting software you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
     ("Do we need someone technical on our team?", ["No. You need someone who knows how the work gets done today. We handle the technical side and explain everything in plain English."]),
-    ("Will automated messages sound robotic?", ["They shouldn't. We write them with your team, in the way you actually talk to clients, and adjust them until they sound right."]),
+    ("Will automated messages sound robotic?", ["No. We write every message with your team, in the way you actually talk to clients, and refine it until it sounds like you."]),
     ("Is this about replacing staff?", ["No. It's about taking the repetitive parts of the job off people's plates, so they can spend more time with clients and on the work they're good at."]),
     ("How does pricing work?", ["It depends on what we're automating and how your tools are set up, so we don't publish a price list. You'll know what we'd recommend, and the price, before any work starts."]),
     ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first automation."]),
@@ -294,7 +295,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
 
 # ---------------------------------------------------------------- About
 about = page_hero("Who we are", "Why we started Chairlift.",
-    "The tools to save a growing team hours every week already exist. Most companies just haven't had the time to put them to work.") + f'''
+    "Great teams shouldn't lose their best hours to follow-ups and admin.") + f'''
   <section class="section section--tight" aria-labelledby="gap-title">
     <div class="wrap split">
       <div>
@@ -302,8 +303,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>After years in sales, working closely with companies of every size, we kept seeing the same thing: good teams losing time to follow-ups, scheduling and admin that technology could already handle.</p>
-        <p>It was rarely a people problem. The teams were capable and the tools were already there. What was missing was the time to connect the two.</p>
+        <p>Years in sales gave us a front-row seat to how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right automations in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
     </div>
@@ -329,8 +329,8 @@ about = page_hero("Who we are", "Why we started Chairlift.",
       <div>
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
-          <p>“Good people were spending their best hours on work a computer could already do. That's why I started Chairlift.”</p>
-          <p>A background in sales means years of working closely with companies of every size. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
+          <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
+          <p>A career in sales is a front-row seat to how companies really run: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift exists to fix that, one process at a time. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
@@ -361,7 +361,7 @@ INDUSTRIES = [
                 ("chat", "The call you missed on site.", "By the time you call back, they've booked someone else."),
                 ("copy", "Chasing vendors for drawings and dates.", "Every “did you get my email?” is time away from the job."),
                 ("cal", "“When are you coming?”", "Simple status updates turn into a day of phone tag.")],
-         close="The work is the easy part. Let the follow-ups take care of <span class=\"hl\">themselves</span>.",
+         close="You're great at the work. Let the follow-ups take care of <span class=\"hl\">themselves</span>.",
          cards=[("chat", "Inquiries", "Answered on site", "Missed calls get a text back and web requests get a reply with next steps, even while your hands are full."),
                 ("quote", "Quotes", "Followed up", "Every quote starts a polite check-in sequence that stops the moment the customer replies."),
                 ("cal", "Updates", "Sent for you", "Booking confirmations, reminders and “on our way” messages go out on their own.")],
@@ -384,7 +384,7 @@ INDUSTRIES = [
              after=["The customer gets a reply within minutes asking for exactly what's missing.", "Once the details are in, the request goes to the right estimator.", "The quote is followed up on schedule until the customer replies.", "Everyone can see where each request stands."],
              built="Your shared inbox, your quoting spreadsheet or order system, and email.")),
     dict(slug="professional-services", icon="people", name="Professional services",
-         blurb="For firms like investigators, legal and accounting: fast first replies, intake before the call and regular client updates.",
+         blurb="For accounting, legal and investigation firms: fast first replies, intake before the call and regular client updates.",
          title="For professional services firms.",
          lede="Clients often reach out at a stressful moment, and they're usually contacting more than one firm. We automate the first reply, the intake and the updates, so every client feels looked after from the first message.",
          pains=[("moon", "The inquiry that came in at midnight.", "By morning, they've already spoken to another firm."),
@@ -418,7 +418,7 @@ INDUSTRIES = [
 ind_items = "".join(f'''        <a class="fit-item fit-link" href="/who-we-help/{i["slug"]}/">{icon(i["icon"], "fit-icon")}<h3>{i["name"]}</h3><p>{i["blurb"]}</p><span class="link-arrow">Read more</span></a>
 ''' for i in INDUSTRIES)
 
-industries = page_hero("Who we help", "Different industries. The same busywork.",
+industries = page_hero("Who we help", "Different industries. The same lost hours.",
     "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd automate first.") + f'''
   <section class="section section--tight" aria-label="Industries">
     <div class="wrap">
@@ -500,12 +500,12 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
 PAGES = [
-    ("index.html", "Chairlift · Automations for growing companies", "Chairlift helps growing companies put simple automations to work, so follow-ups, quotes and everyday admin run themselves and your team gets hours back.", "/", None, home, False),
+    ("index.html", "Chairlift · Automations for growing companies", "Chairlift takes follow-ups, quotes and everyday admin off your team's plate, inside the tools you already use, so your people can focus on clients and growth.", "/", None, home, False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, builds one automation at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
-    ("who-we-are/index.html", "Who we are", "Why Chairlift exists: good teams lose hours to follow-ups and admin that technology can already handle. We help close that gap.", "/who-we-are/", "about", about, False),
+    ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
 ] + [
     (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
