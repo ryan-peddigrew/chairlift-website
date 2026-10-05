@@ -113,7 +113,7 @@ home = f'''
         <h2 id="plate-title">What we take off your team's plate.</h2>
         <p>Small on their own. Add them up and it's hours every week.</p>
       </div>
-      <div class="cards cards--mixed">
+      <div class="cards cards--mixed cards--swipe">
         <div class="card">{icon("chat")}<span class="card-label">Sales</span><h3>Client follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
         <div class="card">{icon("cal")}<span class="card-label">Operations</span><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
         <div class="card">{icon("people")}<span class="card-label">Leadership</span><h3>The full picture</h3><p class="problem">Someone's away, and their clients go quiet.</p><p>Every client relationship in one place. If someone is away or moves on, the next person picks up right where they left off.</p></div>

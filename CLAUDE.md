@@ -27,6 +27,7 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - Footer links stay short: no "Who we help" (it lives in the main menu only).
 - Never use "free call", "20-minute", "Sit back", "relax" or "cost/costs" in marketing copy. Buttons read "Start a conversation".
 - Each idea lives in one place: don't repeat sections or sentences across pages. The full contact form appears only on /get-in-touch/; other pages end with the slim `cta_band`.
+- Phone: long card rows can swipe sideways (`cards--swipe`) to keep pages short. Booking link (cal.com/chairlift/5min) is on; LinkedIn stays off until Ryan sends it.
 - Font: Hanken Grotesk (headings ExtraBold 800, ALL CAPS). Email: Helvetica/Arial.
 - Voice: professional and friendly. Don't assume a prospect's size, budget or competitors.
 

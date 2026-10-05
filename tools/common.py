@@ -1,7 +1,7 @@
 SITE = "https://usechairlift.com"
 EMAIL = "ryan@usechairlift.com"
 # Leave blank to hide. Paste the full link to switch it on.
-BOOKING_URL = ""
+BOOKING_URL = "https://cal.com/chairlift/5min"
 LINKEDIN_URL = ""
 
 LOGO = '<svg width="{s}" height="{s}" viewBox="-1 -1 66 66" aria-hidden="true"><path d="M2 0H62A2 2 0 0 1 64 2V62A2 2 0 0 1 62 64H2A2 2 0 0 1 0 62V2A2 2 0 0 1 2 0Z" fill="#141B2A"{stroke}/><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="#fff"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="#fff"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="#3DFFC1"/></svg>'

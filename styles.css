@@ -410,3 +410,11 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .section--ink .cards--mixed .card:not(:first-child) p, .section--ink .cards--mixed .card:not(:first-child) .card-label { color: var(--on-ink-muted); }
 .section--ink .cards--mixed .card:not(:first-child) .problem { color: #FFFFFF; }
 .section--ink .cards--mixed .card:not(:first-child) .card-icon { stroke: #FFFFFF; }
+
+/* Swipe row: cards scroll sideways on phones and tablets instead of stacking */
+@media (max-width: 860px) {
+  .cards--swipe { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 0 -24px; padding: 0 24px 8px; scroll-padding: 0 24px; scrollbar-width: none; }
+  .cards--swipe::-webkit-scrollbar { display: none; }
+  .cards--swipe .card { flex: 0 0 82%; max-width: 360px; scroll-snap-align: start; }
+}
+.section:has(.cards--swipe) { overflow-x: clip; }
