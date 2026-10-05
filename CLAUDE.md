@@ -19,9 +19,11 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - The brand guide lives at `brand/index.html` (usechairlift.com/brand/, noindex, not linked from the site).
 - **Whenever a brand element is added or changed** (logo, colours, fonts, accent rules, layout rules, voice, signature, assets), update `brand/index.html` and add a dated line to its change log in the same change.
 - If Ryan says "teal" or "mint" he means Chairlift Neon.
-- Colour names: **Midnight Ink** `#141B2A` ("Ink") and **Chairlift Neon** `#3DFFC1` ("Neon"). On the website, Neon is used only for: the logo's top step, the hero arrow after "Make the climb easier", the short bar above the hero headline, the short bars above titles on Ink sections, and the "After" label on Ink. Nothing else: no Neon text, highlights, underlines, check marks or buttons. Use Ink on light backgrounds, white on Ink. "Where we usually start." never gets a highlight or underline.
+- Colour names: **Midnight Ink** `#141B2A` ("Ink") and **Chairlift Neon** `#3DFFC1` ("Neon"). On the website, Neon is used only for: the logo's top step, the hero arrow after "Make the climb easier", the short bar above the hero headline, the short bars above titles on Ink sections, the "After" label on Ink, and the ring around the round founder photo on Who we are (matches the email signature). Nothing else: no Neon text, highlights, underlines, check marks or buttons. Use Ink on light backgrounds, white on Ink. "Where we usually start." never gets a highlight or underline.
 - Layout: straight section edges, white cards on Ink sections, two Ink sections never touch. NEVER any staircase graphic, dotted line or square decoration outside the logo (Ryan: "never want to see that again"). Exception: the homepage "What we take off your team's plate" cards (first white, others lighter Ink).
 - Wordmark `Chairlift` (capital C, Hanken Grotesk SemiBold 600), never all caps. Headings display in capitals; body copy stays sentence case.
+- Never say "one point of contact" (or similar) anywhere on the site. Ryan dropped it.
+- Footer links stay short: no "Who we help" (it lives in the main menu only).
 - Never use "free call", "20-minute", "Sit back", "relax" or "cost/costs" in marketing copy. Buttons read "Start a conversation".
 - Each idea lives in one place: don't repeat sections or sentences across pages. The full contact form appears only on /get-in-touch/; other pages end with the slim `cta_band`.
 - Font: Hanken Grotesk (headings ExtraBold 800, ALL CAPS). Email: Helvetica/Arial.

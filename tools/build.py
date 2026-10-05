@@ -153,7 +153,6 @@ home = f'''
       <div class="prose">
         <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">The tools to save a growing team hours every week already exist. Most companies just haven't had the time to put them to work.</p>
         <p>After years in sales, working closely with companies of every size, we kept seeing the same thing: good teams losing time to follow-ups, scheduling and admin that technology could already handle. Chairlift exists to close that gap.</p>
-        <p class="callout">One point of contact, from the first conversation onward.</p>
         <a class="link-arrow" href="/who-we-are/">Read our story</a>
       </div>
     </div>
@@ -245,7 +244,7 @@ FAQ = [
     ("Is this about replacing staff?", ["No. It's about taking the repetitive parts of the job off people's plates, so they can spend more time with clients and on the work they're good at."]),
     ("How does pricing work?", ["It depends on what we're automating and how your tools are set up, so we don't publish a price list. You'll know what we'd recommend, and the price, before any work starts."]),
     ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first automation."]),
-    ("What happens if something stops working?", ["You have one point of contact from the first conversation onward. If something isn't working the way it should, you know exactly who to tell."]),
+    ("What happens if something stops working?", ["If something isn't working the way it should, you know exactly who to tell."]),
     ("What about our data?", ["We work inside your existing accounts, with access you grant, and only touch what the automation needs. You stay the owner of your tools and your data."]),
 ]
 faq_html = "".join(f'''        <details>
@@ -320,7 +319,6 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <div class="principle"><b>01</b><div><h3>Clear communication</h3><p>Straightforward explanations at every step, so you always know what's being built and why.</p></div></div>
         <div class="principle"><b>02</b><div><h3>One thing at a time</h3><p>We get one process working properly before suggesting the next. Steady beats overwhelming.</p></div></div>
         <div class="principle"><b>03</b><div><h3>Built around your people</h3><p>Automations should make your team's day easier, so we build them with the people who'll use them.</p></div></div>
-        <div class="principle"><b>04</b><div><h3>One point of contact</h3><p>You'll deal with the same person from the first conversation onward.</p></div></div>
       </div>
     </div>
   </section>
@@ -332,7 +330,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“Good people were spending their best hours on work a computer could already do. That's why I started Chairlift.”</p>
-          <p>A background in sales means years of working closely with companies of every size. You'll have one point of contact from the first conversation onward, and if you send a few lines about how your business runs, you'll get specific ideas back.</p>
+          <p>A background in sales means years of working closely with companies of every size. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
