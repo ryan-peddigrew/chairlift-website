@@ -21,7 +21,7 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - If Ryan says "teal" or "mint" he means Chairlift Neon.
 - Colour names: **Midnight Ink** `#141B2A` ("Ink") and **Chairlift Neon** `#3DFFC1` ("Neon"). On the website, Neon is used only for: the logo's top step, the hero arrow after "Make the climb easier", the short bar above the hero headline, the short bars above titles on Ink sections, the "After" label on Ink, and the ring around the round founder photo on Who we are (matches the email signature). Nothing else: no Neon text, highlights, underlines, check marks or buttons. Use Ink on light backgrounds, white on Ink. "Where we usually start." never gets a highlight or underline.
 - Layout: straight section edges, white cards on Ink sections, two Ink sections never touch. NEVER any staircase graphic, dotted line or square decoration outside the logo (Ryan: "never want to see that again"). Exception: the homepage "What we take off your team's plate" cards (first white, others lighter Ink).
-- Wordmark `Chairlift` (capital C, Hanken Grotesk SemiBold 600), never all caps. Headings display in capitals; body copy stays sentence case.
+- Wordmark `Chairlift` (capital C, Hanken Grotesk SemiBold 600), never all caps and never a different colour on the "AI" (website and email signature alike). Headings display in capitals; body copy stays sentence case.
 - Founder photo: only ever use the smiling headshot (navy suit, purple tie) in `images/ryan-peddigrew.jpg` (website) and `images/email-headshot.jpg` (signature). Framed like the approved email signature: head and shoulders, centred on his face, in a round frame with a Neon ring. Never use any other photo of Ryan.
 - Never say "one point of contact" (or similar) anywhere on the site. Ryan dropped it.
 - Footer links stay short: no "Who we help" (it lives in the main menu only).
@@ -31,6 +31,5 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - Voice: professional and friendly. Don't assume a prospect's size, budget or competitors.
 
 ## Open decisions (pinned)
-- Whether to highlight the "AI" in CH**AI**RLIFT (Neon on the Ink email signature only for now). Don't extend it to the website or the White signature until Ryan decides.
 - Only the Ink email signature is approved and published. The White signature is NOT approved: keep it off the live site. A draft lives on the `draft/white-signature` branch. Build it only with `python3 tools/signature.py --include-white`.
 - Only publish what Ryan approves.

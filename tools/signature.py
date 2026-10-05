@@ -15,9 +15,9 @@ def sig(dark):
     role = "#3DFFC1"
     tag = "#B9C0CC" if dark else "#55595F"
     if dark:
-        wordmark = f'<p style="margin:0;font-size:13px;line-height:17px;font-weight:bold;letter-spacing:1.6px;color:{text};">CH<span style="color:#3DFFC1;">AI</span>RLIFT</p>'
+        wordmark = f'<p style="margin:0;font-size:14px;line-height:18px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>'
         slogan = f'<p style="margin:3px 0 0;padding-top:3px;border-top:1px solid #FFFFFF;font-size:10px;line-height:12px;font-style:italic;color:{tag};">Make the climb easier.</p>'
-    else:  # White version: unchanged from the published design (pending a decision on the capitals / AI accent)
+    else:
         wordmark = f'<p style="margin:0;font-size:14px;line-height:18px;font-weight:bold;letter-spacing:0.3px;color:{text};">Chairlift</p>'
         slogan = f'<p style="margin:1px 0 0;font-size:10px;line-height:12px;font-style:italic;color:{tag};">Make the climb easier.</p>'
     logo = "email-logo-dark.png" if dark else "email-logo.png"
