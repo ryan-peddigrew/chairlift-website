@@ -89,13 +89,11 @@ def example_block(e, heading="h2"):
 '''
 
 
-HERO_ART = '<div class="hero-bg hero-art" aria-hidden="true"><svg viewBox="0 0 600 420" preserveAspectRatio="xMaxYMax meet"><path d="M600 420 H120 V340 H240 V260 H360 V180 H480 V100 H600 Z" fill="#F4F5F7"/><path d="M150 330 L560 60" fill="none" stroke="#C9CDD4" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/><rect x="556" y="46" width="22" height="22" fill="#141B2A"/></svg></div>'
-
 # ---------------------------------------------------------------- Home
 CTA_HOME = "Curious where your team's hours go?"
 home = f'''
   <section class="hero">
-    {HERO_ART}
+    {STAIRS_BG}
     <div class="wrap">
       <span class="rule"></span>
       <h1>Make the climb <span class="nowrap">easier{ARROW}</span></h1>
