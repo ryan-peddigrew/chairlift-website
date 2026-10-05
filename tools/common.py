@@ -81,52 +81,34 @@ def header(active=None):
 '''
 
 
+FOOTER_LINKS = [
+    ("/how-it-works/", "How it works"),
+    ("/what-we-do/", "What we do"),
+    ("/examples/", "In practice"),
+    ("/who-we-are/", "Who we are"),
+    ("/get-in-touch/", "Get in touch"),
+    ("/privacy/", "Privacy"),
+]
+
+
 def footer():
-    linkedin = f'\n        <li><a href="{LINKEDIN_URL}" rel="noopener">LinkedIn</a></li>' if LINKEDIN_URL else ""
+    links = FOOTER_LINKS + ([(LINKEDIN_URL, "LinkedIn")] if LINKEDIN_URL else [])
+    items = "\n".join(f'        <li><a href="{h}">{t}</a></li>' for h, t in links)
     return f'''
 <footer class="site-footer">
   <div class="wrap footer-top">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=34, stroke=' stroke="rgba(255,255,255,0.3)" stroke-width="2"')}<span>Chairlift</span></a>
       <p>We help growing, people-run companies automate the repetitive work that slows their teams down.</p>
-      <a class="btn btn-white" href="/get-in-touch/">Start a conversation</a>
     </div>
-    <div class="footer-col">
-      <h2>Explore</h2>
-      <ul>
-        <li><a href="/who-we-are/">Who we are</a></li>
-        <li><a href="/who-we-help/">Who we help</a></li>
-        <li><a href="/how-it-works/">How it works</a></li>
-        <li><a href="/examples/">In practice</a></li>
-        <li><a href="/get-in-touch/">Get in touch</a></li>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+{items}
       </ul>
-    </div>
-    <div class="footer-col">
-      <h2>What we do</h2>
-      <ul>
-        <li><a href="/what-we-do/#inquiries">New inquiries</a></li>
-        <li><a href="/what-we-do/#quotes">Quote follow-up</a></li>
-        <li><a href="/what-we-do/#reviews">Review requests</a></li>
-        <li><a href="/what-we-do/#admin">Scheduling and admin</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h2>Get in touch</h2>
-      <ul>
-        <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-        <li><a href="/get-in-touch/">Send a message</a></li>
-        <li><a href="/how-it-works/#faq">Common questions</a></li>{linkedin}
-      </ul>
-    </div>
+    </nav>
   </div>
   <div class="footer-bottom">
-    <div class="wrap">
-      <span>© <span data-year>2026</span> Chairlift. All rights reserved.</span>
-      <nav aria-label="Legal">
-        <a href="/privacy/">Privacy</a>
-        <a href="#main">Back to top ↑</a>
-      </nav>
-    </div>
+    <div class="wrap">© <span data-year>2026</span> Chairlift</div>
   </div>
 </footer>
 
@@ -170,16 +152,16 @@ def contact_form():
 '''
 
 
-def cta_section(title="Curious where your team's hours go?", flush=False):
+def cta_section(title, flush=False, intro=True):
     cls = "cta cta--flush" if flush else "cta"
+    intro_p = f"        <p>{CTA_TEXT}</p>\n" if intro else ""
     booking = f'        <p class="cta-direct">Rather talk it through? <a href="{BOOKING_URL}" rel="noopener">Book a call</a></p>\n' if BOOKING_URL else ""
     return f'''
   <section class="{cls}" id="contact" aria-labelledby="contact-title">
     <div class="cta-box">
       <div>
         <h2 id="contact-title">{title}</h2>
-        <p>Tell us a little about how your business runs. We'll come back with a few specific ideas, whether or not we end up working together.</p>
-        <ul class="cta-list">
+{intro_p}        <ul class="cta-list">
           <li><b>1</b><span>You send a few lines about your business.</span></li>
           <li><b>2</b><span>We reply by email to set up a short call.</span></li>
           <li><b>3</b><span>You get specific ideas for what to automate first.</span></li>
@@ -187,6 +169,23 @@ def cta_section(title="Curious where your team's hours go?", flush=False):
 {booking}        <p class="cta-direct">Prefer email? <a href="mailto:{EMAIL}">{EMAIL}</a></p>
       </div>
 {contact_form()}    </div>
+  </section>
+'''
+
+
+CTA_TEXT = "Tell us a little about how your business runs. We'll come back with a few specific ideas, whether or not we end up working together."
+
+
+def cta_band(title):
+    return f'''
+  <section class="cta cta-band" aria-labelledby="cta-title">
+    <div class="cta-box">
+      <div>
+        <h2 id="cta-title">{title}</h2>
+        <p>{CTA_TEXT}</p>
+        <a class="btn btn-white" href="/get-in-touch/">Start a conversation</a>
+      </div>
+    </div>
   </section>
 '''
 
