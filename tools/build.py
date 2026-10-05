@@ -325,7 +325,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
 
   <section class="section" aria-labelledby="founder-title">
     <div class="wrap founder">
-      <div class="founder-photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="720" height="720" loading="lazy" decoding="async"></div>
+      <div class="founder-photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="600" height="600" loading="lazy" decoding="async"></div>
       <div>
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
