@@ -98,7 +98,7 @@ home = f'''
     <div class="wrap">
       <span class="rule"></span>
       <h1>Make the climb <span class="nowrap">easier{UP_ARROW}</span></h1>
-      <p class="lede">Chairlift works alongside growing companies to find the repetitive work slowing their teams down, then builds the automations that take it off their plate.</p>
+      <p class="lede">Chairlift finds the repetitive work that's eating your team's day, then automates it. Quotes get followed up, inquiries get answered, and your people get their time back.</p>
       <div class="ctas">
         <a class="btn btn-ink" href="#contact">Start a conversation</a>
         <a class="btn btn-line" href="/how-it-works/">See how it works</a>
@@ -112,7 +112,7 @@ home = f'''
       <div class="intro">
         <span class="rule"></span>
         <h2 id="pains-title">Sound familiar?</h2>
-        <p>Individually, they're small. Together, they cost your team hours every week.</p>
+        <p>None of these feels like a big deal. Add them up and it's hours every week.</p>
       </div>
       <ul class="pains">
         <li>{icon("quote", "")}<div><strong>A quote went out last week. Nobody's followed up.</strong><span>Not for lack of effort. The follow-up simply depends on someone remembering.</span></div></li>
@@ -120,7 +120,7 @@ home = f'''
         <li>{icon("copy", "")}<div><strong>The same details typed into three systems.</strong><span>Every re-entry is another chance for an error, and time nobody gets back.</span></div></li>
         <li>{icon("people", "")}<div><strong>Someone's away, and their clients go quiet.</strong><span>The history is in one person's inbox, not somewhere the team can see it.</span></div></li>
       </ul>
-      <p class="pains-close">The answer isn't a bigger team. It's letting the routine work <span class="hl">run itself</span>.</p>
+      <p class="pains-close">You don't need more people for this. You need the routine stuff to take care of <span class="hl">itself</span>.</p>
     </div>
   </section>
 
@@ -173,7 +173,7 @@ home = f'''
       <div class="intro">
         <span class="rule"></span>
         <h2 id="fit-title">Built for companies that run on <span class="hl">people</span>.</h2>
-        <p>If your business grows through clients, quotes and relationships, there's work we can take off your team's plate.</p>
+        <p>If your business grows through clients, quotes and referrals, we can probably take some work off your team's plate.</p>
       </div>
 {FIT}    </div>
   </section>
@@ -182,10 +182,10 @@ home = f'''
     <div class="wrap founder">
       <div class="founder-photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="720" height="720" loading="lazy" decoding="async"></div>
       <div>
-        <h2 class="eyebrow" id="why-title">Why Chairlift</h2>
+        <h2 class=”eyebrow” id=”why-title”>Why Chairlift</h2>
         <blockquote>
-          <p>“The tools to save a growing team hours every week already exist. Most companies just haven't had the time to put them to work.”</p>
-          <p>After years in sales, working closely with companies of every size, I kept seeing good teams lose time to follow-ups, scheduling and admin that technology could already handle. Chairlift exists to close that gap, with one point of contact from the first conversation onward.</p>
+          <p>”I spent years in sales watching capable teams get held back by the same repetitive work, over and over.”</p>
+          <p>They had the tools, the people, and the drive to grow. What they didn't have was the time to connect all the pieces. That gap between what's possible and what teams actually get done is what Chairlift exists to close. Because when you remove the friction from everyday work, companies can focus on what they're actually built to do—and that's when they succeed.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="/who-we-are/">Read our story</a></span></div>
       </div>
@@ -231,7 +231,7 @@ for i, s in enumerate(SERVICES):
 '''
 
 services = page_hero("What we do", "Automations that fit how you already work.",
-    "We don't sell software or one-size-fits-all packages. We identify the work that slows your team down and automate it inside the tools you already use.") + f'''
+    "We don't sell you software. We find the work that slows your team down and automate it using the tools you already have.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
 {svc_blocks}    </div>
@@ -299,7 +299,7 @@ faq_html = "".join(f'''        <details>
 ''' for q, ans in FAQ)
 
 how = page_hero("How it works", "Journey to the top.",
-    "A clear, step-by-step process built around the way your team already works, with your people involved at every stop.") + f'''
+    "Three steps, built around how your team already works. Your people are part of it the whole way.") + f'''
   <section class="section section--tight" aria-label="The three stops">
     <div class="wrap">
 {stage_html}    </div>
@@ -349,7 +349,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
       <div class="prose">
         <p>After years in sales, working closely with companies of every size, we kept seeing the same thing: good teams losing time to follow-ups, scheduling and admin that technology could already handle.</p>
         <p>It was rarely a people problem. The teams were capable and the tools were already there. What was missing was the time to connect the two.</p>
-        <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right automations in place, one at a time, so teams can get ahead now instead of years from now.</p>
+        <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right automations in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
     </div>
   </section>
@@ -362,7 +362,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
       </div>
       <div class="prose">
         <p class="lead-big" style="color:var(--text);margin-top:0">A chairlift doesn't change the mountain. It takes the hardest part of the climb off your legs, so you have energy for what you came to do.</p>
-        <p>That's the idea behind everything we build. Same business, same team, same tools, with the grind taken out of the way.</p>
+        <p>That's the idea behind everything we build. Same business, same people, same tools. Just less grind.</p>
       </div>
     </div>
   </section>
@@ -399,7 +399,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
 
 # ---------------------------------------------------------------- Contact
 contact = page_hero("Get in touch", "Start a conversation.",
-    "Tell us a little about how your business runs and what's taking up your team's time. We'll come back with a few specific ideas, whether or not we end up working together.") + f'''{cta_section("Tell us about your business.", flush=True)}
+    "Tell us a little about how your business runs and what's taking up your team's time. We'll reply with a few specific ideas, and there's no pressure to work together.") + f'''{cta_section("Tell us about your business.", flush=True)}
   <section class="section section--soft section--tight" aria-label="Other ways to get in touch">
     <div class="wrap">
       <div class="cards">
