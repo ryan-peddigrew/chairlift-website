@@ -1,5 +1,8 @@
 SITE = "https://usechairlift.com"
 EMAIL = "ryan@usechairlift.com"
+# Leave blank to hide. Paste the full link to switch it on.
+BOOKING_URL = ""
+LINKEDIN_URL = ""
 
 LOGO = '<svg width="{s}" height="{s}" viewBox="-1 -1 66 66" aria-hidden="true"><path d="M2 0H62A2 2 0 0 1 64 2V62A2 2 0 0 1 62 64H2A2 2 0 0 1 0 62V2A2 2 0 0 1 2 0Z" fill="#141B2A"{stroke}/><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="#fff"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="#fff"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="#3DFFC1"/></svg>'
 
@@ -12,6 +15,7 @@ ARROW = '<svg class="climb-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d
 NAV = [
     ("how", "/how-it-works/", "How it works"),
     ("services", "/what-we-do/", "What we do"),
+    ("industries", "/who-we-help/", "Who we help"),
     ("examples", "/examples/", "In practice"),
     ("about", "/who-we-are/", "Who we are"),
 ]
@@ -78,6 +82,7 @@ def header(active=None):
 
 
 def footer():
+    linkedin = f'\n        <li><a href="{LINKEDIN_URL}" rel="noopener">LinkedIn</a></li>' if LINKEDIN_URL else ""
     return f'''
 <footer class="site-footer">
   <div class="wrap footer-top">
@@ -90,6 +95,7 @@ def footer():
       <h2>Explore</h2>
       <ul>
         <li><a href="/who-we-are/">Who we are</a></li>
+        <li><a href="/who-we-help/">Who we help</a></li>
         <li><a href="/how-it-works/">How it works</a></li>
         <li><a href="/examples/">In practice</a></li>
         <li><a href="/get-in-touch/">Get in touch</a></li>
@@ -109,7 +115,7 @@ def footer():
       <ul>
         <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
         <li><a href="/get-in-touch/">Send a message</a></li>
-        <li><a href="/how-it-works/#faq">Common questions</a></li>
+        <li><a href="/how-it-works/#faq">Common questions</a></li>{linkedin}
       </ul>
     </div>
   </div>
@@ -166,6 +172,7 @@ def contact_form():
 
 def cta_section(title="Curious where your team's hours go?", flush=False):
     cls = "cta cta--flush" if flush else "cta"
+    booking = f'        <p class="cta-direct">Rather talk it through? <a href="{BOOKING_URL}" rel="noopener">Book a call</a></p>\n' if BOOKING_URL else ""
     return f'''
   <section class="{cls}" id="contact" aria-labelledby="contact-title">
     <div class="cta-box">
@@ -177,7 +184,7 @@ def cta_section(title="Curious where your team's hours go?", flush=False):
           <li><b>2</b><span>We reply by email to set up a short call.</span></li>
           <li><b>3</b><span>You get specific ideas for what to automate first.</span></li>
         </ul>
-        <p class="cta-direct">Prefer email? <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+{booking}        <p class="cta-direct">Prefer email? <a href="mailto:{EMAIL}">{EMAIL}</a></p>
       </div>
 {contact_form()}    </div>
   </section>

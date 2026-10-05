@@ -184,8 +184,8 @@ home = f'''
       <div>
         <h2 class=”eyebrow” id=”why-title”>Why Chairlift</h2>
         <blockquote>
-          <p>”I spent years in sales watching capable teams get held back by the same repetitive work, over and over.”</p>
-          <p>They had the tools, the people, and the drive to grow. What they didn't have was the time to connect all the pieces. That gap between what's possible and what teams actually get done is what Chairlift exists to close. Because when you remove the friction from everyday work, companies can focus on what they're actually built to do—and that's when they succeed.</p>
+          <p>“I spent years in sales watching capable teams get held back by the same repetitive work, over and over.”</p>
+          <p>They had the tools, the people, and the drive to grow. What they didn't have was the time to connect all the pieces. That gap between what's possible and what teams actually get done is what Chairlift exists to close. Because when you remove the friction from everyday work, companies can focus on what they're actually built to do. That's when they succeed.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="/who-we-are/">Read our story</a></span></div>
       </div>
@@ -248,7 +248,7 @@ services = page_hero("What we do", "Automations that fit how you already work.",
         <div class="principle"><b>01</b><div><h3>One process at a time</h3><p>We get one thing working properly before moving on, so your team isn't hit with everything at once.</p></div></div>
         <div class="principle"><b>02</b><div><h3>Inside your existing tools</h3><p>We build on the inbox, calendar, CRM and software you already use, rather than adding another login.</p></div></div>
         <div class="principle"><b>03</b><div><h3>Shaped by your team</h3><p>We refine every automation with the people who use it, so it fits how they actually work.</p></div></div>
-        <div class="principle"><b>04</b><div><h3>One point of contact</h3><p>You deal with the same person from the first conversation onward. No hand-offs, no ticket queues.</p></div></div>
+        <div class="principle"><b>04</b><div><h3>No black boxes</h3><p>Every automation comes with a plain-English explanation, so you always know what's running and why.</p></div></div>
       </div>
       <div class="section-foot"><a class="link-arrow" href="/how-it-works/" style="color:#fff">See how a project runs</a></div>
     </div>
@@ -289,7 +289,7 @@ FAQ = [
     ("Is this about replacing staff?", ["No. It's about taking the repetitive parts of the job off people's plates, so they can spend more time with clients and on the work they're good at."]),
     ("What does it cost?", ["It depends on what we're automating and how your tools are set up, so we don't publish a price list.", "You'll know what we'd recommend, and what it would cost, before any work starts."]),
     ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first automation."]),
-    ("What happens if something stops working?", ["You have one point of contact from the first conversation onward. If something isn't working the way it should, you know exactly who to tell."]),
+    ("What happens if something stops working?", ["Tell us and we'll sort it out with you. Every automation comes with a plain-English explanation of what it does, so it's easy to see what's changed."]),
     ("What about our data?", ["We work inside your existing accounts, with access you grant, and only touch what the automation needs. You stay the owner of your tools and your data."]),
 ]
 faq_html = "".join(f'''        <details>
@@ -377,7 +377,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <div class="principle"><b>01</b><div><h3>Clear communication</h3><p>Straightforward explanations at every step, so you always know what's being built and why.</p></div></div>
         <div class="principle"><b>02</b><div><h3>One thing at a time</h3><p>We get one process working properly before suggesting the next. Steady beats overwhelming.</p></div></div>
         <div class="principle"><b>03</b><div><h3>Built around your people</h3><p>Automations should make your team's day easier, so we build them with the people who'll use them.</p></div></div>
-        <div class="principle"><b>04</b><div><h3>One point of contact</h3><p>You'll deal with the same person from the first conversation onward.</p></div></div>
+        <div class="principle"><b>04</b><div><h3>No black boxes</h3><p>You'll always know what we've built, what it does and why it's there.</p></div></div>
       </div>
     </div>
   </section>
@@ -389,7 +389,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“I started Chairlift because I kept watching good people spend their best hours on work a computer could already do.”</p>
-          <p>My background is in sales, and I've worked closely with companies of every size. I'll be your point of contact from the first conversation onward. If you're curious whether any of this would work for your team, send me a few lines about how your business runs and I'll come back with some specific ideas.</p>
+          <p>My background is in sales, and I've worked closely with companies of every size. If you're curious whether any of this would work for your team, send a few lines about how your business runs and we'll come back with some specific ideas.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
@@ -410,6 +410,124 @@ contact = page_hero("Get in touch", "Start a conversation.",
     </div>
   </section>
 '''
+
+# ---------------------------------------------------------------- Who we help
+INDUSTRIES = [
+    dict(slug="trades-and-contractors", icon="case", name="Trades and contractors",
+         blurb="Quotes followed up, calls answered and customers kept in the loop while you're on site.",
+         title="For trades and contractors.",
+         lede="You're on site all day. Meanwhile, quotes need following up, new calls need answering and vendors need chasing. We automate the office side so it keeps moving while you work.",
+         pains=[("quote", "A quote went out. Nobody's followed up.", "The job was yours to win, but the week got busy."),
+                ("chat", "The call you missed on site.", "By the time you call back, they've booked someone else."),
+                ("copy", "Chasing vendors for drawings and dates.", "Every “did you get my email?” is time away from the job."),
+                ("cal", "“When are you coming?”", "Simple status updates turn into a day of phone tag.")],
+         close="The work is the easy part. Let the follow-ups take care of <span class=\"hl\">themselves</span>.",
+         cards=[("chat", "Inquiries", "Answered on site", "Missed calls get a text back and web requests get a reply with next steps, even while your hands are full."),
+                ("quote", "Quotes", "Followed up", "Every quote starts a polite check-in sequence that stops the moment the customer replies."),
+                ("cal", "Updates", "Sent for you", "Booking confirmations, reminders and “on our way” messages go out on their own.")],
+         example=EXAMPLES[1]),
+    dict(slug="manufacturers", icon="trend", name="Manufacturers and fabricators",
+         blurb="Quote requests sorted on arrival, orders entered once and customers updated without the phone calls.",
+         title="For manufacturers and fabricators.",
+         lede="When products are built to spec, every order starts with back-and-forth: requirements, drawings, revisions, quotes, then “where's my order?” We automate the repetitive steps so your team can focus on building.",
+         pains=[("chat", "Quote requests waiting in a shared inbox.", "Specs arrive incomplete, and the first reply takes days."),
+                ("copy", "The same order details typed into three systems.", "Every re-entry is another chance for a mistake on the shop floor."),
+                ("clock", "“Where's my order?” emails all day.", "Someone stops what they're doing to look up a status."),
+                ("quote", "Quotes that go quiet.", "Nobody's sure whether the customer ever replied.")],
+         close="Your team should be building, not <span class=\"hl\">chasing</span>.",
+         cards=[("chat", "Requests", "Sorted on arrival", "Incoming requests get a quick reply asking for any missing specs, then reach the right person."),
+                ("quote", "Quotes", "Followed up", "Quotes follow up on schedule, so promising work doesn't drift away."),
+                ("clock", "Orders", "Updates, minus the calls", "Customers hear from you at key milestones, without anyone checking the system and writing an email.")],
+         example=dict(id="spec-request", tag="Example · Custom manufacturer", title="The incomplete quote request",
+             lead="A customer emails asking for a price on a custom part. The drawing is attached, but the material and quantity are missing. The email sits until someone has time to reply and ask.",
+             before=["The request lands in a shared inbox.", "Someone eventually replies asking for the missing details.", "The customer answers a few days later.", "The quote goes out a week after the first email."],
+             after=["The customer gets a reply within minutes asking for exactly what's missing.", "Once the details are in, the request goes to the right estimator.", "The quote is followed up on schedule until the customer replies.", "Everyone can see where each request stands."],
+             built="Your shared inbox, your quoting spreadsheet or order system, and email.")),
+    dict(slug="professional-services", icon="people", name="Professional services",
+         blurb="For firms like investigators, legal and accounting: fast first replies, intake before the call and regular client updates.",
+         title="For professional services firms.",
+         lede="Clients often reach out at a stressful moment, and they're usually contacting more than one firm. We automate the first reply, the intake and the updates, so every client feels looked after from the first message.",
+         pains=[("moon", "The inquiry that came in at midnight.", "By morning, they've already spoken to another firm."),
+                ("copy", "Intake by email ping-pong.", "Collecting the basics takes three messages before the real conversation starts."),
+                ("chat", "“Any news on my file?”", "Clients chase for updates because nobody has had time to send them."),
+                ("cal", "A week of emails to book one consultation.", "Finding a time shouldn't be the hardest part.")],
+         close="Clients remember how quickly you <span class=\"hl\">answered</span>.",
+         cards=[("moon", "Inquiries", "Answered any hour", "New inquiries get a calm, professional reply within minutes, with a link to book a consultation."),
+                ("quote", "Intake", "Done before the call", "Key details are gathered with a simple form, so the first conversation gets straight to the point."),
+                ("clock", "Updates", "On schedule", "Clients get regular progress updates, so they're never left wondering where things stand.")],
+         example=dict(id="late-inquiry", tag="Example · Professional services firm", title="The late-night inquiry",
+             lead="Someone fills out the contact form at 11:30 pm. They're stressed, and they've messaged two other firms too. Whoever responds first, and responds well, usually gets the call.",
+             before=["The message waits in the inbox overnight.", "The first reply goes out mid-morning.", "Booking a consultation takes a few more emails.", "By then, they've already spoken to someone else."],
+             after=["They get a calm, professional reply within minutes.", "A short intake form collects the key details.", "A link lets them book a consultation right away.", "Your team starts the day with the full picture."],
+             built="Your website form, your email, and your calendar or practice software.")),
+    dict(slug="sales-teams", icon="pulse", name="Sales teams",
+         blurb="Leads answered in minutes, proposals followed up and a CRM that keeps itself current.",
+         title="For sales teams.",
+         lede="Most deals don't get lost. They go quiet. We automate the follow-ups, the CRM updates and the handovers, so your reps spend their time selling.",
+         pains=[("quote", "The proposal nobody followed up on.", "Not for lack of effort. The week just got away."),
+                ("moon", "Inbound leads that wait a day for a reply.", "Speed matters, and the first to respond often wins."),
+                ("copy", "A CRM that's always a week behind.", "The pipeline is only as current as the last free minute."),
+                ("people", "A rep is away, and their accounts go quiet.", "The history lives in one inbox, not where the team can see it.")],
+         close="Keep every deal <span class=\"hl\">moving</span>, without anyone having to remember.",
+         cards=[("chat", "Leads", "Answered in minutes", "New inbound leads get a prompt, helpful reply and reach the right rep."),
+                ("quote", "Follow-up", "On schedule", "Proposals and check-ins follow up on their own, in each rep's own voice."),
+                ("trend", "CRM", "Updates itself", "Emails and next steps are logged automatically, so the pipeline is always current.")],
+         example=EXAMPLES[3]),
+]
+
+ind_items = "".join(f'''        <a class="fit-item fit-link" href="/who-we-help/{i["slug"]}/">{icon(i["icon"], "fit-icon")}<h3>{i["name"]}</h3><p>{i["blurb"]}</p><span class="link-arrow">Read more</span></a>
+''' for i in INDUSTRIES)
+
+industries = page_hero("Who we help", "Different industries. The same busywork.",
+    "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd automate first.") + f'''
+  <section class="section section--tight" aria-label="Industries">
+    <div class="wrap">
+      <div class="fit-grid">
+{ind_items}      </div>
+      <p class="section-note">Don't see your industry? The same problems show up almost everywhere. <a href="/get-in-touch/">Tell us how your business runs</a>.</p>
+    </div>
+  </section>
+{cta_section(CTA_HOME)}'''
+
+
+def industry_page(i):
+    pains = "".join(f'        <li>{icon(ic, "")}<div><strong>{t}</strong><span>{d}</span></div></li>\n' for ic, t, d in i["pains"])
+    cards = "".join(f'        <div class="card">{icon(ic)}<span class="card-label">{lab}</span><h3>{t}</h3><p>{d}</p></div>\n' for ic, lab, t, d in i["cards"])
+    return page_hero("Who we help", i["title"], i["lede"]) + f'''
+  <section class="section section--ink pains-band" aria-labelledby="pains-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="pains-title">Sound familiar?</h2>
+      </div>
+      <ul class="pains">
+{pains}      </ul>
+      <p class="pains-close">{i["close"]}</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="start-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="start-title">Where we'd <span class="hl">start</span>.</h2>
+        <p>We begin with whatever costs your team the most time. For most, it's one of these.</p>
+      </div>
+      <div class="cards">
+{cards}      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" aria-labelledby="example-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="example-title">What it looks like in <span class="hl">practice</span>.</h2>
+        <p>An illustrative example, not a client case study, so you can picture how it would work for you.</p>
+      </div>
+{example_block(i["example"], "h3")}    </div>
+  </section>
+{cta_section("Sound like your team?")}'''
 
 # ---------------------------------------------------------------- Privacy
 privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what this website actually does. Last updated October 4, 2026.") + f'''
@@ -445,9 +563,13 @@ PAGES = [
     ("index.html", "Chairlift · Automations for growing companies", "Chairlift helps growing companies put simple automations to work, so follow-ups, quotes and everyday admin run themselves and your team gets hours back.", "/", None, home, False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, builds one automation at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
+    ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: good teams lose hours to follow-ups and admin that technology can already handle. We help close that gap.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
+] + [
+    (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
+] + [
     ("privacy/index.html", "Privacy policy", "How Chairlift handles the information you send through this website.", "/privacy/", None, privacy, False),
     ("thanks/index.html", "Thanks", "Your message has been sent to Chairlift.", "/thanks/", None, thanks, True),
     ("404.html", "Page not found", "This page could not be found.", "/404.html", None, notfound, True),

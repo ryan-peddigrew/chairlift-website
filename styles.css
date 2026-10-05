@@ -49,7 +49,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
 .brand svg { flex: none; }
-.nav { display: flex; align-items: center; gap: 26px; font-size: 16px; font-weight: 600; }
+.nav { display: flex; align-items: center; gap: 26px; white-space: nowrap; font-size: 16px; font-weight: 600; }
 .nav a:not(.btn) { text-decoration: none; color: var(--muted); padding: 6px 0; border-bottom: 2px solid transparent; }
 .nav a:not(.btn):hover, .nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--ink); }
 .menu-btn { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 2px solid var(--line); border-radius: 999px; background: #fff; color: var(--text); cursor: pointer; }
@@ -61,12 +61,12 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .mobile-menu a:not(.btn) { padding: 14px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-weight: 600; font-size: 18px; }
 .mobile-menu a[aria-current="page"] { color: var(--text); box-shadow: inset 4px 0 0 var(--ink); padding-left: 12px; }
 .mobile-menu .btn { margin-top: 18px; }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .nav .nav-link { display: none; }
   .nav { gap: 10px; }
   .menu-btn { display: inline-flex; }
 }
-@media (min-width: 901px) { .mobile-menu { display: none !important; } }
+@media (min-width: 1101px) { .mobile-menu { display: none !important; } }
 @media (max-width: 420px) { .nav .nav-cta { display: none; } }
 
 /* Hero (home) and page heroes */
@@ -163,6 +163,10 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .fit-item + .fit-item { padding-left: 24px; border-left: 1px solid rgba(20, 27, 42, 0.14); }
 .fit-item h3 { font-size: 20px; }
 .fit-item p { color: var(--muted); font-size: 16px; line-height: 1.55; }
+.fit-link { text-decoration: none; color: var(--text); padding-bottom: 28px; }
+.fit-link .link-arrow { justify-self: start; }
+.fit-link:hover h3 { text-decoration: underline; text-decoration-color: var(--neon); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.section-note { margin-top: 36px; color: var(--muted); }
 .fit-icon { width: 28px; height: 28px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Example (before / after) */
