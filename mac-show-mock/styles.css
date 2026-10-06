@@ -267,12 +267,6 @@ body { background: var(--white); }
 .footer__links a:hover { color: var(--white); }
 .footer__fine { margin-top: 44px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; color: var(--grey-d); font-size: 13px; }
 
-/* MAC Group endorsement: small and quiet, links to the group page */
-.footer__group { margin-top: 40px; }
-.endorse { display: inline-flex; align-items: center; gap: 14px; color: var(--grey-d); font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; transition: color .2s; }
-.endorse img { width: 44px; height: 44px; opacity: 0.8; transition: opacity .2s; }
-.endorse:hover { color: var(--white); }
-.endorse:hover img { opacity: 1; }
 
 /* ---------- Fade in on scroll (only when JS runs) ---------- */
 .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
