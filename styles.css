@@ -424,7 +424,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .hero .wrap { padding-top: 24px; padding-bottom: 72px; }
 .hero-card { background: var(--ink); color: var(--on-ink); border-radius: 28px; padding: 88px 72px 80px; }
 .hero-card h1 { text-wrap: balance; font-size: min(88px, calc((100vw - 192px) / 8.4)); max-width: 8.8em; letter-spacing: -0.01em; }
-.hero-card .lede { color: rgba(255, 255, 255, 0.82); }
+.hero-card .lede { color: #FFFFFF; font-size: 23px; font-weight: 500; max-width: 38ch; }
 .hero-card .hero-note { color: #FFFFFF; }
 .hero-card .hero-note svg circle { fill: #FFFFFF; }
 .hero-card .hero-note svg path { stroke: var(--ink); }
@@ -437,4 +437,5 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .hero .wrap { padding: 12px 12px 44px; }
   .hero-card { border-radius: 22px; padding: 44px 22px 40px; }
   .hero-card h1 { font-size: max(30px, calc((100vw - 68px) / 8.4)); }
+  .hero-card .lede { font-size: 19px; }
 }
