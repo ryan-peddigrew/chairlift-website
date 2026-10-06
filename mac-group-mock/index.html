@@ -10,36 +10,77 @@
   <link rel="stylesheet" href="group.css">
 </head>
 <body>
-<header class="top">
-  <span class="name">MAC Group of Companies</span>
-  <span class="loc">Toronto, Ontario</span>
+
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a href="#top" class="wordmark">MAC Group of Companies</a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#contact" class="btn btn--light nav__cta">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main>
   <section class="hero">
-    <h1>MAC Group<br>of Companies</h1>
-    <p class="lead">A family of specialist businesses, built on shared systems and one standard of service.</p>
+    <img class="hero__img" src="images/hero.webp" alt="" width="1331" height="749" fetchpriority="high">
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__content container">
+      <p class="kicker">Toronto, Ontario</p>
+      <h1>MAC Group<br>of Companies</h1>
+      <p class="hero__sub">A family of specialist businesses, built on shared systems and one standard of service.</p>
+      <div class="hero__buttons">
+        <a href="#about" class="btn btn--light">Our approach</a>
+        <a href="#contact" class="btn btn--outline-light">Contact</a>
+      </div>
+    </div>
   </section>
 
-  <section class="cols" aria-label="What we do">
-    <div><h2>Ownership</h2><p>Long-term owners and operators of specialist businesses.</p></div>
-    <div><h2>Operations</h2><p>One foundation of systems and processes behind every business.</p></div>
-    <div><h2>Standard</h2><p>The same expectations for quality, safety and service throughout.</p></div>
+  <section class="section section--light" id="about">
+    <div class="container">
+      <header class="title-box">
+        <p class="eyebrow"><b>01</b>About</p>
+        <h2>One group.<br>Every business connected.</h2>
+      </header>
+      <div class="cols">
+        <div><h3>Ownership</h3><p>Long-term owners and operators of specialist businesses.</p></div>
+        <div><h3>Operations</h3><p>One foundation of systems and processes behind every business.</p></div>
+        <div><h3>Standard</h3><p>The same expectations for quality, safety and service throughout.</p></div>
+      </div>
+    </div>
   </section>
 
-  <section class="sectors" aria-label="Sectors">
-    <h2>Sectors</h2>
-    <ul>
-      <li>Live events &amp; production</li>
-      <li>Transportation &amp; logistics</li>
-      <li>Specialty services</li>
-    </ul>
+  <section class="section section--dark" id="sectors">
+    <div class="container">
+      <header class="title-box">
+        <p class="eyebrow"><b>02</b>Sectors</p>
+        <h2>Where we operate.</h2>
+      </header>
+      <div class="tiles">
+        <article><span>01</span><h3>Live events &amp; production</h3></article>
+        <article><span>02</span><h3>Transportation &amp; logistics</h3></article>
+        <article><span>03</span><h3>Specialty services</h3></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light" id="contact">
+    <div class="container contact">
+      <div>
+        <h2>Talk to the group.</h2>
+        <p>Partnership, business and media enquiries.</p>
+      </div>
+      <a href="#top" class="btn btn--dark">Contact the group</a>
+    </div>
   </section>
 </main>
 
-<footer class="foot">
-  <span>Partnership, business &amp; media enquiries</span>
-  <span>&copy; MAC Group of Companies</span>
+<footer class="footer">
+  <div class="container footer__fine">
+    <p>&copy; MAC Group of Companies · Toronto, Ontario</p>
+    <p>Mock-up for internal review.</p>
+  </div>
 </footer>
 </body>
 </html>
