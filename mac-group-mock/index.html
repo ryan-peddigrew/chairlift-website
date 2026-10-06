@@ -5,27 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>MAC Group of Companies</title>
-  <meta name="description" content="MAC Group of Companies: specialist businesses in event production and transportation, connected by one group. Internal mock-up.">
+  <meta name="description" content="MAC Group of Companies owns and operates specialist businesses, connected by shared systems and one standard. Internal mock-up.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" media="(min-width: 701px)" fetchpriority="high">
-  <link rel="preload" as="image" href="images/hero-portrait.webp" type="image/webp" media="(max-width: 700px)" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="group.css">
   <script>document.documentElement.className += " js";</script>
 </head>
 <body>
 
 <header class="nav" id="top">
   <div class="nav__inner">
-    <a href="#top" class="logo" aria-label="MAC Group of Companies home"><img src="brand/mac-group-wordmark-white.svg" alt="MAC Group of Companies" width="300" height="64"></a>
+    <a href="#top" class="logo" aria-label="MAC Group of Companies home"><img src="brand/mac-group-wordmark-black.svg" alt="MAC Group of Companies" width="300" height="64"></a>
     <nav class="nav__links" id="nav-links" aria-label="Main">
-      <a href="#about">Who We Are</a>
-      <a href="#companies">What We Cover</a>
-      <a href="#how">How We Work</a>
-      <a href="#contact" class="btn btn--light nav__cta">Get in Touch</a>
+      <a href="#about">About</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#approach">Approach</a>
+      <a href="#growth">Growth</a>
+      <a href="#contact" class="btn btn--dark nav__cta">Contact</a>
     </nav>
-    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -33,138 +30,119 @@
 
   <!-- HERO -->
   <section class="hero">
-    <picture>
-      <source media="(max-width: 700px)" srcset="images/hero-portrait.webp" width="694" height="1156">
-      <img class="hero__img" src="images/hero.webp" alt="Looking up at stage lighting hung on black truss against an open sky" width="1331" height="749" fetchpriority="high">
-    </picture>
-    <div class="hero__shade" aria-hidden="true"></div>
-    <div class="hero__content container">
-      <h1>The company behind the companies.</h1>
-      <p class="kicker kicker--under"><span>Event production</span><i>/</i><span>Transportation</span><i>/</i><span>Logistics</span></p>
-      <p class="hero__sub">MAC Group of Companies owns &amp; operates specialist businesses across event production, transportation &amp; logistics. One group where every business connects, with shared systems that keep each one automated &amp; efficient.</p>
-      <div class="hero__buttons">
-        <a href="#companies" class="btn btn--light">What We Cover</a>
-        <a href="#contact" class="btn btn--outline-light">Get in Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- RUNNING STRIP -->
-  <div class="strip" aria-hidden="true">
-    <div class="strip__track">
-      <span>Event production</span><span>Transportation &amp; logistics</span><span>Shared systems</span><span>Automated &amp; efficient</span><span>One standard</span><span>Built to grow</span>
-      <span>Event production</span><span>Transportation &amp; logistics</span><span>Shared systems</span><span>Automated &amp; efficient</span><span>One standard</span><span>Built to grow</span>
-    </div>
-  </div>
-
-  <!-- WHO WE ARE -->
-  <section class="intro" id="about">
-    <div class="container">
-      <p class="intro__big reveal">Specialist businesses. One group behind every one of them.</p>
-      <div class="intro__cols">
-        <p class="reveal">MAC Group of Companies owns &amp; operates businesses that keep live events, and the industries around them, moving. Each keeps its own name, team &amp; clients.</p>
-        <p class="reveal">Behind them, the group is where everything lives &amp; runs: shared systems, automated processes &amp; one standard across every business.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 01 WHAT WE COVER (light, panel rows) -->
-  <section class="section section--light" id="companies">
-    <div class="container">
-      <header class="head reveal">
-        <div class="title-box">
-          <p class="eyebrow"><b>01</b>What we cover</p>
-          <h2>Industries we work in.</h2>
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow">MAC Group of Companies</p>
+        <h1>The company behind the companies.</h1>
+        <p class="hero__sub">We own &amp; operate specialist businesses, and give every one of them the same foundation: shared systems, automated processes &amp; one standard of service.</p>
+        <div class="hero__buttons">
+          <a href="#approach" class="btn btn--dark">Our approach</a>
+          <a href="#contact" class="btn btn--line">Contact the group</a>
         </div>
-        <p class="head__lead">Specialist businesses, each focused on its own clients, connected by one group.</p>
+      </div>
+      <div class="hero__mark"><img src="brand/mac-group-badge-black.svg" alt="MAC Group of Companies badge" width="200" height="200"></div>
+    </div>
+    <div class="wrap">
+      <ul class="pillars">
+        <li><b>Ownership</b>Long-term owners, not short-term investors</li>
+        <li><b>Operations</b>Shared systems behind every business</li>
+        <li><b>Growth</b>Built for new businesses to join</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 01 ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap split">
+      <header class="sh reveal">
+        <p class="sh__num">01 &mdash; About</p>
+        <h2>One group. Every business connected.</h2>
       </header>
-
-      <article class="row reveal">
-        <div class="row__lead">
-          <span class="row__num">01</span>
-          <h3>Event production &amp; AV</h3>
-          <p>Audio, video, lighting &amp; staging for events of every size.</p>
-        </div>
-        <div class="row__detail">
-          <div><h4>Capabilities</h4><ul class="ticks"><li>Audio, video &amp; lighting</li><li>Staging &amp; draping</li><li>Equipment rentals &amp; national tours</li><li>Show management</li><li>Sales &amp; installations</li></ul></div>
-          <div><h4>Who we serve</h4><ul class="ticks"><li>Corporate meetings &amp; agencies</li><li>Hotels &amp; venues</li><li>Weddings &amp; galas</li><li>Festivals, concerts &amp; tours</li></ul></div>
-        </div>
-      </article>
-
-      <article class="row reveal">
-        <div class="row__lead">
-          <span class="row__num">02</span>
-          <h3>Transportation &amp; logistics</h3>
-          <p>Getting equipment &amp; productions where they need to be, on schedule.</p>
-        </div>
-        <div class="row__detail">
-          <div><h4>Capabilities</h4><ul class="ticks"><li>Trucking for tours &amp; live events</li><li>Scheduling that works with production timelines</li></ul></div>
-          <div><h4>Who we serve</h4><ul class="ticks"><li>Touring productions</li><li>Event &amp; production companies</li></ul></div>
-        </div>
-      </article>
-
-      <article class="row reveal">
-        <div class="row__lead">
-          <span class="row__num">03</span>
-          <h3>Built to grow</h3>
-          <p>A structure designed so new businesses can plug straight in.</p>
-        </div>
-        <div class="row__detail">
-          <div><h4>From day one</h4><ul class="ticks"><li>Shared systems &amp; processes</li><li>Group-level support</li><li>One standard of service</li></ul></div>
-          <div><h4>For every business</h4><ul class="ticks"><li>Keeps its own name, team &amp; clients</li><li>Gains the strength of the group</li></ul></div>
-        </div>
-      </article>
+      <div class="split__body">
+        <p class="lead reveal">MAC Group of Companies is the parent company behind a growing portfolio of specialist businesses.</p>
+        <p class="reveal">Each business keeps its own name, team &amp; clients. Behind them, the group is where everything lives &amp; runs: the systems, the processes and the standards that let each one focus on the work it does best.</p>
+      </div>
     </div>
   </section>
 
-  <!-- 02 HOW THE GROUP WORKS (dark box) -->
-  <section class="section section--dark" id="how">
-    <div class="container">
-      <header class="head reveal">
-        <div class="title-box">
-          <p class="eyebrow"><b>02</b>How we work</p>
-          <h2>Where every business lives &amp; runs.</h2>
-        </div>
-        <p class="head__lead">The group gives each company the same foundation, so they can focus on their clients.</p>
+  <!-- PHOTO BAND -->
+  <div class="band reveal" aria-hidden="true"><img src="images/hero.webp" alt="" width="1331" height="749" loading="lazy"></div>
+
+  <!-- 02 SECTORS -->
+  <section class="section" id="sectors">
+    <div class="wrap">
+      <header class="sh sh--row reveal">
+        <div><p class="sh__num">02 &mdash; Sectors</p><h2>Where we operate.</h2></div>
+        <p class="sh__lead">Specialist businesses in industries that depend on getting things right, on time, every time.</p>
       </header>
-      <div class="cards cards--4 swipe">
-        <article class="card reveal"><span class="card__num">01</span><h3>One parent company</h3><p>Specialist businesses, owned &amp; operated by one group.</p></article>
-        <article class="card reveal"><span class="card__num">02</span><h3>Shared systems</h3><p>Every company runs through the same systems, so nothing lives in silos.</p></article>
-        <article class="card reveal"><span class="card__num">03</span><h3>Automated &amp; efficient</h3><p>Processes built once at group level &amp; used by every business.</p></article>
-        <article class="card reveal"><span class="card__num">04</span><h3>One standard</h3><p>The same expectations for quality &amp; service, whichever company you work with.</p></article>
-      </div>
-      <div class="subhead reveal">
-        <h3>Our brand values</h3>
-        <p>How the group shows up, everywhere.</p>
-      </div>
-      <div class="cards cards--3 cards--mixed swipe">
-        <article class="card reveal"><h4>Precise</h4><p>Engineered, production-grade work in every company.</p></article>
-        <article class="card reveal"><h4>Confident</h4><p>Solid &amp; straightforward, with no unnecessary ornament.</p></article>
-        <article class="card reveal"><h4>Consistent</h4><p>One system, used the same way everywhere.</p></article>
+      <div class="sectors">
+        <article class="sector reveal"><span>01</span><h3>Live events &amp; production</h3><p>Businesses that deliver events, from boardrooms to stadiums.</p></article>
+        <article class="sector reveal"><span>02</span><h3>Transportation &amp; logistics</h3><p>Businesses that move people, equipment &amp; goods safely and on schedule.</p></article>
+        <article class="sector reveal"><span>03</span><h3>Specialty services</h3><p>Businesses with deep technical know-how in focused markets.</p></article>
       </div>
     </div>
   </section>
 
-  <!-- 03 CONTACT (light) -->
-  <section class="section section--light" id="contact">
-    <div class="container contact">
-      <div class="contact__intro reveal">
-        <div class="title-box">
-          <p class="eyebrow"><b>03</b>Get in touch</p>
-          <h2>Talk to the group.</h2>
+  <!-- 03 APPROACH -->
+  <section class="section section--grey" id="approach">
+    <div class="wrap">
+      <header class="sh sh--row reveal">
+        <div><p class="sh__num">03 &mdash; Approach</p><h2>How the group works.</h2></div>
+        <p class="sh__lead">One foundation under every business, so each one runs better than it could on its own.</p>
+      </header>
+      <ol class="steps">
+        <li class="reveal"><span>01</span><div><h3>One parent company</h3><p>Every business is owned &amp; operated by the group, with clear ownership and long-term thinking.</p></div></li>
+        <li class="reveal"><span>02</span><div><h3>Shared systems</h3><p>Every business runs on the same back-office systems, so nothing lives in silos.</p></div></li>
+        <li class="reveal"><span>03</span><div><h3>Automated &amp; efficient</h3><p>Processes are built once at group level and used by every business, saving time &amp; cutting errors.</p></div></li>
+        <li class="reveal"><span>04</span><div><h3>One standard</h3><p>The same expectations for quality, safety &amp; service, whichever business a client works with.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 04 GROWTH -->
+  <section class="section" id="growth">
+    <div class="wrap">
+      <div class="growth reveal">
+        <div class="growth__lead">
+          <p class="sh__num">04 &mdash; Growth</p>
+          <h2>Built to grow.</h2>
+          <p>Our model is designed so new businesses can join the group and plug straight into its systems, support &amp; standards from day one.</p>
         </div>
-        <p class="head__lead">Send us a note and we'll connect you with the right team.</p>
-        <ul class="contact__details">
-          <li><span>Office</span>Toronto, Ontario</li>
-          <li><span>Enquiries</span>General, partnership &amp; media</li>
-        </ul>
+        <div class="growth__list">
+          <div><h3>For businesses joining</h3><ul><li>Keep your name, team &amp; clients</li><li>Gain group systems &amp; support</li><li>Grow with the strength of the group</li></ul></div>
+          <div><h3>For clients</h3><ul><li>The same standard everywhere</li><li>More capability under one roof</li><li>Partners built for the long term</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 VALUES -->
+  <section class="section section--grey" id="values">
+    <div class="wrap">
+      <header class="sh reveal"><p class="sh__num">05 &mdash; Values</p><h2>What we stand for.</h2></header>
+      <div class="values">
+        <article class="reveal"><h3>Precise</h3><p>Engineered, production-grade work in everything we do.</p></article>
+        <article class="reveal"><h3>Confident</h3><p>Solid &amp; straightforward, with no unnecessary ornament.</p></article>
+        <article class="reveal"><h3>Consistent</h3><p>One system, used the same way everywhere.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap contact">
+      <div class="reveal">
+        <p class="sh__num">06 &mdash; Contact</p>
+        <h2>Talk to the group.</h2>
+        <p class="lead">For partnership, business &amp; media enquiries, send us a note and we'll connect you with the right person.</p>
+        <ul class="details"><li><span>Office</span>Toronto, Ontario</li><li><span>Enquiries</span>Partnership, business &amp; media</li></ul>
       </div>
       <form class="form reveal" id="quote-form" novalidate>
         <div class="form__row">
           <label>Name<input type="text" name="name" autocomplete="name" required></label>
           <label>Company<input type="text" name="company" autocomplete="organization"></label>
         </div>
-        <label>Area of interest<input type="text" name="division" placeholder="Event production, transportation or general"></label>
+        <label>Email<input type="email" name="email" autocomplete="email"></label>
         <label>Message<textarea name="message" rows="4"></textarea></label>
         <button type="submit" class="btn btn--dark">Send enquiry</button>
         <p class="form__note" role="status" aria-live="polite"></p>
@@ -175,19 +153,11 @@
 </main>
 
 <footer class="footer">
-  <div class="container footer__inner">
-    <a href="#top" class="logo"><img src="brand/mac-group-badge-black.svg" alt="MAC Group of Companies" width="200" height="200" loading="lazy"></a>
-    <nav class="footer__links" aria-label="Footer">
-      <a href="#about">Who We Are</a>
-      <a href="#companies">What We Cover</a>
-      <a href="#how">How We Work</a>
-      <a href="#contact">Get in Touch</a>
-    </nav>
+  <div class="wrap footer__inner">
+    <a href="#top" class="footer__mark"><img src="brand/mac-group-badge-black.svg" alt="MAC Group of Companies" width="200" height="200" loading="lazy"></a>
+    <nav class="footer__links" aria-label="Footer"><a href="#about">About</a><a href="#sectors">Sectors</a><a href="#approach">Approach</a><a href="#growth">Growth</a><a href="#contact">Contact</a></nav>
   </div>
-  <div class="container footer__fine">
-    <p>&copy; MAC Group of Companies · Toronto, Ontario</p>
-    <p>Mock-up for internal review.</p>
-  </div>
+  <div class="wrap footer__fine"><p>&copy; MAC Group of Companies · Toronto, Ontario</p><p>Mock-up for internal review.</p></div>
 </footer>
 
 <script src="script.js" defer></script>
