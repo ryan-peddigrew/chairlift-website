@@ -4,106 +4,196 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>MAC Group of Companies</title>
-  <meta name="description" content="MAC Group of Companies: Tour Trucking, MAC Show Systems and PSI. Internal mock-up.">
+  <title>MAC Group of Companies | Tour Trucking, PSI &amp; MAC Show Systems</title>
+  <meta name="description" content="MAC Group of Companies is the parent company of Tour Trucking, PSI and MAC Show Systems. Internal mock-up.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <style>
-    /* MAC Group of Companies brand guidelines v1.0: monochrome, Avenir, wide-tracked capitals, thin rules */
-    :root {
-      --black: #000; --white: #fff; --light: #F5F5F5; --mid: #9A9A9A; --charcoal: #2B2B2B;
-      --font: "Avenir Next", "Avenir", "AvenirNext-Regular", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body { margin: 0; background: var(--black); color: var(--white); font-family: var(--font); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1120px, 100% - 48px); margin-inline: auto; }
-
-    .hero { min-height: 64vh; min-height: 64svh; display: grid; place-items: center; text-align: center; padding: 72px 0 56px; }
-    .badge { width: 168px; height: 168px; animation: fade 1.2s var(--ease) both; }
-    .hero h1 { margin: 36px 0 0; font-size: clamp(22px, 3.4vw, 34px); font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; padding-left: 0.32em; animation: fade 1.2s .15s var(--ease) both; }
-    .rule { width: 64px; height: 2px; background: var(--white); margin: 26px auto 0; animation: fade 1.2s .25s var(--ease) both; }
-    .hero p { margin: 24px auto 0; max-width: 520px; color: var(--mid); font-size: 17px; animation: fade 1.2s .35s var(--ease) both; }
-    @keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-
-    .companies { padding: 0 0 88px; }
-    .label { display: flex; align-items: center; gap: 16px; margin: 0 0 22px; color: var(--mid); font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; }
-    .label::after { content: ""; flex: 1; height: 1px; background: var(--charcoal); }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .co { position: relative; display: flex; flex-direction: column; min-height: 240px; padding: 32px 30px 28px; border: 1px solid var(--charcoal); border-radius: 6px; background: #0B0B0B; transition: border-color .3s var(--ease), background .3s var(--ease); }
-    a.co:hover { border-color: var(--white); background: #111; }
-    .co__num { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; color: var(--mid); }
-    .co h2 { margin: 18px 0 0; font-size: 22px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.2; }
-    .co h2::after { content: ""; display: block; width: 32px; height: 2px; background: var(--white); margin-top: 18px; }
-    .co p { margin: 16px 0 0; color: var(--mid); font-size: 15px; }
-    .co__link { margin-top: auto; padding-top: 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; }
-    .co__link::after { content: " \2192"; letter-spacing: 0; }
-    .co__link--muted { color: var(--mid); }
-    .co__link--muted::after { content: none; }
-
-    footer { border-top: 1px solid var(--charcoal); padding: 28px 0 36px; color: var(--mid); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
-    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
-
-    @media (max-width: 860px) {
-      .grid { grid-template-columns: 1fr; }
-      .co { min-height: 0; }
-    }
-    @media (max-width: 600px) {
-      .wrap { width: calc(100% - 40px); }
-      .hero { min-height: 0; padding: 72px 0 56px; }
-      .badge { width: 128px; height: 128px; }
-      .hero h1 { font-size: 19px; letter-spacing: 0.24em; padding-left: 0.24em; }
-      .hero p { font-size: 16px; }
-      .co { padding: 26px 22px 22px; }
-      footer { font-size: 10px; }
-    }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-  </style>
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" media="(min-width: 701px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/hero-portrait.webp" type="image/webp" media="(max-width: 700px)" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.className += " js";</script>
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <div>
-        <img class="badge" src="brand/mac-group-badge-black.svg" alt="MAC Group of Companies" width="200" height="200">
-        <h1>MAC Group of Companies</h1>
-        <div class="rule" aria-hidden="true"></div>
-        <p>The parent company uniting the group's live events, show systems and production businesses.</p>
-      </div>
-    </section>
 
-    <section class="companies" aria-label="Our companies">
-      <div class="wrap">
-        <p class="label">Our companies</p>
-        <div class="grid">
-          <a class="co" href="https://mac-show-mock-q7fb.netlify.app" target="_blank" rel="noopener">
-            <span class="co__num">01</span>
-            <h2>MAC Show Systems</h2>
-            <p>Audio, video, lighting and staging for events across the GTA and on tour.</p>
-            <span class="co__link">Visit site</span>
-          </a>
-          <div class="co">
-            <span class="co__num">02</span>
-            <h2>Tour Trucking</h2>
-            <p>Trucking for tours and live events.</p>
-            <span class="co__link co__link--muted">Site coming soon</span>
-          </div>
-          <div class="co">
-            <span class="co__num">03</span>
-            <h2>PSI</h2>
-            <p>St. Catharines, Ontario.</p>
-            <span class="co__link co__link--muted">Site coming soon</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a href="#top" class="logo" aria-label="MAC Group of Companies home"><img src="brand/mac-group-wordmark-white.svg" alt="MAC Group of Companies" width="300" height="64"></a>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a href="#about">Who We Are</a>
+      <a href="#companies">Our Companies</a>
+      <a href="#how">How We Work</a>
+      <a href="#contact" class="btn btn--light nav__cta">Get in Touch</a>
+    </nav>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <footer>
-    <div class="wrap">
-      <span>&copy; MAC Group of Companies</span>
-      <span>Mock-up for internal review</span>
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <picture>
+      <source media="(max-width: 700px)" srcset="images/hero-portrait.webp" width="694" height="1156">
+      <img class="hero__img" src="images/hero.webp" alt="Looking up at stage lighting hung on black truss against an open sky" width="1331" height="749" fetchpriority="high">
+    </picture>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__content container">
+      <h1>The company behind the companies.</h1>
+      <p class="kicker kicker--under"><span>Tour Trucking</span><i>/</i><span>PSI</span><i>/</i><span>MAC Show Systems</span></p>
+      <p class="hero__sub">MAC Group of Companies is the parent company of Tour Trucking, PSI &amp; MAC Show Systems. One group where every business connects, with shared systems that keep each company automated &amp; efficient.</p>
+      <div class="hero__buttons">
+        <a href="#companies" class="btn btn--light">Our Companies</a>
+        <a href="#contact" class="btn btn--outline-light">Get in Touch</a>
+      </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- RUNNING STRIP -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip__track">
+      <span>Tour Trucking</span><span>PSI</span><span>MAC Show Systems</span><span>One parent company</span><span>Shared systems</span><span>Automated &amp; efficient</span>
+      <span>Tour Trucking</span><span>PSI</span><span>MAC Show Systems</span><span>One parent company</span><span>Shared systems</span><span>Automated &amp; efficient</span>
+    </div>
+  </div>
+
+  <!-- WHO WE ARE -->
+  <section class="intro" id="about">
+    <div class="container">
+      <p class="intro__big reveal">Three companies. One group behind every one of them.</p>
+      <div class="intro__cols">
+        <p class="reveal">MAC Group of Companies owns &amp; operates Tour Trucking, PSI &amp; MAC Show Systems. Each company keeps its own name, team &amp; clients.</p>
+        <p class="reveal">Behind them, the group is where everything lives &amp; runs: shared systems, automated processes &amp; one standard across every business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 OUR COMPANIES (light, panel rows) -->
+  <section class="section section--light" id="companies">
+    <div class="container">
+      <header class="head reveal">
+        <div class="title-box">
+          <p class="eyebrow"><b>01</b>Our companies</p>
+          <h2>One group. Three companies.</h2>
+        </div>
+        <p class="head__lead">Each company serves its own clients. The group connects them.</p>
+      </header>
+
+      <article class="row reveal">
+        <div class="row__lead">
+          <span class="row__num">01</span>
+          <h3>MAC Show Systems</h3>
+          <p>Event production &amp; AV: a single point of contact for all your event production needs.</p>
+          <a class="btn btn--light row__btn" href="https://mac-show-mock-q7fb.netlify.app" target="_blank" rel="noopener">Visit site</a>
+        </div>
+        <div class="row__detail">
+          <div><h4>Core solutions</h4><ul class="ticks"><li>Audio</li><li>Lighting</li><li>Video</li><li>Hybrid &amp; virtual</li><li>Staging &amp; draping</li><li>Backline &amp; entertainment</li></ul></div>
+          <div><h4>Services</h4><ul class="ticks"><li>Equipment rentals</li><li>National rentals &amp; tours</li><li>Show management</li><li>Sales &amp; installations</li></ul></div>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row__lead">
+          <span class="row__num">02</span>
+          <h3>Tour Trucking</h3>
+          <p>Trucking for tours &amp; live events.</p>
+          <span class="soon">Website coming soon</span>
+        </div>
+        <div class="row__detail">
+          <div><h4>At a glance</h4><ul class="ticks"><li>Part of MAC Group of Companies</li><li>Runs on the group's shared systems</li></ul></div>
+          <div><h4>Website</h4><ul class="ticks"><li>Coming soon</li></ul></div>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row__lead">
+          <span class="row__num">03</span>
+          <h3>PSI</h3>
+          <p>Based in St. Catharines, Ontario.</p>
+          <span class="soon">Website coming soon</span>
+        </div>
+        <div class="row__detail">
+          <div><h4>At a glance</h4><ul class="ticks"><li>St. Catharines, Ontario</li><li>Part of MAC Group of Companies</li><li>Runs on the group's shared systems</li></ul></div>
+          <div><h4>Website</h4><ul class="ticks"><li>Coming soon</li></ul></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 02 HOW THE GROUP WORKS (dark box) -->
+  <section class="section section--dark" id="how">
+    <div class="container">
+      <header class="head reveal">
+        <div class="title-box">
+          <p class="eyebrow"><b>02</b>How we work</p>
+          <h2>Where every business lives &amp; runs.</h2>
+        </div>
+        <p class="head__lead">The group gives each company the same foundation, so they can focus on their clients.</p>
+      </header>
+      <div class="cards cards--4 swipe">
+        <article class="card reveal"><span class="card__num">01</span><h3>One parent company</h3><p>Tour Trucking, PSI &amp; MAC Show Systems, owned &amp; operated by one group.</p></article>
+        <article class="card reveal"><span class="card__num">02</span><h3>Shared systems</h3><p>Every company runs through the same systems, so nothing lives in silos.</p></article>
+        <article class="card reveal"><span class="card__num">03</span><h3>Automated &amp; efficient</h3><p>Processes built once at group level &amp; used by every business.</p></article>
+        <article class="card reveal"><span class="card__num">04</span><h3>One standard</h3><p>The same expectations for quality &amp; service, whichever company you work with.</p></article>
+      </div>
+      <div class="subhead reveal">
+        <h3>Our brand values</h3>
+        <p>How the group shows up, everywhere.</p>
+      </div>
+      <div class="cards cards--3 cards--mixed swipe">
+        <article class="card reveal"><h4>Precise</h4><p>Engineered, production-grade work in every company.</p></article>
+        <article class="card reveal"><h4>Confident</h4><p>Solid &amp; straightforward, with no unnecessary ornament.</p></article>
+        <article class="card reveal"><h4>Consistent</h4><p>One system, used the same way everywhere.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 CONTACT (light) -->
+  <section class="section section--light" id="contact">
+    <div class="container contact">
+      <div class="contact__intro reveal">
+        <div class="title-box">
+          <p class="eyebrow"><b>03</b>Get in touch</p>
+          <h2>Talk to the group.</h2>
+        </div>
+        <p class="head__lead">Tell us which company you need, or send a general enquiry and we'll point you to the right team.</p>
+        <ul class="contact__details">
+          <li><span>Office</span>Toronto, Ontario</li>
+          <li><span>MAC Show</span><a href="https://mac-show-mock-q7fb.netlify.app" target="_blank" rel="noopener">Visit site</a></li>
+          <li><span>LinkedIn</span><a href="https://ca.linkedin.com/company/mac-show-systems-inc." target="_blank" rel="noopener">MAC Show Systems Inc.</a></li>
+        </ul>
+      </div>
+      <form class="form reveal" id="quote-form" novalidate>
+        <div class="form__row">
+          <label>Name<input type="text" name="name" autocomplete="name" required></label>
+          <label>Company<input type="text" name="company" autocomplete="organization"></label>
+        </div>
+        <label>Which company?<input type="text" name="division" placeholder="Tour Trucking, PSI or MAC Show Systems"></label>
+        <label>Message<textarea name="message" rows="4"></textarea></label>
+        <button type="submit" class="btn btn--dark">Send enquiry</button>
+        <p class="form__note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#top" class="logo"><img src="brand/mac-group-badge-black.svg" alt="MAC Group of Companies" width="200" height="200" loading="lazy"></a>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="#about">Who We Are</a>
+      <a href="#companies">Our Companies</a>
+      <a href="#how">How We Work</a>
+      <a href="#contact">Get in Touch</a>
+    </nav>
+  </div>
+  <div class="container footer__fine">
+    <p>&copy; MAC Group of Companies · Toronto, Ontario</p>
+    <p>Mock-up for internal review.</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
