@@ -84,6 +84,8 @@ p { margin: 0; }
 .kicker i { font-style: normal; opacity: 0.45; margin: 0 8px; }
 .kicker { display: flex; flex-wrap: wrap; align-items: center; }
 .kicker span { white-space: nowrap; }
+.kicker--under { margin: 26px 0 0; animation-delay: .2s; }
+.kicker--under + .hero__sub { margin-top: 18px; }
 
 /* Proof row under the hero buttons */
 .proof { list-style: none; margin: 48px 0 0; padding: 22px 0 0; display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.28); max-width: 560px; animation: rise 1s .48s var(--ease) both; }
