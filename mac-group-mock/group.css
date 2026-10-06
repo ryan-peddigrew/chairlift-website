@@ -67,3 +67,4 @@ h1,h2,h3{font-weight:800;line-height:1.05}
 
 @media(max-width:860px){:root{--gutter:24px}.cols,.tiles{grid-template-columns:1fr}.nav__links a:not(.btn){display:none}.wordmark{font-size:12px;letter-spacing:.18em}.title-box{padding:22px 24px 26px}.section--dark{padding:12px}}
 @media(max-width:900px){.hero{min-height:0}.hero__content{padding:calc(var(--nav-h) + 28px) 0 56px}}
+@media(max-width:900px){.hero{min-height:0}.hero__content{padding:calc(var(--nav-h) + 28px) 0 56px}}
