@@ -97,7 +97,7 @@ home = f'''
     <div class="wrap">
       <div class="hero-card">
         <span class="rule"></span>
-        <h1><span class="nowrap">Make the climb</span> <span class="nowrap">easier{ARROW}</span></h1>
+        <h1><span class="nowrap">Make the</span> <span class="nowrap">climb easier{ARROW}</span></h1>
         <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. Sometimes that's a better process, sometimes an automation, sometimes AI. Your people get their time back for the work that grows the business.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
