@@ -456,3 +456,29 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .hero .wrap { padding-bottom: 12px; }
   .hero + .section--ink { padding-top: 32px; }
 }
+
+/* Service and stop rows (What we do, How it works): Ink panel with a Neon bar beside a light grey panel */
+.stage { gap: 0; padding: 0; border: 0; border-radius: 28px; overflow: hidden; background: var(--soft); margin-bottom: 20px; }
+.stage:last-child { border-bottom: 0; margin-bottom: 0; }
+.stage > div:first-child { background: var(--ink); color: var(--on-ink); padding: 56px 48px; }
+.stage > div:first-child::before { content: ""; display: block; width: 56px; height: 5px; border-radius: 3px; background: var(--neon); margin-bottom: 22px; }
+.stage > div:first-child .eyebrow, .stage > div:first-child .step-num { color: var(--on-ink-muted); }
+.stage > div:first-child .stage-sum { color: var(--on-ink-muted); }
+.stage-detail { padding: 56px 48px; align-content: start; }
+.stage-detail .ticks li { color: var(--text); }
+
+/* Light grey sections: rounded inset boxes like the Ink ones, so no thin white strips */
+.section--soft { background: none; padding: 24px; }
+.section--soft > .wrap { max-width: 1112px; background: var(--soft); border-radius: 28px; padding-left: 72px; padding-right: 72px; }
+.cta { padding-top: 24px; padding-bottom: 72px; }
+@media (max-width: 860px) {
+  .stage > div:first-child, .stage-detail { padding: 40px 32px; }
+  .section--soft > .wrap { padding-left: 40px; padding-right: 40px; }
+}
+@media (max-width: 640px) {
+  .stage { border-radius: 22px; margin-bottom: 14px; }
+  .stage > div:first-child, .stage-detail { padding: 32px 22px; }
+  .section--soft { padding: 12px; }
+  .section--soft > .wrap { border-radius: 22px; padding-left: 22px; padding-right: 22px; }
+  .cta { padding-top: 12px; padding-bottom: 44px; }
+}
