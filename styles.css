@@ -418,3 +418,4 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .cards--swipe .card { flex: 0 0 82%; max-width: 360px; scroll-snap-align: start; }
 }
 .section:has(.cards--swipe) { overflow-x: clip; }
+.stage-ask { grid-column: 1 / -1; }

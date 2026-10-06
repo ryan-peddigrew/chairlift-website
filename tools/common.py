@@ -4,6 +4,9 @@ EMAIL = "ryan@usechairlift.com"
 BOOKING_URL = "https://cal.com/chairlift/5min"
 LINKEDIN_URL = ""
 
+MAIN_CTA = BOOKING_URL or "/get-in-touch/"
+MAIN_CTA_ATTRS = ' target="_blank" rel="noopener"' if BOOKING_URL else ""
+
 LOGO = '<svg width="{s}" height="{s}" viewBox="-1 -1 66 66" aria-hidden="true"><path d="M2 0H62A2 2 0 0 1 64 2V62A2 2 0 0 1 62 64H2A2 2 0 0 1 0 62V2A2 2 0 0 1 2 0Z" fill="#141B2A"{stroke}/><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="#fff"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="#fff"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="#3DFFC1"/></svg>'
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M2 0H62A2 2 0 0 1 64 2V62A2 2 0 0 1 62 64H2A2 2 0 0 1 0 62V2A2 2 0 0 1 2 0Z' fill='%23141B2A'/%3E%3Crect x='10' y='42.5' width='20' height='7' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='29' width='20' height='7' rx='1.2' fill='%23fff'/%3E%3Crect x='34' y='15.5' width='20' height='7' rx='1.2' fill='%233DFFC1'/%3E%3C/svg%3E"
@@ -171,7 +174,7 @@ def cta_section(title, flush=False, intro=True):
 '''
 
 
-CTA_TEXT = "Send a few lines about how your business runs. We'll come back with specific ideas you can act on, whether or not we work together."
+CTA_TEXT = "We'll tell you if there's a practical way to make it faster, whether or not we end up working together."
 
 
 def cta_band(title):
@@ -181,7 +184,7 @@ def cta_band(title):
       <div>
         <h2 id="cta-title">{title}</h2>
         <p>{CTA_TEXT}</p>
-        <a class="btn btn-white" href="/get-in-touch/">Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
       </div>
     </div>
   </section>

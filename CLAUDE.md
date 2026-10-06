@@ -25,10 +25,11 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - Founder photo: only ever use the smiling headshot (navy suit, purple tie) in `images/ryan-peddigrew.jpg` (website) and `images/email-headshot.jpg` (signature). Framed like the approved email signature: head and shoulders, centred on his face, in a round frame with a Neon ring. Never use any other photo of Ryan.
 - Never say "one point of contact" (or similar) anywhere on the site. Ryan dropped it.
 - Footer links stay short: no "Who we help" (it lives in the main menu only).
-- Never use "free call", "20-minute", "Sit back", "relax" or "cost/costs" in marketing copy. Buttons read "Start a conversation".
+- Never use "free call", "20-minute", "Sit back", "relax" or "cost/costs" in marketing copy. Buttons read "Start a conversation". The main button (hero, closing banners) goes to the booking page; the nav button goes to Get in touch.
 - Each idea lives in one place: don't repeat sections or sentences across pages. The full contact form appears only on /get-in-touch/; other pages end with the slim `cta_band`.
 - Phone: long card rows can swipe sideways (`cards--swipe`) to keep pages short. Booking link (cal.com/chairlift/5min) is on; LinkedIn stays off until Ryan sends it.
 - Font: Hanken Grotesk (headings ExtraBold 800, ALL CAPS). Email: Helvetica/Arial.
+- Content direction: problem first, technology second. Don't lead with "AI". No references to events, AV, trade shows or live production. No invented clients, stats or results. Say "established businesses", not "B2B".
 - Voice: professional and friendly. Don't assume a prospect's size, budget or competitors.
 
 ## Open decisions (pinned)

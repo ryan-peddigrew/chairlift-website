@@ -90,16 +90,16 @@ def example_block(e, heading="h2"):
 
 
 # ---------------------------------------------------------------- Home
-CTA_HOME = "Curious where your team's hours go?"
+CTA_HOME = "Show us one thing your team does over and over."
 home = f'''
   <section class="hero">
     {STAIRS_BG}
     <div class="wrap">
       <span class="rule"></span>
       <h1>Make the climb <span class="nowrap">easier{ARROW}</span></h1>
-      <p class="lede">Chairlift takes the follow-ups, quotes and admin off your team's plate, one process at a time, so your people can spend their time on the work that grows the business.</p>
+      <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. Sometimes that's a better process, sometimes an automation, sometimes AI. Your people get their time back for the work that grows the business.</p>
       <div class="ctas">
-        <a class="btn btn-ink" href="/get-in-touch/">Start a conversation</a>
+        <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         <a class="btn btn-line" href="/how-it-works/">See how it works</a>
       </div>
       <p class="hero-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>Built inside the tools you already use. Nothing new for your team to learn.</p>
@@ -114,9 +114,12 @@ home = f'''
         <p>Small on their own. Add them up and it's hours every week.</p>
       </div>
       <div class="cards cards--mixed cards--swipe">
-        <div class="card">{icon("chat")}<span class="card-label">Sales</span><h3>Client follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
+        <div class="card">{icon("quote")}<span class="card-label">Sales</span><h3>Quote follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
+        <div class="card">{icon("chat")}<span class="card-label">Inquiries</span><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
         <div class="card">{icon("cal")}<span class="card-label">Operations</span><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card">{icon("people")}<span class="card-label">Leadership</span><h3>The full picture</h3><p class="problem">Someone's away, and their clients go quiet.</p><p>Every client relationship in one place. If someone is away or moves on, the next person picks up right where they left off.</p></div>
+        <div class="card">{icon("moon")}<span class="card-label">Inquiries</span><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
+        <div class="card">{icon("people")}<span class="card-label">Sales</span><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
+        <div class="card">{icon("trend")}<span class="card-label">Leadership</span><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
@@ -128,7 +131,7 @@ home = f'''
       <div class="intro">
         <span class="rule"></span>
         <h2 id="fit-title">Built for companies that run on people.</h2>
-        <p>If your business grows through clients, quotes and referrals, this is who we built Chairlift for.</p>
+        <p>Established businesses with teams, repeat customers and a lot of quoting, follow-up, scheduling and email. Size matters less than having a repetitive workflow worth fixing.</p>
       </div>
 {FIT}    </div>
   </section>
@@ -197,10 +200,27 @@ for i, s in enumerate(SERVICES):
 '''
 
 services = page_hero("What we do", "Automations that fit how you already work.",
-    "We don't sell you software. We find the work that slows your team down and automate it using the tools you already have.") + f'''
+    "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. Sometimes that's a better process, sometimes an automation, sometimes AI.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
 {svc_blocks}    </div>
+  </section>
+
+  <section class="section section--ink" aria-labelledby="ladder-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="ladder-title">Start with the smallest fix.</h2>
+        <p>The question isn't whether you need AI. It's where your team does the same thing over and over. We begin with the simplest answer and only go further if it's worth it.</p>
+      </div>
+      <div class="principles">
+        <div class="principle"><b>01</b><div><h3>Quick fixes</h3><p>Reminders, forms, FAQ answers, scheduling and review requests.</p></div></div>
+        <div class="principle"><b>02</b><div><h3>Connected workflows</h3><p>Lead routing, quote follow-up, CRM updates, renewal reminders and internal alerts.</p></div></div>
+        <div class="principle"><b>03</b><div><h3>AI-assisted work</h3><p>Email drafting, research, pulling data from documents and meeting summaries.</p></div></div>
+        <div class="principle"><b>04</b><div><h3>Connected systems</h3><p>Your CRM, email, accounting and scheduling working together, with a person approving the key steps.</p></div></div>
+        <div class="principle"><b>05</b><div><h3>Company knowledge assistant</h3><p>A private assistant built on your approved company information. The most advanced option, not the default.</p></div></div>
+      </div>
+    </div>
   </section>
 
   <section class="section section--soft section--tight" aria-label="How a project runs">
@@ -215,7 +235,8 @@ services = page_hero("What we do", "Automations that fit how you already work.",
 STAGES = [
     dict(n="1", name='<span class="lt">On</span>board', sum="We learn how your team actually works today: where the hours go and what frustrates people most.",
          happens=["A conversation with you about how the business runs", "Short chats with the people closest to the work, where it helps", "Mapping the process as it really happens, not as it's written down"],
-         get=["A shortlist of what's worth automating, in order", "A clear recommendation for where to start"]),
+         get=["A shortlist of what's worth automating, in order", "A clear recommendation for where to start"],
+         ask=["What does your team do every week that eats the most time?", "What happens after a quote goes out?", "What do people keep asking each other for?", "What happens to leads that come in after hours?", "If you could get rid of one repetitive task tomorrow, what would it be?"]),
     dict(n="2", name="Ride", sum="We build one automation inside the tools you already use, and refine it with the people who use it.",
          happens=["Building on your existing tools, with access you grant", "Testing with real examples before anything goes live", "Adjusting wording, timing and hand-offs with your team"],
          get=["One working automation your team actually uses", "A plain-English explanation of what it does and why"]),
@@ -225,6 +246,7 @@ STAGES = [
 ]
 stage_html = ""
 for s in STAGES:
+    ask_html = ('<div class="stage-ask"><h3>What we\'ll ask you</h3>' + ticks(s["ask"]) + '</div>') if s.get("ask") else ""
     stage_html += f'''      <article class="stage">
         <div>
           <span class="step-num step-num--plain">Stop {s["n"]}</span>
@@ -234,6 +256,7 @@ for s in STAGES:
         <div class="stage-detail">
           <div><h3>What happens</h3>{ticks(s["happens"])}</div>
           <div><h3>What you come away with</h3>{ticks(s["get"])}</div>
+          {ask_html}
         </div>
       </article>
 '''
@@ -424,6 +447,7 @@ industries = page_hero("Who we help", "Different industries. The same lost hours
     <div class="wrap">
       <div class="fit-grid">
 {ind_items}      </div>
+      <p class="section-note">These are examples, not limits: construction and trades, electrical and technical contractors, property and facilities, logistics, waste and environmental services, equipment rental and professional services.</p>
       <p class="section-note">Don't see your industry? The same problems show up almost everywhere. <a href="/get-in-touch/">Tell us how your business runs</a>.</p>
     </div>
   </section>
