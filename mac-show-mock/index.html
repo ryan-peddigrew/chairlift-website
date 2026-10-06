@@ -7,7 +7,8 @@
   <title>MAC Show | Audiovisual &amp; Live Event Production</title>
   <meta name="description" content="Audio, video, lighting, staging and touring support for events across the Toronto area. Internal mock-up.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" media="(min-width: 701px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/hero-portrait.webp" type="image/webp" media="(max-width: 700px)" fetchpriority="high">
   <link rel="preload" as="font" href="fonts/manrope-latin.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.className += " js";</script>
@@ -36,10 +37,13 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img class="hero__img" src="images/hero.webp" alt="Arena concert seen from the upper bowl: hanging line-array speakers and white light beams over a band on stage and a packed floor" width="1606" height="903" fetchpriority="high">
+    <picture>
+      <source media="(max-width: 700px)" srcset="images/hero-portrait.webp" width="694" height="1156">
+      <img class="hero__img" src="images/hero.webp" alt="Outdoor festival stage at sunset: a large truss rig with hanging line-array speakers and rows of lights, the Toronto skyline behind and a packed crowd in front" width="1297" height="730" fetchpriority="high">
+    </picture>
     <div class="hero__shade" aria-hidden="true"></div>
     <div class="hero__content container">
-      <p class="kicker">Audio <i>/</i> Video <i>/</i> Lighting <i>/</i> Staging <i>/</i> Toronto</p>
+      <p class="kicker">Audio <i>/</i> Video <i>/</i> Lighting <i>/</i> Staging <i>/</i> Event Production Consultation</p>
       <h1>Production that makes every event flawless.</h1>
       <p class="hero__sub">Audio, video, lighting, staging and touring support from one team, one contract, one invoice.</p>
       <div class="hero__buttons">
@@ -52,8 +56,8 @@
   <!-- RUNNING STRIP -->
   <div class="strip" aria-hidden="true">
     <div class="strip__track">
-      <span>Audio</span><span>Video</span><span>Lighting</span><span>Staging &amp; Draping</span><span>Backline</span><span>Hybrid &amp; Virtual</span><span>Concert &amp; Touring</span>
-      <span>Audio</span><span>Video</span><span>Lighting</span><span>Staging &amp; Draping</span><span>Backline</span><span>Hybrid &amp; Virtual</span><span>Concert &amp; Touring</span>
+      <span>Audio</span><span>Video</span><span>Lighting</span><span>Staging &amp; Draping</span><span>Backline</span><span>Hybrid &amp; Virtual</span><span>Concert &amp; Touring</span><span>Event Production Consultation</span>
+      <span>Audio</span><span>Video</span><span>Lighting</span><span>Staging &amp; Draping</span><span>Backline</span><span>Hybrid &amp; Virtual</span><span>Concert &amp; Touring</span><span>Event Production Consultation</span>
     </div>
   </div>
 
@@ -152,7 +156,7 @@
           </div>
         </article>
         <article class="work__card reveal">
-          <div class="media media--work"><img src="images/work-2.webp" alt="Outdoor waterfront festival stage built on truss with a mirror ball and a large crowd in front" width="1206" height="1508" loading="lazy"><div class="media__shade" aria-hidden="true"></div>
+          <div class="media media--work"><img src="images/work-2.webp" alt="Arena concert from the upper bowl, with hanging speaker arrays and light beams over a packed floor" width="1200" height="1500" loading="lazy"><div class="media__shade" aria-hidden="true"></div>
             <div class="work__text"><span class="tag">[Event type]</span><h3>[Event Name]</h3><p>[One-line result]</p></div>
           </div>
         </article>
