@@ -95,14 +95,16 @@ home = f'''
   <section class="hero">
     {STAIRS_BG}
     <div class="wrap">
-      <span class="rule"></span>
-      <h1>Make the climb <span class="nowrap">easier{ARROW}</span></h1>
-      <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. Sometimes that's a better process, sometimes an automation, sometimes AI. Your people get their time back for the work that grows the business.</p>
-      <div class="ctas">
-        <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        <a class="btn btn-line" href="/how-it-works/">See how it works</a>
+      <div class="hero-card">
+        <span class="rule"></span>
+        <h1><span class="nowrap">Make the climb</span> <span class="nowrap">easier{ARROW}</span></h1>
+        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. Sometimes that's a better process, sometimes an automation, sometimes AI. Your people get their time back for the work that grows the business.</p>
+        <div class="ctas">
+          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+          <a class="btn btn-line" href="/how-it-works/">See how it works</a>
+        </div>
+        <p class="hero-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>Built inside the tools you already use. Nothing new for your team to learn.</p>
       </div>
-      <p class="hero-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>Built inside the tools you already use. Nothing new for your team to learn.</p>
     </div>
   </section>
 
