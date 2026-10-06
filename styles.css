@@ -482,3 +482,17 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .section--soft > .wrap { border-radius: 22px; padding-left: 22px; padding-right: 22px; }
   .cta { padding-top: 12px; padding-bottom: 44px; }
 }
+
+/* What we do: the four service boxes swipe sideways on phones and tablets */
+@media (max-width: 860px) {
+  .stages--swipe { display: grid; grid-auto-flow: column; grid-auto-columns: min(86%, 440px); grid-template-rows: auto auto; column-gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 0 -24px; padding: 0 24px 8px; scroll-padding: 0 24px; scrollbar-width: none; }
+  .stages--swipe::-webkit-scrollbar { display: none; }
+  .stages--swipe .stage { grid-row: span 2; margin: 0; scroll-snap-align: start; grid-template-columns: minmax(0, 1fr); grid-template-rows: subgrid; gap: 0; }
+  .section:has(.stages--swipe) { overflow-x: clip; }
+}
+@media (max-width: 640px) {
+  .stages--swipe { margin: 0 -20px; padding: 0 20px 8px; scroll-padding: 0 20px; }
+  .stages--swipe .stage-detail { gap: 18px; }
+  .stages--swipe .stage h2 { font-size: 28px; }
+  .stages--swipe .stage .stage-sum { font-size: 17px; }
+}

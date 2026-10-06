@@ -205,7 +205,9 @@ services = page_hero("What we do", "Automations that fit how you already work.",
     "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. Sometimes that's a better process, sometimes an automation, sometimes AI.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
-{svc_blocks}    </div>
+      <div class="stages--swipe">
+{svc_blocks}      </div>
+    </div>
   </section>
 
   <section class="section section--ink" aria-labelledby="ladder-title">
