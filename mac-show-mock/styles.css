@@ -71,8 +71,9 @@ p { margin: 0; }
 }
 .nav.is-scrolled, .nav.is-open { background: rgba(8, 9, 12, 0.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--line); }
 .nav__inner { height: 100%; width: min(1240px, 100% - 48px); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.logo { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
-.logo span { font-weight: 500; margin-left: 6px; color: var(--muted); }
+.logo { display: block; flex-shrink: 0; }
+.logo img { height: 40px; width: auto; }
+.footer .logo img { height: 48px; }
 .nav__links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 600; }
 .nav__links a:not(.btn) { color: rgba(255,255,255,0.8); transition: color .2s; }
 .nav__links a:not(.btn):hover { color: #fff; }
