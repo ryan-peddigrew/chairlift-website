@@ -354,3 +354,9 @@ body { background: var(--white); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* Phones and tablets: pull the headline up under the logo instead of sitting at the bottom of a full-height hero */
+@media (max-width: 900px) {
+  .hero { min-height: 0; }
+  .hero__content { padding: calc(var(--nav-h) + 28px) 0 56px; }
+}
