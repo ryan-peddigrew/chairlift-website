@@ -16,8 +16,6 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - Old URLs (/services, /about, /contact) redirect via `_redirects`.
 
 ## Brand guidelines: keep them current
-- The brand guide lives at `brand/index.html` (usechairlift.com/brand/, noindex, not linked from the site).
-- **Whenever a brand element is added or changed** (logo, colours, fonts, accent rules, layout rules, voice, signature, assets), update `brand/index.html` and add a dated line to its change log in the same change.
 - If Ryan says "teal" or "mint" he means Chairlift Neon.
 - Colour names: **Midnight Ink** `#141B2A` ("Ink") and **Chairlift Neon** `#3DFFC1` ("Neon"). On the website, Neon is used only for: the logo's top step, the hero arrow after "Make the climb easier", the short bar above the hero headline, the short bars above titles on Ink sections, the "After" label on Ink, and the ring around the round founder photo on Who we are (matches the email signature). Nothing else: no Neon text, highlights, underlines, check marks or buttons. Use Ink on light backgrounds, white on Ink. "Where we usually start." never gets a highlight or underline.
 - Layout: straight section edges, white cards on Ink sections, two Ink sections never touch. NEVER any staircase graphic, dotted line or square decoration outside the logo (Ryan: "never want to see that again"). Exception: the homepage "What we take off your team's plate" cards (first white, others lighter Ink).

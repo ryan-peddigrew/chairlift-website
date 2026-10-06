@@ -494,22 +494,19 @@ def industry_page(i):
 {cta_band("Sound like your team?")}'''
 
 # ---------------------------------------------------------------- Privacy
-privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what this website actually does. Last updated October 4, 2026.") + f'''
+privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 6, 2026.") + f'''
   <section class="section section--tight">
     <div class="wrap prose">
       <h2>What we collect</h2>
-      <p>If you use the contact form, we receive what you type into it: your name, email address, company name if you give it, the topic you choose and your message. If you email us directly, we receive your email in the usual way.</p>
-      <p>We don't use advertising trackers, and we don't ask you to create an account.</p>
+      <p>Only what you choose to share with us: what you type into our contact form, the emails you send us, and the booking details you enter when you schedule a conversation through Cal.com.</p>
       <h2>How we use it</h2>
-      <p>Only to reply to you and to have the conversation you started. We don't sell your information, rent it, or add you to a mailing list without asking.</p>
-      <h2>Who else handles it</h2>
-      <p>This website is hosted by Netlify, which, like most web hosts, keeps basic technical logs such as IP addresses to keep the site secure and running. Contact form messages are delivered to our inbox by FormSubmit. Fonts are served by Google Fonts. Email is handled by our email provider.</p>
-      <h2>How long we keep it</h2>
-      <p>We keep your messages for as long as they're useful for our conversation and any work that comes out of it, and delete them when they no longer are.</p>
+      <p>Only to respond to you and to schedule conversations. We don't sell your information, and we don't share it for marketing.</p>
+      <h2>Client information</h2>
+      <p>When we work with a client's business information, we use only what the client approves, and only for that project.</p>
       <h2>Your choices</h2>
-      <p>You can ask us at any time what information we hold about you, ask us to correct it, or ask us to delete it. Email <a href="mailto:{EMAIL}">{EMAIL}</a> and we'll take care of it.</p>
+      <p>To ask about your information or to have it deleted, email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
       <h2>Changes</h2>
-      <p>If this policy changes, we'll update this page and the date at the top.</p>
+      <p>If this page changes, we'll update the "Last updated" date at the top.</p>
     </div>
   </section>
 '''
