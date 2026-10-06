@@ -496,3 +496,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .stages--swipe .stage h2 { font-size: 28px; }
   .stages--swipe .stage .stage-sum { font-size: 17px; }
 }
+
+/* Icons on light backgrounds sit in a small Ink square with a Neon line; on Ink they stay plain white */
+.fit-icon, .card .card-icon { box-sizing: border-box; width: 44px; height: 44px; padding: 10px; border-radius: 10px; background: var(--ink); stroke: var(--neon); margin-bottom: 12px; }
+.stage .card-icon, .section--ink .cards--mixed .card:nth-child(even) .card-icon { background: none; padding: 0; width: 28px; height: 28px; border-radius: 0; stroke: #FFFFFF; }

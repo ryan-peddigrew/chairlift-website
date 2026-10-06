@@ -34,7 +34,7 @@ def ol(items):
 
 
 STEPS = f'''      <div class="steps">
-        <div class="step"><span class="step-num">Stop 1</span><h3><span class="lt">On</span>board</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></div>
+        <div class="step"><span class="step-num">Stop 1</span><h3>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></div>
         <div class="step"><span class="step-num">Stop 2</span><h3>Ride</h3><p>We build one automation inside the tools you already use, and refine it with the people who use it.</p></div>
         <div class="step"><span class="step-num">Stop 3</span><h3>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></div>
       </div>
@@ -237,7 +237,7 @@ services = page_hero("What we do", "Automations that fit how you already work.",
 
 # ---------------------------------------------------------------- How it works
 STAGES = [
-    dict(n="1", name='<span class="lt">On</span>board', sum="We learn how your team actually works today: where the hours go and what frustrates people most.",
+    dict(n="1", name='Onboard', sum="We learn how your team actually works today: where the hours go and what frustrates people most.",
          happens=["A conversation with you about how the business runs", "Short chats with the people closest to the work, where it helps", "Mapping the process as it really happens, not as it's written down"],
          get=["A shortlist of what's worth automating, in order", "A clear recommendation for where to start"],
          ask=["What does your team do every week that eats the most time?", "What happens after a quote goes out?", "What do people keep asking each other for?", "What happens to leads that come in after hours?", "If you could get rid of one repetitive task tomorrow, what would it be?"]),
