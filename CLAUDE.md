@@ -33,3 +33,4 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 ## Open decisions (pinned)
 - Only the Ink email signature is approved and published. The White signature is NOT approved: keep it off the live site. A draft lives on the `draft/white-signature` branch. Build it only with `python3 tools/signature.py --include-white`.
 - Only publish what Ryan approves.
+- Case studies page (draft, not built yet): WasteMind and Smith & Long first, using only facts Ryan supplies. **Small Space Innovations is parked, to be added later** (a micro upscale furniture brand for condos; Ryan assisted; the business was later sold; Ryan confirmed all three clients agreed to be named). Ryan to send the facts first. Don't invent what we did or any results.
