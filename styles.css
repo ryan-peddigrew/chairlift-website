@@ -404,12 +404,12 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 }
 .section--ink .pains-close { color: #FFFFFF; }
 
-/* Home "What we take off your team's plate": first card white, others lighter ink with a white top bar */
-.section--ink .cards--mixed .card:not(:first-child) { background: var(--ink-2); border-color: var(--ink-2); color: #FFFFFF; }
-.section--ink .cards--mixed .card:not(:first-child)::before { background: #FFFFFF; }
-.section--ink .cards--mixed .card:not(:first-child) p, .section--ink .cards--mixed .card:not(:first-child) .card-label { color: var(--on-ink-muted); }
-.section--ink .cards--mixed .card:not(:first-child) .problem { color: #FFFFFF; }
-.section--ink .cards--mixed .card:not(:first-child) .card-icon { stroke: #FFFFFF; }
+/* Home "What we take off your team's plate": cards alternate white and lighter ink (white top bar) */
+.section--ink .cards--mixed .card:nth-child(even) { background: var(--ink-2); border-color: var(--ink-2); color: #FFFFFF; }
+.section--ink .cards--mixed .card:nth-child(even)::before { background: #FFFFFF; }
+.section--ink .cards--mixed .card:nth-child(even) p, .section--ink .cards--mixed .card:nth-child(even) .card-label { color: var(--on-ink-muted); }
+.section--ink .cards--mixed .card:nth-child(even) .problem { color: #FFFFFF; }
+.section--ink .cards--mixed .card:nth-child(even) .card-icon { stroke: #FFFFFF; }
 
 /* Swipe row: cards scroll sideways on phones and tablets instead of stacking */
 @media (max-width: 860px) {
@@ -421,9 +421,9 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .stage-ask { grid-column: 1 / -1; }
 
 /* Home hero: rounded Midnight Ink card, inset so white shows around it */
-.hero .wrap { padding-top: 24px; padding-bottom: 24px; }
+.hero .wrap { padding-top: 24px; padding-bottom: 72px; }
 .hero-card { background: var(--ink); color: var(--on-ink); border-radius: 28px; padding: 88px 72px 80px; }
-.hero-card h1 { text-transform: none; text-wrap: balance; font-size: min(88px, calc((100vw - 192px) / 7.2)); max-width: 7.6em; letter-spacing: -0.01em; }
+.hero-card h1 { text-wrap: balance; font-size: min(88px, calc((100vw - 192px) / 8.4)); max-width: 8.8em; letter-spacing: -0.01em; }
 .hero-card .lede { color: rgba(255, 255, 255, 0.82); }
 .hero-card .hero-note { color: #FFFFFF; }
 .hero-card .hero-note svg circle { fill: #FFFFFF; }
@@ -431,10 +431,10 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .hero-card :focus-visible { outline-color: #FFFFFF; }
 @media (max-width: 860px) {
   .hero-card { padding: 64px 40px 56px; }
-  .hero-card h1 { font-size: min(88px, calc((100vw - 128px) / 7.2)); }
+  .hero-card h1 { font-size: min(88px, calc((100vw - 128px) / 8.4)); }
 }
 @media (max-width: 640px) {
-  .hero .wrap { padding: 12px 12px 16px; }
+  .hero .wrap { padding: 12px 12px 44px; }
   .hero-card { border-radius: 22px; padding: 44px 22px 40px; }
-  .hero-card h1 { font-size: max(30px, calc((100vw - 68px) / 7.2)); }
+  .hero-card h1 { font-size: max(30px, calc((100vw - 68px) / 8.4)); }
 }
