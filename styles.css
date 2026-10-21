@@ -500,3 +500,18 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 /* Icons on light backgrounds sit in a small Ink square with a Neon line; on Ink they stay plain white */
 .fit-icon, .card .card-icon { box-sizing: border-box; width: 44px; height: 44px; padding: 10px; border-radius: 10px; background: var(--ink); stroke: var(--neon); margin-bottom: 12px; }
 .stage .card-icon, .section--ink .cards--mixed .card:nth-child(even) .card-icon { background: none; padding: 0; width: 28px; height: 28px; border-radius: 0; stroke: #FFFFFF; }
+
+/* Morning paper starter offer */
+.paper-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.paper-split h2 { font-size: clamp(30px, 4vw, 46px); }
+.paper-split .ticks { margin-top: 24px; }
+.paper-lede { color: var(--muted); font-size: 19px; margin-top: 18px; max-width: 46ch; }
+.paper-split .btn { margin-top: 28px; }
+.paper-shot { margin: 0; max-width: 480px; justify-self: center; width: 100%; }
+.paper-shot img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(20, 27, 42, 0.16); }
+.paper-shot figcaption { margin-top: 14px; font-size: 14px; color: var(--muted); text-align: center; }
+@media (max-width: 860px) {
+  .paper-split { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .paper-shot { max-width: 420px; }
+}
+@media (max-width: 640px) { .paper-lede { font-size: 17px; } }
