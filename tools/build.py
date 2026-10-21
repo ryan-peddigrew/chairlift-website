@@ -91,6 +91,12 @@ def example_block(e, heading="h2"):
 
 # ---------------------------------------------------------------- Home
 CTA_HOME = "Show us one thing your team does over and over."
+
+PAPER_IMG = '''<figure class="paper-shot">
+        <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with five goals for the day, a schedule, follow-ups and the weather.">
+        <figcaption>Sample page. Content is for illustration.</figcaption>
+      </figure>'''
+
 home = f'''
   <section class="hero">
     {STAIRS_BG}
@@ -125,6 +131,18 @@ home = f'''
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="paper-title">
+    <div class="wrap paper-split">
+      <div>
+        <span class="rule"></span>
+        <h2 id="paper-title">Start your morning on one page.</h2>
+        <p class="paper-lede">A one-page morning briefing, built around how you work: five goals for the day, your schedule, and the follow-ups waiting on you. It's an easy first step, and a good look at how we think.</p>
+        <a class="btn btn-ink" href="/morning-paper/">See the morning paper</a>
+      </div>
+      {PAPER_IMG}
     </div>
   </section>
 
@@ -458,6 +476,60 @@ industries = page_hero("Who we help", "Different industries. The same lost hours
 {cta_band(CTA_HOME)}'''
 
 
+
+morning_paper = page_hero("Starter offer", "Your morning, on one page.",
+    "A one-page morning briefing built around how you work. Your goals for the day, your schedule and your follow-ups, boiled down to one page you can read before your first coffee.") + f'''
+  <section class="section section--tight" aria-labelledby="page-title">
+    <div class="wrap paper-split paper-split--flip">
+      {PAPER_IMG}
+      <div>
+        <span class="rule"></span>
+        <h2 id="page-title">What's on the page.</h2>
+        {ticks(["Five goals for the day, must-dos first.", "Your schedule for the day, at a glance.", "Follow-ups: what's on you, and what you're waiting on from others.", "A few extras you choose, like the weather or a thought for the day."])}
+        <p class="paper-lede">Print it or read it on your phone. Either way, it's one page, with no scrolling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink" aria-labelledby="start-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="start-title">How it starts.</h2>
+        <p>Small, quick and built around you.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">Step 1</span><h3>Talk</h3><p>A five-minute conversation about how your mornings run and what you need to see first.</p></div>
+        <div class="step"><span class="step-num">Step 2</span><h3>Build</h3><p>We put together your first page from that conversation, using the calendar and lists you already keep.</p></div>
+        <div class="step"><span class="step-num">Step 3</span><h3>Refine</h3><p>You try it, tell us what's missing, and we adjust it until it's genuinely useful.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" aria-labelledby="team-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <h2 id="team-title">For you, or your whole team.</h2>
+      </div>
+      <div class="prose">
+        <p>Start with your own morning. If it helps, we can build a page for each person on your team, so everyone starts the day knowing their priorities.</p>
+        <p>It's also a simple way to see how we work: find the routine that eats your time, and make it simpler. If there's more worth fixing, we can talk about that next.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta cta-band" aria-labelledby="cta-title">
+    <div class="cta-box">
+      <div>
+        <h2 id="cta-title">Start with a five-minute conversation.</h2>
+        <p>Tell us how your mornings run, and we'll show you what your page could look like.</p>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+      </div>
+    </div>
+  </section>
+'''
+
 def industry_page(i):
     pains = "".join(f'        <li>{icon(ic, "")}<div><strong>{t}</strong><span>{d}</span></div></li>\n' for ic, t, d in i["pains"])
     cards = "".join(f'        <div class="card">{icon(ic)}<span class="card-label">{lab}</span><h3>{t}</h3><p>{d}</p></div>\n' for ic, lab, t, d in i["cards"])
@@ -530,6 +602,7 @@ PAGES = [
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, builds one automation at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
+    ("morning-paper/index.html", "Your morning, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups on one page. Start with a five-minute conversation.", "/morning-paper/", None, morning_paper, False),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
 ] + [
