@@ -58,7 +58,7 @@ function lastName(a) {
 // Top performers for a finished game, from ESPN's game summary.
 async function performers(t, eventId, teamId) {
   let d;
-  try { d = await getJSON(`https://site.api.espn.com/apis/site/v2/sports/${t.sport}/${t.league}/summary?event=${eventId}`); } catch (e) { return ""; }
+  try { d = await getJSON(`https://site.api.espn.com/apis/site/v2/sports/${t.sport}/${t.league}/summary?event=${eventId}`); } catch (e) { return []; }
   if (t.league === "nhl") {
     const team = ((d.boxscore && d.boxscore.players) || []).find((x) => String(x.team && x.team.id) === String(teamId));
     const tally = {};
@@ -76,7 +76,7 @@ async function performers(t, eventId, teamId) {
     }
     const top = Object.values(tally).sort((a, b) => (b.goals + b.assists) - (a.goals + a.assists) || b.goals - a.goals).slice(0, 2);
     if (top.length) {
-      return "(" + top.map((p) => p.n + " " + [p.goals ? p.goals + " G" : "", p.assists ? p.assists + " A" : ""].filter(Boolean).join(", ")).join(" · ") + ")";
+      return top.map((p) => p.n + " " + [p.goals ? p.goals + " G" : "", p.assists ? p.assists + " A" : ""].filter(Boolean).join(", "));
     }
   }
   const lead = (d.leaders || []).find((x) => String(x.team && x.team.id) === String(teamId));
@@ -88,7 +88,7 @@ async function performers(t, eventId, teamId) {
     bits.push(`${lastName(top.athlete)} ${top.displayValue} ${label}`.trim());
     if (bits.length === 2) break;
   }
-  return bits.length ? `(${bits.join(" · ")})` : "";
+  return bits;
 }
 
 async function sports() {
@@ -111,24 +111,24 @@ async function sports() {
       const base = { logo: mine.team.logo || "", when: when.getTime(), team: t.league + mine.team.abbreviation };
       if (st.completed && day <= today) {
         const [w, l] = Number(mine.score) >= Number(other.score) ? [mine, other] : [other, mine];
-        let note = "";
+        let perf = [];
         if (t.league === "nba" && mine.leaders) {
           const pts = mine.leaders.find((x) => x.name === "points");
           const ast = mine.leaders.find((x) => x.name === "assists");
           const bits = [];
           if (pts && pts.leaders[0]) bits.push(`${lastName(pts.leaders[0].athlete)} ${pts.leaders[0].displayValue} pts`);
           if (ast && ast.leaders[0]) bits.push(`${lastName(ast.leaders[0].athlete)} ${ast.leaders[0].displayValue} ast`);
-          if (bits.length) note = `(${bits.join(" · ")})`;
+          perf = bits;
         }
-        if (!note) note = await performers(t, ev.id, mine.team.id);
-        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, status: st.shortDetail || "Final", note });
+        if (!perf.length) perf = await performers(t, ev.id, mine.team.id);
+        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, status: st.shortDetail || "Final", perf });
       } else if (st.state === "in") {
-        live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, status: "Live", note: st.shortDetail || "" });
+        live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
       } else if (st.state === "pre" && when.getTime() > now.getTime() - 3 * 36e5) {
         const time = when.toLocaleTimeString("en-US", { timeZone: TZ, hour: "numeric", minute: "2-digit" });
         const hour = Number(when.toLocaleString("en-US", { timeZone: TZ, hour: "numeric", hour12: false }));
         const label = ymd(when) === today ? (hour >= 17 ? "Tonight" : "Today") : when.toLocaleDateString("en-US", { timeZone: TZ, weekday: "short" });
-        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, status: "Up next", note: `${label} · ${time}` });
+        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, status: "Up next", perf: [`${label} · ${time}`] });
       }
     }
   })));

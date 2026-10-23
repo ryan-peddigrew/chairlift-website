@@ -53,3 +53,21 @@
 .dp-news .dp-row { display: flex; align-items: baseline; overflow: visible; }
 .dp-news .dp-row .dp-nt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .dp-news .dp-row em { flex: none; }
+/* Sports: score line, then indented performer bullets */
+.dp-sports .dp-row { display: block; min-height: 0; padding: 9px 0 8px; }
+.dp-gl { display: flex; align-items: center; gap: 8px; }
+.dp-gl img, .dp-gl .dp-noimg { width: 13px; height: 13px; object-fit: contain; flex: none; }
+.paper-shot .dp .dp-gl img { width: 13px; height: 13px; }
+.dp-gl .dp-tag { margin-left: auto; }
+.dp-sports ul { list-style: none; margin: 3px 0 0 21px; }
+.dp-sports li { font-size: 8.9px; line-height: 1.5; color: #333; padding-left: 14px; position: relative; }
+.dp-sports li::before { content: ""; position: absolute; left: 4px; top: 0.6em; width: 3.5px; height: 3.5px; border-radius: 50%; background: #333; }
+.dp-focus .dp-row { padding: 9px 0 8px; }
+.dp-focus .dp-row .dp-tag { top: 14px; }
+.dp-fu .dp-row { padding: 8px 0 7px; }
+.dp-fu .dp-row .dp-tag { top: 13px; }
+.dp-sports .dp-row { padding: 7px 0 6px; }
+.dp-focus .dp-row { padding: 10px 0 9px; }
+.dp-focus .dp-row .dp-tag { top: 15px; }
+.dp-fu .dp-row { padding: 9px 0 8px; }
+.dp-fu .dp-row .dp-tag { top: 14px; }

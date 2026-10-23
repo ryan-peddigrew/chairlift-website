@@ -44,7 +44,8 @@
       all('[data-dp-sports]', function (el) {
         el.innerHTML = d.sports.slice(0, 4).map(function (g) {
           var logo = g.logo ? '<img src="' + esc(g.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-          return '<div class="dp-row"><div class="dp-team">' + logo + '<div><div class="dp-score">' + esc(g.line) + '</div><div class="dp-st">' + esc(g.status) + '</div></div></div><div class="dp-lead">' + esc(g.note || '') + '</div></div>';
+          var perf = (g.perf || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
+          return '<div class="dp-row"><div class="dp-gl">' + logo + '<span class="dp-score">' + esc(g.line) + '</span><span class="dp-tag">' + esc(g.status) + '</span></div><ul>' + perf + '</ul></div>';
         }).join('');
       });
     }

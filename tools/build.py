@@ -122,10 +122,10 @@ DP_FU = [
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue"),
 ]
 DP_SPORTS = [
-    ("Raptors 135, Bulls 92", "Final", "(Barnes 23 pts · Quickley 7 ast)"),
-    ("Senators 5, Panthers 1", "Final", "(Stützle 1 G, 1 A)"),
-    ("Leafs vs Rangers", "Up next", "Tonight · 7:00 PM"),
-    ("Raptors vs Wizards", "Up next", "Fri · 7:00 PM"),
+    ("Leafs 5, Rangers 4", "Final", ["Duhaime 1 G, 2 A", "Blueger 1 G, 1 A"]),
+    ("Sharks 6, Senators 2", "Final", ["Stützle 1 G", "Spence 1 G"]),
+    ("Raptors vs Wizards", "Up next", ["Tonight · 7:00 PM"]),
+    ("Senators vs Rangers", "Up next", ["Sat · 7:00 PM"]),
 ]
 DP_CAL = [("7:30", "Walk Benny", "20 min"), ("9:00", "Team check-in", "15 min"), ("11:00", "Pipeline review", "Video call"), ("12:30", "Lunch with Sam", "Downtown"), ("3:00", "Proposal focus block", "Phone off"), ("6:00", "Gym", "Legs")]
 DP_INBOX = [("Proposal draft v2 is ready", "Work"), ("Supplier confirmed Friday delivery", "Work"), ("Coffee next week?", "Personal"), ("Q4 pricing sheet attached", "Work"), ("Dentist reminder: Nov 4", "Personal"), ("Team lunch Friday?", "Work")]
@@ -143,7 +143,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "Must-dos")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
                 <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "Still open")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
-                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{"".join(f'<div class="dp-row"><div class="dp-team"><span class="dp-noimg"></span><div><div class="dp-score">{a}</div><div class="dp-st">{b}</div></div></div><div class="dp-lead">{c}</div></div>' for a, b, c in DP_SPORTS)}</div></section>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{"".join(f'<div class="dp-row"><div class="dp-gl"><span class="dp-noimg"></span><span class="dp-score">{a}</span><span class="dp-tag">{b}</span></div><ul>{"".join(f"<li>{x}</li>" for x in c)}</ul></div>' for a, b, c in DP_SPORTS)}</div></section>
               </div>
               <div class="dp-rule"></div>
               <div>
