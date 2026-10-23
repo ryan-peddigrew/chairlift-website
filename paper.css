@@ -130,3 +130,10 @@
 .dp-wxm > span:last-child { border-right: 0; padding-right: 2px; }
 .dp-cal .dp-row { height: 29px; padding: 7px 0 6px; }
 .dp-comic { width: 108px; }
+/* inbox: tag left, sender right */
+.dp-from { min-width: 62px; color: #555; }
+.dp-inbox .dp-tag { margin-left: 10px; }
+/* three-panel comic strip fills the column */
+.dp-comic, .paper-shot .dp img.dp-comic { width: 100%; height: auto; margin: 8px 0 0; }
+.dp-inbox .dp-tag { font-size: 6px; letter-spacing: 0.1em; margin-left: 6px; }
+.dp-from { min-width: 52px; margin-right: 6px; }

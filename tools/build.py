@@ -139,8 +139,8 @@ def dp_sports():
         f'<div class="dp-game"><div class="dp-sb">{side(a)}<b{lo(sa, sb)}>{sa}</b><span class="dp-mid"><i>{lg}</i><em>{mid}</em></span><b{lo(sb, sa)}>{sb}</b>{side(b)}</div></div>'
         for lg, a, sa, b, sb, mid in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("6:00", "Gym after work", "1 hr")]
-DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Supplier", "Confirmed Friday delivery", "Work"), ("Accountant", "Q4 numbers to review", "Work"), ("Dentist’s Office", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
-DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region")]
+DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Northline Supply Co.", "Confirmed Friday delivery", "Work"), ("Brightwater CPA", "Q4 numbers to review", "Work"), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
+DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region News")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
@@ -160,9 +160,9 @@ PAPER_IMG = f'''<figure class="paper-shot">
               <div>
                 <section class="dp-sec dp-wxs">{dp_h("sun", "Weather", '<svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto')}<div class="dp-wx"><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-dc"><span class="dp-desc" data-dp-desc>Partly cloudy</span><span class="dp-hl" data-dp-hl>H 18° · L 8°</span></span><span class="dp-wxm"><span><i>Feels</i><b data-dp-feels>6°</b></span><span><i>Wind</i><b data-dp-wind>14 km/h</b></span><span><i>Rain</i><b data-dp-rain>10%</b></span></span></div></section>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>({c})</em></div>' for a, b, c in DP_CAL)}</section>
-                <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span><b class="dp-from">{f}</b>{a}</span><span class="dp-tag">{b}</span></div>' for f, a, b in DP_INBOX)}</section>
+                <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "")}{"".join(f'<div class="dp-row"><span><b class="dp-from">{b}</b>{a}</span><span class="dp-tag">{f}</span></div>' for f, a, b in DP_INBOX)}</section>
                 <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
-                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt=""></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<img class="dp-comic" src="/images/paper-comic-strip.png" width="1024" height="339" alt=""></section>
               </div>
             </div>
             <div class="dp-foot"><span>Printed fresh each morning</span><span>The Daily Peddigrew</span></div>
