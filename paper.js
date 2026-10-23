@@ -51,7 +51,7 @@
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });
       all('[data-dp-desc]', function (el) { el.textContent = d.weather.desc; });
       all('[data-dp-hl]', function (el) { el.textContent = 'H ' + d.weather.hi + '° · L ' + d.weather.lo + '°'; });
-      if (d.weather.feels != null) all('[data-dp-feels]', function (el) { el.textContent = d.weather.feels + '°'; });
+      if (d.weather.feels != null) all('[data-dp-feels]', function (el) { el.textContent = d.weather.feels + '°C'; });
       if (d.weather.wind != null) all('[data-dp-wind]', function (el) { el.textContent = d.weather.wind + ' km/h'; });
       if (d.weather.rain != null) all('[data-dp-rain]', function (el) { el.textContent = d.weather.rain + '%'; });
     }
