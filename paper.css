@@ -85,3 +85,5 @@
 .dp-wxm > span { padding: 0 9px; }
 .dp-wxm b { white-space: nowrap; }
 .dp-sports .dp-row { padding: 14px 0 13px; }
+/* Masthead: a touch heavier, with a soft letterpress shadow */
+.dp-mast { -webkit-text-stroke: 0.6px #111; text-shadow: 2px 2.5px 0 rgba(17, 17, 17, 0.2), 0 0 1px rgba(17, 17, 17, 0.35); }
