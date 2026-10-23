@@ -99,7 +99,7 @@ PAPER_ICON = {
     "cal": '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
     "mail": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
     "news": '<rect x="4" y="4" width="13" height="16" rx="1.5"/><path d="M17 8h3v10a2 2 0 0 1-2 2H6M7 8h7M7 12h7M7 16h4"/>',
-    "cup": '<path d="M4 9h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3v3M12 3v3"/>',
+    "laugh": '<path d="M12 3.5c5 0 9 3.2 9 7.3s-4 7.3-9 7.3c-1 0-2-.1-2.9-.4L5 20l1-3.6C4.2 15 3 13 3 10.8 3 6.7 7 3.5 12 3.5z"/><path d="M8.3 8.6h.01M11.5 8.6h.01"/><path d="M7.3 11.4c1 2.2 4.6 2.2 5.6 0"/><path d="M16.6 6.8v3.4M16.6 14h.01"/>',
     "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
 }
 
@@ -152,7 +152,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "Today")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>{c}</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span>{a}</span><span class="dp-tag">{b}</span></div>' for a, b in DP_INBOX)}</section>
                 <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
-                <section class="dp-sec dp-laugh">{dp_h("cup", "Morning Chuckle", "")}<img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt=""></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt=""></section>
               </div>
             </div>
             <div class="dp-foot"><span>Printed fresh each morning</span><span>The Daily Peddigrew</span></div>
