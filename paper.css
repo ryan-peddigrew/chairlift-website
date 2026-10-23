@@ -256,3 +256,7 @@
 .dp-inbox .dp-tag { font-size: 7.2px; letter-spacing: 0.03em; margin-left: 3px; }
 /* thin grey line under Weather, like the other sections */
 .dp-wx { border-bottom: 1px solid #DADADA; }
+/* grey line under Sports and Funnies, level with each other */
+.dp-band .dp-sports, .dp-band .dp-laugh { border-bottom: 1px solid #DADADA; align-self: stretch; box-sizing: border-box; }
+.dp-band > div:not(.dp-rule) { display: flex; flex-direction: column; }
+.dp-band .dp-sports, .dp-band .dp-laugh { flex: 1; }
