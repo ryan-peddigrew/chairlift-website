@@ -50,6 +50,14 @@
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });
       all('[data-dp-desc]', function (el) { el.textContent = d.weather.desc; });
+      all('[data-dp-wicon]', function (el) {
+        var w = String(d.weather.desc || '').toLowerCase(), c = '<path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 8.5 4.8 4.8 0 0 1 17 18z"/>';
+        el.innerHTML = /snow|flurr/.test(w) ? c.replace('17 18z', '17 15z') + '<path d="M9 18.5h.01M12 20.5h.01M15 18.5h.01"/>'
+          : /rain|drizzle|shower|storm/.test(w) ? c.replace('17 18z', '17 15z') + '<path d="M9 17.5l-1 2.5M13 17.5l-1 2.5M17 17.5l-1 2.5"/>'
+          : /cloud|overcast|fog|mist/.test(w) && !/partly|mostly clear/.test(w) ? c
+          : /partly/.test(w) ? '<circle cx="8" cy="8" r="2.6"/><path d="M8 2.5v1.2M2.5 8h1.2M3.9 3.9l.9.9M12.1 3.9l-.9.9"/><path d="M8.5 19a3.6 3.6 0 0 1-.4-7.2A4.8 4.8 0 0 1 17 11.2 3.9 3.9 0 0 1 17 19z"/>'
+          : el.innerHTML;
+      });
       all('[data-dp-hl]', function (el) { el.textContent = 'H ' + d.weather.hi + '° · L ' + d.weather.lo + '°'; });
       if (d.weather.feels != null) all('[data-dp-feels]', function (el) { el.textContent = d.weather.feels + '°C'; });
       if (d.weather.wind != null) all('[data-dp-wind]', function (el) {

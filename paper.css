@@ -286,3 +286,16 @@
 .dp-wxs { margin-bottom: 0; }
 .dp-cal .dp-row { height: 29.9px; padding: 7.4px 0 5px; }
 .dp-inbox .dp-row { height: 30.7px; padding: 7.4px 0 5px; }
+/* weather lives on the dateline now: icon, degrees, small italic location */
+.dp-date > :first-child { letter-spacing: 0.2em; }
+.dp-dwx { display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px; }
+.dp-dwx svg.dp-wi { width: 13px; height: 13px; fill: none; stroke: #111; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.dp-dwx b { font-weight: 700; letter-spacing: 0.08em; }
+.dp-dwx em { display: inline-flex; align-items: center; gap: 2px; margin-left: 4px; font: italic 400 9.5px/1 'Source Serif 4', serif; letter-spacing: 0; text-transform: none; color: #444; }
+.dp-dwx em svg.dp-pin { width: 8px; height: 8px; fill: none; stroke: #444; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.dp-dwx { height: 9px; }
+.dp-dwx svg.dp-wi { margin: -2px 0; }
+.dp-dwx em { line-height: 9px; }
+.dp-date { padding-bottom: 4px; }
+.dp-cal .dp-row { height: 30.5px; padding: 7.8px 0 5.2px; }
+.dp-inbox .dp-row { height: 31.3px; padding: 8px 0 5.2px; }

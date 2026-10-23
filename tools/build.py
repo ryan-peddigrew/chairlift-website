@@ -140,17 +140,17 @@ def dp_sports():
         f'<div class="dp-game"><div class="dp-gs"><i>{lg}</i><em>{mid}</em></div>{tm(a, sa, lost(sa, sb))}{tm(b, sb, lost(sb, sa), rel)}</div>'
         for lg, a, sa, b, sb, mid, rel in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("4:30", "Call with Brightwater CPA", "30 min"), ("6:00", "Gym after work", "1 hr")]
-DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Northline Supply Co.", "Confirmed Friday delivery", "Work"), ("Brightwater CPA", "Q4 numbers to review", "Work"), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
+DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Northline Supply Co.", "Confirmed Friday delivery", "Work"), ("Brightwater CPA", "Q4 numbers to review", "Work"), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work"), ("Harbour Bank", "Your statement is ready", "Personal")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region News")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
         <link rel="stylesheet" href="/paper.css">
         <script src="/paper.js" defer></script>
-        <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
+        <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, headlines, sports scores and the weather.">
           <div class="dp" aria-hidden="true">
             <div class="dp-mast">The Daily Peddigrew</div>
-            <div class="dp-date"><span><span data-dp-greet>Good morning</span>, Ryan</span><span data-dp-date>Friday, October 23, 2026</span><span data-dp-time data-on>7:00 AM</span></div>
+            <div class="dp-date"><span data-dp-time data-on>7:00 AM</span><span data-dp-date>Friday, October 23, 2026</span><span class="dp-dwx"><svg class="dp-wi" viewBox="0 0 24 24" data-dp-wicon>{PAPER_ICON["sun"]}</svg><b><span data-dp-temp>8</span>°C</b><em><svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto</em></span></div>
             <div class="dp-cols">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
@@ -158,10 +158,9 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
-                <section class="dp-sec dp-wxs"><div class="dp-h"><svg viewBox="0 0 24 24">{PAPER_ICON["sun"]}</svg><b>Weather</b><span class="dp-wxc"><span><span data-dp-temp>8</span>°</span><em data-dp-desc>Partly cloudy</em></span><i><svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto</i></div></section>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>({c})</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "")}{"".join(f'<div class="dp-row"><span><b class="dp-from">{b}</b>{a}</span><span class="dp-tag">{f}</span></div>' for f, a, b in DP_INBOX)}</section>
-                <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
+                <section class="dp-sec dp-news">{dp_h("news", "Headlines", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
               </div>
             </div>
             <div class="dp-band">
@@ -588,7 +587,7 @@ morning_paper = f'''
       <div>
         <span class="rule"></span>
         <h2 id="page-title">What's on the page.</h2>
-        {ticks(["Today's focus: your must-dos, with the details that matter.", "Your calendar for the day, at a glance.", "The emails that actually need you.", "Follow-ups that are still open, with their deadlines.", "The weather, local news and last night's scores."])}
+        {ticks(["Today's focus: your must-dos, with the details that matter.", "Your calendar for the day, at a glance.", "The emails that actually need you.", "Follow-ups that are still open, with their deadlines.", "The weather, headlines and last night's scores."])}
         <p class="paper-lede">No printer? It comes by email or right on your desktop. However you get it, it's one page, with no scrolling.</p>
       </div>
     </div>
