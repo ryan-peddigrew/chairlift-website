@@ -157,3 +157,25 @@
 .dp-mid { gap: 3px; }
 .dp-sb { padding: 7px 0; }
 .dp-sb > b { font-size: 18px; }
+/* bottom band: compact sports (two across) beside The Funnies */
+.dp-band { display: grid; grid-template-columns: 376px 1px 328px; column-gap: 18px; margin-top: 14px; }
+.dp-band .dp-rule { background: #111; }
+.dp-sports [data-dp-sports] { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; }
+.dp-sports .dp-game { border-bottom: 1px solid #d9d6cd; }
+.dp-sports .dp-game:nth-last-child(-n+2) { border-bottom: 0; }
+.dp-sports .dp-sb { grid-template-columns: 30px 1fr 1fr 30px; grid-template-areas: "a x y b" "m m m m"; row-gap: 2px; padding: 7px 0 5px; align-items: center; }
+.dp-sports .dp-sb > :nth-child(1) { grid-area: a; }
+.dp-sports .dp-sb > :nth-child(2) { grid-area: x; text-align: center; }
+.dp-sports .dp-sb > :nth-child(3) { grid-area: m; flex-direction: row; justify-content: center; gap: 6px; align-items: baseline; }
+.dp-sports .dp-sb > :nth-child(4) { grid-area: y; text-align: center; }
+.dp-sports .dp-sb > :nth-child(5) { grid-area: b; }
+.dp-focus .dp-row { padding: 14px 0 13px; }
+.dp-focus .dp-row .dp-tag { top: 19px; }
+.dp-fu .dp-row { padding: 12px 0 11px; }
+.dp-fu .dp-row .dp-tag { top: 17px; }
+.dp-cols .dp-rule { align-self: stretch; }
+.dp-focus .dp-row { padding: 15.2px 0 14.2px; }
+.dp-focus .dp-row .dp-tag { top: 20px; }
+.dp-fu .dp-row { padding: 13.2px 0 12.2px; }
+.dp-fu .dp-row .dp-tag { top: 18px; }
+.dp-band { margin-top: 18px; }

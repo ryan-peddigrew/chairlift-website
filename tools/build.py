@@ -154,7 +154,6 @@ PAPER_IMG = f'''<figure class="paper-shot">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
                 <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
-                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{dp_sports()}</div></section>
               </div>
               <div class="dp-rule"></div>
               <div>
@@ -162,6 +161,14 @@ PAPER_IMG = f'''<figure class="paper-shot">
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>({c})</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "")}{"".join(f'<div class="dp-row"><span><b class="dp-from">{b}</b>{a}</span><span class="dp-tag">{f}</span></div>' for f, a, b in DP_INBOX)}</section>
                 <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
+              </div>
+            </div>
+            <div class="dp-band">
+              <div>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{dp_sports()}</div></section>
+              </div>
+              <div class="dp-rule"></div>
+              <div>
                 <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<img class="dp-comic" src="/images/paper-comic-strip.png" width="1024" height="339" alt=""></section>
               </div>
             </div>
