@@ -228,3 +228,6 @@
 .dp-wx { height: 36px; }
 .dp-cal .dp-row { height: 29px; padding: 7px 0 5px; }
 .dp-inbox .dp-row { height: 30px; padding: 7px 0 5px; }
+.dp-wxm b { display: inline-flex; align-items: center; justify-content: center; gap: 3px; }
+.dp-wxm .dp-arrow { width: 10px; height: 10px; fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.dp-wxm .dp-compass { font: 700 6.6px/1 Inter, sans-serif; letter-spacing: 0.1em; color: #555; }

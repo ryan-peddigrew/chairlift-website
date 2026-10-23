@@ -21,7 +21,7 @@ async function getJSON(url) {
 }
 
 async function weather() {
-  const d = await getJSON("https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.38&current=temperature_2m,apparent_temperature,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&wind_speed_unit=kmh&timezone=America%2FToronto&forecast_days=1");
+  const d = await getJSON("https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.38&current=temperature_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&wind_speed_unit=kmh&timezone=America%2FToronto&forecast_days=1");
   return {
     temp: Math.round(d.current.temperature_2m),
     desc: WMO[d.current.weather_code] || "",
@@ -29,6 +29,7 @@ async function weather() {
     lo: Math.round(d.daily.temperature_2m_min[0]),
     feels: Math.round(d.current.apparent_temperature),
     wind: Math.round(d.current.wind_speed_10m),
+    windDir: Math.round(d.current.wind_direction_10m),
     rain: d.daily.precipitation_probability_max ? d.daily.precipitation_probability_max[0] : null,
   };
 }

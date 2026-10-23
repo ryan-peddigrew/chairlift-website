@@ -45,14 +45,18 @@
   tick();
   setInterval(tick, 10000);
 
-  fetch('/.netlify/functions/paper?v=7').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch('/.netlify/functions/paper?v=8').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });
       all('[data-dp-desc]', function (el) { el.textContent = d.weather.desc; });
       all('[data-dp-hl]', function (el) { el.textContent = 'H ' + d.weather.hi + '° · L ' + d.weather.lo + '°'; });
       if (d.weather.feels != null) all('[data-dp-feels]', function (el) { el.textContent = d.weather.feels + '°C'; });
-      if (d.weather.wind != null) all('[data-dp-wind]', function (el) { el.textContent = d.weather.wind + ' km/h'; });
+      if (d.weather.wind != null) all('[data-dp-wind]', function (el) {
+        var dir = d.weather.windDir, pts = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+        var arrow = dir == null ? '' : '<svg class="dp-arrow" viewBox="0 0 24 24" style="transform:rotate(' + ((dir + 180) % 360) + 'deg)"><path d="M12 20V4M6 10l6-6 6 6"/></svg>';
+        el.innerHTML = arrow + d.weather.wind + ' km/h' + (dir == null ? '' : ' <span class="dp-compass">' + pts[Math.round(dir / 45) % 8] + '</span>');
+      });
       if (d.weather.rain != null) all('[data-dp-rain]', function (el) { el.textContent = d.weather.rain + '%'; });
     }
     if (d.news && d.news.length >= 3) {
