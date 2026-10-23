@@ -232,5 +232,3 @@
 .dp-wxm .dp-arrow { width: 10px; height: 10px; fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .dp-wxm .dp-compass { font: 700 6.6px/1 Inter, sans-serif; letter-spacing: 0.1em; color: #555; }
 .dp-foot { justify-content: flex-end; }
-/* neutral newsprint: no warm cast on the comic */
-.dp-comic { filter: grayscale(1) contrast(1.08) brightness(1.03); }
