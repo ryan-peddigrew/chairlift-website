@@ -120,7 +120,7 @@ DP_FU = [
     ("Book Benny's vet visit", "Nov 1", ["Re: Annual check-up and shots, plus the nail trim"]),
     ("Renew the car insurance", "Oct 31", ["Re: Compare two quotes before renewal and pick the cheaper one"]),
     ("Invoice approval", "Waiting", ["Re: With finance since Monday, nudge them again today"]),
-    ("Venue confirmation", "Nov 14", ["Re: Team event, waiting on the venue to confirm the date"]),
+    ("Venue confirmation", "Nov 14", ["Re: Team event, waiting on the venue to confirm the date", "Ask about the room setup and the final headcount."]),
     ("Reply to Northline Supply", "Mon", ["Re: Confirm the Friday delivery window and who signs for it", "Check the dock hours before replying."]),
 ]
 DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night", "@"),

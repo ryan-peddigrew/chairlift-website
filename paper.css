@@ -332,3 +332,18 @@
 .dp-fu .dp-row { padding: 8.86px 0 7.86px; }
 .dp-cal .dp-row { height: 30.75px; }
 .dp-inbox .dp-row { height: 31.55px; }
+/* last headline gets the same room under its text as the last follow-up, so both columns end alike */
+.dp-news .dp-row:last-child { padding-bottom: 6.2px; }
+.dp-cal .dp-row { height: 30.31px; }
+.dp-inbox .dp-row { height: 31.11px; }
+/* second line under Venue confirmation: rows tightened evenly to keep the page full */
+.dp-focus .dp-row { padding: 9.83px 0 8.83px; }
+.dp-fu .dp-row { padding: 7.83px 0 6.83px; }
+.dp-focus .dp-row .dp-tag { top: 12.6px; }
+.dp-fu .dp-row .dp-tag { top: 10.6px; }
+.dp-focus .dp-row { padding: 10.06px 0 9.06px; }
+.dp-fu .dp-row { padding: 8.06px 0 7.06px; }
+.dp-focus .dp-row .dp-tag { top: 12.8px; }
+.dp-fu .dp-row .dp-tag { top: 10.8px; }
+.dp-cal .dp-row { height: 30.67px; }
+.dp-inbox .dp-row { height: 31.47px; }
