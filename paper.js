@@ -28,10 +28,6 @@
   tick();
   setInterval(tick, 10000);
 
-  // Issue number counts up one a day from the first edition (Oct 23, 2026).
-  var issue = Math.floor((new Date().setHours(0, 0, 0, 0) - new Date(2026, 9, 23)) / 864e5) + 1;
-  all('[data-dp-no]', function (el) { el.textContent = Math.max(1, issue); });
-
   fetch('/.netlify/functions/paper?v=3').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
