@@ -54,6 +54,43 @@ function lastName(a) {
   return n.split(" ").slice(-1)[0];
 }
 
+
+// Top performers for a finished game, from ESPN's game summary.
+async function performers(t, eventId, teamId) {
+  let d;
+  try { d = await getJSON(`https://site.api.espn.com/apis/site/v2/sports/${t.sport}/${t.league}/summary?event=${eventId}`); } catch (e) { return ""; }
+  if (t.league === "nhl") {
+    const team = ((d.boxscore && d.boxscore.players) || []).find((x) => String(x.team && x.team.id) === String(teamId));
+    const tally = {};
+    for (const g of (team && team.statistics) || []) {
+      const keys = (g.keys || g.names || []).map((k) => String(k).toLowerCase());
+      const labels = (g.labels || []).map((k) => String(k).toUpperCase());
+      const gi = keys.indexOf("goals") >= 0 ? keys.indexOf("goals") : labels.indexOf("G");
+      const ai = keys.indexOf("assists") >= 0 ? keys.indexOf("assists") : labels.indexOf("A");
+      if (gi < 0 || ai < 0) continue;
+      for (const a of g.athletes || []) {
+        const n = lastName(a.athlete);
+        const goals = Number(a.stats && a.stats[gi]) || 0, assists = Number(a.stats && a.stats[ai]) || 0;
+        if (n && goals + assists) tally[n] = { n, goals, assists };
+      }
+    }
+    const top = Object.values(tally).sort((a, b) => (b.goals + b.assists) - (a.goals + a.assists) || b.goals - a.goals).slice(0, 2);
+    if (top.length) {
+      return "(" + top.map((p) => p.n + " " + [p.goals ? p.goals + " G" : "", p.assists ? p.assists + " A" : ""].filter(Boolean).join(", ")).join(" · ") + ")";
+    }
+  }
+  const lead = (d.leaders || []).find((x) => String(x.team && x.team.id) === String(teamId));
+  const bits = [];
+  for (const cat of (lead && lead.leaders) || []) {
+    const top = cat.leaders && cat.leaders[0];
+    if (!top || !top.athlete) continue;
+    const label = { goals: "G", assists: "A", points: "pts", homeRuns: "HR", RBIs: "RBI", rebounds: "reb" }[cat.name] || cat.shortDisplayName || "";
+    bits.push(`${lastName(top.athlete)} ${top.displayValue} ${label}`.trim());
+    if (bits.length === 2) break;
+  }
+  return bits.length ? `(${bits.join(" · ")})` : "";
+}
+
 async function sports() {
   const now = new Date();
   const days = [-1, 0, 1, 2, 3].map((o) => ymd(new Date(now.getTime() + o * 864e5)));
@@ -83,6 +120,7 @@ async function sports() {
           if (ast && ast.leaders[0]) bits.push(`${lastName(ast.leaders[0].athlete)} ${ast.leaders[0].displayValue} ast`);
           if (bits.length) note = `(${bits.join(" · ")})`;
         }
+        if (!note) note = await performers(t, ev.id, mine.team.id);
         finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, status: st.shortDetail || "Final", note });
       } else if (st.state === "in") {
         live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, status: "Live", note: st.shortDetail || "" });
