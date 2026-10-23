@@ -92,12 +92,72 @@ def example_block(e, heading="h2"):
 # ---------------------------------------------------------------- Home
 CTA_HOME = "Show us one thing your team does over and over."
 
-PAPER_IMG = '''<figure class="paper-shot">
-        <div class="paper-frame">
-          <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
-          <span class="paper-dateline" aria-hidden="true">Good morning, Ryan · <span data-paper-date>Friday, October 23, 2026</span> · Toronto</span>
+PAPER_ICON = {
+    "focus": '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',
+    "reply": '<path d="M9 7L4 12l5 5"/><path d="M4 12h10a6 6 0 0 1 6 6v1"/>',
+    "trophy": '<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/>',
+    "cal": '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+    "mail": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    "news": '<rect x="4" y="4" width="13" height="16" rx="1.5"/><path d="M17 8h3v10a2 2 0 0 1-2 2H6M7 8h7M7 12h7M7 16h4"/>',
+    "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+}
+
+
+def dp_h(icon_name, title, tag):
+    return f'<div class="dp-h"><svg viewBox="0 0 24 24">{PAPER_ICON[icon_name]}</svg><b>{title}</b><i>{tag}</i></div>'
+
+
+DP_FOCUS = [
+    ("Finish the client proposal", "By noon", ["Draft is ready for your final pass.", "Pricing page and timeline still need sign-off."]),
+    ("Call back two warm leads", "Today", ["Both asked for time this week.", "Lead with the new Q4 package."]),
+    ("Clear the inbox before 10", "Morning", ["Quick replies first, then archive.", "Seven threads need a yes or no."]),
+    ("Get outside for 30 minutes", "Health", ["A walk with Benny counts."]),
+    ("Prep tomorrow's first call", "5 min", ["Client call at 8:30. Notes and two questions."]),
+]
+DP_FU = [
+    ("Send the signed quote", "Fri", "Office reno quote for the client"),
+    ("Book Benny's vet visit", "Nov 1", "Annual check-up and shots"),
+    ("Renew the car insurance", "Oct 31", "Compare two quotes before renewal"),
+    ("Invoice approval", "Waiting", "With finance since Monday"),
+    ("Venue confirmation", "Nov 14", "Team event, waiting on the venue"),
+]
+DP_SPORTS = [
+    ("Raptors 135, Bulls 92", "Final", "(Barnes 23 pts · Quickley 7 ast)"),
+    ("Senators 5, Panthers 1", "Final", "(Stützle 1 G, 1 A)"),
+    ("Leafs vs Rangers", "Up next", "Tonight · 7:00 PM"),
+    ("Raptors vs Wizards", "Up next", "Fri · 7:00 PM"),
+]
+DP_CAL = [("7:30", "Walk Benny", "20 min"), ("9:00", "Team check-in", "15 min"), ("11:00", "Pipeline review", "Video call"), ("12:30", "Lunch with Sam", "Downtown"), ("3:00", "Proposal focus block", "Phone off"), ("6:00", "Gym", "Legs")]
+DP_INBOX = [("Proposal draft v2 is ready", "Work"), ("Supplier confirmed Friday delivery", "Work"), ("Coffee next week?", "Personal"), ("Q4 pricing sheet attached", "Work"), ("Dentist reminder: Nov 4", "Personal"), ("Team lunch Friday?", "Work")]
+DP_NEWS = ["CP24 hosts the final Toronto mayoral debate tonight", "Kawhi Leonard makes his Raptors regular-season debut", "Over-the-counter hearing aids coming to Ontario", "Ontario to table fall fiscal update next week", "Tour bus catches fire downtown, no injuries"]
+
+PAPER_IMG = f'''<figure class="paper-shot">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
+        <link rel="stylesheet" href="/paper.css">
+        <script src="/paper.js" defer></script>
+        <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
+          <div class="dp" aria-hidden="true">
+            <div class="dp-mast">The Daily Peddigrew</div>
+            <div class="dp-date"><span data-dp-greet>Good morning</span>, Ryan · <span data-dp-date>Friday, October 23, 2026</span><span data-dp-time data-on></span> · Toronto</div>
+            <div class="dp-cols">
+              <div>
+                <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "Must-dos")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
+                <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "Still open")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{"".join(f'<div class="dp-row"><div class="dp-team"><span class="dp-noimg"></span><div><div class="dp-score">{a}</div><div class="dp-st">{b}</div></div></div><div class="dp-lead">{c}</div></div>' for a, b, c in DP_SPORTS)}</div></section>
+              </div>
+              <div class="dp-rule"></div>
+              <div>
+                <div class="dp-wx"><svg viewBox="0 0 24 24">{PAPER_ICON["sun"]}</svg><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-desc" data-dp-desc>Partly cloudy, sunny by 9</span><span class="dp-tag" data-dp-hl>H 18° · L 8° · Toronto</span></div>
+                <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "Today")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>{c}</em></div>' for a, b, c in DP_CAL)}</section>
+                <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span>{a}</span><span class="dp-tag">{b}</span></div>' for a, b in DP_INBOX)}</section>
+                <section class="dp-sec dp-news">{dp_h("news", "Local News", "Toronto")}<div data-dp-news>{"".join(f'<div class="dp-row">{n}<em>· CTV News</em></div>' for n in DP_NEWS)}</div></section>
+                <img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt="">
+              </div>
+            </div>
+            <div class="dp-foot"><span>Printed fresh each morning</span><span>The Daily Peddigrew</span></div>
+          </div>
         </div>
-        <figcaption>Sample page. Content is for illustration.</figcaption>
+        <figcaption>Sample page. Scores, news and weather are live.</figcaption>
       </figure>'''
 
 home = f'''
@@ -143,7 +203,7 @@ home = f'''
         <span class="rule"></span>
         <h2 id="paper-title">Start your morning on one page.</h2>
         <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
-        <a class="btn btn-ink" href="/morning-paper/">See the morning paper</a>
+        <a class="btn btn-ink" href="/paper/">See the morning paper</a>
       </div>
       {PAPER_IMG}
     </div>
@@ -626,7 +686,7 @@ PAGES = [
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, builds one automation at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
-    ("morning-paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/morning-paper/", None, morning_paper, False),
+    ("paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
 ] + [
