@@ -150,7 +150,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
                 <div class="dp-wx"><svg viewBox="0 0 24 24">{PAPER_ICON["sun"]}</svg><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-desc" data-dp-desc>Partly cloudy, sunny by 9</span><span class="dp-tag" data-dp-hl>H 18° · L 8° · Toronto</span></div>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "Today")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>{c}</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span>{a}</span><span class="dp-tag">{b}</span></div>' for a, b in DP_INBOX)}</section>
-                <section class="dp-sec dp-news">{dp_h("news", "Local News", "Toronto")}<div data-dp-news>{"".join(f'<div class="dp-row">{n}<em>· CTV News</em></div>' for n in DP_NEWS)}</div></section>
+                <section class="dp-sec dp-news">{dp_h("news", "Local News", "Toronto")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>· CTV News</em></div>' for n in DP_NEWS)}</div></section>
                 <img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt="">
               </div>
             </div>

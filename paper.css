@@ -50,3 +50,6 @@
 .dp-wx { height: 40px; margin-bottom: 18px; }
 .paper-shot .dp img.dp-comic { width: 136px; height: auto; }
 .paper-shot .dp .dp-team img { width: 13px; height: 13px; }
+.dp-news .dp-row { display: flex; align-items: baseline; overflow: visible; }
+.dp-news .dp-row .dp-nt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.dp-news .dp-row em { flex: none; }
