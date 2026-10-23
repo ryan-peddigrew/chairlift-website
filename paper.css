@@ -44,11 +44,11 @@
 .dp-inbox .dp-row span:first-child { font-size: 10.6px; }
 .dp-news .dp-row { display: block; padding: 7px 0 7px; height: 31px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 9.5px; font-weight: 600; line-height: 16px; }
 .dp-news .dp-row em { font-weight: 400; font-size: 7.4px; color: #555; margin-left: 2px; }
-.dp-comic { display: block; width: 136px; margin: 22px auto 0; mix-blend-mode: multiply; }
+.dp-comic { display: block; width: 118px; margin: 6px auto 0; mix-blend-mode: multiply; }
 .dp-foot { position: absolute; left: 42px; right: 42px; bottom: 22px; display: flex; justify-content: space-between; font: 600 6px/1 Inter, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: #666; }
 .paper-shot .dp img { border: 0; border-radius: 0; box-shadow: none; }
 .dp-wx { height: 40px; margin-bottom: 18px; }
-.paper-shot .dp img.dp-comic { width: 136px; height: auto; }
+.paper-shot .dp img.dp-comic { width: 118px; height: auto; }
 .paper-shot .dp .dp-team img { width: 13px; height: 13px; }
 .dp-news .dp-row { display: flex; align-items: baseline; overflow: visible; }
 .dp-news .dp-row .dp-nt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
