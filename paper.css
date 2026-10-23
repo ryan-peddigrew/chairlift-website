@@ -235,3 +235,16 @@
 /* comic: keep its colours but pull the yellow toward the neutral paper */
 .dp-comic { filter: saturate(0.3) brightness(1.07) contrast(1.04); }
 .dp-rel { font-weight: 600; font-size: 7px; letter-spacing: 0.06em; color: #666; text-transform: lowercase; margin-right: 1px; }
+/* a touch larger small text, easier to read on a phone */
+.dp-focus li, .dp-fu .dp-re { font-size: 9.8px; }
+.dp-focus li::before, .dp-fu .dp-re::before { top: 0.62em; }
+.dp-from { font-size: 7.8px; min-width: 58px; }
+.dp-inbox .dp-tag { font-size: 6.8px; }
+.dp-cal .dp-row em { font-size: 8.8px; }
+.dp-news .dp-row em { font-size: 6.9px; }
+.dp-focus .dp-row { padding: 14.05px 0 13.05px; }
+.dp-fu .dp-row { padding: 12.05px 0 11.05px; }
+.dp-focus .dp-row .dp-tag { top: 19px; }
+.dp-fu .dp-row .dp-tag { top: 17px; }
+.dp-from { font-size: 7.4px; min-width: 54px; margin-right: 4px; letter-spacing: 0.08em; }
+.dp-inbox .dp-tag { font-size: 6.5px; letter-spacing: 0.06em; margin-left: 4px; }
