@@ -523,3 +523,5 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .reel-hero { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .reel { max-width: 320px; }
 }
+.paper-frame { position: relative; container-type: inline-size; }
+.paper-dateline { position: absolute; left: 0; right: 0; top: 12.22%; transform: translateY(-50%); text-align: center; white-space: nowrap; color: #111; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 1.14cqw; letter-spacing: 0.29em; text-transform: uppercase; line-height: 1; }

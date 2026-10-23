@@ -93,7 +93,10 @@ def example_block(e, heading="h2"):
 CTA_HOME = "Show us one thing your team does over and over."
 
 PAPER_IMG = '''<figure class="paper-shot">
-        <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
+        <div class="paper-frame">
+          <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
+          <span class="paper-dateline" aria-hidden="true">Good morning, Ryan · <span data-paper-date>Friday, October 23, 2026</span> · Toronto</span>
+        </div>
         <figcaption>Sample page. Content is for illustration.</figcaption>
       </figure>'''
 

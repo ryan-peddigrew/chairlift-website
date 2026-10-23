@@ -46,3 +46,13 @@
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
 })();
+
+// Morning paper sample: show today's date in Toronto
+(function () {
+  var els = document.querySelectorAll('[data-paper-date]');
+  if (!els.length) return;
+  try {
+    var d = new Date().toLocaleDateString('en-US', { timeZone: 'America/Toronto', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    els.forEach(function (el) { el.textContent = d; });
+  } catch (e) {}
+})();
