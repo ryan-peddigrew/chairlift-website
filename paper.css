@@ -109,3 +109,8 @@
 .dp-boxes { margin-top: 12px; }
 .dp-next { margin-top: 16px; }
 .dp-nr { padding: 11px 0 10px; }
+/* Inbox sender before each subject */
+.dp-inbox .dp-row > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.dp-from { display: inline-block; min-width: 86px; margin-right: 8px; font: 700 7px/1 Inter, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #111; }
+/* News source line indented under its headline */
+.dp-news .dp-row em { margin-left: 40px; }

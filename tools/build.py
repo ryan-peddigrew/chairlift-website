@@ -136,7 +136,7 @@ def dp_sports():
     nxt = "".join(f'<div class="dp-nr"><span class="dp-noimg"></span><span>{a} <i>vs</i> {b}</span><em>{w}</em></div>' for a, b, w in DP_NEXT)
     return f'<div class="dp-boxes">{boxes}</div><div class="dp-next"><span class="dp-tag">Up next</span>{nxt}</div>'
 DP_CAL = [("7:30", "Walk Benny", "20 min"), ("9:00", "Team check-in", "15 min"), ("11:00", "Pipeline review", "Video call"), ("12:30", "Lunch with Sam", "Downtown"), ("3:00", "Proposal focus block", "Phone off"), ("6:00", "Gym", "Legs")]
-DP_INBOX = [("Proposal draft v2 is ready", "Work"), ("Supplier confirmed Friday delivery", "Work"), ("Coffee next week?", "Personal"), ("Q4 pricing sheet attached", "Work"), ("Dentist reminder: Nov 4", "Personal"), ("Team lunch Friday?", "Work")]
+DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Supplier", "Confirmed Friday delivery", "Work"), ("Accountant", "Q4 numbers to review", "Work"), ("Dentist’s Office", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
@@ -157,7 +157,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               <div>
                 <div class="dp-wx"><svg viewBox="0 0 24 24">{PAPER_ICON["sun"]}</svg><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-desc" data-dp-desc>Partly cloudy</span><span class="dp-wxm"><span><i>Feels</i><b data-dp-feels>6°</b></span><span><i>Wind</i><b data-dp-wind>14 km/h</b></span><span><i>Rain</i><b data-dp-rain>10%</b></span></span><span class="dp-tag" data-dp-hl>H 18° · L 8° · Toronto</span></div>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "Today")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>{c}</em></div>' for a, b, c in DP_CAL)}</section>
-                <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span>{a}</span><span class="dp-tag">{b}</span></div>' for a, b in DP_INBOX)}</section>
+                <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span><b class="dp-from">{f}</b>{a}</span><span class="dp-tag">{b}</span></div>' for f, a, b in DP_INBOX)}</section>
                 <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
                 <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt=""></section>
               </div>
