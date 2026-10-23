@@ -248,3 +248,9 @@
 .dp-fu .dp-row .dp-tag { top: 17px; }
 .dp-from { font-size: 7.4px; min-width: 54px; margin-right: 4px; letter-spacing: 0.08em; }
 .dp-inbox .dp-tag { font-size: 6.5px; letter-spacing: 0.06em; margin-left: 4px; }
+/* bigger small text for phones, same boxes and spacing */
+.dp-focus li, .dp-fu .dp-re { font-size: 10.6px; line-height: 14.7px; }
+.dp-cal .dp-row em { font-size: 9.6px; }
+.dp-news .dp-row em { font-size: 7.6px; }
+.dp-from { font-size: 8.2px; min-width: 56px; margin-right: 3px; letter-spacing: 0.04em; }
+.dp-inbox .dp-tag { font-size: 7.2px; letter-spacing: 0.03em; margin-left: 3px; }
