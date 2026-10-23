@@ -138,7 +138,7 @@ def dp_sports():
     return "".join(
         f'<div class="dp-game"><div class="dp-sb">{side(a)}<b{lo(sa, sb)}>{sa}</b><span class="dp-mid"><i>{lg}</i><em>{mid}</em></span><b{lo(sb, sa)}>{sb}</b>{side(b)}</div></div>'
         for lg, a, sa, b, sb, mid in DP_GAMES)
-DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "Video call"), ("12:30", "Client lunch with Sam", "Downtown"), ("3:00", "Proposal deep focus block", "Phone off"), ("6:00", "Gym after work", "Legs")]
+DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("6:00", "Gym after work", "1 hr")]
 DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Supplier", "Confirmed Friday delivery", "Work"), ("Accountant", "Q4 numbers to review", "Work"), ("Dentist’s Office", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region")]
 
