@@ -1,4 +1,4 @@
-// Live data for the Daily Peddigrew sample: Toronto weather, Toronto headlines,
+// Live data for the Daily Peddigrew sample: Toronto weather, local headlines,
 // and recent and upcoming games for Toronto-area teams. Cached at the CDN.
 
 const TZ = "America/Toronto";
@@ -21,32 +21,87 @@ async function getJSON(url) {
 }
 
 async function weather() {
-  const d = await getJSON("https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.38&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=America%2FToronto&forecast_days=1");
+  const d = await getJSON("https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.38&current=temperature_2m,apparent_temperature,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&wind_speed_unit=kmh&timezone=America%2FToronto&forecast_days=1");
   return {
     temp: Math.round(d.current.temperature_2m),
     desc: WMO[d.current.weather_code] || "",
     hi: Math.round(d.daily.temperature_2m_max[0]),
     lo: Math.round(d.daily.temperature_2m_min[0]),
+    feels: Math.round(d.current.apparent_temperature),
+    wind: Math.round(d.current.wind_speed_10m),
+    rain: d.daily.precipitation_probability_max ? d.daily.precipitation_probability_max[0] : null,
   };
 }
 
-async function news() {
-  const r = await fetch("https://www.cbc.ca/webfeed/rss/rss-canada-toronto", { headers: { "User-Agent": "Mozilla/5.0 (usechairlift.com)" } });
-  if (!r.ok) throw new Error("news " + r.status);
+// One headline per local source. Each tries its own feed first, then a Google News
+// search limited to that outlet, so a feed URL change doesn't blank the row.
+const gnews = (q) => `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-CA&gl=CA&ceid=CA:en`;
+const SOURCES = [
+  { name: "CBC News", take: 1, urls: ["https://www.cbc.ca/webfeed/rss/rss-canada-toronto", gnews("site:cbc.ca toronto when:1d")] },
+  { name: "CTV News", take: 1, urls: ["https://www.ctvnews.ca/arc/outboundfeeds/rss/category/toronto/?outputType=xml", gnews("site:ctvnews.ca toronto when:1d")] },
+  { name: "CP24", take: 1, urls: ["https://www.cp24.com/arc/outboundfeeds/rss/?outputType=xml", gnews("site:cp24.com when:1d")] },
+  { name: "York Region", take: 1, urls: ["https://www.yorkregion.com/search/?f=rss&t=article&l=20&s=start_time&sd=desc", gnews('"York Region" when:2d')] },
+];
+
+function clean(t) {
+  return t.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;|&#x27;|&apos;|&#8217;|&rsquo;/g, "'").replace(/&quot;|&#8220;|&#8221;/g, '"').replace(/&#8212;|&#8211;/g, "-").replace(/\s+/g, " ").trim();
+}
+
+async function titles(url) {
+  const r = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (usechairlift.com)" } });
+  if (!r.ok) throw new Error(String(r.status));
   const xml = await r.text();
-  const items = [];
-  for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
-    const t = (m[1].match(/<title>([\s\S]*?)<\/title>/) || [])[1];
-    if (!t) continue;
-    const title = t.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').trim();
-    if (title) items.push({ title, source: "CBC News" });
-    if (items.length === 5) break;
+  const out = [];
+  for (const m of xml.matchAll(/<(item|entry)[\s>]([\s\S]*?)<\/\1>/g)) {
+    const t = (m[2].match(/<title[^>]*>([\s\S]*?)<\/title>/) || [])[1];
+    // Google News appends " - Outlet" to every title.
+    let title = t && clean(t);
+    if (title && url.includes("news.google.com")) title = title.replace(/\s+-\s+[^-]+$/, "");
+    if (title) out.push(title);
+    if (out.length === 8) break;
+  }
+  if (!out.length) throw new Error("no items");
+  return out;
+}
+
+async function news(debug) {
+  const results = await Promise.all(SOURCES.map(async (src) => {
+    for (const url of src.urls) {
+      try {
+        const list = await titles(url);
+        if (debug) debug[src.name] = url;
+        return { src, list };
+      } catch (e) {
+        if (debug) debug[src.name + " " + url] = String(e.message || e);
+      }
+    }
+    return { src, list: [] };
+  }));
+  const seen = new Set(), items = [];
+  for (const { src, list } of results) {
+    let n = 0;
+    for (const title of list) {
+      const key = title.toLowerCase().slice(0, 40);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      items.push({ title, source: src.name });
+      if (++n === src.take) break;
+    }
   }
   return items;
 }
 
 function name(team) {
   return SHORT[team.shortDisplayName] || team.shortDisplayName || team.name;
+}
+
+function rec(c) {
+  const r = (c.records || []).find((x) => x.type === "total" || x.name === "overall") || (c.records || [])[0];
+  return (r && r.summary) || "";
+}
+
+function side(c, score) {
+  return { name: name(c.team), rec: rec(c), score: score ? String(c.score) : "" };
 }
 
 function lastName(a) {
@@ -121,14 +176,14 @@ async function sports() {
           perf = bits;
         }
         if (!perf.length) perf = await performers(t, ev.id, mine.team.id);
-        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, status: st.shortDetail || "Final", perf });
+        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: [side(w, 1), side(l, 1)], sep: ",", status: st.shortDetail || "Final", perf });
       } else if (st.state === "in") {
-        live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
+        live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, teams: [side(mine, 1), side(other, 1)], sep: ",", status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
       } else if (st.state === "pre" && when.getTime() > now.getTime() - 3 * 36e5) {
         const time = when.toLocaleTimeString("en-US", { timeZone: TZ, hour: "numeric", minute: "2-digit" });
         const hour = Number(when.toLocaleString("en-US", { timeZone: TZ, hour: "numeric", hour12: false }));
         const label = ymd(when) === today ? (hour >= 17 ? "Tonight" : "Today") : when.toLocaleDateString("en-US", { timeZone: TZ, weekday: "short" });
-        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, status: "Up next", perf: [`${label} · ${time}`] });
+        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, teams: [side(mine, 0), side(other, 0)], sep: " vs", status: "Up next", perf: [`${label} · ${time}`] });
       }
     }
   })));
@@ -140,18 +195,21 @@ async function sports() {
   return [...finals.slice(0, 3), ...live, ...nextOnce].slice(0, 4).map(({ when, team, ...g }) => g);
 }
 
-export default async () => {
-  const [w, n, s] = await Promise.allSettled([weather(), news(), sports()]);
+export default async (req) => {
+  const debug = new URL(req.url).searchParams.has("debug") ? {} : null;
+  const [w, n, s] = await Promise.allSettled([weather(), news(debug), sports()]);
   const body = {
     weather: w.status === "fulfilled" ? w.value : null,
     news: n.status === "fulfilled" ? n.value : [],
     sports: s.status === "fulfilled" ? s.value : [],
   };
+  if (debug) body.debug = debug;
   return new Response(JSON.stringify(body), {
     headers: {
       "Content-Type": "application/json",
       "Cache-Control": "public, max-age=300",
-      "Netlify-CDN-Cache-Control": "public, s-maxage=600, stale-while-revalidate=3600",
+      "Netlify-CDN-Cache-Control": debug ? "no-store" : "public, s-maxage=600, stale-while-revalidate=1800",
+      "Netlify-Vary": "query",
     },
   });
 };

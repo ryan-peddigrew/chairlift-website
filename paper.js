@@ -22,30 +22,36 @@
       el.textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     });
     all('[data-dp-time]', function (el) {
-      if (el.hasAttribute('data-on')) el.textContent = ' · ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      if (el.hasAttribute('data-on')) el.textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
     });
   }
   tick();
   setInterval(tick, 10000);
 
-  fetch('/.netlify/functions/paper').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch('/.netlify/functions/paper?v=3').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });
       all('[data-dp-desc]', function (el) { el.textContent = d.weather.desc; });
       all('[data-dp-hl]', function (el) { el.textContent = 'H ' + d.weather.hi + '° · L ' + d.weather.lo + '° · Toronto'; });
+      if (d.weather.feels != null) all('[data-dp-feels]', function (el) { el.textContent = d.weather.feels + '°'; });
+      if (d.weather.wind != null) all('[data-dp-wind]', function (el) { el.textContent = d.weather.wind + ' km/h'; });
+      if (d.weather.rain != null) all('[data-dp-rain]', function (el) { el.textContent = d.weather.rain + '%'; });
     }
     if (d.news && d.news.length >= 3) {
       all('[data-dp-news]', function (el) {
-        el.innerHTML = d.news.slice(0, 5).map(function (n) { return '<div class="dp-row"><span class="dp-nt">' + esc(n.title) + '</span><em>· ' + esc(n.source) + '</em></div>'; }).join('');
+        el.innerHTML = d.news.slice(0, 4).map(function (n) { return '<div class="dp-row"><span class="dp-nt">' + esc(n.title) + '</span><em>' + esc(n.source) + '</em></div>'; }).join('');
       });
     }
     if (d.sports && d.sports.length) {
       all('[data-dp-sports]', function (el) {
         el.innerHTML = d.sports.slice(0, 4).map(function (g) {
           var logo = g.logo ? '<img src="' + esc(g.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-          var perf = (g.perf || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
-          return '<div class="dp-row"><div class="dp-gl">' + logo + '<span class="dp-score">' + esc(g.line) + '</span><span class="dp-tag">' + esc(g.status) + '</span></div><ul>' + perf + '</ul></div>';
+          var line = g.teams ? g.teams.map(function (t) {
+            return esc(t.name) + (t.rec ? ' <small>(' + esc(t.rec) + ')</small>' : '') + (t.score ? ' ' + esc(t.score) : '');
+          }).join(esc(g.sep) + ' ') : esc(g.line);
+          var perf = (g.perf || []).length ? '<p class="dp-perf">' + esc(g.perf.join(' · ')) + '</p>' : '';
+          return '<div class="dp-row"><div class="dp-gl">' + logo + '<span class="dp-score">' + line + '</span><span class="dp-tag">' + esc(g.status) + '</span></div>' + perf + '</div>';
         }).join('');
       });
     }

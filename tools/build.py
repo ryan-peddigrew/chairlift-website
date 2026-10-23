@@ -123,14 +123,14 @@ DP_FU = [
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue"),
 ]
 DP_SPORTS = [
-    ("Leafs 5, Rangers 4", "Final", ["Duhaime 1 G, 2 A", "Blueger 1 G, 1 A"]),
-    ("Sharks 6, Senators 2", "Final", ["Stützle 1 G", "Spence 1 G"]),
-    ("Raptors vs Wizards", "Up next", ["Tonight · 7:00 PM"]),
-    ("Senators vs Rangers", "Up next", ["Sat · 7:00 PM"]),
+    ("Leafs 5, Rangers 4", "Final", "Duhaime 1 G, 2 A · Blueger 1 G, 1 A"),
+    ("Sharks 6, Senators 2", "Final", "Stützle 1 G · Spence 1 G"),
+    ("Raptors vs Wizards", "Up next", "Tonight · 7:00 PM"),
+    ("Senators vs Rangers", "Up next", "Sat · 7:00 PM"),
 ]
 DP_CAL = [("7:30", "Walk Benny", "20 min"), ("9:00", "Team check-in", "15 min"), ("11:00", "Pipeline review", "Video call"), ("12:30", "Lunch with Sam", "Downtown"), ("3:00", "Proposal focus block", "Phone off"), ("6:00", "Gym", "Legs")]
 DP_INBOX = [("Proposal draft v2 is ready", "Work"), ("Supplier confirmed Friday delivery", "Work"), ("Coffee next week?", "Personal"), ("Q4 pricing sheet attached", "Work"), ("Dentist reminder: Nov 4", "Personal"), ("Team lunch Friday?", "Work")]
-DP_NEWS = ["CP24 hosts the final Toronto mayoral debate tonight", "Kawhi Leonard makes his Raptors regular-season debut", "Over-the-counter hearing aids coming to Ontario", "Ontario to table fall fiscal update next week", "Tour bus catches fire downtown, no injuries"]
+DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
@@ -139,19 +139,19 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
           <div class="dp" aria-hidden="true">
             <div class="dp-mast">The Daily Peddigrew</div>
-            <div class="dp-date"><span data-dp-greet>Good morning</span>, Ryan · <span data-dp-date>Friday, October 23, 2026</span><span data-dp-time data-on></span> · Toronto</div>
+            <div class="dp-date"><span><span data-dp-greet>Good morning</span>, Ryan</span><span data-dp-date>Friday, October 23, 2026</span><span data-dp-time data-on>7:00 AM</span></div>
             <div class="dp-cols">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "Must-dos")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
                 <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "Still open")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
-                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{"".join(f'<div class="dp-row"><div class="dp-gl"><span class="dp-noimg"></span><span class="dp-score">{a}</span><span class="dp-tag">{b}</span></div><ul>{"".join(f"<li>{x}</li>" for x in c)}</ul></div>' for a, b, c in DP_SPORTS)}</div></section>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{"".join(f'<div class="dp-row"><div class="dp-gl"><span class="dp-noimg"></span><span class="dp-score">{a}</span><span class="dp-tag">{b}</span></div><p class="dp-perf">{c}</p></div>' for a, b, c in DP_SPORTS)}</div></section>
               </div>
               <div class="dp-rule"></div>
               <div>
-                <div class="dp-wx"><svg viewBox="0 0 24 24">{PAPER_ICON["sun"]}</svg><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-desc" data-dp-desc>Partly cloudy, sunny by 9</span><span class="dp-tag" data-dp-hl>H 18° · L 8° · Toronto</span></div>
+                <div class="dp-wx"><svg viewBox="0 0 24 24">{PAPER_ICON["sun"]}</svg><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-desc" data-dp-desc>Partly cloudy</span><span class="dp-wxm"><span><i>Feels</i><b data-dp-feels>6°</b></span><span><i>Wind</i><b data-dp-wind>14 km/h</b></span><span><i>Rain</i><b data-dp-rain>10%</b></span></span><span class="dp-tag" data-dp-hl>H 18° · L 8° · Toronto</span></div>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "Today")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>{c}</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "Work + personal")}{"".join(f'<div class="dp-row"><span>{a}</span><span class="dp-tag">{b}</span></div>' for a, b in DP_INBOX)}</section>
-                <section class="dp-sec dp-news">{dp_h("news", "Local News", "Toronto")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>· CTV News</em></div>' for n in DP_NEWS)}</div></section>
+                <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
                 <section class="dp-sec dp-laugh">{dp_h("cup", "Morning Chuckle", "")}<img class="dp-comic" src="/images/paper-comic.png" width="480" height="480" alt=""></section>
               </div>
             </div>
