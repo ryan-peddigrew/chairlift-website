@@ -129,14 +129,14 @@ DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night"),
 
 
 def dp_sports():
-    def side(abbr):
-        return f'<span class="dp-sd"><span class="dp-noimg"></span><small>{abbr}</small></span>'
+    def tm(abbr, score, lose):
+        return f'<div class="dp-tm{" dp-lo" if lose else ""}"><span class="dp-noimg"></span><small>{abbr}</small><b>{score}</b></div>'
 
-    def lo(x, y):
-        return ' class="dp-lo"' if x and int(x) < int(y) else ""
+    def lost(x, y):
+        return bool(x) and int(x) < int(y)
 
     return "".join(
-        f'<div class="dp-game"><div class="dp-sb">{side(a)}<b{lo(sa, sb)}>{sa}</b><span class="dp-mid"><i>{lg}</i><em>{mid}</em></span><b{lo(sb, sa)}>{sb}</b>{side(b)}</div></div>'
+        f'<div class="dp-game"><div class="dp-gs"><i>{lg}</i><em>{mid}</em></div>{tm(a, sa, lost(sa, sb))}{tm(b, sb, lost(sb, sa))}</div>'
         for lg, a, sa, b, sb, mid in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("6:00", "Gym after work", "1 hr")]
 DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Northline Supply Co.", "Confirmed Friday delivery", "Work"), ("Brightwater CPA", "Q4 numbers to review", "Work"), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]

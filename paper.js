@@ -14,10 +14,10 @@
   function all(sel, fn) { document.querySelectorAll(sel).forEach(fn); }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  // One rounded scoreboard bubble per game: logo, score, status, score, logo.
-  function side(t, lose) {
+  // One small scorecard per game: league and status on top, then a row per team (logo, name, score).
+  function team(t, lose, pre) {
     var mark = t.logo ? '<img src="' + esc(t.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-    return '<span class="dp-sd">' + mark + '<small>' + esc(t.abbr || t.name) + '</small></span>';
+    return '<div class="dp-tm' + (lose ? ' dp-lo' : '') + '">' + mark + '<small>' + esc(t.abbr || t.name) + '</small><b>' + (pre ? '' : esc(t.score)) + '</b></div>';
   }
   function sportsHTML(boxes, next) {
     return boxes.concat(next).map(function (g) {
@@ -26,12 +26,8 @@
       var pre = g.status === 'Up next';
       var a = Number(t[0].score), b = Number(t[1].score);
       var mid = pre ? ((g.perf || [])[0] || 'Up next') : (/^Final/.test(g.status) ? 'Last night' : g.status);
-      return '<div class="dp-game">' +
-        '<div class="dp-sb">' + side(t[0]) +
-        '<b class="' + (!pre && a < b ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[0].score)) + '</b>' +
-        '<span class="dp-mid"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></span>' +
-        '<b class="' + (!pre && b < a ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[1].score)) + '</b>' +
-        side(t[1]) + '</div></div>';
+      return '<div class="dp-game"><div class="dp-gs"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></div>' +
+        team(t[0], !pre && a < b, pre) + team(t[1], !pre && b < a, pre) + '</div>';
     }).join('');
   }
 

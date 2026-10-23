@@ -179,3 +179,34 @@
 .dp-fu .dp-row { padding: 13.2px 0 12.2px; }
 .dp-fu .dp-row .dp-tag { top: 18px; }
 .dp-band { margin-top: 18px; }
+/* sports scorecards: two across, one card per game */
+.dp-sports [data-dp-sports] { column-gap: 0; }
+.dp-sports .dp-game { margin: 0; padding: 9px 14px 8px 0; border-bottom: 1px solid #d9d6cd; }
+.dp-sports .dp-game:nth-child(even) { padding: 9px 0 8px 14px; border-left: 1px solid #d9d6cd; }
+.dp-sports .dp-game:nth-last-child(-n+2) { border-bottom: 0; }
+.dp-gs { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.dp-gs i { font: 700 6.4px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.2em; color: #666; }
+.dp-gs em { font: italic 600 9px/1 'Source Serif 4', serif; font-style: italic; }
+.dp-tm { display: flex; align-items: center; gap: 8px; padding: 2px 0; }
+.dp-tm img, .dp-tm .dp-noimg { width: 22px; height: 22px; object-fit: contain; flex: none; }
+.dp-tm .dp-noimg { display: block; border-radius: 50%; background: #cfcbbf; }
+.dp-tm small { font: 700 8.6px/1 Inter, sans-serif; letter-spacing: 0.12em; }
+.dp-tm b { margin-left: auto; font: 800 17px/1 Inter, sans-serif; min-width: 14px; text-align: right; }
+.dp-tm.dp-lo b, .dp-tm.dp-lo small { color: #8A867D; font-weight: 600; }
+.dp-sports .dp-game { padding: 6px 14px 5px 0; }
+.dp-sports .dp-game:nth-child(even) { padding: 6px 0 5px 14px; }
+.dp-gs { margin-bottom: 4px; }
+.dp-tm { padding: 1px 0; gap: 7px; }
+.dp-tm img, .dp-tm .dp-noimg { width: 18px; height: 18px; }
+.dp-tm b { font-size: 15px; }
+.dp-cal .dp-row { height: 29.5px; padding: 7px 0 6px; }
+.dp-inbox .dp-row { height: 30.5px; padding: 7px 0 6px; }
+.dp-focus .dp-row { padding: 14.35px 0 13.35px; }
+.dp-focus .dp-row .dp-tag { top: 19px; }
+.dp-fu .dp-row { padding: 12.35px 0 11.35px; }
+.dp-fu .dp-row .dp-tag { top: 17px; }
+.dp-focus .dp-row { padding: 14.95px 0 13.95px; }
+.dp-fu .dp-row { padding: 12.95px 0 11.95px; }
+.dp-sports .dp-game { padding: 5px 14px 4px 0; }
+.dp-sports .dp-game:nth-child(even) { padding: 5px 0 4px 14px; }
+.dp-band { margin-top: 16px; }
