@@ -122,10 +122,10 @@ DP_FU = [
     ("Invoice approval", "Waiting", "With finance since Monday"),
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue"),
 ]
-DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Final", "Duhaime 1 G, 2 A · Blueger 1 G, 1 A"),
-            ("NHL", "SJ", "6", "OTT", "2", "Final", "Stützle 1 G · Spence 1 G"),
-            ]
-DP_NEXT = [("Raptors", "Wizards", "Tonight · 7:00 PM"), ("Senators", "Rangers", "Sat · 7:00 PM")]
+DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Final"),
+            ("NHL", "SJ", "6", "OTT", "2", "Final"),
+            ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM"),
+            ("NHL", "OTT", "", "NYR", "", "Sat · 7:00 PM")]
 
 
 def dp_sports():
@@ -136,10 +136,8 @@ def dp_sports():
         return ' class="dp-lo"' if x and int(x) < int(y) else ""
 
     return "".join(
-        f'<div class="dp-game"><div class="dp-sb">{side(a)}<b{lo(sa, sb)}>{sa}</b><span class="dp-mid"><i>{lg}</i><em>{mid}</em></span><b{lo(sb, sa)}>{sb}</b>{side(b)}</div>'
-        + (f'<p class="dp-pf">{pf}</p>' if pf else "") + "</div>"
-        for lg, a, sa, b, sb, mid, pf in DP_GAMES) + "".join(
-        f'<div class="dp-nr"><span class="dp-noimg"></span><span>{a} <i>vs</i> {b}</span><em>{w}</em></div>' for a, b, w in DP_NEXT)
+        f'<div class="dp-game"><div class="dp-sb">{side(a)}<b{lo(sa, sb)}>{sa}</b><span class="dp-mid"><i>{lg}</i><em>{mid}</em></span><b{lo(sb, sa)}>{sb}</b>{side(b)}</div></div>'
+        for lg, a, sa, b, sb, mid in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny", "20 min"), ("9:00", "Team check-in", "15 min"), ("11:00", "Pipeline review", "Video call"), ("12:30", "Lunch with Sam", "Downtown"), ("3:00", "Proposal focus block", "Phone off"), ("6:00", "Gym", "Legs")]
 DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Supplier", "Confirmed Friday delivery", "Work"), ("Accountant", "Q4 numbers to review", "Work"), ("Dentist’s Office", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region")]

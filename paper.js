@@ -24,19 +24,14 @@
       var t = g.teams;
       if (!t) return '';
       var pre = g.status === 'Up next';
-      if (pre) {
-        var lg = t[0].logo ? '<img src="' + esc(t[0].logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-        return '<div class="dp-nr">' + lg + '<span>' + esc(t[0].name) + ' <i>vs</i> ' + esc(t[1].name) + '</span><em>' + esc((g.perf || [])[0] || '') + '</em></div>';
-      }
       var a = Number(t[0].score), b = Number(t[1].score);
       var mid = pre ? ((g.perf || [])[0] || 'Up next') : g.status;
-      var perf = !pre && (g.perf || []).length ? '<p class="dp-pf">' + esc(g.perf.join(' · ')) + '</p>' : '';
       return '<div class="dp-game">' +
         '<div class="dp-sb">' + side(t[0]) +
         '<b class="' + (!pre && a < b ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[0].score)) + '</b>' +
         '<span class="dp-mid"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></span>' +
         '<b class="' + (!pre && b < a ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[1].score)) + '</b>' +
-        side(t[1]) + '</div>' + perf + '</div>';
+        side(t[1]) + '</div></div>';
     }).join('');
   }
 
