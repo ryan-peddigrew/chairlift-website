@@ -93,7 +93,7 @@ def example_block(e, heading="h2"):
 CTA_HOME = "Show us one thing your team does over and over."
 
 PAPER_IMG = '''<figure class="paper-shot">
-        <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with five goals for the day, a schedule, follow-ups and the weather.">
+        <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
         <figcaption>Sample page. Content is for illustration.</figcaption>
       </figure>'''
 
@@ -139,7 +139,7 @@ home = f'''
       <div>
         <span class="rule"></span>
         <h2 id="paper-title">Start your morning on one page.</h2>
-        <p class="paper-lede">A one-page morning briefing, built around how you work: five goals for the day, your schedule, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
+        <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
         <a class="btn btn-ink" href="/morning-paper/">See the morning paper</a>
       </div>
       {PAPER_IMG}
@@ -506,7 +506,7 @@ morning_paper = f'''
       <div>
         <span class="rule"></span>
         <h2 id="page-title">What's on the page.</h2>
-        {ticks(["Five goals for the day, must-dos first.", "Your schedule for the day, at a glance.", "Follow-ups: what's on you, and what you're waiting on from others.", "A few extras you choose, like the weather or a thought for the day."])}
+        {ticks(["Today's focus: your must-dos, with the details that matter.", "Your calendar for the day, at a glance.", "The emails that actually need you.", "Follow-ups that are still open, with their deadlines.", "The weather, local news and last night's scores."])}
         <p class="paper-lede">No printer? It comes by email or right on your desktop. However you get it, it's one page, with no scrolling.</p>
       </div>
     </div>
