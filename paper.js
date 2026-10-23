@@ -48,7 +48,7 @@
         el.innerHTML = d.sports.slice(0, 4).map(function (g) {
           var logo = g.logo ? '<img src="' + esc(g.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
           var line = g.teams ? g.teams.map(function (t) {
-            return esc(t.name) + (t.rec ? ' <small>(' + esc(t.rec) + ')</small>' : '') + (t.score ? ' ' + esc(t.score) : '');
+            return esc(t.name) + (t.score ? ' ' + esc(t.score) : '');
           }).join(esc(g.sep) + ' ') : esc(g.line);
           var perf = (g.perf || []).length ? '<p class="dp-perf">' + esc(g.perf.join(' · ')) + '</p>' : '';
           return '<div class="dp-row"><div class="dp-gl">' + logo + '<span class="dp-score">' + line + '</span><span class="dp-tag">' + esc(g.status) + '</span></div>' + perf + '</div>';
