@@ -122,22 +122,23 @@ DP_FU = [
     ("Invoice approval", "Waiting", "With finance since Monday, nudge them again today"),
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue to confirm the date"),
 ]
-DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night"),
-            ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM"),
-            ("NHL", "TOR", "", "EDM", "", "Sat · 7:00 PM"),
-            ("NBA", "TOR", "", "BOS", "", "Mon · 7:00 PM")]
+DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night", "@"),
+            ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM", "vs"),
+            ("NHL", "TOR", "", "EDM", "", "Sat · 7:00 PM", "vs"),
+            ("NBA", "TOR", "", "BOS", "", "Mon · 7:00 PM", "@")]
 
 
 def dp_sports():
-    def tm(abbr, score, lose):
-        return f'<div class="dp-tm{" dp-lo" if lose else ""}"><span class="dp-noimg"></span><small>{abbr}</small><b>{score}</b></div>'
+    def tm(abbr, score, lose, rel=""):
+        r = f'<span class="dp-rel">{rel}</span> ' if rel else ""
+        return f'<div class="dp-tm{" dp-lo" if lose else ""}"><span class="dp-noimg"></span><small>{r}{abbr}</small><b>{score}</b></div>'
 
     def lost(x, y):
         return bool(x) and int(x) < int(y)
 
     return "".join(
-        f'<div class="dp-game"><div class="dp-gs"><i>{lg}</i><em>{mid}</em></div>{tm(a, sa, lost(sa, sb))}{tm(b, sb, lost(sb, sa))}</div>'
-        for lg, a, sa, b, sb, mid in DP_GAMES)
+        f'<div class="dp-game"><div class="dp-gs"><i>{lg}</i><em>{mid}</em></div>{tm(a, sa, lost(sa, sb))}{tm(b, sb, lost(sb, sa), rel)}</div>'
+        for lg, a, sa, b, sb, mid, rel in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("6:00", "Gym after work", "1 hr")]
 DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Northline Supply Co.", "Confirmed Friday delivery", "Work"), ("Brightwater CPA", "Q4 numbers to review", "Work"), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region News")]

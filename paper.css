@@ -234,3 +234,4 @@
 .dp-foot { justify-content: flex-end; }
 /* comic: keep its colours but pull the yellow toward the neutral paper */
 .dp-comic { filter: saturate(0.3) brightness(1.07) contrast(1.04); }
+.dp-rel { font-weight: 600; font-size: 7px; letter-spacing: 0.06em; color: #666; text-transform: lowercase; margin-right: 1px; }

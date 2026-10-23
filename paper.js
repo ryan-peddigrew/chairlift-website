@@ -17,7 +17,7 @@
   // One small scorecard per game: league and status on top, then a row per team (logo, name, score).
   function team(t, lose, pre) {
     var mark = t.logo ? '<img src="' + esc(t.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-    return '<div class="dp-tm' + (lose ? ' dp-lo' : '') + '">' + mark + '<small>' + esc(t.abbr || t.name) + '</small><b>' + (pre ? '' : esc(t.score)) + '</b></div>';
+    return '<div class="dp-tm' + (lose ? ' dp-lo' : '') + '">' + mark + '<small>' + (t.rel ? '<span class="dp-rel">' + t.rel + '</span> ' : '') + esc(t.abbr || t.name) + '</small><b>' + (pre ? '' : esc(t.score)) + '</b></div>';
   }
   function sportsHTML(boxes, next) {
     return boxes.concat(next).map(function (g) {
@@ -45,7 +45,7 @@
   tick();
   setInterval(tick, 10000);
 
-  fetch('/.netlify/functions/paper?v=8').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch('/.netlify/functions/paper?v=9').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });

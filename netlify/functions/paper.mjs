@@ -142,6 +142,12 @@ async function performers(t, eventId, teamId) {
   return bits;
 }
 
+// Mark the opponent with "vs" (our team at home) or "@" (our team away).
+function withRel(teams, mine) {
+  const rel = mine.homeAway === "home" ? "vs" : "@";
+  return teams.map((t) => (t.abbr === mine.team.abbreviation ? t : { ...t, rel }));
+}
+
 async function sports() {
   const now = new Date();
   const days = [-1, 0, 1, 2, 3, 4, 5, 6].map((o) => ymd(new Date(now.getTime() + o * 864e5)));
@@ -172,14 +178,14 @@ async function sports() {
           perf = bits;
         }
         if (!perf.length) perf = await performers(t, ev.id, mine.team.id);
-        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: [side(w, 1), side(l, 1)], sep: ",", status: st.shortDetail || "Final", perf });
+        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: withRel([side(w, 1), side(l, 1)], mine), sep: ",", status: st.shortDetail || "Final", perf });
       } else if (st.state === "in") {
-        live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, teams: [side(mine, 1), side(other, 1)], sep: ",", status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
+        live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, teams: withRel([side(mine, 1), side(other, 1)], mine), sep: ",", status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
       } else if (st.state === "pre" && when.getTime() > now.getTime() - 3 * 36e5) {
         const time = when.toLocaleTimeString("en-US", { timeZone: TZ, hour: "numeric", minute: "2-digit" });
         const hour = Number(when.toLocaleString("en-US", { timeZone: TZ, hour: "numeric", hour12: false }));
         const label = ymd(when) === today ? (hour >= 17 ? "Tonight" : "Today") : when.toLocaleDateString("en-US", { timeZone: TZ, weekday: "short" });
-        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, teams: [side(mine, 0), side(other, 0)], sep: " vs", status: "Up next", perf: [`${label} · ${time}`] });
+        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, teams: withRel([side(mine, 0), side(other, 0)], mine), sep: " vs", status: "Up next", perf: [`${label} · ${time}`] });
       }
     }
   })));
