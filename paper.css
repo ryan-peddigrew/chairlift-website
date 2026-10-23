@@ -311,3 +311,5 @@
 .dp-focus .dp-row .dp-tag { top: 14.4px; }
 .dp-fu .dp-row .dp-tag { top: 12.4px; }
 .dp-gs em { line-height: 9px; }
+/* inbox: sender on the left, then the subject; no Personal/Work labels */
+.dp-inbox .dp-from { font: 700 10px/1 'Source Serif 4', serif; letter-spacing: 0; text-transform: none; color: #111; display: inline-block; min-width: 128px; margin-right: 0; }
