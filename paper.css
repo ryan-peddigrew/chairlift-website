@@ -280,3 +280,9 @@
 .dp-cal .dp-row { height: 27.5px; padding: 6px 0 4px; }
 .dp-inbox .dp-row { height: 28.5px; padding: 6px 0 4px; }
 .dp-inbox .dp-row { height: 28.33px; }
+/* weather is just a title line: degrees and condition centred, black rule under */
+.dp-wxc { margin: 0 auto; display: inline-flex; align-items: baseline; gap: 6px; font: 700 15px/1 'Source Serif 4', serif; color: #111; }
+.dp-wxc em { font: italic 400 11px/1 'Source Serif 4', serif; color: #333; }
+.dp-wxs { margin-bottom: 0; }
+.dp-cal .dp-row { height: 29.9px; padding: 7.4px 0 5px; }
+.dp-inbox .dp-row { height: 30.7px; padding: 7.4px 0 5px; }
