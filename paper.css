@@ -85,3 +85,5 @@
 .dp-wxm > span { padding: 0 9px; }
 .dp-wxm b { white-space: nowrap; }
 .dp-sports .dp-row { padding: 14px 0 13px; }
+/* Top line above the masthead: volume and issue number left, edition right */
+.dp-ears { position: absolute; top: 13px; left: 42px; right: 42px; display: flex; justify-content: space-between; font: 700 6.6px/1 Inter, sans-serif; letter-spacing: 0.24em; text-transform: uppercase; color: #444; }
