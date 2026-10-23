@@ -3,7 +3,7 @@
 
 const TZ = "America/Toronto";
 const TEAMS = [
-  { sport: "hockey", league: "nhl", abbr: ["TOR", "OTT"] },
+  { sport: "hockey", league: "nhl", abbr: ["TOR"] },
   { sport: "basketball", league: "nba", abbr: ["TOR"] },
   { sport: "baseball", league: "mlb", abbr: ["TOR"] },
 ];
@@ -143,7 +143,7 @@ async function performers(t, eventId, teamId) {
 
 async function sports() {
   const now = new Date();
-  const days = [-1, 0, 1, 2, 3].map((o) => ymd(new Date(now.getTime() + o * 864e5)));
+  const days = [-1, 0, 1, 2, 3, 4, 5, 6].map((o) => ymd(new Date(now.getTime() + o * 864e5)));
   const today = days[1];
   const finals = [], live = [], next = [];
 
@@ -185,10 +185,9 @@ async function sports() {
 
   finals.sort((a, b) => b.when - a.when);
   next.sort((a, b) => a.when - b.when);
-  const seen = new Set();
-  const nextOnce = next.filter((g) => !seen.has(g.team) && seen.add(g.team));
-  // Up to two scoreboxes (live games first, then last night's finals), then the next games.
-  return [...live, ...finals].slice(0, 2).concat(nextOnce.slice(0, 2)).map(({ when, team, ...g }) => g);
+  // Toronto teams only: up to two scoreboxes (live first, then last night's finals), then the next games, four cards in all.
+  const played = [...live, ...finals].slice(0, 2);
+  return played.concat(next.slice(0, 4 - played.length)).map(({ when, team, ...g }) => g);
 }
 
 export default async (req) => {

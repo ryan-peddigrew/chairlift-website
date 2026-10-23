@@ -123,9 +123,9 @@ DP_FU = [
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue to confirm the date"),
 ]
 DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night"),
-            ("NHL", "SJ", "6", "OTT", "2", "Last night"),
             ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM"),
-            ("NHL", "OTT", "", "NYR", "", "Sat · 7:00 PM")]
+            ("NHL", "TOR", "", "EDM", "", "Sat · 7:00 PM"),
+            ("NBA", "TOR", "", "BOS", "", "Mon · 7:00 PM")]
 
 
 def dp_sports():
