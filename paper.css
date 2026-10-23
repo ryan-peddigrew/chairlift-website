@@ -304,3 +304,10 @@
 .dp-fu .dp-row { padding: 9.5px 0 8.5px; }
 .dp-focus .dp-row .dp-tag { top: 16.4px; }
 .dp-fu .dp-row .dp-tag { top: 14.4px; }
+/* every right-hand label looks the same: italic serif, matching the calendar durations */
+.dp-focus .dp-row .dp-tag, .dp-fu .dp-row .dp-tag, .dp-inbox .dp-tag, .dp-gs em {
+  font: italic 400 9.6px/1 'Source Serif 4', serif; letter-spacing: 0; text-transform: none; color: #555;
+}
+.dp-focus .dp-row .dp-tag { top: 14.4px; }
+.dp-fu .dp-row .dp-tag { top: 12.4px; }
+.dp-gs em { line-height: 9px; }
