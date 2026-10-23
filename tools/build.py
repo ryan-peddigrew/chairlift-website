@@ -477,8 +477,25 @@ industries = page_hero("Who we help", "Different industries. The same lost hours
 
 
 
-morning_paper = page_hero("Starter offer", "Your morning, on one page.",
-    "A one-page morning briefing built around how you work. Your goals for the day, your schedule and your follow-ups, boiled down to one page you can read before your first coffee.") + f'''
+morning_paper = f'''
+  <section class="page-hero">
+    <div class="wrap reel-hero">
+      <div>
+        <span class="eyebrow">Starter offer</span>
+        <h1>Your morning, on one page.</h1>
+        <p class="lede">A one-page morning briefing built around how you work. Your goals for the day, your schedule and your follow-ups, boiled down to one page you can read before your first coffee.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        </div>
+      </div>
+      <figure class="reel">
+        <video controls playsinline preload="metadata" poster="/images/morning-paper-reel-poster.jpg" width="1080" height="1920">
+          <source src="/images/morning-paper-reel.mp4" type="video/mp4">
+        </video>
+      </figure>
+    </div>
+  </section>
+
   <section class="section section--tight" aria-labelledby="page-title">
     <div class="wrap paper-split paper-split--flip">
       {PAPER_IMG}
