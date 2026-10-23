@@ -88,7 +88,7 @@
 /* Masthead: a touch heavier, with a soft letterpress shadow */
 .dp-mast { -webkit-text-stroke: 0.6px #111; text-shadow: 2px 2.5px 0 rgba(17, 17, 17, 0.2), 0 0 1px rgba(17, 17, 17, 0.35); }
 /* Sports: one rounded scoreboard bubble per game */
-.dp-game { margin-top: 14px; }
+.dp-game { margin-top: 9px; }
 .dp-sb { display: grid; grid-template-columns: 44px 1fr 120px 1fr 44px; align-items: center; background: #E9E5DB; border-radius: 14px; padding: 7px 12px; }
 .dp-sd { display: flex; flex-direction: column; align-items: center; gap: 3px; }
 .dp-sd img, .dp-sd .dp-noimg { width: 22px; height: 22px; object-fit: contain; display: block; }
@@ -107,3 +107,8 @@
 .dp-news .dp-row em { position: relative; margin-left: 20px; padding-left: 8px; }
 .dp-news .dp-row em::before { content: ""; position: absolute; left: 0; top: 2.9px; width: 3px; height: 3px; border-radius: 50%; background: #666; }
 .dp-sb { padding: 5px 12px; }
+/* Focus and Follow-ups share one style: bold title, italic bullet lines indented to the "n" of the title */
+.dp-focus li, .dp-fu .dp-re { font-style: italic; font-size: 8.9px; line-height: 1.5; color: #333; padding-left: 22px; position: relative; margin-left: 0; }
+.dp-focus li::before, .dp-fu .dp-re::before { content: ""; position: absolute; left: 13px; top: 0.62em; width: 3.5px; height: 3.5px; border-radius: 50%; background: #333; }
+.dp-fu .dp-t { font-weight: 700; font-size: 11.8px; }
+.dp-fu .dp-re { margin-top: 3px; }
