@@ -215,3 +215,16 @@
 .dp-sports .dp-game, .dp-sports .dp-game:nth-child(even) { padding: 5px 14px 4px 0; border-left: 0; border-bottom: 0; }
 .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding: 5px 0 4px 14px; border-left: 1px solid #d9d6cd; }
 .dp-sports .dp-game:nth-child(odd) { border-bottom: 1px solid #d9d6cd; }
+/* weather as the fourth section: a little more presence */
+.dp-wx { height: 40px; padding: 6px 2px 4px; }
+.dp-wx .dp-temp { font-size: 26px; }
+.dp-wx .dp-temp sup { font-size: 11px; top: -4px; right: -8px; }
+.dp-wx .dp-desc { font-size: 10px; }
+.dp-hl { font-size: 6.4px; }
+.dp-wxm b { font-size: 11px; }
+.dp-wxm i { font-size: 6px; }
+.dp-wx .dp-dc { margin-left: 12px; }
+.dp-wxs { margin-bottom: 0; }
+.dp-wx { height: 36px; }
+.dp-cal .dp-row { height: 29px; padding: 7px 0 5px; }
+.dp-inbox .dp-row { height: 30px; padding: 7px 0 5px; }
