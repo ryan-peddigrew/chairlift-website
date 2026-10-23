@@ -109,18 +109,18 @@ def dp_h(icon_name, title, tag):
 
 
 DP_FOCUS = [
-    ("Finish the client proposal", "By noon", ["Draft is ready for your final read-through and edits.", "Pricing page and project timeline still need sign-off."]),
-    ("Call back two warm leads", "Today", ["Both asked for a quick call sometime this week.", "Lead with the new Q4 package and the start dates."]),
-    ("Clear the inbox before 10", "Morning", ["Quick replies first, then archive the rest of it.", "Seven threads still need a simple yes or no."]),
-    ("Get outside for 30 minutes", "Health", ["A long walk with Benny around the block counts."]),
-    ("Prep tomorrow's first call", "5 min", ["Client call at 8:30. Review notes and two questions."]),
+    ("Finish the client proposal", "By noon", ["Draft is ready for your final read-through and edits before sending.", "Pricing page and project timeline still need final sign-off."]),
+    ("Call back two warm leads", "Today", ["Both asked for a quick call sometime this week, ideally Thursday.", "Lead with the new Q4 package and the earliest start dates."]),
+    ("Clear the inbox before 10", "Morning", ["Quick replies first, then archive the rest of it fast.", "Seven threads still need a simple yes or no today."]),
+    ("Get outside for 30 minutes", "Health", ["A long walk with Benny around the block counts, rain or shine."]),
+    ("Prep tomorrow's first call", "5 min", ["Client call at 8:30. Review notes and two questions to ask."]),
 ]
 DP_FU = [
-    ("Send the signed quote", "Fri", "Office reno quote for the client"),
-    ("Book Benny's vet visit", "Nov 1", "Annual check-up and shots"),
-    ("Renew the car insurance", "Oct 31", "Compare two quotes before renewal"),
-    ("Invoice approval", "Waiting", "With finance since Monday"),
-    ("Venue confirmation", "Nov 14", "Team event, waiting on the venue"),
+    ("Send the signed quote", "Fri", "Office reno quote for the client, signed copy still to send"),
+    ("Book Benny's vet visit", "Nov 1", "Annual check-up and shots, plus the nail trim"),
+    ("Renew the car insurance", "Oct 31", "Compare two quotes before renewal and pick the cheaper one"),
+    ("Invoice approval", "Waiting", "With finance since Monday, nudge them again today"),
+    ("Venue confirmation", "Nov 14", "Team event, waiting on the venue to confirm the date"),
 ]
 DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Final"),
             ("NHL", "SJ", "6", "OTT", "2", "Final"),

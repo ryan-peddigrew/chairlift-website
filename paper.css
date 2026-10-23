@@ -112,3 +112,5 @@
 .dp-focus li::before, .dp-fu .dp-re::before { content: ""; position: absolute; left: 13px; top: 0.62em; width: 3.5px; height: 3.5px; border-radius: 50%; background: #333; }
 .dp-fu .dp-t { font-weight: 700; font-size: 11.8px; }
 .dp-fu .dp-re { margin-top: 3px; }
+/* Weather bar: slimmer box with a finer border */
+.dp-wx { height: 33px; border-width: 0.75px; padding-top: 0; padding-bottom: 0; }
