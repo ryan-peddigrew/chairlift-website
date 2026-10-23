@@ -515,3 +515,13 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .paper-shot { max-width: 420px; }
 }
 @media (max-width: 640px) { .paper-lede { font-size: 17px; } }
+.reel-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: 64px; align-items: center; }
+.reel-hero .ctas { margin-top: 28px; }
+.reel { margin: 0; justify-self: center; width: 100%; }
+.reel video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 18px; background: var(--ink); box-shadow: 0 24px 60px rgba(20, 27, 42, 0.18); }
+@media (max-width: 860px) {
+  .reel-hero { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .reel { max-width: 320px; }
+}
+.paper-frame { position: relative; container-type: inline-size; }
+.paper-dateline { position: absolute; left: 0; right: 0; top: 12.22%; transform: translateY(-50%); text-align: center; white-space: nowrap; color: #111; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 1.14cqw; letter-spacing: 0.29em; text-transform: uppercase; line-height: 1; }

@@ -93,7 +93,10 @@ def example_block(e, heading="h2"):
 CTA_HOME = "Show us one thing your team does over and over."
 
 PAPER_IMG = '''<figure class="paper-shot">
-        <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with five goals for the day, a schedule, follow-ups and the weather.">
+        <div class="paper-frame">
+          <img src="/images/sample-morning-paper.jpg" width="1224" height="1584" loading="lazy" alt="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, local news, sports scores and the weather.">
+          <span class="paper-dateline" aria-hidden="true">Good morning, Ryan · <span data-paper-date>Friday, October 23, 2026</span> · Toronto</span>
+        </div>
         <figcaption>Sample page. Content is for illustration.</figcaption>
       </figure>'''
 
@@ -139,7 +142,7 @@ home = f'''
       <div>
         <span class="rule"></span>
         <h2 id="paper-title">Start your morning on one page.</h2>
-        <p class="paper-lede">A one-page morning briefing, built around how you work: five goals for the day, your schedule, and the follow-ups waiting on you. It's an easy first step, and a good look at how we think.</p>
+        <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
         <a class="btn btn-ink" href="/morning-paper/">See the morning paper</a>
       </div>
       {PAPER_IMG}
@@ -477,16 +480,37 @@ industries = page_hero("Who we help", "Different industries. The same lost hours
 
 
 
-morning_paper = page_hero("Starter offer", "Your morning, on one page.",
-    "A one-page morning briefing built around how you work. Your goals for the day, your schedule and your follow-ups, boiled down to one page you can read before your first coffee.") + f'''
+
+REEL = os.path.exists(os.path.join(OUT, "images", "morning-paper-reel.mp4"))
+HERO_MEDIA = '''<figure class="reel">
+        <video controls playsinline preload="metadata" poster="/images/morning-paper-reel-poster.jpg" width="1080" height="1920">
+          <source src="/images/morning-paper-reel.mp4" type="video/mp4">
+        </video>
+      </figure>''' if REEL else ""
+
+morning_paper = f'''
+  <section class="page-hero">
+    <div class="wrap{' reel-hero' if REEL else ''}">
+      <div>
+        <span class="eyebrow">Starter offer</span>
+        <h1>Easier mornings, on one page.</h1>
+        <p class="lede">A one-page morning briefing built around how you work: your goals for the day, your schedule and your follow-ups. Get it on paper, by email or right on your desktop, and know what matters before your first coffee.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        </div>
+      </div>
+      {HERO_MEDIA}
+    </div>
+  </section>
+
   <section class="section section--tight" aria-labelledby="page-title">
     <div class="wrap paper-split paper-split--flip">
       {PAPER_IMG}
       <div>
         <span class="rule"></span>
         <h2 id="page-title">What's on the page.</h2>
-        {ticks(["Five goals for the day, must-dos first.", "Your schedule for the day, at a glance.", "Follow-ups: what's on you, and what you're waiting on from others.", "A few extras you choose, like the weather or a thought for the day."])}
-        <p class="paper-lede">Print it or read it on your phone. Either way, it's one page, with no scrolling.</p>
+        {ticks(["Today's focus: your must-dos, with the details that matter.", "Your calendar for the day, at a glance.", "The emails that actually need you.", "Follow-ups that are still open, with their deadlines.", "The weather, local news and last night's scores."])}
+        <p class="paper-lede">No printer? It comes by email or right on your desktop. However you get it, it's one page, with no scrolling.</p>
       </div>
     </div>
   </section>
@@ -602,7 +626,7 @@ PAGES = [
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, builds one automation at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
-    ("morning-paper/index.html", "Your morning, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups on one page. Start with a five-minute conversation.", "/morning-paper/", None, morning_paper, False),
+    ("morning-paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/morning-paper/", None, morning_paper, False),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
 ] + [
