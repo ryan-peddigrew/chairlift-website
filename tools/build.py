@@ -122,12 +122,19 @@ DP_FU = [
     ("Invoice approval", "Waiting", "With finance since Monday"),
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue"),
 ]
-DP_SPORTS = [
-    ("Leafs 5, Rangers 4", "Final", "Duhaime 1 G, 2 A · Blueger 1 G, 1 A"),
-    ("Sharks 6, Senators 2", "Final", "Stützle 1 G · Spence 1 G"),
-    ("Raptors vs Wizards", "Up next", "Tonight · 7:00 PM"),
-    ("Senators vs Rangers", "Up next", "Sat · 7:00 PM"),
-]
+DP_BOXES = [("Final", [("Leafs", "5"), ("Rangers", "4")], "Duhaime 1 G, 2 A · Blueger 1 G, 1 A"),
+            ("Final", [("Sharks", "6"), ("Senators", "2")], "Stützle 1 G · Spence 1 G")]
+DP_NEXT = [("Raptors", "Wizards", "Tonight · 7:00 PM"), ("Senators", "Rangers", "Sat · 7:00 PM")]
+
+
+def dp_sports():
+    boxes = "".join(
+        f'<div class="dp-box"><span class="dp-tag">{st}</span>'
+        + "".join(f'<div class="dp-tm{" dp-lose" if int(sc) < max(int(x[1]) for x in teams) else ""}"><span class="dp-noimg"></span><span>{n}</span><b>{sc}</b></div>' for n, sc in teams)
+        + f'<p class="dp-star">{perf}</p></div>'
+        for st, teams, perf in DP_BOXES)
+    nxt = "".join(f'<div class="dp-nr"><span class="dp-noimg"></span><span>{a} <i>vs</i> {b}</span><em>{w}</em></div>' for a, b, w in DP_NEXT)
+    return f'<div class="dp-boxes">{boxes}</div><div class="dp-next"><span class="dp-tag">Up next</span>{nxt}</div>'
 DP_CAL = [("7:30", "Walk Benny", "20 min"), ("9:00", "Team check-in", "15 min"), ("11:00", "Pipeline review", "Video call"), ("12:30", "Lunch with Sam", "Downtown"), ("3:00", "Proposal focus block", "Phone off"), ("6:00", "Gym", "Legs")]
 DP_INBOX = [("Proposal draft v2 is ready", "Work"), ("Supplier confirmed Friday delivery", "Work"), ("Coffee next week?", "Personal"), ("Q4 pricing sheet attached", "Work"), ("Dentist reminder: Nov 4", "Personal"), ("Team lunch Friday?", "Work")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region")]
@@ -144,7 +151,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "Must-dos")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
                 <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "Still open")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
-                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{"".join(f'<div class="dp-row"><div class="dp-gl"><span class="dp-noimg"></span><span class="dp-score">{a}</span><span class="dp-tag">{b}</span></div><p class="dp-perf">{c}</p></div>' for a, b, c in DP_SPORTS)}</div></section>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{dp_sports()}</div></section>
               </div>
               <div class="dp-rule"></div>
               <div>

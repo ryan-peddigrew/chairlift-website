@@ -14,6 +14,30 @@
   function all(sel, fn) { document.querySelectorAll(sel).forEach(fn); }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
+  function logo(src) { return src ? '<img src="' + esc(src) + '" alt="">' : '<span class="dp-noimg"></span>'; }
+
+  // Scoreboxes for finished or live games, then a short "Up next" list.
+  function sportsHTML(boxes, next) {
+    var out = '';
+    if (boxes.length) {
+      out += '<div class="dp-boxes">' + boxes.map(function (g) {
+        var hi = Math.max(Number(g.teams[0].score), Number(g.teams[1].score));
+        var rows = g.teams.map(function (t) {
+          return '<div class="dp-tm' + (Number(t.score) < hi ? ' dp-lose' : '') + '">' + logo(t.logo) + '<span>' + esc(t.name) + '</span><b>' + esc(t.score) + '</b></div>';
+        }).join('');
+        var perf = (g.perf || []).length ? '<p class="dp-star">' + esc(g.perf.join(' · ')) + '</p>' : '';
+        return '<div class="dp-box"><span class="dp-tag">' + esc(g.status) + '</span>' + rows + perf + '</div>';
+      }).join('') + '</div>';
+    }
+    if (next.length) {
+      out += '<div class="dp-next"><span class="dp-tag">Up next</span>' + next.map(function (g) {
+        var t = g.teams || [{ name: g.line, logo: g.logo }];
+        return '<div class="dp-nr">' + logo(t[0].logo) + '<span>' + esc(t[0].name) + (t[1] ? ' <i>vs</i> ' + esc(t[1].name) : '') + '</span><em>' + esc((g.perf || [])[0] || '') + '</em></div>';
+      }).join('') + '</div>';
+    }
+    return out;
+  }
+
   function tick() {
     var now = new Date();
     var h = now.getHours();
@@ -28,7 +52,7 @@
   tick();
   setInterval(tick, 10000);
 
-  fetch('/.netlify/functions/paper?v=3').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch('/.netlify/functions/paper?v=5').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });
@@ -45,14 +69,9 @@
     }
     if (d.sports && d.sports.length) {
       all('[data-dp-sports]', function (el) {
-        el.innerHTML = d.sports.slice(0, 4).map(function (g) {
-          var logo = g.logo ? '<img src="' + esc(g.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-          var line = g.teams ? g.teams.map(function (t) {
-            return esc(t.name) + (t.score ? ' ' + esc(t.score) : '');
-          }).join(esc(g.sep) + ' ') : esc(g.line);
-          var perf = (g.perf || []).length ? '<p class="dp-perf">' + esc(g.perf.join(' · ')) + '</p>' : '';
-          return '<div class="dp-row"><div class="dp-gl">' + logo + '<span class="dp-score">' + line + '</span><span class="dp-tag">' + esc(g.status) + '</span></div>' + perf + '</div>';
-        }).join('');
+        var boxes = d.sports.filter(function (g) { return g.status !== 'Up next' && g.teams; });
+        var next = d.sports.filter(function (g) { return g.status === 'Up next'; });
+        el.innerHTML = sportsHTML(boxes, next);
       });
     }
   }).catch(function () {});

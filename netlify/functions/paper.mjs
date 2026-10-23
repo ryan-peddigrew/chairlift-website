@@ -95,13 +95,8 @@ function name(team) {
   return SHORT[team.shortDisplayName] || team.shortDisplayName || team.name;
 }
 
-function rec(c) {
-  const r = (c.records || []).find((x) => x.type === "total" || x.name === "overall") || (c.records || [])[0];
-  return (r && r.summary) || "";
-}
-
 function side(c, score) {
-  return { name: name(c.team), rec: rec(c), score: score ? String(c.score) : "" };
+  return { name: name(c.team), logo: c.team.logo || "", score: score ? String(c.score) : "" };
 }
 
 function lastName(a) {
@@ -192,7 +187,8 @@ async function sports() {
   next.sort((a, b) => a.when - b.when);
   const seen = new Set();
   const nextOnce = next.filter((g) => !seen.has(g.team) && seen.add(g.team));
-  return [...finals.slice(0, 3), ...live, ...nextOnce].slice(0, 4).map(({ when, team, ...g }) => g);
+  // Up to two scoreboxes (live games first, then last night's finals), then the next games.
+  return [...live, ...finals].slice(0, 2).concat(nextOnce.slice(0, 2)).map(({ when, team, ...g }) => g);
 }
 
 export default async (req) => {

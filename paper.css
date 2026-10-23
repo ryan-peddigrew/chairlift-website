@@ -87,3 +87,25 @@
 .dp-sports .dp-row { padding: 14px 0 13px; }
 /* Masthead: a touch heavier, with a soft letterpress shadow */
 .dp-mast { -webkit-text-stroke: 0.6px #111; text-shadow: 2px 2.5px 0 rgba(17, 17, 17, 0.2), 0 0 1px rgba(17, 17, 17, 0.35); }
+/* Sports: two scoreboxes side by side, then an "Up next" list */
+.dp-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 11px; }
+.dp-box { border: 1px solid #111; padding: 8px 9px 7px; min-width: 0; }
+.dp-box > .dp-tag { display: block; color: #555; margin-bottom: 6px; }
+.dp-tm { display: flex; align-items: center; gap: 7px; height: 21px; font: 700 11.5px/1 Inter, sans-serif; }
+.dp-tm img, .dp-tm .dp-noimg, .dp-nr img, .dp-nr .dp-noimg { width: 14px; height: 14px; object-fit: contain; flex: none; }
+.paper-shot .dp .dp-tm img, .paper-shot .dp .dp-nr img { width: 14px; height: 14px; }
+.dp-tm b { margin-left: auto; font: 700 15px/1 'Source Serif 4', serif; }
+.dp-tm.dp-lose { color: #777; font-weight: 500; }
+.dp-tm.dp-lose b { font-weight: 400; }
+.dp-star { margin-top: 6px; padding-top: 6px; border-top: 1px solid #DCD8CE; font-size: 7.8px; line-height: 1.35; font-style: italic; color: #444; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dp-next { margin-top: 14px; }
+.dp-next > .dp-tag { display: block; color: #555; padding-bottom: 4px; border-bottom: 1px solid #111; }
+.dp-nr { display: flex; align-items: center; gap: 8px; padding: 9px 0 8px; border-bottom: 1px solid #DCD8CE; font: 600 10.6px/1.2 Inter, sans-serif; }
+.dp-nr i { font-style: normal; font-weight: 400; color: #777; font-size: 9px; }
+.dp-nr em { margin-left: auto; font: 700 6.5px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+.dp-box { padding: 10px 10px 9px; }
+.dp-tm { height: 24px; }
+.dp-star { margin-top: 7px; padding-top: 7px; }
+.dp-boxes { margin-top: 12px; }
+.dp-next { margin-top: 16px; }
+.dp-nr { padding: 11px 0 10px; }
