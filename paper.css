@@ -260,3 +260,7 @@
 .dp-band .dp-sports, .dp-band .dp-laugh { border-bottom: 1px solid #DADADA; align-self: stretch; box-sizing: border-box; }
 .dp-band > div:not(.dp-rule) { display: flex; flex-direction: column; }
 .dp-band .dp-sports, .dp-band .dp-laugh { flex: 1; }
+/* section titles stand out a little more; box height unchanged */
+.dp-h { border-bottom-width: 2px; padding-bottom: 6.2px; }
+.dp-h b { font-size: 18.5px; line-height: 16.5px; letter-spacing: 0.1em; }
+.dp-h svg { width: 16px; height: 16px; stroke-width: 2.2; }
