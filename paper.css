@@ -326,3 +326,9 @@
 .dp-fu .dp-row { padding: 8.7px 0 7.7px; }
 .dp-focus .dp-row .dp-tag { top: 13.6px; }
 .dp-fu .dp-row .dp-tag { top: 11.6px; }
+/* equal gaps between every section: the band gap now matches the others (13px) */
+.dp-band { margin-top: 12.5px; }
+.dp-focus .dp-row { padding: 10.86px 0 9.86px; }
+.dp-fu .dp-row { padding: 8.86px 0 7.86px; }
+.dp-cal .dp-row { height: 30.75px; }
+.dp-inbox .dp-row { height: 31.55px; }
