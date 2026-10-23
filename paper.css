@@ -299,3 +299,8 @@
 .dp-date { padding-bottom: 4px; }
 .dp-cal .dp-row { height: 30.5px; padding: 7.8px 0 5.2px; }
 .dp-inbox .dp-row { height: 31.3px; padding: 8px 0 5.2px; }
+/* six follow-ups: rows a little tighter so the column still ends level */
+.dp-focus .dp-row { padding: 11.5px 0 10.5px; }
+.dp-fu .dp-row { padding: 9.5px 0 8.5px; }
+.dp-focus .dp-row .dp-tag { top: 16.4px; }
+.dp-fu .dp-row .dp-tag { top: 14.4px; }

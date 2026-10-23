@@ -121,6 +121,7 @@ DP_FU = [
     ("Renew the car insurance", "Oct 31", "Compare two quotes before renewal and pick the cheaper one"),
     ("Invoice approval", "Waiting", "With finance since Monday, nudge them again today"),
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue to confirm the date"),
+    ("Reply to Northline Supply", "Mon", "Confirm the Friday delivery window and who signs for it"),
 ]
 DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night", "@"),
             ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM", "vs"),
@@ -165,7 +166,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
             </div>
             <div class="dp-band">
               <div>
-                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{dp_sports()}</div></section>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "My Teams", "")}<div data-dp-sports>{dp_sports()}</div></section>
               </div>
               <div class="dp-rule"></div>
               <div>
