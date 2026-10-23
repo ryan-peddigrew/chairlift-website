@@ -264,3 +264,19 @@
 .dp-h { border-bottom-width: 2px; padding-bottom: 6.2px; }
 .dp-h b { font-size: 18.5px; line-height: 16.5px; letter-spacing: 0.1em; }
 .dp-h svg { width: 16px; height: 16px; stroke-width: 2.2; }
+/* weather on one line: temperature, condition, high/low, feels like */
+.dp-wx { height: 29px; padding: 0 2px; align-items: center; border-bottom: 1px solid #DADADA; }
+.dp-wx .dp-temp { font-size: 20px; margin-right: 12px; }
+.dp-wx .dp-temp sup { font-size: 9px; top: -3px; right: -6px; }
+.dp-wx .dp-dc { display: flex; flex-direction: row; align-items: baseline; gap: 10px; margin-left: 0; }
+.dp-wx .dp-desc { font-size: 10.6px; margin-left: 0; }
+.dp-wx .dp-hl { font-size: 7.2px; }
+.dp-wx .dp-wxm { flex: none; margin: 0 0 0 auto; }
+.dp-wx .dp-wxm > span { flex: none; padding: 0; border: 0; display: flex; flex-direction: row; align-items: baseline; gap: 6px; }
+.dp-wx .dp-wxm > span:nth-child(n+2) { display: none; }
+.dp-wx .dp-wxm i { font-size: 6.4px; }
+.dp-wx .dp-wxm b { font-size: 10px; }
+.dp-wx { height: 27px; }
+.dp-cal .dp-row { height: 27.5px; padding: 6px 0 4px; }
+.dp-inbox .dp-row { height: 28.5px; padding: 6px 0 4px; }
+.dp-inbox .dp-row { height: 28.33px; }
