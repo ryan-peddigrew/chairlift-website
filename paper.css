@@ -87,14 +87,30 @@
 .dp-sports .dp-row { padding: 14px 0 13px; }
 /* Masthead: a touch heavier, with a soft letterpress shadow */
 .dp-mast { -webkit-text-stroke: 0.6px #111; text-shadow: 2px 2.5px 0 rgba(17, 17, 17, 0.2), 0 0 1px rgba(17, 17, 17, 0.35); }
-/* Sports: same layout as Today's Focus */
-.dp-sports .dp-row { display: block; position: relative; padding: 11px 0 10px; }
-.dp-sports .dp-row .dp-tag { position: absolute; right: 0; top: 15px; }
-.dp-sports ul { list-style: none; margin-top: 3px; }
-.dp-sports li { font-size: 8.9px; line-height: 1.5; color: #333; padding-left: 14px; position: relative; }
-.dp-sports li::before { content: ""; position: absolute; left: 4px; top: 0.6em; width: 3.5px; height: 3.5px; border-radius: 50%; background: #333; }
+/* Sports: one rounded scoreboard bubble per game */
+.dp-game { margin-top: 12px; }
+.dp-sb { display: grid; grid-template-columns: 44px 1fr 120px 1fr 44px; align-items: center; background: #E9E5DB; border-radius: 14px; padding: 7px 12px; }
+.dp-sd { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.dp-sd img, .dp-sd .dp-noimg { width: 22px; height: 22px; object-fit: contain; display: block; }
+.paper-shot .dp .dp-sd img { width: 22px; height: 22px; }
+.dp-sd .dp-noimg { border-radius: 50%; background: #CFCABE; }
+.dp-sd small { font: 700 6.6px/1 Inter, sans-serif; letter-spacing: 0.14em; color: #333; }
+.dp-sb > b { font: 800 24px/1 Inter, sans-serif; text-align: center; letter-spacing: -0.01em; }
+.dp-sb > b.dp-lo { color: #8A867D; font-weight: 600; }
+.dp-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.dp-mid i { font: 700 6.4px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.2em; color: #666; }
+.dp-mid em { font: 700 8.4px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; background: #111; color: #F7F5EF; padding: 4px 7px 3px; border-radius: 4px; white-space: nowrap; }
+.dp-pf { margin: 4px 0 0; text-align: center; font-size: 8.2px; font-style: italic; color: #444; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Inbox sender before each subject */
 .dp-inbox .dp-row > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .dp-from { display: inline-block; min-width: 86px; margin-right: 8px; font: 700 7px/1 Inter, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #111; }
 /* News source line indented under its headline */
 .dp-news .dp-row em { margin-left: 40px; }
+/* Up next: plain newspaper rows under the score bubbles */
+.dp-sb { padding: 6px 12px; }
+.dp-game + .dp-nr { margin-top: 8px; border-top: 1px solid #DCD8CE; }
+.dp-nr { display: flex; align-items: center; gap: 8px; padding: 10px 0 9px; border-bottom: 1px solid #DCD8CE; font: 600 10.6px/1.2 Inter, sans-serif; }
+.dp-nr img, .dp-nr .dp-noimg { width: 15px; height: 15px; object-fit: contain; flex: none; }
+.paper-shot .dp .dp-nr img { width: 15px; height: 15px; }
+.dp-nr i { font-style: normal; font-weight: 400; color: #777; font-size: 9px; }
+.dp-nr em { margin-left: auto; font: 700 6.5px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }

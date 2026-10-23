@@ -14,14 +14,29 @@
   function all(sel, fn) { document.querySelectorAll(sel).forEach(fn); }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  // Same layout as Today's Focus: bold line, tag on the right, one bullet underneath.
+  // One rounded scoreboard bubble per game: logo, score, status, score, logo.
+  function side(t, lose) {
+    var mark = t.logo ? '<img src="' + esc(t.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
+    return '<span class="dp-sd">' + mark + '<small>' + esc(t.abbr || t.name) + '</small></span>';
+  }
   function sportsHTML(boxes, next) {
     return boxes.concat(next).map(function (g) {
       var t = g.teams;
-      var line = t ? esc(t[0].name) + (t[0].score ? ' ' + esc(t[0].score) : '') + esc(g.sep) + ' ' + esc(t[1].name) + (t[1].score ? ' ' + esc(t[1].score) : '') : esc(g.line);
-      var tag = g.status === 'Up next' ? (g.perf || [])[0] || 'Up next' : g.status;
-      var sub = g.status === 'Up next' ? '' : (g.perf || []).join(' · ');
-      return '<div class="dp-row"><div class="dp-t">' + line + '</div><span class="dp-tag">' + esc(tag) + '</span>' + (sub ? '<ul><li>' + esc(sub) + '</li></ul>' : '') + '</div>';
+      if (!t) return '';
+      var pre = g.status === 'Up next';
+      if (pre) {
+        var lg = t[0].logo ? '<img src="' + esc(t[0].logo) + '" alt="">' : '<span class="dp-noimg"></span>';
+        return '<div class="dp-nr">' + lg + '<span>' + esc(t[0].name) + ' <i>vs</i> ' + esc(t[1].name) + '</span><em>' + esc((g.perf || [])[0] || '') + '</em></div>';
+      }
+      var a = Number(t[0].score), b = Number(t[1].score);
+      var mid = pre ? ((g.perf || [])[0] || 'Up next') : g.status;
+      var perf = !pre && (g.perf || []).length ? '<p class="dp-pf">' + esc(g.perf.join(' · ')) + '</p>' : '';
+      return '<div class="dp-game">' +
+        '<div class="dp-sb">' + side(t[0]) +
+        '<b class="' + (!pre && a < b ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[0].score)) + '</b>' +
+        '<span class="dp-mid"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></span>' +
+        '<b class="' + (!pre && b < a ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[1].score)) + '</b>' +
+        side(t[1]) + '</div>' + perf + '</div>';
     }).join('');
   }
 
@@ -39,7 +54,7 @@
   tick();
   setInterval(tick, 10000);
 
-  fetch('/.netlify/functions/paper?v=5').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch('/.netlify/functions/paper?v=6').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });

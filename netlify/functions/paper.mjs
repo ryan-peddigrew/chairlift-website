@@ -96,7 +96,7 @@ function name(team) {
 }
 
 function side(c, score) {
-  return { name: name(c.team), logo: c.team.logo || "", score: score ? String(c.score) : "" };
+  return { name: name(c.team), abbr: c.team.abbreviation || "", logo: c.team.logo || "", score: score ? String(c.score) : "" };
 }
 
 function lastName(a) {
@@ -158,7 +158,7 @@ async function sports() {
       const other = c.competitors.find((x) => x !== mine);
       const st = ev.status.type;
       const when = new Date(ev.date);
-      const base = { logo: mine.team.logo || "", when: when.getTime(), team: t.league + mine.team.abbreviation };
+      const base = { logo: mine.team.logo || "", league: t.league.toUpperCase(), when: when.getTime(), team: t.league + mine.team.abbreviation };
       if (st.completed && day <= today) {
         const [w, l] = Number(mine.score) >= Number(other.score) ? [mine, other] : [other, mine];
         let perf = [];
