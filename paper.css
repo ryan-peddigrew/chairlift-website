@@ -122,3 +122,11 @@
 /* weather: open strip, no box */
 .dp-wx { border: 0; border-bottom: 1px solid #111; padding: 0 2px 6px; height: 30px; margin-bottom: 10px; }
 .dp-cal .dp-row b { width: 58px; }
+/* weather as its own section */
+.dp-wx { border: 0; height: 30px; padding: 4px 2px 2px; margin-bottom: 0; }
+.dp-wx .dp-dc { margin-left: 8px; }
+.dp-h i .dp-pin { width: 8px; height: 8px; stroke-width: 2.2; vertical-align: -1px; margin-right: 3px; }
+.dp-wx .dp-wxm { margin: 0 0 0 auto; }
+.dp-wxm > span:last-child { border-right: 0; padding-right: 2px; }
+.dp-cal .dp-row { height: 29px; padding: 7px 0 6px; }
+.dp-comic { width: 108px; }
