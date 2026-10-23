@@ -254,3 +254,5 @@
 .dp-news .dp-row em { font-size: 7.6px; }
 .dp-from { font-size: 8.2px; min-width: 56px; margin-right: 3px; letter-spacing: 0.04em; }
 .dp-inbox .dp-tag { font-size: 7.2px; letter-spacing: 0.03em; margin-left: 3px; }
+/* thin grey line under Weather, like the other sections */
+.dp-wx { border-bottom: 1px solid #DADADA; }
