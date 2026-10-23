@@ -114,3 +114,8 @@
 .dp-fu .dp-re { margin-top: 3px; }
 /* Weather bar: slimmer box with a finer border */
 .dp-wx { height: 33px; border-width: 0.75px; padding-top: 0; padding-bottom: 0; }
+.dp-dc { display: flex; flex-direction: column; gap: 3px; margin-left: 6px; flex: none; }
+.dp-dc .dp-desc { margin-left: 0; line-height: 1; }
+.dp-hl { font: 600 5.8px/1 Inter, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #666; white-space: nowrap; }
+.dp-loc { display: flex; align-items: center; gap: 3px; }
+.dp-wx .dp-loc svg { width: 9px; height: 9px; stroke-width: 2; }
