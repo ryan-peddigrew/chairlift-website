@@ -39,7 +39,7 @@ const gnews = (q) => `https://news.google.com/rss/search?q=${encodeURIComponent(
 const SOURCES = [
   { name: "CBC News", take: 1, urls: ["https://www.cbc.ca/webfeed/rss/rss-canada-toronto", gnews("site:cbc.ca toronto when:1d")] },
   { name: "CTV News", take: 1, urls: ["https://www.ctvnews.ca/arc/outboundfeeds/rss/category/toronto/?outputType=xml", gnews("site:ctvnews.ca toronto when:1d")] },
-  { name: "CP24", take: 1, urls: ["https://www.cp24.com/arc/outboundfeeds/rss/?outputType=xml", gnews("site:cp24.com when:1d")] },
+  { name: "CP24", take: 1, urls: ["https://www.cp24.com/arc/outboundfeeds/rss/category/local/?outputType=xml", "https://www.cp24.com/arc/outboundfeeds/rss/category/news/?outputType=xml", gnews("site:cp24.com toronto when:1d")] },
   { name: "York Region", take: 1, urls: ["https://www.yorkregion.com/search/?f=rss&t=article&l=20&s=start_time&sd=desc", gnews('"York Region" when:2d')] },
 ];
 
