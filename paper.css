@@ -141,3 +141,7 @@
 .dp-wx .dp-wxm { flex: 1; margin: 0 0 0 14px; }
 .dp-wxm > span { flex: 1; padding: 0 6px; }
 .dp-wxm > span:last-child { border-right: 0; }
+/* sports: no bubbles, rows with hairlines like the other sections */
+.dp-sb { background: none; border-radius: 0; padding: 5px 0; }
+.dp-game { margin-top: 0; border-bottom: 1px solid #d9d6cd; }
+.dp-game:last-child { border-bottom: 0; }
