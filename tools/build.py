@@ -157,9 +157,9 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
+                <section class="dp-sec dp-wxs">{dp_h("sun", "Weather", '<svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto')}<div class="dp-wx"><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-dc"><span class="dp-desc" data-dp-desc>Partly cloudy</span><span class="dp-hl" data-dp-hl>H 18° · L 8°</span></span><span class="dp-wxm"><span><i>Feels like</i><b data-dp-feels>3°C</b></span><span><i>Wind</i><b data-dp-wind><svg class="dp-arrow" viewBox="0 0 24 24" style="transform:rotate(135deg)"><path d="M12 20V4M6 10l6-6 6 6"/></svg>14 km/h <span class="dp-compass">NW</span></b></span><span><i>Rain</i><b data-dp-rain>10%</b></span></span></div></section>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>({c})</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inbox", "")}{"".join(f'<div class="dp-row"><span><b class="dp-from">{b}</b>{a}</span><span class="dp-tag">{f}</span></div>' for f, a, b in DP_INBOX)}</section>
-                <section class="dp-sec dp-wxs">{dp_h("sun", "Weather", '<svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto')}<div class="dp-wx"><span class="dp-temp"><span data-dp-temp>8</span><sup>o</sup></span><span class="dp-dc"><span class="dp-desc" data-dp-desc>Partly cloudy</span><span class="dp-hl" data-dp-hl>H 18° · L 8°</span></span><span class="dp-wxm"><span><i>Feels like</i><b data-dp-feels>3°C</b></span><span><i>Wind</i><b data-dp-wind><svg class="dp-arrow" viewBox="0 0 24 24" style="transform:rotate(135deg)"><path d="M12 20V4M6 10l6-6 6 6"/></svg>14 km/h <span class="dp-compass">NW</span></b></span><span><i>Rain</i><b data-dp-rain>10%</b></span></span></div></section>
                 <section class="dp-sec dp-news">{dp_h("news", "Local News", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span><em>{src}</em></div>' for n, src in DP_NEWS)}</div></section>
               </div>
             </div>
@@ -172,7 +172,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
                 <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<img class="dp-comic" src="/images/paper-comic-strip.png" width="1024" height="339" alt=""></section>
               </div>
             </div>
-            <div class="dp-foot"><span>Printed fresh each morning</span><span>The Daily Peddigrew</span></div>
+            <div class="dp-foot"><span>The Daily Peddigrew</span></div>
           </div>
         </div>
         <figcaption>Sample page. Scores, news and weather are live.</figcaption>
