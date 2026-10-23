@@ -477,9 +477,17 @@ industries = page_hero("Who we help", "Different industries. The same lost hours
 
 
 
+
+REEL = os.path.exists(os.path.join(OUT, "images", "morning-paper-reel.mp4"))
+HERO_MEDIA = '''<figure class="reel">
+        <video controls playsinline preload="metadata" poster="/images/morning-paper-reel-poster.jpg" width="1080" height="1920">
+          <source src="/images/morning-paper-reel.mp4" type="video/mp4">
+        </video>
+      </figure>''' if REEL else ""
+
 morning_paper = f'''
   <section class="page-hero">
-    <div class="wrap reel-hero">
+    <div class="wrap{' reel-hero' if REEL else ''}">
       <div>
         <span class="eyebrow">Starter offer</span>
         <h1>Easier mornings, on one page.</h1>
@@ -488,11 +496,7 @@ morning_paper = f'''
           <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
       </div>
-      <figure class="reel">
-        <video controls playsinline preload="metadata" poster="/images/morning-paper-reel-poster.jpg" width="1080" height="1920">
-          <source src="/images/morning-paper-reel.mp4" type="video/mp4">
-        </video>
-      </figure>
+      {HERO_MEDIA}
     </div>
   </section>
 
