@@ -25,7 +25,7 @@
       if (!t) return '';
       var pre = g.status === 'Up next';
       var a = Number(t[0].score), b = Number(t[1].score);
-      var mid = pre ? ((g.perf || [])[0] || 'Up next') : g.status;
+      var mid = pre ? ((g.perf || [])[0] || 'Up next') : (/^Final/.test(g.status) ? 'Last night' : g.status);
       return '<div class="dp-game">' +
         '<div class="dp-sb">' + side(t[0]) +
         '<b class="' + (!pre && a < b ? 'dp-lo' : '') + '">' + (pre ? '' : esc(t[0].score)) + '</b>' +

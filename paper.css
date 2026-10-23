@@ -149,3 +149,11 @@
 .dp-sb > b { font-size: 19px; }
 .dp-mid em { background: none; color: #111; padding: 0; border-radius: 0; font: italic 600 10px/1 'Source Serif 4', serif; letter-spacing: 0.04em; text-transform: none; display: flex; align-items: center; gap: 6px; }
 .dp-mid em::before, .dp-mid em::after { content: ""; width: 14px; height: 1px; background: #111; opacity: 0.45; }
+/* sports: tighter rows, no flanking lines */
+.dp-mid em::before, .dp-mid em::after { content: none; }
+.dp-mid em { display: block; }
+.dp-sb { padding: 2px 0; grid-template-columns: 38px 1fr 120px 1fr 38px; }
+.dp-sb > b { font-size: 17px; }
+.dp-mid { gap: 3px; }
+.dp-sb { padding: 7px 0; }
+.dp-sb > b { font-size: 18px; }

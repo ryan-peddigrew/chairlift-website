@@ -122,8 +122,8 @@ DP_FU = [
     ("Invoice approval", "Waiting", "With finance since Monday, nudge them again today"),
     ("Venue confirmation", "Nov 14", "Team event, waiting on the venue to confirm the date"),
 ]
-DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Final"),
-            ("NHL", "SJ", "6", "OTT", "2", "Final"),
+DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night"),
+            ("NHL", "SJ", "6", "OTT", "2", "Last night"),
             ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM"),
             ("NHL", "OTT", "", "NYR", "", "Sat · 7:00 PM")]
 
