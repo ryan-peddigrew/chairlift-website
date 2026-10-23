@@ -137,3 +137,7 @@
 .dp-comic, .paper-shot .dp img.dp-comic { width: 100%; height: auto; margin: 8px 0 0; }
 .dp-inbox .dp-tag { font-size: 6px; letter-spacing: 0.1em; margin-left: 6px; }
 .dp-from { min-width: 52px; margin-right: 6px; }
+/* weather stats spread to fill the strip */
+.dp-wx .dp-wxm { flex: 1; margin: 0 0 0 14px; }
+.dp-wxm > span { flex: 1; padding: 0 6px; }
+.dp-wxm > span:last-child { border-right: 0; }
