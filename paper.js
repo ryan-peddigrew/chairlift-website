@@ -14,28 +14,15 @@
   function all(sel, fn) { document.querySelectorAll(sel).forEach(fn); }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  function logo(src) { return src ? '<img src="' + esc(src) + '" alt="">' : '<span class="dp-noimg"></span>'; }
-
-  // Scoreboxes for finished or live games, then a short "Up next" list.
+  // Same layout as Today's Focus: bold line, tag on the right, one bullet underneath.
   function sportsHTML(boxes, next) {
-    var out = '';
-    if (boxes.length) {
-      out += '<div class="dp-boxes">' + boxes.map(function (g) {
-        var hi = Math.max(Number(g.teams[0].score), Number(g.teams[1].score));
-        var rows = g.teams.map(function (t) {
-          return '<div class="dp-tm' + (Number(t.score) < hi ? ' dp-lose' : '') + '">' + logo(t.logo) + '<span>' + esc(t.name) + '</span><b>' + esc(t.score) + '</b></div>';
-        }).join('');
-        var perf = (g.perf || []).length ? '<p class="dp-star">' + esc(g.perf.join(' · ')) + '</p>' : '';
-        return '<div class="dp-box"><span class="dp-tag">' + esc(g.status) + '</span>' + rows + perf + '</div>';
-      }).join('') + '</div>';
-    }
-    if (next.length) {
-      out += '<div class="dp-next"><span class="dp-tag">Up next</span>' + next.map(function (g) {
-        var t = g.teams || [{ name: g.line, logo: g.logo }];
-        return '<div class="dp-nr">' + logo(t[0].logo) + '<span>' + esc(t[0].name) + (t[1] ? ' <i>vs</i> ' + esc(t[1].name) : '') + '</span><em>' + esc((g.perf || [])[0] || '') + '</em></div>';
-      }).join('') + '</div>';
-    }
-    return out;
+    return boxes.concat(next).map(function (g) {
+      var t = g.teams;
+      var line = t ? esc(t[0].name) + (t[0].score ? ' ' + esc(t[0].score) : '') + esc(g.sep) + ' ' + esc(t[1].name) + (t[1].score ? ' ' + esc(t[1].score) : '') : esc(g.line);
+      var tag = g.status === 'Up next' ? (g.perf || [])[0] || 'Up next' : g.status;
+      var sub = g.status === 'Up next' ? '' : (g.perf || []).join(' · ');
+      return '<div class="dp-row"><div class="dp-t">' + line + '</div><span class="dp-tag">' + esc(tag) + '</span>' + (sub ? '<ul><li>' + esc(sub) + '</li></ul>' : '') + '</div>';
+    }).join('');
   }
 
   function tick() {
