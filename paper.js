@@ -54,8 +54,7 @@
       if (d.weather.feels != null) all('[data-dp-feels]', function (el) { el.textContent = d.weather.feels + '°C'; });
       if (d.weather.wind != null) all('[data-dp-wind]', function (el) {
         var dir = d.weather.windDir, pts = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-        var arrow = dir == null ? '' : '<svg class="dp-arrow" viewBox="0 0 24 24" style="transform:rotate(' + ((dir + 180) % 360) + 'deg)"><path d="M12 20V4M6 10l6-6 6 6"/></svg>';
-        el.innerHTML = arrow + d.weather.wind + ' km/h' + (dir == null ? '' : ' <span class="dp-compass">' + pts[Math.round(dir / 45) % 8] + '</span>');
+        el.innerHTML = d.weather.wind + ' km/h' + (dir == null ? '' : ' <span class="dp-compass">' + pts[Math.round(dir / 45) % 8] + '</span>');
       });
       if (d.weather.rain != null) all('[data-dp-rain]', function (el) { el.textContent = d.weather.rain + '%'; });
     }
