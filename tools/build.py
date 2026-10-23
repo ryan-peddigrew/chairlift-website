@@ -116,12 +116,12 @@ DP_FOCUS = [
     ("Prep tomorrow's first call", "5 min", ["Client call at 8:30. Review notes and two questions to ask."]),
 ]
 DP_FU = [
-    ("Send the signed quote", "Fri", "Office reno quote for the client, signed copy still to send"),
-    ("Book Benny's vet visit", "Nov 1", "Annual check-up and shots, plus the nail trim"),
-    ("Renew the car insurance", "Oct 31", "Compare two quotes before renewal and pick the cheaper one"),
-    ("Invoice approval", "Waiting", "With finance since Monday, nudge them again today"),
-    ("Venue confirmation", "Nov 14", "Team event, waiting on the venue to confirm the date"),
-    ("Reply to Northline Supply", "Mon", "Confirm the Friday delivery window and who signs for it"),
+    ("Send the signed quote", "Fri", ["Re: Office reno quote for the client, signed copy still to send"]),
+    ("Book Benny's vet visit", "Nov 1", ["Re: Annual check-up and shots, plus the nail trim"]),
+    ("Renew the car insurance", "Oct 31", ["Re: Compare two quotes before renewal and pick the cheaper one"]),
+    ("Invoice approval", "Waiting", ["Re: With finance since Monday, nudge them again today"]),
+    ("Venue confirmation", "Nov 14", ["Re: Team event, waiting on the venue to confirm the date"]),
+    ("Reply to Northline Supply", "Mon", ["Re: Confirm the Friday delivery window and who signs for it", "Check the dock hours before replying."]),
 ]
 DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night", "@"),
             ("NBA", "TOR", "", "WSH", "", "Tonight · 7:00 PM", "vs"),
@@ -155,7 +155,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
             <div class="dp-cols">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
-                <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
+                <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span>{"".join(f'<div class="dp-re">{x}</div>' for x in r)}</div>' for t, g, r in DP_FU)}</section>
               </div>
               <div class="dp-rule"></div>
               <div>
