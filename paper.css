@@ -210,3 +210,8 @@
 .dp-sports .dp-game { padding: 5px 14px 4px 0; }
 .dp-sports .dp-game:nth-child(even) { padding: 5px 0 4px 14px; }
 .dp-band { margin-top: 16px; }
+/* sports: read down the columns, in date order (last night + tonight, then the next games) */
+.dp-sports [data-dp-sports] { grid-auto-flow: column; grid-template-rows: repeat(2, auto); }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even) { padding: 5px 14px 4px 0; border-left: 0; border-bottom: 0; }
+.dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding: 5px 0 4px 14px; border-left: 1px solid #d9d6cd; }
+.dp-sports .dp-game:nth-child(odd) { border-bottom: 1px solid #d9d6cd; }
