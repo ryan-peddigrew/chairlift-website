@@ -152,8 +152,8 @@ PAPER_IMG = f'''<figure class="paper-shot">
             <div class="dp-date"><span><span data-dp-greet>Good morning</span>, Ryan</span><span data-dp-date>Friday, October 23, 2026</span><span data-dp-time data-on>7:00 AM</span></div>
             <div class="dp-cols">
               <div>
-                <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "Must-dos")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
-                <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "Still open")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
+                <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
+                <section class="dp-sec dp-fu">{dp_h("reply", "Follow-ups", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><div class="dp-re">Re: {r}</div></div>' for t, g, r in DP_FU)}</section>
                 <section class="dp-sec dp-sports">{dp_h("trophy", "Sports Updates", "")}<div data-dp-sports>{dp_sports()}</div></section>
               </div>
               <div class="dp-rule"></div>
