@@ -410,3 +410,7 @@
 .dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0 6px; }
 .dp-band .dp-laugh .dp-cap { margin: 8px 0 0; }
 .dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: 8px 0 auto; }
+.dp-gs i { display: none; }
+.dp-gs { justify-content: flex-end; }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even), .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 11.75px; padding-bottom: 10.75px; }
+.dp-gs { display: none; }

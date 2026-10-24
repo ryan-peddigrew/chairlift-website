@@ -28,7 +28,7 @@
       var when = pre ? String((g.perf || [])[0] || '').split(' \u00b7 ') : [];
       var mid = pre ? '' : (/^Final/.test(g.status) ? 'Last night' : g.status);
       return '<div class="dp-game"><div class="dp-gs"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></div>' +
-        team(t[0], !pre && a < b, pre, when[0]) + team(t[1], !pre && b < a, pre, when[1]) + (g.foot ? '<div class="dp-gf">' + esc(g.foot) + '</div>' : '') + '</div>';
+        team(t[0], !pre && a < b, pre, when[0]) + team(t[1], !pre && b < a, pre, when[1]) + (g.foot || mid ? '<div class="dp-gf">' + esc(mid && g.foot ? mid + ' \u00b7 ' + g.foot : (mid || g.foot)) + '</div>' : '') + '</div>';
     }).join('');
   }
 
