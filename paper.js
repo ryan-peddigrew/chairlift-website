@@ -15,9 +15,9 @@
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
   // One small scorecard per game: league and status on top, then a row per team (logo, name, score).
-  function team(t, lose, pre) {
+  function team(t, lose, pre, slot) {
     var mark = t.logo ? '<img src="' + esc(t.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
-    return '<div class="dp-tm' + (lose ? ' dp-lo' : '') + '">' + mark + '<small>' + (t.rel ? '<span class="dp-rel">' + t.rel + '</span> ' : '') + esc(t.abbr || t.name) + '</small>' + (t.rec ? '<i class="dp-rec">' + esc(t.rec) + '</i>' : '') + '<b>' + (pre ? '' : esc(t.score)) + '</b></div>';
+    return '<div class="dp-tm' + (lose ? ' dp-lo' : '') + '">' + mark + '<small>' + (t.rel ? '<span class="dp-rel">' + t.rel + '</span> ' : '') + esc(t.abbr || t.name) + '</small>' + (t.rec ? '<i class="dp-rec">(' + esc(t.rec) + ')</i>' : '') + (t.ls ? '<span class="dp-ls">' + esc(t.ls) + '</span>' : '') + (pre ? '<em class="dp-sl">' + esc(slot || '') + '</em>' : '<b>' + esc(t.score) + '</b>') + '</div>';
   }
   function sportsHTML(boxes, next) {
     return boxes.concat(next).map(function (g) {
@@ -25,9 +25,10 @@
       if (!t) return '';
       var pre = g.status === 'Up next';
       var a = Number(t[0].score), b = Number(t[1].score);
-      var mid = pre ? ((g.perf || [])[0] || 'Up next') : (/^Final/.test(g.status) ? 'Last night' : g.status);
+      var when = pre ? String((g.perf || [])[0] || '').split(' \u00b7 ') : [];
+      var mid = pre ? '' : (/^Final/.test(g.status) ? 'Last night' : g.status);
       return '<div class="dp-game"><div class="dp-gs"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></div>' +
-        team(t[0], !pre && a < b, pre) + team(t[1], !pre && b < a, pre) + (g.foot ? '<div class="dp-gf">' + esc(g.foot) + '</div>' : '') + '</div>';
+        team(t[0], !pre && a < b, pre, when[0]) + team(t[1], !pre && b < a, pre, when[1]) + (g.foot ? '<div class="dp-gf">' + esc(g.foot) + '</div>' : '') + '</div>';
     }).join('');
   }
 

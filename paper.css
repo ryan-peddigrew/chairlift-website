@@ -379,3 +379,13 @@
 .dp-band .dp-laugh { display: flex; flex-direction: column; }
 .dp-band .dp-laugh .dp-h { flex: none; }
 .dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0; }
+/* records in brackets right beside the team; line scores and game time fill the right side */
+.dp-tm .dp-rec { margin-left: -3px; }
+.dp-tm .dp-ls { margin-left: auto; font: 400 8.4px/1 'Source Serif 4', serif; color: #777; letter-spacing: 0.08em; word-spacing: 3px; }
+.dp-tm .dp-ls + b { margin-left: 10px; }
+.dp-tm .dp-sl { margin-left: auto; font: italic 400 9.6px/1 'Source Serif 4', serif; color: #555; }
+.dp-tm small, .dp-tm .dp-rec, .dp-tm .dp-ls, .dp-tm .dp-sl { white-space: nowrap; }
+.dp-tm .dp-ls { font-size: 7.6px; letter-spacing: 0; word-spacing: 2px; }
+.dp-tm .dp-ls + b { margin-left: 8px; }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even) { padding-top: 5.75px; padding-bottom: 4.75px; }
+.dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 5.75px; padding-bottom: 4.75px; }

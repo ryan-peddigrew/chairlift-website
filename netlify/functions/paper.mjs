@@ -98,7 +98,7 @@ function name(team) {
 
 function side(c, score) {
   const rec = (c.records || []).find((r) => r.type === "total" || r.name === "overall") || (c.records || [])[0];
-  return { name: name(c.team), abbr: c.team.abbreviation || "", logo: c.team.logo || "", score: score ? String(c.score) : "", rec: (rec && rec.summary) || "" };
+  return { name: name(c.team), abbr: c.team.abbreviation || "", logo: c.team.logo || "", score: score ? String(c.score) : "", rec: (rec && rec.summary) || "", ls: score ? (c.linescores || []).map((x) => (x.displayValue != null ? x.displayValue : x.value)).join(" ") : "" };
 }
 
 // Where to watch and where it's played, straight from ESPN's scoreboard.
