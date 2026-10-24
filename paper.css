@@ -363,3 +363,19 @@
 .dp-cols .dp-sec > .dp-h { flex: none; }
 .dp-cols .dp-sec > .dp-row, .dp-cols .dp-sec > [data-dp-news] > .dp-row { flex: 1 1 auto; }
 .dp-cols .dp-sec > [data-dp-news] { flex: 1 1 auto; display: flex; flex-direction: column; }
+/* sports cards use the width: record next to each team, a footer line with top performers or where to watch */
+.dp-rec { font: italic 400 8.4px/1 'Source Serif 4', serif; color: #777; margin-left: 2px; letter-spacing: 0; }
+.dp-tm.dp-lo .dp-rec { color: #999; }
+.dp-gf { font: italic 400 8.4px/1 'Source Serif 4', serif; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* each section ends on its text; the heavy title rule and the gap do the separating */
+.dp-cols .dp-sec > .dp-row:last-child, .dp-cols .dp-sec > [data-dp-news] > .dp-row:last-child { border-bottom: 0; }
+/* sports cards got a footer line: rows above tighten a little so the page stays one page */
+.dp-focus .dp-row { padding: 9.06px 0 8.06px; }
+.dp-fu .dp-row { padding: 7.06px 0 6.06px; }
+.dp-focus .dp-row .dp-tag { top: 11.8px; }
+.dp-fu .dp-row .dp-tag { top: 9.8px; }
+.dp-cal .dp-row { height: 31.2px; padding: 8.4px 0 5.6px; }
+.dp-inbox .dp-row { height: 32px; padding: 8.6px 0 5.6px; }
+.dp-band .dp-laugh { display: flex; flex-direction: column; }
+.dp-band .dp-laugh .dp-h { flex: none; }
+.dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0; }

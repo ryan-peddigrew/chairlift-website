@@ -97,7 +97,15 @@ function name(team) {
 }
 
 function side(c, score) {
-  return { name: name(c.team), abbr: c.team.abbreviation || "", logo: c.team.logo || "", score: score ? String(c.score) : "" };
+  const rec = (c.records || []).find((r) => r.type === "total" || r.name === "overall") || (c.records || [])[0];
+  return { name: name(c.team), abbr: c.team.abbreviation || "", logo: c.team.logo || "", score: score ? String(c.score) : "", rec: (rec && rec.summary) || "" };
+}
+
+// Where to watch and where it's played, straight from ESPN's scoreboard.
+function where(c) {
+  const tv = [...new Set(((c.broadcasts || []).flatMap((b) => b.names || [])))].slice(0, 2).join(", ");
+  const venue = (c.venue && c.venue.fullName) || "";
+  return [tv, venue].filter(Boolean).join(" · ");
 }
 
 function lastName(a) {
@@ -178,14 +186,14 @@ async function sports() {
           perf = bits;
         }
         if (!perf.length) perf = await performers(t, ev.id, mine.team.id);
-        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: withRel([side(w, 1), side(l, 1)], mine), sep: ",", status: st.shortDetail || "Final", perf });
+        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: withRel([side(w, 1), side(l, 1)], mine), sep: ",", status: st.shortDetail || "Final", perf, foot: perf.join(" · ") });
       } else if (st.state === "in") {
         live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, teams: withRel([side(mine, 1), side(other, 1)], mine), sep: ",", status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
       } else if (st.state === "pre" && when.getTime() > now.getTime() - 3 * 36e5) {
         const time = when.toLocaleTimeString("en-US", { timeZone: TZ, hour: "numeric", minute: "2-digit" });
         const hour = Number(when.toLocaleString("en-US", { timeZone: TZ, hour: "numeric", hour12: false }));
         const label = ymd(when) === today ? (hour >= 17 ? "Tonight" : "Today") : when.toLocaleDateString("en-US", { timeZone: TZ, weekday: "short" });
-        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, teams: withRel([side(mine, 0), side(other, 0)], mine), sep: " vs", status: "Up next", perf: [`${label} · ${time}`] });
+        next.push({ ...base, line: `${name(mine.team)} vs ${name(other.team)}`, teams: withRel([side(mine, 0), side(other, 0)], mine), sep: " vs", status: "Up next", perf: [`${label} · ${time}`], foot: where(c) });
       }
     }
   })));
