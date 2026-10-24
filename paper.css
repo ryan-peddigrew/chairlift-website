@@ -404,3 +404,7 @@
 .dp-comic, .paper-shot .dp img.dp-comic { filter: grayscale(1) brightness(1.1) contrast(1.04); }
 .dp-comic, .paper-shot .dp img.dp-comic { filter: none; mix-blend-mode: normal; }
 .dp-foot { bottom: 5px; }
+
+/* cartoon title */
+.dp-band .dp-laugh .dp-cap { flex: none; margin: 0 0 9px; text-align: center; font: italic 400 10.5px/1 'Source Serif 4', serif; color: #444; }
+.dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0 6px; }
