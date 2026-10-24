@@ -389,3 +389,9 @@
 .dp-tm .dp-ls + b { margin-left: 8px; }
 .dp-sports .dp-game, .dp-sports .dp-game:nth-child(even) { padding-top: 5.75px; padding-bottom: 4.75px; }
 .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 5.75px; padding-bottom: 4.75px; }
+
+/* inbox detail line */
+.dp-inbox .dp-row { height: auto; padding: 6.4px 0 5px; display: block; }
+.dp-inbox .dp-row > span { display: block; }
+.dp-inbox .dp-sub { display: block; position: relative; margin: 3px 0 0 128px; font: italic 400 9px/11px 'Source Serif 4', serif; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dp-cols .dp-fu > .dp-row:last-child { border-bottom: 1px solid #DADADA; }
