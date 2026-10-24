@@ -408,3 +408,5 @@
 /* cartoon title */
 .dp-band .dp-laugh .dp-cap { flex: none; margin: 0 0 9px; text-align: center; font: italic 400 10.5px/1 'Source Serif 4', serif; color: #444; }
 .dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0 6px; }
+.dp-band .dp-laugh .dp-cap { margin: 8px 0 0; }
+.dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: 8px 0 auto; }
