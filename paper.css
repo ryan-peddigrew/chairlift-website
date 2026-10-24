@@ -347,3 +347,13 @@
 .dp-fu .dp-row .dp-tag { top: 10.8px; }
 .dp-cal .dp-row { height: 30.67px; }
 .dp-inbox .dp-row { height: 31.47px; }
+/* headlines: three quick lines, smaller bullets; the column divider runs through the gap above Sports */
+.dp-news .dp-row em::before { width: 2.2px; height: 2.2px; top: 3.4px; }
+.dp-news .dp-row:last-child { padding-bottom: 6.2px; }
+.dp-band .dp-rule { margin-top: -12.5px; }
+/* three headlines instead of four: the freed space is shared evenly by Calendar, Inbox and Headlines */
+.dp-cal .dp-row { height: 33px; padding: 9px 0 6px; }
+.dp-inbox .dp-row { height: 33.8px; padding: 9.4px 0 6px; }
+.dp-news .dp-row { padding: 8.4px 0 7.4px; }
+.dp-news .dp-row:last-child { padding-bottom: 7.6px; }
+.dp-news .dp-row:last-child { padding-bottom: 6.2px; }

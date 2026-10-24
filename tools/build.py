@@ -142,7 +142,7 @@ def dp_sports():
         for lg, a, sa, b, sb, mid, rel in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("4:30", "Call with Brightwater CPA", "30 min"), ("6:00", "Gym after work", "1 hr")]
 DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Personal"), ("Sam", "Proposal draft v2 is ready", "Work"), ("Northline Supply Co.", "Confirmed Friday delivery", "Work"), ("Brightwater CPA", "Q4 numbers to review", "Work"), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Personal"), ("Team", "Lunch Friday?", "Work"), ("Harbour Bank", "Your statement is ready", "Personal")]
-DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24"), ("Over-the-counter hearing aids coming to Ontario", "York Region News")]
+DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
@@ -166,7 +166,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
             </div>
             <div class="dp-band">
               <div>
-                <section class="dp-sec dp-sports">{dp_h("trophy", "My Teams", "")}<div data-dp-sports>{dp_sports()}</div></section>
+                <section class="dp-sec dp-sports">{dp_h("trophy", "Sports", "")}<div data-dp-sports>{dp_sports()}</div></section>
               </div>
               <div class="dp-rule"></div>
               <div>
