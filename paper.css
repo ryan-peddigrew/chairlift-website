@@ -412,10 +412,15 @@
 .dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: 8px 0 auto; }
 .dp-gs i { display: none; }
 .dp-gs { justify-content: flex-end; }
-.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even), .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 8.75px; padding-bottom: 7.75px; }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even), .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 6.75px; padding-bottom: 5.75px; }
 .dp-gs { display: none; }
 .dp-tm { padding: 4px 0; gap: 10px; }
 .dp-tm { gap: 6px; }
 .dp-tm b { flex: 0 0 auto; min-width: 24px; }
 .dp-tm .dp-ls + b { margin-left: 6px; }
 .dp-tm .dp-ls { margin-right: 0; }
+
+/* footer title in the masthead face */
+.dp-foot { justify-content: flex-end; }
+.dp-foot span { font: 400 14px/1 'UnifrakturMaguntia', serif; letter-spacing: 0; text-transform: none; color: #333; }
+.dp-foot { bottom: 4px; }
