@@ -357,3 +357,9 @@
 .dp-news .dp-row { padding: 8.4px 0 7.4px; }
 .dp-news .dp-row:last-child { padding-bottom: 7.6px; }
 .dp-news .dp-row:last-child { padding-bottom: 6.2px; }
+/* the two columns always end level: whichever is shorter, its rows share the extra room evenly */
+.dp-cols > div:not(.dp-rule) { display: flex; flex-direction: column; }
+.dp-cols .dp-sec { display: flex; flex-direction: column; flex: 1 1 auto; }
+.dp-cols .dp-sec > .dp-h { flex: none; }
+.dp-cols .dp-sec > .dp-row, .dp-cols .dp-sec > [data-dp-news] > .dp-row { flex: 1 1 auto; }
+.dp-cols .dp-sec > [data-dp-news] { flex: 1 1 auto; display: flex; flex-direction: column; }
