@@ -1,0 +1,426 @@
+/* The Daily Peddigrew: live sample paper (816 x 1056 design px, scaled to fit) */
+.dp-frame { position: relative; width: 100%; aspect-ratio: 816 / 1056; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(20, 27, 42, 0.16); background: #F5F5F3; }
+.dp { position: absolute; top: 0; left: 0; width: 816px; height: 1056px; transform-origin: 0 0; transform: scale(var(--dp-s, 0.5)); background: #F5F5F3; color: #111; padding: 26px 42px 0; font-family: 'Source Serif 4', Georgia, serif; line-height: 1.25; text-align: left; }
+.dp *, .dp *::before, .dp *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.dp-mast { font-family: 'UnifrakturMaguntia', serif; font-size: 82px; line-height: 1; text-align: center; letter-spacing: 0.005em; white-space: nowrap; height: 88px; }
+.dp-date { margin-top: 3px; border-top: 1px solid #111; border-bottom: 3px double #111; padding: 6px 0 5px; text-align: center; font: 700 8.6px/1 Inter, sans-serif; letter-spacing: 0.29em; text-transform: uppercase; white-space: nowrap; }
+.dp-cols { display: grid; grid-template-columns: 376px 1px 328px; column-gap: 18px; margin-top: 14px; }
+.dp-rule { background: #111; }
+.dp-h { display: flex; align-items: center; gap: 8px; border-bottom: 1.2px solid #111; padding-bottom: 7px; margin-bottom: 4px; }
+.dp-h svg { width: 15px; height: 15px; flex: none; fill: none; stroke: #111; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dp-h b { font: 800 16.5px/1 Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+.dp-h i { margin-left: auto; font: 600 6.5px/1 Inter, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; font-style: normal; color: #555; }
+.dp-sec + .dp-sec { margin-top: 13px; }
+.dp-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; border-bottom: 1px solid #DADADA; }
+.dp-tag { font: 700 6.5px/1 Inter, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+.dp-focus .dp-row { display: block; position: relative; padding: 11px 0 10px; }
+.dp-focus .dp-row .dp-tag { position: absolute; right: 0; top: 16px; }
+.dp-t { font-size: 11.8px; font-weight: 700; }
+.dp-focus ul { list-style: none; margin-top: 3px; }
+.dp-focus li { font-size: 8.9px; line-height: 1.5; color: #333; padding-left: 14px; position: relative; }
+.dp-focus li::before { content: ""; position: absolute; left: 4px; top: 0.6em; width: 3.5px; height: 3.5px; border-radius: 50%; background: #333; }
+.dp-fu .dp-row { display: block; position: relative; padding: 11px 0 10px; }
+.dp-fu .dp-row .dp-tag { position: absolute; right: 0; top: 16px; }
+.dp-fu .dp-t { font-weight: 400; font-size: 11.6px; }
+.dp-re { font-size: 8.2px; font-style: italic; color: #666; margin: 3px 0 0 11px; }
+.dp-sports .dp-row { align-items: center; padding: 10px 0 10px; min-height: 49px; }
+.dp-team { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.dp-team img { width: 13px; height: 13px; object-fit: contain; flex: none; }
+.dp-team .dp-noimg { width: 13px; flex: none; }
+.dp-score { font: 600 10.6px/1.2 Inter, sans-serif; white-space: nowrap; }
+.dp-st { font-size: 7.2px; font-style: italic; color: #555; }
+.dp-lead { font-size: 8.6px; font-style: italic; color: #333; text-align: right; }
+.dp-wx { display: flex; align-items: center; gap: 8px; border: 1px solid #111; padding: 9px 9px 9px 9px; margin-bottom: 16px; height: 37px; }
+.dp-wx svg { width: 13px; height: 13px; fill: none; stroke: #111; stroke-width: 1.8; stroke-linecap: round; flex: none; }
+.dp-wx .dp-temp { font: 700 19px/1 'Source Serif 4', serif; position: relative; }
+.dp-wx .dp-temp sup { font-size: 9px; font-weight: 400; position: absolute; top: -3px; right: -6px; }
+.dp-wx .dp-desc { font-size: 8.6px; font-style: italic; color: #333; margin-left: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dp-wx .dp-tag { margin-left: auto; letter-spacing: 0.14em; }
+.dp-cal .dp-row { justify-content: flex-start; padding: 8px 0 7px; height: 31px; align-items: center; }
+.dp-cal .dp-row b { font-size: 10.6px; width: 39px; flex: none; }
+.dp-cal .dp-row span { font-size: 11.3px; }
+.dp-cal .dp-row em { margin-left: auto; font-size: 7.6px; color: #555; }
+.dp-inbox .dp-row { padding: 8px 0 7px; height: 32px; align-items: center; }
+.dp-inbox .dp-row span:first-child { font-size: 10.6px; }
+.dp-news .dp-row { display: block; padding: 7px 0 7px; height: 31px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 9.5px; font-weight: 600; line-height: 16px; }
+.dp-news .dp-row em { font-weight: 400; font-size: 7.4px; color: #555; margin-left: 2px; }
+.dp-comic { display: block; width: 118px; margin: 6px auto 0; mix-blend-mode: multiply; }
+.dp-foot { position: absolute; left: 42px; right: 42px; bottom: 22px; display: flex; justify-content: space-between; font: 600 6px/1 Inter, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: #666; }
+.paper-shot .dp img { border: 0; border-radius: 0; box-shadow: none; }
+.dp-wx { height: 40px; margin-bottom: 18px; }
+.paper-shot .dp img.dp-comic { width: 118px; height: auto; }
+.paper-shot .dp .dp-team img { width: 13px; height: 13px; }
+.dp-news .dp-row { height: auto; padding: 7px 0 6px; overflow: visible; }
+.dp-news .dp-row .dp-nt { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 14px; }
+.dp-news .dp-row em { display: block; margin: 2px 0 0; font: 600 6.3px/9px Inter, sans-serif; font-style: normal; letter-spacing: 0.16em; text-transform: uppercase; color: #666; }
+.dp-wxm { display: flex; margin: 0 auto; }
+.dp-wxm > span { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0 11px; border-left: 1px solid #C8C8C8; }
+.dp-wxm > span:last-child { border-right: 1px solid #C8C8C8; }
+.dp-wxm i { font: 600 5.6px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.16em; text-transform: uppercase; color: #666; }
+.dp-wxm b { font: 600 9.5px/1 'Source Serif 4', serif; }
+.dp-wxm + .dp-tag { margin-left: 0; }
+/* Sports: score line, then one indented italic performer line with a bullet */
+.dp-sports .dp-row { display: block; min-height: 0; padding: 9px 0 8px; }
+.dp-gl { display: flex; align-items: center; gap: 8px; }
+.dp-gl img, .dp-gl .dp-noimg { width: 13px; height: 13px; object-fit: contain; flex: none; }
+.paper-shot .dp .dp-gl img { width: 13px; height: 13px; }
+.dp-gl .dp-tag { margin-left: auto; }
+.dp-perf { position: relative; margin: 3px 0 0 66px; padding-left: 10px; font-size: 7.6px; line-height: 1.5; font-style: italic; color: #444; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dp-perf::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 3.2px; height: 3.2px; border-radius: 50%; background: #444; }
+.dp-focus .dp-row { padding: 9px 0 8px; }
+.dp-focus .dp-row .dp-tag { top: 14px; }
+.dp-fu .dp-row { padding: 8px 0 7px; }
+.dp-fu .dp-row .dp-tag { top: 13px; }
+.dp-sports .dp-row { padding: 7px 0 6px; }
+.dp-focus .dp-row { padding: 10px 0 9px; }
+.dp-focus .dp-row .dp-tag { top: 15px; }
+.dp-fu .dp-row { padding: 9px 0 8px; }
+.dp-fu .dp-row .dp-tag { top: 14px; }
+/* Dateline: greeting left, date centre, time right */
+.dp-date { display: grid; grid-template-columns: 1fr auto 1fr; padding-left: 4px; padding-right: 4px; }
+.dp-date > :first-child { text-align: left; }
+.dp-date > :last-child { text-align: right; }
+.dp-wx { padding-left: 8px; padding-right: 8px; }
+.dp-wx .dp-desc { flex: none; overflow: visible; }
+.dp-wxm > span { padding: 0 9px; }
+.dp-wxm b { white-space: nowrap; }
+.dp-sports .dp-row { padding: 14px 0 13px; }
+/* Masthead: a touch heavier, with a soft letterpress shadow */
+.dp-mast { -webkit-text-stroke: 0.6px #111; text-shadow: 2px 2.5px 0 rgba(17, 17, 17, 0.2), 0 0 1px rgba(17, 17, 17, 0.35); }
+/* Sports: one rounded scoreboard bubble per game */
+.dp-game { margin-top: 9px; }
+.dp-sb { display: grid; grid-template-columns: 44px 1fr 120px 1fr 44px; align-items: center; background: #E8E8E6; border-radius: 14px; padding: 7px 12px; }
+.dp-sd { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.dp-sd img, .dp-sd .dp-noimg { width: 22px; height: 22px; object-fit: contain; display: block; }
+.paper-shot .dp .dp-sd img { width: 22px; height: 22px; }
+.dp-sd .dp-noimg { border-radius: 50%; background: #CFCABE; }
+.dp-sd small { font: 700 6.6px/1 Inter, sans-serif; letter-spacing: 0.14em; color: #333; }
+.dp-sb > b { font: 800 24px/1 Inter, sans-serif; text-align: center; letter-spacing: -0.01em; }
+.dp-sb > b.dp-lo { color: #888888; font-weight: 600; }
+.dp-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.dp-mid i { font: 700 6.4px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.2em; color: #666; }
+.dp-mid em { font: 700 8.4px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; background: #111; color: #F5F5F3; padding: 4px 7px 3px; border-radius: 4px; white-space: nowrap; }
+/* Inbox sender before each subject */
+.dp-inbox .dp-row > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.dp-from { display: inline-block; min-width: 86px; margin-right: 8px; font: 700 7px/1 Inter, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #111; }
+/* News source line indented under its headline */
+.dp-news .dp-row em { position: relative; margin-left: 20px; padding-left: 8px; }
+.dp-news .dp-row em::before { content: ""; position: absolute; left: 0; top: 2.9px; width: 3px; height: 3px; border-radius: 50%; background: #666; }
+.dp-sb { padding: 5px 12px; }
+/* Focus and Follow-ups share one style: bold title, italic bullet lines indented to the "n" of the title */
+.dp-focus li, .dp-fu .dp-re { font-style: italic; font-size: 8.9px; line-height: 1.5; color: #333; padding-left: 22px; position: relative; margin-left: 0; }
+.dp-focus li::before, .dp-fu .dp-re::before { content: ""; position: absolute; left: 13px; top: 0.62em; width: 3.5px; height: 3.5px; border-radius: 50%; background: #333; }
+.dp-fu .dp-t { font-weight: 700; font-size: 11.8px; }
+.dp-fu .dp-re { margin-top: 3px; }
+/* Weather bar: slimmer box with a finer border */
+.dp-wx { height: 33px; border-width: 0.75px; padding-top: 0; padding-bottom: 0; }
+.dp-dc { display: flex; flex-direction: column; gap: 3px; margin-left: 6px; flex: none; }
+.dp-dc .dp-desc { margin-left: 0; line-height: 1; }
+.dp-hl { font: 600 5.8px/1 Inter, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #666; white-space: nowrap; }
+.dp-loc { display: flex; align-items: center; gap: 3px; }
+.dp-wx .dp-loc svg { width: 9px; height: 9px; stroke-width: 2; }
+/* weather: open strip, no box */
+.dp-wx { border: 0; border-bottom: 1px solid #111; padding: 0 2px 6px; height: 30px; margin-bottom: 10px; }
+.dp-cal .dp-row b { width: 58px; }
+/* weather as its own section */
+.dp-wx { border: 0; height: 30px; padding: 4px 2px 2px; margin-bottom: 0; }
+.dp-wx .dp-dc { margin-left: 8px; }
+.dp-h i .dp-pin { width: 8px; height: 8px; stroke-width: 2.2; vertical-align: -1px; margin-right: 3px; }
+.dp-wx .dp-wxm { margin: 0 0 0 auto; }
+.dp-wxm > span:last-child { border-right: 0; padding-right: 2px; }
+.dp-cal .dp-row { height: 29px; padding: 7px 0 6px; }
+.dp-comic { width: 108px; }
+/* inbox: tag left, sender right */
+.dp-from { min-width: 62px; color: #555; }
+.dp-inbox .dp-tag { margin-left: 10px; }
+/* three-panel comic strip fills the column */
+.dp-comic, .paper-shot .dp img.dp-comic { width: 100%; height: auto; margin: 8px 0 0; }
+.dp-inbox .dp-tag { font-size: 6px; letter-spacing: 0.1em; margin-left: 6px; }
+.dp-from { min-width: 52px; margin-right: 6px; }
+/* weather stats spread to fill the strip */
+.dp-wx .dp-wxm { flex: 1; margin: 0 0 0 14px; }
+.dp-wxm > span { flex: 1; padding: 0 6px; }
+.dp-wxm > span:last-child { border-right: 0; }
+/* sports: no bubbles, rows with hairlines like the other sections */
+.dp-sb { background: none; border-radius: 0; padding: 5px 0; }
+.dp-game { margin-top: 0; border-bottom: 1px solid #D8D8D8; }
+.dp-game:last-child { border-bottom: 0; }
+/* sports: smaller scores, status as styled text instead of black pills */
+.dp-sb > b { font-size: 19px; }
+.dp-mid em { background: none; color: #111; padding: 0; border-radius: 0; font: italic 600 10px/1 'Source Serif 4', serif; letter-spacing: 0.04em; text-transform: none; display: flex; align-items: center; gap: 6px; }
+.dp-mid em::before, .dp-mid em::after { content: ""; width: 14px; height: 1px; background: #111; opacity: 0.45; }
+/* sports: tighter rows, no flanking lines */
+.dp-mid em::before, .dp-mid em::after { content: none; }
+.dp-mid em { display: block; }
+.dp-sb { padding: 2px 0; grid-template-columns: 38px 1fr 120px 1fr 38px; }
+.dp-sb > b { font-size: 17px; }
+.dp-mid { gap: 3px; }
+.dp-sb { padding: 7px 0; }
+.dp-sb > b { font-size: 18px; }
+/* bottom band: compact sports (two across) beside The Funnies */
+.dp-band { display: grid; grid-template-columns: 376px 1px 328px; column-gap: 18px; margin-top: 14px; }
+.dp-band .dp-rule { background: #111; }
+.dp-sports [data-dp-sports] { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; }
+.dp-sports .dp-game { border-bottom: 1px solid #D8D8D8; }
+.dp-sports .dp-game:nth-last-child(-n+2) { border-bottom: 0; }
+.dp-sports .dp-sb { grid-template-columns: 30px 1fr 1fr 30px; grid-template-areas: "a x y b" "m m m m"; row-gap: 2px; padding: 7px 0 5px; align-items: center; }
+.dp-sports .dp-sb > :nth-child(1) { grid-area: a; }
+.dp-sports .dp-sb > :nth-child(2) { grid-area: x; text-align: center; }
+.dp-sports .dp-sb > :nth-child(3) { grid-area: m; flex-direction: row; justify-content: center; gap: 6px; align-items: baseline; }
+.dp-sports .dp-sb > :nth-child(4) { grid-area: y; text-align: center; }
+.dp-sports .dp-sb > :nth-child(5) { grid-area: b; }
+.dp-focus .dp-row { padding: 14px 0 13px; }
+.dp-focus .dp-row .dp-tag { top: 19px; }
+.dp-fu .dp-row { padding: 12px 0 11px; }
+.dp-fu .dp-row .dp-tag { top: 17px; }
+.dp-cols .dp-rule { align-self: stretch; }
+.dp-focus .dp-row { padding: 15.2px 0 14.2px; }
+.dp-focus .dp-row .dp-tag { top: 20px; }
+.dp-fu .dp-row { padding: 13.2px 0 12.2px; }
+.dp-fu .dp-row .dp-tag { top: 18px; }
+.dp-band { margin-top: 18px; }
+/* sports scorecards: two across, one card per game */
+.dp-sports [data-dp-sports] { column-gap: 0; }
+.dp-sports .dp-game { margin: 0; padding: 9px 14px 8px 0; border-bottom: 1px solid #D8D8D8; }
+.dp-sports .dp-game:nth-child(even) { padding: 9px 0 8px 14px; border-left: 1px solid #D8D8D8; }
+.dp-sports .dp-game:nth-last-child(-n+2) { border-bottom: 0; }
+.dp-gs { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.dp-gs i { font: 700 6.4px/1 Inter, sans-serif; font-style: normal; letter-spacing: 0.2em; color: #666; }
+.dp-gs em { font: italic 600 9px/1 'Source Serif 4', serif; font-style: italic; }
+.dp-tm { display: flex; align-items: center; gap: 8px; padding: 2px 0; }
+.dp-tm img, .dp-tm .dp-noimg { width: 22px; height: 22px; object-fit: contain; flex: none; }
+.dp-tm .dp-noimg { display: block; border-radius: 50%; background: #CFCFCF; }
+.dp-tm small { font: 700 8.6px/1 Inter, sans-serif; letter-spacing: 0.12em; }
+.dp-tm b { margin-left: auto; font: 800 17px/1 Inter, sans-serif; min-width: 14px; text-align: right; }
+.dp-tm.dp-lo b, .dp-tm.dp-lo small { color: #888888; font-weight: 600; }
+.dp-sports .dp-game { padding: 6px 14px 5px 0; }
+.dp-sports .dp-game:nth-child(even) { padding: 6px 0 5px 14px; }
+.dp-gs { margin-bottom: 4px; }
+.dp-tm { padding: 1px 0; gap: 7px; }
+.dp-tm img, .dp-tm .dp-noimg { width: 18px; height: 18px; }
+.dp-tm b { font-size: 15px; }
+.dp-cal .dp-row { height: 29.5px; padding: 7px 0 6px; }
+.dp-inbox .dp-row { height: 30.5px; padding: 7px 0 6px; }
+.dp-focus .dp-row { padding: 14.35px 0 13.35px; }
+.dp-focus .dp-row .dp-tag { top: 19px; }
+.dp-fu .dp-row { padding: 12.35px 0 11.35px; }
+.dp-fu .dp-row .dp-tag { top: 17px; }
+.dp-focus .dp-row { padding: 14.95px 0 13.95px; }
+.dp-fu .dp-row { padding: 12.95px 0 11.95px; }
+.dp-sports .dp-game { padding: 5px 14px 4px 0; }
+.dp-sports .dp-game:nth-child(even) { padding: 5px 0 4px 14px; }
+.dp-band { margin-top: 16px; }
+/* sports: read down the columns, in date order (last night + tonight, then the next games) */
+.dp-sports [data-dp-sports] { grid-auto-flow: column; grid-template-rows: repeat(2, auto); }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even) { padding: 5px 14px 4px 0; border-left: 0; border-bottom: 0; }
+.dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding: 5px 0 4px 14px; border-left: 1px solid #D8D8D8; }
+.dp-sports .dp-game:nth-child(odd) { border-bottom: 1px solid #D8D8D8; }
+/* weather as the fourth section: a little more presence */
+.dp-wx { height: 40px; padding: 6px 2px 4px; }
+.dp-wx .dp-temp { font-size: 26px; }
+.dp-wx .dp-temp sup { font-size: 11px; top: -4px; right: -8px; }
+.dp-wx .dp-desc { font-size: 10px; }
+.dp-hl { font-size: 6.4px; }
+.dp-wxm b { font-size: 11px; }
+.dp-wxm i { font-size: 6px; }
+.dp-wx .dp-dc { margin-left: 12px; }
+.dp-wxs { margin-bottom: 0; }
+.dp-wx { height: 36px; }
+.dp-cal .dp-row { height: 29px; padding: 7px 0 5px; }
+.dp-inbox .dp-row { height: 30px; padding: 7px 0 5px; }
+.dp-wxm b { display: inline-flex; align-items: center; justify-content: center; gap: 3px; }
+.dp-wxm .dp-arrow { width: 10px; height: 10px; fill: none; stroke: #111; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.dp-wxm .dp-compass { font: 700 6.6px/1 Inter, sans-serif; letter-spacing: 0.1em; color: #555; }
+.dp-foot { justify-content: flex-end; }
+/* comic: keep its colours but pull the yellow toward the neutral paper */
+.dp-comic { filter: saturate(0.3) brightness(1.07) contrast(1.04); }
+.dp-rel { font-weight: 600; font-size: 7px; letter-spacing: 0.06em; color: #666; text-transform: lowercase; margin-right: 1px; }
+/* a touch larger small text, easier to read on a phone */
+.dp-focus li, .dp-fu .dp-re { font-size: 9.8px; }
+.dp-focus li::before, .dp-fu .dp-re::before { top: 0.62em; }
+.dp-from { font-size: 7.8px; min-width: 58px; }
+.dp-inbox .dp-tag { font-size: 6.8px; }
+.dp-cal .dp-row em { font-size: 8.8px; }
+.dp-news .dp-row em { font-size: 6.9px; }
+.dp-focus .dp-row { padding: 14.05px 0 13.05px; }
+.dp-fu .dp-row { padding: 12.05px 0 11.05px; }
+.dp-focus .dp-row .dp-tag { top: 19px; }
+.dp-fu .dp-row .dp-tag { top: 17px; }
+.dp-from { font-size: 7.4px; min-width: 54px; margin-right: 4px; letter-spacing: 0.08em; }
+.dp-inbox .dp-tag { font-size: 6.5px; letter-spacing: 0.06em; margin-left: 4px; }
+/* bigger small text for phones, same boxes and spacing */
+.dp-focus li, .dp-fu .dp-re { font-size: 10.6px; line-height: 14.7px; }
+.dp-cal .dp-row em { font-size: 9.6px; }
+.dp-news .dp-row em { font-size: 7.6px; }
+.dp-from { font-size: 8.2px; min-width: 56px; margin-right: 3px; letter-spacing: 0.04em; }
+.dp-inbox .dp-tag { font-size: 7.2px; letter-spacing: 0.03em; margin-left: 3px; }
+/* thin grey line under Weather, like the other sections */
+.dp-wx { border-bottom: 1px solid #DADADA; }
+/* grey line under Sports and Funnies, level with each other */
+.dp-band .dp-sports, .dp-band .dp-laugh { border-bottom: 1px solid #DADADA; align-self: stretch; box-sizing: border-box; }
+.dp-band > div:not(.dp-rule) { display: flex; flex-direction: column; }
+.dp-band .dp-sports, .dp-band .dp-laugh { flex: 1; }
+/* section titles stand out a little more; box height unchanged */
+.dp-h { border-bottom-width: 2px; padding-bottom: 6.2px; }
+.dp-h b { font-size: 18.5px; line-height: 16.5px; letter-spacing: 0.1em; }
+.dp-h svg { width: 16px; height: 16px; stroke-width: 2.2; }
+/* weather on one line: temperature, condition, high/low, feels like */
+.dp-wx { height: 29px; padding: 0 2px; align-items: center; border-bottom: 1px solid #DADADA; }
+.dp-wx .dp-temp { font-size: 20px; margin-right: 12px; }
+.dp-wx .dp-temp sup { font-size: 9px; top: -3px; right: -6px; }
+.dp-wx .dp-dc { display: flex; flex-direction: row; align-items: baseline; gap: 10px; margin-left: 0; }
+.dp-wx .dp-desc { font-size: 10.6px; margin-left: 0; }
+.dp-wx .dp-hl { font-size: 7.2px; }
+.dp-wx .dp-wxm { flex: none; margin: 0 0 0 auto; }
+.dp-wx .dp-wxm > span { flex: none; padding: 0; border: 0; display: flex; flex-direction: row; align-items: baseline; gap: 6px; }
+.dp-wx .dp-wxm > span:nth-child(n+2) { display: none; }
+.dp-wx .dp-wxm i { font-size: 6.4px; }
+.dp-wx .dp-wxm b { font-size: 10px; }
+.dp-wx { height: 27px; }
+.dp-cal .dp-row { height: 27.5px; padding: 6px 0 4px; }
+.dp-inbox .dp-row { height: 28.5px; padding: 6px 0 4px; }
+.dp-inbox .dp-row { height: 28.33px; }
+/* weather is just a title line: degrees and condition centred, black rule under */
+.dp-wxc { margin: 0 auto; display: inline-flex; align-items: baseline; gap: 6px; font: 700 15px/1 'Source Serif 4', serif; color: #111; }
+.dp-wxc em { font: italic 400 11px/1 'Source Serif 4', serif; color: #333; }
+.dp-wxs { margin-bottom: 0; }
+.dp-cal .dp-row { height: 29.9px; padding: 7.4px 0 5px; }
+.dp-inbox .dp-row { height: 30.7px; padding: 7.4px 0 5px; }
+/* weather lives on the dateline now: icon, degrees, small italic location */
+.dp-date > :first-child { letter-spacing: 0.2em; }
+.dp-dwx { display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px; }
+.dp-dwx svg.dp-wi { width: 13px; height: 13px; fill: none; stroke: #111; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.dp-dwx b { font-weight: 700; letter-spacing: 0.08em; }
+.dp-dwx em { display: inline-flex; align-items: center; gap: 2px; margin-left: 4px; font: italic 400 9.5px/1 'Source Serif 4', serif; letter-spacing: 0; text-transform: none; color: #444; }
+.dp-dwx em svg.dp-pin { width: 8px; height: 8px; fill: none; stroke: #444; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.dp-dwx { height: 9px; }
+.dp-dwx svg.dp-wi { margin: -2px 0; }
+.dp-dwx em { line-height: 9px; }
+.dp-date { padding-bottom: 4px; }
+.dp-cal .dp-row { height: 30.5px; padding: 7.8px 0 5.2px; }
+.dp-inbox .dp-row { height: 31.3px; padding: 8px 0 5.2px; }
+/* six follow-ups: rows a little tighter so the column still ends level */
+.dp-focus .dp-row { padding: 11.5px 0 10.5px; }
+.dp-fu .dp-row { padding: 9.5px 0 8.5px; }
+.dp-focus .dp-row .dp-tag { top: 16.4px; }
+.dp-fu .dp-row .dp-tag { top: 14.4px; }
+/* every right-hand label looks the same: italic serif, matching the calendar durations */
+.dp-focus .dp-row .dp-tag, .dp-fu .dp-row .dp-tag, .dp-inbox .dp-tag, .dp-gs em {
+  font: italic 400 9.6px/1 'Source Serif 4', serif; letter-spacing: 0; text-transform: none; color: #555;
+}
+.dp-focus .dp-row .dp-tag { top: 14.4px; }
+.dp-fu .dp-row .dp-tag { top: 12.4px; }
+.dp-gs em { line-height: 9px; }
+/* inbox: sender on the left, then the subject; no Personal/Work labels */
+.dp-inbox .dp-from { font: 700 10px/1 'Source Serif 4', serif; letter-spacing: 0; text-transform: none; color: #111; display: inline-block; min-width: 128px; margin-right: 0; }
+/* one extra follow-up line; rows tightened evenly so the column still ends level */
+.dp-focus .dp-row { padding: 10.4px 0 9.4px; }
+.dp-fu .dp-row { padding: 8.4px 0 7.4px; }
+.dp-focus .dp-row .dp-tag { top: 13.3px; }
+.dp-fu .dp-row .dp-tag { top: 11.3px; }
+.dp-focus .dp-row { padding: 11px 0 10px; }
+.dp-fu .dp-row { padding: 9px 0 8px; }
+.dp-focus .dp-row .dp-tag { top: 13.9px; }
+.dp-fu .dp-row .dp-tag { top: 11.9px; }
+.dp-focus .dp-row { padding: 10.7px 0 9.7px; }
+.dp-fu .dp-row { padding: 8.7px 0 7.7px; }
+.dp-focus .dp-row .dp-tag { top: 13.6px; }
+.dp-fu .dp-row .dp-tag { top: 11.6px; }
+/* equal gaps between every section: the band gap now matches the others (13px) */
+.dp-band { margin-top: 12.5px; }
+.dp-focus .dp-row { padding: 10.86px 0 9.86px; }
+.dp-fu .dp-row { padding: 8.86px 0 7.86px; }
+.dp-cal .dp-row { height: 30.75px; }
+.dp-inbox .dp-row { height: 31.55px; }
+/* last headline gets the same room under its text as the last follow-up, so both columns end alike */
+.dp-news .dp-row:last-child { padding-bottom: 6.2px; }
+.dp-cal .dp-row { height: 30.31px; }
+.dp-inbox .dp-row { height: 31.11px; }
+/* second line under Venue confirmation: rows tightened evenly to keep the page full */
+.dp-focus .dp-row { padding: 9.83px 0 8.83px; }
+.dp-fu .dp-row { padding: 7.83px 0 6.83px; }
+.dp-focus .dp-row .dp-tag { top: 12.6px; }
+.dp-fu .dp-row .dp-tag { top: 10.6px; }
+.dp-focus .dp-row { padding: 10.06px 0 9.06px; }
+.dp-fu .dp-row { padding: 8.06px 0 7.06px; }
+.dp-focus .dp-row .dp-tag { top: 12.8px; }
+.dp-fu .dp-row .dp-tag { top: 10.8px; }
+.dp-cal .dp-row { height: 30.67px; }
+.dp-inbox .dp-row { height: 31.47px; }
+/* headlines: three quick lines, smaller bullets; the column divider runs through the gap above Sports */
+.dp-news .dp-row em::before { width: 2.2px; height: 2.2px; top: 3.4px; }
+.dp-news .dp-row:last-child { padding-bottom: 6.2px; }
+.dp-band .dp-rule { margin-top: -12.5px; }
+/* three headlines instead of four: the freed space is shared evenly by Calendar, Inbox and Headlines */
+.dp-cal .dp-row { height: 33px; padding: 9px 0 6px; }
+.dp-inbox .dp-row { height: 33.8px; padding: 9.4px 0 6px; }
+.dp-news .dp-row { padding: 8.4px 0 7.4px; }
+.dp-news .dp-row:last-child { padding-bottom: 7.6px; }
+.dp-news .dp-row:last-child { padding-bottom: 6.2px; }
+/* the two columns always end level: whichever is shorter, its rows share the extra room evenly */
+.dp-cols > div:not(.dp-rule) { display: flex; flex-direction: column; }
+.dp-cols .dp-sec { display: flex; flex-direction: column; flex: 1 1 auto; }
+.dp-cols .dp-sec > .dp-h { flex: none; }
+.dp-cols .dp-sec > .dp-row, .dp-cols .dp-sec > [data-dp-news] > .dp-row { flex: 1 1 auto; }
+.dp-cols .dp-sec > [data-dp-news] { flex: 1 1 auto; display: flex; flex-direction: column; }
+/* sports cards use the width: record next to each team, a footer line with top performers or where to watch */
+.dp-rec { font: italic 400 8.4px/1 'Source Serif 4', serif; color: #777; margin-left: 2px; letter-spacing: 0; }
+.dp-tm.dp-lo .dp-rec { color: #999; }
+.dp-gf { font: italic 400 8.4px/1 'Source Serif 4', serif; color: #666; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* each section ends on its text; the heavy title rule and the gap do the separating */
+.dp-cols .dp-sec > .dp-row:last-child, .dp-cols .dp-sec > [data-dp-news] > .dp-row:last-child { border-bottom: 0; }
+/* sports cards got a footer line: rows above tighten a little so the page stays one page */
+.dp-focus .dp-row { padding: 9.06px 0 8.06px; }
+.dp-fu .dp-row { padding: 7.06px 0 6.06px; }
+.dp-focus .dp-row .dp-tag { top: 11.8px; }
+.dp-fu .dp-row .dp-tag { top: 9.8px; }
+.dp-cal .dp-row { height: 31.2px; padding: 8.4px 0 5.6px; }
+.dp-inbox .dp-row { height: 32px; padding: 8.6px 0 5.6px; }
+.dp-band .dp-laugh { display: flex; flex-direction: column; }
+.dp-band .dp-laugh .dp-h { flex: none; }
+.dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0; }
+/* records in brackets right beside the team; line scores and game time fill the right side */
+.dp-tm .dp-rec { margin-left: -3px; }
+.dp-tm .dp-ls { margin-left: auto; font: 400 8.4px/1 'Source Serif 4', serif; color: #777; letter-spacing: 0.08em; word-spacing: 3px; }
+.dp-tm .dp-ls + b { margin-left: 10px; }
+.dp-tm .dp-sl { margin-left: auto; font: italic 400 9.6px/1 'Source Serif 4', serif; color: #555; }
+.dp-tm small, .dp-tm .dp-rec, .dp-tm .dp-ls, .dp-tm .dp-sl { white-space: nowrap; }
+.dp-tm .dp-ls { font-size: 7.6px; letter-spacing: 0; word-spacing: 2px; }
+.dp-tm .dp-ls + b { margin-left: 8px; }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even) { padding-top: 5.75px; padding-bottom: 4.75px; }
+.dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 5.75px; padding-bottom: 4.75px; }
+
+/* inbox detail line */
+.dp-inbox .dp-row { height: auto; padding: 6.4px 0 5px; display: block; }
+.dp-inbox .dp-row > span { display: block; }
+.dp-inbox .dp-sub { display: block; position: relative; margin: 3px 0 0 128px; font: italic 400 9px/11px 'Source Serif 4', serif; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dp-cols .dp-fu > .dp-row:last-child { border-bottom: 1px solid #DADADA; }
+
+/* headline click-through arrow */
+.dp-news .dp-row { position: relative; }
+.dp-news .dp-row::after { content: "\2192"; position: absolute; right: 0; bottom: 5px; font: 400 12px/1 'Source Serif 4', serif; color: #AAAAAA; }
+
+/* comic: same neutral paper tone as the rest of the page */
+.dp-comic, .paper-shot .dp img.dp-comic { filter: grayscale(1) brightness(1.1) contrast(1.04); }
+.dp-comic, .paper-shot .dp img.dp-comic { filter: none; mix-blend-mode: normal; }
+.dp-foot { bottom: 5px; }
+
+/* cartoon title */
+.dp-band .dp-laugh .dp-cap { flex: none; margin: 0 0 9px; text-align: center; font: italic 400 10.5px/1 'Source Serif 4', serif; color: #444; }
+.dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: auto 0 6px; }
+.dp-band .dp-laugh .dp-cap { margin: 8px 0 0; }
+.dp-band .dp-laugh img.dp-comic, .paper-shot .dp .dp-laugh img.dp-comic { margin: 8px 0 auto; }
+.dp-gs i { display: none; }
+.dp-gs { justify-content: flex-end; }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even), .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 6.75px; padding-bottom: 5.75px; }
+.dp-gs { display: none; }
+.dp-tm { padding: 4px 0; gap: 10px; }
+.dp-tm { gap: 6px; }
+.dp-tm b { flex: 0 0 auto; min-width: 24px; }
+.dp-tm .dp-ls + b { margin-left: 6px; }
+.dp-tm .dp-ls { margin-right: 0; }
+
+/* footer title in the masthead face */
+.dp-foot { justify-content: flex-end; }
+.dp-foot span { font: 400 14px/1 'UnifrakturMaguntia', serif; letter-spacing: 0; text-transform: none; color: #333; }
+.dp-foot { bottom: 4px; }

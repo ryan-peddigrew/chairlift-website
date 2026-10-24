@@ -1,0 +1,3 @@
+# Live data for the morning paper sample on /morning-paper/
+[functions]
+  directory = "netlify/functions"
