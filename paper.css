@@ -395,3 +395,10 @@
 .dp-inbox .dp-row > span { display: block; }
 .dp-inbox .dp-sub { display: block; position: relative; margin: 3px 0 0 128px; font: italic 400 9px/11px 'Source Serif 4', serif; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .dp-cols .dp-fu > .dp-row:last-child { border-bottom: 1px solid #DADADA; }
+
+/* headline click-through arrow */
+.dp-news .dp-row { position: relative; }
+.dp-news .dp-row::after { content: "\2192"; position: absolute; right: 0; bottom: 5px; font: 400 12px/1 'Source Serif 4', serif; color: #AAAAAA; }
+
+/* comic: same neutral paper tone as the rest of the page */
+.dp-comic, .paper-shot .dp img.dp-comic { filter: grayscale(1) brightness(1.1) contrast(1.04); }
