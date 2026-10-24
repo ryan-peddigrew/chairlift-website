@@ -402,3 +402,4 @@
 
 /* comic: same neutral paper tone as the rest of the page */
 .dp-comic, .paper-shot .dp img.dp-comic { filter: grayscale(1) brightness(1.1) contrast(1.04); }
+.dp-comic, .paper-shot .dp img.dp-comic { filter: none; mix-blend-mode: normal; }
