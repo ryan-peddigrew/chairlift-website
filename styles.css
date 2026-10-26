@@ -498,8 +498,11 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 }
 
 /* Icons on light backgrounds sit in a small Ink square with a Neon line; on Ink they stay plain white */
-.fit-icon, .card .card-icon { box-sizing: border-box; width: 44px; height: 44px; padding: 10px; border-radius: 10px; background: var(--ink); stroke: var(--neon); margin-bottom: 12px; }
-.stage .card-icon, .section--ink .cards--mixed .card:nth-child(even) .card-icon { background: none; padding: 0; width: 28px; height: 28px; border-radius: 0; stroke: #FFFFFF; }
+/* Icons: full size line icons, never inside a box (Ryan, 2026-10-26) */
+.fit-icon, .card .card-icon { width: 40px; height: 40px; padding: 0; background: none; border-radius: 0; stroke: var(--ink); stroke-width: 1.6; margin-bottom: 12px; align-self: start; }
+.stage .card-icon, .section--ink .cards--mixed .card:nth-child(even) .card-icon { width: 40px; height: 40px; stroke: #FFFFFF; }
+.pains svg { width: 32px; height: 32px; margin-top: 0; }
+.pains li { grid-template-columns: 36px 1fr; }
 
 /* Morning paper starter offer */
 .paper-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
@@ -579,3 +582,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .hero--page .btn-ink { background: #FFFFFF; color: var(--ink); }
 .hero--page .btn-line { color: #FFFFFF; }
 .hero--page .lede a { color: #FFFFFF; }
+@media (max-width: 640px) {
+  .fit-item, .fit-item + .fit-item, .fit-item:nth-child(even) { grid-template-columns: 40px 1fr; column-gap: 16px; }
+  .fit-item .fit-icon { margin: 0; }
+}
