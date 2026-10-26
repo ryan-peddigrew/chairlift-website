@@ -43,7 +43,7 @@ def head(title, desc, path, noindex=False):
 <meta property="og:image" content="{SITE}/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Chairlift: Make the climb easier. Automations for growing companies.">
+<meta property="og:image:alt" content="Chairlift: Less busywork. More business.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{full}">
 <meta name="twitter:description" content="{desc}">
@@ -101,7 +101,7 @@ def footer():
   <div class="wrap footer-top">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=34, stroke=' stroke="rgba(255,255,255,0.3)" stroke-width="2"')}<span>Chairlift</span></a>
-      <p>We help growing companies take the routine work off their team's plate, so their people can focus on clients and growth.</p>
+      <p>We help established businesses take the routine work off their team's plate, so their people can focus on clients and growth.</p>
     </div>
     <nav aria-label="Footer">
       <ul class="footer-links">
@@ -181,7 +181,7 @@ def cta_section(title, flush=False, intro=True):
 {intro_p}        <ul class="cta-list">
           <li><b>1</b><span>You send a few lines about your business.</span></li>
           <li><b>2</b><span>We reply by email to set up a five-minute conversation.</span></li>
-          <li><b>3</b><span>You get specific ideas for what to automate first.</span></li>
+          <li><b>3</b><span>You get specific ideas for what to fix first.</span></li>
         </ul>
         <p class="cta-direct">Prefer email? <a href="mailto:{EMAIL}">{EMAIL}</a></p>
       </div>

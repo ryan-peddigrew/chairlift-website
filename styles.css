@@ -770,3 +770,8 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 @media (max-width: 860px) { .proof .proof-grid { padding: 6px 20px; } }
 @media (max-width: 860px) { .proof { padding: 0 12px; } .section--ink { } }
 @media (max-width: 640px) { .proof + .section--ink { padding-top: 12px; } }
+
+/* Booking page: loading text, backup link above the calendar */
+#cal-inline:empty::before { content: "Loading the calendar\2026"; display: block; padding: 24px 0; color: var(--muted); }
+.section-note--top { margin: 0 0 12px; }
+.section-note a { display: inline-block; padding: 12px 0; }
