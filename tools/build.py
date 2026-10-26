@@ -405,8 +405,30 @@ for i, e in enumerate(EXAMPLES):
 '''
 
 examples = page_hero("In practice", "What this looks like in practice.",
-    "Four tasks we often fix first, step by step. Illustrative examples, not client case studies, so you can picture each one in your business.") + f'''
-  <section class="section section--tight" aria-label="In practice">
+    "A real client first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
+  <section class="section section--soft section--tight" id="wastemind" aria-labelledby="wastemind-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <div class="story-head"><span class="eyebrow">Client story</span><img class="story-logo" src="/images/wastemind-logo.png" width="528" height="216" alt="WasteMind logo"></div>
+        <h2 id="wastemind-title" class="sr-only">WasteMind.</h2>
+        <p class="story-stat"><b>12 to 24 hours</b><span>down to about 1 hour</span></p>
+        <p class="story-note">Time to respond to quote requests, service calls and inquiries, roughly. More than 90% faster.</p>
+      </div>
+      <div class="prose">
+        <p>WasteMind makes, installs and services multi-residential waste equipment for condos and apartment buildings across Ottawa, Toronto and the GTA.</p>
+        <p><strong>The situation.</strong> Shane Fagan was growing WasteMind and working out how to scale it.</p>
+        <p><strong>What we did.</strong> We looked for the places where time and money were leaking, put fixes in, tracked the return, measured it, and then went looking for the next one.</p>
+        <p><strong>How it works now.</strong> We work with WasteMind every week, one tested fix at a time.</p>
+        <blockquote class="story-quote"><p>&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;</p><cite>Shane Fagan, WasteMind</cite></blockquote>
+      </div>
+      <div class="story-photos">
+        <img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel in a parking garage">
+        <img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue front-end-load waste containers from WasteMind">
+      </div>
+    </div>
+  </section>
+  <section class="section section--tight" aria-label="Illustrative examples">
     <div class="wrap">
 {"".join(example_block(e) for e in EXAMPLES)}    </div>
   </section>
