@@ -586,3 +586,42 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .fit-item, .fit-item + .fit-item, .fit-item:nth-child(even) { grid-template-columns: 40px 1fr; column-gap: 16px; }
   .fit-item .fit-icon { margin: 0; }
 }
+
+/* Tightening pass (2026-10-26): one even rhythm on every page.
+   Boxes sit 24px apart (12px on phones), the same as the white around them.
+   Plain white sections keep 72px (44px on phones) to the boxes either side. */
+.hero .wrap { padding-top: 24px; padding-bottom: 12px; }
+.hero + .section--ink { padding-top: 12px; }
+.section--ink, .section--soft, .cta, .cta--flush { padding: 12px 24px; }
+.section:not(.section--ink):not(.section--soft) > .wrap { padding-top: 60px; padding-bottom: 60px; }
+main > section:last-of-type { padding-bottom: 24px; }
+main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bottom: 12px; }
+.section--ink > .wrap, .section--soft > .wrap { padding-top: 80px; padding-bottom: 80px; }
+.section--tight.section--soft > .wrap, .section--tight.section--ink > .wrap { padding-top: 64px; padding-bottom: 64px; }
+.cta-box, .cta-band .cta-box { padding: 72px; }
+
+/* Page headers: wider headline so it reads in two or three strong lines, not four */
+.hero--page .hero-card { padding: 64px 72px 60px; }
+.hero--page .hero-card h1 { max-width: 20ch; }
+.hero--page .lede { max-width: 50ch; }
+
+/* Stronger body text: a touch darker so copy doesn't look washed out */
+:root { --muted: #474C54; --on-ink-muted: #C7CDD7; }
+.card h3, .stage h3, .fit-item h3 { letter-spacing: 0; }
+
+@media (max-width: 860px) {
+  .section--ink > .wrap, .section--soft > .wrap { padding-top: 56px; padding-bottom: 56px; }
+  .cta-box, .cta-band .cta-box { padding: 56px 40px; }
+  .hero--page .hero-card { padding: 52px 40px 48px; }
+}
+@media (max-width: 640px) {
+  .hero .wrap { padding: 12px 12px 6px; }
+  .hero + .section--ink { padding-top: 6px; }
+  .section--ink, .section--soft, .cta, .cta--flush { padding: 6px 12px; }
+  .section:not(.section--ink):not(.section--soft) > .wrap { padding-top: 38px; padding-bottom: 38px; }
+  main > section:last-of-type { padding-bottom: 12px; }
+  main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bottom: 6px; }
+  .section--ink > .wrap, .section--soft > .wrap, .section--tight.section--soft > .wrap, .section--tight.section--ink > .wrap { padding-top: 40px; padding-bottom: 40px; }
+  .cta-box, .cta-band .cta-box { padding: 40px 22px; }
+  .hero--page .hero-card { padding: 40px 22px 36px; }
+}
