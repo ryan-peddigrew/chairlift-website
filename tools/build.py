@@ -698,6 +698,18 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     "The page you're looking for has moved or never existed. Here's the way back down.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
+# ---------------------------------------------------------------- 5-minute booking (bio link)
+five_min = page_hero("Start a conversation", "Pick a time for a five-minute conversation.",
+    "Choose a slot that suits you and we'll talk through how your business runs and where to start.") + f'''
+  <section class="section section--tight">
+    <div class="wrap">
+      <div id="cal-inline" style="min-height:640px"></div>
+      <p class="section-note">Having trouble loading the calendar? <a href="{BOOKING_URL}">Open it in a new page</a>.</p>
+    </div>
+  </section>
+  <script src="/cal-embed.js"></script>
+'''
+
 PAGES = [
     ("index.html", "Chairlift · Automations for growing companies", "Chairlift takes follow-ups, quotes and everyday admin off your team's plate, inside the tools you already use, so your people can focus on clients and growth.", "/", None, home, False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
@@ -705,6 +717,7 @@ PAGES = [
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
     ("paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
+    ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
 ] + [
