@@ -245,7 +245,6 @@ home = f'''
     <div class="wrap paper-split">
       <div>
         <span class="rule"></span>
-        <span class="eyebrow">Just for fun</span>
         <h2 id="paper-title">The Daily Peddigrew.</h2>
         <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
         <p class="section-link"><a class="link-arrow" href="/paper/">See the morning paper</a></p>
@@ -566,7 +565,7 @@ HERO_MEDIA = '''<figure class="reel">
         </video>
       </figure>''' if REEL else ""
 
-morning_paper = page_hero("Just for fun", "One page for your mornings.",
+morning_paper = page_hero("The Daily Peddigrew", "One page for your mornings.",
     "A one-page morning briefing with your focus, calendar and follow-ups. On paper, by email or on your desktop.",
     extra=f'''
         <div class="ctas"><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>''') + f'''
@@ -702,7 +701,7 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
 # ---------------------------------------------------------------- Build your own paper
-try_paper = page_hero("Just for fun", "Build your own morning paper.",
+try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
     "Type in your name, your city and the three things on your plate today. Your page builds itself in seconds.") + f'''
   <section class="section section--ink" aria-labelledby="try-title">
     <div class="wrap paper-split try-split">
@@ -803,7 +802,7 @@ PAGES = [
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the fixes Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
-    ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Just for fun, with a five-minute conversation if you want more.", "/paper/", None, morning_paper, False),
+    ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
     ("try/index.html", "Build your own morning paper", "Type in your name, city and top three for the day, and see your own one-page morning paper in seconds.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
