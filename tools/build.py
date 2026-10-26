@@ -185,7 +185,7 @@ home = f'''
       <div class="hero-card">
         <span class="rule"></span>
         <h1><span class="nowrap">Make the</span> <span class="nowrap">climb easier{ARROW}</span></h1>
-        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. One in-house team, start to finish: no outsourcing and no bots. Your people get their time back for the work that grows the business.</p>
+        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. One in-house team, start to finish: real people you can call, never outsourced, never a bot. Your people get their time back for the work that grows the business.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
           <a class="btn btn-line" href="/how-it-works/">See how it works</a>
@@ -321,6 +321,7 @@ services = page_hero("What we do", "Automations that fit how you already work.",
         <div class="principle"><b>02</b><div><h3>Connected workflows</h3><p>Lead routing, quote follow-up, CRM updates, renewal reminders and internal alerts.</p></div></div>
         <div class="principle"><b>03</b><div><h3>AI-assisted work</h3><p>Email drafting, research, pulling data from documents and meeting summaries.</p></div></div>
         <div class="principle"><b>04</b><div><h3>Connected systems</h3><p>Your CRM, email, accounting and scheduling working together, with a person approving the key steps.</p></div></div>
+        <div class="principle"><b>05</b><div><h3>Company knowledge assistant</h3><p>A private assistant built on your approved company information. The most advanced option, not the default.</p></div></div>
       </div>
     </div>
   </section>
