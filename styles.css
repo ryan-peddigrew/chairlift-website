@@ -498,8 +498,11 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 }
 
 /* Icons on light backgrounds sit in a small Ink square with a Neon line; on Ink they stay plain white */
-.fit-icon, .card .card-icon { box-sizing: border-box; width: 44px; height: 44px; padding: 10px; border-radius: 10px; background: var(--ink); stroke: var(--neon); margin-bottom: 12px; }
-.stage .card-icon, .section--ink .cards--mixed .card:nth-child(even) .card-icon { background: none; padding: 0; width: 28px; height: 28px; border-radius: 0; stroke: #FFFFFF; }
+/* Icons: full size line icons, never inside a box (Ryan, 2026-10-26) */
+.fit-icon, .card .card-icon { width: 40px; height: 40px; padding: 0; background: none; border-radius: 0; stroke: var(--ink); stroke-width: 1.6; margin-bottom: 12px; align-self: start; }
+.stage .card-icon, .section--ink .cards--mixed .card:nth-child(even) .card-icon { width: 40px; height: 40px; stroke: #FFFFFF; }
+.pains svg { width: 32px; height: 32px; margin-top: 0; }
+.pains li { grid-template-columns: 36px 1fr; }
 
 /* Morning paper starter offer */
 .paper-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
@@ -562,3 +565,69 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .calc-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .calc-task { grid-column: 1 / -1; }
 }
+
+/* Who we are: Ink hero card sized for a page title, then alternating grey and Ink boxes */
+.hero--page .hero-card { padding: 72px 72px 64px; }
+.hero--page .hero-card h1 { font-size: clamp(36px, 5.4vw, 64px); max-width: 14ch; }
+.hero--page .eyebrow { color: var(--on-ink-muted); display: block; }
+.hero--page .rule { margin-bottom: 18px; }
+.hero--page .lede { margin-top: 18px; }
+.founder { align-items: center; }
+@media (max-width: 860px) { .hero--page .hero-card { padding: 56px 40px 48px; } }
+@media (max-width: 640px) {
+  .hero--page .hero-card { padding: 40px 22px 36px; }
+  .hero--page .hero-card h1 { font-size: 34px; }
+}
+.hero--page .ctas { margin-top: 28px; }
+.hero--page .btn-ink { background: #FFFFFF; color: var(--ink); }
+.hero--page .btn-line { color: #FFFFFF; }
+.hero--page .lede a { color: #FFFFFF; }
+@media (max-width: 640px) {
+  .fit-item, .fit-item + .fit-item, .fit-item:nth-child(even) { grid-template-columns: 40px 1fr; column-gap: 16px; }
+  .fit-item .fit-icon { margin: 0; }
+}
+
+/* Tightening pass (2026-10-26): one even rhythm on every page.
+   Boxes sit 24px apart (12px on phones), the same as the white around them.
+   Plain white sections keep 72px (44px on phones) to the boxes either side. */
+.hero .wrap { padding-top: 24px; padding-bottom: 12px; }
+.hero + .section--ink { padding-top: 12px; }
+.section--ink, .section--soft, .cta, .cta--flush { padding: 12px 24px; }
+.section:not(.section--ink):not(.section--soft) > .wrap { padding-top: 60px; padding-bottom: 60px; }
+main > section:last-of-type { padding-bottom: 24px; }
+main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bottom: 12px; }
+.section--ink > .wrap, .section--soft > .wrap { padding-top: 80px; padding-bottom: 80px; }
+.section--tight.section--soft > .wrap, .section--tight.section--ink > .wrap { padding-top: 64px; padding-bottom: 64px; }
+.cta-box, .cta-band .cta-box { padding: 72px; }
+
+/* Page headers: wider headline so it reads in two or three strong lines, not four */
+.hero--page .hero-card { padding: 64px 72px 60px; }
+.hero--page .hero-card h1 { max-width: 20ch; }
+.hero--page .lede { max-width: 50ch; }
+
+/* Stronger body text: a touch darker so copy doesn't look washed out */
+:root { --muted: #474C54; --on-ink-muted: #C7CDD7; }
+.card h3, .stage h3, .fit-item h3 { letter-spacing: 0; }
+
+@media (max-width: 860px) {
+  .section--ink > .wrap, .section--soft > .wrap { padding-top: 56px; padding-bottom: 56px; }
+  .cta-box, .cta-band .cta-box { padding: 56px 40px; }
+  .hero--page .hero-card { padding: 52px 40px 48px; }
+}
+@media (max-width: 640px) {
+  .hero .wrap { padding: 12px 12px 6px; }
+  .hero + .section--ink { padding-top: 6px; }
+  .section--ink, .section--soft, .cta, .cta--flush { padding: 6px 12px; }
+  .section:not(.section--ink):not(.section--soft) > .wrap { padding-top: 38px; padding-bottom: 38px; }
+  main > section:last-of-type { padding-bottom: 12px; }
+  main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bottom: 6px; }
+  .section--ink > .wrap, .section--soft > .wrap, .section--tight.section--soft > .wrap, .section--tight.section--ink > .wrap { padding-top: 40px; padding-bottom: 40px; }
+  .cta-box, .cta-band .cta-box { padding: 40px 22px; }
+  .hero--page .hero-card { padding: 40px 22px 36px; }
+}
+
+/* Icon and its label share one line (Ryan, 2026-10-26) */
+.card-top { display: flex; align-items: center; gap: 14px; }
+.card-top .card-icon { margin: 0; flex: none; width: 40px; height: 40px; }
+.card-top .card-label, .card-top .eyebrow { margin: 0; }
+.stage .card-top { margin-bottom: 14px; }

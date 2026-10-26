@@ -203,12 +203,12 @@ home = f'''
         <p>Small on their own. Add them up and it's hours every week.</p>
       </div>
       <div class="cards cards--mixed cards--swipe">
-        <div class="card">{icon("quote")}<span class="card-label">Sales</span><h3>Quote follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
-        <div class="card">{icon("chat")}<span class="card-label">Inquiries</span><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
-        <div class="card">{icon("cal")}<span class="card-label">Operations</span><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card">{icon("moon")}<span class="card-label">Inquiries</span><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
-        <div class="card">{icon("people")}<span class="card-label">Sales</span><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
-        <div class="card">{icon("trend")}<span class="card-label">Leadership</span><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
+        <div class="card"><div class="card-top">{icon("quote")}<span class="card-label">Sales</span></div><h3>Follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
+        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Inquiries</span></div><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
+        <div class="card"><div class="card-top">{icon("cal")}<span class="card-label">Operations</span></div><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
+        <div class="card"><div class="card-top">{icon("moon")}<span class="card-label">Inquiries</span></div><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
+        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Sales</span></div><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
+        <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
@@ -223,7 +223,7 @@ home = f'''
         <h2 id="paper-title">Start your morning on one page.</h2>
         <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
         <a class="btn btn-ink" href="/paper/">See the morning paper</a>
-        <p class="try-link"><a class="link-arrow" href="/try/">Or build your own in ten seconds</a></p>
+        <p class="try-link"><a class="link-arrow" href="/try/">Or build your own in 10 seconds</a></p>
       </div>
       {PAPER_IMG}
     </div>
@@ -258,7 +258,7 @@ home = f'''
       </div>
       <div class="prose">
         <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Great teams shouldn't lose their best hours to follow-ups and admin.</p>
-        <p>We've spent years up close with growing companies and the people who keep them running. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
+        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <a class="link-arrow" href="/who-we-are/">Read our story</a>
       </div>
     </div>
@@ -290,8 +290,7 @@ svc_blocks = ""
 for i, s in enumerate(SERVICES):
     svc_blocks += f'''      <article class="stage" id="{s["id"]}">
         <div>
-          {icon(s["icon"])}
-          <span class="eyebrow">{s["label"]}</span>
+          <div class="card-top">{icon(s["icon"])}<span class="eyebrow">{s["label"]}</span></div>
           <h2>{s["title"]}</h2>
           <p class="stage-sum">{s["desc"]}</p>
         </div>
@@ -423,16 +422,16 @@ examples = page_hero("In practice", "What this looks like in practice.",
 
 # ---------------------------------------------------------------- About
 about = page_hero("Who we are", "Why we started Chairlift.",
-    "Great teams shouldn't lose their best hours to follow-ups and admin.") + f'''
-  <section class="section section--tight" aria-labelledby="gap-title">
+    "Great teams shouldn't lose their best hours to follow-ups and admin work.") + f'''
+  <section class="section section--soft section--tight" aria-labelledby="gap-title">
     <div class="wrap split">
       <div>
         <span class="rule"></span>
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>We've spent years up close with growing companies and the people who keep them running. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
-        <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right automations in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
+        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth.</p>
+        <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right fix in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
     </div>
   </section>
@@ -443,22 +442,22 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <span class="rule"></span>
         <h2 id="expect-title">What you can expect from us.</h2>
       </div>
-      <div class="principles">
-        <div class="principle"><b>01</b><div><h3>Clear communication</h3><p>Straightforward explanations at every step, so you always know what's being built and why.</p></div></div>
-        <div class="principle"><b>02</b><div><h3>One thing at a time</h3><p>We get one process working properly before suggesting the next. Steady beats overwhelming.</p></div></div>
-        <div class="principle"><b>03</b><div><h3>Built around your people</h3><p>Automations should make your team's day easier, so we build them with the people who'll use them.</p></div></div>
+      <div class="cards">
+        <div class="card"><span class="card-label">01</span><h3>Clear communication</h3><p>Straightforward explanations at every step, so you always know what's being built and why.</p></div>
+        <div class="card"><span class="card-label">02</span><h3>One thing at a time</h3><p>We get one process working properly before suggesting the next. Steady beats overwhelming.</p></div>
+        <div class="card"><span class="card-label">03</span><h3>Built around your people</h3><p>Every fix should make your team's day easier, so we build it with the people who'll use it.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="founder-title">
+  <section class="section section--soft section--tight" aria-labelledby="founder-title">
     <div class="wrap founder">
       <div class="founder-photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="600" height="600" loading="lazy" decoding="async"></div>
       <div>
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
-          <p>Up close, most businesses have the same story: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
+          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
@@ -472,8 +471,8 @@ contact = page_hero("Get in touch", "Start a conversation.",
   <section class="section section--soft section--tight" aria-label="Other ways to get in touch">
     <div class="wrap">
       <div class="cards cards--two">
-        <div class="card">{icon("chat")}<span class="card-label">Email</span><h3>Write directly</h3><p>Prefer your own inbox? Email <a href="mailto:{EMAIL}">{EMAIL}</a> and it comes straight to Ryan.</p></div>
-        <div class="card">{icon("clock")}<span class="card-label">Before you write</span><h3>Common questions</h3><p>Pricing, timelines, software and data: the questions people usually ask first.</p><div class="card-foot"><a class="link-arrow" href="/how-it-works/#faq">Read the answers</a></div></div>
+        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Email</span></div><h3>Write directly</h3><p>Prefer your own inbox? Email <a href="mailto:{EMAIL}">{EMAIL}</a> and it comes straight to Ryan.</p></div>
+        <div class="card"><div class="card-top">{icon("clock")}<span class="card-label">Before you write</span></div><h3>Common questions</h3><p>Pricing, timelines, software and data: the questions people usually ask first.</p><div class="card-foot"><a class="link-arrow" href="/how-it-works/#faq">Read the answers</a></div></div>
       </div>
     </div>
   </section>
@@ -548,7 +547,7 @@ ind_items = "".join(f'''        <a class="fit-item fit-link" href="/who-we-help/
 
 industries = page_hero("Who we help", "Different industries. The same lost hours.",
     "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd automate first.") + f'''
-  <section class="section section--tight" aria-label="Industries">
+  <section class="section section--soft section--tight" aria-label="Industries">
     <div class="wrap">
       <div class="fit-grid">
 {ind_items}      </div>
@@ -636,7 +635,7 @@ morning_paper = f'''
 
 def industry_page(i):
     pains = "".join(f'        <li>{icon(ic, "")}<div><strong>{t}</strong><span>{d}</span></div></li>\n' for ic, t, d in i["pains"])
-    cards = "".join(f'        <div class="card">{icon(ic)}<span class="card-label">{lab}</span><h3>{t}</h3><p>{d}</p></div>\n' for ic, lab, t, d in i["cards"])
+    cards = "".join(f'        <div class="card"><div class="card-top">{icon(ic)}<span class="card-label">{lab}</span></div><h3>{t}</h3><p>{d}</p></div>\n' for ic, lab, t, d in i["cards"])
     return page_hero("Who we help", i["title"], i["lede"]) + f'''
   <section class="section section--ink pains-band" aria-labelledby="pains-title">
     <div class="wrap">
@@ -650,7 +649,7 @@ def industry_page(i):
     </div>
   </section>
 
-  <section class="section" aria-labelledby="start-title">
+  <section class="section section--soft" aria-labelledby="start-title">
     <div class="wrap">
       <div class="intro">
         <span class="rule"></span>
@@ -675,7 +674,7 @@ def industry_page(i):
 
 # ---------------------------------------------------------------- Privacy
 privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 6, 2026.") + f'''
-  <section class="section section--tight">
+  <section class="section section--soft section--tight">
     <div class="wrap prose">
       <h2>What we collect</h2>
       <p>Only what you choose to share with us: what you type into our contact form, the emails you send us, and the booking details you enter when you schedule a conversation through Cal.com.</p>
@@ -707,7 +706,7 @@ try_paper = page_hero("Try it", "Build your own morning paper.",
     <div class="wrap paper-split try-split">
       <div>
         <span class="rule"></span>
-        <h2 id="try-title">Your page, in ten seconds.</h2>
+        <h2 id="try-title">Your page, in 10 seconds.</h2>
         <form class="try-form" data-try-form>
           <div class="field-row">
             <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>

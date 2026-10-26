@@ -193,12 +193,14 @@ def cta_band(title):
 
 def page_hero(eyebrow, title, lede, extra=""):
     return f'''
-  <section class="page-hero">
-    {STAIRS_BG}
+  <section class="hero hero--page">
     <div class="wrap">
-      <span class="eyebrow">{eyebrow}</span>
-      <h1>{title}</h1>
-      <p class="lede">{lede}</p>{extra}
+      <div class="hero-card">
+        <span class="rule"></span>
+        <span class="eyebrow">{eyebrow}</span>
+        <h1>{title}</h1>
+        <p class="lede">{lede}</p>{extra}
+      </div>
     </div>
   </section>
 '''
