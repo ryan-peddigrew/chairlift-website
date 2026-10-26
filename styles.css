@@ -780,3 +780,9 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .link-arrow, .proof-item a, .cta-direct a, .form-fine a, .founder-sign a, .faq-aside a, .cta-box a:not(.btn) { display: inline-block; min-height: 44px; line-height: 44px; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; }
 .proof-item p a { line-height: 1.4; padding: 12px 0; min-height: 0; }
 .form-fine a { line-height: 1.4; padding: 12px 0; min-height: 0; }
+
+/* Client story */
+.story-stat { display: grid; gap: 4px; margin: 20px 0 8px; }
+.story-stat b { font-size: clamp(28px, 7vw, 40px); font-weight: 800; line-height: 1.1; text-transform: uppercase; }
+.story-stat span { font-size: 18px; color: var(--muted); }
+.story-note { color: var(--muted); font-size: 15px; margin: 0; }
