@@ -424,3 +424,10 @@
 .dp-foot { justify-content: flex-end; }
 .dp-foot span { font: 400 14px/1 'UnifrakturMaguntia', serif; letter-spacing: 0; text-transform: none; color: #333; }
 .dp-foot { bottom: 4px; }
+
+/* bottom title sits in the line: the rule stops before the text and picks up after it */
+.dp-band .dp-laugh { position: relative; border-bottom: 0; }
+.dp-band .dp-laugh .dp-foot { position: absolute; left: 0; right: 0; bottom: -7px; height: 15px; display: flex; align-items: center; justify-content: flex-start; gap: 10px; }
+.dp-band .dp-laugh .dp-foot::before { content: ""; flex: 1 1 auto; height: 1px; background: #DADADA; }
+.dp-band .dp-laugh .dp-foot span { flex: none; order: 2; }
+.dp-band .dp-laugh .dp-foot::after { content: none; }
