@@ -35,18 +35,20 @@
     <nav class="nav" aria-label="Main">
       <a class="nav-link" href="/how-it-works/">How it works</a>
       <a class="nav-link" href="/what-we-do/">What we do</a>
+      <a class="nav-link" href="/examples/">In practice</a>
       <a class="nav-link" href="/who-we-help/">Who we help</a>
       <a class="nav-link" href="/who-we-are/">Who we are</a>
-      <a class="btn btn-ink nav-cta" href="/get-in-touch/">Start a conversation</a>
+      <a class="btn btn-ink nav-cta" href="/5min/">Start a conversation</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="menu-open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
     </nav>
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
     <a href="/how-it-works/">How it works</a>
     <a href="/what-we-do/">What we do</a>
+    <a href="/examples/">In practice</a>
     <a href="/who-we-help/">Who we help</a>
     <a href="/who-we-are/">Who we are</a>
-    <a class="btn btn-ink" href="/get-in-touch/">Start a conversation</a>
+    <a class="btn btn-ink" href="/5min/">Start a conversation</a>
   </nav>
 </header>
 
@@ -58,7 +60,7 @@
         <span class="rule"></span>
         <span class="eyebrow">Get in touch</span>
         <h1>Start a conversation.</h1>
-        <p class="lede">Tell us a little about how your business runs and what's taking up your team's time. We'll reply with a few specific ideas, and there's no pressure to work together.</p>
+        <p class="lede">Three quick steps. We reply within a day with specific ideas, and there's no pressure to work together.</p>
       </div>
     </div>
   </section>
@@ -72,34 +74,39 @@
           <li><b>2</b><span>We reply by email to set up a five-minute conversation.</span></li>
           <li><b>3</b><span>You get specific ideas for what to automate first.</span></li>
         </ul>
-        <p class="cta-direct">Rather talk it through? <a href="/5min/">Book a five-minute conversation</a></p>
         <p class="cta-direct">Prefer email? <a href="mailto:ryan@usechairlift.com">ryan@usechairlift.com</a></p>
       </div>
-      <form class="contact-form" name="contact" method="POST" action="https://formsubmit.co/ryan@usechairlift.com" data-ajax="https://formsubmit.co/ajax/ryan@usechairlift.com">
+      <form class="contact-form steps-form" name="contact" method="POST" action="https://formsubmit.co/ryan@usechairlift.com" data-ajax="https://formsubmit.co/ajax/ryan@usechairlift.com" data-steps>
         <input type="hidden" name="_subject" value="New message from usechairlift.com">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://usechairlift.com/thanks/">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
-        <div class="field-row">
-          <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
-          <label class="field"><span>Work email</span><input type="email" name="email" autocomplete="email" required></label>
-        </div>
-        <div class="field-row">
+        <p class="form-progress" data-progress aria-live="polite"><span class="form-progress-bar"><i></i></span><span data-progress-text>Step 1 of 3</span></p>
+        <fieldset class="form-step" data-step="1">
+          <legend>What's eating your team's time?</legend>
+          <div class="pills"><label class="pill"><input type="radio" name="starting-point" value="Quotes and follow-ups" required><span>Quotes and follow-ups</span></label><label class="pill"><input type="radio" name="starting-point" value="Inquiries and first replies"><span>Inquiries and first replies</span></label><label class="pill"><input type="radio" name="starting-point" value="Scheduling and admin"><span>Scheduling and admin</span></label><label class="pill"><input type="radio" name="starting-point" value="Reports"><span>Reports</span></label><label class="pill"><input type="radio" name="starting-point" value="Something else"><span>Something else</span></label></div>
+          <p class="field-label">Roughly how many people deal with it?</p>
+          <div class="pills"><label class="pill"><input type="radio" name="team-size" value="1 to 2" required><span>1 to 2</span></label><label class="pill"><input type="radio" name="team-size" value="3 to 5"><span>3 to 5</span></label><label class="pill"><input type="radio" name="team-size" value="6 to 15"><span>6 to 15</span></label><label class="pill"><input type="radio" name="team-size" value="More"><span>More</span></label></div>
+          <div class="form-nav"><button class="btn btn-white" type="button" data-next>Next</button></div>
+        </fieldset>
+        <fieldset class="form-step" data-step="2">
+          <legend>Tell us about the task.</legend>
+          <label class="field"><span>Describe it in a sentence or two</span><textarea name="message" rows="4" required placeholder="A few sentences is plenty: what your business does, and the task everyone wishes would just happen on its own."></textarea></label>
+          <label class="field"><span>Where does it live today? <em>(optional)</em></span><input type="text" name="tools" placeholder="Inbox, spreadsheet, CRM, quoting software"></label>
+          <p class="field-label">When would you like it handled?</p>
+          <div class="pills"><label class="pill"><input type="radio" name="timing" value="This month" required><span>This month</span></label><label class="pill"><input type="radio" name="timing" value="Next quarter"><span>Next quarter</span></label><label class="pill"><input type="radio" name="timing" value="Just exploring"><span>Just exploring</span></label></div>
+          <div class="form-nav"><button class="btn btn-line" type="button" data-back>Back</button><button class="btn btn-white" type="button" data-next>Next</button></div>
+        </fieldset>
+        <fieldset class="form-step" data-step="3">
+          <legend>Where should we send our ideas?</legend>
+          <div class="field-row">
+            <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+            <label class="field"><span>Work email</span><input type="email" name="email" autocomplete="email" required></label>
+          </div>
           <label class="field"><span>Company <em>(optional)</em></span><input type="text" name="company" autocomplete="organization"></label>
-          <label class="field"><span>Where would you start?</span>
-            <select name="starting-point">
-              <option>Not sure yet</option>
-              <option>Answering new inquiries</option>
-              <option>Following up on quotes</option>
-              <option>Getting more reviews</option>
-              <option>Scheduling and admin</option>
-              <option>Something else</option>
-            </select>
-          </label>
-        </div>
-        <label class="field"><span>What's taking up your team's time?</span><textarea name="message" rows="4" required placeholder="A few sentences is plenty: what your business does, and the task everyone wishes would just happen on its own."></textarea></label>
-        <button class="btn btn-white" type="submit">Start a conversation</button>
-        <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+          <div class="form-nav"><button class="btn btn-line" type="button" data-back>Back</button><button class="btn btn-white" type="submit">Send me ideas</button></div>
+          <p class="form-fine">We reply by email within a day. Rather talk it through? <a href="/5min/">Book a five-minute conversation</a>. We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+        </fieldset>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>

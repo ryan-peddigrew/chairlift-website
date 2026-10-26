@@ -182,16 +182,30 @@ home = f'''
   <section class="hero">
     {STAIRS_BG}
     <div class="wrap">
-      <div class="hero-card">
+      <div class="hero-card hero-card--home">
+        <div class="hero-copy">
         <span class="rule"></span>
         <h1><span class="nowrap">Make the</span> <span class="nowrap">climb easier{ARROW}</span></h1>
-        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. One in-house team, start to finish: real people you can call, never outsourced, never a bot. Your people get their time back for the work that grows the business.</p>
+        <p class="lede">We take the follow-ups and admin work off your team's plate. Our own team of real people, never outsourced, never a bot.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
           <a class="btn btn-line" href="/how-it-works/">See how it works</a>
         </div>
-        <p class="hero-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>Built inside the tools you already use. Nothing new for your team to learn.</p>
+        <p class="hero-promise">Five minutes. We'll tell you if there's a practical fix.</p>
+        </div>
+        <div class="flip" aria-label="Before and after">
+          <div class="flip-before"><span class="flip-tag">Before</span><p>A quote went out last week. Nobody followed up.</p></div>
+          <div class="flip-after"><span class="flip-tag flip-tag--after">After</span><p>The follow-up went out Tuesday, in your words. The client replied.</p></div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Who you're dealing with">
+    <div class="wrap proof-grid">
+      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>Real people you can call.</strong> Built by our own team, after a career in sales. <a href="/who-we-are/">Read our story</a></p></div>
+      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, CRM and quoting software. Nothing new to learn.</p></div>
+      <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
   </section>
 
@@ -216,30 +230,7 @@ home = f'''
     </div>
   </section>
 
-  <section class="section" aria-labelledby="paper-title">
-    <div class="wrap paper-split">
-      <div>
-        <span class="rule"></span>
-        <h2 id="paper-title">Start your morning on one page.</h2>
-        <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
-        <a class="btn btn-ink" href="/paper/">See the morning paper</a>
-        <p class="try-link"><a class="link-arrow" href="/try/">Or build your own in 10 seconds</a></p>
-      </div>
-      {PAPER_IMG}
-    </div>
-  </section>
-
-  <section class="section section--soft" aria-labelledby="fit-title">
-    <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="fit-title">Built for companies that run on people.</h2>
-        <p>Established businesses with teams, repeat customers and a lot of quoting, follow-up, scheduling and email. Size matters less than having a repetitive workflow worth fixing.</p>
-      </div>
-{FIT}    </div>
-  </section>
-
-  <section class="section section--ink" aria-labelledby="how-title">
+  <section class="section section--soft" aria-labelledby="how-title">
     <div class="wrap">
       <div class="intro">
         <span class="rule"></span>
@@ -250,26 +241,27 @@ home = f'''
     </div>
   </section>
 
-  <section class="section section--soft" aria-labelledby="why-title">
-    <div class="wrap split">
+  <section class="section section--soft paper-teaser" aria-labelledby="paper-title">
+    <div class="wrap paper-split">
       <div>
         <span class="rule"></span>
-        <h2 id="why-title">Why we started Chairlift.</h2>
+        <span class="eyebrow">Just for fun</span>
+        <h2 id="paper-title">The Daily Peddigrew.</h2>
+        <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
+        <p class="section-link"><a class="link-arrow" href="/paper/">See the morning paper</a></p>
+        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
       </div>
-      <div class="prose">
-        <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Great teams shouldn't lose their best hours to follow-ups and admin.</p>
-        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
-        <a class="link-arrow" href="/who-we-are/">Read our story</a>
-      </div>
+      {PAPER_IMG}
     </div>
   </section>
+
 {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
 SERVICES = [
     dict(id="inquiries", icon="chat", label="Inquiries", title="New inquiries, answered fast",
-         desc="The evening inquiry that waited until morning? By then, the customer has already gone with whoever answered first. Calls, web forms and emails get a prompt, helpful reply and reach the right person, even after hours and on weekends.",
+         desc="The evening inquiry that waited until morning has usually gone elsewhere. Calls, web forms and emails get a prompt reply and reach the right person, any hour.",
          setup=["An instant reply that sounds like your business, not a robot", "Routing by service, location or whoever is on shift", "A text back when a call is missed, where your phone system allows it", "A short morning summary of what came in and what's still waiting"],
          notice=["Fewer leads slipping through overnight", "Nobody guessing whose turn it is to reply", "Customers know what happens next"]),
     dict(id="quotes", icon="quote", label="Quotes", title="Quotes, followed up",
@@ -301,8 +293,8 @@ for i, s in enumerate(SERVICES):
       </article>
 '''
 
-services = page_hero("What we do", "Automations that fit how you already work.",
-    "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. One problem, one tested fix, built and looked after by our own in-house team.") + f'''
+services = page_hero("What we do", "Built around how you work.",
+    "We find the task slowing your team down and fix it with the simplest thing that works, inside the tools you already have. One problem, one tested fix, by our own team.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
       <div class="stages--swipe">
@@ -319,7 +311,7 @@ services = page_hero("What we do", "Automations that fit how you already work.",
       </div>
       <div class="principles">
         <div class="principle"><b>01</b><div><h3>Quick fixes</h3><p>Reminders, forms, FAQ answers, scheduling and review requests.</p></div></div>
-        <div class="principle"><b>02</b><div><h3>Connected workflows</h3><p>Lead routing, quote follow-up, CRM updates, renewal reminders and internal alerts.</p></div></div>
+        <div class="principle"><b>02</b><div><h3>Connected steps</h3><p>Lead routing, quote follow-up, CRM updates, renewal reminders and internal alerts.</p></div></div>
         <div class="principle"><b>03</b><div><h3>AI-assisted work</h3><p>Email drafting, research, pulling data from documents and meeting summaries.</p></div></div>
         <div class="principle"><b>04</b><div><h3>Connected systems</h3><p>Your CRM, email, accounting and scheduling working together, with a person approving the key steps.</p></div></div>
         <div class="principle"><b>05</b><div><h3>Company knowledge assistant</h3><p>A private assistant built on your approved company information. The most advanced option, not the default.</p></div></div>
@@ -366,11 +358,13 @@ for s in STAGES:
 '''
 
 FAQ = [
+    ("Is this a chatbot, or outsourced?", ["No. You work with our own team of real people, never outsourced. If a chatbot is the right fix for one of your tasks, we can build one, but you'll always be dealing with a person."]),
+    ("What happens in the five minutes? Is it a sales pitch?", ["We ask what slows your team down and tell you honestly whether there's a practical fix. If there isn't, we'll say so."]),
+    ("How does pricing work?", ["It depends on what we're automating and how your tools are set up, so we don't publish a price list. You'll know what we'd recommend, and the price, before any work starts."]),
     ("Do we need to buy new software?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, CRM, spreadsheets, and the booking or quoting software you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
     ("Do we need someone technical on our team?", ["No. You need someone who knows how the work gets done today. We handle the technical side and explain everything in plain English."]),
     ("Will automated messages sound robotic?", ["No. We write every message with your team, in the way you actually talk to clients, and refine it until it sounds like you."]),
     ("Is this about replacing staff?", ["No. It's about taking the repetitive parts of the job off people's plates, so they can spend more time with clients and on the work they're good at."]),
-    ("How does pricing work?", ["It depends on what we're automating and how your tools are set up, so we don't publish a price list. You'll know what we'd recommend, and the price, before any work starts."]),
     ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first automation."]),
     ("What happens if something stops working?", ["If something isn't working the way it should, you know exactly who to tell."]),
     ("What about our data?", ["We work inside your existing accounts, with access you grant, and only touch what the automation needs. You stay the owner of your tools and your data."]),
@@ -413,7 +407,7 @@ for i, e in enumerate(EXAMPLES):
 '''
 
 examples = page_hero("In practice", "What this looks like in practice.",
-    "A few of the automations we most often start with, step by step. They're illustrative examples rather than client case studies, so you can picture how each one would work in your business.") + f'''
+    "Four tasks we often fix first, step by step. Illustrative examples, not client case studies, so you can picture each one in your business.") + f'''
   <section class="section section--tight" aria-label="In practice">
     <div class="wrap">
 {"".join(example_block(e) for e in EXAMPLES)}    </div>
@@ -430,7 +424,8 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth.</p>
+        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there.</p>
+        <p>What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth.</p>
         <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right fix in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
     </div>
@@ -457,7 +452,8 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
-          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
+          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems.</p>
+          <p>Chairlift fixes that, one process at a time, with our own team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
@@ -467,7 +463,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
 
 # ---------------------------------------------------------------- Contact
 contact = page_hero("Get in touch", "Start a conversation.",
-    "Tell us a little about how your business runs and what's taking up your team's time. We'll reply with a few specific ideas, and there's no pressure to work together.") + f'''{cta_section("Tell us about your business.", flush=True, intro=False)}
+    "Three quick steps. We reply within a day with specific ideas, and there's no pressure to work together.") + f'''{cta_section("Tell us about your business.", flush=True, intro=False)}
   <section class="section section--soft section--tight" aria-label="Other ways to get in touch">
     <div class="wrap">
       <div class="cards cards--two">
@@ -700,7 +696,7 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
 # ---------------------------------------------------------------- Build your own paper
-try_paper = page_hero("Try it", "Build your own morning paper.",
+try_paper = page_hero("Just for fun", "Build your own morning paper.",
     "Type in your name, your city and the three things on your plate today. Your page builds itself in seconds.") + f'''
   <section class="section section--ink" aria-labelledby="try-title">
     <div class="wrap paper-split try-split">
