@@ -170,7 +170,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
-                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with them!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="1024" height="339" alt=""></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="1024" height="339" alt=""></section>
               </div>
             </div>
             <div class="dp-foot"><span>The Daily Peddigrew</span></div>
