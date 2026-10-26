@@ -192,7 +192,6 @@ home = f'''
           <a class="btn btn-line" href="/how-it-works/">See how it works</a>
         </div>
         <p class="hero-promise">Five minutes. We'll tell you if there's a practical fix.</p>
-        <p class="hero-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>Built inside the tools you already use. Nothing new for your team to learn.</p>
         </div>
         <div class="flip" aria-label="Before and after">
           <div class="flip-before"><span class="flip-tag">Before</span><p>A quote went out last week. Nobody followed up.</p></div>

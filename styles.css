@@ -723,3 +723,50 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
   .hero-card .ctas { gap: 12px; }
   .contact-form .field + .field, .contact-form .field-row + .field { margin-top: 0; }
 }
+
+/* Phone spacing and look (Ryan, 2026-10-26 4:20 AM): tighter, calmer, underlines hug the text */
+.link-arrow { border-bottom: 0; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; padding: 12px 0; min-height: 0; }
+.link-arrow::after { text-decoration: none; display: inline-block; }
+.section-link { margin-top: 12px; }
+.section-link + .section-link { margin-top: 0; }
+.pains-close { margin-top: 28px; }
+@media (max-width: 640px) {
+  .hero-card--home { gap: 22px; }
+  .hero-card .lede { font-size: 18px; margin-top: 16px; }
+  .hero-card .ctas { margin-top: 22px; }
+  .hero-promise { margin-top: 12px; font-size: 15px; }
+  .flip { min-height: 0; }
+  .flip > div { padding: 18px 20px; gap: 8px; }
+  .flip p { max-width: none; font-size: 19px; }
+  .flip-after { display: none; }
+  .flip-before { animation: none; }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .flip { min-height: 128px; }
+  .flip-after { display: flex; }
+  .flip-before { animation: flip-out 0.5s cubic-bezier(.2, .7, .2, 1) 1.6s both; }
+}
+
+/* Proof strip on phones: one calm grey box, items separated by thin lines */
+@media (max-width: 860px) {
+  .proof { padding: 6px 12px; }
+  .proof .wrap { padding: 0; }
+  .proof-grid { gap: 0; background: var(--soft); border-radius: 22px; padding: 6px 18px; }
+  .proof-item { padding: 16px 0; }
+  .proof-item + .proof-item { border-top: 1px solid var(--line); }
+}
+
+/* Cards and steps: tighter on phones */
+@media (max-width: 640px) {
+  .step { padding: 22px 20px; }
+  .steps { gap: 10px; }
+  .step h3 { font-size: 24px; margin: 4px 0 6px; }
+  .intro { margin-bottom: 24px; }
+  .section--ink .intro p, .section--soft .intro p { margin-top: 10px; }
+  .paper-teaser .paper-shot { max-width: 100%; }
+  .paper-teaser .paper-split { gap: 22px; }
+}
+.link-arrow::after { margin-left: 0.3em; }
+@media (max-width: 860px) { .proof .proof-grid { padding: 6px 20px; } }
+@media (max-width: 860px) { .proof { padding: 0 12px; } .section--ink { } }
+@media (max-width: 640px) { .proof + .section--ink { padding-top: 12px; } }
