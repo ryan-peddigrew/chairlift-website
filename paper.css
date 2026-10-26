@@ -441,3 +441,4 @@
 .dp-sports .dp-game:nth-child(n+3)::before { top: 5px; bottom: 5px; }
 .dp-gf { position: relative; padding-left: 9px; }
 .dp-gf::before { content: ""; position: absolute; left: 3px; top: 50%; width: 2.6px; height: 2.6px; margin-top: -1.3px; border-radius: 50%; background: #666; }
+.dp-gf { font-size: 7.4px; line-height: 1.3; }
