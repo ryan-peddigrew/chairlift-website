@@ -422,18 +422,8 @@ examples = page_hero("In practice", "What this looks like in practice.",
 {cta_band("Recognize one of these?")}'''
 
 # ---------------------------------------------------------------- About
-about = f'''
-  <section class="hero hero--page" aria-labelledby="about-title">
-    <div class="wrap">
-      <div class="hero-card">
-        <span class="rule"></span>
-        <span class="eyebrow">Who we are</span>
-        <h1 id="about-title">Why we started Chairlift.</h1>
-        <p class="lede">Great teams shouldn't lose their best hours to follow-ups and admin work.</p>
-      </div>
-    </div>
-  </section>
-
+about = page_hero("Who we are", "Why we started Chairlift.",
+    "Great teams shouldn't lose their best hours to follow-ups and admin work.") + f'''
   <section class="section section--soft section--tight" aria-labelledby="gap-title">
     <div class="wrap split">
       <div>
@@ -558,7 +548,7 @@ ind_items = "".join(f'''        <a class="fit-item fit-link" href="/who-we-help/
 
 industries = page_hero("Who we help", "Different industries. The same lost hours.",
     "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd automate first.") + f'''
-  <section class="section section--tight" aria-label="Industries">
+  <section class="section section--soft section--tight" aria-label="Industries">
     <div class="wrap">
       <div class="fit-grid">
 {ind_items}      </div>
@@ -660,7 +650,7 @@ def industry_page(i):
     </div>
   </section>
 
-  <section class="section" aria-labelledby="start-title">
+  <section class="section section--soft" aria-labelledby="start-title">
     <div class="wrap">
       <div class="intro">
         <span class="rule"></span>
@@ -685,7 +675,7 @@ def industry_page(i):
 
 # ---------------------------------------------------------------- Privacy
 privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 6, 2026.") + f'''
-  <section class="section section--tight">
+  <section class="section section--soft section--tight">
     <div class="wrap prose">
       <h2>What we collect</h2>
       <p>Only what you choose to share with us: what you type into our contact form, the emails you send us, and the booking details you enter when you schedule a conversation through Cal.com.</p>

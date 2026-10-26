@@ -575,3 +575,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .hero--page .hero-card { padding: 40px 22px 36px; }
   .hero--page .hero-card h1 { font-size: 34px; }
 }
+.hero--page .ctas { margin-top: 28px; }
+.hero--page .btn-ink { background: #FFFFFF; color: var(--ink); }
+.hero--page .btn-line { color: #FFFFFF; }
+.hero--page .lede a { color: #FFFFFF; }
