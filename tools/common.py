@@ -209,3 +209,28 @@ def page(title, desc, path, active, body, noindex=False):
     # Brand accent: section titles end in a full stop that can take the mint accent
     body = re.sub(r'(<h2[^>]*>[^<]*?)\.</h2>', r'\1<span class="dot">.</span></h2>', body)
     return head(title, desc, path, noindex) + header(active) + '\n<main id="main">\n' + body + '\n</main>\n' + footer()
+
+
+def task_band():
+    """Home closer: one question, an email, and we reply with an idea."""
+    return f'''
+  <section class="cta" id="one-task" aria-labelledby="task-title">
+    <div class="cta-box">
+      <div>
+        <h2 id="task-title">Send us one task.</h2>
+        <p>What does your team do over and over? Tell us in a sentence or two, and we'll reply within a day with one practical idea to make it faster, whether or not we end up working together.</p>
+      </div>
+      <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">
+        <input type="hidden" name="_subject" value="One task from usechairlift.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{SITE}/thanks/">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+        <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
+        <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
+        <button class="btn btn-white" type="submit">Send it</button>
+        <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+'''

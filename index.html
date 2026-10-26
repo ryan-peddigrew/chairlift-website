@@ -85,6 +85,7 @@
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
+      <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
     </div>
   </section>
 
@@ -179,13 +180,23 @@
     </div>
   </section>
 
-  <section class="cta cta-band" aria-labelledby="cta-title">
+  <section class="cta" id="one-task" aria-labelledby="task-title">
     <div class="cta-box">
       <div>
-        <h2 id="cta-title">Show us one thing your team does over and over<span class="dot">.</span></h2>
-        <p>We'll tell you if there's a practical way to make it faster, whether or not we end up working together.</p>
-        <a class="btn btn-white" href="/5min/">Start a conversation</a>
+        <h2 id="task-title">Send us one task<span class="dot">.</span></h2>
+        <p>What does your team do over and over? Tell us in a sentence or two, and we'll reply within a day with one practical idea to make it faster, whether or not we end up working together.</p>
       </div>
+      <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/ryan@usechairlift.com" data-ajax="https://formsubmit.co/ajax/ryan@usechairlift.com">
+        <input type="hidden" name="_subject" value="One task from usechairlift.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://usechairlift.com/thanks/">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+        <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
+        <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
+        <button class="btn btn-white" type="submit">Send it</button>
+        <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
