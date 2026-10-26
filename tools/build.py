@@ -222,6 +222,7 @@ home = f'''
         <h2 id="paper-title">Start your morning on one page.</h2>
         <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
         <a class="btn btn-ink" href="/paper/">See the morning paper</a>
+        <p class="try-link"><a class="link-arrow" href="/try/">Or build your own in ten seconds</a></p>
       </div>
       {PAPER_IMG}
     </div>
@@ -698,6 +699,37 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     "The page you're looking for has moved or never existed. Here's the way back down.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
+# ---------------------------------------------------------------- Build your own paper
+try_paper = page_hero("Try it", "Build your own morning paper.",
+    "Type in your name, your city and the three things on your plate today. Your page builds itself in seconds.") + f'''
+  <section class="section section--ink" aria-labelledby="try-title">
+    <div class="wrap paper-split try-split">
+      <div>
+        <span class="rule"></span>
+        <h2 id="try-title">Your page, in ten seconds.</h2>
+        <form class="try-form" data-try-form>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
+            <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
+          </div>
+          <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
+          <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
+          <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
+          <button class="btn btn-white" type="submit">Build my paper</button>
+          <p class="form-fine">Nothing you type is saved or sent to us. Only your city is used, to look up the weather.</p>
+        </form>
+        <div class="try-after" data-try-after hidden>
+          <h3>Want the real one every morning?</h3>
+          <p>We build it from your actual calendar, inbox and follow-ups, on paper, by email or on your desktop.</p>
+          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        </div>
+      </div>
+      {PAPER_IMG}
+    </div>
+  </section>
+  <script src="/try.js" defer></script>
+'''
+
 # ---------------------------------------------------------------- 5-minute booking (bio link)
 five_min = page_hero("Start a conversation", "Pick a time for a five-minute conversation.",
     "Choose a slot that suits you and we'll talk through how your business runs and where to start.") + f'''
@@ -717,6 +749,7 @@ PAGES = [
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
     ("paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
+    ("try/index.html", "Build your own morning paper", "Type in your name, city and top three for the day, and see your own one-page morning paper in seconds.", "/try/", None, try_paper, False),
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
