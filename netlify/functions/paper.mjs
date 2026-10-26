@@ -138,7 +138,7 @@ async function performers(t, eventId, teamId) {
       return top.map((p) => {
         const g = p.goals ? p.goals + "G" : "";
         const a = p.assists ? p.assists + "A" : "";
-        return p.n + " " + [g, a].filter(Boolean).join(", ") + (p.goals && p.assists ? ", " + (p.goals + p.assists) + "P" : "");
+        return p.n + " (" + [g, a].filter(Boolean).join(", ") + (p.goals && p.assists ? ", " + (p.goals + p.assists) + "P" : "") + ")";
       });
     }
   }
@@ -185,12 +185,12 @@ async function sports() {
           const pts = mine.leaders.find((x) => x.name === "points");
           const ast = mine.leaders.find((x) => x.name === "assists");
           const bits = [];
-          if (pts && pts.leaders[0]) bits.push(`${lastName(pts.leaders[0].athlete)} ${pts.leaders[0].displayValue} pts`);
-          if (ast && ast.leaders[0]) bits.push(`${lastName(ast.leaders[0].athlete)} ${ast.leaders[0].displayValue} ast`);
+          if (pts && pts.leaders[0]) bits.push(`${lastName(pts.leaders[0].athlete)} (${pts.leaders[0].displayValue} pts)`);
+          if (ast && ast.leaders[0]) bits.push(`${lastName(ast.leaders[0].athlete)} (${ast.leaders[0].displayValue} ast)`);
           perf = bits;
         }
         if (!perf.length) perf = await performers(t, ev.id, mine.team.id);
-        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: withRel([side(w, 1), side(l, 1)], mine), sep: ",", status: st.shortDetail || "Final", perf, foot: perf.join(" · ") });
+        finals.push({ ...base, line: `${name(w.team)} ${w.score}, ${name(l.team)} ${l.score}`, teams: withRel([side(w, 1), side(l, 1)], mine), sep: ",", status: st.shortDetail || "Final", perf, foot: perf.join("\u2002\u2002") });
       } else if (st.state === "in") {
         live.push({ ...base, line: `${name(mine.team)} ${mine.score}, ${name(other.team)} ${other.score}`, teams: withRel([side(mine, 1), side(other, 1)], mine), sep: ",", status: "Live", perf: st.shortDetail ? [st.shortDetail] : [] });
       } else if (st.state === "pre" && when.getTime() > now.getTime() - 3 * 36e5) {
