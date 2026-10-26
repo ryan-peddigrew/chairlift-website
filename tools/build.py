@@ -189,7 +189,6 @@ home = f'''
         <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people. No outsourcing, no bots.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-          <a class="btn btn-line" href="/how-it-works/">See how it works</a>
         </div>
         <p class="hero-promise">Five minutes. We'll tell you if there's a practical fix.</p>
         </div>
@@ -225,7 +224,6 @@ home = f'''
         <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
-      <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
       <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
     </div>
   </section>
@@ -247,7 +245,6 @@ home = f'''
         <span class="rule"></span>
         <h2 id="paper-title">The Daily Peddigrew.</h2>
         <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
-        <p class="section-link"><a class="link-arrow" href="/paper/">See the morning paper</a></p>
         <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
       </div>
       {PAPER_IMG}
@@ -321,7 +318,6 @@ services = page_hero("What we do", "Built around how you work.",
   <section class="section section--soft section--tight" aria-label="How a project runs">
     <div class="wrap">
       <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Curious how a project runs from start to finish? <a class="link-arrow" href="/how-it-works/">See the three stops</a></p>
-      <p class="section-link"><a class="link-arrow" href="/examples/">See it in practice</a></p>
     </div>
   </section>
 {cta_band("Not sure where you'd start?")}'''
@@ -543,13 +539,13 @@ INDUSTRIES = [
 ind_items = "".join(f'''        <a class="fit-item fit-link" href="/who-we-help/{i["slug"]}/">{icon(i["icon"], "fit-icon")}<h3>{i["name"]}</h3><p>{i["blurb"]}</p><span class="link-arrow">Read more</span></a>
 ''' for i in INDUSTRIES)
 
-industries = page_hero("Who we help", "Different industries. The same lost hours.",
+industries = page_hero("Who we help", "Different trades. Same lost hours.",
     "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd fix first.") + f'''
   <section class="section section--soft section--tight" aria-label="Industries">
     <div class="wrap">
       <div class="fit-grid">
 {ind_items}      </div>
-      <p class="section-note">These are examples, not limits: construction and trades, electrical and technical contractors, property and facilities, logistics, waste and environmental services, equipment rental and professional services.</p>
+      <p class="section-note">Examples, not limits: trades, contractors, property, logistics, equipment rental and professional services.</p>
       <p class="section-note">Don't see your industry? The same problems show up almost everywhere. <a href="/get-in-touch/">Tell us how your business runs</a>.</p>
     </div>
   </section>
@@ -739,7 +735,7 @@ calc_rows = "".join(f'''          <div class="calc-row">
             <label><span>Minutes each</span><input type="number" inputmode="numeric" min="0" step="1" placeholder="0" data-m></label>
           </div>
 ''' for t in CALC_TASKS)
-calculator = page_hero("Time-back calculator", "How much time is your team losing?",
+calculator = page_hero("Time-back calculator", "Where does your team's time go?",
     "Fill in the routine tasks your team handles each week. Use your own numbers: rough guesses are fine. Nothing you type is saved or sent anywhere.") + f'''
   <section class="section section--tight" aria-labelledby="calc-title">
     <div class="wrap calc">
