@@ -42,6 +42,39 @@
     });
   }
 
+  // Get in touch: three short steps (without JavaScript the whole form shows at once)
+  var steps = document.querySelector('form[data-steps]');
+  if (steps) {
+    var panels = Array.prototype.slice.call(steps.querySelectorAll('.form-step'));
+    var bar = steps.querySelector('.form-progress-bar i');
+    var text = steps.querySelector('[data-progress-text]');
+    var current = 0;
+    var show = function (n) {
+      current = n;
+      panels.forEach(function (p, i) { p.classList.toggle('is-current', i === n); });
+      if (bar) bar.style.width = ((n + 1) / panels.length * 100) + '%';
+      if (text) text.textContent = 'Step ' + (n + 1) + ' of ' + panels.length;
+      var legend = panels[n].querySelector('legend');
+      if (legend && n > 0) { legend.setAttribute('tabindex', '-1'); legend.focus({ preventScroll: true }); }
+    };
+    var valid = function (n) {
+      var fields = panels[n].querySelectorAll('input, textarea, select');
+      for (var i = 0; i < fields.length; i++) {
+        if (!fields[i].checkValidity()) { fields[i].reportValidity(); return false; }
+      }
+      return true;
+    };
+    steps.classList.add('is-stepped');
+    show(0);
+    steps.addEventListener('click', function (e) {
+      if (e.target.closest('[data-next]')) { if (valid(current)) show(Math.min(current + 1, panels.length - 1)); }
+      if (e.target.closest('[data-back]')) show(Math.max(current - 1, 0));
+    });
+    steps.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && current < panels.length - 1) { e.preventDefault(); if (valid(current)) show(current + 1); }
+    });
+  }
+
   // Footer year
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

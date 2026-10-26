@@ -18,6 +18,7 @@ ARROW = '<svg class="climb-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d
 NAV = [
     ("how", "/how-it-works/", "How it works"),
     ("services", "/what-we-do/", "What we do"),
+    ("examples", "/examples/", "In practice"),
     ("industries", "/who-we-help/", "Who we help"),
     ("about", "/who-we-are/", "Who we are"),
 ]
@@ -70,13 +71,13 @@ def header(active=None):
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
     <nav class="nav" aria-label="Main">
 {desk}
-      <a class="btn btn-ink nav-cta" href="/get-in-touch/">Start a conversation</a>
+      <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Start a conversation</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="menu-open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
     </nav>
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
 {mob}
-    <a class="btn btn-ink" href="/get-in-touch/">Start a conversation</a>
+    <a class="btn btn-ink" href="{MAIN_CTA}">Start a conversation</a>
   </nav>
 </header>
 '''
@@ -122,32 +123,47 @@ def footer():
 CTA_ART = '<svg class="cta-art" viewBox="0 0 200 140" aria-hidden="true"><rect x="10" y="98" width="80" height="20" rx="3"/><rect x="52" y="62" width="80" height="20" rx="3"/><rect x="94" y="26" width="80" height="20" rx="3"/></svg>'
 
 
+def pills(name, options, required=True):
+    req = " required" if required else ""
+    out = '<div class="pills">'
+    for i, o in enumerate(options):
+        out += f'<label class="pill"><input type="radio" name="{name}" value="{o}"{req if i == 0 else ""}><span>{o}</span></label>'
+    return out + "</div>"
+
+
 def contact_form():
-    return f'''      <form class="contact-form" name="contact" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">
+    """Three short steps. Without JavaScript every step shows at once and the form still posts."""
+    return f'''      <form class="contact-form steps-form" name="contact" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}" data-steps>
         <input type="hidden" name="_subject" value="New message from usechairlift.com">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="{SITE}/thanks/">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
-        <div class="field-row">
-          <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
-          <label class="field"><span>Work email</span><input type="email" name="email" autocomplete="email" required></label>
-        </div>
-        <div class="field-row">
+        <p class="form-progress" data-progress aria-live="polite"><span class="form-progress-bar"><i></i></span><span data-progress-text>Step 1 of 3</span></p>
+        <fieldset class="form-step" data-step="1">
+          <legend>What's eating your team's time?</legend>
+          {pills("starting-point", ["Quotes and follow-ups", "Inquiries and first replies", "Scheduling and admin", "Reports", "Something else"])}
+          <p class="field-label">Roughly how many people deal with it?</p>
+          {pills("team-size", ["1 to 2", "3 to 5", "6 to 15", "More"])}
+          <div class="form-nav"><button class="btn btn-white" type="button" data-next>Next</button></div>
+        </fieldset>
+        <fieldset class="form-step" data-step="2">
+          <legend>Tell us about the task.</legend>
+          <label class="field"><span>Describe it in a sentence or two</span><textarea name="message" rows="4" required placeholder="A few sentences is plenty: what your business does, and the task everyone wishes would just happen on its own."></textarea></label>
+          <label class="field"><span>Where does it live today? <em>(optional)</em></span><input type="text" name="tools" placeholder="Inbox, spreadsheet, CRM, quoting software"></label>
+          <p class="field-label">When would you like it handled?</p>
+          {pills("timing", ["This month", "Next quarter", "Just exploring"])}
+          <div class="form-nav"><button class="btn btn-line" type="button" data-back>Back</button><button class="btn btn-white" type="button" data-next>Next</button></div>
+        </fieldset>
+        <fieldset class="form-step" data-step="3">
+          <legend>Where should we send our ideas?</legend>
+          <div class="field-row">
+            <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+            <label class="field"><span>Work email</span><input type="email" name="email" autocomplete="email" required></label>
+          </div>
           <label class="field"><span>Company <em>(optional)</em></span><input type="text" name="company" autocomplete="organization"></label>
-          <label class="field"><span>Where would you start?</span>
-            <select name="starting-point">
-              <option>Not sure yet</option>
-              <option>Answering new inquiries</option>
-              <option>Following up on quotes</option>
-              <option>Getting more reviews</option>
-              <option>Scheduling and admin</option>
-              <option>Something else</option>
-            </select>
-          </label>
-        </div>
-        <label class="field"><span>What's taking up your team's time?</span><textarea name="message" rows="4" required placeholder="A few sentences is plenty: what your business does, and the task everyone wishes would just happen on its own."></textarea></label>
-        <button class="btn btn-white" type="submit">Start a conversation</button>
-        <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+          <div class="form-nav"><button class="btn btn-line" type="button" data-back>Back</button><button class="btn btn-white" type="submit">Send me ideas</button></div>
+          <p class="form-fine">We reply by email within a day. Rather talk it through? <a href="/5min/">Book a five-minute conversation</a>. We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+        </fieldset>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
 '''
@@ -167,7 +183,7 @@ def cta_section(title, flush=False, intro=True):
           <li><b>2</b><span>We reply by email to set up a five-minute conversation.</span></li>
           <li><b>3</b><span>You get specific ideas for what to automate first.</span></li>
         </ul>
-{booking}        <p class="cta-direct">Prefer email? <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+        <p class="cta-direct">Prefer email? <a href="mailto:{EMAIL}">{EMAIL}</a></p>
       </div>
 {contact_form()}    </div>
   </section>
@@ -214,13 +230,15 @@ def page(title, desc, path, active, body, noindex=False):
 
 
 def task_band():
-    """Home closer: one question, an email, and we reply with an idea."""
+    """Home closer, two doors: book the conversation, or send one task and get an idea back."""
     return f'''
   <section class="cta" id="one-task" aria-labelledby="task-title">
-    <div class="cta-box">
+    <div class="cta-box cta-box--doors">
       <div>
-        <h2 id="task-title">Send us one task.</h2>
-        <p>What does your team do over and over? Tell us in a sentence or two, and we'll reply within a day with one practical idea to make it faster, whether or not we end up working together.</p>
+        <h2 id="task-title">Ready when you are.</h2>
+        <p>Five minutes. We'll tell you if there's a practical fix, whether or not we end up working together.</p>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <p class="cta-or"><strong>Not ready to talk?</strong> Send us one task your team does over and over, and we'll reply within a day with one practical idea.</p>
       </div>
       <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">
         <input type="hidden" name="_subject" value="One task from usechairlift.com">
