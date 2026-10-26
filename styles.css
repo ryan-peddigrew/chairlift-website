@@ -535,3 +535,30 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .try-after[hidden] { display: none; }
 .section--ink .paper-shot figcaption { color: var(--on-ink-muted); }
 .try-link { margin-top: 20px; }
+
+/* Time-back calculator (/time-back/) */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.calc { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.calc-form { background: var(--soft, #F3F4F6); border-radius: 28px; padding: 32px; display: grid; gap: 0; }
+.calc-row { display: grid; grid-template-columns: minmax(0, 1fr) 120px 120px; gap: 14px; align-items: end; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.calc-task { font-weight: 700; align-self: center; }
+.calc-row label, .calc-people { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted, #555); }
+.calc-form input { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #FFFFFF; border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; min-height: 46px; }
+.calc-form input:focus { outline: none; border-color: var(--ink); }
+.calc-people { margin-top: 20px; font-size: 15px; color: var(--ink); }
+.calc-people input { max-width: 120px; }
+.calc-out { background: var(--ink); color: var(--on-ink); border-radius: 28px; padding: 40px 36px; position: sticky; top: 100px; }
+.calc-label { color: var(--on-ink-muted); margin-top: 8px; }
+.calc-big { font-size: clamp(40px, 5vw, 60px); font-weight: 800; line-height: 1.05; margin-top: 4px; }
+.calc-sub { margin-top: 10px; }
+.calc-note { color: var(--on-ink-muted); font-size: 14px; margin-top: 8px; }
+.calc-out .btn { margin-top: 24px; }
+.calc-after { color: var(--on-ink-muted); font-size: 15px; margin-top: 14px; }
+.task-form textarea { min-height: 96px; }
+@media (max-width: 900px) {
+  .calc { grid-template-columns: minmax(0, 1fr); }
+  .calc-out { position: static; }
+  .calc-form { padding: 22px; border-radius: 22px; }
+  .calc-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .calc-task { grid-column: 1 / -1; }
+}

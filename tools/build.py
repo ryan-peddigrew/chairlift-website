@@ -212,6 +212,7 @@ home = f'''
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
+      <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
     </div>
   </section>
 
@@ -262,7 +263,7 @@ home = f'''
       </div>
     </div>
   </section>
-{cta_band(CTA_HOME)}
+{task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
@@ -730,6 +731,36 @@ try_paper = page_hero("Try it", "Build your own morning paper.",
   <script src="/try.js" defer></script>
 '''
 
+# ---------------------------------------------------------------- Time-back calculator
+CALC_TASKS = ["Following up on quotes", "Replying to new inquiries", "Copying details between systems", "Booking, confirming and rescheduling", "Building the weekly report", "Chasing invoices and approvals"]
+calc_rows = "".join(f'''          <div class="calc-row">
+            <span class="calc-task">{t}</span>
+            <label><span>Times a week</span><input type="number" inputmode="numeric" min="0" step="1" placeholder="0" data-n></label>
+            <label><span>Minutes each</span><input type="number" inputmode="numeric" min="0" step="1" placeholder="0" data-m></label>
+          </div>
+''' for t in CALC_TASKS)
+calculator = page_hero("Time-back calculator", "How much time is your team losing?",
+    "Fill in the routine tasks your team handles each week. Use your own numbers: rough guesses are fine. Nothing you type is saved or sent anywhere.") + f'''
+  <section class="section section--tight" aria-labelledby="calc-title">
+    <div class="wrap calc">
+      <form class="calc-form" data-calc>
+        <h2 id="calc-title" class="sr-only">Your weekly tasks</h2>
+{calc_rows}        <label class="calc-people"><span>How many people on your team do this kind of work?</span><input type="number" inputmode="numeric" min="1" step="1" value="1" data-people></label>
+      </form>
+      <div class="calc-out" aria-live="polite">
+        <span class="rule"></span>
+        <p class="calc-label">Every week, that's</p>
+        <p class="calc-big"><b data-hours>0</b> hours</p>
+        <p class="calc-sub">About <b data-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
+        <p class="calc-note">Based on 48 working weeks and 8-hour days.</p>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <p class="calc-after">We'll pick the biggest one and show you how we'd take it off your plate.</p>
+      </div>
+    </div>
+  </section>
+  <script src="/calc.js" defer></script>
+'''
+
 # ---------------------------------------------------------------- 5-minute booking (bio link)
 five_min = page_hero("Start a conversation", "Pick a time for a five-minute conversation.",
     "Choose a slot that suits you and we'll talk through how your business runs and where to start.") + f'''
@@ -750,6 +781,7 @@ PAGES = [
     ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
     ("paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
     ("try/index.html", "Build your own morning paper", "Type in your name, city and top three for the day, and see your own one-page morning paper in seconds.", "/try/", None, try_paper, False),
+    ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
