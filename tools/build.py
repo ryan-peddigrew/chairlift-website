@@ -202,7 +202,7 @@ home = f'''
 
   <section class="proof" aria-label="Who you're dealing with">
     <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>Real people you can call.</strong> Built by our own team, after a career in sales. <a href="/who-we-are/">Read our story</a></p></div>
+      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>Real people you can call.</strong> Built by our own team, shaped throughout a career in sales. <a href="/who-we-are/">Read our story</a></p></div>
       <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
       <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
@@ -422,7 +422,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>After a career in sales, we've seen up close how established businesses really run. The talent was there. The tools were there.</p>
+        <p>Throughout a career in sales, we've seen up close how established businesses really run. The talent was there. The tools were there.</p>
         <p>What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth.</p>
         <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right fix in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
@@ -450,7 +450,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
-          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems.</p>
+          <p>Throughout a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems.</p>
           <p>Chairlift fixes that, one process at a time, with our own team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
