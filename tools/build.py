@@ -185,7 +185,7 @@ home = f'''
       <div class="hero-card">
         <span class="rule"></span>
         <h1><span class="nowrap">Make the</span> <span class="nowrap">climb easier{ARROW}</span></h1>
-        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. One in-house team, start to finish: real people you can call, never outsourced, never a bot. Your people get their time back for the work that grows the business.</p>
+        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. Our own team, start to finish: real people you can call, never outsourced, never a bot. Your people get their time back for the work that grows the business.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
           <a class="btn btn-line" href="/how-it-works/">See how it works</a>
@@ -302,7 +302,7 @@ for i, s in enumerate(SERVICES):
 '''
 
 services = page_hero("What we do", "Automations that fit how you already work.",
-    "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. One problem, one tested fix, built and looked after by our own in-house team.") + f'''
+    "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. One problem, one tested fix, built and looked after by our own team.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
       <div class="stages--swipe">
@@ -457,7 +457,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
-          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
+          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with our own team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
