@@ -185,7 +185,7 @@ home = f'''
       <div class="hero-card">
         <span class="rule"></span>
         <h1><span class="nowrap">Make the</span> <span class="nowrap">climb easier{ARROW}</span></h1>
-        <p class="lede">We find the repetitive work slowing your team down and fix it with the simplest thing that works. Sometimes that's a better process, sometimes an automation, sometimes AI. Your people get their time back for the work that grows the business.</p>
+        <p class="lede">We work directly with owners to find the repetitive work slowing their team down, then fix it with the simplest thing that works. One in-house team, one tested fix per problem, and no chatbots. Your people get their time back for the work that grows the business.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
           <a class="btn btn-line" href="/how-it-works/">See how it works</a>
@@ -256,7 +256,7 @@ home = f'''
       </div>
       <div class="prose">
         <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Great teams shouldn't lose their best hours to follow-ups and admin.</p>
-        <p>Years in sales gave us a front-row seat to how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
+        <p>We've spent years up close with growing companies and the people who keep them running. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <a class="link-arrow" href="/who-we-are/">Read our story</a>
       </div>
     </div>
@@ -301,7 +301,7 @@ for i, s in enumerate(SERVICES):
 '''
 
 services = page_hero("What we do", "Automations that fit how you already work.",
-    "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. Sometimes that's a better process, sometimes an automation, sometimes AI.") + f'''
+    "We find the repetitive work slowing your team down and fix it with the simplest thing that works, using the tools you already have. One problem, one tested fix, built and looked after by our own team.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
       <div class="stages--swipe">
@@ -321,7 +321,6 @@ services = page_hero("What we do", "Automations that fit how you already work.",
         <div class="principle"><b>02</b><div><h3>Connected workflows</h3><p>Lead routing, quote follow-up, CRM updates, renewal reminders and internal alerts.</p></div></div>
         <div class="principle"><b>03</b><div><h3>AI-assisted work</h3><p>Email drafting, research, pulling data from documents and meeting summaries.</p></div></div>
         <div class="principle"><b>04</b><div><h3>Connected systems</h3><p>Your CRM, email, accounting and scheduling working together, with a person approving the key steps.</p></div></div>
-        <div class="principle"><b>05</b><div><h3>Company knowledge assistant</h3><p>A private assistant built on your approved company information. The most advanced option, not the default.</p></div></div>
       </div>
     </div>
   </section>
@@ -429,7 +428,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>Years in sales gave us a front-row seat to how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
+        <p>We've spent years up close with growing companies and the people who keep them running. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right automations in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
     </div>
@@ -456,7 +455,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
-          <p>A career in sales is a front-row seat to how companies really run: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift exists to fix that, one process at a time. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
+          <p>Up close, most businesses have the same story: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team that works with you directly. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
