@@ -223,7 +223,7 @@ home = f'''
         <h2 id="paper-title">Start your morning on one page.</h2>
         <p class="paper-lede">A one-page morning briefing, built around how you work: your focus for the day, your calendar, and the follow-ups waiting on you, on paper, by email or on your desktop. It's an easy first step, and a good look at how we think.</p>
         <a class="btn btn-ink" href="/paper/">See the morning paper</a>
-        <p class="try-link"><a class="link-arrow" href="/try/">Or build your own in ten seconds</a></p>
+        <p class="try-link"><a class="link-arrow" href="/try/">Or build your own in 10 seconds</a></p>
       </div>
       {PAPER_IMG}
     </div>
@@ -706,7 +706,7 @@ try_paper = page_hero("Try it", "Build your own morning paper.",
     <div class="wrap paper-split try-split">
       <div>
         <span class="rule"></span>
-        <h2 id="try-title">Your page, in ten seconds.</h2>
+        <h2 id="try-title">Your page, in 10 seconds.</h2>
         <form class="try-form" data-try-form>
           <div class="field-row">
             <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
