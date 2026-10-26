@@ -625,3 +625,9 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
   .cta-box, .cta-band .cta-box { padding: 40px 22px; }
   .hero--page .hero-card { padding: 40px 22px 36px; }
 }
+
+/* Icon and its label share one line (Ryan, 2026-10-26) */
+.card-top { display: flex; align-items: center; gap: 14px; }
+.card-top .card-icon { margin: 0; flex: none; width: 40px; height: 40px; }
+.card-top .card-label, .card-top .eyebrow { margin: 0; }
+.stage .card-top { margin-bottom: 14px; }

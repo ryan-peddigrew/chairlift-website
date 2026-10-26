@@ -203,12 +203,12 @@ home = f'''
         <p>Small on their own. Add them up and it's hours every week.</p>
       </div>
       <div class="cards cards--mixed cards--swipe">
-        <div class="card">{icon("quote")}<span class="card-label">Sales</span><h3>Quote follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
-        <div class="card">{icon("chat")}<span class="card-label">Inquiries</span><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
-        <div class="card">{icon("cal")}<span class="card-label">Operations</span><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card">{icon("moon")}<span class="card-label">Inquiries</span><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
-        <div class="card">{icon("people")}<span class="card-label">Sales</span><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
-        <div class="card">{icon("trend")}<span class="card-label">Leadership</span><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
+        <div class="card"><div class="card-top">{icon("quote")}<span class="card-label">Sales</span></div><h3>Follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
+        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Inquiries</span></div><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
+        <div class="card"><div class="card-top">{icon("cal")}<span class="card-label">Operations</span></div><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
+        <div class="card"><div class="card-top">{icon("moon")}<span class="card-label">Inquiries</span></div><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
+        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Sales</span></div><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
+        <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
       </div>
       <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
       <p class="section-link"><a class="link-arrow" href="/what-we-do/">See everything we do</a></p>
@@ -290,8 +290,7 @@ svc_blocks = ""
 for i, s in enumerate(SERVICES):
     svc_blocks += f'''      <article class="stage" id="{s["id"]}">
         <div>
-          {icon(s["icon"])}
-          <span class="eyebrow">{s["label"]}</span>
+          <div class="card-top">{icon(s["icon"])}<span class="eyebrow">{s["label"]}</span></div>
           <h2>{s["title"]}</h2>
           <p class="stage-sum">{s["desc"]}</p>
         </div>
@@ -472,8 +471,8 @@ contact = page_hero("Get in touch", "Start a conversation.",
   <section class="section section--soft section--tight" aria-label="Other ways to get in touch">
     <div class="wrap">
       <div class="cards cards--two">
-        <div class="card">{icon("chat")}<span class="card-label">Email</span><h3>Write directly</h3><p>Prefer your own inbox? Email <a href="mailto:{EMAIL}">{EMAIL}</a> and it comes straight to Ryan.</p></div>
-        <div class="card">{icon("clock")}<span class="card-label">Before you write</span><h3>Common questions</h3><p>Pricing, timelines, software and data: the questions people usually ask first.</p><div class="card-foot"><a class="link-arrow" href="/how-it-works/#faq">Read the answers</a></div></div>
+        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Email</span></div><h3>Write directly</h3><p>Prefer your own inbox? Email <a href="mailto:{EMAIL}">{EMAIL}</a> and it comes straight to Ryan.</p></div>
+        <div class="card"><div class="card-top">{icon("clock")}<span class="card-label">Before you write</span></div><h3>Common questions</h3><p>Pricing, timelines, software and data: the questions people usually ask first.</p><div class="card-foot"><a class="link-arrow" href="/how-it-works/#faq">Read the answers</a></div></div>
       </div>
     </div>
   </section>
@@ -636,7 +635,7 @@ morning_paper = f'''
 
 def industry_page(i):
     pains = "".join(f'        <li>{icon(ic, "")}<div><strong>{t}</strong><span>{d}</span></div></li>\n' for ic, t, d in i["pains"])
-    cards = "".join(f'        <div class="card">{icon(ic)}<span class="card-label">{lab}</span><h3>{t}</h3><p>{d}</p></div>\n' for ic, lab, t, d in i["cards"])
+    cards = "".join(f'        <div class="card"><div class="card-top">{icon(ic)}<span class="card-label">{lab}</span></div><h3>{t}</h3><p>{d}</p></div>\n' for ic, lab, t, d in i["cards"])
     return page_hero("Who we help", i["title"], i["lede"]) + f'''
   <section class="section section--ink pains-band" aria-labelledby="pains-title">
     <div class="wrap">
