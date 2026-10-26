@@ -411,7 +411,8 @@ examples = page_hero("In practice", "What this looks like in practice.",
       <div>
         <span class="rule"></span>
         <span class="eyebrow">Client story</span>
-        <h2 id="wastemind-title">WasteMind.</h2>
+        <img class="story-logo" src="/images/wastemind-logo.png" width="528" height="216" alt="WasteMind logo">
+        <h2 id="wastemind-title" class="sr-only">WasteMind.</h2>
         <p class="story-stat"><b>12 to 24 hours</b><span>down to about 1 hour</span></p>
         <p class="story-note">Response time, roughly. More than 90% faster.</p>
       </div>
@@ -421,6 +422,10 @@ examples = page_hero("In practice", "What this looks like in practice.",
         <p><strong>What we did.</strong> We looked for the places where time and money were leaking, put fixes in, tracked the return, measured it, and then went looking for the next one.</p>
         <p><strong>How it works now.</strong> We work with WasteMind every week, one tested fix at a time.</p>
         <blockquote class="story-quote"><p>&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;</p><cite>Shane Fagan, WasteMind</cite></blockquote>
+      </div>
+      <div class="story-photos">
+        <img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel in a parking garage">
+        <img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue front-end-load waste containers from WasteMind">
       </div>
     </div>
   </section>
