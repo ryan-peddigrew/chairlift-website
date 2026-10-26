@@ -523,3 +523,15 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .reel-hero { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .reel { max-width: 320px; }
 }
+
+/* Build your own paper (/try/) */
+.try-split { align-items: start; }
+.try-form { display: grid; gap: 14px; margin-top: 24px; }
+.try-form .btn { justify-self: start; margin-top: 6px; }
+.try-split .form-fine { color: var(--on-ink-muted); font-size: 14px; }
+.try-after { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--on-ink-line); }
+.try-after h3 { font-size: 22px; margin-bottom: 8px; }
+.try-after p { color: var(--on-ink-muted); }
+.try-after[hidden] { display: none; }
+.section--ink .paper-shot figcaption { color: var(--on-ink-muted); }
+.try-link { margin-top: 20px; }
