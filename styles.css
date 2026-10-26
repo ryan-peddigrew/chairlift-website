@@ -786,3 +786,6 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .story-stat b { font-size: clamp(28px, 7vw, 40px); font-weight: 800; line-height: 1.1; text-transform: uppercase; }
 .story-stat span { font-size: 18px; color: var(--muted); }
 .story-note { color: var(--muted); font-size: 15px; margin: 0; }
+.story-quote { margin: 24px 0 0; padding-left: 20px; border-left: 4px solid var(--ink); }
+.story-quote p { font-size: 20px; font-weight: 600; margin: 0 0 8px; }
+.story-quote cite { font-style: normal; color: var(--muted); font-size: 15px; }
