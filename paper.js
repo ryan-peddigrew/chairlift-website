@@ -28,7 +28,7 @@
       var when = pre ? String((g.perf || [])[0] || '').split(' \u00b7 ') : [];
       var mid = pre ? '' : (/^Final/.test(g.status) ? 'Last night' : g.status);
       return '<div class="dp-game"><div class="dp-gs"><i>' + esc(g.league || '') + '</i><em>' + esc(mid) + '</em></div>' +
-        team(t[0], !pre && a < b, pre, when[0]) + team(t[1], !pre && b < a, pre, when[1]) + (!pre && (g.foot || mid) ? '<div class="dp-gf">' + esc(mid && g.foot ? mid + ' \u00b7 ' + g.foot : (mid || g.foot)) + '</div>' : '') + '</div>';
+        team(t[0], !pre && a < b, pre, when[0]) + team(t[1], !pre && b < a, pre, when[1]) + (!pre && g.foot ? '<div class="dp-gf">' + esc(g.foot || '') + '</div>' : '') + '</div>';
     }).join('');
   }
 
@@ -46,7 +46,7 @@
   tick();
   setInterval(tick, 10000);
 
-  fetch('/.netlify/functions/paper?v=10').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch('/.netlify/functions/paper?v=11').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
       all('[data-dp-temp]', function (el) { el.textContent = d.weather.temp; });

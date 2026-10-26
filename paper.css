@@ -431,3 +431,11 @@
 .dp-band .dp-laugh .dp-foot::before { content: ""; flex: 1 1 auto; height: 1px; background: #DADADA; }
 .dp-band .dp-laugh .dp-foot span { flex: none; order: 2; }
 .dp-band .dp-laugh .dp-foot::after { content: none; }
+
+/* sports polish: more air under the highlights, column rule no longer meets the lines */
+.dp-gf { margin-bottom: 5px; }
+.dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { border-left: 0; position: relative; }
+.dp-sports .dp-game:nth-child(n+3)::before { content: ""; position: absolute; left: 0; top: 7px; bottom: 7px; width: 1px; background: #D8D8D8; }
+.dp-sports .dp-game, .dp-sports .dp-game:nth-child(even), .dp-sports .dp-game:nth-child(n+3), .dp-sports .dp-game:nth-child(n+3):nth-child(even) { padding-top: 5.25px; padding-bottom: 4.25px; }
+.dp-sports .dp-tm { padding: 3px 0; }
+.dp-sports .dp-game:nth-child(n+3)::before { top: 5px; bottom: 5px; }

@@ -135,7 +135,11 @@ async function performers(t, eventId, teamId) {
     }
     const top = Object.values(tally).sort((a, b) => (b.goals + b.assists) - (a.goals + a.assists) || b.goals - a.goals).slice(0, 2);
     if (top.length) {
-      return top.map((p) => p.n + " " + [p.goals ? p.goals + " G" : "", p.assists ? p.assists + " A" : ""].filter(Boolean).join(", "));
+      return top.map((p) => {
+        const g = p.goals ? p.goals + (p.assists ? " G" : p.goals === 1 ? " goal" : " goals") : "";
+        const a = p.assists ? p.assists + (p.goals ? " A" : p.assists === 1 ? " assist" : " assists") : "";
+        return p.n + " " + [g, a].filter(Boolean).join(", ") + (p.goals && p.assists ? ", " + (p.goals + p.assists) + "P" : "");
+      });
     }
   }
   const lead = (d.leaders || []).find((x) => String(x.team && x.team.id) === String(teamId));
