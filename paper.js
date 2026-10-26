@@ -39,6 +39,10 @@
     all('[data-dp-date]', function (el) {
       el.textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     });
+    all('[data-dp-in]', function (el) {
+      var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + Number(el.getAttribute('data-dp-in')));
+      el.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    });
     all('[data-dp-time]', function (el) {
       if (el.hasAttribute('data-on')) el.textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }).replace(/[\u202f\u00a0]/g, ' ');
     });

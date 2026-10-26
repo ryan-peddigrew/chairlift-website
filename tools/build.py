@@ -1,4 +1,6 @@
 import os, sys
+import datetime as _dt
+from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(__file__))
 from common import *
 
@@ -108,6 +110,12 @@ def dp_h(icon_name, title, tag):
     return f'<div class="dp-h"><svg viewBox="0 0 24 24">{PAPER_ICON[icon_name]}</svg><b>{title}</b><i>{tag}</i></div>'
 
 
+def dp_in(n):
+    """A date n days after the build day. paper.js rewrites it to n days after the viewer's today."""
+    d = _dt.datetime.now(ZoneInfo("America/Toronto")).date() + _dt.timedelta(days=n)
+    return f'<span data-dp-in="{n}">{d.strftime("%b")} {d.day}</span>'
+
+
 DP_FOCUS = [
     ("Finish the client proposal", "By noon", ["Draft is ready for your final read-through and edits before sending.", "Pricing page and project timeline still need final sign-off."]),
     ("Call back two warm leads", "Today", ["Both asked for a quick call sometime this week, ideally Thursday.", "Lead with the new Q4 package and the earliest start dates."]),
@@ -117,10 +125,10 @@ DP_FOCUS = [
 ]
 DP_FU = [
     ("Send the signed quote", "Fri", ["Re: Office reno quote for the client, signed copy still to send"]),
-    ("Book Benny's vet visit", "Nov 1", ["Re: Annual check-up and shots, plus the nail trim"]),
-    ("Renew the car insurance", "Oct 31", ["Re: Compare two quotes before renewal and pick the cheaper one"]),
+    ("Book Benny's vet visit", dp_in(6), ["Re: Annual check-up and shots, plus the nail trim"]),
+    ("Renew the car insurance", dp_in(5), ["Re: Compare two quotes before renewal and pick the cheaper one"]),
     ("Invoice approval", "Waiting", ["Re: With finance since Monday, nudge them again today"]),
-    ("Venue confirmation", "Nov 14", ["Re: Team event, waiting on the venue to confirm the date", "Ask about the room setup and the final headcount."]),
+    ("Venue confirmation", dp_in(19), ["Re: Team event, waiting on the venue to confirm the date", "Ask about the room setup and the final headcount."]),
     ("Reply to Northline Supply", "Mon", ["Re: Confirm the Friday delivery window and who signs for it", "Check the dock hours before replying."]),
 ]
 DP_GAMES = [("NHL", "TOR", "5", "NYR", "4", "Last night", "@"),
@@ -141,7 +149,7 @@ def dp_sports():
         f'<div class="dp-game"><div class="dp-gs"><i>{lg}</i><em>{mid}</em></div>{tm(a, sa, lost(sa, sb))}{tm(b, sb, lost(sb, sa), rel)}</div>'
         for lg, a, sa, b, sb, mid, rel in DP_GAMES)
 DP_CAL = [("7:30", "Walk Benny outside", "20 min"), ("9:00", "Team check-in call", "15 min"), ("11:00", "Pipeline review meeting", "45 min"), ("12:30", "Client lunch with Sam", "1 hr"), ("3:00", "Proposal deep focus block", "90 min"), ("4:30", "Call with Brightwater CPA", "30 min"), ("6:00", "Gym after work", "1 hr")]
-DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Three options for Saturday. Pick one by Thursday."), ("Sam", "Proposal draft v2 is ready", "Changes are in. Needs your sign-off before it goes out."), ("Northline Supply Co.", "Confirmed Friday delivery", "Arrives between 9 and 11. Please have someone on site."), ("Brightwater CPA", "Q4 numbers to review", "Three items flagged. Call is at 4:30."), ("Maple Ridge Dental", "Reminder: Nov 4 at 2:00", "Cleaning and check-up. Arrive ten minutes early."), ("Team", "Lunch Friday?", "Two spots in mind. Vote by noon."), ("Harbour Bank", "Your statement is ready", "October statement is available to view online.")]
+DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Three options for Saturday. Pick one by Thursday."), ("Sam", "Proposal draft v2 is ready", "Changes are in. Needs your sign-off before it goes out."), ("Northline Supply Co.", "Confirmed Friday delivery", "Arrives between 9 and 11. Please have someone on site."), ("Brightwater CPA", "Q4 numbers to review", "Three items flagged. Call is at 4:30."), ("Maple Ridge Dental", f"Reminder: {dp_in(9)} at 2:00", "Cleaning and check-up. Arrive ten minutes early."), ("Team", "Lunch Friday?", "Two spots in mind. Vote by noon."), ("Harbour Bank", "Your statement is ready", "Your latest statement is available to view online.")]
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
@@ -151,7 +159,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, headlines, sports scores and the weather.">
           <div class="dp" aria-hidden="true">
             <div class="dp-mast">The Daily Peddigrew</div>
-            <div class="dp-date"><span data-dp-time data-on>7:00 AM</span><span data-dp-date>Friday, October 23, 2026</span><span class="dp-dwx"><svg class="dp-wi" viewBox="0 0 24 24" data-dp-wicon>{PAPER_ICON["sun"]}</svg><b><span data-dp-temp>8</span>°C</b><em><svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto</em></span></div>
+            <div class="dp-date"><span data-dp-time data-on>7:00 AM</span><span data-dp-date>{_dt.datetime.now(ZoneInfo("America/Toronto")).date().strftime("%A, %B")} {_dt.datetime.now(ZoneInfo("America/Toronto")).date().day}, {_dt.datetime.now(ZoneInfo("America/Toronto")).date().year}</span><span class="dp-dwx"><svg class="dp-wi" viewBox="0 0 24 24" data-dp-wicon>{PAPER_ICON["sun"]}</svg><b><span data-dp-temp>8</span>°C</b><em><svg class="dp-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Toronto</em></span></div>
             <div class="dp-cols">
               <div>
                 <section class="dp-sec dp-focus">{dp_h("focus", "Today’s Focus", "")}{"".join(f'<div class="dp-row"><div class="dp-t">{t}</div><span class="dp-tag">{g}</span><ul>{"".join(f"<li>{x}</li>" for x in b)}</ul></div>' for t, g, b in DP_FOCUS)}</section>
@@ -175,7 +183,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
             </div>
           </div>
         </div>
-        <figcaption>Sample page. Scores, news and weather are live.</figcaption>
+        <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
 home = f'''
