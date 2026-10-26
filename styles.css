@@ -562,3 +562,16 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
   .calc-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .calc-task { grid-column: 1 / -1; }
 }
+
+/* Who we are: Ink hero card sized for a page title, then alternating grey and Ink boxes */
+.hero--page .hero-card { padding: 72px 72px 64px; }
+.hero--page .hero-card h1 { font-size: clamp(36px, 5.4vw, 64px); max-width: 14ch; }
+.hero--page .eyebrow { color: var(--on-ink-muted); display: block; }
+.hero--page .rule { margin-bottom: 18px; }
+.hero--page .lede { margin-top: 18px; }
+.founder { align-items: center; }
+@media (max-width: 860px) { .hero--page .hero-card { padding: 56px 40px 48px; } }
+@media (max-width: 640px) {
+  .hero--page .hero-card { padding: 40px 22px 36px; }
+  .hero--page .hero-card h1 { font-size: 34px; }
+}
