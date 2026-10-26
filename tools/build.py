@@ -35,7 +35,7 @@ def ol(items):
 
 STEPS = f'''      <div class="steps">
         <div class="step"><span class="step-num">Stop 1</span><h3>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></div>
-        <div class="step"><span class="step-num">Stop 2</span><h3>Ride</h3><p>We build one automation inside the tools you already use, and refine it with the people who use it.</p></div>
+        <div class="step"><span class="step-num">Stop 2</span><h3>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></div>
         <div class="step"><span class="step-num">Stop 3</span><h3>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></div>
       </div>
 '''
@@ -65,10 +65,10 @@ EXAMPLES = [
          before=["Asking for reviews depends on the person at the front desk.", "Some locations ask, most forget.", "Customers get the wrong link, or no link at all.", "Managers can't see what's being sent where."],
          after=["After each visit, a short thank-you goes out with the right review link for that location.", "One gentle reminder follows if it's still useful.", "Managers see requests by location in one place.", "Front-desk staff no longer have to remember to ask."],
          built="Your booking or point-of-sale system, your review profiles, and text or email."),
-    dict(id="handover", tag="Example · B2B account team", title="When someone's out of the office",
+    dict(id="handover", tag="Example · Account team", title="When someone's out of the office",
          lead="Each account manager keeps client history in their own inbox. When someone is on holiday or moves on, their clients go quiet and the next person starts from scratch.",
          before=["Client history lives in individual inboxes.", "When someone's away, clients wait.", "A handover means forwarding dozens of emails.", "Follow-ups slip through the gap."],
-         after=["Client conversations are logged automatically in one shared place.", "Follow-ups are scheduled from the record, not from memory.", "Covering for a colleague means opening the account and reading the history.", "Leadership can see every relationship at a glance."],
+         after=["Client conversations are logged in one shared place, without anyone retyping them.", "Follow-ups are scheduled from the record, not from memory.", "Covering for a colleague means opening the account and reading the history.", "Leadership can see every relationship at a glance."],
          built="Your shared inbox or email accounts, and the CRM or client list your team already keeps."),
 ]
 
@@ -170,7 +170,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
-                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="1024" height="339" alt=""><div class="dp-foot"><span>The Daily Peddigrew</span></div></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""><div class="dp-foot"><span>The Daily Peddigrew</span></div></section>
               </div>
             </div>
           </div>
@@ -185,8 +185,8 @@ home = f'''
       <div class="hero-card hero-card--home">
         <div class="hero-copy">
         <span class="rule"></span>
-        <h1><span class="nowrap">Make the</span> <span class="nowrap">climb easier{ARROW}</span></h1>
-        <p class="lede">We take the follow-ups and admin work off your team's plate. Our own team of real people, never outsourced, never a bot.</p>
+        <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
+        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people. No outsourcing, no bots.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
           <a class="btn btn-line" href="/how-it-works/">See how it works</a>
@@ -204,7 +204,7 @@ home = f'''
   <section class="proof" aria-label="Who you're dealing with">
     <div class="wrap proof-grid">
       <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>Real people you can call.</strong> Built by our own team, after a career in sales. <a href="/who-we-are/">Read our story</a></p></div>
-      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, CRM and quoting software. Nothing new to learn.</p></div>
+      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
       <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
   </section>
@@ -312,7 +312,7 @@ services = page_hero("What we do", "Built around how you work.",
       <div class="principles">
         <div class="principle"><b>01</b><div><h3>Quick fixes</h3><p>Reminders, forms, FAQ answers, scheduling and review requests.</p></div></div>
         <div class="principle"><b>02</b><div><h3>Connected steps</h3><p>Lead routing, quote follow-up, CRM updates, renewal reminders and internal alerts.</p></div></div>
-        <div class="principle"><b>03</b><div><h3>AI-assisted work</h3><p>Email drafting, research, pulling data from documents and meeting summaries.</p></div></div>
+        <div class="principle"><b>03</b><div><h3>Drafting and research help</h3><p>Email drafting, research, pulling data from documents and meeting summaries.</p></div></div>
         <div class="principle"><b>04</b><div><h3>Connected systems</h3><p>Your CRM, email, accounting and scheduling working together, with a person approving the key steps.</p></div></div>
         <div class="principle"><b>05</b><div><h3>Company knowledge assistant</h3><p>A private assistant built on your approved company information. The most advanced option, not the default.</p></div></div>
       </div>
@@ -331,11 +331,11 @@ services = page_hero("What we do", "Built around how you work.",
 STAGES = [
     dict(n="1", name='Onboard', sum="We learn how your team actually works today: where the hours go and what frustrates people most.",
          happens=["A conversation with you about how the business runs", "Short chats with the people closest to the work, where it helps", "Mapping the process as it really happens, not as it's written down"],
-         get=["A shortlist of what's worth automating, in order", "A clear recommendation for where to start"],
+         get=["A shortlist of what's worth fixing first, in order", "A clear recommendation for where to start"],
          ask=["What does your team do every week that eats the most time?", "What happens after a quote goes out?", "What do people keep asking each other for?", "What happens to leads that come in after hours?", "If you could get rid of one repetitive task tomorrow, what would it be?"]),
-    dict(n="2", name="Ride", sum="We build one automation inside the tools you already use, and refine it with the people who use it.",
+    dict(n="2", name="Ride", sum="We fix one task inside the tools you already use, and refine it with the people who use it.",
          happens=["Building on your existing tools, with access you grant", "Testing with real examples before anything goes live", "Adjusting wording, timing and hand-offs with your team"],
-         get=["One working automation your team actually uses", "A plain-English explanation of what it does and why"]),
+         get=["One working fix your team actually uses", "A plain-English explanation of what it does and why"]),
     dict(n="3", name="Summit", sum="Your team gets time back for the work that matters. Then we look at what's next, together.",
          happens=["Checking it's running the way it should", "Gathering feedback from the people using it", "Deciding together whether there's a next process worth tackling"],
          get=["A team with fewer repetitive tasks on their plate", "A clear next step, or a natural place to stop"]),
@@ -360,14 +360,17 @@ for s in STAGES:
 FAQ = [
     ("Is this a chatbot, or outsourced?", ["No. You work with our own team of real people, never outsourced. If a chatbot is the right fix for one of your tasks, we can build one, but you'll always be dealing with a person."]),
     ("What happens in the five minutes? Is it a sales pitch?", ["We ask what slows your team down and tell you honestly whether there's a practical fix. If there isn't, we'll say so."]),
-    ("How does pricing work?", ["It depends on what we're automating and how your tools are set up, so we don't publish a price list. You'll know what we'd recommend, and the price, before any work starts."]),
-    ("Do we need to buy new software?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, CRM, spreadsheets, and the booking or quoting software you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
+    ("Is this going to be expensive?", ["We won't quote until we understand the job, and you'll see the price before any work starts."]),
+    ("I don't have time for another project.", ["It starts with five minutes, and after that we do the building. Your team just shows us how the work gets done today."]),
+    ("We tried software before and nobody used it.", ["That's why we don't sell software. We fix one task inside the tools you already use, and refine it with the people who use it."]),
+    ("Can I trust you with my accounts?", ["We're our own team of real people, never outsourced. We only touch what the fix needs, and you stay the owner of your tools and data."]),
+    ("We're probably too small for this.", ["If your team does the same task every week, you're not too small. We start with one task and only go further if it's worth it."]),
+    ("I don't want robots talking to my customers.", ["Neither do we. You always deal with real people, and nothing goes to your customers until you've signed off on it."]),
+    ("Do we need to buy new software?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, spreadsheets, and the booking or quoting software you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
     ("Do we need someone technical on our team?", ["No. You need someone who knows how the work gets done today. We handle the technical side and explain everything in plain English."]),
-    ("Will automated messages sound robotic?", ["No. We write every message with your team, in the way you actually talk to clients, and refine it until it sounds like you."]),
     ("Is this about replacing staff?", ["No. It's about taking the repetitive parts of the job off people's plates, so they can spend more time with clients and on the work they're good at."]),
-    ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first automation."]),
+    ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first fix."]),
     ("What happens if something stops working?", ["If something isn't working the way it should, you know exactly who to tell."]),
-    ("What about our data?", ["We work inside your existing accounts, with access you grant, and only touch what the automation needs. You stay the owner of your tools and your data."]),
 ]
 faq_html = "".join(f'''        <details>
           <summary>{q}</summary>
@@ -424,7 +427,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there.</p>
+        <p>After a career in sales, we've seen up close how established businesses really run. The talent was there. The tools were there.</p>
         <p>What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth.</p>
         <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right fix in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
@@ -479,7 +482,7 @@ INDUSTRIES = [
     dict(slug="trades-and-contractors", icon="case", name="Trades and contractors",
          blurb="Quotes followed up, calls answered and customers kept in the loop while you're on site.",
          title="For trades and contractors.",
-         lede="You're on site all day. Meanwhile, quotes need following up, new calls need answering and vendors need chasing. We automate the office side so it keeps moving while you work.",
+         lede="You're on site all day. Meanwhile, quotes need following up, new calls need answering and vendors need chasing. We take care of the office side so it keeps moving while you work.",
          pains=[("quote", "A quote went out. Nobody's followed up.", "The job was yours to win, but the week got busy."),
                 ("chat", "The call you missed on site.", "By the time you call back, they've booked someone else."),
                 ("copy", "Chasing vendors for drawings and dates.", "Every “did you get my email?” is time away from the job."),
@@ -492,7 +495,7 @@ INDUSTRIES = [
     dict(slug="manufacturers", icon="trend", name="Manufacturers and fabricators",
          blurb="Quote requests sorted on arrival, orders entered once and customers updated without the phone calls.",
          title="For manufacturers and fabricators.",
-         lede="When products are built to spec, every order starts with back-and-forth: requirements, drawings, revisions, quotes, then “where's my order?” We automate the repetitive steps so your team can focus on building.",
+         lede="When products are built to spec, every order starts with back-and-forth: requirements, drawings, revisions, quotes, then “where's my order?” We take care of the repetitive steps so your team can focus on building.",
          pains=[("chat", "Quote requests waiting in a shared inbox.", "Specs arrive incomplete, and the first reply takes days."),
                 ("copy", "The same order details typed into three systems.", "Every re-entry is another chance for a mistake on the shop floor."),
                 ("clock", "“Where's my order?” emails all day.", "Someone stops what they're doing to look up a status."),
@@ -509,7 +512,7 @@ INDUSTRIES = [
     dict(slug="professional-services", icon="people", name="Professional services",
          blurb="For accounting, legal and investigation firms: fast first replies, intake before the call and regular client updates.",
          title="For professional services firms.",
-         lede="Clients often reach out at a stressful moment, and they're usually contacting more than one firm. We automate the first reply, the intake and the updates, so every client feels looked after from the first message.",
+         lede="Clients often reach out at a stressful moment, and they're usually contacting more than one firm. We take care of the first reply, the intake and the updates, so every client feels looked after from the first message.",
          pains=[("moon", "The inquiry that came in at midnight.", "By morning, they've already spoken to another firm."),
                 ("copy", "Intake by email ping-pong.", "Collecting the basics takes three messages before the real conversation starts."),
                 ("chat", "“Any news on my file?”", "Clients chase for updates because nobody has had time to send them."),
@@ -526,15 +529,15 @@ INDUSTRIES = [
     dict(slug="sales-teams", icon="pulse", name="Sales teams",
          blurb="Leads answered in minutes, proposals followed up and a CRM that keeps itself current.",
          title="For sales teams.",
-         lede="Most deals don't get lost. They go quiet. We automate the follow-ups, the CRM updates and the handovers, so your reps spend their time selling.",
+         lede="Most deals don't get lost. They go quiet. We take care of the follow-ups, the CRM updates and the handovers, so your reps spend their time selling.",
          pains=[("quote", "The proposal nobody followed up on.", "Not for lack of effort. The week just got away."),
                 ("moon", "Inbound leads that wait a day for a reply.", "Speed matters, and the first to respond often wins."),
-                ("copy", "A CRM that's always a week behind.", "The pipeline is only as current as the last free minute."),
+                ("copy", "A CRM that's always a week behind.", "The pipeline is only as current as the last spare minute."),
                 ("people", "A rep is away, and their accounts go quiet.", "The history lives in one inbox, not where the team can see it.")],
          close="Keep every deal <span class=\"hl\">moving</span>, without anyone having to remember.",
          cards=[("chat", "Leads", "Answered in minutes", "New inbound leads get a prompt, helpful reply and reach the right rep."),
                 ("quote", "Follow-up", "On schedule", "Proposals and check-ins follow up on their own, in each rep's own voice."),
-                ("trend", "CRM", "Updates itself", "Emails and next steps are logged automatically, so the pipeline is always current.")],
+                ("trend", "CRM", "Updates itself", "Emails and next steps are logged for you, so the pipeline is always current.")],
          example=EXAMPLES[3]),
 ]
 
@@ -542,7 +545,7 @@ ind_items = "".join(f'''        <a class="fit-item fit-link" href="/who-we-help/
 ''' for i in INDUSTRIES)
 
 industries = page_hero("Who we help", "Different industries. The same lost hours.",
-    "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd automate first.") + f'''
+    "Every industry has its own version of the follow-up nobody had time for. Pick yours to see what we'd fix first.") + f'''
   <section class="section section--soft section--tight" aria-label="Industries">
     <div class="wrap">
       <div class="fit-grid">
@@ -563,21 +566,10 @@ HERO_MEDIA = '''<figure class="reel">
         </video>
       </figure>''' if REEL else ""
 
-morning_paper = f'''
-  <section class="page-hero">
-    <div class="wrap{' reel-hero' if REEL else ''}">
-      <div>
-        <span class="eyebrow">Starter offer</span>
-        <h1>Easier mornings, on one page.</h1>
-        <p class="lede">A one-page morning briefing built around how you work: your goals for the day, your schedule and your follow-ups. Get it on paper, by email or right on your desktop, and know what matters before your first coffee.</p>
-        <div class="ctas">
-          <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        </div>
-      </div>
-      {HERO_MEDIA}
-    </div>
-  </section>
-
+morning_paper = page_hero("Just for fun", "One page for your mornings.",
+    "A one-page morning briefing with your focus, calendar and follow-ups. On paper, by email or on your desktop.",
+    extra=f'''
+        <div class="ctas"><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>''') + f'''
   <section class="section section--tight" aria-labelledby="page-title">
     <div class="wrap paper-split paper-split--flip">
       {PAPER_IMG}
@@ -605,6 +597,20 @@ morning_paper = f'''
     </div>
   </section>
 
+  <section class="section section--tight" aria-labelledby="story-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <h2 id="story-title">Where it came from.</h2>
+      </div>
+      <div class="prose">
+        <p><strong>The problem.</strong> Mornings started with anxiety, then 30 to 40 minutes checking source after source, and still feeling there was more to catch up on.</p>
+        <p><strong>The fix.</strong> One page that pulls the day's priorities, calendar and follow-ups together, sorted by what's most time-sensitive.</p>
+        <p><strong>The result.</strong> A two-minute read. Nothing important slips, and the day starts with a clear head.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--soft" aria-labelledby="team-title">
     <div class="wrap split">
       <div>
@@ -621,7 +627,7 @@ morning_paper = f'''
   <section class="cta cta-band" aria-labelledby="cta-title">
     <div class="cta-box">
       <div>
-        <h2 id="cta-title">Start with a five-minute conversation.</h2>
+        <h2 id="cta-title">Talk it through in five minutes.</h2>
         <p>Tell us how your mornings run, and we'll show you what your page could look like.</p>
         <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
       </div>
@@ -757,29 +763,52 @@ calculator = page_hero("Time-back calculator", "How much time is your team losin
 '''
 
 # ---------------------------------------------------------------- 5-minute booking (bio link)
-five_min = page_hero("Start a conversation", "Pick a time for a five-minute conversation.",
-    "Choose a slot that suits you and we'll talk through how your business runs and where to start.") + f'''
+FIVE_FAQ = "".join(f"""        <details>
+          <summary>{q}</summary>
+          <div><p>{a_[0]}</p></div>
+        </details>
+""" for q, a_ in [FAQ[2], FAQ[3], FAQ[5]])
+
+five_min = page_hero("Start a conversation", "Book your five minutes.",
+    "Pick a time that suits you. We'll talk through how your business runs and where to start.") + f'''
+  <section class="proof" aria-label="What to expect">
+    <div class="wrap proof-grid">
+      <div class="proof-item"><p><strong>Who you'll talk to.</strong> Someone from our own team. A real person, never a bot.</p></div>
+      <div class="proof-item"><p><strong>What happens.</strong> You tell us what slows your team down. We tell you honestly if there's a practical fix.</p></div>
+      <div class="proof-item"><p><strong>What it isn't.</strong> A sales pitch. If we're not the right fit, we'll say so.</p></div>
+    </div>
+  </section>
   <section class="section section--tight">
     <div class="wrap">
+      <p class="section-note section-note--top">Calendar not loading? <a href="{BOOKING_URL}">Open it in a new page</a>.</p>
       <div id="cal-inline" style="min-height:640px"></div>
-      <p class="section-note">Having trouble loading the calendar? <a href="{BOOKING_URL}">Open it in a new page</a>.</p>
+    </div>
+  </section>
+  <section class="section section--soft" aria-labelledby="faq-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <h2 id="faq-title">Before you book.</h2>
+      </div>
+      <div class="faq">
+{FIVE_FAQ}      </div>
     </div>
   </section>
   <script src="/cal-embed.js"></script>
 '''
 
 PAGES = [
-    ("index.html", "Chairlift · Automations for growing companies", "Chairlift takes follow-ups, quotes and everyday admin off your team's plate, inside the tools you already use, so your people can focus on clients and growth.", "/", None, home, False),
+    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home, False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
-    ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, builds one automation at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
-    ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams automate the follow-ups and admin that slow them down.", "/who-we-help/", "industries", industries, False),
-    ("examples/index.html", "In practice", "Before-and-after examples of the automations Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
-    ("paper/index.html", "Easier mornings, on one page", "A one-page morning briefing built around how you work: your goals, schedule and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
+    ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
+    ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
+    ("examples/index.html", "In practice", "Before-and-after examples of the fixes Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
+    ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Just for fun, with a five-minute conversation if you want more.", "/paper/", None, morning_paper, False),
     ("try/index.html", "Build your own morning paper", "Type in your name, city and top three for the day, and see your own one-page morning paper in seconds.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
-    ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift.", "/5min/", None, five_min, True),
+    ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
-    ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to automate first.", "/get-in-touch/", "contact", contact, False),
+    ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
 ] + [
     (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
 ] + [
