@@ -258,7 +258,7 @@ home = f'''
       </div>
       <div class="prose">
         <p class="lead-big" style="color:var(--text);margin-top:0;max-width:none">Great teams shouldn't lose their best hours to follow-ups and admin.</p>
-        <p>We've spent years up close with growing companies and the people who keep them running. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
+        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <a class="link-arrow" href="/who-we-are/">Read our story</a>
       </div>
     </div>
@@ -431,7 +431,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 id="gap-title">The gap we kept seeing.</h2>
       </div>
       <div class="prose">
-        <p>We've spent years up close with growing companies and the people who keep them running. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
+        <p>After a career in sales, we've seen up close how growing companies really run. The talent was there. The tools were there. What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth. That's what Chairlift does.</p>
         <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right automations in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
       </div>
     </div>
@@ -458,7 +458,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <h2 class="eyebrow" id="founder-title">A note from the founder</h2>
         <blockquote>
           <p>“The best teams I've worked alongside didn't need more people. They needed their time back.”</p>
-          <p>Up close, most businesses have the same story: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
+          <p>After a career in sales, I've seen the same story in business after business: the follow-ups that slip, the handovers that stall, the hours lost between systems. Chairlift fixes that, one process at a time, with one in-house team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
       </div>
