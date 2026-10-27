@@ -189,6 +189,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
 
 home = f'''
   <section class="pc-hero" aria-label="Chairlift">
+    <div class="pc-pin">
     <div class="pc-sky" aria-hidden="true">
 <video class="pc-photo pc-photo--wind" src="/images/hero-wind.mp4" poster="/images/hero-wind-poster.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
       <canvas class="pc-fog" aria-hidden="true"></canvas>
@@ -199,6 +200,8 @@ home = f'''
       <div class="pc-capbar" aria-hidden="true"><span class="pg-arrow">→</span><p class="pc-tag">Less busywork.<br>More business.</p></div>
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
       <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
+    </div>
+      <p class="pc-scrollhint mono" aria-hidden="true">Scroll <span>↓</span></p>
     </div>
   </section>
 
@@ -895,14 +898,14 @@ HERO_MEDIA = {
     "c": '<picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="pc-photo pc-photo--wind pc-photo--still" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602"></picture>',
     "d": _vid("/images/hero-clouds.mp4", "/images/alps-blue.jpg", "pc-photo--clouds"),
 }
-def home_variant(k):
+def home_variant(k, switcher=True):
     h = _MEDIA.sub(lambda m: HERO_MEDIA[k], home, count=1)
     h = h.replace('class="pc-hero"', f'class="pc-hero pcv-{k}"', 1)
     sw = '<nav class="pc-switch" aria-label="Homepage mock-ups">' + "".join(f'<a href="/home-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abcd") + '</nav>'
-    return h + sw
+    return h + (sw if switcher else '')
 
 PAGES = [
-    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home, False),
+    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("c", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),

@@ -367,3 +367,23 @@ body:has(.pc-hero) .site-header .menu-btn[aria-expanded="true"] .menu-label::aft
   .pcv-c .pc-stage { padding-top: 56vh; }
   .pcv-d .pc-word { font-size: 29vw; }
 }
+
+/* ---------- landing intro: spinning logo, first scroll brings in the word ---------- */
+.pc-hero { height: 220svh; min-height: 0; overflow: visible; }
+.pc-pin { position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; }
+.pc-stage { min-height: 100svh; height: 100svh; display: block; }
+.pc-word { position: absolute; left: clamp(20px, 4vw, 56px); right: clamp(20px, 4vw, 56px); bottom: 24svh; width: auto; opacity: calc((var(--p, 0) - .14) * 3.2); transform: translateY(calc((1 - var(--p, 0) * 2.2) * 6vh)); }
+.pc-capbar { position: absolute; left: clamp(20px, 4vw, 56px); right: clamp(20px, 4vw, 56px); bottom: 9svh; margin: 0; opacity: calc((var(--p, 0) - .4) * 3.6); }
+.pc-logo { position: absolute; left: 0; top: 0; right: auto; bottom: auto; width: 300px; height: 300px; opacity: 1; transform: translate(calc(50vw - 150px), calc(50svh - 190px)); will-change: transform; z-index: 4; }
+.pc-scrollhint { position: absolute; left: 50%; bottom: 5svh; transform: translateX(-50%); margin: 0; color: #3DFFC1; opacity: calc(1 - var(--p, 0) * 6); letter-spacing: .14em; text-transform: uppercase; font-size: 12px; z-index: 5; }
+.pc-scrollhint span { display: inline-block; animation: pchint 1.8s ease-in-out infinite; }
+@keyframes pchint { 50% { transform: translateY(5px); } }
+.pc-cable { opacity: calc(.75 * (var(--p, 0) * 2)); }
+@media (max-width: 860px) { .pc-logo { width: 240px; height: 240px; } .pc-word { bottom: 28svh; } .pc-capbar { bottom: 12svh; } }
+
+/* neon top bar */
+body:has(.pc-hero) .site-header { border-bottom-color: #3DFFC1; }
+body:has(.pc-hero) .site-header .menu-btn { color: #3DFFC1; text-shadow: none; }
+body:has(.pc-hero) .hdr-dash { border-top-color: #3DFFC1; }
+body:has(.pc-hero) .hdr-mq { color: #3DFFC1; }
+body:has(.pc-hero) .site-header { position: fixed; }
