@@ -428,7 +428,6 @@
 /* bottom: one rule across the whole paper, title underneath, short stub of the rule to its right */
 .dp-band .dp-sports, .dp-band .dp-laugh { border-bottom: 0; }
 .dp .dp-foot { position: static; left: auto; right: auto; bottom: auto; display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 8px; padding-top: 4px; border-top: 1px solid #DADADA; }
-.dp .dp-foot::after { content: ""; flex: none; width: 28px; height: 1px; background: #DADADA; }
 .dp .dp-foot span { flex: none; }
 
 /* sports polish: more air under the highlights, column rule no longer meets the lines */
