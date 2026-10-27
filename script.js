@@ -145,3 +145,13 @@
     draw(0);
   }
 })();
+
+/* Emblem tilts toward the pointer, like a 3D object */
+(function () {
+  var em = document.querySelector('.px-emblem');
+  if (!em || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.addEventListener('pointermove', function (e) {
+    var x = e.clientX / window.innerWidth - .5, y = e.clientY / window.innerHeight - .5;
+    em.style.setProperty('--ry', (x * 40) + 'deg'); em.style.setProperty('--rx', (-y * 24) + 'deg');
+  }, { passive: true });
+})();

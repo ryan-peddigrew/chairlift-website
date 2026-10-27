@@ -187,20 +187,104 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
+
+import random as _rnd
+
+
+def _ridge(seed, n, x_span, base, amp, rough):
+    """Seeded midpoint-displacement ridge profile: list of (x, y)."""
+    r = _rnd.Random(seed)
+    pts = [(0, base + r.uniform(-amp, amp)), (x_span, base + r.uniform(-amp, amp))]
+    d = amp
+    for _ in range(n):
+        new = []
+        for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+            new.append((x0, y0))
+            new.append(((x0 + x1) / 2, (y0 + y1) / 2 + r.uniform(-d, d)))
+        new.append(pts[-1])
+        pts = new
+        d *= rough
+    return pts
+
+
+def _peaks(pts):
+    out = []
+    for i in range(1, len(pts) - 1):
+        if pts[i][1] < pts[i - 1][1] and pts[i][1] < pts[i + 1][1]:
+            out.append(i)
+    return out
+
+
+def _mountains(seed, base, amp, fill_top, fill_bot, lit, shade, snow, gid, haze=0.0, caps=True):
+    pts = _ridge(seed, 6, 1440, base, amp, .56)
+    H = 700
+    top = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
+    out = [f'<linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{fill_top}"/><stop offset="1" stop-color="{fill_bot}"/></linearGradient>']
+    out.append(f'<polygon points="0,{H} {top} 1440,{H}" fill="url(#{gid})"/>')
+    for i in _peaks(pts):
+        px, py = pts[i]
+        # find neighbouring valleys
+        l = i
+        while l > 0 and pts[l - 1][1] >= pts[l][1]:
+            l -= 1
+        r = i
+        while r < len(pts) - 1 and pts[r + 1][1] >= pts[r][1]:
+            r += 1
+        lx, ly = pts[l]
+        rx, ry = pts[r]
+        if py > base - amp * .25:
+            continue
+        # shadow face: right side of peak, snaking down the ridge
+        out.append(f'<polygon points="{px:.0f},{py:.0f} {rx:.0f},{ry:.0f} {px + (rx - px) * .25:.0f},{ry + 30:.0f}" fill="{shade}" opacity=".4"/>')
+        out.append(f'<polygon points="{px:.0f},{py:.0f} {lx:.0f},{ly:.0f} {px - (px - lx) * .2:.0f},{ly + 20:.0f}" fill="{lit}" opacity=".22"/>')
+        if caps:
+            t = .3
+            a = (px + (lx - px) * t, py + (ly - py) * t)
+            b = (px + (rx - px) * t, py + (ry - py) * t)
+            mid1 = (px + (lx - px) * t * .6, py + (ly - py) * t * .6 + 26)
+            mid2 = (px + (rx - px) * t * .55, py + (ry - py) * t * .55 + 34)
+            out.append(f'<polygon points="{px:.0f},{py:.0f} {b[0]:.0f},{b[1]:.0f} {mid2[0]:.0f},{mid2[1]:.0f} {px + 6:.0f},{py + (b[1] - py) * .75:.0f} {mid1[0]:.0f},{mid1[1]:.0f} {a[0]:.0f},{a[1]:.0f}" fill="{snow}"/>')
+    if haze:
+        out.append(f'<rect y="{base - amp}" width="1440" height="{amp * 2.4:.0f}" fill="url(#hz)" opacity="{haze}"/>')
+    return "".join(out)
+
+
+PX_SCENE = (
+    '<svg class="px-scene" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true">'
+    '<defs>'
+    '<filter id="cl1" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".0045 .011" numOctaves="5" seed="11"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 2.1 -.82"/></filter>'
+    '<filter id="cl2" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".007 .016" numOctaves="5" seed="4"/><feColorMatrix values="0 0 0 0 .93  0 0 0 0 .96  0 0 0 0 1  0 0 0 1.9 -.7"/></filter>'
+    '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06185F"/><stop offset=".35" stop-color="#1B54C4"/><stop offset=".7" stop-color="#6FA9E8"/><stop offset="1" stop-color="#CFE5F8"/></linearGradient>'
+    '<linearGradient id="hz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCEBFA" stop-opacity="0"/><stop offset=".6" stop-color="#DCEBFA" stop-opacity=".9"/><stop offset="1" stop-color="#DCEBFA" stop-opacity="0"/></linearGradient>'
+    '<radialGradient id="sunglow"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".12" stop-color="#EAFFF7"/><stop offset=".3" stop-color="#DFFFF4" stop-opacity=".45"/><stop offset="1" stop-color="#3DFFC1" stop-opacity="0"/></radialGradient>'
+    '</defs>'
+    '<rect width="1440" height="700" fill="url(#sky)"/>'
+    '<g class="px-clouds px-clouds--a"><rect x="-300" y="-200" width="2040" height="760" filter="url(#cl1)" opacity=".95"/></g>'
+    '<g class="px-clouds px-clouds--b"><rect x="-300" y="-100" width="2040" height="760" filter="url(#cl2)" opacity=".7"/></g>'
+    '<g class="px-sun" data-speed="-.06"><circle cx="1050" cy="360" r="330" fill="url(#sunglow)"/></g>'
+    '<g data-speed=".03">' + _mountains(3, 420, 150, "#B3CCE8", "#6F94C6", "#FFFFFF", "#4D6FA3", "#FFFFFF", "m1", haze=.55) + '</g>'
+    '<g data-speed=".08">' + _mountains(9, 500, 140, "#6B8DBF", "#2F4B7E", "#C8DCF5", "#14244B", "#F4F9FF", "m2", haze=.35) + '</g>'
+    '<g data-speed=".14">' + _mountains(21, 585, 90, "#1E2D55", "#0B1220", "#6F8FC9", "#050A14", "#E7F1FF", "m3") + '</g>'
+    '</svg>'
+)
+
+CHROME_EMBLEM = (
+    '<svg class="px-emblem" viewBox="0 0 220 140" aria-hidden="true"><defs>'
+    '<linearGradient id="chr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".35" stop-color="#9AA7BC"/><stop offset=".5" stop-color="#2B3550"/><stop offset=".62" stop-color="#C9D4E6"/><stop offset="1" stop-color="#F4F8FF"/></linearGradient>'
+    '<linearGradient id="chr2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F8FF"/><stop offset=".5" stop-color="#5E6C86"/><stop offset="1" stop-color="#E8F0FF"/></linearGradient>'
+    '</defs>'
+    '<ellipse cx="110" cy="70" rx="104" ry="62" fill="none" stroke="url(#chr)" stroke-width="14"/>'
+    '<ellipse cx="110" cy="70" rx="88" ry="48" fill="#0B1220" stroke="url(#chr2)" stroke-width="3"/>'
+    '<rect x="62" y="84" width="46" height="13" rx="2" fill="url(#chr)"/><rect x="88" y="58" width="46" height="13" rx="2" fill="url(#chr)"/><rect x="114" y="32" width="46" height="13" rx="2" fill="#3DFFC1"/>'
+    '</svg>'
+)
+
 home = f'''
   <div class="scanlines" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
   <section class="px-hero" aria-label="Chairlift">
-    <div class="px-sky" aria-hidden="true">
-      <div class="px-cloud px-cloud--a"></div><div class="px-cloud px-cloud--b"></div><div class="px-cloud px-cloud--c"></div>
-      <canvas class="snow"></canvas>
-      <svg class="px-mtn" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
-        <g class="px-sun" data-speed="-.05"><circle cx="1010" cy="330" r="190" fill="#3DFFC1"/><circle cx="1010" cy="330" r="140" fill="#FFFFFF"/></g>
-        <path data-speed=".04" d="M0 400 L200 250 L330 340 L520 170 L720 370 L900 230 L1080 380 L1260 260 L1440 390 V600 H0Z" fill="#9DB6D6"/>
-        <path data-speed=".09" d="M0 470 L170 370 L330 440 L560 310 L780 450 L980 350 L1200 460 L1440 380 V600 H0Z" fill="#456692"/>
-        <path data-speed=".14" d="M0 540 L240 480 L460 530 L700 460 L960 535 L1200 480 L1440 530 V600 H0Z" fill="#141B2A"/>
-      </svg>
-    </div>
+    <div class="px-sky" aria-hidden="true">{PX_SCENE}<canvas class="snow"></canvas></div>
     <div class="px-hero__top"><p class="mono">V.02 ———— WELCOME TO CHAIRLIFT. THE LODGE IS OPEN. WE FIND THE BUSYWORK, THEN BUILD THE FIX.</p></div>
+    <div class="px-brand" aria-hidden="true">{CHROME_EMBLEM}<span class="px-word">Chairlift</span></div>
     <h1 class="px-title"><span class="px-line" data-slide="-1">Less busywork.</span><span class="px-line px-line--out" data-slide="1">More business.{ARROW}</span></h1>
     <div class="px-marq" aria-hidden="true"><div class="px-marq__track"><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span></div></div>
     <div class="px-hero__foot">
