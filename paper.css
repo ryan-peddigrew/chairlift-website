@@ -425,12 +425,10 @@
 .dp-foot span { font: 400 14px/1 'UnifrakturMaguntia', serif; letter-spacing: 0; text-transform: none; color: #333; }
 .dp-foot { bottom: 4px; }
 
-/* bottom title sits in the line: the rule stops before the text and picks up after it */
-.dp-band .dp-laugh { position: relative; border-bottom: 0; }
-.dp-band .dp-laugh .dp-foot { position: absolute; left: 0; right: 0; bottom: -7px; height: 15px; display: flex; align-items: center; justify-content: flex-start; gap: 10px; }
-.dp-band .dp-laugh .dp-foot::before { content: ""; flex: 1 1 auto; height: 1px; background: #DADADA; }
-.dp-band .dp-laugh .dp-foot span { flex: none; order: 2; }
-.dp-band .dp-laugh .dp-foot::after { content: none; }
+/* bottom: one rule across the whole paper, title underneath, short stub of the rule to its right */
+.dp-band .dp-sports, .dp-band .dp-laugh { border-bottom: 0; }
+.dp .dp-foot { position: static; left: auto; right: auto; bottom: auto; display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 8px; padding-top: 4px; border-top: 1px solid #DADADA; }
+.dp .dp-foot span { flex: none; }
 
 /* sports polish: more air under the highlights, column rule no longer meets the lines */
 .dp-gf { margin-bottom: 5px; }
