@@ -243,3 +243,18 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-fg { transform: translateY(calc(var(--p, 0) * -20vh)) scale(calc(1.02 + var(--p, 0) * .3)); }
 .px-fog { background: linear-gradient(180deg, rgba(232,240,252,0) 55%, rgba(232,240,252,calc(var(--p, 0) * .4)) 100%); }
 .px-photo { filter: none; transform: scale(calc(1.02 + var(--p, 0) * .2)); }
+
+/* PX-style spinning chrome coin */
+.px-logo svg { display: none; }
+.px-coin { display: block; width: clamp(200px, 24vw, 320px); aspect-ratio: 1; perspective: 1000px; filter: drop-shadow(0 24px 36px rgba(3,10,40,.45)); }
+.px-coin__in { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; animation: coinspin 9s linear infinite; }
+@keyframes coinspin { to { transform: rotateY(360deg); } }
+@media (prefers-reduced-motion: reduce) { .px-coin__in { animation: none; transform: rotateY(-18deg); } }
+.px-edge, .px-face { position: absolute; inset: 0; border-radius: 50%; transform: translateZ(var(--z, 0)); }
+.px-edge { background: conic-gradient(from 20deg, #F4F8FF, #8A97B3 18%, #F7FAFF 34%, #6E7B98 52%, #EEF3FC 70%, #8F9CB8 86%, #F4F8FF); }
+.px-face { display: grid; place-items: center; backface-visibility: hidden; background: radial-gradient(circle at 50% 50%, #0B1220 0 61%, transparent 61.5%), conic-gradient(from 20deg, #FFFFFF, #9CA9C4 16%, #FFFFFF 32%, #7B88A6 50%, #F2F6FD 68%, #98A5C0 84%, #FFFFFF); }
+.px-face svg { width: 62%; height: 62%; display: block; }
+.px-face--f { transform: translateZ(10px); }
+.px-face--b { transform: rotateY(180deg) translateZ(10px); }
+@media (max-width: 860px) { .px-coin { width: clamp(150px, 46vw, 220px); } }
+.px-face svg { width: 66%; height: 55%; }
