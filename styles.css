@@ -23,7 +23,7 @@ body {
   margin: 0; background: var(--page); color: var(--text);
   font-family: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased;
-  border-top: 5px solid var(--ink);
+  border-top: 5px solid var(--neon);
 }
 img, svg { max-width: 100%; }
 a { color: inherit; }
@@ -835,3 +835,14 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
   .try-formcard { padding: 22px 18px; }
 }
 .hero--page .try-formcard .btn-ink { background: var(--ink); color: #FFFFFF; }
+
+/* Phone fix + more Neon (Ryan, 2026-10-27 1:51 AM): Read more links keep to the text column; Neon accents on every title bar, cards, arrows and the footer */
+@media (max-width: 640px) {
+  .fit-item > h3, .fit-item > p, .fit-item > .link-arrow { grid-column: 2; }
+  .fit-item .fit-icon { grid-row: 1 / span 3; }
+}
+.rule { background: var(--neon); box-shadow: 0 0 0 1px rgba(20, 27, 42, 0.10); }
+.section--ink .rule, .hero .rule { box-shadow: none; }
+.section--ink .link-arrow::after, .cta-box .link-arrow::after { color: var(--neon); }
+.section--ink .card::before { content: ""; display: block; width: 36px; height: 5px; border-radius: 3px; background: var(--neon); margin-bottom: 16px; }
+.site-footer { border-top: 5px solid var(--neon); }
