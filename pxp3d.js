@@ -52,8 +52,8 @@ if (host) {
     const inner = new THREE.Group();
     inner.add(bar(-0.5, -0.52, steel), bar(0, 0, steel), bar(0.5, 0.52, neon));
     // logo shape options for review: ?logo=a ring, b tile (the real logo), c coin, d bars only (remembered per browser)
-    let kind = 'a';
-    try { kind = (location.search.match(/logo=([a-d])/) || [])[1] || sessionStorage.getItem('pxlogo') || 'a'; sessionStorage.setItem('pxlogo', kind); } catch (e) {}
+    let kind = 'a', ring = null;
+    kind = (location.search.match(/logo=([a-d])/) || [])[1] || 'a';   // the ring is the chosen logo; other shapes only by ?logo= for comparison
     if (kind === 'b') {
       const w = 2.3, r = 0.08, sh = new THREE.Shape();
       sh.moveTo(-w / 2 + r, -w / 2); sh.lineTo(w / 2 - r, -w / 2); sh.quadraticCurveTo(w / 2, -w / 2, w / 2, -w / 2 + r);
@@ -75,7 +75,8 @@ if (host) {
       emblem.add(inner);
     } else {
       inner.scale.setScalar(0.78);
-      emblem.add(inner, new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel));
+      ring = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel);
+      emblem.add(inner, ring);
     }
     emblem.scale.setScalar(0.72);
     const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.7, metalness: 0.3, roughness: 0.25, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
@@ -112,22 +113,29 @@ if (host) {
     const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
     let visible = true;
     new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(host);
-    const t0 = performance.now(); let spin = 0, last = t0;
+    const t0 = performance.now(); let spin = 0, ringSpin = 0, last = t0;
     const frame = (now) => {
       requestAnimationFrame(frame);
       if (!visible) return;
       const dkNow = mini ? 1 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dk')) || 0);
-      const moving = !mini && dkNow > 0.01 && dkNow < 0.99;
-      if (moving) spin += (Math.round(spin / (Math.PI * 2)) * Math.PI * 2 - spin) * 0.18;   // while it glides up, settle face-on: no flipping
-      else spin += Math.min(0.1, (now - last) / 1000) * Math.PI * 2 / (8 + 8 * dkNow);      // one turn every 8 s on the landing, a slow 16 s in the top bar
-      last = now;
-      const turn = spin;
-      emblem.rotation.y = reduce ? 0.5 : turn;
+      const docked = mini || dkNow >= 0.99, moving = !docked && dkNow > 0.01;
+      const dt = Math.min(0.1, (now - last) / 1000); last = now;
+      const face = (a) => Math.round(a / (Math.PI * 2)) * Math.PI * 2;
+      if (docked) {                                 // in the top bar: the three bars hold still, only the ring turns around them (16 s a turn)
+        spin = face(spin); ringSpin += dt * Math.PI * 2 / 16;
+      } else if (moving) {                          // flying up: settle face-on so the flip is one clean somersault
+        spin += (face(spin) - spin) * 0.2; ringSpin += (face(ringSpin) - ringSpin) * 0.2;
+      } else {                                      // landing: the whole logo turns, one spin every 8 s
+        spin += dt * Math.PI * 2 / 8; ringSpin += (face(ringSpin) - ringSpin) * 0.2;
+      }
+      emblem.rotation.y = reduce ? 0.5 : spin;
+      if (ring) ring.rotation.y = reduce ? 0 : ringSpin;
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
         const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
         const o = Math.max(0, 1 - p / 0.25); wordMat.opacity = o; word.visible = o > 0.01;
       }
-      emblem.rotation.x = reduce || moving ? 0 : Math.sin(now / 2600) * 0.08;
+      const flip = moving && !reduce ? -ease(Math.min(1, dkNow / 0.95)) * Math.PI * 2 : 0;   // one forward flip on the way into the top bar
+      emblem.rotation.x = reduce ? 0 : flip + (docked || moving ? 0 : Math.sin(now / 2600) * 0.08);
       renderer.render(scene, camera);
     };
     requestAnimationFrame(frame);
