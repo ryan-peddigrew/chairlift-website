@@ -796,3 +796,20 @@ a.pc-mini:hover .pc-mini__cap .ar { transform: translateX(4px); }
 .patrol__card { max-width: min(560px, 52vw); }
 @media (max-width: 860px) { .patrol__card { max-width: 100%; } .patrol__guy { height: 50svh; right: 0; } .patrol__guy img { width: auto; height: 100%; } .patrol { padding-top: 12svh; } }
 @media (min-width: 861px) { .patrol__card { width: min(720px, 56vw); max-width: none; } }
+
+/* ---------- round 14: landing logo docks into the top bar; plain Menu, no stepped icon ---------- */
+.pc-logo { position: fixed; z-index: 70; pointer-events: none; }
+html body:has(.pc-hero) .site-header .brand { display: inline-flex !important; align-items: center; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); min-height: 44px; gap: 10px; }
+html body:has(.pc-hero) .site-header .brand svg { width: 30px; height: 30px; filter: none; }
+html.logo-docked .site-header .brand svg { visibility: hidden; }
+html body:has(.pc-hero) .site-header .brand span { opacity: clamp(0, (var(--dk, 1) - .6) * 2.5, 1); }
+body:has(.pc-hero, .hdr-px) .site-header .menu-btn::before { display: none !important; }
+body:has(.pc-hero, .hdr-px) .site-header .menu-label { display: inline !important; }
+@media (max-width: 860px) {
+  html body:has(.pc-hero) .site-header .brand { position: static; transform: none; order: -1; }
+  html body:has(.pc-hero) .site-header .brand svg { width: 26px; height: 26px; }
+  html body:has(.pc-hero) .site-header .brand span { font-size: 18px; }
+  html body:has(.pc-hero, .hdr-px) .site-header .nav { order: 4; }
+  html body:has(.pc-hero, .hdr-px) .hdr-cta { order: 3; }
+  body:has(.pc-hero, .hdr-px) .hdr-dash { flex: 1; order: 2; }
+}

@@ -79,7 +79,7 @@
         '<div class="patrol__txt"><p class="patrol__tag">Ski Patrol</p>' +
         '<h2 id="patrol-h">Whoa there. Did you mean to leave the hill?</h2>' +
         '<p>Before you go, give us five minutes. We’ll talk through the work eating your team’s week.</p>' +
-        '<div class="patrol__btns"><a class="patrol__go" href="/5min/">Start a conversation</a><button class="patrol__no" type="button">I’m heading down</button></div></div></div>';
+        '<div class="patrol__btns"><a class="patrol__go" href="/5min/">Book 5 minutes</a><button class="patrol__no" type="button">I’m heading down</button></div></div></div>';
       document.body.appendChild(d);
       var last = document.activeElement;
       function close() { d.classList.remove('is-on'); setTimeout(function () { d.remove(); }, 400); document.removeEventListener('keydown', esc); if (last && last.focus) last.focus(); }
@@ -120,10 +120,16 @@
         var cx0 = vw / 2, cy0 = vh / 2 - 40;
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
         var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
-        // single landing screen: logo stays centred, lifts and fades as you scroll into the site
-        var cx = cx0, cy = cy0 - p * vh * .18, s = 1 + p * .12;
+        // landing logo docks into the top bar as you scroll (PX-style), then keeps spinning there
+        var mark = document.querySelector('.site-header .brand svg');
+        var mr = mark && mark.getBoundingClientRect();
+        var e = ease(clamp(p / .85));
+        var tx = mr && mr.width ? mr.left + mr.width / 2 : cx0, ty = mr && mr.width ? mr.top + mr.height / 2 : 34;
+        var S1d = (mr && mr.width ? mr.width : 30) * 2.1;
+        var cx = cx0 + (tx - cx0) * e, cy = cy0 + (ty - cy0) * e, s = 1 + (S1d / S0 - 1) * e;
         logo.style.transform = 'translate(' + (cx - S0 / 2).toFixed(1) + 'px,' + (cy - S0 / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
-        logo.style.opacity = clamp(1 - p * 1.6).toFixed(3);
+        root.classList.toggle('logo-docked', logo.classList.contains('is-3d'));
+        root.style.setProperty('--dk', e.toFixed(3));
       }
     }
     lits.forEach(function (el) {

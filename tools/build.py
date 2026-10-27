@@ -223,7 +223,7 @@ home = f'''
       </div>
       <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
       <div class="ticket" aria-hidden="true"><div class="ticket__main"><p class="ticket__top"><span>Chairlift</span><span>Lift ticket</span></p><p class="ticket__big">One task<br>first<i>.</i></p><p class="ticket__route"><span>Base</span><i class="ar ar--r"></i><span>Summit</span></p></div><div class="ticket__stub"><span class="ticket__adm">Admit<br>one team</span><span class="ticket__bar"></span><span class="ticket__no">No. 0001</span></div></div>
-      <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
+      <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
@@ -641,7 +641,7 @@ HERO_MEDIA = '''<figure class="reel">
 morning_paper = page_hero("The Daily Peddigrew", "One page for your mornings.",
     "A one-page morning briefing with your focus, calendar and follow-ups. On paper, by email or on your desktop.",
     extra=f'''
-        <div class="ctas"><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>''') + f'''
+        <div class="ctas"><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes</a></div>''') + f'''
   <section class="section section--tight" aria-labelledby="page-title">
     <div class="wrap paper-split paper-split--flip">
       {PAPER_IMG}
@@ -701,7 +701,7 @@ morning_paper = page_hero("The Daily Peddigrew", "One page for your mornings.",
       <div>
         <h2 id="cta-title">Talk it through in five minutes.</h2>
         <p>Tell us how your mornings run, and we'll show you what your page could look like.</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes</a>
       </div>
     </div>
   </section>
@@ -809,7 +809,7 @@ try_paper = f'''
           <div class="try-after" data-try-after hidden>
             <h3>Request received.</h3>
             <p>We'll look at what you sent and reply by email. If you'd rather talk it through now, book five minutes.</p>
-            <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+            <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes</a>
           </div>
         </div>
       </div>
@@ -840,7 +840,7 @@ calculator = page_hero("Time-back calculator", "Where does your team's time go?"
         <p class="calc-big"><b data-hours>0</b> hours</p>
         <p class="calc-sub">About <b data-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
         <p class="calc-note">Based on 48 working weeks and 8-hour days.</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes</a>
         <p class="calc-after">We'll pick the biggest one and show you how we'd take it off your plate.</p>
       </div>
     </div>
@@ -859,7 +859,7 @@ BRING = ["Quotes that go quiet", "Inquiries that sit overnight", "Reports built 
 
 five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
     "One real person from our own team. Tell us about the work slowing people down, whether it's a team, a company or just you, and we'll say honestly if there's a fix worth trying.",
-    extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Start a conversation</a></div>') + f'''
+    extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Book 5 minutes</a></div>') + f'''
   <section class="section section--tight" aria-labelledby="five-title">
     <div class="wrap">
       <div class="intro">
