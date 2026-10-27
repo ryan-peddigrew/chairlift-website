@@ -75,8 +75,8 @@ if (host) {
     const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xc9d1de, emissiveIntensity: 0.45, metalness: 0.45, roughness: 0.2, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
     let word = null;
     // "Chairlift" in extruded satin metal under the ring, held still
-    fetch('/vendor/archivo-chairlift.json').then((r) => r.json()).then((data) => {
-      const geo = new TextGeometry('Chairlift', { font: new FontLoader().parse(data), size: 0.6, height: 0.12, curveSegments: 10, bevelEnabled: true, bevelThickness: 0.025, bevelSize: 0.012, bevelSegments: 4 });
+    fetch('/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
+      const geo = new TextGeometry('Chairlift', { font: new FontLoader().parse(data), size: 0.62, height: 0.07, curveSegments: 12, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.004, bevelSegments: 3 });
       geo.center();
       word = new THREE.Mesh(geo, wordMat);
       word.scale.setScalar(0.72);
