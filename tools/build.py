@@ -188,78 +188,111 @@ PAPER_IMG = f'''<figure class="paper-shot">
       </figure>'''
 
 home = f'''
-  <section class="hero">
-    {STAIRS_BG}
-    <div class="wrap">
-      <div class="hero-card hero-card--home">
-        <div class="hero-copy">
-        <span class="rule"></span>
-        <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <div class="ctas">
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        </div>
-        </div>
-        <div class="flip" aria-label="Right now, and with Chairlift">
-          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
-        </div>
+  <section class="pc-hero" aria-label="Chairlift">
+    <div class="pc-sky" aria-hidden="true">
+      <picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="pc-photo" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async"></picture>
+      <span class="pc-cloud pc-cloud--a"></span><span class="pc-cloud pc-cloud--b"></span><span class="pc-shade"></span><span class="pc-scan"></span>
+    </div>
+    <div class="pc-stage">
+      <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i>.</i></span></h1>
+      <p class="mono pc-tag" aria-hidden="true">Less busywork. More business.</p>
+      <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
+      <div class="pc-foot">
+        <a class="pc-tile" href="#intro"><span class="pc-tile__img" aria-hidden="true"></span><span class="mono">Scroll down to ride the lift</span></a>
+        <p class="mono pc-hello">v.01 ———————— Welcome to Chairlift ———————— // The lift is running. We find the work slowing your team down, then build the fix. Our own team, real people, from the first week.</p>
       </div>
     </div>
   </section>
 
-  <section class="proof" aria-label="Who you're dealing with">
-    <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
-      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
-      <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
+  <div class="pc-mq pc-mq--band" aria-hidden="true"><span class="pc-mq__track" aria-hidden="true"><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span><span>● Chairlift</span></span></div>
+
+  <section class="pc-sec pc-sec--dark" id="intro" aria-label="Introduction">
+    <div class="pc-wrap">
+      <p class="mono pc-n">Nº001 / Intro</p>
+      <p class="pc-lead">Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
+      <p class="pc-lead pc-lead--soft">There's a better way.</p>
+      <div class="pc-cols">
+        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting software. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
+        <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
+      </div>
+      <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation <i>↗</i></a><a class="pc-link" href="/how-it-works/">How it works <i>↗</i></a></p>
     </div>
   </section>
 
-  <section class="section section--ink" aria-labelledby="plate-title">
-    <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="plate-title">What we take off your team's plate.</h2>
-        <p>Small on their own. Add them up and it's hours every week.</p>
-      </div>
-      <div class="cards cards--mixed cards--swipe">
-        <div class="card"><div class="card-top">{icon("quote")}<span class="card-label">Sales</span></div><h3>Follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
-        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Inquiries</span></div><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
-        <div class="card"><div class="card-top">{icon("cal")}<span class="card-label">Operations</span></div><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card"><div class="card-top">{icon("moon")}<span class="card-label">Inquiries</span></div><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
-        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Sales</span></div><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
-        <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
-      </div>
-      <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
-      <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
+  <div class="pc-mq pc-mq--band pc-mq--cream" aria-hidden="true"><span class="pc-mq__track" aria-hidden="true"><span>● What we take off your plate</span><span>● What we take off your plate</span><span>● What we take off your plate</span><span>● What we take off your plate</span><span>● What we take off your plate</span><span>● What we take off your plate</span><span>● What we take off your plate</span><span>● What we take off your plate</span></span></div>
+
+  <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
+    <div class="pc-wrap">
+      <p class="mono pc-n">Nº002 / What we take off your plate</p>
+      <h2 id="plate-title" class="pc-h2">What we take off your team's plate</h2>
+      <ol class="pc-list">
+        <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
+        <li><b>Fast first replies</b><span>A new lead has been waiting since this morning. Now every inquiry gets a prompt, helpful reply and reaches the right person.</span></li>
+        <li><b>Scheduling and data entry</b><span>The same details typed into three systems. Now confirmations and updates happen in the background.</span></li>
+        <li><b>After-hours replies</b><span>It's 8:40 pm and the office is closed. Customers get a friendly reply within minutes.</span></li>
+        <li><b>Past customers and old leads</b><span>People who once said yes have gone quiet. A gentle check-in goes out at the right moment.</span></li>
+        <li><b>Reports without the legwork</b><span>The weekly report is built by hand, again. Now the numbers leadership needs arrive on their own.</span></li>
+      </ol>
+      <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i>↗</i></a></p>
     </div>
   </section>
 
-  <section class="section section--soft" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="how-title">Three stops to the top.</h2>
-        <p>No big IT project and no jargon. Just a steady climb, one lift at a time.</p>
+  <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
+    <div class="pc-wrap">
+      <p class="mono pc-n">Nº003 / Benefits</p>
+      <h2 id="why-title" class="pc-h2">It's a whole new level. You'll wonder how you managed before.</h2>
+      <div class="pc-benefits">
+        <article><p class="mono">Nº001</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
+        <article><p class="mono">Nº002</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
+        <article><p class="mono">Nº003</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
+        <article><p class="mono">Nº004</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
+        <article><p class="mono">Nº005</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
       </div>
-{STEPS}      <p class="section-link"><a class="link-arrow" href="/how-it-works/">See the full process</a></p>
     </div>
   </section>
 
-  <section class="section section--soft paper-teaser" aria-labelledby="paper-title">
-    <div class="wrap paper-split">
+  <div class="pc-mq pc-mq--band pc-mq--blue" aria-hidden="true"><span class="pc-mq__track" aria-hidden="true"><span>● Three stops to the top</span><span>● Three stops to the top</span><span>● Three stops to the top</span><span>● Three stops to the top</span><span>● Three stops to the top</span><span>● Three stops to the top</span><span>● Three stops to the top</span><span>● Three stops to the top</span></span></div>
+
+  <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
+    <div class="pc-wrap">
+      <p class="mono pc-n">Nº004 / Three stops to the top</p>
+      <h2 id="how-title" class="pc-h2">Three stops to the top</h2>
+      <div class="pc-pkgs">
+        <article><p class="mono">Stop 1 .PKG</p><h3>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
+        <article><p class="mono">Stop 2 .PKG</p><h3>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></article>
+        <article><p class="mono">Stop 3 .PKG</p><h3>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></article>
+      </div>
+      <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i>↗</i></a></p>
+    </div>
+  </section>
+
+  <section class="pc-band" aria-label="Less busywork. More business.">
+    <div class="pc-band__stick">
+      <img class="pc-band__img" src="/images/alps-blue.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async">
+      <p class="pc-band__txt"><span>Less busywork.</span><span>More business.</span></p>
+    </div>
+  </section>
+
+  <section class="pc-sec pc-sec--sky paper-teaser" aria-labelledby="paper-title">
+    <div class="pc-wrap paper-split">
       <div>
-        <span class="rule"></span>
-        <h2 id="paper-title">The Daily Peddigrew.</h2>
-        <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
-        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
+        <p class="mono pc-n">Nº005 / The Daily Peddigrew</p>
+        <h2 id="paper-title" class="pc-h2">The Daily Peddigrew</h2>
+        <p class="pc-lead pc-lead--small">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
+        <p class="pc-links"><a class="pc-link pc-link--ink" href="/try/">Build yours in minutes <i>↗</i></a></p>
       </div>
       {PAPER_IMG}
     </div>
   </section>
 
-{task_band()}
+  <section class="pc-sec pc-sec--dark" aria-label="A note from our founder">
+    <div class="pc-wrap">
+      <p class="mono pc-n">Nº006 / A note from our founder</p>
+      <div class="pc-founder"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div><p class="pc-lead pc-lead--small">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="mono">Ryan Peddigrew, Founder</p><p class="pc-links"><a class="pc-link" href="/who-we-are/">Read our story <i>↗</i></a></p></div></div>
+    </div>
+  </section>
+
+  {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
