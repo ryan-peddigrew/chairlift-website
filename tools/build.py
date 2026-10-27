@@ -187,79 +187,185 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
+
+import random as _rnd
+
+
+def _ridge(seed, n, x_span, base, amp, rough):
+    """Seeded midpoint-displacement ridge profile: list of (x, y)."""
+    r = _rnd.Random(seed)
+    pts = [(0, base + r.uniform(-amp, amp)), (x_span, base + r.uniform(-amp, amp))]
+    d = amp
+    for _ in range(n):
+        new = []
+        for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+            new.append((x0, y0))
+            new.append(((x0 + x1) / 2, (y0 + y1) / 2 + r.uniform(-d, d)))
+        new.append(pts[-1])
+        pts = new
+        d *= rough
+    return pts
+
+
+def _peaks(pts):
+    out = []
+    for i in range(1, len(pts) - 1):
+        if pts[i][1] < pts[i - 1][1] and pts[i][1] < pts[i + 1][1]:
+            out.append(i)
+    return out
+
+
+def _mountains(seed, base, amp, fill_top, fill_bot, lit, shade, snow, gid, haze=0.0, caps=True):
+    pts = _ridge(seed, 6, 1440, base, amp, .56)
+    H = 700
+    top = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
+    out = [f'<linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{fill_top}"/><stop offset="1" stop-color="{fill_bot}"/></linearGradient>']
+    out.append(f'<polygon points="0,{H} {top} 1440,{H}" fill="url(#{gid})"/>')
+    for i in _peaks(pts):
+        px, py = pts[i]
+        # find neighbouring valleys
+        l = i
+        while l > 0 and pts[l - 1][1] >= pts[l][1]:
+            l -= 1
+        r = i
+        while r < len(pts) - 1 and pts[r + 1][1] >= pts[r][1]:
+            r += 1
+        lx, ly = pts[l]
+        rx, ry = pts[r]
+        if py > base - amp * .25:
+            continue
+        # shadow face: right side of peak, snaking down the ridge
+        out.append(f'<polygon points="{px:.0f},{py:.0f} {rx:.0f},{ry:.0f} {px + (rx - px) * .25:.0f},{ry + 30:.0f}" fill="{shade}" opacity=".4"/>')
+        out.append(f'<polygon points="{px:.0f},{py:.0f} {lx:.0f},{ly:.0f} {px - (px - lx) * .2:.0f},{ly + 20:.0f}" fill="{lit}" opacity=".22"/>')
+        if caps:
+            t = .3
+            a = (px + (lx - px) * t, py + (ly - py) * t)
+            b = (px + (rx - px) * t, py + (ry - py) * t)
+            mid1 = (px + (lx - px) * t * .6, py + (ly - py) * t * .6 + 26)
+            mid2 = (px + (rx - px) * t * .55, py + (ry - py) * t * .55 + 34)
+            out.append(f'<polygon points="{px:.0f},{py:.0f} {b[0]:.0f},{b[1]:.0f} {mid2[0]:.0f},{mid2[1]:.0f} {px + 6:.0f},{py + (b[1] - py) * .75:.0f} {mid1[0]:.0f},{mid1[1]:.0f} {a[0]:.0f},{a[1]:.0f}" fill="{snow}"/>')
+    if haze:
+        out.append(f'<rect y="{base - amp}" width="1440" height="{amp * 2.4:.0f}" fill="url(#hz)" opacity="{haze}"/>')
+    return "".join(out)
+
+
+PX_SCENE = (
+    '<svg class="px-scene" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true">'
+    '<defs>'
+    '<filter id="cl1" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".0045 .011" numOctaves="5" seed="11"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 2.1 -.82"/></filter>'
+    '<filter id="cl2" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".007 .016" numOctaves="5" seed="4"/><feColorMatrix values="0 0 0 0 .93  0 0 0 0 .96  0 0 0 0 1  0 0 0 1.9 -.7"/></filter>'
+    '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06185F"/><stop offset=".35" stop-color="#1B54C4"/><stop offset=".7" stop-color="#6FA9E8"/><stop offset="1" stop-color="#CFE5F8"/></linearGradient>'
+    '<linearGradient id="hz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCEBFA" stop-opacity="0"/><stop offset=".6" stop-color="#DCEBFA" stop-opacity=".9"/><stop offset="1" stop-color="#DCEBFA" stop-opacity="0"/></linearGradient>'
+    '<radialGradient id="sunglow"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".12" stop-color="#EAFFF7"/><stop offset=".3" stop-color="#DFFFF4" stop-opacity=".45"/><stop offset="1" stop-color="#3DFFC1" stop-opacity="0"/></radialGradient>'
+    '</defs>'
+    '<rect width="1440" height="700" fill="url(#sky)"/>'
+    '<g class="px-clouds px-clouds--a"><rect x="-300" y="-200" width="2040" height="760" filter="url(#cl1)" opacity=".95"/></g>'
+    '<g class="px-clouds px-clouds--b"><rect x="-300" y="-100" width="2040" height="760" filter="url(#cl2)" opacity=".7"/></g>'
+    '<g class="px-sun" data-speed="-.06"><circle cx="1050" cy="360" r="330" fill="url(#sunglow)"/></g>'
+    '<g data-speed=".03">' + _mountains(3, 420, 150, "#B3CCE8", "#6F94C6", "#FFFFFF", "#4D6FA3", "#FFFFFF", "m1", haze=.55) + '</g>'
+    '<g data-speed=".08">' + _mountains(9, 500, 140, "#6B8DBF", "#2F4B7E", "#C8DCF5", "#14244B", "#F4F9FF", "m2", haze=.35) + '</g>'
+    '<g data-speed=".14">' + _mountains(21, 585, 90, "#1E2D55", "#0B1220", "#6F8FC9", "#050A14", "#E7F1FF", "m3") + '</g>'
+    '</svg>'
+)
+
+CHROME_EMBLEM = (
+    '<svg class="px-emblem" viewBox="0 0 220 140" aria-hidden="true"><defs>'
+    '<linearGradient id="chr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".35" stop-color="#9AA7BC"/><stop offset=".5" stop-color="#2B3550"/><stop offset=".62" stop-color="#C9D4E6"/><stop offset="1" stop-color="#F4F8FF"/></linearGradient>'
+    '<linearGradient id="chr2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F8FF"/><stop offset=".5" stop-color="#5E6C86"/><stop offset="1" stop-color="#E8F0FF"/></linearGradient>'
+    '</defs>'
+    '<ellipse cx="110" cy="70" rx="104" ry="62" fill="none" stroke="url(#chr)" stroke-width="14"/>'
+    '<ellipse cx="110" cy="70" rx="88" ry="48" fill="#0B1220" stroke="url(#chr2)" stroke-width="3"/>'
+    '<rect x="62" y="84" width="46" height="13" rx="2" fill="url(#chr)"/><rect x="88" y="58" width="46" height="13" rx="2" fill="url(#chr)"/><rect x="114" y="32" width="46" height="13" rx="2" fill="#3DFFC1"/>'
+    '</svg>'
+)
+
 home = f'''
-  <section class="hero">
-    {STAIRS_BG}
+  <div class="scanlines" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
+  <section class="px-hero" aria-label="Chairlift">
+    <div class="px-sky" aria-hidden="true">{PX_SCENE}<canvas class="snow"></canvas></div>
+    <div class="px-hero__top"><p class="mono">V.02 ———— WELCOME TO CHAIRLIFT. THE LODGE IS OPEN. WE FIND THE BUSYWORK, THEN BUILD THE FIX.</p></div>
+    <div class="px-brand" aria-hidden="true">{CHROME_EMBLEM}<span class="px-word">Chairlift</span></div>
+    <h1 class="px-title"><span class="px-line" data-slide="-1">Less busywork.</span><span class="px-line px-line--out" data-slide="1">More business.{ARROW}</span></h1>
+    <div class="px-marq" aria-hidden="true"><div class="px-marq__track"><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span></div></div>
+    <div class="px-hero__foot">
+      <a class="px-tile" href="#intro"><span class="px-tile__img" aria-hidden="true"></span><span class="mono">SCROLL DOWN TO RIDE THE LIFT</span></a>
+      <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+    </div>
+  </section>
+
+  <section class="px-sec" id="intro" aria-label="Introduction">
     <div class="wrap">
-      <div class="hero-card hero-card--home">
-        <div class="hero-copy">
-        <span class="rule"></span>
-        <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <div class="ctas">
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        </div>
-        </div>
-        <div class="flip" aria-label="Right now, and with Chairlift">
-          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
-        </div>
+      <p class="nlabel">N°001 / INTRO</p>
+      <p class="px-big" data-lit>We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing. It works inside what you already use: your inbox, calendar, spreadsheets and quoting software.</p>
+      <div class="px-rows px-rows--two">
+        <div class="px-row"><span class="mono">RIGHT NOW</span><p>A quote goes out. Nobody follows up.</p></div>
+        <div class="px-row"><span class="mono">WITH CHAIRLIFT</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="proof" aria-label="Who you're dealing with">
-    <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
-      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
-      <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
-    </div>
-  </section>
-
-  <section class="section section--ink" aria-labelledby="plate-title">
+  <section class="px-sec" aria-labelledby="plate-title">
     <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="plate-title">What we take off your team's plate.</h2>
-        <p>Small on their own. Add them up and it's hours every week.</p>
-      </div>
-      <div class="cards cards--mixed cards--swipe">
-        <div class="card"><div class="card-top">{icon("quote")}<span class="card-label">Sales</span></div><h3>Follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
-        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Inquiries</span></div><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
-        <div class="card"><div class="card-top">{icon("cal")}<span class="card-label">Operations</span></div><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card"><div class="card-top">{icon("moon")}<span class="card-label">Inquiries</span></div><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
-        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Sales</span></div><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
-        <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
-      </div>
-      <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
-      <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
+      <p class="nlabel">N°002 / WHAT WE TAKE OFF YOUR PLATE</p>
+      <h2 id="plate-title" class="px-h2">What we take off your team's plate.</h2>
+      <ul class="px-list">
+        <li class="px-item"><button type="button" aria-expanded="false"><span class="mono">01</span><b>Follow-ups</b><i>A quote went out last week. Nobody's followed up.</i><span class="px-arrow">↗</span></button><div class="px-more"><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div></li>
+        <li class="px-item"><button type="button" aria-expanded="false"><span class="mono">02</span><b>Fast first replies</b><i>A new lead has been waiting since this morning.</i><span class="px-arrow">↗</span></button><div class="px-more"><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div></li>
+        <li class="px-item"><button type="button" aria-expanded="false"><span class="mono">03</span><b>Scheduling and data entry</b><i>The same details typed into three systems.</i><span class="px-arrow">↗</span></button><div class="px-more"><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div></li>
+        <li class="px-item"><button type="button" aria-expanded="false"><span class="mono">04</span><b>After-hours replies</b><i>It's 8:40 pm and the office is closed.</i><span class="px-arrow">↗</span></button><div class="px-more"><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div></li>
+        <li class="px-item"><button type="button" aria-expanded="false"><span class="mono">05</span><b>Past customers and old leads</b><i>People who once said yes have gone quiet.</i><span class="px-arrow">↗</span></button><div class="px-more"><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div></li>
+        <li class="px-item"><button type="button" aria-expanded="false"><span class="mono">06</span><b>Reports without the legwork</b><i>The weekly report is built by hand, again.</i><span class="px-arrow">↗</span></button><div class="px-more"><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div></li>
+      </ul>
+      <a class="px-link" href="/time-back/"><span>Add up your team's hours</span><span>↗</span></a>
     </div>
   </section>
 
-  <section class="section section--soft" aria-labelledby="how-title">
+  <div class="slide-band" aria-hidden="true"><div class="slide-band__row"><span>Follow-ups</span><span>First replies</span><span>Scheduling</span><span>Reports</span><span>Old leads</span><span>Follow-ups</span><span>First replies</span><span>Scheduling</span><span>Reports</span><span>Old leads</span></div></div>
+
+  <section class="px-sec" aria-labelledby="how-title">
     <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="how-title">Three stops to the top.</h2>
-        <p>No big IT project and no jargon. Just a steady climb, one lift at a time.</p>
+      <p class="nlabel">N°003 / THREE STOPS TO THE TOP</p>
+      <h2 id="how-title" class="px-h2">Three stops to the top.</h2>
+      <div class="px-stops">
+        <div class="px-stop"><span class="mono">STOP 1</span><b>Onboard</b><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></div>
+        <div class="px-stop"><span class="mono">STOP 2</span><b>Ride</b><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></div>
+        <div class="px-stop"><span class="mono">STOP 3</span><b>Summit</b><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></div>
       </div>
-{STEPS}      <p class="section-link"><a class="link-arrow" href="/how-it-works/">See the full process</a></p>
+      <a class="px-link" href="/how-it-works/"><span>See the full process</span><span>↗</span></a>
     </div>
   </section>
 
-  <section class="section section--soft paper-teaser" aria-labelledby="paper-title">
+  <section class="px-sec" aria-labelledby="practice-title">
+    <div class="wrap">
+      <p class="nlabel">N°004 / IN PRACTICE</p>
+      <h2 id="practice-title" class="px-h2">A real client.</h2>
+      <a class="px-case" href="/examples/#wastemind" aria-label="Read the WasteMind client story">
+        <div class="px-case__text"><p class="px-case__big"><b>12 to 24 hours</b><span>down to about 1 hour</span></p><p class="px-case__note">Time for WasteMind to respond to quote requests, service calls and inquiries, roughly.</p><span class="px-link"><span>Read the story</span><span>↗</span></span></div>
+        <div class="px-case__photos"><img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel in a parking garage"><img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue front-end-load waste containers from WasteMind"></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="px-sec paper-teaser" aria-labelledby="paper-title">
     <div class="wrap paper-split">
       <div>
-        <span class="rule"></span>
-        <h2 id="paper-title">The Daily Peddigrew.</h2>
+        <p class="nlabel">N°005 / THE DAILY PEDDIGREW</p>
+        <h2 id="paper-title" class="px-h2">The Daily Peddigrew.</h2>
         <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
-        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
+        <a class="px-link" href="/try/"><span>Build yours in minutes</span><span>↗</span></a>
       </div>
       {PAPER_IMG}
     </div>
   </section>
 
-{task_band()}
+  <section class="px-sec" aria-label="A note from our founder">
+    <div class="wrap">
+      <p class="nlabel">N°006 / A NOTE FROM OUR FOUNDER</p>
+      <div class="founder-card"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div class="founder-card__text"><p class="founder-card__line">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="founder-card__name">Ryan Peddigrew, Founder</p><a class="link-arrow" href="/who-we-are/">Read our story</a></div></div>
+    </div>
+  </section>
+
+  {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
