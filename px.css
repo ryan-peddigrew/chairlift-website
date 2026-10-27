@@ -293,3 +293,24 @@ body, main { background: #141B2A; }
 .px-face { background: none; }
 .px-face::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 20deg, #FFFFFF, #9CA9C4 16%, #FFFFFF 32%, #7B88A6 50%, #F2F6FD 68%, #98A5C0 84%, #FFFFFF); -webkit-mask-image: radial-gradient(circle, transparent 0 66%, #000 67%); mask-image: radial-gradient(circle, transparent 0 66%, #000 67%); }
 .px-face svg { position: relative; width: 56%; height: 46%; filter: drop-shadow(0 4px 6px rgba(10,30,70,.35)); }
+
+/* PX-style headline: semi-squeezed grotesk, still and readable */
+.px-headline { margin: 0; align-self: start; font-family: "Archivo", "Hanken Grotesk", sans-serif; font-variation-settings: "wdth" 76; font-stretch: 76%; font-weight: 500; font-size: clamp(56px, 10.5vw, 168px); line-height: .9; letter-spacing: -.02em; color: #fff; text-transform: none; text-shadow: 0 4px 40px rgba(10,40,100,.25); padding-top: 6px; }
+.px-headline span { display: block; }
+.px-band__txt, .px-sec h2, .px-h2, .cta-box h2, .px-case__big b, .px-case__big span, .px-stop b, .px-item b, .px-item h3, .px-stop h3 { font-family: "Archivo", "Hanken Grotesk", sans-serif !important; font-variation-settings: "wdth" 76; font-stretch: 76%; font-weight: 500 !important; text-transform: none !important; letter-spacing: -.02em !important; }
+.px-band__txt { font-size: clamp(54px, 11vw, 176px); line-height: .92; }
+.px-sec h2, .px-h2, .cta-box h2 { font-size: clamp(44px, 8vw, 120px); line-height: .94; }
+@media (max-width: 860px) { .px-headline { font-size: clamp(54px, 17.5vw, 96px); } }
+/* Drifting cloud banks over the peaks (transparent layers) + soft scanlines */
+.px-cloud { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background-repeat: repeat-x; background-size: auto 100%; pointer-events: none; }
+.px-cloud--a { background-image: url(/images/cloud-a.png); opacity: .9; }
+.px-cloud--b { background-image: url(/images/cloud-b.png); opacity: .75; height: 60%; bottom: -4%; }
+@media (prefers-reduced-motion: no-preference) {
+  .px-cloud--a { animation: driftA 90s linear infinite; }
+  .px-cloud--b { animation: driftB 140s linear infinite reverse; }
+  @keyframes driftA { to { background-position-x: -1600px; } }
+  @keyframes driftB { to { background-position-x: -1600px; } }
+}
+.px-scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 3px); mix-blend-mode: overlay; }
+.px-tile__img { background: url(/images/alps-blue.jpg) 50% 100% / cover no-repeat !important; }
+@media (max-width: 860px) { .px-headline { font-size: clamp(50px, 15vw, 88px); } }
