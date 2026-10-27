@@ -192,7 +192,14 @@ home = f'''
     {STAIRS_BG}
     <div class="wrap">
       <div class="hero-card hero-card--home">
+        <svg class="scene" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <g class="sun"><circle cx="880" cy="250" r="150" fill="#F2B134"/><circle cx="880" cy="250" r="110" fill="#FF6B3D"/></g>
+          <path d="M0 330 L170 200 L260 270 L400 130 L560 300 L700 190 L860 320 L1010 220 L1200 330 V420 H0Z" fill="#2B3A5C"/>
+          <path d="M0 370 L140 290 L250 340 L420 240 L600 350 L760 270 L940 360 L1080 300 L1200 360 V420 H0Z" fill="#1B2742"/>
+          <path d="M0 400 L200 350 L380 395 L600 340 L820 398 L1000 355 L1200 395 V420 H0Z" fill="#F4EBD9"/>
+        </svg>
         <div class="hero-copy">
+        <p class="mono">V.02 ———— WELCOME TO CHAIRLIFT. THE LODGE IS OPEN. WE FIND THE BUSYWORK, THEN BUILD THE FIX.</p>
         <span class="rule"></span>
         <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
         <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
