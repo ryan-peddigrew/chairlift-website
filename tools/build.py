@@ -199,9 +199,9 @@ home = f'''
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
         </div>
-        <div class="flip" aria-label="Before and after">
-          <div class="flip-before"><span class="flip-tag">Before</span><p>A quote went out last week. Nobody followed up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">After</span><p>The follow-up went out Tuesday, in your words. The client replied.</p></div>
+        <div class="flip" aria-label="Right now, and with Chairlift">
+          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
+          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
         </div>
       </div>
     </div>
