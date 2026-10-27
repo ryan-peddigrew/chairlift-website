@@ -755,3 +755,4 @@ html.over-hero body:has(.pc-hero, .hdr-px) .site-header .wrap { border-bottom-co
 @media (max-width: 860px) { .hero--page h1.pg-title { font-size: 15vw; } }
 .pg-title i { display: inline-block; width: .17em; height: .17em; margin-left: .05em; border-radius: 50%; background: #3DFFC1 !important; opacity: 1 !important; color: transparent; overflow: hidden; vertical-align: baseline; line-height: 0; }
 body:not(:has(.pc-hero)) main { padding-top: 68px; }
+.ft-credit { opacity: .8; }
