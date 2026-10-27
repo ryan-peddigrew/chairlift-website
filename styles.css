@@ -846,3 +846,5 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .section--ink .link-arrow::after, .cta-box .link-arrow::after { color: var(--neon); }
 .section--ink .card::before { content: ""; display: block; width: 36px; height: 5px; border-radius: 3px; background: var(--neon); margin-bottom: 16px; }
 .site-footer { border-top: 5px solid var(--neon); }
+.ticks li::before { border-radius: 50%; background: var(--neon); box-shadow: 0 0 0 2px var(--ink); }
+.section--ink .ticks li::before, .card--ink .ticks li::before { background: var(--neon); box-shadow: none; }
