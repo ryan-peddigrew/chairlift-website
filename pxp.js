@@ -1,5 +1,7 @@
 /* Chairlift PX-style concept: hero intro (logo -> word) and photo band push-in. */
 (function () {
+  // header lettering options for review: ?nav=a|b|c|d (remembered per browser)
+  try { var nv = (location.search.match(/nav=([a-d])/) || [])[1] || sessionStorage.getItem('pxnav'); if (nv) { document.documentElement.classList.add('nav-' + nv); sessionStorage.setItem('pxnav', nv); } } catch (e) {}
   var hero = document.querySelector('.pc-hero');
   var band = document.querySelector('.pc-band');
   var root = document.documentElement;
@@ -8,7 +10,7 @@
   var stage = hero && hero.querySelector('.pc-stage');
   var ticking = false;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sps = [].slice.call(document.querySelectorAll('.pc-hero ~ section, .pc-hero ~ .pc-band, .paper-split, .retro--wide'));
+  var sps = [].slice.call(document.querySelectorAll('.pc-hero ~ section, .pc-hero ~ .pc-band, .paper-split, .retro--wide, .pc-ridge'));
   var scrubs = [].slice.call(document.querySelectorAll('[data-scrub]'));
   var route = document.querySelector('.pc-pkgs'), stops = route ? [].slice.call(route.children) : [];
   // split scrub paragraphs into words, keeping inline <em> wrappers
@@ -46,7 +48,8 @@
     el._w = [].slice.call(el.querySelectorAll('.w'));
   });
   var words = scrubs.length ? [].slice.call(document.querySelectorAll('[data-scrub] .w')) : [];
-  var scrubSec = document.querySelector('.pc-sec--scrub');
+  var pins = [].slice.call(document.querySelectorAll('.pc-pinscrub'));
+  pins.forEach(function (s) { s._w = [].slice.call(s.querySelectorAll('[data-scrub] .w')); });
   // reveal on enter
   var rvSel = 'main h2, .stage, .pg-tiles, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .ticket, .pc-band__txt, .retro--wide';
   var rv = [].slice.call(document.querySelectorAll(rvSel));
@@ -72,7 +75,7 @@
         var S1 = Math.max(90, word.offsetHeight * 1.9);
         var cx0 = vw / 2, cy0 = vh / 2 - 40;
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
-        var cy1 = wr.top - sr.top + wr.height * 0.52;
+        var cy1 = word.getBoundingClientRect().bottom - sr.top - S1 / 2 + S1 * .16 - 3;
         var e = ease(clamp((p - .08) / .62));
         var cx = cx0 + (cx1 - cx0) * e, cy = cy0 + (cy1 - cy0) * e;
         var s = 1 + (S1 / S0 - 1) * e;
@@ -90,12 +93,15 @@
       var r = el.getBoundingClientRect();
       el.style.setProperty('--sp', clamp((vh - r.top) / (r.height + vh)).toFixed(3));
     });
-    if (scrubSec && words.length) {
-      var sr2 = scrubSec.getBoundingClientRect();
-      var sp = clamp(-sr2.top / Math.max(1, sr2.height - vh) * 1.08);
-      var lit = reduce ? words.length : sp * (words.length + 4);
-      words.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
-    }
+    pins.forEach(function (sec) {
+      var r = sec.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var sp = reduce ? 1 : clamp(-r.top / Math.max(1, r.height - vh) * 1.12);
+      sec.style.setProperty('--fp', sp.toFixed(3));
+      sec.style.setProperty('--ro', (1 - Math.min(sp * 1.5, 1)).toFixed(3));
+      var ws = sec._w, lit = sp * (ws.length + 4);
+      ws.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
+    });
     if (route) {
       var rr = route.getBoundingClientRect();
       var rp = clamp((vh * .78 - rr.top) / (Math.min(rr.height, vh) * 1.1));

@@ -71,12 +71,18 @@
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
       <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
     </div>
-      <p class="pc-scrollhint mono" aria-hidden="true">Scroll <span><i class="ar ar--d"></i></span></p>
+      <div class="pc-scrollhint" aria-hidden="true"><span class="pc-boarder"><svg viewBox="0 0 40 40"><circle cx="21" cy="7" r="3.2" fill="#fff"/><path d="M20 11 17 21l5 6M17 21l-5 6M19 14l-8-2M19 14l9 3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 30 32 25" stroke="#3DFFC1" stroke-width="3.2" stroke-linecap="round"/></svg></span><i class="ar ar--d"></i></div>
     </div>
   </section>
 
 
-  <section class="pc-sec pc-sec--dark pc-sec--scrub" id="intro" aria-label="Introduction">
+  <div class="pc-ridge" aria-hidden="true">
+    <svg class="pc-ridge__l pc-ridge__l1" viewBox="0 0 1600 300" preserveAspectRatio="none"><path d="M0 300V170l90-40 70 30 120-95 80 55 60-30 140 110 90-60 110 50 150-120 100 70 70-25 130 90 110-55 90 30 90-40V300z"/></svg>
+    <svg class="pc-ridge__l pc-ridge__l2" viewBox="0 0 1600 300" preserveAspectRatio="none"><path d="M0 300V215l130-55 90 45 150-110 110 80 90-35 120 70 160-125 120 95 90-40 140 85 120-60 120 50 60-20V300z"/></svg>
+    <svg class="pc-ridge__l pc-ridge__l3" viewBox="0 0 1600 300" preserveAspectRatio="none"><path d="M0 300V250l170-60 120 40 160-80 140 70 120-30 170 55 150-75 160 60 130-35 180 55V300z"/><path class="pc-ridge__snow" d="M450 190l-22 14 14 2 8-6 10 9 12-5zM1080 190l-24 13 13 1 11-7 9 8 14-4z"/></svg>
+  </div>
+
+  <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? <em class="nx">That work is small on its own and enormous added up.</em></p>
       <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
@@ -191,10 +197,15 @@
     </div>
   </section>
 
-  <section class="pc-sec pc-sec--dark" aria-label="A note from our founder">
-    <div class="pc-wrap">
-      <div class="pc-founder"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div><p class="pc-lead pc-lead--small">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="mono">Ryan Peddigrew, Founder</p><p class="pc-links"><a class="pc-link" href="/who-we-are/">Read our story <i class="ar" aria-hidden="true"></i></a></p></div></div>
-    </div>
+  <section class="pc-sec pc-sec--dark pc-fq pc-pinscrub" aria-label="A note from our founder">
+    <div class="pc-fq__pin"><div class="pc-wrap pc-fq__grid">
+      <figure class="pc-fq__photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><svg class="pc-fq__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48.6" pathLength="1"/></svg></figure>
+      <blockquote class="pc-fq__q">
+        <p data-scrub>&ldquo;Throughout a career in sales, I watched great people lose their best hours to follow-ups and admin. <em class="nx">Chairlift gives those hours back.</em>&rdquo;</p>
+        <footer class="pc-fq__by"><span class="mono">Ryan Peddigrew</span><span class="mono">Founder, Chairlift</span></footer>
+        <p class="pc-links"><a class="pc-link" href="/who-we-are/">Read our story <i class="ar" aria-hidden="true"></i></a></p>
+      </blockquote>
+    </div></div>
   </section>
 
   <section class="pc-sec pc-sec--dark pc-sec--lodge" aria-hidden="true">
