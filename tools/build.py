@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, re
 import datetime as _dt
 from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(__file__))
@@ -206,7 +206,6 @@ home = f'''
 
   <section class="pc-sec pc-sec--dark" id="intro" aria-label="Introduction">
     <div class="pc-wrap">
-      <p class="mono pc-n">Nº001 / Intro</p>
       <p class="pc-lead">Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
       <p class="pc-lead pc-lead--soft">There's a better way.</p>
       <div class="pc-cols">
@@ -221,7 +220,6 @@ home = f'''
 
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
-      <p class="mono pc-n">Nº002 / What we take off your plate</p>
       <h2 id="plate-title" class="pc-h2">What we take off your team's plate</h2>
       <ol class="pc-list">
         <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
@@ -237,14 +235,13 @@ home = f'''
 
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
-      <p class="mono pc-n">Nº003 / Benefits</p>
       <h2 id="why-title" class="pc-h2">It's a whole new level. You'll wonder how you managed before.</h2>
       <div class="pc-benefits">
-        <article><p class="mono">Nº001</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
-        <article><p class="mono">Nº002</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
-        <article><p class="mono">Nº003</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
-        <article><p class="mono">Nº004</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
-        <article><p class="mono">Nº005</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
+        <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
+        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
+        <article><p class="mono">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
+        <article><p class="mono">04</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
+        <article><p class="mono">05</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
       </div>
     </div>
   </section>
@@ -253,7 +250,6 @@ home = f'''
 
   <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
     <div class="pc-wrap">
-      <p class="mono pc-n">Nº004 / Three stops to the top</p>
       <h2 id="how-title" class="pc-h2">Three stops to the top</h2>
       <div class="pc-pkgs">
         <article><p class="mono">Stop 1</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
@@ -274,7 +270,6 @@ home = f'''
   <section class="pc-sec pc-sec--sky paper-teaser" aria-labelledby="paper-title">
     <div class="pc-wrap paper-split">
       <div>
-        <p class="mono pc-n">Nº005 / The Daily Peddigrew</p>
         <h2 id="paper-title" class="pc-h2">The Daily Peddigrew</h2>
         <p class="pc-lead pc-lead--small">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
         <p class="pc-links"><a class="pc-link pc-link--ink" href="/try/">Build yours in minutes <i>↗</i></a></p>
@@ -285,7 +280,6 @@ home = f'''
 
   <section class="pc-sec pc-sec--dark" aria-label="A note from our founder">
     <div class="pc-wrap">
-      <p class="mono pc-n">Nº006 / A note from our founder</p>
       <div class="pc-founder"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div><p class="pc-lead pc-lead--small">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="mono">Ryan Peddigrew, Founder</p><p class="pc-links"><a class="pc-link" href="/who-we-are/">Read our story <i>↗</i></a></p></div></div>
     </div>
   </section>
@@ -890,6 +884,23 @@ five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
   <script src="/cal-embed.js"></script>
 '''
 
+
+# ---- homepage mock-up variants (previews, noindex) ----
+_MEDIA = re.compile(r'<video class="pc-photo pc-photo--wind".*?</video>', re.S)
+def _vid(src, poster, cls=""):
+    return f'<video class="pc-photo pc-photo--wind {cls}" src="{src}" poster="{poster}" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>'
+HERO_MEDIA = {
+    "a": _vid("/images/hero-wind.mp4", "/images/hero-wind-poster.jpg"),
+    "b": _vid("/images/hero-reel-1.mp4", "/images/hero-reel-1-poster.jpg", "pc-photo--reel") if os.path.exists(os.path.join(OUT, "images/hero-reel-1.mp4")) else '<img class="pc-photo pc-photo--wind pc-photo--reel" src="/images/hero-reel-1-poster.jpg" alt="">',
+    "c": '<picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="pc-photo pc-photo--wind pc-photo--still" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602"></picture>',
+    "d": _vid("/images/hero-clouds.mp4", "/images/alps-blue.jpg", "pc-photo--clouds"),
+}
+def home_variant(k):
+    h = _MEDIA.sub(lambda m: HERO_MEDIA[k], home, count=1)
+    h = h.replace('class="pc-hero"', f'class="pc-hero pcv-{k}"', 1)
+    sw = '<nav class="pc-switch" aria-label="Homepage mock-ups">' + "".join(f'<a href="/home-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abcd") + '</nav>'
+    return h + sw
+
 PAGES = [
     ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home, False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
@@ -902,6 +913,8 @@ PAGES = [
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
+] + [
+    (f"home-{k}/index.html", f"Homepage mock-up {k.upper()}", "Preview of a homepage option.", f"/home-{k}/", None, home_variant(k), True) for k in "abcd"
 ] + [
     (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
 ] + [

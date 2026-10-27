@@ -71,6 +71,7 @@ def header(active=None):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
+    <span class="hdr-dash" aria-hidden="true"></span><span class="hdr-mq" aria-hidden="true"><span class="hdr-mq__t">● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; </span></span>
     <nav class="nav" aria-label="Main">
 {desk}
       <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Start a conversation</a>
@@ -228,7 +229,6 @@ def page_hero(eyebrow, title, lede, extra=""):
     return f'''
   <section class="hero hero--page pg pg--{tone}">
     <div class="pg-wrap">
-      <p class="mono pg-n">Nº{num} / {eyebrow.rstrip(".")}</p>
       <h1 class="pg-title">{big}<i>.</i></h1>
       <div class="pg-cap"><span class="pg-arrow" aria-hidden="true">→</span><div><p class="pg-line">{cap}</p>{sub}</div></div>{extra}
       <div class="pg-tiles" aria-hidden="true"><span style="background-image:url(/images/alps-blue.jpg)"></span><span style="background-image:url(/images/alps-peaks.jpg)"></span></div>
