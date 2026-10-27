@@ -59,6 +59,65 @@
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -12% 0px', threshold: .05 });
     rv.forEach(function (el) { io.observe(el); });
   }
+
+  // Ski Patrol exit check: desktop when the pointer leaves through the top, phones when someone switches away and comes back. Once per visit.
+  (function () {
+    var KEY = 'pxpatrol', shown = false;
+    try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+    if (location.pathname.indexOf('/5min') === 0 || location.pathname.indexOf('/thanks') === 0) return;
+    var armed = false; setTimeout(function () { armed = true; }, 6000);
+    var guy = '<svg viewBox="0 0 160 170" aria-hidden="true">' +
+      '<path d="M18 170c4-34 26-52 62-52s58 18 62 52z" fill="#C8312B"/>' +
+      '<path d="M80 118c-9 0-16 2-22 6l22 22 22-22c-6-4-13-6-22-6z" fill="#A9241F"/>' +
+      '<path d="M106 136h8v8h8v8h-8v8h-8v-8h-8v-8h8z" fill="#fff"/>' +
+      '<path d="M66 104h28v18c0 6-28 6-28 0z" fill="#E7B48F"/>' +
+      '<ellipse cx="80" cy="76" rx="34" ry="38" fill="#F1C29C"/>' +
+      '<ellipse cx="46" cy="80" rx="6" ry="9" fill="#E7B48F"/><ellipse cx="114" cy="80" rx="6" ry="9" fill="#E7B48F"/>' +
+      '<path d="M44 66c0-26 16-40 36-40s36 14 36 40c-10-6-24-9-36-9s-26 3-36 9z" fill="#141B2A"/>' +
+      '<path d="M48 60c8-4 20-6 32-6s24 2 32 6" stroke="#3DFFC1" stroke-width="3" fill="none"/>' +
+      '<path d="M50 72h60" stroke="#2a3346" stroke-width="3"/>' +
+      '<path d="M52 70h24c0 12-4 17-12 17s-12-6-12-17zM84 70h24c0 11-4 17-12 17s-12-5-12-17z" fill="#1B2A44" stroke="#c9d1de" stroke-width="2.2"/>' +
+      '<path d="M57 73l8 0M89 73l8 0" stroke="rgba(255,255,255,.55)" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<path d="M80 80c-3 6-4 10 0 12" stroke="#C99673" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
+      '<path d="M52 100c6-9 16-10 28-6 12-4 22-3 28 6-6 2-10 7-16 7-5 0-9-3-12-5-3 2-7 5-12 5-6 0-10-5-16-7z" fill="#E9ECF1" stroke="#c4cad4" stroke-width="1"/>' +
+      '<path d="M70 108c4 3 16 3 20 0" stroke="#9b5e48" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
+      '<path d="M54 92c3 1 6 1 8 0M98 92c3 1 6 1 8 0" stroke="#d9a17d" stroke-width="1.6" fill="none"/>' +
+      '</svg>';
+    function open() {
+      if (shown) return; shown = true;
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      var d = document.createElement('div');
+      d.className = 'patrol';
+      d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-labelledby', 'patrol-h');
+      d.innerHTML = '<div class="patrol__card">' +
+        '<button class="patrol__x" type="button" aria-label="Close">&times;</button>' +
+        '<div class="patrol__guy">' + guy + '</div>' +
+        '<div class="patrol__txt"><p class="patrol__tag">Ski Patrol</p>' +
+        '<h2 id="patrol-h">Whoa there. Did you mean to leave the hill?</h2>' +
+        '<p>Before you go, give us five minutes. We’ll talk through the work eating your team’s week.</p>' +
+        '<div class="patrol__btns"><a class="patrol__go" href="/5min/">Start a conversation</a><button class="patrol__no" type="button">I’m heading down</button></div></div></div>';
+      document.body.appendChild(d);
+      var last = document.activeElement;
+      function close() { d.classList.remove('is-on'); setTimeout(function () { d.remove(); }, 400); document.removeEventListener('keydown', esc); if (last && last.focus) last.focus(); }
+      function esc(e) { if (e.key === 'Escape') close(); }
+      d.addEventListener('click', function (e) { if (e.target === d || e.target.closest('.patrol__x, .patrol__no')) close(); });
+      document.addEventListener('keydown', esc);
+      requestAnimationFrame(function () { d.classList.add('is-on'); d.querySelector('.patrol__go').focus({ preventScroll: true }); });
+    }
+    document.addEventListener('mouseout', function (e) { if (armed && !e.relatedTarget && e.clientY <= 0) open(); });
+    var away = 0;
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) away = Date.now();
+      else if (armed && away && Date.now() - away > 1500 && matchMedia('(hover: none)').matches) open();
+    });
+  })();
+
+  // band video (reel 5) on phones only: portrait footage fits portrait screens; desktop keeps the full-res photo
+  var bv = document.querySelector('.pc-band__vid');
+  if (bv && matchMedia('(max-width: 860px)').matches && !reduce) {
+    bv.src = bv.getAttribute('data-src'); bv.classList.add('is-on');
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { var pr = bv.play(); if (pr && pr.catch) pr.catch(function () {}); } else bv.pause(); }); }).observe(bv);
+  }
   function clamp(v) { return Math.min(1, Math.max(0, v)); }
   function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function frame() {

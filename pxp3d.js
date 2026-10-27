@@ -49,13 +49,16 @@ if (host) {
     const ring = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel);
     emblem.add(inner, ring);
     emblem.scale.setScalar(0.72);
-    // "Chairlift" in extruded satin metal under the ring, spinning with it
+    const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.55, roughness: 0.22, clearcoat: 0.6, envMapIntensity: 1.25, transparent: true });
+    let word = null;
+    // "Chairlift" in extruded satin metal under the ring, held still
     fetch('/vendor/archivo-chairlift.json').then((r) => r.json()).then((data) => {
       const geo = new TextGeometry('Chairlift', { font: new FontLoader().parse(data), size: 0.6, height: 0.12, curveSegments: 10, bevelEnabled: true, bevelThickness: 0.025, bevelSize: 0.012, bevelSegments: 4 });
       geo.center();
-      const word = new THREE.Mesh(geo, steel);
-      word.position.set(0, -1.95, 0);
-      emblem.add(word);
+      word = new THREE.Mesh(geo, wordMat);
+      word.scale.setScalar(0.72);
+      word.position.set(0, -1.4, 0);
+      scene.add(word);
     }).catch(() => {});
     scene.add(emblem);
 
@@ -77,9 +80,12 @@ if (host) {
     const frame = (now) => {
       requestAnimationFrame(frame);
       if (!visible) return;
-      const t = ((now - t0) / 1000) % 8.5;          // steady turn from the first second: 6 s per spin, then 2.5 s facing front
-      const turn = t < 6 ? (t / 6) * Math.PI * 2 : 0;
+      const turn = (((now - t0) / 1000) % 6) / 6 * Math.PI * 2;   // always turning, one spin every 6 s; the word below stays still
       emblem.rotation.y = reduce ? 0.5 : turn;
+      if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
+        const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
+        const o = Math.max(0, 1 - p / 0.12); wordMat.opacity = o; word.visible = o > 0.01;
+      }
       emblem.rotation.x = reduce ? 0 : Math.sin(now / 2600) * 0.08;
       renderer.render(scene, camera);
     };
