@@ -30,7 +30,6 @@
       }).catch(function () {});
   }
 
-  var liveMast = document.querySelector('[data-try-mast]');
   var press = document.querySelector('[data-press]');
   var btn = form.querySelector('[data-try-btn]');
 
@@ -63,20 +62,8 @@
     }
   }
 
-  function mastText() {
-    var name = form.elements.name.value.trim();
-    return name ? 'The Daily ' + name.split(/\s+/).pop() : 'The Daily Peddigrew';
-  }
-  function showLive() {
-    liveMast.textContent = mastText();
-    liveMast.style.fontSize = '';
-    var size = parseFloat(getComputedStyle(liveMast).fontSize);
-    while (liveMast.scrollWidth > liveMast.clientWidth && size > 22) { size -= 2; liveMast.style.fontSize = size + 'px'; }
-  }
-
   var cityTimer;
   form.addEventListener('input', function (e) {
-    showLive();
     render(false);
     if (e.target.name === 'city') {
       clearTimeout(cityTimer);

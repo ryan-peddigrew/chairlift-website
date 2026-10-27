@@ -733,7 +733,6 @@ try_paper = page_hero("The Daily Peddigrew", "Get your own morning paper.",
       <div>
         <span class="rule"></span>
         <h2 id="try-title">See yours, then ask for it.</h2>
-        <div class="try-live" aria-hidden="true"><span class="try-live-label">Your masthead</span><div class="try-live-mast" data-try-mast>The Daily Peddigrew</div></div>
         <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
           <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
           <input type="hidden" name="_template" value="table">
