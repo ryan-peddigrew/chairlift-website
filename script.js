@@ -90,3 +90,18 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   els.forEach(function (el, i) { el.classList.add('reveal'); el.style.setProperty('--d', ((i % 3) * 0.08) + 's'); io.observe(el); });
 })();
+
+(function () {
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  var tick = false;
+  function update() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, window.scrollY / h) : 0) + ')';
+    tick = false;
+  }
+  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
