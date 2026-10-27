@@ -40,14 +40,14 @@ def head(title, desc, path, noindex=False):
 <meta property="og:url" content="{SITE}{path}">
 <meta property="og:title" content="{full}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{SITE}/og-card.png">
+<meta property="og:image" content="{SITE}/og-card-2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Chairlift: Less busywork. More business.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{full}">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="{SITE}/og-card.png">
+<meta name="twitter:image" content="{SITE}/og-card-2.jpg">
 <meta name="theme-color" content="#141B2A">
 <link rel="icon" href="{FAVICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,7 @@ def footer():
     </nav>
   </div>
   <div class="footer-bottom">
-    <div class="wrap">© <span data-year>2026</span> Chairlift <span class="ft-credit">&middot; Mountain footage with thanks to @meraberidze and @world.from.my.eyes</span></div>
+    <div class="wrap">© <span data-year>2026</span> Chairlift</div>
   </div>
 </footer>
 

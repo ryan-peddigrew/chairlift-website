@@ -187,11 +187,22 @@
   frame();
 })();
 
-// background videos: if the phone blocked autoplay, start them on the first touch or scroll instead of showing a play button
+// background videos: iPhones in Low Power Mode refuse to autoplay video and show a play button instead.
+// Moving images still play there, so if the hero video is blocked, swap in an animated WebP of the same footage.
 (function () {
   var vids = [].slice.call(document.querySelectorAll('video.pc-photo'));
-  if (!vids.length) return;
-  function kick() { vids.forEach(function (v) { if (v.paused) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } }); }
-  ['touchstart', 'scroll', 'click'].forEach(function (ev) { window.addEventListener(ev, kick, { passive: true, once: true }); });
-  kick();
+  vids.forEach(function (v) {
+    var swapped = false;
+    function swap() {
+      if (swapped || !v.paused) return; swapped = true;
+      var img = new Image();
+      img.className = v.className; img.alt = ''; img.decoding = 'async';
+      img.src = (v.getAttribute('src') || '').replace(/\.mp4$/, '.webp');
+      img.onerror = function () { img.src = v.getAttribute('poster'); };
+      v.parentNode.replaceChild(img, v);
+    }
+    var pr = v.play();
+    if (pr && pr.catch) pr.catch(swap);
+    setTimeout(swap, 1500);
+  });
 })();
