@@ -749,11 +749,10 @@ try_paper = f'''
               <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
               <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
             </div>
-            <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
-            <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
-            <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
+            <label class="field"><span>The three things on your plate today</span><textarea name="priorities" rows="3" placeholder="Send the Henderson quote&#10;Call back two warm leads&#10;Walk the dog at lunch" required></textarea></label>
             <label class="field"><span>Apps you check every morning</span><input type="text" name="morning-apps" placeholder="Gmail, Slack, LinkedIn"></label>
             <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" placeholder="sam@yourcompany.com" required></label>
+            <label class="field"><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="613 555 0123"></label>
             <label class="field"><span>Anything else you'd want on your page? (optional)</span><textarea name="wishlist" rows="2" placeholder="Job schedule, new leads, invoices due"></textarea></label>
             <button class="btn btn-ink" type="submit" data-try-btn>Request my paper</button>
             <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>

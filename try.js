@@ -36,7 +36,7 @@
   function render() {
     var name = form.elements.name.value.trim();
     var city = form.elements.city.value.trim();
-    var items = ['one', 'two', 'three'].map(function (k) { return form.elements[k].value.trim(); }).filter(Boolean);
+    var items = form.elements.priorities.value.split(/\n+/).map(function (v) { return v.trim(); }).filter(Boolean).slice(0, 3);
 
     if (name) {
       var last = name.split(/\s+/).pop();
