@@ -105,16 +105,24 @@
 
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">What we take off your team's plate.</p></div></header>
+      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Flip a department to see what we take off your team's plate.</p></div></header>
       <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
-      <ol class="pc-list">
-        <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
-        <li><b>Fast first replies</b><span>A new lead has been waiting since this morning. Now every inquiry gets a prompt, helpful reply and reaches the right person.</span></li>
-        <li><b>Scheduling and data entry</b><span>The same details typed into three systems. Now confirmations and updates happen in the background.</span></li>
-        <li><b>After-hours replies</b><span>It's 8:40 pm and the office is closed. Customers get a friendly reply within minutes.</span></li>
-        <li><b>Past customers and old leads</b><span>People who once said yes have gone quiet. A gentle check-in goes out at the right moment.</span></li>
-        <li><b>Reports without the legwork</b><span>The weekly report is built by hand, again. Now the numbers leadership needs arrive on their own.</span></li>
-      </ol>
+      <link rel="stylesheet" href="/kin.css"><script src="/kin.js" defer></script>
+      <div class="kn-board">
+        <div class="kn-board__sw" role="radiogroup" aria-label="Pick a department"><button class="kn-sw" type="button" role="radio" aria-checked="true" data-i="0">
+          <span class="kn-sw__n">01</span><span class="kn-sw__name">Sales &amp; pipeline momentum</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="1">
+          <span class="kn-sw__n">02</span><span class="kn-sw__name">Quoting, proposals &amp; scopes</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="2">
+          <span class="kn-sw__n">03</span><span class="kn-sw__name">Client handoffs &amp; onboarding</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="3">
+          <span class="kn-sw__n">04</span><span class="kn-sw__name">Scheduling, dispatch &amp; field ops</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="4">
+          <span class="kn-sw__n">05</span><span class="kn-sw__name">Billing, chasing &amp; back-office</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="5">
+          <span class="kn-sw__n">06</span><span class="kn-sw__name">Custom internal workflows</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button></div>
+        <div class="kn-read" aria-live="polite">
+          <p class="kn-read__bar mono"><span data-dept-code>Department 01</span><span><i class="kn-live" aria-hidden="true"></i>Our own team builds it</span></p>
+          <div class="kn-read__out" data-dept-out><h3>Every inquiry answered, routed and tracked until the deal is won.</h3><p>Instant lead capture, follow-up across email, phone and text, a tidy CRM, stalled-deal alerts, and the right rep on every lead without anyone lifting a finger.</p></div>
+          <p class="kn-read__foot mono" data-dept-tools>Built around: Your CRM · email · phone and text · web forms</p>
+        </div>
+        <template data-dept="0"><b>01</b><h3>Every inquiry answered, routed and tracked until the deal is won.</h3><p>Instant lead capture, follow-up across email, phone and text, a tidy CRM, stalled-deal alerts, and the right rep on every lead without anyone lifting a finger.</p><i>Your CRM · email · phone and text · web forms</i></template><template data-dept="1"><b>02</b><h3>Quotes out the same day, not the same week.</h3><p>Complex estimates, multi-line pricing and custom proposals go from an hours-long bottleneck to a quick sign-off.</p><i>Your price lists · quoting tools · spreadsheets · e-signature</i></template><template data-dept="2"><b>03</b><h3>The deal closes. The work starts. Nobody re-asks the client.</h3><p>The moment a deal closes, project folders, kickoff packets, team assignments and internal briefs are built and sent out.</p><i>Your CRM · shared drives · project boards · team chat</i></template><template data-dept="3"><b>04</b><h3>Nothing double-booked. Nothing forgotten.</h3><p>Crew coordination, calendar syncing, resource planning and real-time client updates wired together.</p><i>Your calendars · dispatch boards · text updates · maps</i></template><template data-dept="4"><b>05</b><h3>Invoices out when the work is done.</h3><p>Milestone invoices, overdue nudges, vendor paperwork and reconciliation handled quietly in the background.</p><i>Your accounting tools · bank feeds · vendor portals · inbox</i></template><template data-dept="5"><b>06</b><h3>Your one-of-a-kind process, running on rails.</h3><p>Have a messy process that only your company has? We map it, build around the tools you already use, and make it run on rails.</p><i>Whatever your team already uses</i></template>
+      </div>
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
@@ -132,6 +140,25 @@
     </div>
   </section>
 
+
+
+  <section class="pc-sec pc-sec--cream kn-shift" aria-labelledby="shift-title">
+    <div class="pc-wrap">
+      <header class="sx-head"><h2 id="shift-title" class="sx-title">The shift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Stop being the glue holding every process together.</p></div></header>
+      <figure class="kn-engine" aria-label="A diagram: everyday bottlenecks on the left run through a bullwheel and leave on the right as finished work riding the cable.">
+        <p class="kn-engine__head mono"><span>Fig. 01 · The haul line</span><span>Friction cleared <b data-cleared>000%</b></span></p>
+        <div class="kn-engine__stage"><canvas class="kn-canvas" aria-hidden="true"></canvas>
+          <span class="kn-engine__lbl kn-engine__lbl--l mono">Everyday friction</span><span class="kn-engine__lbl kn-engine__lbl--r mono">Finished work</span></div>
+        <div class="kn-lever" role="radiogroup" aria-label="Lift mode" data-mode="1">
+          <span class="kn-lever__knob" aria-hidden="true"></span>
+          <button type="button" role="radio" aria-checked="false" data-mode="0"><span class="mono">Manual grind</span></button>
+          <button type="button" role="radio" aria-checked="true" data-mode="1"><span class="mono">Engage Chairlift</span></button>
+          <button type="button" role="radio" aria-checked="false" data-mode="2"><span class="mono">Overdrive</span></button>
+        </div>
+      </figure>
+      <ol class="kn-stages" data-stages><li class="kn-stage"><p class="mono">01 · New inquiry</p><p class="kn-stage__was">Sits in a shared inbox until someone has a minute.</p><p class="kn-stage__now">Answered and sent to the right person right away.</p><p class="kn-stage__st mono">By hand</p></li><li class="kn-stage"><p class="mono">02 · The quote</p><p class="kn-stage__was">Rebuilt from an old spreadsheet, then waits for a review.</p><p class="kn-stage__now">Built from your pricing and sent the same day.</p><p class="kn-stage__st mono">By hand</p></li><li class="kn-stage"><p class="mono">03 · Handoff to the team</p><p class="kn-stage__was">Details re-typed into three places. The client gets asked twice.</p><p class="kn-stage__now">Every detail travels with the job.</p><p class="kn-stage__st mono">By hand</p></li><li class="kn-stage"><p class="mono">04 · Invoice</p><p class="kn-stage__was">Goes out when someone remembers. Late payments chased by hand.</p><p class="kn-stage__now">Goes out when the work is done. Reminders on schedule.</p><p class="kn-stage__st mono">By hand</p></li></ol>
+    </div>
+  </section>
 
   <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
     <div class="pc-wrap">
@@ -229,6 +256,7 @@
         <input type="hidden" name="_next" value="https://usechairlift.com/thanks/">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
         <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
+        <fieldset class="kn-tags"><legend>Where&rsquo;s the heaviest friction? <em>(optional)</em></legend><label class="kn-tag"><input type="checkbox" name="friction" value="Sales &amp; lead follow-up"><span>Sales &amp; lead follow-up</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Quoting &amp; proposals"><span>Quoting &amp; proposals</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Onboarding &amp; handoffs"><span>Onboarding &amp; handoffs</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Scheduling &amp; dispatch"><span>Scheduling &amp; dispatch</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Invoicing &amp; back-office"><span>Invoicing &amp; back-office</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Reporting"><span>Reporting</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Something custom"><span>Something custom</span></label></fieldset>
         <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
         <button class="btn btn-white" type="submit">Send it</button>
         <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>

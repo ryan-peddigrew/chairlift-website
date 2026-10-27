@@ -267,7 +267,7 @@ def task_band():
         <input type="hidden" name="_next" value="{SITE}/thanks/">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
         <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
-        <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
+        {__import__("kin").friction_tags()}<label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
         <button class="btn btn-white" type="submit">Send it</button>
         <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
         <p class="form-status" role="status" aria-live="polite"></p>

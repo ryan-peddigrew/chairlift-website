@@ -3,6 +3,7 @@ import datetime as _dt
 from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(__file__))
 from common import *
+import kin
 
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -234,16 +235,9 @@ home = f'''
 
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">What we take off your team's plate.</p></div></header>
+      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Flip a department to see what we take off your team's plate.</p></div></header>
       <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
-      <ol class="pc-list">
-        <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
-        <li><b>Fast first replies</b><span>A new lead has been waiting since this morning. Now every inquiry gets a prompt, helpful reply and reaches the right person.</span></li>
-        <li><b>Scheduling and data entry</b><span>The same details typed into three systems. Now confirmations and updates happen in the background.</span></li>
-        <li><b>After-hours replies</b><span>It's 8:40 pm and the office is closed. Customers get a friendly reply within minutes.</span></li>
-        <li><b>Past customers and old leads</b><span>People who once said yes have gone quiet. A gentle check-in goes out at the right moment.</span></li>
-        <li><b>Reports without the legwork</b><span>The weekly report is built by hand, again. Now the numbers leadership needs arrive on their own.</span></li>
-      </ol>
+      {kin.switchboard()}
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
@@ -262,6 +256,7 @@ home = f'''
   </section>
 
 
+{kin.shift_section()}
   <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
     <div class="pc-wrap">
       <div class="pc-ghost" aria-hidden="true"><span>Onboard &nbsp;&middot;&nbsp; Ride &nbsp;&middot;&nbsp; Summit</span></div>
