@@ -187,79 +187,83 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
+BN_BADGE = '<svg class="bn-badge" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="bnc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="96" fill="#3DFFC1" stroke="#141B2A" stroke-width="3"/><text font-family="Anton, sans-serif" font-size="19" fill="#141B2A"><textPath href="#bnc" textLength="440" lengthAdjust="spacing">LESS BUSYWORK ● MORE BUSINESS ●</textPath></text><rect x="70" y="112" width="38" height="11" rx="2" fill="#141B2A"/><rect x="82" y="90" width="38" height="11" rx="2" fill="#141B2A"/><rect x="94" y="68" width="38" height="11" rx="2" fill="#FFFFFF" stroke="#141B2A" stroke-width="2"/></svg>'
+
+BN_MTN = '<svg class="bn-mtn" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="1090" cy="170" r="105" fill="#FBF6E4" stroke="#141B2A" stroke-width="3"/><path d="M0 420 V250 L180 120 L330 240 L520 70 L720 250 L900 130 L1100 270 L1260 170 L1440 280 V420Z" fill="#141B2A"/><path d="M520 70 L585 128 L548 122 L520 150 L492 122 L455 128Z M180 120 L225 160 L196 156 L180 178 L162 156 L135 160Z M900 130 L945 172 L918 168 L900 190 L880 168 L852 172Z" fill="#FBF6E4"/><path d="M0 420 V330 L220 250 L420 340 L640 270 L860 350 L1080 280 L1280 350 L1440 300 V420Z" fill="#0B1220"/></svg>'
+
 home = f'''
-  <section class="hero">
-    {STAIRS_BG}
+  <section class="bn-hero" aria-label="Chairlift">
+    <div class="bn-sky" aria-hidden="true">{BN_MTN}</div>
+    <div class="bn-card">
+      <div class="bn-card__top"><span class="bn-pill">Established businesses</span><a class="bn-pill bn-pill--solid" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>
+      <h1 class="bn-word"><span class="sr-only">Chairlift. </span><span aria-hidden="true">Chairlift</span></h1>
+      <div class="bn-badge-wrap">{BN_BADGE}</div>
+      <p class="bn-tag">Less busywork.<br>More business.</p>
+      <p class="bn-sub">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
+      <div class="bn-ticker" aria-hidden="true"><div class="bn-ticker__track"><span>Follow-ups</span><span>Fast first replies</span><span>Scheduling</span><span>Data entry</span><span>After-hours replies</span><span>Old leads</span><span>Weekly reports</span><span>Follow-ups</span><span>Fast first replies</span><span>Scheduling</span><span>Data entry</span><span>After-hours replies</span><span>Old leads</span><span>Weekly reports</span></div></div>
+      <div class="bn-links">
+        <a class="bn-link" href="/how-it-works/"><span>How it works</span><i>→</i></a>
+        <a class="bn-link bn-link--hot" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}><span>Book five minutes</span><i>→</i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bn-sec" aria-labelledby="plate-title">
     <div class="wrap">
-      <div class="hero-card hero-card--home">
-        <div class="hero-copy">
-        <span class="rule"></span>
-        <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <div class="ctas">
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        </div>
-        </div>
-        <div class="flip" aria-label="Right now, and with Chairlift">
-          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
-        </div>
+      <h2 id="plate-title" class="bn-h2">What we take off<br>your team's plate.</h2>
+      <p class="bn-lede">Small on their own. Add them up and it's hours every week.</p>
+      <div class="bn-grid">
+        <article class="bn-tile"><span class="bn-chip">Sales</span><h3>Follow-ups</h3><p class="bn-prob">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></article>
+        <article class="bn-tile bn-tile--neon"><span class="bn-chip">Inquiries</span><h3>Fast first replies</h3><p class="bn-prob">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></article>
+        <article class="bn-tile"><span class="bn-chip">Operations</span><h3>Scheduling and data entry</h3><p class="bn-prob">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></article>
+        <article class="bn-tile bn-tile--neon"><span class="bn-chip">Inquiries</span><h3>After-hours replies</h3><p class="bn-prob">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></article>
+        <article class="bn-tile"><span class="bn-chip">Sales</span><h3>Past customers and old leads</h3><p class="bn-prob">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></article>
+        <article class="bn-tile bn-tile--neon"><span class="bn-chip">Leadership</span><h3>Reports without the legwork</h3><p class="bn-prob">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></article>
       </div>
+      <a class="bn-link bn-link--inline" href="/time-back/"><span>Add up your team's hours</span><i>→</i></a>
     </div>
   </section>
 
-  <section class="proof" aria-label="Who you're dealing with">
-    <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
-      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
-      <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
-    </div>
-  </section>
-
-  <section class="section section--ink" aria-labelledby="plate-title">
+  <section class="bn-sec bn-sec--neon" aria-labelledby="how-title">
     <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="plate-title">What we take off your team's plate.</h2>
-        <p>Small on their own. Add them up and it's hours every week.</p>
+      <h2 id="how-title" class="bn-h2">Three stops<br>to the top.</h2>
+      <div class="bn-stops">
+        <div class="bn-stop"><b>1</b><h3>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></div>
+        <div class="bn-stop"><b>2</b><h3>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></div>
+        <div class="bn-stop"><b>3</b><h3>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></div>
       </div>
-      <div class="cards cards--mixed cards--swipe">
-        <div class="card"><div class="card-top">{icon("quote")}<span class="card-label">Sales</span></div><h3>Follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
-        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Inquiries</span></div><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
-        <div class="card"><div class="card-top">{icon("cal")}<span class="card-label">Operations</span></div><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card"><div class="card-top">{icon("moon")}<span class="card-label">Inquiries</span></div><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
-        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Sales</span></div><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
-        <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
-      </div>
-      <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
-      <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
+      <a class="bn-link bn-link--inline" href="/how-it-works/"><span>See the full process</span><i>→</i></a>
     </div>
   </section>
 
-  <section class="section section--soft" aria-labelledby="how-title">
+  <section class="bn-sec" aria-labelledby="practice-title">
     <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="how-title">Three stops to the top.</h2>
-        <p>No big IT project and no jargon. Just a steady climb, one lift at a time.</p>
-      </div>
-{STEPS}      <p class="section-link"><a class="link-arrow" href="/how-it-works/">See the full process</a></p>
+      <h2 id="practice-title" class="bn-h2">A real client.</h2>
+      <a class="bn-case" href="/examples/#wastemind" aria-label="Read the WasteMind client story">
+        <div class="bn-case__text"><p class="bn-case__big"><b>12 to 24 hours</b><span>down to about 1 hour</span></p><p>Time for WasteMind to respond to quote requests, service calls and inquiries, roughly.</p><span class="bn-link bn-link--inline"><span>Read the story</span><i>→</i></span></div>
+        <div class="bn-case__photos"><img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel in a parking garage"><img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue front-end-load waste containers from WasteMind"></div>
+      </a>
     </div>
   </section>
 
-  <section class="section section--soft paper-teaser" aria-labelledby="paper-title">
+  <section class="bn-sec paper-teaser" aria-labelledby="paper-title">
     <div class="wrap paper-split">
       <div>
-        <span class="rule"></span>
-        <h2 id="paper-title">The Daily Peddigrew.</h2>
-        <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
-        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
+        <h2 id="paper-title" class="bn-h2">The Daily<br>Peddigrew.</h2>
+        <p class="bn-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
+        <a class="bn-link bn-link--inline" href="/try/"><span>Build yours in minutes</span><i>→</i></a>
       </div>
       {PAPER_IMG}
     </div>
   </section>
 
-{task_band()}
+  <section class="bn-sec" aria-label="A note from our founder">
+    <div class="wrap">
+      <div class="bn-founder"><div class="bn-founder__photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"></div><div><p class="bn-founder__line">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="bn-founder__name">Ryan Peddigrew, Founder</p><a class="bn-link bn-link--inline" href="/who-we-are/"><span>Read our story</span><i>→</i></a></div></div>
+    </div>
+  </section>
+
+  {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services

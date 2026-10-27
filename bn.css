@@ -1,0 +1,75 @@
+/* Binocle-style concept: bold condensed type, cream card on a flat alpine backdrop, round arrow buttons, spinning sticker badge */
+:root { --cream: #FBF6E4; --ink: #141B2A; --neon: #3DFFC1; --page: #F2EAD0; --text: #141B2A; --muted: #3A3F4A; --line: #141B2A; --soft: #FBF6E4; }
+body { background: var(--page); color: var(--ink); }
+h1, h2, h3, .bn-word, .bn-h2 { font-family: "Anton", "Hanken Grotesk", sans-serif; font-weight: 400; text-transform: uppercase; }
+.site-header { background: var(--cream); border-bottom: 2px solid var(--ink); }
+.nav a:not(.btn) { font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; }
+.btn { border: 2px solid var(--ink); border-radius: 999px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; box-shadow: 3px 3px 0 var(--ink); }
+.btn-ink, .btn-white { background: var(--neon); color: var(--ink); }
+
+.bn-hero { position: relative; padding: 28px 24px 56px; background: var(--neon); border-bottom: 2px solid var(--ink); overflow: hidden; isolation: isolate; }
+.bn-sky { position: absolute; inset: 0; z-index: -1; }
+.bn-mtn { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 62%; }
+.bn-card { position: relative; max-width: 980px; margin: 18px auto 0; background: var(--cream); border: 2px solid var(--ink); border-radius: 22px; padding: 22px 28px 28px; box-shadow: 8px 8px 0 var(--ink); }
+.bn-card__top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.bn-pill { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid var(--ink); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: transparent; }
+.bn-pill--solid { background: var(--ink); color: #fff; }
+.bn-word { margin: 14px 0 0; font-size: clamp(76px, 20vw, 250px); line-height: .86; letter-spacing: -.005em; color: var(--ink); transform: scaleY(1.08); transform-origin: top; }
+.bn-badge-wrap { position: absolute; right: 28px; top: 330px; width: clamp(96px, 15vw, 180px); }
+.bn-badge { width: 100%; height: auto; display: block; }
+@media (prefers-reduced-motion: no-preference) { .bn-badge { animation: bnspin 22s linear infinite; } @keyframes bnspin { to { transform: rotate(360deg); } } }
+.bn-tag { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: clamp(30px, 5vw, 64px); line-height: 1.02; margin: 18px 0 8px; letter-spacing: -.02em; }
+.bn-sub { max-width: 46ch; font-size: 18px; margin: 0 0 18px; color: var(--ink); }
+.bn-ticker { overflow: hidden; border-block: 2px solid var(--ink); background: var(--neon); margin: 8px -28px 20px; padding: 8px 0; }
+.bn-ticker__track { display: flex; width: max-content; }
+.bn-ticker__track span { font-family: "Anton", sans-serif; text-transform: uppercase; font-size: 22px; padding: 0 1.1em; white-space: nowrap; }
+.bn-ticker__track span::after { content: "●"; margin-left: 1.1em; font-size: .6em; vertical-align: middle; }
+@media (prefers-reduced-motion: no-preference) { .bn-ticker__track { animation: bnslide 40s linear infinite; } @keyframes bnslide { to { transform: translateX(-50%); } } }
+.bn-links { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.bn-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 76px; padding: 14px 16px 14px 20px; border: 2px solid var(--ink); border-radius: 16px; background: #fff; color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; transition: transform .15s, box-shadow .15s, background .2s; box-shadow: 4px 4px 0 var(--ink); }
+.bn-link i { font-style: normal; display: grid; place-items: center; width: 46px; height: 46px; flex: none; border: 2px solid var(--ink); border-radius: 50%; font-size: 22px; background: var(--cream); transition: transform .3s; }
+.bn-link:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.bn-link:hover i { transform: rotate(-45deg); background: var(--neon); }
+.bn-link--hot { background: var(--neon); }
+.bn-link--inline { display: inline-flex; min-width: 260px; margin-top: 24px; min-height: 64px; }
+
+.bn-sec { padding: 96px 0 24px; }
+.bn-sec--neon { background: var(--neon); border-block: 2px solid var(--ink); padding-bottom: 72px; margin-top: 56px; }
+.bn-h2 { font-size: clamp(46px, 8vw, 120px); line-height: .92; margin: 0 0 20px; letter-spacing: -.005em; }
+.bn-lede { max-width: 48ch; font-size: 20px; margin: 0 0 36px; }
+.bn-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.bn-tile { background: var(--cream); border: 2px solid var(--ink); border-radius: 20px; padding: 24px; box-shadow: 5px 5px 0 var(--ink); transition: transform .2s, box-shadow .2s; }
+.bn-tile--neon { background: var(--neon); }
+.bn-tile:hover { transform: translate(-3px, -3px) rotate(-.4deg); box-shadow: 9px 9px 0 var(--ink); }
+.bn-tile h3 { font-size: 34px; line-height: 1; margin: 14px 0 12px; }
+.bn-tile p { margin: 0 0 10px; }
+.bn-prob { font-family: "Fraunces", Georgia, serif; font-weight: 800; font-size: 20px; line-height: 1.2; }
+.bn-chip { display: inline-block; padding: 6px 14px; border: 2px solid var(--ink); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: #fff; }
+.bn-stops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+.bn-stop { background: var(--cream); border: 2px solid var(--ink); border-radius: 20px; padding: 26px; box-shadow: 5px 5px 0 var(--ink); }
+.bn-stop b { display: grid; place-items: center; width: 72px; height: 72px; border: 2px solid var(--ink); border-radius: 50%; background: var(--neon); font-family: "Anton", sans-serif; font-weight: 400; font-size: 40px; }
+.bn-stop h3 { font-size: 46px; margin: 18px 0 8px; line-height: 1; }
+.bn-case { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center; background: var(--cream); border: 2px solid var(--ink); border-radius: 24px; padding: 32px; box-shadow: 8px 8px 0 var(--ink); text-decoration: none; color: var(--ink); }
+.bn-case__big { display: grid; gap: 4px; margin: 0 0 14px; }
+.bn-case__big b { font-family: "Anton", sans-serif; font-weight: 400; font-size: clamp(54px, 8vw, 120px); line-height: .9; text-transform: uppercase; }
+.bn-case__big span { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: clamp(26px, 4vw, 52px); }
+.bn-case__photos { display: grid; grid-template-columns: 1fr 1.25fr; gap: 12px; }
+.bn-case__photos img { width: 100%; aspect-ratio: 4/5; max-height: 420px; object-fit: cover; border: 2px solid var(--ink); border-radius: 16px; }
+.bn-founder { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; background: var(--neon); border: 2px solid var(--ink); border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 var(--ink); }
+.bn-founder__photo img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--ink); object-fit: cover; }
+.bn-founder__line { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: clamp(26px, 3.6vw, 46px); line-height: 1.05; margin: 0 0 8px; letter-spacing: -.02em; }
+.bn-founder__name { margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; }
+.paper-teaser .paper-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.cta-box { background: var(--ink); border: 2px solid var(--ink); border-radius: 24px; box-shadow: 8px 8px 0 var(--neon); }
+.cta-box h2 { font-size: clamp(54px, 10vw, 140px); line-height: .9; color: var(--cream); }
+.footer, .site-footer { background: var(--ink); border-top: 8px solid var(--neon); }
+@media (max-width: 860px) {
+  .bn-grid, .bn-stops, .bn-case, .paper-teaser .paper-split, .bn-links { grid-template-columns: minmax(0, 1fr); }
+  .bn-hero { padding: 16px 12px 44px; }
+  .bn-card { padding: 16px 16px 20px; }
+  .bn-badge-wrap { top: 214px; right: 14px; width: 72px; }
+  .bn-ticker { margin-inline: -16px; }
+  .bn-sec { padding: 64px 0 16px; }
+  .bn-founder { grid-template-columns: minmax(0, 1fr); }
+  .bn-case { padding: 20px; }
+}
