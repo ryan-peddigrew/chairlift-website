@@ -1,31 +1,31 @@
 /* PX-style concept: chrome-logo intro, sky hero, sliding type, numbered mono labels, blur reveal */
-:root { --page: #07090E; --text: #F3F6FB; --muted: #A3ABBA; --line: rgba(255,255,255,.16); --soft: #0E131C; color-scheme: dark; }
+:root { --page: #141B2A; --text: #F3F6FB; --muted: #A3ABBA; --line: rgba(255,255,255,.16); --soft: #1B2A44; color-scheme: dark; }
 body { background: var(--page); color: var(--text); }
 .mono, .nlabel, .intro-count { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; line-height: 1.6; }
 .nlabel { display: block; color: var(--muted); margin: 6px 0 14px; padding-top: 10px; border-top: 1px solid var(--line); }
-.site-header { background: rgba(7,9,14,.7); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.site-header { background: rgba(20,27,42,.7); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .brand, .brand * { color: #fff; }
 .nav a:not(.btn) { color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .nav a:not(.btn):hover { color: #fff; }
 .menu-btn, .nav-toggle { color: #fff; border-color: var(--line); background: transparent; }
-.btn-ink, .btn-white { background: #fff; color: #07090E; border-radius: 999px; }
+.btn-ink, .btn-white { background: #fff; color: #141B2A; border-radius: 999px; }
 .btn-ink:hover, .btn-white:hover { background: var(--neon); }
 .section--ink { background: transparent; }
 .section--ink > .wrap, .section--soft > .wrap { background: var(--soft); border: 1px solid var(--line); }
 .section--ink, .section--soft { color: var(--text); }
-.card, .step, .flip > div { background: #0E131C; border: 1px solid var(--line); color: var(--text); }
+.card, .step, .flip > div { background: #1B2A44; border: 1px solid var(--line); color: var(--text); }
 .card h3, .card p, .card .problem, .step h3, .step p, .step-num { color: var(--text); }
 .card p, .step p, .card .card-label { color: var(--muted); }
 .card .card-icon { stroke: #fff !important; }
-.section--ink .card, .section--ink .cards--mixed .card:nth-child(odd), .section--ink .cards--mixed .card:nth-child(even) { background: #0E131C; color: var(--text); }
+.section--ink .card, .section--ink .cards--mixed .card:nth-child(odd), .section--ink .cards--mixed .card:nth-child(even) { background: #1B2A44; color: var(--text); }
 .section--ink .card h3, .section--ink .card .problem { color: #fff; }
 .link-arrow { color: #fff; display: flex; justify-content: space-between; max-width: 420px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .link-arrow::after { content: "↗"; color: #fff; }
 .count { font-family: "IBM Plex Mono", monospace; color: var(--muted); }
-.cta-box { background: linear-gradient(180deg, #0F2A5E, #07090E); border: 1px solid var(--line); }
-.footer, .site-footer { background: #04060A; }
+.cta-box { background: linear-gradient(180deg, #0F2A5E, #141B2A); border: 1px solid var(--line); }
+.footer, .site-footer { background: #141B2A; }
 .intro p, .proof-item p, .paper-lede { color: var(--muted); }
-.field input, .field textarea, .field select { background: #0E131C; color: #fff; border-color: var(--line); }
+.field input, .field textarea, .field select { background: #1B2A44; color: #fff; border-color: var(--line); }
 
 /* Hero: clouds and sky */
 .hero-card { position: relative; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(ellipse 420px 120px at 20% 24%, rgba(255,255,255,.5), transparent 70%), radial-gradient(ellipse 520px 140px at 78% 14%, rgba(255,255,255,.42), transparent 70%), radial-gradient(ellipse 380px 110px at 60% 62%, rgba(255,255,255,.3), transparent 70%), radial-gradient(ellipse 460px 130px at 8% 78%, rgba(255,255,255,.34), transparent 70%), linear-gradient(180deg, #1B4DB3 0%, #4F8FDB 45%, #B3D3F2 100%); }
@@ -34,7 +34,7 @@ body { background: var(--page); color: var(--text); }
 .hero-card .mono { color: #fff; max-width: 52ch; margin: 0 0 22px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.8); }
 .hero-card .climb-arrow { stroke: #fff; }
 .hero-card .rule { background: #fff; }
-.flip > div { background: rgba(7,9,14,.55); backdrop-filter: blur(10px); border-color: rgba(255,255,255,.4); }
+.flip > div { background: rgba(20,27,42,.55); backdrop-filter: blur(10px); border-color: rgba(255,255,255,.4); }
 .flip p, .flip-tag { color: #fff; }
 
 /* Sliding headline band */
@@ -45,7 +45,7 @@ body { background: var(--page); color: var(--text); }
 @media (prefers-reduced-motion: no-preference) { .slide-band__row { animation: slide 38s linear infinite; } @keyframes slide { to { transform: translateX(-50%); } } }
 
 /* Intro splash: the exact Chairlift logo, turning, then the sky */
-.intro-splash { position: fixed; inset: 0; z-index: 100; background: #07090E; display: none; place-items: center; align-content: center; gap: 28px; text-align: center; transition: opacity .7s ease, visibility .7s; }
+.intro-splash { position: fixed; inset: 0; z-index: 100; background: #141B2A; display: none; place-items: center; align-content: center; gap: 28px; text-align: center; transition: opacity .7s ease, visibility .7s; }
 html.js .intro-splash { display: grid; }
 .intro-splash.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
 .intro-splash .mono { color: #A3ABBA; }
@@ -56,10 +56,10 @@ html.js .intro-splash { display: grid; }
 /* Blur-in reveal on scroll */
 html.js .reveal { filter: blur(14px); opacity: 0; transition: filter .9s ease, opacity .9s ease, transform .9s ease; transform: translateY(24px); }
 html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
-.section:not(.section--ink) .step, .step { background: #0E131C !important; border: 1px solid var(--line); }
+.section:not(.section--ink) .step, .step { background: #1B2A44 !important; border: 1px solid var(--line); }
 .section:not(.section--ink) .step h3, .section:not(.section--ink) .step p, .section:not(.section--ink) .step-num, .step h3 { color: #fff !important; }
 .section:not(.section--ink) .step p { color: var(--muted) !important; }
-.step-num b { background: #fff; color: #07090E; }
+.step-num b { background: #fff; color: #141B2A; }
 
 /* ===== PX x retro ski home ===== */
 .px-hero { position: relative; min-height: 100svh; margin-top: -1px; display: grid; grid-template-rows: auto 1fr auto; padding: 110px 28px 28px; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #0B2B7E 0%, #2F6BC9 38%, #8CB8EA 72%, #D6E8F8 100%); }
@@ -82,7 +82,7 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-tile__img { display: block; width: 100%; aspect-ratio: 4/3; border-radius: 4px; background: linear-gradient(135deg, #0B2B7E, #3DFFC1 140%); border: 1px solid rgba(255,255,255,.7); position: relative; overflow: hidden; }
 .px-tile__img::after { content: ""; position: absolute; left: 14%; bottom: 0; width: 72%; height: 55%; background: #fff; clip-path: polygon(0 100%, 35% 20%, 55% 60%, 78% 0, 100% 100%); opacity: .9; }
 .px-tile .mono { color: #fff; font-size: 10px; }
-.px-hero .btn { background: #fff; color: #07090E; }
+.px-hero .btn { background: #fff; color: #141B2A; }
 .px-hero .btn:hover { background: #3DFFC1; }
 
 .px-sec { padding: 120px 0 40px; }
@@ -112,7 +112,7 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-item[data-open] .px-more { grid-template-rows: 1fr; }
 .px-item[data-open] .px-more > p { padding-bottom: 28px; }
 .px-link { display: flex; justify-content: space-between; align-items: center; max-width: 440px; min-height: 52px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: #fff; text-decoration: none; font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; transition: background .3s, color .3s, padding .3s; }
-.px-link:hover { background: #fff; color: #07090E; padding: 0 14px; }
+.px-link:hover { background: #fff; color: #141B2A; padding: 0 14px; }
 
 .px-stops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); margin-bottom: 28px; }
 .px-stop { padding: 26px 26px 36px 0; border-right: 1px solid var(--line); }
@@ -217,7 +217,7 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-brand { opacity: calc(var(--p, 0) * 4 - .5); transform: scale(calc(1.5 - var(--p, 0) * .5)); filter: blur(calc((1 - var(--p, 0)) * 8px)); }
 .px-hero__foot { opacity: calc(var(--p, 0) * 4 - 1); }
 @media (max-width: 860px) { .px-stage { padding: 88px 18px 22px; } }
-.cta-box, .cta-band .cta-box { background: #07090E; border: 1px solid var(--line); border-radius: 0; }
+.cta-box, .cta-band .cta-box { background: #141B2A; border: 1px solid var(--line); border-radius: 0; }
 .cta-box h2 { font-family: "Anton", sans-serif; font-weight: 400; font-size: clamp(48px, 9vw, 130px); line-height: .95; text-transform: uppercase; }
 
 /* Real mountain photo hero */
@@ -252,7 +252,7 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .px-coin__in { animation: none; transform: rotateY(-18deg); } }
 .px-edge, .px-face { position: absolute; inset: 0; border-radius: 50%; transform: translateZ(var(--z, 0)); }
 .px-edge { background: conic-gradient(from 20deg, #F4F8FF, #8A97B3 18%, #F7FAFF 34%, #6E7B98 52%, #EEF3FC 70%, #8F9CB8 86%, #F4F8FF); }
-.px-face { display: grid; place-items: center; backface-visibility: hidden; background: radial-gradient(circle at 50% 50%, #0B1220 0 61%, transparent 61.5%), conic-gradient(from 20deg, #FFFFFF, #9CA9C4 16%, #FFFFFF 32%, #7B88A6 50%, #F2F6FD 68%, #98A5C0 84%, #FFFFFF); }
+.px-face { display: grid; place-items: center; backface-visibility: hidden; background: radial-gradient(circle at 50% 50%, #141B2A 0 61%, transparent 61.5%), conic-gradient(from 20deg, #FFFFFF, #9CA9C4 16%, #FFFFFF 32%, #7B88A6 50%, #F2F6FD 68%, #98A5C0 84%, #FFFFFF); }
 .px-face svg { width: 62%; height: 62%; display: block; }
 .px-face--f { transform: translateZ(10px); }
 .px-face--b { transform: rotateY(180deg) translateZ(10px); }
@@ -260,14 +260,18 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-face svg { width: 66%; height: 55%; }
 
 /* Atmosphere: the hero fog melts into deep night as you ride up out of the clouds */
-.px-sec--intro { background: linear-gradient(180deg, #E8F0FC 0, #8FB0DD 8%, #2F5596 18%, #101C38 34%, #07090E 52%); padding-top: 52vh; margin-top: -1px; }
+.px-sec--intro { background: linear-gradient(180deg, #E8F0FC 0, #8FB0DD 8%, #2F5596 18%, #1B2A44 34%, #141B2A 52%); padding-top: 52vh; margin-top: -1px; }
 .px-sec--intro .nlabel { color: rgba(255,255,255,.75); }
 /* Full-bleed mountain interlude with scroll-driven push-in */
 .px-band { height: 170svh; position: relative; }
 .px-band__stick { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
 .px-band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; transform: scale(1.08); will-change: transform; }
-.px-band__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,9,14,.55), rgba(7,9,14,0) 30%, rgba(7,9,14,0) 65%, rgba(7,9,14,.7)); }
+.px-band__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,27,42,.55), rgba(20,27,42,0) 30%, rgba(20,27,42,0) 65%, rgba(20,27,42,.7)); }
 .px-band__txt { position: relative; margin: 0; text-align: center; font-family: "Anton", sans-serif; text-transform: uppercase; color: #fff; line-height: .95; font-size: clamp(60px, 14vw, 210px); text-shadow: 0 8px 50px rgba(3,10,40,.35); padding: 0 18px; }
 .px-band__txt span { display: block; }
 .px-band__txt span + span { color: #3DFFC1; }
 .px-sec--intro { padding-top: 38vh; }
+/* Plain Chairlift wordmark and exact logo in the header (no chrome) */
+.site-header .brand svg { display: inline-block; }
+.site-header .brand span { font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -.005em; text-transform: none; background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #fff; }
+body, main { background: #141B2A; }
