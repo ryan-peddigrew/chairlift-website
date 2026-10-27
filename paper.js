@@ -73,7 +73,7 @@
     }
     if (d.news && d.news.length >= 3) {
       all('[data-dp-news]', function (el) {
-        el.innerHTML = d.news.slice(0, 3).map(function (n) { return '<div class="dp-row"><span class="dp-nt">' + esc(n.title) + '</span></div>'; }).join('');
+        el.innerHTML = d.news.slice(0, 3).map(function (n) { return '<div class="dp-row"><span class="dp-nt">' + esc(n.title) + (n.source ? '<i class="dp-ns"> &ndash; ' + esc(n.source) + '</i>' : '') + '</span></div>'; }).join('');
       });
     }
     if (d.sports && d.sports.length) {

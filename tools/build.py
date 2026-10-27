@@ -169,7 +169,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               <div>
                 <section class="dp-sec dp-cal">{dp_h("cal", "Calendar", "")}{"".join(f'<div class="dp-row"><b>{a}</b><span>{b}</span><em>({c})</em></div>' for a, b, c in DP_CAL)}</section>
                 <section class="dp-sec dp-inbox">{dp_h("mail", "Inboxes", "")}{"".join(f'<div class="dp-row"><span><i class="dp-ib">{t}</i><b class="dp-from">{f}</b>{a}</span><small class="dp-sub">{b}</small></div>' for t, f, a, b in DP_INBOX)}</section>
-                <section class="dp-sec dp-news">{dp_h("news", "Headlines", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}</span></div>' for n, src in DP_NEWS)}</div></section>
+                <section class="dp-sec dp-news">{dp_h("news", "Headlines", "")}<div data-dp-news>{"".join(f'<div class="dp-row"><span class="dp-nt">{n}<i class="dp-ns"> &ndash; {src}</i></span></div>' for n, src in DP_NEWS)}</div></section>
               </div>
             </div>
             <div class="dp-band">
