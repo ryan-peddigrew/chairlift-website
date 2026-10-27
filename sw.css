@@ -1,11 +1,11 @@
 /* Swiss-neon concept: Ink + Neon, giant grotesk, hairline grids */
-:root { --ink:#141B2A; --neon:#3DFFC1; --paper:#fff; }
-body { background: var(--neon); color: var(--ink); font-family: "Hanken Grotesk", sans-serif; }
+:root { --ink:#141B2A; --neon:#3DFFC1; --paper:#FBF6E4; --cream:#F4EDD6; }
+body { background: var(--paper); color: var(--ink); font-family: "Hanken Grotesk", sans-serif; }
 .site-header, header.site-header { background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.18); }
 .site-header a, .site-header .brand, .site-header nav a { color: #fff; }
-.site-header .btn, .site-header .nav-cta { background: var(--neon); color: var(--ink); border-radius: 0; }
-main { background: var(--neon); }
-.sw-hero { background: var(--neon); }
+.site-header .btn, .site-header .nav-cta { background: var(--cream); color: var(--ink); border-radius: 0; }
+main { background: var(--paper); }
+.sw-hero { background: var(--cream); }
 .sw-cols { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--ink); }
 .sw-cols p { margin: 0; padding: 18px 16px 22px; font-size: 13px; line-height: 1.35; border-right: 1px solid var(--ink); }
 .sw-cols p:last-child { border-right: 0; }
@@ -14,7 +14,7 @@ main { background: var(--neon); }
 .sw-kicker { margin: 0 0 14px; font-family: "Archivo", sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; }
 .sw-giant { margin: 0; font-family: "Archivo Black", sans-serif; text-transform: uppercase; font-weight: 400; line-height: .88; letter-spacing: -.035em; }
 .sw-lead { display: block; font-size: clamp(30px, 6.4vw, 96px); color: #fff; margin-bottom: 14px; }
-.sw-neon { display: block; font-size: clamp(54px, 15.5vw, 250px); color: var(--neon); }
+.sw-neon { display: block; font-size: clamp(54px, 15.5vw, 250px); color: var(--cream); }
 .sw-stamp { position: absolute; right: 24px; bottom: 28px; width: clamp(96px, 14vw, 190px); border-radius: 50%; background: var(--neon); display: block; }
 .sw-stamp__svg { display: block; width: 100%; height: auto; }
 @media (prefers-reduced-motion: no-preference) { .sw-stamp__svg { animation: swspin 24s linear infinite; } @keyframes swspin { to { transform: rotate(360deg); } } }
@@ -22,7 +22,7 @@ main { background: var(--neon); }
 .sw-rules { display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid var(--ink); font-family: "Archivo", sans-serif; font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: .06em; }
 .sw-rules a { color: var(--ink); min-height: 44px; display: inline-flex; align-items: center; }
 .sw-sec { padding: 72px 0; background: var(--paper); }
-.sw-sec--neon { background: var(--neon); }
+.sw-sec--neon { background: var(--cream); }
 .sw-sec--ink { background: var(--ink); color: #fff; }
 .sw-h2 { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -.03em; line-height: .92; font-size: clamp(36px, 7.5vw, 112px); margin: 0 0 40px; max-width: 14ch; }
 .sw-list { border-top: 1px solid var(--ink); display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -31,10 +31,10 @@ main { background: var(--neon); }
 .sw-list h3 { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 26px; line-height: 1; letter-spacing: -.02em; margin: 10px 0 12px; }
 .sw-list p, .sw-stops p { margin: 0; font-size: 16px; line-height: 1.45; max-width: 34ch; }
 .sw-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; margin-top: 36px; background: var(--ink); color: #fff; font-family: "Archivo", sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; font-size: 14px; text-decoration: none; }
-.sw-btn--neon { background: var(--neon); color: var(--ink); }
+.sw-btn--neon { background: var(--cream); color: var(--ink); }
 .sw-stops { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.3); }
 .sw-stops > div { padding: 22px 20px 28px 0; }
-.sw-stops b { display: block; font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: clamp(80px, 12vw, 180px); line-height: .9; color: var(--neon); letter-spacing: -.04em; }
+.sw-stops b { display: block; font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: clamp(80px, 12vw, 180px); line-height: .9; color: var(--cream); letter-spacing: -.04em; }
 .sw-stops h3 { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 28px; margin: 8px 0 10px; }
 .sw-case { display: block; color: var(--ink); text-decoration: none; border-top: 1px solid var(--ink); padding-top: 24px; }
 .sw-case__big { margin: 0; font-family: "Archivo Black", sans-serif; text-transform: uppercase; font-size: clamp(40px, 10.5vw, 170px); line-height: .9; letter-spacing: -.035em; }
@@ -60,3 +60,9 @@ main { background: var(--neon); }
   .sw-list, .sw-stops { grid-template-columns: 1fr; }
   .sw-case__photos, .sw-founder { grid-template-columns: 1fr; }
 }
+
+.sw-kicker::before { content: ""; display: inline-block; width: 28px; height: 6px; background: var(--neon); margin-right: 10px; vertical-align: middle; }
+.sw-founder img { border-color: var(--cream); }
+.nav-link { color: #fff !important; opacity: .9; }
+.nav-cta { background: var(--cream) !important; color: var(--ink) !important; }
+@media (min-width: 861px) { .sw-stamp { top: 24px; bottom: auto; } }
