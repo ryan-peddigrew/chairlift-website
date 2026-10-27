@@ -726,15 +726,18 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
 # ---------------------------------------------------------------- Build your own paper
-try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
-    "Type your name, your city and the three things on your plate today. Watch your own page print.") + f'''
+try_paper = page_hero("The Daily Peddigrew", "Get your own morning paper.",
+    "Tell us your name, your city and the three things on your plate today. Your page fills in as you type. Send it to us and we'll take it from there.") + f'''
   <section class="section section--ink" aria-labelledby="try-title">
     <div class="wrap paper-split try-split">
       <div>
         <span class="rule"></span>
-        <h2 id="try-title">Your page, in 10 seconds.</h2>
+        <h2 id="try-title">See yours, then ask for it.</h2>
         <div class="try-live" aria-hidden="true"><span class="try-live-label">Your masthead</span><div class="try-live-mast" data-try-mast>The Daily Peddigrew</div></div>
-        <form class="try-form" data-try-form>
+        <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
+          <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
+          <input type="hidden" name="_template" value="table">
+          <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
           <div class="field-row">
             <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
             <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
@@ -742,17 +745,19 @@ try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
           <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
           <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
           <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
-          <button class="btn btn-white" type="submit" data-try-btn>Print my paper</button>
-          <p class="form-fine">Nothing you type is saved or sent to us. Only your city is used, to look up the weather.</p>
+          <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" placeholder="sam@yourcompany.com" required></label>
+          <label class="field"><span>Anything else you'd want on your page? (optional)</span><textarea name="wishlist" rows="2" placeholder="Job schedule, new leads, invoices due"></textarea></label>
+          <button class="btn btn-white" type="submit" data-try-btn>Request my paper</button>
+          <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+          <p class="form-status" role="status" aria-live="polite" data-try-status></p>
         </form>
         <div class="try-after" data-try-after hidden>
-          <h3>Want the real one every morning?</h3>
-          <p>We build it from your actual calendar, inbox and follow-ups, on paper, by email or on your desktop.</p>
+          <h3>Request received.</h3>
+          <p>We'll look at what you sent and reply by email. If you'd rather talk it through now, book five minutes.</p>
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
       </div>
       <div class="press" data-press>
-        <div class="press-slot" aria-hidden="true"></div>
         {PAPER_IMG}
       </div>
     </div>
@@ -855,7 +860,7 @@ PAGES = [
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the fixes Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
     ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
-    ("try/index.html", "Build your own morning paper", "Type in your name, city and top three for the day, and see your own one-page morning paper in seconds.", "/try/", None, try_paper, False),
+    ("try/index.html", "Get your own morning paper", "Type in your name, city and top three for the day, see your own one-page morning paper take shape, and send us your request.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),

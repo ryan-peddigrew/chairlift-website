@@ -1,5 +1,5 @@
-// Build your own paper: swaps the visitor's name, city and top three into the sample page.
-// Nothing is saved or sent anywhere, except the city name, which looks up the weather.
+// Get your own paper: the sample page fills in as the visitor types; submitting sends the request to us.
+// The city name is also used (on its own) to look up the weather.
 (function () {
   var form = document.querySelector('[data-try-form]');
   if (!form) return;
@@ -61,7 +61,6 @@
         return '<div class="dp-row"><div class="dp-t">' + esc(t) + '</div><span class="dp-tag">' + tags[i] + '</span><ul><li>' + notes[i] + '</li></ul></div>';
       }).join('');
     }
-    if (city) weather(city);
   }
 
   function mastText() {
@@ -74,19 +73,34 @@
     var size = parseFloat(getComputedStyle(liveMast).fontSize);
     while (liveMast.scrollWidth > liveMast.clientWidth && size > 22) { size -= 2; liveMast.style.fontSize = size + 'px'; }
   }
-  form.addEventListener('input', showLive);
 
+  var cityTimer;
+  form.addEventListener('input', function (e) {
+    showLive();
+    render(false);
+    if (e.target.name === 'city') {
+      clearTimeout(cityTimer);
+      var c = e.target.value.trim();
+      if (c.length > 2) cityTimer = setTimeout(function () { weather(c); }, 700);
+    }
+  });
+
+  var status = form.querySelector('[data-try-status]');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    render();
-    if (after) after.hidden = false;
-    var frame = document.querySelector('.dp-frame');
-    if (press) {
-      press.classList.remove('is-printing');
-      void press.offsetWidth;
-      press.classList.add('is-printing');
-    }
-    if (btn) btn.textContent = 'Print it again';
-    if (window.innerWidth < 900) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    btn.disabled = true;
+    status.textContent = 'Sending…';
+    fetch(form.getAttribute('data-ajax'), { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
+        form.classList.add('form-done');
+        status.textContent = '';
+        if (after) { after.hidden = false; after.querySelector('h3').focus && after.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        status.innerHTML = 'Sorry, that didn\u2019t send. Please try again, or email <a href="mailto:ryan@usechairlift.com">ryan@usechairlift.com</a>.';
+      });
   });
 })();
