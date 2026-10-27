@@ -209,7 +209,7 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 
 /* Mountain first; logo and title arrive on the first scroll */
 .px-hero { min-height: 0; height: 190svh; display: block; padding: 0; overflow: visible; background: #06185F; }
-.px-sky { position: sticky; top: 0; height: 100svh; inset: auto; z-index: 0; }
+.px-sky { position: sticky; top: 0; height: 100svh; z-index: 0; }
 .px-sky .px-scene { position: absolute; inset: 0; }
 .px-stage { position: sticky; top: 0; height: 100svh; margin-top: -100svh; z-index: 2; display: grid; grid-template-rows: auto 1fr auto; padding: 96px 28px 28px; pointer-events: none; }
 .px-stage > * { pointer-events: auto; }
@@ -217,3 +217,5 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-brand { opacity: calc(var(--p, 0) * 4 - .5); transform: scale(calc(1.5 - var(--p, 0) * .5)); filter: blur(calc((1 - var(--p, 0)) * 8px)); }
 .px-hero__foot { opacity: calc(var(--p, 0) * 4 - 1); }
 @media (max-width: 860px) { .px-stage { padding: 88px 18px 22px; } }
+.cta-box, .cta-band .cta-box { background: #07090E; border: 1px solid var(--line); border-radius: 0; }
+.cta-box h2 { font-family: "Anton", sans-serif; font-weight: 400; font-size: clamp(48px, 9vw, 130px); line-height: .95; text-transform: uppercase; }
