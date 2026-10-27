@@ -217,6 +217,7 @@ home = f'''
   <section class="section section--ink" aria-labelledby="plate-title">
     <div class="wrap">
       <div class="intro">
+        <span class="count">01 / 03</span>
         <span class="rule"></span>
         <h2 id="plate-title">What we take off your team's plate.</h2>
         <p>Small on their own. Add them up and it's hours every week.</p>
@@ -234,9 +235,10 @@ home = f'''
     </div>
   </section>
 
-  <section class="section section--soft" aria-labelledby="how-title">
+  <section class="section" aria-labelledby="how-title">
     <div class="wrap">
       <div class="intro">
+        <span class="count">02 / 03</span>
         <span class="rule"></span>
         <h2 id="how-title">Three stops to the top.</h2>
         <p>No big IT project and no jargon. Just a steady climb, one lift at a time.</p>
@@ -248,6 +250,7 @@ home = f'''
   <section class="section section--soft paper-teaser" aria-labelledby="paper-title">
     <div class="wrap paper-split">
       <div>
+        <span class="count">03 / 03</span>
         <span class="rule"></span>
         <h2 id="paper-title">The Daily Peddigrew.</h2>
         <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
@@ -257,7 +260,7 @@ home = f'''
     </div>
   </section>
 
-  <section class="section section--soft" aria-label="A note from our founder">
+  <section class="section founder-section" aria-label="A note from our founder">
     <div class="wrap">
       <div class="founder-card"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div class="founder-card__text"><p class="founder-card__label">A note from our founder</p><p class="founder-card__line">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="founder-card__name">Ryan Peddigrew, Founder</p><a class="link-arrow" href="/who-we-are/">Read our story</a></div></div>
     </div>

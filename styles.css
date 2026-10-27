@@ -856,3 +856,23 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 }
 .ticks li::before { border-radius: 50%; }
 .section--ink .link-arrow::after, .cta-box .link-arrow::after { color: var(--neon); }
+
+/* Elevation: scale, counters, reveal */
+.count { font-size: 13px; font-weight: 600; letter-spacing: .18em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.section--ink .count { color: rgba(255, 255, 255, .6); }
+.intro h2 { font-size: clamp(36px, 6vw, 64px); }
+.intro p { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.4; }
+.founder-card { max-width: 920px; gap: 48px; grid-template-columns: 168px minmax(0, 1fr); }
+.founder-card img { width: 168px; height: 168px; }
+.founder-card__line { font-size: clamp(26px, 4.6vw, 42px); line-height: 1.15; letter-spacing: -.005em; }
+.founder-section { padding-top: 72px; padding-bottom: 72px; }
+@media (max-width: 640px) {
+  .founder-card { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .founder-card img { width: 112px; height: 112px; }
+  .founder-card__line { font-size: 28px; }
+  .founder-section { padding-top: 48px; padding-bottom: 48px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+}
