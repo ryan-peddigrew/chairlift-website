@@ -275,3 +275,21 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .site-header .brand svg { display: inline-block; }
 .site-header .brand span { font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -.005em; text-transform: none; background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #fff; }
 body, main { background: #141B2A; }
+
+/* One family everywhere: Hanken Grotesk (brand). Headings ExtraBold caps, labels SemiBold caps. */
+.mono, .nlabel, .intro-count, .nav a:not(.btn), .px-marq__track span, .count, .px-link, .link-arrow { font-family: "Hanken Grotesk", sans-serif !important; font-weight: 600; letter-spacing: .1em; }
+.px-title, .px-sec h2, .px-h2, .px-stop b, .px-item b, .px-case__big b, .px-case__big span, .slide-band__row span, .px-marqtitle, .px-band__txt, .cta-box h2, .px-word, .px-item h3, .px-stop h3 { font-family: "Hanken Grotesk", sans-serif !important; font-weight: 800 !important; letter-spacing: -.025em !important; }
+.px-marqtitle { font-size: clamp(64px, 11vw, 168px); line-height: 1.02; }
+.px-band__txt { font-size: clamp(46px, 10.5vw, 160px); line-height: .98; }
+.px-sec h2, .px-h2 { font-size: clamp(38px, 7vw, 104px); line-height: .98; }
+.cta-box h2 { font-size: clamp(38px, 7.5vw, 104px); line-height: .98; }
+.px-case__big b { font-size: clamp(44px, 8vw, 112px); }
+.px-case__big span { font-size: clamp(22px, 3.2vw, 44px); }
+.px-stop b, .px-item b { font-size: inherit; }
+.px-word { font-weight: 600 !important; letter-spacing: -.01em !important; text-transform: none; }
+@media (max-width: 860px) { .px-marqtitle { font-size: clamp(54px, 17vw, 100px); } }
+/* Open chrome ring coin: see the clouds through the middle (matches Ryan's reference) */
+.px-edge { -webkit-mask-image: radial-gradient(circle, transparent 0 63%, #000 64%); mask-image: radial-gradient(circle, transparent 0 63%, #000 64%); }
+.px-face { background: none; }
+.px-face::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 20deg, #FFFFFF, #9CA9C4 16%, #FFFFFF 32%, #7B88A6 50%, #F2F6FD 68%, #98A5C0 84%, #FFFFFF); -webkit-mask-image: radial-gradient(circle, transparent 0 66%, #000 67%); mask-image: radial-gradient(circle, transparent 0 66%, #000 67%); }
+.px-face svg { position: relative; width: 56%; height: 46%; filter: drop-shadow(0 4px 6px rgba(10,30,70,.35)); }
