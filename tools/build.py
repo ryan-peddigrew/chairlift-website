@@ -257,13 +257,13 @@ home = f'''
     </div>
   </section>
 
-  <section class="section section--tight" aria-label="A note from our founder">
+  <section class="section section--soft" aria-label="A note from our founder">
     <div class="wrap">
-      <div class="proof-item proof-item--face founder-note"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
+      <div class="founder-card"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div class="founder-card__text"><p class="founder-card__label">A note from our founder</p><p class="founder-card__line">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="founder-card__name">Ryan Peddigrew, Founder</p><a class="link-arrow" href="/who-we-are/">Read our story</a></div></div>
     </div>
   </section>
 
-{task_band()}
+  {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
