@@ -157,7 +157,7 @@ def contact_form():
         <fieldset class="form-step" data-step="2">
           <legend>Tell us about the task.</legend>
           <label class="field"><span>Describe it in a sentence or two</span><textarea name="message" rows="4" required placeholder="A few sentences is plenty: what your business does, and the task everyone wishes would just happen on its own."></textarea></label>
-          <label class="field"><span>Where does it live today? <em>(optional)</em></span><input type="text" name="tools" placeholder="Inbox, spreadsheet, CRM, quoting software"></label>
+          <label class="field"><span>Where does it live today? <em>(optional)</em></span><input type="text" name="tools" placeholder="Inbox, spreadsheet, CRM, quoting tool"></label>
           <p class="field-label">When would you like it handled?</p>
           {pills("timing", ["This month", "Next quarter", "Just exploring"])}
           <div class="form-nav"><button class="btn btn-line" type="button" data-back>Back</button><button class="btn btn-white" type="button" data-next>Next</button></div>

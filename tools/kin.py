@@ -89,5 +89,5 @@ def friction_tags():
     """Optional tags inside the closing 'send us one task' form; they arrive with the email."""
     chips = "".join(
         f'<label class="kn-tag"><input type="checkbox" name="friction" value="{_e(t)}"><span>{_e(t)}</span></label>' for t in TAGS)
-    return f'''<fieldset class="kn-tags"><legend>Where&rsquo;s the heaviest friction? <em>(optional)</em></legend>{chips}</fieldset>
+    return f'''<fieldset class="kn-tags"><legend>Where is the heaviest friction in your business right now? <em>(optional)</em></legend>{chips}</fieldset>
         '''
