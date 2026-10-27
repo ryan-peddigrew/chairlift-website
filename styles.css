@@ -331,7 +331,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 
 /* Home headline: Night Ink up-right arrow */
 .nowrap { white-space: nowrap; }
-.climb-arrow { width: 0.78em; height: 0.78em; margin-left: 0.12em; fill: none; stroke: var(--neon); stroke-width: 3.4; stroke-linecap: square; stroke-linejoin: miter; vertical-align: -0.02em; }
+.climb-arrow { width: 0.72em; height: 0.72em; margin-left: 0.14em; fill: none; stroke: var(--neon); stroke-width: 3.4; stroke-linecap: square; stroke-linejoin: miter; vertical-align: -0.02em; }
 
 /* Hero note: Night Ink check */
 .hero-note::before { content: none; }
@@ -637,7 +637,7 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 
 /* Home hero: words left, before-and-after card right */
 .hero-card--home { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 56px; align-items: center; }
-.hero-card--home h1 { font-size: clamp(40px, 5.4vw, 76px); max-width: none; }
+.hero-card--home h1 { font-size: clamp(40px, 4.9vw, 62px); max-width: none; }
 .hero-card--home .hero-copy { min-width: 0; }
 .proof .wrap { padding-top: 12px; padding-bottom: 12px; }
 @media (max-width: 640px) { .proof .wrap { padding-top: 6px; padding-bottom: 6px; } .hero-card--home h1 { font-size: max(30px, calc((100vw - 68px) / 8.4)); } }
@@ -797,3 +797,4 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .bring { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .bring li { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; font-weight: 600; line-height: 1.35; }
 @media (max-width: 640px) { .bring { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
+.proof-item--face a { display: block; margin-top: 4px; }

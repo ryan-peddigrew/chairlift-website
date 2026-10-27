@@ -194,11 +194,10 @@ home = f'''
         <div class="hero-copy">
         <span class="rule"></span>
         <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people. No outsourcing, no bots.</p>
+        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people. No outsourcing, no bots. Five minutes shows you if there's a fix.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
-        <p class="hero-promise">Five minutes. We'll tell you if there's a practical fix.</p>
         </div>
         <div class="flip" aria-label="Before and after">
           <div class="flip-before"><span class="flip-tag">Before</span><p>A quote went out last week. Nobody followed up.</p></div>
@@ -210,7 +209,7 @@ home = f'''
 
   <section class="proof" aria-label="Who you're dealing with">
     <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>Real people you can call.</strong> Built by our own team, shaped throughout a career in sales. <a href="/who-we-are/">Read our story</a></p></div>
+      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
       <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
       <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
