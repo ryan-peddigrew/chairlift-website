@@ -194,7 +194,7 @@ home = f'''
         <div class="hero-copy">
         <span class="rule"></span>
         <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people, never outsourced, <span class="nowrap">never a bot.</span></p>
+        <p class="lede">We find where your team is losing hours, then build the solution. Follow-ups, inquiries, reporting: off your plate.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
@@ -727,12 +727,13 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
 
 # ---------------------------------------------------------------- Build your own paper
 try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
-    "Type in your name, your city and the three things on your plate today. Your page builds itself in seconds.") + f'''
+    "Type your name, your city and the three things on your plate today. Watch your own page print.") + f'''
   <section class="section section--ink" aria-labelledby="try-title">
     <div class="wrap paper-split try-split">
       <div>
         <span class="rule"></span>
         <h2 id="try-title">Your page, in 10 seconds.</h2>
+        <div class="try-live" aria-hidden="true"><span class="try-live-label">Your masthead</span><div class="try-live-mast" data-try-mast>The Daily Peddigrew</div></div>
         <form class="try-form" data-try-form>
           <div class="field-row">
             <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
@@ -741,7 +742,7 @@ try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
           <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
           <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
           <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
-          <button class="btn btn-white" type="submit">Build my paper</button>
+          <button class="btn btn-white" type="submit" data-try-btn>Print my paper</button>
           <p class="form-fine">Nothing you type is saved or sent to us. Only your city is used, to look up the weather.</p>
         </form>
         <div class="try-after" data-try-after hidden>
@@ -750,7 +751,10 @@ try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
       </div>
-      {PAPER_IMG}
+      <div class="press" data-press>
+        <div class="press-slot" aria-hidden="true"></div>
+        {PAPER_IMG}
+      </div>
     </div>
   </section>
   <script src="/try.js" defer></script>

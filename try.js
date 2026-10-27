@@ -30,8 +30,11 @@
       }).catch(function () {});
   }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  var liveMast = document.querySelector('[data-try-mast]');
+  var press = document.querySelector('[data-press]');
+  var btn = form.querySelector('[data-try-btn]');
+
+  function render() {
     var name = form.elements.name.value.trim();
     var city = form.elements.city.value.trim();
     var items = ['one', 'two', 'three'].map(function (k) { return form.elements[k].value.trim(); }).filter(Boolean);
@@ -59,8 +62,31 @@
       }).join('');
     }
     if (city) weather(city);
+  }
 
+  function mastText() {
+    var name = form.elements.name.value.trim();
+    return name ? 'The Daily ' + name.split(/\s+/).pop() : 'The Daily Peddigrew';
+  }
+  function showLive() {
+    liveMast.textContent = mastText();
+    liveMast.style.fontSize = '';
+    var size = parseFloat(getComputedStyle(liveMast).fontSize);
+    while (liveMast.scrollWidth > liveMast.clientWidth && size > 22) { size -= 2; liveMast.style.fontSize = size + 'px'; }
+  }
+  form.addEventListener('input', showLive);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    render();
     if (after) after.hidden = false;
-    if (window.innerWidth < 900) document.querySelector('.dp-frame').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var frame = document.querySelector('.dp-frame');
+    if (press) {
+      press.classList.remove('is-printing');
+      void press.offsetWidth;
+      press.classList.add('is-printing');
+    }
+    if (btn) btn.textContent = 'Print it again';
+    if (window.innerWidth < 900) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();

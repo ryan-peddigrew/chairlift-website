@@ -792,3 +792,18 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .bring li { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; font-weight: 600; line-height: 1.35; }
 @media (max-width: 640px) { .bring { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
 .proof-item--face a { display: block; margin-top: 4px; }
+
+/* Build your own paper: live masthead, press slot, print-out reveal */
+.try-live { margin-top: 22px; background: #F5F5F3; border-radius: 18px; padding: 14px 16px 10px; text-align: center; overflow: hidden; }
+.try-live-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5B6270; }
+.try-live-mast { font-family: 'UnifrakturMaguntia', serif; font-size: 46px; line-height: 1.15; color: #111; white-space: nowrap; }
+.try-form { margin-top: 18px; }
+.press { position: relative; width: 100%; max-width: 480px; justify-self: center; }
+.press-slot { position: relative; z-index: 2; height: 18px; width: 94%; margin: 0 auto -9px; background: var(--ink-2); border: 1px solid var(--on-ink-line); border-radius: 999px; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35); }
+.press .paper-shot { position: relative; z-index: 1; }
+@keyframes print-out { from { clip-path: inset(0 0 100% 0); transform: translateY(-36px); } to { clip-path: inset(0 0 0 0); transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .press.is-printing .dp-frame { animation: print-out 1.9s steps(32, end) both; }
+}
+@media (min-width: 901px) { .try-split .press { position: sticky; top: 108px; } }
+@media (max-width: 640px) { .try-live-mast { font-size: 38px; } }

@@ -60,7 +60,7 @@
         <span class="rule"></span>
         <span class="eyebrow">The Daily Peddigrew</span>
         <h1>Build your own morning paper.</h1>
-        <p class="lede">Type in your name, your city and the three things on your plate today. Your page builds itself in seconds.</p>
+        <p class="lede">Type your name, your city and the three things on your plate today. Watch your own page print.</p>
       </div>
     </div>
   </section>
@@ -70,6 +70,7 @@
       <div>
         <span class="rule"></span>
         <h2 id="try-title">Your page, in 10 seconds<span class="dot">.</span></h2>
+        <div class="try-live" aria-hidden="true"><span class="try-live-label">Your masthead</span><div class="try-live-mast" data-try-mast>The Daily Peddigrew</div></div>
         <form class="try-form" data-try-form>
           <div class="field-row">
             <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
@@ -78,7 +79,7 @@
           <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
           <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
           <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
-          <button class="btn btn-white" type="submit">Build my paper</button>
+          <button class="btn btn-white" type="submit" data-try-btn>Print my paper</button>
           <p class="form-fine">Nothing you type is saved or sent to us. Only your city is used, to look up the weather.</p>
         </form>
         <div class="try-after" data-try-after hidden>
@@ -87,7 +88,9 @@
           <a class="btn btn-white" href="/5min/">Start a conversation</a>
         </div>
       </div>
-      <figure class="paper-shot">
+      <div class="press" data-press>
+        <div class="press-slot" aria-hidden="true"></div>
+        <figure class="paper-shot">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
         <link rel="stylesheet" href="/paper.css">
         <script src="/paper.js" defer></script>
@@ -120,6 +123,7 @@
         </div>
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>
+      </div>
     </div>
   </section>
   <script src="/try.js" defer></script>
