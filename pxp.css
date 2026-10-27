@@ -918,3 +918,12 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover, html body:has(.pc
 .pc-photo::-webkit-media-controls-start-playback-button, .pc-band__vid::-webkit-media-controls-start-playback-button,
 .pc-photo::-webkit-media-controls-overlay-play-button, .pc-band__vid::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; opacity: 0 !important; }
 .pc-photo, .pc-band__vid { pointer-events: none; }
+
+/* Home intro option (?intro=1): logo alone over a greyed sky, no menu, no headline. Lifts away on the first scroll, touch or mouse move. */
+.site-header { transition: transform .9s cubic-bezier(.2,.8,.2,1) .25s, opacity .9s ease .25s; }
+.pc-sky::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(12,16,24,.5); backdrop-filter: grayscale(1); -webkit-backdrop-filter: grayscale(1); opacity: 0; transition: opacity 1.2s ease; }
+.pc-story, .pc-word { transition: opacity .9s ease .35s; }
+html.px-intro .site-header { transform: translateY(-110%); opacity: 0; }
+html.px-intro .pc-sky::after { opacity: 1; }
+html.px-intro .pc-story, html.px-intro .pc-word { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .site-header, .pc-sky, .pc-story, .pc-word { transition: none; } }

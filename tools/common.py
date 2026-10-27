@@ -24,6 +24,11 @@ NAV = [
 ]
 
 
+# home intro option for review (?intro=1): only the spinning logo over a greyed sky until the first scroll, touch or mouse move
+INTRO_JS = """
+<script>try{if(/[?&]intro=1/.test(location.search)&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>"""
+
+
 def head(title, desc, path, noindex=False):
     full = f"{title}" if title.startswith("Chairlift") else f"{title} · Chairlift"
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
@@ -55,7 +60,7 @@ def head(title, desc, path, noindex=False):
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/pxp.css">
+<link rel="stylesheet" href="/pxp.css">{INTRO_JS if path == "/" else ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

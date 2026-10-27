@@ -134,7 +134,8 @@ if (host) {
       if (ring) ring.rotation.y = reduce ? 0 : ringSpin;
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
         const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
-        const o = Math.max(0, 1 - p / 0.25); wordMat.opacity = o; word.visible = o > 0.01;
+        const io = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--in')) || 0;   // intro screen: logo only, the word arrives after it
+        const o = Math.max(0, 1 - p / 0.25) * (1 - io); wordMat.opacity = o; word.visible = o > 0.01;
       }
       const flip = moving && !reduce ? -ease(Math.min(1, dkNow / 0.95)) * Math.PI * 2 : 0;   // one forward flip on the way into the top bar
       emblem.rotation.x = reduce ? 0 : flip + (docked || moving ? 0 : Math.sin(now / 2600) * 0.08);
