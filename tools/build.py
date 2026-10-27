@@ -209,7 +209,6 @@ home = f'''
 
   <section class="proof" aria-label="Who you're dealing with">
     <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
       <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
       <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
@@ -252,13 +251,19 @@ home = f'''
         <span class="rule"></span>
         <h2 id="paper-title">The Daily Peddigrew.</h2>
         <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
-        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
+        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in minutes</a></p>
       </div>
       {PAPER_IMG}
     </div>
   </section>
 
-{task_band()}
+  <section class="section section--soft" aria-label="A note from our founder">
+    <div class="wrap">
+      <div class="founder-card"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><div class="founder-card__text"><p class="founder-card__label">A note from our founder</p><p class="founder-card__line">We built Chairlift so great teams stop losing their best hours to admin.</p><p class="founder-card__name">Ryan Peddigrew, Founder</p><a class="link-arrow" href="/who-we-are/">Read our story</a></div></div>
+    </div>
+  </section>
+
+  {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
