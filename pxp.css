@@ -813,3 +813,57 @@ body:has(.pc-hero, .hdr-px) .site-header .menu-label { display: inline !importan
   html body:has(.pc-hero, .hdr-px) .hdr-cta { order: 3; }
   body:has(.pc-hero, .hdr-px) .hdr-dash { flex: 1; order: 2; }
 }
+
+/* ---------- round 15: spinning logo + wordmark centred in the top bar on every page ---------- */
+.hdr-gl { display: inline-block; width: 46px; height: 46px; margin: -8px -6px -8px -8px; flex: none; }
+.hdr-gl .pc-gl { width: 100%; height: 100%; display: block; }
+html.logo-docked .site-header .brand svg { display: none; }
+body:has(.pc-hero) .site-header .brand svg { display: block; }
+html.logo-docked body:has(.pc-hero) .site-header .brand svg { display: block; visibility: hidden; }
+html body:has(.pc-hero, .hdr-px) .site-header .brand { display: inline-flex !important; align-items: center; position: absolute !important; left: 50% !important; top: 50%; transform: translate(-50%, -50%) !important; min-height: 44px; gap: 10px; order: 0; }
+html body:has(.pc-hero, .hdr-px) .site-header .brand span { font-size: 19px; }
+html body:has(.pc-hero, .hdr-px) .site-header .nav { order: 0 !important; }
+html body:has(.pc-hero, .hdr-px) .hdr-dash { flex: 1; order: 1 !important; }
+html body:has(.pc-hero, .hdr-px) .hdr-cta { order: 2 !important; }
+@media (max-width: 860px) {
+  html body:has(.pc-hero, .hdr-px) .site-header .brand { gap: 6px; }
+  html body:has(.pc-hero, .hdr-px) .site-header .brand span { font-size: 16px; }
+  .hdr-gl { width: 38px; height: 38px; }
+  html body:has(.pc-hero) .site-header .brand svg { width: 22px; height: 22px; }
+}
+
+/* ---------- round 16: darker hero so the logo pops; header is just Menu | ring | Take the lift ---------- */
+.pc-hero .pc-shade { background: linear-gradient(180deg, rgba(20,27,42,.6) 0%, rgba(20,27,42,.42) 35%, rgba(20,27,42,.5) 70%, rgba(20,27,42,.88) 100%); }
+.pc-logo .pc-gl { filter: drop-shadow(0 10px 28px rgba(0,0,0,.75)) drop-shadow(0 2px 4px rgba(0,0,0,.7)); }
+html body:has(.pc-hero, .hdr-px) .site-header .brand span { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html body:has(.pc-hero, .hdr-px) .site-header .brand { gap: 0; }
+html body:has(.pc-hero) .site-header .brand svg { width: 34px; height: 34px; }
+.hdr-gl { width: 52px; height: 52px; margin: -10px; }
+@media (max-width: 860px) {
+  html body:has(.pc-hero) .site-header .brand svg { width: 30px; height: 30px; }
+  .hdr-gl { width: 46px; height: 46px; margin: -8px; }
+}
+
+/* ---------- round 17: bigger landing logo, tight hero group, thin V cue, no dead pinned scroll ---------- */
+.pc-hero { height: 100svh; }
+.pc-pin { height: 100svh; }
+.pc-logo { width: clamp(320px, 30vw, 430px); height: clamp(320px, 30vw, 430px); }
+@media (max-width: 860px) { .pc-logo { width: min(80vw, 340px); height: min(80vw, 340px); } }
+.pc-stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 42% at 50% 42%, rgba(10,14,24,.5), rgba(10,14,24,0) 70%); opacity: calc(1 - var(--p, 0) * 1.6); }
+.pc-capbar { top: calc(var(--lb, 62svh) + 6px); bottom: auto; }
+.pc-capbar .pc-tag { font-size: clamp(30px, 3.4vw, 50px); text-shadow: 0 2px 20px rgba(0,0,0,.55); }
+@media (max-width: 860px) { .pc-capbar { bottom: auto; } .pc-capbar .pc-tag { font-size: 30px; } }
+.pc-scrollhint { bottom: 5svh; opacity: calc(.85 - var(--p, 0) * 3); }
+.pc-chev { display: block; width: 30px; height: 17px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); animation: pcbob 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .pc-chev { animation: none; } }
+/* the sky eases back and darkens as the next section slides up over it */
+.pc-sky { transform: scale(calc(1 + var(--p, 0) * .06)); filter: brightness(calc(1 - var(--p, 0) * .35)); transform-origin: 50% 40%; }
+/* the intro no longer pins (its text is fully lit), so scrolling flows straight on */
+.pc-sec--scrub, .pc-pinscrub { height: auto !important; padding: clamp(56px, 8vw, 110px) 0 clamp(24px, 4vw, 48px) !important; }
+.pc-scrub__pin { position: static !important; height: auto !important; padding-top: 0 !important; display: block; }
+.pc-sec { padding: clamp(52px, 7.5vw, 110px) 0; }
+[data-scrub] .w { opacity: 1 !important; color: inherit; }
+.pc-scrub__pin .pc-lead, .pc-scrub__pin .pc-lead .w { color: #fff; }
+.pc-scrub__pin .pc-lead--soft .nx, .pc-scrub__pin .pc-lead--soft .nx .w { color: #3DFFC1; opacity: 1 !important; }
+.pc-sec--introrest { padding-top: 0 !important; }
+.pc-sec--introrest .pc-cols { margin-top: 8px; }

@@ -3,7 +3,13 @@ import * as THREE from 'three';
 import { FontLoader } from '/vendor/FontLoader.js';
 import { TextGeometry } from '/vendor/TextGeometry.js';
 
-const host = document.querySelector('.pc-logo');
+// home: the big landing logo (.pc-logo). Every other page: a small spinning logo in the middle of the top bar.
+let host = document.querySelector('.pc-logo');
+const mini = !host;
+if (mini) {
+  const brand = document.querySelector('.site-header .brand');
+  if (brand) { host = document.createElement('span'); host.className = 'hdr-gl'; host.setAttribute('aria-hidden', 'true'); brand.insertBefore(host, brand.firstChild); }
+}
 if (host) {
   try {
     const canvas = document.createElement('canvas');
@@ -26,7 +32,7 @@ if (host) {
     strip(18, 5, 0, 11, 6, 3.2); strip(4, 14, -12, 1, 4, 2.2); strip(3, 12, 12, -1, 2, 1.8); strip(12, 3, 0, -6, 10, 1.4); strip(8, 8, 0, 3, -14, 1.2);
     scene.environment = pmrem.fromScene(studio, 0).texture;
     const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
-    camera.position.set(0, -0.4, 7.1);
+    camera.position.set(0, mini ? 0 : -0.4, mini ? 5.6 : 7.1);
 
     const steel = new THREE.MeshPhysicalMaterial({ color: 0xdfe5ef, metalness: 0.9, roughness: 0.3, clearcoat: 0, envMapIntensity: 0.85 });
     const neon = new THREE.MeshPhysicalMaterial({ color: 0x3dffc1, metalness: 0.7, roughness: 0.34, envMapIntensity: 0.8 });
@@ -72,15 +78,15 @@ if (host) {
       emblem.add(inner, new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel));
     }
     emblem.scale.setScalar(0.72);
-    const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xc9d1de, emissiveIntensity: 0.45, metalness: 0.45, roughness: 0.2, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
+    const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.7, metalness: 0.3, roughness: 0.25, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
     let word = null;
     // "Chairlift" in extruded satin metal under the ring, held still
-    fetch('/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
+    if (!mini) fetch('/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
       const geo = new TextGeometry('Chairlift', { font: new FontLoader().parse(data), size: 0.62, height: 0.07, curveSegments: 12, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.004, bevelSegments: 3 });
       geo.center();
       word = new THREE.Mesh(geo, wordMat);
-      word.scale.setScalar(0.72);
-      word.position.set(0, -1.4, 0);
+      word.scale.setScalar(0.92);
+      word.position.set(0, -1.48, 0);
       scene.add(word);
     }).catch(() => {});
     scene.add(emblem);
@@ -110,7 +116,9 @@ if (host) {
         const o = Math.max(0, 1 - p / 0.25); wordMat.opacity = o; word.visible = o > 0.01;
         camera.position.y = -0.4 * o;               // word fades as the ring docks into the top bar; re-centre the ring
       }
-      emblem.rotation.x = reduce ? 0 : Math.sin(now / 2600) * 0.08;
+      const dk = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dk')) || 0;
+      const flip = !mini && !reduce ? -ease(Math.min(1, dk / 0.9)) * Math.PI * 2 : 0;   // ring flips over once as it flies up into the top bar
+      emblem.rotation.x = (reduce ? 0 : Math.sin(now / 2600) * 0.08) + flip;
       renderer.render(scene, camera);
     };
     requestAnimationFrame(frame);

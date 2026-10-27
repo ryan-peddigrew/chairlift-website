@@ -8,6 +8,7 @@
   var logo = hero && hero.querySelector('.pc-logo');
   var word = hero && hero.querySelector('.pc-word');
   var stage = hero && hero.querySelector('.pc-stage');
+  if (logo) document.body.appendChild(logo);   // lift the landing logo out of the hero so it can stay docked in the top bar
   var ticking = false;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sps = [].slice.call(document.querySelectorAll('.pc-hero ~ section, .pc-hero ~ .pc-band, .paper-split, .retro--wide, .pc-ridge'));
@@ -109,7 +110,7 @@
     var vh = window.innerHeight, vw = window.innerWidth;
     if (hero) {
       root.classList.toggle('over-hero', hero.getBoundingClientRect().bottom > 70);
-      var p = clamp(window.scrollY / Math.max(1, hero.offsetHeight - vh));
+      var p = clamp(window.scrollY / (vh * .6));   // logo flies up over the first ~half screen of scroll
       root.style.setProperty('--p', p.toFixed(3));
       if (logo && word && stage) {
         var S0 = logo.offsetWidth;
@@ -117,7 +118,8 @@
         var inner = word.querySelector('span[aria-hidden]') || word;
         var wr = inner.getBoundingClientRect();
         var S1 = Math.max(90, word.offsetHeight * 1.9);
-        var cx0 = vw / 2, cy0 = vh / 2 - 40;
+        var cx0 = vw / 2, cy0 = vh * (vw < 861 ? .4 : .42);
+        root.style.setProperty('--lb', (cy0 + S0 * .5).toFixed(0) + 'px');   // tagline sits right under the wordmark
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
         var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
         // landing logo docks into the top bar as you scroll (PX-style), then keeps spinning there
