@@ -391,3 +391,11 @@ body:has(.pc-hero) .site-header { position: fixed; }
 /* home hero on reel 1 footage, with the small refined word from mock-up C */
 .pcv-e .pc-photo--reel { object-position: 50% 40%; filter: saturate(.85) brightness(1.02); }
 .pcv-e .pc-sky::after { background: linear-gradient(180deg, rgba(20,27,42,.25), rgba(20,27,42,0) 45%, rgba(20,27,42,.45)); }
+
+/* top bar: white text, static booking link instead of the scrolling strip */
+.hdr-cta { display: none; }
+body:has(.pc-hero) .hdr-cta { display: inline-flex; align-items: center; order: 3; min-height: 44px; font-family: var(--px-mono); font-weight: 400; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #fff; text-decoration: none; white-space: nowrap; }
+body:has(.pc-hero) .hdr-cta:hover { text-decoration: underline; }
+body:has(.pc-hero) .site-header .menu-btn, body:has(.pc-hero) .site-header .menu-btn .menu-label { color: #fff; }
+body:has(.pc-hero) .hdr-dash { border-top-color: rgba(255,255,255,.7); }
+@media (max-width: 860px) { body:has(.pc-hero) .hdr-cta { font-size: 11px; letter-spacing: .06em; } }

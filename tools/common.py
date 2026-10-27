@@ -71,7 +71,7 @@ def header(active=None):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
-    <span class="hdr-dash" aria-hidden="true"></span><span class="hdr-mq" aria-hidden="true"><span class="hdr-mq__t">● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; ● Chairlift &nbsp; </span></span>
+    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Start a conversation <span aria-hidden="true">&#8599;</span></a>
     <nav class="nav" aria-label="Main">
 {desk}
       <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Start a conversation</a>
