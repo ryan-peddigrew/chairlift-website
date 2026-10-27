@@ -135,7 +135,7 @@
         var S1 = Math.max(90, word.offsetHeight * 1.9);
         var cx0 = vw / 2, cy0 = vh / 2 - 40;
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
-        var cy1 = word.getBoundingClientRect().bottom - sr.top - S1 / 2 + S1 * .1 - 3;
+        var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
         var e = ease(clamp((p - .08) / .62));
         var cx = cx0 + (cx1 - cx0) * e, cy = cy0 + (cy1 - cy0) * e;
         var s = 1 + (S1 / S0 - 1) * e;
