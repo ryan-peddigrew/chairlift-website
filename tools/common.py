@@ -71,7 +71,7 @@ def header(active=None):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
-    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Start a conversation <span aria-hidden="true">&#8599;</span></a>
+    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Start a conversation <i class="ar" aria-hidden="true"></i></a>
     <nav class="nav" aria-label="Main">
 {desk}
       <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Start a conversation</a>
@@ -220,6 +220,11 @@ PAGE_TONE = {"What we do": ("002", "dark"), "How it works": ("003", "blue"), "In
              "Five minutes. No pitch.": ("010", "grey")}
 
 
+_TILE_SETS = [("lodge-01", "retro--color", "Double chair", "lodge-05", "", "Tower 5"), ("lodge-12", "retro--color", "Race day", "lodge-04", "", "Lift line"), ("lodge-10", "retro--color", "Base lodge", "lodge-14", "retro--color", "Mountain hotel"), ("lodge-13", "retro--color", "Mountain hotel", "lodge-11", "retro--color", "First tracks")]
+def _tiles(seed):
+    a, ac, al, b, bc, bl = _TILE_SETS[sum(map(ord, seed)) % len(_TILE_SETS)]
+    return f'<div class="pg-tiles" aria-hidden="true"><span class="retro {ac}" style="background-image:url(/images/retro/{a}.jpg)"><em>{al}</em></span><span class="retro {bc}" style="background-image:url(/images/retro/{b}.jpg)"><em>{bl}</em></span></div>'
+
 def page_hero(eyebrow, title, lede, extra=""):
     num, tone = PAGE_TONE.get(eyebrow, ("011", "dark"))
     big = eyebrow if eyebrow in PAGE_TONE else title
@@ -230,8 +235,8 @@ def page_hero(eyebrow, title, lede, extra=""):
   <section class="hero hero--page pg pg--{tone}">
     <div class="pg-wrap">
       <h1 class="pg-title">{big}<i>.</i></h1>
-      <div class="pg-cap"><span class="pg-arrow" aria-hidden="true">→</span><div><p class="pg-line">{cap}</p>{sub}</div></div>{extra}
-      <div class="pg-tiles" aria-hidden="true"><span style="background-image:url(/images/alps-blue.jpg)"></span><span style="background-image:url(/images/alps-peaks.jpg)"></span></div>
+      <div class="pg-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><div><p class="pg-line">{cap}</p>{sub}</div></div>{extra}
+      {_tiles(title)}
     </div>
   </section>
 '''

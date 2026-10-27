@@ -21,13 +21,13 @@ if (host) {
     }));
     studio.add(dome);
     const strip = (w, h, x, y, z, i) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(i, i, i), side: THREE.DoubleSide })); m.position.set(x, y, z); m.lookAt(0, 0, 0); studio.add(m); };
-    strip(14, 1.2, 0, 11, 6, 9); strip(1.4, 12, -12, 1, 4, 7); strip(1.0, 10, 12, -1, 2, 6); strip(10, .8, 0, -6, 10, 4); strip(6, 6, 0, 3, -14, 3);
+    strip(18, 5, 0, 11, 6, 3.2); strip(4, 14, -12, 1, 4, 2.2); strip(3, 12, 12, -1, 2, 1.8); strip(12, 3, 0, -6, 10, 1.4); strip(8, 8, 0, 3, -14, 1.2);
     scene.environment = pmrem.fromScene(studio, 0).texture;
     const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
     camera.position.set(0, 0, 6.2);
 
-    const steel = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 1, roughness: 0.04, clearcoat: 0, envMapIntensity: 1.15 });
-    const neon = new THREE.MeshPhysicalMaterial({ color: 0x3dffc1, metalness: 1, roughness: 0.05, envMapIntensity: 1.25 });
+    const steel = new THREE.MeshPhysicalMaterial({ color: 0xdfe5ef, metalness: 0.9, roughness: 0.3, clearcoat: 0, envMapIntensity: 0.85 });
+    const neon = new THREE.MeshPhysicalMaterial({ color: 0x3dffc1, metalness: 0.7, roughness: 0.34, envMapIntensity: 0.8 });
     const dark = new THREE.MeshPhysicalMaterial({ color: 0x1a2232, metalness: 0.85, roughness: 0.55, envMapIntensity: 0.8 });
     const bevel = (d, t) => ({ depth: d, bevelEnabled: true, bevelThickness: t, bevelSize: t, bevelOffset: 0, bevelSegments: 12, curveSegments: 72 });
 
