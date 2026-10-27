@@ -215,18 +215,35 @@ def _peaks(pts):
     return out
 
 
-def _mountains(seed, base, amp, fill_top, fill_bot, snow_amt, gid, haze=0.0, rough=.56):
-    """Rock-lit ridge with noisy snow cover fading down from the summits."""
-    pts = _ridge(seed, 7, 1440, base, amp, rough)
+def _mountains(seed, base, amp, fill_top, fill_bot, lit, shade, snow, gid, haze=0.0, caps=True):
+    pts = _ridge(seed, 6, 1440, base, amp, .56)
     H = 700
     top = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
-    poly = f"0,{H} {top} 1440,{H}"
-    y0 = base - amp * 1.3
     out = [f'<linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{fill_top}"/><stop offset="1" stop-color="{fill_bot}"/></linearGradient>']
-    out.append(f'<mask id="{gid}m" maskUnits="userSpaceOnUse" x="0" y="{y0:.0f}" width="1440" height="{amp * 2.6:.0f}"><rect x="0" y="{y0:.0f}" width="1440" height="{amp * 2.6:.0f}" fill="url(#snowfade)"/></mask>')
-    out.append(f'<polygon points="{poly}" fill="url(#{gid})" filter="url(#rock)"/>')
-    if snow_amt:
-        out.append(f'<g opacity="{snow_amt}" mask="url(#{gid}m)"><polygon points="{poly}" fill="#fff" filter="url(#snowf)"/></g>')
+    out.append(f'<polygon points="0,{H} {top} 1440,{H}" fill="url(#{gid})"/>')
+    for i in _peaks(pts):
+        px, py = pts[i]
+        # find neighbouring valleys
+        l = i
+        while l > 0 and pts[l - 1][1] >= pts[l][1]:
+            l -= 1
+        r = i
+        while r < len(pts) - 1 and pts[r + 1][1] >= pts[r][1]:
+            r += 1
+        lx, ly = pts[l]
+        rx, ry = pts[r]
+        if py > base - amp * .25:
+            continue
+        # shadow face: right side of peak, snaking down the ridge
+        out.append(f'<polygon points="{px:.0f},{py:.0f} {rx:.0f},{ry:.0f} {px + (rx - px) * .25:.0f},{ry + 30:.0f}" fill="{shade}" opacity=".4"/>')
+        out.append(f'<polygon points="{px:.0f},{py:.0f} {lx:.0f},{ly:.0f} {px - (px - lx) * .2:.0f},{ly + 20:.0f}" fill="{lit}" opacity=".22"/>')
+        if caps:
+            t = .3
+            a = (px + (lx - px) * t, py + (ly - py) * t)
+            b = (px + (rx - px) * t, py + (ry - py) * t)
+            mid1 = (px + (lx - px) * t * .6, py + (ly - py) * t * .6 + 26)
+            mid2 = (px + (rx - px) * t * .55, py + (ry - py) * t * .55 + 34)
+            out.append(f'<polygon points="{px:.0f},{py:.0f} {b[0]:.0f},{b[1]:.0f} {mid2[0]:.0f},{mid2[1]:.0f} {px + 6:.0f},{py + (b[1] - py) * .75:.0f} {mid1[0]:.0f},{mid1[1]:.0f} {a[0]:.0f},{a[1]:.0f}" fill="{snow}"/>')
     if haze:
         out.append(f'<rect y="{base - amp}" width="1440" height="{amp * 2.4:.0f}" fill="url(#hz)" opacity="{haze}"/>')
     return "".join(out)
@@ -238,9 +255,6 @@ PX_SCENE = (
     '<filter id="cl1" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".0045 .011" numOctaves="5" seed="11"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 2.1 -.82"/></filter>'
     '<filter id="cl2" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".007 .016" numOctaves="5" seed="4"/><feColorMatrix values="0 0 0 0 .93  0 0 0 0 .96  0 0 0 0 1  0 0 0 1.9 -.7"/></filter>'
     '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06185F"/><stop offset=".35" stop-color="#1B54C4"/><stop offset=".7" stop-color="#6FA9E8"/><stop offset="1" stop-color="#CFE5F8"/></linearGradient>'
-    '<filter id="rock" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".034 .009" numOctaves="6" seed="5" result="n"/><feDiffuseLighting in="n" lighting-color="#ffffff" surfaceScale="11" diffuseConstant="1.2" result="l"><feDistantLight azimuth="235" elevation="34"/></feDiffuseLighting><feComposite in="l" in2="SourceAlpha" operator="in" result="lit"/><feBlend in="lit" in2="SourceGraphic" mode="multiply"/></filter>'
-    '<filter id="snowf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".03 .012" numOctaves="5" seed="8" result="n2"/><feColorMatrix in="n2" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 9 -4.1" result="blot"/><feComposite in="blot" in2="SourceAlpha" operator="in"/></filter>'
-    '<linearGradient id="snowfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".0"/></linearGradient>'
     '<linearGradient id="hz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCEBFA" stop-opacity="0"/><stop offset=".6" stop-color="#DCEBFA" stop-opacity=".9"/><stop offset="1" stop-color="#DCEBFA" stop-opacity="0"/></linearGradient>'
     '<radialGradient id="sunglow"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".12" stop-color="#EAFFF7"/><stop offset=".3" stop-color="#DFFFF4" stop-opacity=".45"/><stop offset="1" stop-color="#3DFFC1" stop-opacity="0"/></radialGradient>'
     '</defs>'
@@ -248,9 +262,9 @@ PX_SCENE = (
     '<g class="px-clouds px-clouds--a"><rect x="-300" y="-200" width="2040" height="760" filter="url(#cl1)" opacity=".95"/></g>'
     '<g class="px-clouds px-clouds--b"><rect x="-300" y="-100" width="2040" height="760" filter="url(#cl2)" opacity=".7"/></g>'
     '<g class="px-sun" data-speed="-.06"><circle cx="1050" cy="360" r="330" fill="url(#sunglow)"/></g>'
-    '<g data-speed=".03">' + _mountains(3, 400, 150, "#9FB3CC", "#7C8FAA", 1, "m1", haze=.5) + '</g>'
-    '<g data-speed=".08">' + _mountains(9, 490, 150, "#6F7F99", "#46556F", 1, "m2", haze=.3) + '</g>'
-    '<g data-speed=".14">' + _mountains(21, 590, 90, "#2A3550", "#0B1220", .5, "m3") + '</g>'
+    '<g data-speed=".03">' + _mountains(3, 420, 150, "#B3CCE8", "#6F94C6", "#FFFFFF", "#4D6FA3", "#FFFFFF", "m1", haze=.55) + '</g>'
+    '<g data-speed=".08">' + _mountains(9, 500, 140, "#6B8DBF", "#2F4B7E", "#C8DCF5", "#14244B", "#F4F9FF", "m2", haze=.35) + '</g>'
+    '<g data-speed=".14">' + _mountains(21, 585, 90, "#1E2D55", "#0B1220", "#6F8FC9", "#050A14", "#E7F1FF", "m3") + '</g>'
     '</svg>'
 )
 
@@ -266,15 +280,16 @@ CHROME_EMBLEM = (
 )
 
 home = f'''
+  <div class="scanlines" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
   <section class="px-hero" aria-label="Chairlift">
     <div class="px-sky" aria-hidden="true">{PX_SCENE}<canvas class="snow"></canvas></div>
-    <div class="px-stage">
-    <h1 class="px-marqtitle"><span class="sr-only">Less busywork. More business.</span><span class="px-marqtitle__track" aria-hidden="true"><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span></span></h1>
-    <div class="px-brand" aria-hidden="true">{CHROME_EMBLEM}</div>
+    <div class="px-hero__top"><p class="mono">V.02 ———— WELCOME TO CHAIRLIFT. THE LODGE IS OPEN. WE FIND THE BUSYWORK, THEN BUILD THE FIX.</p></div>
+    <div class="px-brand" aria-hidden="true">{CHROME_EMBLEM}<span class="px-word">Chairlift</span></div>
+    <h1 class="px-title"><span class="px-line" data-slide="-1">Less busywork.</span><span class="px-line px-line--out" data-slide="1">More business.{ARROW}</span></h1>
+    <div class="px-marq" aria-hidden="true"><div class="px-marq__track"><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span><span>● We find the busywork</span><span>● Then build the fix</span></div></div>
     <div class="px-hero__foot">
       <a class="px-tile" href="#intro"><span class="px-tile__img" aria-hidden="true"></span><span class="mono">SCROLL DOWN TO RIDE THE LIFT</span></a>
-      <div class="px-hero__cta"><p class="mono">WE FIND THE WORK SLOWING YOUR TEAM DOWN, THEN BUILD THE FIX.</p><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>
-    </div>
+      <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
     </div>
   </section>
 

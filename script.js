@@ -106,17 +106,15 @@
   var lines = hero.querySelectorAll('[data-slide]'), layers = hero.querySelectorAll('[data-speed]');
   var big = document.querySelector('[data-lit]');
   if (big) {
-    var seenEnd = false;
-    big.innerHTML = big.textContent.trim().split(/\s+/).map(function (w) { var c = seenEnd ? 'w neon' : 'w'; if (/[.!?]$/.test(w)) seenEnd = true; return '<span class="' + c + '">' + w + '</span>'; }).join(' ');
+    big.innerHTML = big.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
   }
   var words = big ? big.querySelectorAll('.w') : [];
   function frame() {
     var y = window.scrollY, h = window.innerHeight;
-    hero.style.setProperty('--p', Math.max(0, Math.min(1, y / (h * .5))).toFixed(3));
     if (!reduce) {
       var p = Math.min(1, y / h);
       lines.forEach(function (l) { l.style.transform = 'translateX(' + (l.dataset.slide * p * 22) + 'vw)'; });
-      layers.forEach(function (l) { l.style.transform = 'translateY(' + (Math.min(y, h) * l.dataset.speed * .5) + 'px)'; });
+      layers.forEach(function (l) { l.style.transform = 'translateY(' + (-y * l.dataset.speed) + 'px)'; });
     }
     if (words.length) {
       var r = big.getBoundingClientRect(), t = Math.max(0, Math.min(1, (h * .85 - r.top) / (r.height + h * .3)));
@@ -138,7 +136,7 @@
     var ctx = cv.getContext('2d'), w, hh, ps = [];
     var size = function () { var r = cv.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2); w = r.width; hh = r.height; cv.width = w * d; cv.height = hh * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
     size(); window.addEventListener('resize', size);
-    for (var i = 0; i < 26; i++) ps.push({ x: Math.random() * w, y: Math.random() * hh, r: .8 + Math.random() * 3, v: .3 + Math.random() * 1, d: Math.random() * 6 });
+    for (var i = 0; i < 80; i++) ps.push({ x: Math.random() * w, y: Math.random() * hh, r: .8 + Math.random() * 3, v: .3 + Math.random() * 1, d: Math.random() * 6 });
     var draw = function (t) {
       ctx.clearRect(0, 0, w, hh); ctx.fillStyle = '#fff';
       ps.forEach(function (p) { ctx.globalAlpha = .3 + p.r / 5; ctx.beginPath(); ctx.arc(p.x + Math.sin(t / 900 + p.d) * 14, p.y, p.r, 0, 6.3); ctx.fill(); if (!reduce) { p.y += p.v; p.x -= p.v * .5; if (p.y > hh) { p.y = -4; p.x = Math.random() * w + 80; } if (p.x < -10) p.x = w; } });
