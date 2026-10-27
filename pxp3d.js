@@ -83,7 +83,7 @@ if (host) {
     let word = null;
     // "Chairlift" in extruded satin metal under the ring, held still
     // ?wfont=<name> previews another typeface for the word (vendor/w-<name>.json), fitted to the same width
-    const wfont = (new URLSearchParams(location.search).get('wfont') || '').replace(/[^a-z0-9]/g, '');
+    const wfont = (new URLSearchParams(location.search).get('wfont') || 'michroma').replace(/[^a-z0-9]/g, '');   // Michroma chosen 2026-10-27
     if (!mini) fetch(wfont ? '/vendor/w-' + wfont + '.json' : '/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
       const font = new FontLoader().parse(data), size = 0.62, track = wfont ? 0.02 : 0.032;   // letters set one by one with a little air, so f and t never touch
       word = new THREE.Group();

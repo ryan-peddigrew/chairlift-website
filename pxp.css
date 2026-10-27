@@ -927,3 +927,24 @@ html.px-intro .site-header { transform: translateY(-110%); opacity: 0; }
 html.px-intro .pc-sky::after { opacity: 1; }
 html.px-intro .pc-story, html.px-intro .pc-word { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .site-header, .pc-sky, .pc-story, .pc-word { transition: none; } }
+
+/* Display type matches the 3D wordmark (Michroma, chosen 2026-10-27): wide, engineered, one weight.
+   It runs much wider than Archivo, so sizes drop and the tight tracking opens back up. */
+:root { --px-display: "Michroma", "Archivo", "Helvetica Neue", Arial, sans-serif; }
+.pc-story__tag, .sx-title, .pg-title, .hero--page h1.pg-title, .pc-h2, .pc-capbar .pc-tag, .patrol h2, .ticket__big, .pc-lift,
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta {
+  font-family: var(--px-display) !important; font-weight: 400 !important; font-variation-settings: normal; font-synthesis: none; }
+.pc-story__tag { font-size: clamp(24px, 2.5vw, 38px); line-height: 1.22; letter-spacing: -.01em; }
+.sx-title, .hero--page h1.pg-title, .pg-title { font-size: clamp(34px, 7.4vw, 116px); line-height: 1; letter-spacing: -.03em; }
+.pc-h2 { font-size: clamp(30px, 5vw, 76px); line-height: 1.04; letter-spacing: -.025em; }
+.pc-capbar .pc-tag { font-size: clamp(22px, 3.2vw, 44px); letter-spacing: -.01em; }
+.patrol h2 { font-size: clamp(24px, 3.6vw, 50px); line-height: 1.05; letter-spacing: -.02em; }
+.ticket__big { font-size: clamp(28px, 4vw, 40px); letter-spacing: -.02em; }
+.pc-lift { letter-spacing: .08em; font-size: 14px; }
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { letter-spacing: .1em !important; font-size: 12px !important; }
+@media (max-width: 860px) {
+  .pc-story__tag { font-size: 23px; }
+  .sx-title, .hero--page h1.pg-title, .pg-title { font-size: 10vw; }
+  .patrol h2 { font-size: 21px; }
+  html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { font-size: 11px !important; }
+}
