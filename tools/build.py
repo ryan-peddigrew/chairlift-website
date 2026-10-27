@@ -194,7 +194,7 @@ home = f'''
         <div class="hero-copy">
         <span class="rule"></span>
         <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people. No outsourcing, no bots. Five minutes shows you if there's a fix.</p>
+        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people, never outsourced, <span class="nowrap">never a bot.</span></p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>

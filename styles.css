@@ -738,13 +738,7 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
   .flip { min-height: 0; }
   .flip > div { padding: 18px 20px; gap: 8px; }
   .flip p { max-width: none; font-size: 19px; }
-  .flip-after { display: none; }
-  .flip-before { animation: none; }
-}
-@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
-  .flip { min-height: 128px; }
-  .flip-after { display: flex; }
-  .flip-before { animation: flip-out 0.5s cubic-bezier(.2, .7, .2, 1) 1.6s both; }
+  .flip { display: none; }
 }
 
 /* Proof strip on phones: one calm grey box, items separated by thin lines */
