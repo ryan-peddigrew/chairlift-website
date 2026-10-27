@@ -128,6 +128,7 @@
         var e = ease(clamp(p / .85));
         var tx = mr && mr.width ? mr.left + mr.width / 2 : cx0, ty = mr && mr.width ? mr.top + mr.height / 2 : 34;
         var S1d = (mr && mr.width ? mr.width : 30) * 2.1;
+        ty += S1d * .122;   // the ring sits 12% above the canvas centre (room for the word), so aim the canvas a touch lower and the ring lands dead centre
         var cx = cx0 + (tx - cx0) * e, cy = cy0 + (ty - cy0) * e, s = 1 + (S1d / S0 - 1) * e;
         logo.style.transform = 'translate(' + (cx - S0 / 2).toFixed(1) + 'px,' + (cy - S0 / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
         root.classList.toggle('logo-docked', logo.classList.contains('is-3d'));

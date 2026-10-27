@@ -117,17 +117,17 @@ if (host) {
       requestAnimationFrame(frame);
       if (!visible) return;
       const dkNow = mini ? 1 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dk')) || 0);
-      spin += Math.min(0.1, (now - last) / 1000) * Math.PI * 2 / (8 + 8 * dkNow); last = now;   // one turn every 8 s on the landing, a slow 16 s in the top bar
+      const moving = !mini && dkNow > 0.01 && dkNow < 0.99;
+      if (moving) spin += (Math.round(spin / (Math.PI * 2)) * Math.PI * 2 - spin) * 0.18;   // while it glides up, settle face-on: no flipping
+      else spin += Math.min(0.1, (now - last) / 1000) * Math.PI * 2 / (8 + 8 * dkNow);      // one turn every 8 s on the landing, a slow 16 s in the top bar
+      last = now;
       const turn = spin;
       emblem.rotation.y = reduce ? 0.5 : turn;
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
         const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
         const o = Math.max(0, 1 - p / 0.25); wordMat.opacity = o; word.visible = o > 0.01;
-        camera.position.y = -0.4 * o;               // word fades as the ring docks into the top bar; re-centre the ring
       }
-      const dk = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dk')) || 0;
-      const flip = !mini && !reduce ? -ease(Math.min(1, dk / 0.9)) * Math.PI * 2 : 0;   // ring flips over once as it flies up into the top bar
-      emblem.rotation.x = (reduce ? 0 : Math.sin(now / 2600) * 0.08) + flip;
+      emblem.rotation.x = reduce || moving ? 0 : Math.sin(now / 2600) * 0.08;
       renderer.render(scene, camera);
     };
     requestAnimationFrame(frame);
