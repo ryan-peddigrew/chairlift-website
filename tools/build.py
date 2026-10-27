@@ -193,6 +193,7 @@ home = f'''
     <div class="wrap">
       <div class="hero-card hero-card--home">
         <div class="hero-copy">
+        <p class="mono">V.02 ———— WELCOME TO CHAIRLIFT. THE LODGE IS OPEN. WE FIND THE BUSYWORK, THEN BUILD THE FIX.</p>
         <span class="rule"></span>
         <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
         <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
@@ -208,6 +209,8 @@ home = f'''
     </div>
   </section>
 
+  <div class="slide-band" aria-hidden="true"><div class="slide-band__row"><span>Less busywork</span><span>More business</span><span>Less busywork</span><span>More business</span><span>Less busywork</span><span>More business</span></div></div>
+
   <section class="proof" aria-label="Who you're dealing with">
     <div class="wrap proof-grid">
       <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
@@ -220,6 +223,7 @@ home = f'''
     <div class="wrap">
       <div class="intro">
         <span class="rule"></span>
+        <span class="nlabel">N°001 / WHAT WE TAKE OFF YOUR PLATE</span>
         <h2 id="plate-title">What we take off your team's plate.</h2>
         <p>Small on their own. Add them up and it's hours every week.</p>
       </div>
@@ -240,6 +244,7 @@ home = f'''
     <div class="wrap">
       <div class="intro">
         <span class="rule"></span>
+        <span class="nlabel">N°002 / HOW IT WORKS</span>
         <h2 id="how-title">Three stops to the top.</h2>
         <p>No big IT project and no jargon. Just a steady climb, one lift at a time.</p>
       </div>

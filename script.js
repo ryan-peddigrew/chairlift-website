@@ -80,3 +80,20 @@
   if (year) year.textContent = new Date().getFullYear();
 })();
 
+
+/* PX-style concept: intro splash with counter, blur-in reveal */
+(function () {
+  var sp = document.querySelector('.intro-splash');
+  if (sp) {
+    var seen = false; try { seen = sessionStorage.getItem('cl-intro') === '1'; } catch (e) {}
+    var done = function () { sp.classList.add('is-done'); try { sessionStorage.setItem('cl-intro', '1'); } catch (e) {} };
+    if (seen) { done(); } else {
+      var n = 0, c = sp.querySelector('.intro-count'), t = setInterval(function () { n += 7; if (n >= 100) { n = 100; clearInterval(t); setTimeout(done, 350); } c.textContent = ('00' + n).slice(-3); }, 70);
+    }
+  }
+  var els = document.querySelectorAll('.intro, .cards .card, .step, .paper-split > *, .founder-card, .cta-box');
+  els.forEach(function (e) { e.classList.add('reveal'); });
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, { threshold: .12 });
+  els.forEach(function (e) { io.observe(e); });
+})();
