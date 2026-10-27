@@ -208,10 +208,18 @@ home = f'''
     </div>
   </section>
 
+  <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Follow-ups</span><span>Fast first replies</span><span>Scheduling</span><span>Data entry</span><span>After-hours replies</span><span>Old leads</span><span>Weekly reports</span><span>Follow-ups</span><span>Fast first replies</span><span>Scheduling</span><span>Data entry</span><span>After-hours replies</span><span>Old leads</span><span>Weekly reports</span></div></div>
+
   <section class="proof" aria-label="Who you're dealing with">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><b>5</b><span>minutes to your first conversation</span></div>
+        <div class="stat"><b>1</b><span>tested fix at a time</span></div>
+        <div class="stat"><b>3</b><span>stops: onboard, ride, summit</span></div>
+      </div>
+    </div>
     <div class="wrap proof-grid">
       <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
-      <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
   </section>
 

@@ -902,3 +902,15 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
   @keyframes hl-rise { to { opacity: 1; transform: none; } }
 }
 @media (prefers-reduced-motion: reduce) { .scroll-progress { display: none; } }
+
+/* Marquee band and stat strip */
+.marquee { overflow: hidden; padding: 22px 0; margin: 12px 0 0; }
+.marquee__track { display: flex; width: max-content; gap: 0; }
+.marquee__track span { flex: none; font-size: clamp(30px, 5vw, 60px); font-weight: 800; text-transform: uppercase; letter-spacing: -.005em; line-height: 1; color: var(--ink); padding: 0 .5em; white-space: nowrap; }
+.marquee__track span:nth-child(even) { color: #C4C8D0; }
+.marquee__track span::after { content: "/"; margin-left: 1em; color: #C4C8D0; font-weight: 400; }
+@media (prefers-reduced-motion: no-preference) { .marquee__track { animation: marquee 48s linear infinite; } @keyframes marquee { to { transform: translateX(-50%); } } }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 28px 0 8px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.stat b { display: block; font-size: clamp(56px, 9vw, 112px); font-weight: 800; line-height: .9; color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat span { display: block; margin-top: 10px; font-size: 16px; line-height: 1.35; color: var(--muted); max-width: 18ch; }
+@media (max-width: 640px) { .stats { gap: 12px; } .stat b { font-size: 52px; } .stat span { font-size: 14px; } }
