@@ -6,6 +6,7 @@
   var band = document.querySelector('.pc-band');
   var root = document.documentElement;
   var logo = hero && hero.querySelector('.pc-logo');
+  var story = hero && hero.querySelector('.pc-story');
   var word = hero && hero.querySelector('.pc-word');
   var stage = hero && hero.querySelector('.pc-stage');
   if (logo) document.body.appendChild(logo);   // lift the landing logo out of the hero so it can stay docked in the top bar
@@ -110,7 +111,20 @@
     var vh = window.innerHeight, vw = window.innerWidth;
     if (hero) {
       root.classList.toggle('over-hero', hero.getBoundingClientRect().bottom > 70);
-      var p = clamp(window.scrollY / (vh * .6));   // logo flies up over the first ~half screen of scroll
+      // the pinned frame is 100svh, so its height stays put while iOS shows/hides the address bar: no jumps
+      var pin = hero.querySelector('.pc-pin'), ph = pin ? pin.offsetHeight : vh;
+      var D = Math.max(1, hero.offsetHeight - ph);           // scroll distance the hero story plays over
+      var y = Math.max(0, window.scrollY);
+      var p = clamp(y / (ph * .45));                          // logo flies up into the top bar first
+      var q = clamp(y / D);                                   // then the story: headline settles, subhead, button
+      root.style.setProperty('--p', p.toFixed(3));
+      if (story) {
+        var mv = ease(clamp((q - .06) / .34)), sb = clamp((q - .26) / .18), ct = clamp((q - .44) / .16);
+        var top0 = (window._lb || ph * .62) + 6, top1 = Math.max(80, (ph - story.offsetHeight) / 2 + 20);
+        story.style.transform = 'translateY(' + ((top1 - top0) * mv).toFixed(1) + 'px)';
+        story.style.setProperty('--sb', sb.toFixed(3)); story.style.setProperty('--ct', ct.toFixed(3));
+        story.classList.toggle('is-live', ct > .6);            // button only tappable once it's really there
+      }
       root.style.setProperty('--p', p.toFixed(3));
       if (logo && word && stage) {
         var S0 = logo.offsetWidth;
@@ -118,8 +132,8 @@
         var inner = word.querySelector('span[aria-hidden]') || word;
         var wr = inner.getBoundingClientRect();
         var S1 = Math.max(90, word.offsetHeight * 1.9);
-        var cx0 = vw / 2, cy0 = vh * (vw < 861 ? .4 : .42);
-        root.style.setProperty('--lb', (cy0 + S0 * .5).toFixed(0) + 'px');   // tagline sits right under the wordmark
+        var cx0 = vw / 2, cy0 = ph * (vw < 861 ? .4 : .42);
+        window._lb = cy0 + S0 * .5; root.style.setProperty('--lb', window._lb.toFixed(0) + 'px');   // headline sits right under the wordmark
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
         var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
         // landing logo docks into the top bar as you scroll (PX-style), then keeps spinning there
