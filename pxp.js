@@ -136,10 +136,10 @@
         var cx0 = vw / 2, cy0 = vh / 2 - 40;
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
         var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
-        var e = ease(clamp((p - .08) / .62));
-        var cx = cx0 + (cx1 - cx0) * e, cy = cy0 + (cy1 - cy0) * e;
-        var s = 1 + (S1 / S0 - 1) * e;
+        // single landing screen: logo stays centred, lifts and fades as you scroll into the site
+        var cx = cx0, cy = cy0 - p * vh * .18, s = 1 + p * .12;
         logo.style.transform = 'translate(' + (cx - S0 / 2).toFixed(1) + 'px,' + (cy - S0 / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
+        logo.style.opacity = clamp(1 - p * 1.6).toFixed(3);
       }
     }
     lits.forEach(function (el) {

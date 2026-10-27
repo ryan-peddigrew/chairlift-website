@@ -780,3 +780,13 @@ a.pc-mini:hover .pc-mini__cap .ar { transform: translateX(4px); }
 .patrol__guy svg, .patrol__guy img { width: 100%; height: auto; display: block; filter: drop-shadow(-12px 10px 30px rgba(0,0,0,.45)); }
 .patrol__x { position: fixed; top: 14px; right: 14px; z-index: 3; }
 @media (max-width: 560px) { .patrol { place-items: start; padding-top: 18svh; } .patrol__guy { width: 62vw; right: -6vw; } .patrol__guy svg { width: 100%; height: auto; } .patrol h2 { font-size: 40px; } .patrol__btns { flex-direction: column; align-items: flex-start; } }
+
+/* ---------- round 13: one landing screen (logo + wordmark + tagline), then straight into the site ---------- */
+.pc-hero { height: 135svh; }
+.pc-word { display: none; }
+.pc-capbar { left: 0; right: 0; bottom: 14svh; text-align: center; opacity: calc(1 - var(--p, 0) * 2.2); transform: translateY(calc(var(--p, 0) * -6vh)); }
+.pc-capbar .pc-tag { font-size: clamp(30px, 4.4vw, 60px); text-shadow: 0 4px 28px rgba(6,10,20,.35); }
+.pc-logo { transform: translate(calc(50vw - 150px), calc(50svh - 190px)); }
+.pc-scrollhint { bottom: 4svh; }
+@media (max-width: 860px) { .pc-capbar { bottom: 15svh; } .pc-capbar .pc-tag { font-size: 34px; } }
+.pc-hero { height: 112svh; }

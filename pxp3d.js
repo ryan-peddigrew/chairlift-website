@@ -106,9 +106,7 @@ if (host) {
       const turn = (((now - t0) / 1000) % 8) / 8 * Math.PI * 2;   // always turning, one spin every 8 s; the word below stays still
       emblem.rotation.y = reduce ? 0.5 : turn;
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
-        const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
-        const o = Math.max(0, 1 - p / 0.12); wordMat.opacity = o; word.visible = o > 0.01;
-        camera.position.y = -0.4 * o;               // re-centre the ring in its box once the word is gone
+        wordMat.opacity = 1; word.visible = true;  // the landing screen keeps the word under the ring
       }
       emblem.rotation.x = reduce ? 0 : Math.sin(now / 2600) * 0.08;
       renderer.render(scene, camera);
