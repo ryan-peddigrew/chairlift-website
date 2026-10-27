@@ -767,3 +767,16 @@ a.pc-mini { display: block; text-decoration: none; color: #fff; }
 a.pc-mini:hover .pc-mini__cap .ar { transform: translateX(4px); }
 @media (max-width: 860px) { .pc-mini__cap { font-size: 14px; } }
 .pc-mini__win { display: block; } .pc-mini__cap { white-space: nowrap; }
+.pc-logo .pc-gl { filter: drop-shadow(0 6px 18px rgba(6,10,20,.55)) drop-shadow(0 1px 3px rgba(6,10,20,.5)); }
+/* Ski Patrol without a box: full-screen frosted overlay, patroller leans in from the right edge */
+.patrol.is-on { background: rgba(10,14,22,.55); backdrop-filter: blur(14px) saturate(.8); -webkit-backdrop-filter: blur(14px) saturate(.8); }
+.patrol { place-items: center start; padding: 0 clamp(20px, 6vw, 96px); }
+.patrol__card { display: block; position: static; width: min(560px, 100%); padding: 0; background: none; border: 0; box-shadow: none; transform: translateY(24px); }
+.patrol__txt { position: relative; z-index: 2; padding: 0; }
+.patrol h2 { font-size: clamp(40px, 6vw, 76px); line-height: .95; text-shadow: 0 4px 30px rgba(0,0,0,.4); }
+.patrol__txt p:not(.patrol__tag) { font-size: clamp(17px, 1.6vw, 20px); max-width: 30ch; }
+.patrol__guy { position: fixed; right: -2vw; bottom: 0; z-index: 1; width: clamp(240px, 34vw, 520px); transform: translateX(110%); transition: transform .7s cubic-bezier(.2,1.2,.35,1) .15s; pointer-events: none; }
+.patrol.is-on .patrol__guy { transform: translateX(0); }
+.patrol__guy svg, .patrol__guy img { width: 100%; height: auto; display: block; filter: drop-shadow(-12px 10px 30px rgba(0,0,0,.45)); }
+.patrol__x { position: fixed; top: 14px; right: 14px; z-index: 3; }
+@media (max-width: 560px) { .patrol { place-items: start; padding-top: 18svh; } .patrol__guy { width: 62vw; right: -6vw; } .patrol__guy svg { width: 100%; height: auto; } .patrol h2 { font-size: 40px; } .patrol__btns { flex-direction: column; align-items: flex-start; } }

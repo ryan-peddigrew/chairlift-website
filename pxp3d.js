@@ -45,11 +45,34 @@ if (host) {
     };
     const inner = new THREE.Group();
     inner.add(bar(-0.5, -0.52, steel), bar(0, 0, steel), bar(0.5, 0.52, neon));
-    inner.scale.setScalar(0.78);
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel);
-    emblem.add(inner, ring);
+    // logo shape options for review: ?logo=a ring, b tile (the real logo), c coin, d bars only (remembered per browser)
+    let kind = 'a';
+    try { kind = (location.search.match(/logo=([a-d])/) || [])[1] || sessionStorage.getItem('pxlogo') || 'a'; sessionStorage.setItem('pxlogo', kind); } catch (e) {}
+    if (kind === 'b') {
+      const w = 2.3, r = 0.08, sh = new THREE.Shape();
+      sh.moveTo(-w / 2 + r, -w / 2); sh.lineTo(w / 2 - r, -w / 2); sh.quadraticCurveTo(w / 2, -w / 2, w / 2, -w / 2 + r);
+      sh.lineTo(w / 2, w / 2 - r); sh.quadraticCurveTo(w / 2, w / 2, w / 2 - r, w / 2);
+      sh.lineTo(-w / 2 + r, w / 2); sh.quadraticCurveTo(-w / 2, w / 2, -w / 2, w / 2 - r);
+      sh.lineTo(-w / 2, -w / 2 + r); sh.quadraticCurveTo(-w / 2, -w / 2, -w / 2 + r, -w / 2);
+      const tile = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, bevel(0.34, 0.06)), dark);
+      tile.position.z = -0.56;
+      inner.scale.setScalar(0.92); inner.position.z = 0.02;
+      emblem.add(tile, inner);
+    } else if (kind === 'c') {
+      const coin = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 0.62, 128, 1), steel);
+      coin.rotation.x = Math.PI / 2; coin.position.z = -0.5;
+      const face = new THREE.Mesh(new THREE.CircleGeometry(1.12, 96), dark); face.position.z = -0.185;
+      inner.scale.setScalar(0.78);
+      emblem.add(coin, face, inner);
+    } else if (kind === 'd') {
+      inner.scale.setScalar(1.25);
+      emblem.add(inner);
+    } else {
+      inner.scale.setScalar(0.78);
+      emblem.add(inner, new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel));
+    }
     emblem.scale.setScalar(0.72);
-    const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.55, roughness: 0.22, clearcoat: 0.6, envMapIntensity: 1.25, transparent: true });
+    const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xc9d1de, emissiveIntensity: 0.45, metalness: 0.45, roughness: 0.2, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
     let word = null;
     // "Chairlift" in extruded satin metal under the ring, held still
     fetch('/vendor/archivo-chairlift.json').then((r) => r.json()).then((data) => {
