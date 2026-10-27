@@ -194,15 +194,14 @@ home = f'''
         <div class="hero-copy">
         <span class="rule"></span>
         <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We get back the hours your team loses to follow-ups and admin. Our own team of real people. No outsourcing, no bots.</p>
+        <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
         <div class="ctas">
           <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
-        <p class="hero-promise">Five minutes. We'll tell you if there's a practical fix.</p>
         </div>
-        <div class="flip" aria-label="Before and after">
-          <div class="flip-before"><span class="flip-tag">Before</span><p>A quote went out last week. Nobody followed up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">After</span><p>The follow-up went out Tuesday, in your words. The client replied.</p></div>
+        <div class="flip" aria-label="Right now, and with Chairlift">
+          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
+          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
         </div>
       </div>
     </div>
@@ -210,7 +209,7 @@ home = f'''
 
   <section class="proof" aria-label="Who you're dealing with">
     <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>Real people you can call.</strong> Built by our own team, shaped throughout a career in sales. <a href="/who-we-are/">Read our story</a></p></div>
+      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
       <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
       <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
     </div>
@@ -727,31 +726,45 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
 # ---------------------------------------------------------------- Build your own paper
-try_paper = page_hero("The Daily Peddigrew", "Build your own morning paper.",
-    "Type in your name, your city and the three things on your plate today. Your page builds itself in seconds.") + f'''
-  <section class="section section--ink" aria-labelledby="try-title">
-    <div class="wrap paper-split try-split">
-      <div>
-        <span class="rule"></span>
-        <h2 id="try-title">Your page, in 10 seconds.</h2>
-        <form class="try-form" data-try-form>
-          <div class="field-row">
-            <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
-            <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
+try_paper = f'''
+  <section class="hero hero--page try-hero">
+    <div class="wrap">
+      <div class="hero-card try-grid">
+        <div class="try-intro">
+          <span class="rule"></span>
+          <span class="eyebrow">The Daily Peddigrew</span>
+          <h1>Get your own morning paper.</h1>
+          <p class="lede">One page with your priorities, calendar, inbox and follow-ups. Watch your very own copy take shape.</p>
+        </div>
+        <div class="try-paper press" data-press>
+          {PAPER_IMG}
+        </div>
+        <div class="try-formcard">
+          <h2 id="try-title">Make it yours</h2>
+          <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
+            <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
+            <input type="hidden" name="_template" value="table">
+            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field-row">
+              <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
+              <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
+            </div>
+            <label class="field"><span>The three things on your plate today</span><textarea name="priorities" rows="3" placeholder="Send the Henderson quote&#10;Call back two warm leads&#10;Walk the dog at lunch" required></textarea></label>
+            <label class="field"><span>Apps you check every morning</span><input type="text" name="morning-apps" placeholder="Gmail, Slack, LinkedIn"></label>
+            <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" placeholder="sam@yourcompany.com" required></label>
+            <label class="field"><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="613 555 0123"></label>
+            <label class="field"><span>Anything else you'd want on your page? (optional)</span><textarea name="wishlist" rows="2" placeholder="Job schedule, new leads, invoices due"></textarea></label>
+            <button class="btn btn-ink" type="submit" data-try-btn>Request my paper</button>
+            <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+            <p class="form-status" role="status" aria-live="polite" data-try-status></p>
+          </form>
+          <div class="try-after" data-try-after hidden>
+            <h3>Request received.</h3>
+            <p>We'll look at what you sent and reply by email. If you'd rather talk it through now, book five minutes.</p>
+            <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
           </div>
-          <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
-          <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
-          <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
-          <button class="btn btn-white" type="submit">Build my paper</button>
-          <p class="form-fine">Nothing you type is saved or sent to us. Only your city is used, to look up the weather.</p>
-        </form>
-        <div class="try-after" data-try-after hidden>
-          <h3>Want the real one every morning?</h3>
-          <p>We build it from your actual calendar, inbox and follow-ups, on paper, by email or on your desktop.</p>
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
         </div>
       </div>
-      {PAPER_IMG}
     </div>
   </section>
   <script src="/try.js" defer></script>
@@ -852,7 +865,7 @@ PAGES = [
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
     ("examples/index.html", "In practice", "Before-and-after examples of the fixes Chairlift most often starts with: after-hours inquiries, quote follow-up, reviews and client handovers.", "/examples/", "examples", examples, False),
     ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
-    ("try/index.html", "Build your own morning paper", "Type in your name, city and top three for the day, and see your own one-page morning paper in seconds.", "/try/", None, try_paper, False),
+    ("try/index.html", "Get your own morning paper", "Type in your name, city and top three for the day, see your own one-page morning paper take shape, and send us your request.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),

@@ -1,5 +1,5 @@
-// Build your own paper: swaps the visitor's name, city and top three into the sample page.
-// Nothing is saved or sent anywhere, except the city name, which looks up the weather.
+// Get your own paper: the sample page fills in as the visitor types; submitting sends the request to us.
+// The city name is also used (on its own) to look up the weather.
 (function () {
   var form = document.querySelector('[data-try-form]');
   if (!form) return;
@@ -30,11 +30,13 @@
       }).catch(function () {});
   }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  var press = document.querySelector('[data-press]');
+  var btn = form.querySelector('[data-try-btn]');
+
+  function render() {
     var name = form.elements.name.value.trim();
     var city = form.elements.city.value.trim();
-    var items = ['one', 'two', 'three'].map(function (k) { return form.elements[k].value.trim(); }).filter(Boolean);
+    var items = form.elements.priorities.value.split(/\n+/).map(function (v) { return v.trim(); }).filter(Boolean).slice(0, 3);
 
     if (name) {
       var last = name.split(/\s+/).pop();
@@ -58,9 +60,34 @@
         return '<div class="dp-row"><div class="dp-t">' + esc(t) + '</div><span class="dp-tag">' + tags[i] + '</span><ul><li>' + notes[i] + '</li></ul></div>';
       }).join('');
     }
-    if (city) weather(city);
+  }
 
-    if (after) after.hidden = false;
-    if (window.innerWidth < 900) document.querySelector('.dp-frame').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  var cityTimer;
+  form.addEventListener('input', function (e) {
+    render(false);
+    if (e.target.name === 'city') {
+      clearTimeout(cityTimer);
+      var c = e.target.value.trim();
+      if (c.length > 2) cityTimer = setTimeout(function () { weather(c); }, 700);
+    }
+  });
+
+  var status = form.querySelector('[data-try-status]');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    btn.disabled = true;
+    status.textContent = 'Sending…';
+    fetch(form.getAttribute('data-ajax'), { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
+        form.classList.add('form-done');
+        status.textContent = '';
+        if (after) { after.hidden = false; after.querySelector('h3').focus && after.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        status.innerHTML = 'Sorry, that didn\u2019t send. Please try again, or email <a href="mailto:ryan@usechairlift.com">ryan@usechairlift.com</a>.';
+      });
   });
 })();

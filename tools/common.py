@@ -13,7 +13,7 @@ FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox=
 
 STAIRS_BG = ''
 
-ARROW = '<svg class="climb-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 18.5 L16.4 7.6"/><path d="M8.5 6.3 H17.7 V15.5"/></svg>'
+ARROW = '<svg class="climb-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5 V4.5"/><path d="M5.5 11 L12 4.5 L18.5 11"/></svg>'
 
 NAV = [
     ("how", "/how-it-works/", "How it works"),
