@@ -1,5 +1,5 @@
 /* Swiss-neon concept: Ink + Neon, giant grotesk, hairline grids */
-:root { --ink:#141B2A; --neon:#3DFFC1; --paper:#FBF6E4; --cream:#F4EDD6; }
+:root { --ink:#141B2A; --neon:#3DFFC1; --paper:#141B2A; --cream:#8CB8EA; --ink2:#1B2A44; --sky:#8CB8EA; }
 body { background: var(--paper); color: var(--ink); font-family: "Hanken Grotesk", sans-serif; }
 .site-header, header.site-header { background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.18); }
 .site-header a, .site-header .brand, .site-header nav a { color: #fff; }
@@ -66,3 +66,24 @@ main { background: var(--paper); }
 .nav-link { color: #fff !important; opacity: .9; }
 .nav-cta { background: var(--cream) !important; color: var(--ink) !important; }
 @media (min-width: 861px) { .sw-stamp { top: 24px; bottom: auto; } }
+
+/* No white or cream: Midnight Ink and sky blue (from the mountain photo), neon as a tiny accent */
+body, main { background: #141B2A; color: #fff; }
+.sw-hero { background: #8CB8EA; }
+.sw-cols, .sw-cols p, .sw-rules { color: #141B2A; }
+.sw-band { background: #141B2A; }
+.sw-neon { color: #8CB8EA; }
+.sw-sec { background: #1B2A44; color: #fff; }
+.sw-sec--neon { background: #141B2A; color: #fff; }
+.sw-sec--ink { background: #1B2A44; color: #fff; }
+.sw-sec .sw-list, .sw-sec .sw-list article, .sw-case, .sw-founder { border-color: rgba(255,255,255,.35); }
+.sw-case, .sw-case__row p { color: #fff; }
+.sw-btn { background: #8CB8EA; color: #141B2A; }
+.sw-btn--neon { background: #8CB8EA; color: #141B2A; }
+.sw-stops b { color: #8CB8EA; }
+.sw-stops { border-color: rgba(255,255,255,.35); }
+.sw-founder img { border-color: #8CB8EA; outline: 0; }
+.nav-cta { background: #8CB8EA !important; color: #141B2A !important; }
+.sw-stamp { background: #3DFFC1; }
+.sw-founder__line { color: #fff; }
+.sw-founder__name { color: #8CB8EA; }
