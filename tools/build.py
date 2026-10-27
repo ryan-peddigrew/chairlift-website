@@ -267,10 +267,10 @@ CHROME_EMBLEM = (
 
 home = f'''
   <section class="px-hero" aria-label="Chairlift">
-    <div class="px-sky" aria-hidden="true"><picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="px-photo" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async"></picture><span class="px-shade"></span></div>
+    <div class="px-sky" aria-hidden="true"><picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="px-photo" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async"></picture><img class="px-fg" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602" decoding="async"><span class="px-shade"></span><span class="px-fog"></span></div>
     <div class="px-stage">
     <h1 class="px-marqtitle"><span class="sr-only">Less busywork. More business.</span><span class="px-marqtitle__track" aria-hidden="true"><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span><span>● Less busywork. More business.</span></span></h1>
-    <div class="px-brand" aria-hidden="true">{CHROME_EMBLEM}</div>
+    <div class="px-brand" aria-hidden="true"><span class="px-logo">{LOGO.format(s=200, stroke="")}</span><span class="px-word">Chairlift</span></div>
     <div class="px-hero__foot">
       <a class="px-tile" href="#intro"><span class="px-tile__img" aria-hidden="true"></span><span class="mono">SCROLL DOWN TO RIDE THE LIFT</span></a>
       <div class="px-hero__cta"><p class="mono">WE FIND THE WORK SLOWING YOUR TEAM DOWN, THEN BUILD THE FIX.</p><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>

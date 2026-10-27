@@ -227,3 +227,19 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-sky .snow { display: none; }
 .px-tile__img { background: url(/images/alps-peaks.jpg) 50% 60% / cover no-repeat !important; }
 .px-tile__img::before, .px-tile__img::after { display: none !important; }
+
+/* Logo: exact Chairlift mark, square corners */
+.px-logo svg { width: clamp(120px, 15vw, 190px); height: auto; display: block; filter: drop-shadow(0 16px 30px rgba(3,10,40,.4)); }
+.px-word { font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: clamp(34px, 5vw, 64px); color: #fff; letter-spacing: -.01em; margin-top: 12px; text-shadow: 0 6px 24px rgba(3,10,40,.45); }
+.px-brand { gap: 0; }
+@media (max-width: 860px) { .px-logo svg { width: 110px; } }
+/* Scroll transition: peaks push in, cloud sea rises over them and fills the screen */
+.px-photo { transform-origin: 50% 70%; transform: scale(calc(1.02 + var(--p, 0) * .3)); filter: blur(calc(var(--p, 0) * 3px)); }
+.px-fg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform-origin: 50% 100%; transform: translateY(calc(var(--p, 0) * -42vh)) scale(calc(1.02 + var(--p, 0) * .55)); -webkit-mask-image: linear-gradient(180deg, transparent 58%, #000 76%); mask-image: linear-gradient(180deg, transparent 58%, #000 76%); will-change: transform; }
+.px-fog { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(232,240,252,0) 40%, rgba(232,240,252,calc(var(--p, 0) * .85)) 100%); }
+@media (max-width: 860px) { .px-fg { -webkit-mask-image: linear-gradient(180deg, transparent 52%, #000 72%); mask-image: linear-gradient(180deg, transparent 52%, #000 72%); } }
+.px-marqtitle { text-shadow: none; }
+.px-word { text-transform: none; }
+.px-fg { transform: translateY(calc(var(--p, 0) * -20vh)) scale(calc(1.02 + var(--p, 0) * .3)); }
+.px-fog { background: linear-gradient(180deg, rgba(232,240,252,0) 55%, rgba(232,240,252,calc(var(--p, 0) * .4)) 100%); }
+.px-photo { filter: none; transform: scale(calc(1.02 + var(--p, 0) * .2)); }
