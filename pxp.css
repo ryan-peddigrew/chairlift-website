@@ -387,3 +387,7 @@ body:has(.pc-hero) .site-header .menu-btn { color: #3DFFC1; text-shadow: none; }
 body:has(.pc-hero) .hdr-dash { border-top-color: #3DFFC1; }
 body:has(.pc-hero) .hdr-mq { color: #3DFFC1; }
 body:has(.pc-hero) .site-header { position: fixed; }
+
+/* home hero on reel 1 footage, with the small refined word from mock-up C */
+.pcv-e .pc-photo--reel { object-position: 50% 40%; filter: saturate(.85) brightness(1.02); }
+.pcv-e .pc-sky::after { background: linear-gradient(180deg, rgba(20,27,42,.25), rgba(20,27,42,0) 45%, rgba(20,27,42,.45)); }

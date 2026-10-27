@@ -897,15 +897,16 @@ HERO_MEDIA = {
     "b": _vid("/images/hero-reel-1.mp4", "/images/hero-reel-1-poster.jpg", "pc-photo--reel") if os.path.exists(os.path.join(OUT, "images/hero-reel-1.mp4")) else '<img class="pc-photo pc-photo--wind pc-photo--reel" src="/images/hero-reel-1-poster.jpg" alt="">',
     "c": '<picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="pc-photo pc-photo--wind pc-photo--still" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602"></picture>',
     "d": _vid("/images/hero-clouds.mp4", "/images/alps-blue.jpg", "pc-photo--clouds"),
+    "e": _vid("/images/hero-reel-1.mp4", "/images/hero-reel-1-poster.jpg", "pc-photo--reel"),
 }
 def home_variant(k, switcher=True):
     h = _MEDIA.sub(lambda m: HERO_MEDIA[k], home, count=1)
-    h = h.replace('class="pc-hero"', f'class="pc-hero pcv-{k}"', 1)
+    h = h.replace('class="pc-hero"', f'class="pc-hero pcv-{"c pcv-e" if k == "e" else k}"', 1)
     sw = '<nav class="pc-switch" aria-label="Homepage mock-ups">' + "".join(f'<a href="/home-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abcd") + '</nav>'
     return h + (sw if switcher else '')
 
 PAGES = [
-    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("c", False), False),
+    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
