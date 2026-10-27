@@ -59,7 +59,6 @@ def head(title, desc, path, noindex=False):
 <link rel="stylesheet" href="/px.css">
 </head>
 <body>
-<div class="intro-splash" aria-hidden="true"><div class="intro-logo">{LOGO.format(s=120, stroke="")}</div><p class="mono">LOADING <b class="intro-count">000</b> ———— CHAIRLIFT V.02</p></div>
 <a class="skip" href="#main">Skip to content</a>
 '''
 

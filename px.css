@@ -186,3 +186,34 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-h2 { font-size: clamp(40px, 7.4vw, 112px); line-height: .95; }
 .px-hero .px-marq { margin-top: 18px; }
 @media (max-width: 860px) { .px-brand { margin-top: 3vh; } .px-title { font-size: clamp(30px, 9.5vw, 54px); } }
+
+/* ===== Closer to the reference: marquee title, centred chrome object, calmer ===== */
+.scanlines, .vignette, .px-hero__top, .px-marq, .px-title { display: none !important; }
+.px-hero { grid-template-rows: auto 1fr auto; padding-top: 96px; }
+.px-marqtitle { margin: 0; overflow: hidden; white-space: nowrap; font-family: "Anton", sans-serif; font-weight: 400; font-size: clamp(76px, 15vw, 230px); line-height: 1; text-transform: uppercase; color: #fff; letter-spacing: .005em; text-shadow: 0 6px 50px rgba(3,10,40,.35); margin-inline: -28px; }
+.px-marqtitle__track { display: inline-flex; will-change: transform; }
+.px-marqtitle__track span { padding-right: .55em; }
+@media (prefers-reduced-motion: no-preference) { .px-marqtitle__track { animation: slide 46s linear infinite; } }
+.px-brand { align-self: center; margin: 0; }
+.px-emblem { width: clamp(220px, 34vw, 480px); }
+.px-hero__foot { align-items: end; }
+.px-hero__cta { display: grid; gap: 12px; justify-items: end; max-width: 300px; }
+.px-hero__cta .mono { color: #fff; text-align: right; }
+.px-sky .snow { opacity: .55; }
+/* header reads like the reference: chrome wordmark left, Menu right */
+.site-header .brand span { font-family: "Anton", sans-serif; font-size: 26px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; background: linear-gradient(180deg, #FFFFFF 0%, #A9B8CF 45%, #3A4663 52%, #DDE7F8 70%, #fff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.site-header .brand svg { display: none; }
+.px-big .w.on.neon { color: #3DFFC1; }
+@media (max-width: 860px) { .px-marqtitle { font-size: clamp(64px, 20vw, 120px); margin-inline: -18px; } .px-emblem { width: clamp(200px, 60vw, 320px); } .px-hero__cta { max-width: 190px; } }
+.intro-splash{display:none!important}
+
+/* Mountain first; logo and title arrive on the first scroll */
+.px-hero { min-height: 0; height: 190svh; display: block; padding: 0; overflow: visible; background: #06185F; }
+.px-sky { position: sticky; top: 0; height: 100svh; inset: auto; z-index: 0; }
+.px-sky .px-scene { position: absolute; inset: 0; }
+.px-stage { position: sticky; top: 0; height: 100svh; margin-top: -100svh; z-index: 2; display: grid; grid-template-rows: auto 1fr auto; padding: 96px 28px 28px; pointer-events: none; }
+.px-stage > * { pointer-events: auto; }
+.px-marqtitle { opacity: calc(var(--p, 0) * 3.4 - .25); transform: translateY(calc((1 - var(--p, 0)) * 24px)); }
+.px-brand { opacity: calc(var(--p, 0) * 4 - .5); transform: scale(calc(1.5 - var(--p, 0) * .5)); filter: blur(calc((1 - var(--p, 0)) * 8px)); }
+.px-hero__foot { opacity: calc(var(--p, 0) * 4 - 1); }
+@media (max-width: 860px) { .px-stage { padding: 88px 18px 22px; } }
