@@ -796,8 +796,8 @@ FIVE_FAQ = "".join(f"""        <details>
 
 BRING = ["Quotes that go quiet", "Inquiries that sit overnight", "Reports built by hand", "Old customers who went silent", "The same details typed three times", "A handover that means forwarding dozens of emails"]
 
-five_min = page_hero("Five minutes. No pitch.", "What's eating your week?",
-    "One real person from our own team. You tell us about the busywork slowing your team down, and we tell you honestly if there's a fix worth trying.",
+five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
+    "One real person from our own team. Tell us about the work slowing people down, whether it's a team, a company or just you, and we'll say honestly if there's a fix worth trying.",
     extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Start a conversation</a></div>') + f'''
   <section class="section section--tight" aria-labelledby="five-title">
     <div class="wrap">
