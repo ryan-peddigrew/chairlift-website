@@ -219,3 +219,11 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 @media (max-width: 860px) { .px-stage { padding: 88px 18px 22px; } }
 .cta-box, .cta-band .cta-box { background: #07090E; border: 1px solid var(--line); border-radius: 0; }
 .cta-box h2 { font-family: "Anton", sans-serif; font-weight: 400; font-size: clamp(48px, 9vw, 130px); line-height: .95; text-transform: uppercase; }
+
+/* Real mountain photo hero */
+.px-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform: scale(calc(1.04 + var(--p, 0) * .12)); will-change: transform; }
+.px-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,24,95,.28) 0%, rgba(6,24,95,0) 35%, rgba(6,24,95,.1) 70%, rgba(6,24,95,.45) 100%); }
+.px-hero { background: #2F6BC9; }
+.px-sky .snow { display: none; }
+.px-tile__img { background: url(/images/alps-peaks.jpg) 50% 60% / cover no-repeat !important; }
+.px-tile__img::before, .px-tile__img::after { display: none !important; }
