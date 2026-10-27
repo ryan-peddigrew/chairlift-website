@@ -445,3 +445,7 @@
 .dp-gf { letter-spacing: -0.012em; word-spacing: -0.5px; }
 .dp-gf { padding-left: 16px; }
 .dp-gf::before { left: 10px; }
+
+.dp-ib { display: inline-block; width: 30px; margin-right: 4px; font: italic 400 6.4px/1 'Source Serif 4', serif; letter-spacing: 0.02em; color: #6B6B66; text-transform: lowercase; }
+.dp-inbox .dp-from { min-width: 128px; margin-right: 0; }
+.dp-inbox .dp-sub { margin-left: 162px; }
