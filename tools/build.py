@@ -794,17 +794,40 @@ FIVE_FAQ = "".join(f"""        <details>
         </details>
 """ for q, a_ in [FAQ[2], FAQ[3], FAQ[5]])
 
-five_min = page_hero("Start a conversation", "Book your five minutes.",
-    "Pick a time that suits you. We'll talk through how your business runs and where to start.") + f'''
-  <section class="proof" aria-label="What to expect">
-    <div class="wrap proof-grid">
-      <div class="proof-item"><p><strong>Who you'll talk to.</strong> Someone from our own team. A real person, never a bot.</p></div>
-      <div class="proof-item"><p><strong>What happens.</strong> You tell us what slows your team down. We tell you honestly if there's a practical fix.</p></div>
-      <div class="proof-item"><p><strong>What it isn't.</strong> A sales pitch. If we're not the right fit, we'll say so.</p></div>
+BRING = ["Quotes that go quiet", "Inquiries that sit overnight", "Reports built by hand", "Old customers who went silent", "The same details typed three times", "A handover that means forwarding dozens of emails"]
+
+five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
+    "One real person from our own team. Tell us about the work slowing people down, whether it's a team, a company or just you, and we'll say honestly if there's a fix worth trying.",
+    extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Start a conversation</a></div>') + f'''
+  <section class="section section--tight" aria-labelledby="five-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="five-title">What five minutes looks like.</h2>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Minutes 1 and 2</span></div><h3>You describe it</h3><p>The follow-up nobody sends. The quote that sits. Say it the way you'd tell a friend.</p></div>
+        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Minutes 3 and 4</span></div><h3>We ask the useful questions</h3><p>Which tools you use, who touches it, and what a good week would look like.</p></div>
+        <div class="card"><div class="card-top">{icon("pulse")}<span class="card-label">Minute 5</span></div><h3>You get a straight answer</h3><p>The first fix we'd try, or an honest "that's not us." Either way, you leave with something.</p></div>
+      </div>
     </div>
   </section>
-  <section class="section section--tight">
+  <section class="section section--soft section--tight" aria-labelledby="bring-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <h2 id="bring-title">Not sure what to bring?</h2>
+        <p class="section-note">Pick one of these, or bring your own. Most conversations start with a single task.</p>
+      </div>
+      <ul class="bring">{"".join(f"<li>{x}</li>" for x in BRING)}</ul>
+    </div>
+  </section>
+  <section class="section section--tight" id="book" aria-labelledby="book-title">
     <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="book-title">Pick your time.</h2>
+      </div>
       <p class="section-note section-note--top">Calendar not loading? <a href="{BOOKING_URL}">Open it in a new page</a>.</p>
       <div id="cal-inline" style="min-height:640px"></div>
     </div>
