@@ -1,5 +1,5 @@
-"""Kinetic pieces for the mountain home page: the department switchboard, the haul schematic
-with its three-position lever, and the friction tags on the closing form. Styles in kin.css,
+"""Kinetic pieces for the mountain home page: the department switchboard, the by-hand vs with-Chairlift
+job flow, and the friction tags on the closing form. Styles in kin.css,
 behaviour in kin.js (both loaded by the home page only)."""
 
 DEPTS = [
@@ -61,25 +61,22 @@ def switchboard():
 
 
 def shift_section():
-    stages = "".join(
-        f'''<li class="kn-stage"><p class="mono">0{i + 1} · {_e(t)}</p><p class="kn-stage__was">{was}</p><p class="kn-stage__now">{now}</p><p class="kn-stage__st mono">By hand</p></li>'''
+    steps = "".join(
+        f'''<li class="kn-step"><p class="kn-step__n">Step 0{i + 1}</p><h3 class="kn-step__t">{_e(t)}</h3><div class="kn-step__txt"><p class="kn-step__was">{was}</p><p class="kn-step__now">{now}</p></div></li>'''
         for i, (t, was, now) in enumerate(STAGES))
     return f'''
   <section class="pc-sec pc-sec--cream kn-shift" aria-labelledby="shift-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="shift-title" class="sx-title">The shift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Stop being the glue holding every process together.</p></div></header>
-      <figure class="kn-engine" aria-label="A diagram: everyday bottlenecks on the left run through a bullwheel and leave on the right as finished work riding the cable.">
-        <p class="kn-engine__head mono"><span>Fig. 01 · The haul line</span><span>Friction cleared <b data-cleared>000%</b></span></p>
-        <div class="kn-engine__stage"><canvas class="kn-canvas" aria-hidden="true"></canvas>
-          <span class="kn-engine__lbl kn-engine__lbl--l mono">Everyday friction</span><span class="kn-engine__lbl kn-engine__lbl--r mono">Finished work</span></div>
-        <div class="kn-lever" role="radiogroup" aria-label="Lift mode" data-mode="1">
-          <span class="kn-lever__knob" aria-hidden="true"></span>
-          <button type="button" role="radio" aria-checked="false" data-mode="0"><span class="mono">Manual grind</span></button>
-          <button type="button" role="radio" aria-checked="true" data-mode="1"><span class="mono">Engage Chairlift</span></button>
-          <button type="button" role="radio" aria-checked="false" data-mode="2"><span class="mono">Overdrive</span></button>
+      <header class="sx-head"><h2 id="shift-title" class="sx-title">The shift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">One job, two ways to run it.</p></div></header>
+      <div class="kn-flow" data-flow data-way="0">
+        <div class="kn-flow__bar">
+          <div class="kn-way" role="radiogroup" aria-label="How the job runs"><span class="kn-way__knob" aria-hidden="true"></span>
+            <button type="button" role="radio" aria-checked="true" data-way="0">By hand</button>
+            <button type="button" role="radio" aria-checked="false" data-way="1">With Chairlift</button></div>
+          <p class="kn-flow__read" aria-live="polite"><span data-cap>Every step waits for a person to get to it.</span><small data-count>4 places a job can sit and wait</small></p>
         </div>
-      </figure>
-      <ol class="kn-stages" data-stages>{stages}</ol>
+        <ol class="kn-track">{steps}</ol>
+      </div>
     </div>
   </section>
 '''
