@@ -210,16 +210,25 @@ def cta_band(title):
 '''
 
 
+PAGE_TONE = {"What we do": ("002", "dark"), "How it works": ("003", "blue"), "In practice": ("004", "grey"),
+             "Who we help": ("005", "dark"), "Who we are": ("006", "blue"), "Get in touch": ("007", "grey"),
+             "The Daily Peddigrew": ("008", "blue"), "Time-back calculator": ("009", "dark"),
+             "Five minutes. No pitch.": ("010", "grey")}
+
+
 def page_hero(eyebrow, title, lede, extra=""):
+    num, tone = PAGE_TONE.get(eyebrow, ("011", "dark"))
+    big = eyebrow if eyebrow in PAGE_TONE else title
+    cap = title if eyebrow in PAGE_TONE else lede
+    sub = f'\n        <p class="pg-lede">{lede}</p>' if eyebrow in PAGE_TONE else ""
+    big = big.rstrip(".")
     return f'''
-  <section class="hero hero--page">
-    <div class="wrap">
-      <div class="hero-card">
-        <span class="rule"></span>
-        <span class="eyebrow">{eyebrow}</span>
-        <h1>{title}</h1>
-        <p class="lede">{lede}</p>{extra}
-      </div>
+  <section class="hero hero--page pg pg--{tone}">
+    <div class="pg-wrap">
+      <p class="mono pg-n">Nº{num} / {eyebrow.rstrip(".")}</p>
+      <h1 class="pg-title">{big}<i>.</i></h1>
+      <div class="pg-cap"><span class="pg-arrow" aria-hidden="true">→</span><div><p class="pg-line">{cap}</p>{sub}</div></div>{extra}
+      <div class="pg-tiles" aria-hidden="true"><span style="background-image:url(/images/alps-blue.jpg)"></span><span style="background-image:url(/images/alps-peaks.jpg)"></span></div>
     </div>
   </section>
 '''
