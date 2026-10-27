@@ -726,39 +726,45 @@ notfound = page_hero("Page not found", "This trail doesn't go anywhere.",
     '\n      <div class="ctas"><a class="btn btn-ink" href="/">Go to the home page</a><a class="btn btn-line" href="/get-in-touch/">Contact us</a></div>')
 
 # ---------------------------------------------------------------- Build your own paper
-try_paper = page_hero("The Daily Peddigrew", "Get your own morning paper.",
-    "Tell us your name, your city and the three things on your plate today. Your page fills in as you type. Send it to us and we'll take it from there.") + f'''
-  <section class="section section--ink" aria-labelledby="try-title">
-    <div class="wrap paper-split try-split">
-      <div>
-        <span class="rule"></span>
-        <h2 id="try-title">See yours, then ask for it.</h2>
-        <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
-          <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
-          <input type="hidden" name="_template" value="table">
-          <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
-          <div class="field-row">
-            <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
-            <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
-          </div>
-          <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
-          <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
-          <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
-          <label class="field"><span>Apps you check every morning</span><input type="text" name="morning-apps" placeholder="Gmail, Slack, LinkedIn"></label>
-          <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" placeholder="sam@yourcompany.com" required></label>
-          <label class="field"><span>Anything else you'd want on your page? (optional)</span><textarea name="wishlist" rows="2" placeholder="Job schedule, new leads, invoices due"></textarea></label>
-          <button class="btn btn-white" type="submit" data-try-btn>Request my paper</button>
-          <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
-          <p class="form-status" role="status" aria-live="polite" data-try-status></p>
-        </form>
-        <div class="try-after" data-try-after hidden>
-          <h3>Request received.</h3>
-          <p>We'll look at what you sent and reply by email. If you'd rather talk it through now, book five minutes.</p>
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+try_paper = f'''
+  <section class="hero hero--page try-hero">
+    <div class="wrap">
+      <div class="hero-card try-grid">
+        <div class="try-intro">
+          <span class="rule"></span>
+          <span class="eyebrow">The Daily Peddigrew</span>
+          <h1>Get your own morning paper.</h1>
+          <p class="lede">One page with your priorities, calendar, inbox and follow-ups. Fill in the form and watch yours take shape.</p>
         </div>
-      </div>
-      <div class="press" data-press>
-        {PAPER_IMG}
+        <div class="try-paper press" data-press>
+          {PAPER_IMG}
+        </div>
+        <div class="try-formcard">
+          <h2 id="try-title">Make it yours</h2>
+          <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
+            <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
+            <input type="hidden" name="_template" value="table">
+            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field-row">
+              <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
+              <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
+            </div>
+            <label class="field"><span>Top thing today</span><input type="text" name="one" placeholder="Send the Henderson quote" required></label>
+            <label class="field"><span>Second</span><input type="text" name="two" placeholder="Call back two warm leads"></label>
+            <label class="field"><span>Third</span><input type="text" name="three" placeholder="Walk the dog at lunch"></label>
+            <label class="field"><span>Apps you check every morning</span><input type="text" name="morning-apps" placeholder="Gmail, Slack, LinkedIn"></label>
+            <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" placeholder="sam@yourcompany.com" required></label>
+            <label class="field"><span>Anything else you'd want on your page? (optional)</span><textarea name="wishlist" rows="2" placeholder="Job schedule, new leads, invoices due"></textarea></label>
+            <button class="btn btn-ink" type="submit" data-try-btn>Request my paper</button>
+            <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
+            <p class="form-status" role="status" aria-live="polite" data-try-status></p>
+          </form>
+          <div class="try-after" data-try-after hidden>
+            <h3>Request received.</h3>
+            <p>We'll look at what you sent and reply by email. If you'd rather talk it through now, book five minutes.</p>
+            <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

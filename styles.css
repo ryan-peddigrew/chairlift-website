@@ -806,3 +806,32 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .try-form .form-status { min-height: 1.4em; color: var(--on-ink-muted); font-size: 15px; }
 .try-form .hp { position: absolute; left: -9999px; }
 .try-form.form-done .btn, .try-form.form-done .field, .try-form.form-done .field-row { display: none; }
+
+/* Get your own paper: paper first, form beside or below it */
+.try-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); grid-template-areas: "intro paper" "form paper"; column-gap: 56px; row-gap: 32px; align-items: start; }
+.hero--page .try-grid { padding: 64px 64px 56px; }
+.try-intro { grid-area: intro; }
+.try-intro h1 { max-width: 12ch; }
+.try-paper { grid-area: paper; position: sticky; top: 108px; max-width: 460px; justify-self: end; }
+.try-formcard { grid-area: form; background: #FFFFFF; color: var(--ink); border-radius: 22px; padding: 28px; }
+.try-formcard h2 { font-size: 26px; margin-bottom: 4px; }
+.try-formcard .try-form { margin-top: 16px; }
+.try-formcard .field { color: var(--ink); }
+.try-formcard .field input, .try-formcard .field textarea { background: #F3F4F6; border-color: transparent; }
+.try-formcard .field input:focus, .try-formcard .field textarea:focus { border-color: var(--ink); background: #FFFFFF; }
+.try-formcard .form-fine, .try-formcard .form-status { color: #4A5160; }
+.try-formcard .form-fine a { color: var(--ink); }
+.try-formcard .try-after { border-top-color: #E3E5EA; }
+.try-formcard .try-after p { color: #4A5160; }
+.try-formcard :focus-visible { outline-color: var(--ink); }
+.try-paper .paper-shot figcaption { color: var(--on-ink-muted); }
+@media (max-width: 900px) {
+  .try-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "paper" "form"; row-gap: 24px; }
+  .hero--page .try-grid { padding: 44px 24px 24px; }
+  .try-paper { position: static; max-width: 420px; justify-self: center; }
+  .try-paper .dp-frame { max-height: 360px; }
+  .try-paper .paper-shot { -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
+  .try-paper .paper-shot figcaption { display: none; }
+  .try-formcard { padding: 22px 18px; }
+}
+.hero--page .try-formcard .btn-ink { background: var(--ink); color: #FFFFFF; }
