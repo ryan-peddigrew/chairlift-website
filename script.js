@@ -80,3 +80,20 @@
   if (year) year.textContent = new Date().getFullYear();
 })();
 
+
+/* Retro concept: flying snow spray */
+(function () {
+  var cv = document.querySelector('canvas.snow');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d'), w, h, ps = [], still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() { var r = cv.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2); w = r.width; h = r.height; cv.width = w * d; cv.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  size();
+  for (var i = 0; i < 70; i++) ps.push({ x: Math.random() * w, y: Math.random() * h, r: .8 + Math.random() * 3, v: .25 + Math.random() * .9, d: Math.random() * 6 });
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff';
+    ps.forEach(function (p) { ctx.globalAlpha = .35 + p.r / 5; ctx.beginPath(); ctx.arc(p.x + Math.sin(t / 900 + p.d) * 14, p.y, p.r, 0, 6.3); ctx.fill(); if (!still) { p.y += p.v; p.x -= p.v * .5; if (p.y > h) { p.y = -4; p.x = Math.random() * w + 80; } if (p.x < -10) p.x = w; } });
+    if (!still) requestAnimationFrame(draw);
+  }
+  draw(0);
+  window.addEventListener('resize', size);
+})();
