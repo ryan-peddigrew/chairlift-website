@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, re
 import datetime as _dt
 from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(__file__))
@@ -188,78 +188,129 @@ PAPER_IMG = f'''<figure class="paper-shot">
       </figure>'''
 
 home = f'''
-  <section class="hero">
-    {STAIRS_BG}
-    <div class="wrap">
-      <div class="hero-card hero-card--home">
-        <div class="hero-copy">
-        <span class="rule"></span>
-        <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <div class="ctas">
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        </div>
-        </div>
-        <div class="flip" aria-label="Right now, and with Chairlift">
-          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
-        </div>
+  <section class="pc-hero" aria-label="Chairlift">
+    <div class="pc-pin">
+    <div class="pc-sky" aria-hidden="true">
+<video class="pc-photo pc-photo--wind" src="/images/hero-wind.mp4" poster="/images/hero-wind-poster.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+      <canvas class="pc-fog" aria-hidden="true"></canvas>
+      <span class="pc-shade"></span><span class="pc-scan"></span>
+    </div>
+    <div class="pc-stage">
+      <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
+      <div class="pc-story">
+        <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
+        <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
+        <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="/how-it-works/">See how it works <i aria-hidden="true">→</i></a></p>
+      </div>
+      <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
+      <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
+    </div>
+      <div class="pc-scrollhint" aria-hidden="true"><svg class="pc-chev" viewBox="0 0 32 18"><path d="M2 2l14 14L30 2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </section>
+
+
+
+  <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
+    <div class="pc-scrub__pin"><div class="pc-wrap">
+      <p class="sx-label">The problem</p>
+      <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
+      <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
+    </div></div>
+  </section>
+
+  <section class="pc-sec pc-sec--dark pc-sec--introrest" aria-label="How Chairlift works">
+    <div class="pc-wrap">
+      <div class="pc-cols">
+        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting software. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
+        <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
+      </div>
+      <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
+      <div class="ticket" aria-hidden="true"><div class="ticket__main"><p class="ticket__top"><span>Chairlift</span><span>Lift ticket</span></p><p class="ticket__big">One task<br>first<i>.</i></p><p class="ticket__route"><span>Base</span><i class="ar ar--r"></i><span>Summit</span></p></div><div class="ticket__stub"><span class="ticket__adm">Admit<br>one team</span><span class="ticket__bar"></span><span class="ticket__no">No. 0001</span></div></div>
+      <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+
+
+  <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
+    <div class="pc-wrap">
+      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">What we take off your team's plate.</p></div></header>
+      <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
+      <ol class="pc-list">
+        <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
+        <li><b>Fast first replies</b><span>A new lead has been waiting since this morning. Now every inquiry gets a prompt, helpful reply and reaches the right person.</span></li>
+        <li><b>Scheduling and data entry</b><span>The same details typed into three systems. Now confirmations and updates happen in the background.</span></li>
+        <li><b>After-hours replies</b><span>It's 8:40 pm and the office is closed. Customers get a friendly reply within minutes.</span></li>
+        <li><b>Past customers and old leads</b><span>People who once said yes have gone quiet. A gentle check-in goes out at the right moment.</span></li>
+        <li><b>Reports without the legwork</b><span>The weekly report is built by hand, again. Now the numbers leadership needs arrive on their own.</span></li>
+      </ol>
+      <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+
+  <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
+    <div class="pc-wrap">
+      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">A whole new level. You'll wonder how you managed before.</p></div></header>
+      <div class="pc-benefits">
+        <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
+        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
+        <article><p class="mono">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
+        <article><p class="mono">04</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
+        <article><p class="mono">05</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
       </div>
     </div>
   </section>
 
-  <section class="proof" aria-label="Who you're dealing with">
-    <div class="wrap proof-grid">
-      <div class="proof-item proof-item--face"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="eager" decoding="async"><p><strong>A note from our founder.</strong> We built Chairlift so great teams stop losing their best hours to admin. <a href="/who-we-are/">Read our story</a></p></div>
-      <div class="proof-item"><p><strong>Works inside what you already use.</strong> Your inbox, calendar, spreadsheets and quoting software. Nothing new to learn.</p></div>
-      <div class="proof-item"><p><strong>One tested fix at a time.</strong> We fix one task, make sure it works, then look at the next.</p></div>
+
+  <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
+    <div class="pc-wrap">
+      <div class="pc-ghost" aria-hidden="true"><span>Onboard &nbsp;&middot;&nbsp; Ride &nbsp;&middot;&nbsp; Summit</span></div>
+      <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Three stops to the top.</p></div></header>
+      <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
+      <div class="pc-pkgs">
+        <article><p class="mono">Stop 1</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
+        <article><p class="mono">Stop 2</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></article>
+        <article><p class="mono">Stop 3</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></article>
+      </div>
+      <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
-  <section class="section section--ink" aria-labelledby="plate-title">
-    <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="plate-title">What we take off your team's plate.</h2>
-        <p>Small on their own. Add them up and it's hours every week.</p>
-      </div>
-      <div class="cards cards--mixed cards--swipe">
-        <div class="card"><div class="card-top">{icon("quote")}<span class="card-label">Sales</span></div><h3>Follow-ups</h3><p class="problem">A quote went out last week. Nobody's followed up.</p><p>Every follow-up goes out on time, written the way each account manager actually talks to their own clients.</p></div>
-        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Inquiries</span></div><h3>Fast first replies</h3><p class="problem">A new lead has been waiting since this morning.</p><p>Every inquiry gets a prompt, helpful reply and reaches the right person.</p></div>
-        <div class="card"><div class="card-top">{icon("cal")}<span class="card-label">Operations</span></div><h3>Scheduling and data entry</h3><p class="problem">The same details typed into three systems.</p><p>Confirmations and updates happen in the background, with no more copying between systems.</p></div>
-        <div class="card"><div class="card-top">{icon("moon")}<span class="card-label">Inquiries</span></div><h3>After-hours replies</h3><p class="problem">It's 8:40 pm and the office is closed.</p><p>Customers get a friendly reply within minutes, and the team starts the day with a short list of what came in.</p></div>
-        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Sales</span></div><h3>Past customers and old leads</h3><p class="problem">People who once said yes have gone quiet.</p><p>A gentle check-in goes out at the right moment, so warm relationships don't go cold.</p></div>
-        <div class="card"><div class="card-top">{icon("trend")}<span class="card-label">Leadership</span></div><h3>Reports without the legwork</h3><p class="problem">The weekly report is built by hand, again.</p><p>The numbers leadership needs arrive on their own, without anyone building a spreadsheet.</p></div>
-      </div>
-      <p class="pains-close">You don't need to hire for this. You need the routine work handled.</p>
-      <p class="section-link"><a class="link-arrow" href="/time-back/">Add up your team's hours</a></p>
+  <section class="pc-band" aria-label="Your team’s hours, back.">
+    <div class="pc-band__stick">
+      <img class="pc-band__img" src="/images/alps-blue.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async">
+      <video class="pc-band__vid" muted loop playsinline preload="none" poster="/images/hero-reel-5-poster.jpg" data-src="/images/hero-reel-5.mp4"></video>
+      <p class="pc-band__txt"><span>Your team&rsquo;s hours.</span><span>Back.</span></p>
     </div>
   </section>
 
-  <section class="section section--soft" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="intro">
-        <span class="rule"></span>
-        <h2 id="how-title">Three stops to the top.</h2>
-        <p>No big IT project and no jargon. Just a steady climb, one lift at a time.</p>
-      </div>
-{STEPS}      <p class="section-link"><a class="link-arrow" href="/how-it-works/">See the full process</a></p>
-    </div>
-  </section>
-
-  <section class="section section--soft paper-teaser" aria-labelledby="paper-title">
-    <div class="wrap paper-split">
+  <section class="pc-sec pc-sec--sky paper-teaser" aria-labelledby="paper-title">
+    <div class="pc-wrap paper-split">
       <div>
-        <span class="rule"></span>
-        <h2 id="paper-title">The Daily Peddigrew.</h2>
-        <p class="paper-lede">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
-        <p class="section-link"><a class="link-arrow" href="/try/">Build yours in 10 seconds</a></p>
+        <header class="sx-head"><h2 id="paper-title" class="sx-title">Mornings<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">The Daily Peddigrew.</p></div></header>
+        <p class="pc-lead pc-lead--small">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
+        <p class="pc-links"><a class="pc-link pc-link--ink" href="/try/">Build yours in minutes <i class="ar" aria-hidden="true"></i></a></p>
       </div>
       {PAPER_IMG}
     </div>
   </section>
 
-{task_band()}
+  <section class="pc-sec pc-sec--dark pc-fq pc-pinscrub" aria-label="A note from our founder">
+    <div class="pc-fq__pin"><div class="pc-wrap pc-fq__grid">
+      <figure class="pc-fq__photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="160" height="160" loading="lazy" decoding="async"><svg class="pc-fq__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48.6" pathLength="1"/></svg></figure>
+      <blockquote class="pc-fq__q">
+        <p data-scrub>&ldquo;Throughout a career in sales, I watched great people lose their best hours to follow-ups and admin. <em class="nx">Chairlift gives those hours back.</em>&rdquo;</p>
+        <footer class="pc-fq__by"><span class="mono">Ryan Peddigrew</span><span class="mono">Founder, Chairlift</span></footer>
+        <p class="pc-links"><a class="pc-link" href="/who-we-are/">Read our story <i class="ar" aria-hidden="true"></i></a></p>
+      </blockquote>
+    </div></div>
+  </section>
+
+  <section class="pc-sec pc-sec--dark pc-sec--lodge" aria-hidden="true">
+    <div class="pc-wrap"><figure class="retro retro--color retro--wide"><img src="/images/retro/lodge-10.jpg" alt="" width="1600" height="1004" loading="lazy" decoding="async"><figcaption>Base lodge &middot; Open daily</figcaption></figure></div>
+  </section>
+
+  {task_band()}
 '''
 
 # ---------------------------------------------------------------- Services
@@ -594,7 +645,7 @@ HERO_MEDIA = '''<figure class="reel">
 morning_paper = page_hero("The Daily Peddigrew", "One page for your mornings.",
     "A one-page morning briefing with your focus, calendar and follow-ups. On paper, by email or on your desktop.",
     extra=f'''
-        <div class="ctas"><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></div>''') + f'''
+        <div class="ctas"><a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a></div>''') + f'''
   <section class="section section--tight" aria-labelledby="page-title">
     <div class="wrap paper-split paper-split--flip">
       {PAPER_IMG}
@@ -654,7 +705,7 @@ morning_paper = page_hero("The Daily Peddigrew", "One page for your mornings.",
       <div>
         <h2 id="cta-title">Talk it through in five minutes.</h2>
         <p>Tell us how your mornings run, and we'll show you what your page could look like.</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
       </div>
     </div>
   </section>
@@ -762,7 +813,7 @@ try_paper = f'''
           <div class="try-after" data-try-after hidden>
             <h3>Request received.</h3>
             <p>We'll look at what you sent and reply by email. If you'd rather talk it through now, book five minutes.</p>
-            <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+            <a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
           </div>
         </div>
       </div>
@@ -793,7 +844,7 @@ calculator = page_hero("Time-back calculator", "Where does your team's time go?"
         <p class="calc-big"><b data-hours>0</b> hours</p>
         <p class="calc-sub">About <b data-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
         <p class="calc-note">Based on 48 working weeks and 8-hour days.</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="calc-after">We'll pick the biggest one and show you how we'd take it off your plate.</p>
       </div>
     </div>
@@ -812,7 +863,7 @@ BRING = ["Quotes that go quiet", "Inquiries that sit overnight", "Reports built 
 
 five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
     "One real person from our own team. Tell us about the work slowing people down, whether it's a team, a company or just you, and we'll say honestly if there's a fix worth trying.",
-    extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Start a conversation</a></div>') + f'''
+    extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Take the lift</a></div>') + f'''
   <section class="section section--tight" aria-labelledby="five-title">
     <div class="wrap">
       <div class="intro">
@@ -859,8 +910,26 @@ five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
   <script src="/cal-embed.js"></script>
 '''
 
+
+# ---- homepage mock-up variants (previews, noindex) ----
+_MEDIA = re.compile(r'<video class="pc-photo pc-photo--wind".*?</video>', re.S)
+def _vid(src, poster, cls=""):
+    return f'<video class="pc-photo pc-photo--wind {cls}" src="{src}" poster="{poster}" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>'
+HERO_MEDIA = {
+    "a": _vid("/images/hero-wind.mp4", "/images/hero-wind-poster.jpg"),
+    "b": _vid("/images/hero-reel-1.mp4", "/images/hero-reel-1-poster.jpg", "pc-photo--reel") if os.path.exists(os.path.join(OUT, "images/hero-reel-1.mp4")) else '<img class="pc-photo pc-photo--wind pc-photo--reel" src="/images/hero-reel-1-poster.jpg" alt="">',
+    "c": '<picture><source media="(max-width: 860px)" srcset="/images/alps-peaks-phone.jpg"><img class="pc-photo pc-photo--wind pc-photo--still" src="/images/alps-peaks.jpg" alt="" width="2400" height="1602"></picture>',
+    "d": _vid("/images/hero-clouds.mp4", "/images/alps-blue.jpg", "pc-photo--clouds"),
+    "e": _vid("/images/hero-reel-4.mp4", "/images/hero-reel-4-poster.jpg", "pc-photo--reel"),
+}
+def home_variant(k, switcher=True):
+    h = _MEDIA.sub(lambda m: HERO_MEDIA[k], home, count=1)
+    h = h.replace('class="pc-hero"', f'class="pc-hero pcv-{"c pcv-e" if k == "e" else k}"', 1)
+    sw = '<nav class="pc-switch" aria-label="Homepage mock-ups">' + "".join(f'<a href="/home-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abcd") + '</nav>'
+    return h + (sw if switcher else '')
+
 PAGES = [
-    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home, False),
+    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
@@ -871,6 +940,8 @@ PAGES = [
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
+] + [
+    (f"home-{k}/index.html", f"Homepage mock-up {k.upper()}", "Preview of a homepage option.", f"/home-{k}/", None, home_variant(k), True) for k in "abcd"
 ] + [
     (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
 ] + [

@@ -52,8 +52,10 @@ def head(title, desc, path, noindex=False):
 <link rel="icon" href="{FAVICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/pxp.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -67,17 +69,19 @@ def header(active=None):
     mob = "\n".join(f'    <a href="{href}"{cur(k)}>{label}</a>' for k, href, label in NAV)
     return f'''
 <header class="site-header">
+  <span class="hdr-px" hidden></span>
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
+    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Take the lift</a>
     <nav class="nav" aria-label="Main">
 {desk}
-      <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Start a conversation</a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="menu-open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Take the lift</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span class="menu-dot" aria-hidden="true">●</span> <span class="menu-label">Menu</span></button>
     </nav>
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
 {mob}
-    <a class="btn btn-ink" href="{MAIN_CTA}">Start a conversation</a>
+    <a class="btn btn-ink" href="{MAIN_CTA}">Take the lift</a>
   </nav>
 </header>
 '''
@@ -110,11 +114,15 @@ def footer():
     </nav>
   </div>
   <div class="footer-bottom">
-    <div class="wrap">© <span data-year>2026</span> Chairlift</div>
+    <div class="wrap">© <span data-year>2026</span> Chairlift <span class="ft-credit">&middot; Mountain footage with thanks to @meraberidze and @world.from.my.eyes</span></div>
   </div>
 </footer>
 
 <script src="/script.js" defer></script>
+<script src="/pxp.js" defer></script>
+<script src="/pxcloud.js" defer></script>
+<script type="importmap">{{"imports":{{"three":"/vendor/three.module.min.js"}}}}</script>
+<script type="module" src="/pxp3d.js"></script>
 </body>
 </html>
 '''
@@ -200,23 +208,36 @@ def cta_band(title):
       <div>
         <h2 id="cta-title">{title}</h2>
         <p>{CTA_TEXT}</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
       </div>
     </div>
   </section>
 '''
 
 
+PAGE_TONE = {"What we do": ("002", "dark"), "How it works": ("003", "blue"), "In practice": ("004", "grey"),
+             "Who we help": ("005", "dark"), "Who we are": ("006", "blue"), "Get in touch": ("007", "grey"),
+             "The Daily Peddigrew": ("008", "blue"), "Time-back calculator": ("009", "dark"),
+             "Five minutes. No pitch.": ("010", "grey")}
+
+
+_TILE_SETS = [("lodge-01", "retro--color", "Double chair", "lodge-05", "", "Tower 5"), ("lodge-12", "retro--color", "Race day", "lodge-04", "", "Lift line"), ("lodge-10", "retro--color", "Base lodge", "lodge-14", "retro--color", "Mountain hotel"), ("lodge-13", "retro--color", "Mountain hotel", "lodge-11", "retro--color", "First tracks")]
+def _tiles(seed):
+    a, ac, al, b, bc, bl = _TILE_SETS[sum(map(ord, seed)) % len(_TILE_SETS)]
+    return f'<div class="pg-tiles" aria-hidden="true"><span class="retro {ac}" style="background-image:url(/images/retro/{a}.jpg)"><em>{al}</em></span><span class="retro {bc}" style="background-image:url(/images/retro/{b}.jpg)"><em>{bl}</em></span></div>'
+
 def page_hero(eyebrow, title, lede, extra=""):
+    num, tone = PAGE_TONE.get(eyebrow, ("011", "dark"))
+    big = eyebrow if eyebrow in PAGE_TONE else title
+    cap = title if eyebrow in PAGE_TONE else lede
+    sub = f'\n        <p class="pg-lede">{lede}</p>' if eyebrow in PAGE_TONE else ""
+    big = big.rstrip(".")
     return f'''
-  <section class="hero hero--page">
-    <div class="wrap">
-      <div class="hero-card">
-        <span class="rule"></span>
-        <span class="eyebrow">{eyebrow}</span>
-        <h1>{title}</h1>
-        <p class="lede">{lede}</p>{extra}
-      </div>
+  <section class="hero hero--page pg pg--{tone}">
+    <div class="pg-wrap">
+      <h1 class="pg-title">{big}<i>.</i></h1>
+      <div class="pg-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><div><p class="pg-line">{cap}</p>{sub}</div></div>{extra}
+      {_tiles(title)}
     </div>
   </section>
 '''
@@ -237,7 +258,7 @@ def task_band():
       <div>
         <h2 id="task-title">Ready when you are.</h2>
         <p>Five minutes. We'll tell you if there's a practical fix, whether or not we end up working together.</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="cta-or"><strong>Not ready to talk?</strong> Send us one task your team does over and over, and we'll reply within a day with one practical idea.</p>
       </div>
       <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">

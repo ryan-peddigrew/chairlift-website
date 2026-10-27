@@ -23,23 +23,27 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M2 0H62A2 2 0 0 1 64 2V62A2 2 0 0 1 62 64H2A2 2 0 0 1 0 62V2A2 2 0 0 1 2 0Z' fill='%23141B2A'/%3E%3Crect x='10' y='42.5' width='20' height='7' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='29' width='20' height='7' rx='1.2' fill='%23fff'/%3E%3Crect x='34' y='15.5' width='20' height='7' rx='1.2' fill='%233DFFC1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/pxp.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
+  <span class="hdr-px" hidden></span>
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home"><svg width="36" height="36" viewBox="-1 -1 66 66" aria-hidden="true"><path d="M2 0H62A2 2 0 0 1 64 2V62A2 2 0 0 1 62 64H2A2 2 0 0 1 0 62V2A2 2 0 0 1 2 0Z" fill="#141B2A"/><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="#fff"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="#fff"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="#3DFFC1"/></svg><span>Chairlift</span></a>
+    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Take the lift</a>
     <nav class="nav" aria-label="Main">
       <a class="nav-link" href="/how-it-works/">How it works</a>
       <a class="nav-link" href="/what-we-do/">What we do</a>
       <a class="nav-link" href="/examples/">In practice</a>
       <a class="nav-link" href="/who-we-help/">Who we help</a>
       <a class="nav-link" href="/who-we-are/">Who we are</a>
-      <a class="btn btn-ink nav-cta" href="/5min/">Start a conversation</a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="menu-open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <a class="btn btn-ink nav-cta" href="/5min/">Take the lift</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span class="menu-dot" aria-hidden="true">●</span> <span class="menu-label">Menu</span></button>
     </nav>
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
@@ -48,20 +52,18 @@
     <a href="/examples/">In practice</a>
     <a href="/who-we-help/">Who we help</a>
     <a href="/who-we-are/">Who we are</a>
-    <a class="btn btn-ink" href="/5min/">Start a conversation</a>
+    <a class="btn btn-ink" href="/5min/">Take the lift</a>
   </nav>
 </header>
 
 <main id="main">
 
-  <section class="hero hero--page">
-    <div class="wrap">
-      <div class="hero-card">
-        <span class="rule"></span>
-        <span class="eyebrow">Time-back calculator</span>
-        <h1>Where does your team's time go?</h1>
-        <p class="lede">Fill in the routine tasks your team handles each week. Use your own numbers: rough guesses are fine. Nothing you type is saved or sent anywhere.</p>
-      </div>
+  <section class="hero hero--page pg pg--dark">
+    <div class="pg-wrap">
+      <h1 class="pg-title">Time-back calculator<i>.</i></h1>
+      <div class="pg-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><div><p class="pg-line">Where does your team's time go?</p>
+        <p class="pg-lede">Fill in the routine tasks your team handles each week. Use your own numbers: rough guesses are fine. Nothing you type is saved or sent anywhere.</p></div></div>
+      <div class="pg-tiles" aria-hidden="true"><span class="retro retro--color" style="background-image:url(/images/retro/lodge-10.jpg)"><em>Base lodge</em></span><span class="retro retro--color" style="background-image:url(/images/retro/lodge-14.jpg)"><em>Mountain hotel</em></span></div>
     </div>
   </section>
 
@@ -107,7 +109,7 @@
         <p class="calc-big"><b data-hours>0</b> hours</p>
         <p class="calc-sub">About <b data-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
         <p class="calc-note">Based on 48 working weeks and 8-hour days.</p>
-        <a class="btn btn-white" href="/5min/">Start a conversation</a>
+        <a class="btn btn-white" href="/5min/">Take the lift</a>
         <p class="calc-after">We'll pick the biggest one and show you how we'd take it off your plate.</p>
       </div>
     </div>
@@ -134,10 +136,14 @@
     </nav>
   </div>
   <div class="footer-bottom">
-    <div class="wrap">© <span data-year>2026</span> Chairlift</div>
+    <div class="wrap">© <span data-year>2026</span> Chairlift <span class="ft-credit">&middot; Mountain footage with thanks to @meraberidze and @world.from.my.eyes</span></div>
   </div>
 </footer>
 
 <script src="/script.js" defer></script>
+<script src="/pxp.js" defer></script>
+<script src="/pxcloud.js" defer></script>
+<script type="importmap">{"imports":{"three":"/vendor/three.module.min.js"}}</script>
+<script type="module" src="/pxp3d.js"></script>
 </body>
 </html>
