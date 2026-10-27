@@ -79,7 +79,7 @@
         '<div class="patrol__txt"><p class="patrol__tag">Ski Patrol</p>' +
         '<h2 id="patrol-h">Whoa there. Did you mean to leave the hill?</h2>' +
         '<p>Before you go, give us five minutes. We’ll talk through the work eating your team’s week.</p>' +
-        '<div class="patrol__btns"><a class="patrol__go" href="/5min/">Book 5 minutes</a><button class="patrol__no" type="button">I’m heading down</button></div></div></div>';
+        '<div class="patrol__btns"><a class="patrol__go" href="/5min/">Take the lift</a><button class="patrol__no" type="button">I’m heading down</button></div></div></div>';
       document.body.appendChild(d);
       var last = document.activeElement;
       function close() { d.classList.remove('is-on'); setTimeout(function () { d.remove(); }, 400); document.removeEventListener('keydown', esc); if (last && last.focus) last.focus(); }

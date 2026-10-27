@@ -72,16 +72,16 @@ def header(active=None):
   <span class="hdr-px" hidden></span>
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
-    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Book 5 minutes</a>
+    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Take the lift</a>
     <nav class="nav" aria-label="Main">
 {desk}
-      <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Book 5 minutes</a>
+      <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Take the lift</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span class="menu-dot" aria-hidden="true">●</span> <span class="menu-label">Menu</span></button>
     </nav>
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
 {mob}
-    <a class="btn btn-ink" href="{MAIN_CTA}">Book 5 minutes</a>
+    <a class="btn btn-ink" href="{MAIN_CTA}">Take the lift</a>
   </nav>
 </header>
 '''
@@ -208,7 +208,7 @@ def cta_band(title):
       <div>
         <h2 id="cta-title">{title}</h2>
         <p>{CTA_TEXT}</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
       </div>
     </div>
   </section>
@@ -258,7 +258,7 @@ def task_band():
       <div>
         <h2 id="task-title">Ready when you are.</h2>
         <p>Five minutes. We'll tell you if there's a practical fix, whether or not we end up working together.</p>
-        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Book 5 minutes</a>
+        <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="cta-or"><strong>Not ready to talk?</strong> Send us one task your team does over and over, and we'll reply within a day with one practical idea.</p>
       </div>
       <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">
