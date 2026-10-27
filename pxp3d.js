@@ -67,8 +67,8 @@ if (host) {
     const frame = (now) => {
       requestAnimationFrame(frame);
       if (!visible) return;
-      const t = ((now - t0) / 1000) % 10;           // 10 s cycle: 7.5 s turn, 2.5 s facing forward
-      const turn = t < 7.5 ? ease(t / 7.5) * Math.PI * 2 : 0;
+      const t = ((now - t0) / 1000) % 16;           // 16 s cycle: 12 s slow turn, 4 s facing forward
+      const turn = t < 12 ? ease(t / 12) * Math.PI * 2 : 0;
       emblem.rotation.y = reduce ? 0.5 : turn;
       emblem.rotation.x = reduce ? 0 : Math.sin(now / 2600) * 0.08;
       renderer.render(scene, camera);
