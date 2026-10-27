@@ -10,37 +10,29 @@ if (host) {
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setClearColor(0x000000, 0);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    renderer.toneMappingExposure = 1.3;
     const scene = new THREE.Scene();
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
     const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
-    camera.position.set(0, 0, 7.2);
+    camera.position.set(0, 0, 6.2);
 
-    const steel = new THREE.MeshPhysicalMaterial({ color: 0xcdd4e0, metalness: 1, roughness: 0.3, clearcoat: 0.25, clearcoatRoughness: 0.4, envMapIntensity: 1.25 });
+    const steel = new THREE.MeshPhysicalMaterial({ color: 0xf2f5fb, metalness: 1, roughness: 0.18, clearcoat: 0.5, clearcoatRoughness: 0.2, envMapIntensity: 2.4 });
     const dark = new THREE.MeshPhysicalMaterial({ color: 0x1a2232, metalness: 0.85, roughness: 0.55, envMapIntensity: 0.8 });
     const bevel = (d, t) => ({ depth: d, bevelEnabled: true, bevelThickness: t, bevelSize: t, bevelOffset: 0, bevelSegments: 6, curveSegments: 72 });
 
     const emblem = new THREE.Group();
-    const ring = new THREE.Shape(); ring.absarc(0, 0, 1, 0, Math.PI * 2, false);
-    const hole = new THREE.Path(); hole.absarc(0, 0, 0.8, 0, Math.PI * 2, true); ring.holes.push(hole);
-    const ringMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(ring, bevel(0.3, 0.07)), steel);
-    ringMesh.position.z = -0.15; emblem.add(ringMesh);
-
-    const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 0.1, 96), dark);
-    disc.rotation.x = Math.PI / 2; disc.position.z = 0; emblem.add(disc);
-
     const bar = (cx, cy) => {
-      const w = 0.6, h = 0.17, r = 0.04, s = new THREE.Shape();
+      const w = 1.0, h = 0.27, r = 0.05, s = new THREE.Shape();
       s.moveTo(-w / 2 + r, -h / 2); s.lineTo(w / 2 - r, -h / 2); s.quadraticCurveTo(w / 2, -h / 2, w / 2, -h / 2 + r);
       s.lineTo(w / 2, h / 2 - r); s.quadraticCurveTo(w / 2, h / 2, w / 2 - r, h / 2);
       s.lineTo(-w / 2 + r, h / 2); s.quadraticCurveTo(-w / 2, h / 2, -w / 2, h / 2 - r);
       s.lineTo(-w / 2, -h / 2 + r); s.quadraticCurveTo(-w / 2, -h / 2, -w / 2 + r, -h / 2);
-      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(s, bevel(0.1, 0.03)), steel);
-      m.position.set(cx, cy, 0.02); return m;
+      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(s, bevel(0.32, 0.06)), steel);
+      m.position.set(cx, cy, -0.16); return m;
     };
-    emblem.add(bar(-0.3, -0.34), bar(0, 0), bar(0.3, 0.34));
-    emblem.scale.setScalar(1.05);
+    emblem.add(bar(-0.5, -0.52), bar(0, 0), bar(0.5, 0.52));
+    emblem.scale.setScalar(0.8);
     scene.add(emblem);
 
     const key = new THREE.DirectionalLight(0xdfe9ff, 1.6); key.position.set(2.5, 3, 4); scene.add(key);

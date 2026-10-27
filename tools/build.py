@@ -190,12 +190,14 @@ PAPER_IMG = f'''<figure class="paper-shot">
 home = f'''
   <section class="pc-hero" aria-label="Chairlift">
     <div class="pc-sky" aria-hidden="true">
-<img class="pc-photo pc-photo--wind" src="/images/hero-wind.webp" alt="" width="500" height="500" fetchpriority="high" decoding="async">
+<video class="pc-photo pc-photo--wind" src="/images/hero-wind.mp4" poster="/images/hero-wind-poster.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+      <canvas class="pc-fog" aria-hidden="true"></canvas>
       <span class="pc-shade"></span><span class="pc-scan"></span>
     </div>
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
-      <div class="pc-capbar" aria-hidden="true"><span class="pg-arrow">→</span><p class="pc-tag">Less busywork.<br>More business.</p><ul class="pc-mlist"><li>Follow-ups</li><li>Replies</li><li>Scheduling</li><li>Reports</li><li class="pc-mlist__end">Our own team.</li></ul></div>
+      <div class="pc-capbar" aria-hidden="true"><span class="pg-arrow">→</span><p class="pc-tag">Less busywork.<br>More business.</p></div>
+      <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
       <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
     </div>
   </section>
@@ -254,9 +256,9 @@ home = f'''
       <p class="mono pc-n">Nº004 / Three stops to the top</p>
       <h2 id="how-title" class="pc-h2">Three stops to the top</h2>
       <div class="pc-pkgs">
-        <article><p class="mono">Stop 1 .PKG</p><h3>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
-        <article><p class="mono">Stop 2 .PKG</p><h3>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></article>
-        <article><p class="mono">Stop 3 .PKG</p><h3>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></article>
+        <article><p class="mono">Stop 1</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
+        <article><p class="mono">Stop 2</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></article>
+        <article><p class="mono">Stop 3</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></article>
       </div>
       <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i>↗</i></a></p>
     </div>
