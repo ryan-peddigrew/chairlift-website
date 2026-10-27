@@ -178,9 +178,10 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
-                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""><div class="dp-foot"><span>The Daily Peddigrew</span></div></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""></section>
               </div>
             </div>
+            <div class="dp-foot"><span>The Daily Peddigrew</span></div>
           </div>
         </div>
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
