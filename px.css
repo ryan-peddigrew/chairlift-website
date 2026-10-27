@@ -258,3 +258,16 @@ html.js .reveal.is-in { filter: none; opacity: 1; transform: none; }
 .px-face--b { transform: rotateY(180deg) translateZ(10px); }
 @media (max-width: 860px) { .px-coin { width: clamp(150px, 46vw, 220px); } }
 .px-face svg { width: 66%; height: 55%; }
+
+/* Atmosphere: the hero fog melts into deep night as you ride up out of the clouds */
+.px-sec--intro { background: linear-gradient(180deg, #E8F0FC 0, #8FB0DD 8%, #2F5596 18%, #101C38 34%, #07090E 52%); padding-top: 52vh; margin-top: -1px; }
+.px-sec--intro .nlabel { color: rgba(255,255,255,.75); }
+/* Full-bleed mountain interlude with scroll-driven push-in */
+.px-band { height: 170svh; position: relative; }
+.px-band__stick { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
+.px-band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; transform: scale(1.08); will-change: transform; }
+.px-band__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,9,14,.55), rgba(7,9,14,0) 30%, rgba(7,9,14,0) 65%, rgba(7,9,14,.7)); }
+.px-band__txt { position: relative; margin: 0; text-align: center; font-family: "Anton", sans-serif; text-transform: uppercase; color: #fff; line-height: .95; font-size: clamp(60px, 14vw, 210px); text-shadow: 0 8px 50px rgba(3,10,40,.35); padding: 0 18px; }
+.px-band__txt span { display: block; }
+.px-band__txt span + span { color: #3DFFC1; }
+.px-sec--intro { padding-top: 38vh; }

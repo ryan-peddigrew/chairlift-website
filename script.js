@@ -124,7 +124,16 @@
       words.forEach(function (w, i) { w.classList.toggle('on', i < n || reduce); });
     }
   }
-  window.addEventListener('scroll', function () { requestAnimationFrame(frame); }, { passive: true });
+  var band = document.querySelector('.px-band'), bimg = band && band.querySelector('.px-band__img'), btxt = band && band.querySelector('.px-band__txt');
+  function bandFrame() {
+    if (!band || reduce) return;
+    var r = band.getBoundingClientRect(), h = window.innerHeight, t = Math.max(0, Math.min(1, -r.top / (r.height - h)));
+    bimg.style.transform = 'scale(' + (1.08 + t * .28) + ') translateY(' + (-t * 4) + '%)';
+    btxt.style.transform = 'translateY(' + ((.5 - t) * 18) + 'vh) scale(' + (.9 + t * .18) + ')';
+    btxt.style.opacity = Math.max(0, Math.min(1, t * 3.2));
+  }
+  window.addEventListener('scroll', function () { requestAnimationFrame(frame); requestAnimationFrame(bandFrame); }, { passive: true });
+  bandFrame();
   window.addEventListener('resize', frame); frame();
   document.querySelectorAll('.px-item button').forEach(function (b) {
     b.addEventListener('click', function () {
