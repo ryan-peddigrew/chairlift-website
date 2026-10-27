@@ -624,3 +624,35 @@ html.nav-d body:has(.pc-hero) .hdr-cta { font-weight: 600; }
 .pc-scrollhint .ar { width: 14px; height: 14px; color: #3DFFC1; animation: pchint 1.8s ease-in-out infinite; }
 @keyframes pccarve { 0% { transform: translate(-14px, 0) rotate(-8deg); } 50% { transform: translate(14px, 10px) scaleX(-1) rotate(-8deg); } 100% { transform: translate(-14px, 0) rotate(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .pc-boarder, .pc-scrollhint .ar { animation: none; } }
+
+/* ---------- round 9: ChatGPT-reference section heads, thin brand body font, no grey text ---------- */
+:root { --px-mute: rgba(255,255,255,.88); --px-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; }
+.pc-sec p, .pc-sec li span, .pg-lede, .stage-sum, .lead-big, main p { font-family: var(--px-body); font-weight: 300; }
+.pc-sec--cream, .pc-sec--sky { --px-mute: rgba(20,27,42,.9); }
+.pc-cols p, .pc-benefits article p:last-child, .pc-pkgs article p:last-child, .pc-list li span { color: inherit; opacity: .9; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
+.sx-head { margin: 0 0 clamp(36px, 5vw, 64px); }
+.sx-title { margin: 0; padding-bottom: clamp(10px, 1.4vw, 20px); border-bottom: 1px solid currentColor; font-family: var(--px-sans); font-weight: 800; font-variation-settings: "wdth" 118; font-size: clamp(64px, 13vw, 200px); line-height: .88; letter-spacing: -.055em; text-transform: none; }
+.sx-title i { display: inline-block; width: .17em; height: .17em; margin-left: .05em; border-radius: 50%; background: #3DFFC1; font-size: inherit; color: transparent; overflow: hidden; vertical-align: baseline; }
+.sx-cap { display: flex; gap: clamp(18px, 3vw, 44px); align-items: flex-start; margin-top: clamp(18px, 2.4vw, 30px); }
+.sx-cap .pg-arrow { color: #3DFFC1; font-size: 34px; line-height: 1; }
+.pc-sec--cream .sx-cap .pg-arrow, .pc-sec--sky .sx-cap .pg-arrow { color: var(--px-ink); }
+.sx-line { margin: 0; font-family: var(--px-mono) !important; font-weight: 400 !important; font-size: clamp(13px, 1.3vw, 17px); letter-spacing: .12em; text-transform: uppercase; line-height: 1.55; max-width: 34ch; }
+.sx-label { margin: 0 0 22px; font-family: var(--px-mono) !important; font-weight: 400 !important; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+.sx-title.rv { clip-path: inset(0 0 100% 0); transform: translateY(50px); opacity: 1; transition: clip-path 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+.sx-title.rv.in { clip-path: inset(-10% 0 -20% 0); transform: none; }
+.pc-sec--blue .sx-title { color: #fff; }
+
+/* even overlay on the top bar */
+body:has(.pc-hero) .site-header .wrap { background: rgba(14,22,40,.42); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+/* chrome down arrow scroll cue */
+.pc-chromearrow { display: block; width: 26px; height: 42px; filter: drop-shadow(0 6px 10px rgba(6,10,20,.4)); animation: pcbob 2.2s ease-in-out infinite; }
+@keyframes pcbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
+@media (prefers-reduced-motion: reduce) { .pc-chromearrow { animation: none; } }
+
+/* ---------- top bar: option A lettering, no backing at all, chrome over the hero, plain white after ---------- */
+body:has(.pc-hero) .site-header .wrap { background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none; }
+body:has(.pc-hero) .site-header .menu-btn, body:has(.pc-hero) .hdr-cta { font-family: var(--px-sans); font-weight: 500; font-size: 16px; letter-spacing: -.005em; text-transform: none; }
+html.over-hero body:has(.pc-hero) .site-header .menu-label, html.over-hero body:has(.pc-hero) .hdr-cta { background: linear-gradient(180deg, #ffffff 0%, #dfe5ef 38%, #7d8aa1 52%, #eef2f8 68%, #a9b4c6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 1px 6px rgba(6,10,20,.35)); }
+html:not(.over-hero) body:has(.pc-hero) .site-header .wrap { background: rgba(20,27,42,.92) !important; }
+html.over-hero body:has(.pc-hero) .site-header .wrap { border-bottom-color: rgba(255,255,255,.7); }
+body:has(.pc-hero) .site-header .wrap { transition: background .35s ease; }

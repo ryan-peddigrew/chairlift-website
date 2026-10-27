@@ -201,7 +201,7 @@ home = f'''
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
       <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
     </div>
-      <div class="pc-scrollhint" aria-hidden="true"><span class="pc-boarder"><svg viewBox="0 0 40 40"><circle cx="21" cy="7" r="3.2" fill="#fff"/><path d="M20 11 17 21l5 6M17 21l-5 6M19 14l-8-2M19 14l9 3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 30 32 25" stroke="#3DFFC1" stroke-width="3.2" stroke-linecap="round"/></svg></span><i class="ar ar--d"></i></div>
+      <div class="pc-scrollhint" aria-hidden="true"><svg class="pc-chromearrow" viewBox="0 0 40 64"><defs><linearGradient id="cha" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".38" stop-color="#b8c2d3"/><stop offset=".5" stop-color="#5d6a82"/><stop offset=".62" stop-color="#dfe5ef"/><stop offset="1" stop-color="#8a96ab"/></linearGradient></defs><path d="M15 2h10v40h11L20 62 4 42h11z" fill="url(#cha)" stroke="rgba(255,255,255,.55)" stroke-width=".8"/></svg></div>
     </div>
   </section>
 
@@ -214,7 +214,8 @@ home = f'''
 
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
-      <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? <em class="nx">That work is small on its own and enormous added up.</em></p>
+      <p class="sx-label">The problem</p>
+      <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
       <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
     </div></div>
   </section>
@@ -222,7 +223,7 @@ home = f'''
   <section class="pc-sec pc-sec--dark pc-sec--introrest" aria-label="How Chairlift works">
     <div class="pc-wrap">
       <div class="pc-cols">
-        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting software. <em class="nx">Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</em></p>
+        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting software. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
         <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
       </div>
       <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
@@ -234,7 +235,7 @@ home = f'''
 
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
-      <h2 id="plate-title" class="pc-h2">What we take off your team's plate</h2>
+      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">What we take off your team's plate.</p></div></header>
       <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
       <ol class="pc-list">
         <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
@@ -250,7 +251,7 @@ home = f'''
 
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
-      <h2 id="why-title" class="pc-h2">It's a whole new level. <em class="nx">You'll wonder how you managed before.</em></h2>
+      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">A whole new level. You'll wonder how you managed before.</p></div></header>
       <div class="pc-benefits">
         <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
         <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
@@ -265,7 +266,7 @@ home = f'''
   <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
     <div class="pc-wrap">
       <div class="pc-ghost" aria-hidden="true"><span>Onboard &nbsp;&middot;&nbsp; Ride &nbsp;&middot;&nbsp; Summit</span></div>
-      <h2 id="how-title" class="pc-h2">Three stops <em class="nx nx--ink">to the top</em></h2>
+      <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Three stops to the top.</p></div></header>
       <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
       <div class="pc-pkgs">
         <article><p class="mono">Stop 1</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
@@ -279,14 +280,14 @@ home = f'''
   <section class="pc-band" aria-label="Less busywork. More business.">
     <div class="pc-band__stick">
       <img class="pc-band__img" src="/images/alps-blue.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async">
-      <p class="pc-band__txt"><span>Less busywork.</span><span class="nx">More business.</span></p>
+      <p class="pc-band__txt"><span>Less busywork.</span><span>More business.</span></p>
     </div>
   </section>
 
   <section class="pc-sec pc-sec--sky paper-teaser" aria-labelledby="paper-title">
     <div class="pc-wrap paper-split">
       <div>
-        <h2 id="paper-title" class="pc-h2">The Daily Peddigrew</h2>
+        <header class="sx-head"><h2 id="paper-title" class="sx-title">Mornings<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">The Daily Peddigrew.</p></div></header>
         <p class="pc-lead pc-lead--small">Something we made for ourselves: a one-page morning read with your focus, calendar and follow-ups. Not a service, just a taste of how we think.</p>
         <p class="pc-links"><a class="pc-link pc-link--ink" href="/try/">Build yours in minutes <i class="ar" aria-hidden="true"></i></a></p>
       </div>

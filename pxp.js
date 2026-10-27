@@ -51,7 +51,7 @@
   var pins = [].slice.call(document.querySelectorAll('.pc-pinscrub'));
   pins.forEach(function (s) { s._w = [].slice.call(s.querySelectorAll('[data-scrub] .w')); });
   // reveal on enter
-  var rvSel = 'main h2, .stage, .pg-tiles, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .ticket, .pc-band__txt, .retro--wide';
+  var rvSel = 'main h2, .stage, .pg-tiles, .sx-title, .sx-cap, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .ticket, .pc-band__txt, .retro--wide';
   var rv = [].slice.call(document.querySelectorAll(rvSel));
   rv.forEach(function (el, i) { el.classList.add('rv'); var sib = [].indexOf.call(el.parentNode.children, el); el.style.setProperty('--rd', Math.min(sib, 6) * 90 + 'ms'); });
   if (reduce || !('IntersectionObserver' in window)) rv.forEach(function (el) { el.classList.add('in'); });
@@ -65,6 +65,7 @@
     ticking = false;
     var vh = window.innerHeight, vw = window.innerWidth;
     if (hero) {
+      root.classList.toggle('over-hero', hero.getBoundingClientRect().bottom > 70);
       var p = clamp(window.scrollY / Math.max(1, hero.offsetHeight - vh));
       root.style.setProperty('--p', p.toFixed(3));
       if (logo && word && stage) {
@@ -75,7 +76,7 @@
         var S1 = Math.max(90, word.offsetHeight * 1.9);
         var cx0 = vw / 2, cy0 = vh / 2 - 40;
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
-        var cy1 = word.getBoundingClientRect().bottom - sr.top - S1 / 2 + S1 * .16 - 3;
+        var cy1 = word.getBoundingClientRect().bottom - sr.top - S1 / 2 + S1 * .1 - 3;
         var e = ease(clamp((p - .08) / .62));
         var cx = cx0 + (cx1 - cx0) * e, cy = cy0 + (cy1 - cy0) * e;
         var s = 1 + (S1 / S0 - 1) * e;

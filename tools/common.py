@@ -52,7 +52,7 @@ def head(title, desc, path, noindex=False):
 <link rel="icon" href="{FAVICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/pxp.css">
@@ -71,7 +71,7 @@ def header(active=None):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
-    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Start a conversation <i class="ar" aria-hidden="true"></i></a>
+    <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Start a conversation</a>
     <nav class="nav" aria-label="Main">
 {desk}
       <a class="btn btn-ink nav-cta" href="{MAIN_CTA}">Start a conversation</a>

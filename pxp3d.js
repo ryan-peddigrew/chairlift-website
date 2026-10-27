@@ -1,5 +1,7 @@
 /* Real 3D Chairlift emblem (three.js). Falls back to the CSS coin if WebGL is unavailable. */
 import * as THREE from 'three';
+import { FontLoader } from '/vendor/FontLoader.js';
+import { TextGeometry } from '/vendor/TextGeometry.js';
 
 const host = document.querySelector('.pc-logo');
 if (host) {
@@ -24,7 +26,7 @@ if (host) {
     strip(18, 5, 0, 11, 6, 3.2); strip(4, 14, -12, 1, 4, 2.2); strip(3, 12, 12, -1, 2, 1.8); strip(12, 3, 0, -6, 10, 1.4); strip(8, 8, 0, 3, -14, 1.2);
     scene.environment = pmrem.fromScene(studio, 0).texture;
     const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
-    camera.position.set(0, 0, 6.2);
+    camera.position.set(0, -0.4, 7.1);
 
     const steel = new THREE.MeshPhysicalMaterial({ color: 0xdfe5ef, metalness: 0.9, roughness: 0.3, clearcoat: 0, envMapIntensity: 0.85 });
     const neon = new THREE.MeshPhysicalMaterial({ color: 0x3dffc1, metalness: 0.7, roughness: 0.34, envMapIntensity: 0.8 });
@@ -47,6 +49,14 @@ if (host) {
     const ring = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel);
     emblem.add(inner, ring);
     emblem.scale.setScalar(0.72);
+    // "Chairlift" in extruded satin metal under the ring, spinning with it
+    fetch('/vendor/archivo-chairlift.json').then((r) => r.json()).then((data) => {
+      const geo = new TextGeometry('Chairlift', { font: new FontLoader().parse(data), size: 0.6, height: 0.12, curveSegments: 10, bevelEnabled: true, bevelThickness: 0.025, bevelSize: 0.012, bevelSegments: 4 });
+      geo.center();
+      const word = new THREE.Mesh(geo, steel);
+      word.position.set(0, -1.95, 0);
+      emblem.add(word);
+    }).catch(() => {});
     scene.add(emblem);
 
     const key = new THREE.DirectionalLight(0xdfe9ff, 1.6); key.position.set(2.5, 3, 4); scene.add(key);
@@ -67,8 +77,8 @@ if (host) {
     const frame = (now) => {
       requestAnimationFrame(frame);
       if (!visible) return;
-      const t = ((now - t0) / 1000) % 7;            // steady turn from the first second: 4.5 s per spin, then 2.5 s facing front
-      const turn = t < 4.5 ? (t / 4.5) * Math.PI * 2 : 0;
+      const t = ((now - t0) / 1000) % 8.5;          // steady turn from the first second: 6 s per spin, then 2.5 s facing front
+      const turn = t < 6 ? (t / 6) * Math.PI * 2 : 0;
       emblem.rotation.y = reduce ? 0.5 : turn;
       emblem.rotation.x = reduce ? 0 : Math.sin(now / 2600) * 0.08;
       renderer.render(scene, camera);
