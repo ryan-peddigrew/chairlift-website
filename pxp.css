@@ -882,3 +882,12 @@ html body:has(.pc-hero) .site-header .brand svg { width: 34px; height: 34px; }
 .patrol__btns .pc-link { font-family: var(--px-mono) !important; font-size: 12.5px !important; font-weight: 400 !important; letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 2px !important; min-height: 54px; }
 .patrol__go:focus:not(:focus-visible) { outline: none; }
 @media (max-width: 860px) { .patrol { padding-top: 9svh; } .patrol__btns { max-width: 100%; } .patrol__guy { height: 42svh; } .patrol__txt p:not(.patrol__tag) { font-size: 19px; margin-bottom: 22px; } }
+
+/* ---------- round 19: header buttons as a matched pair of pills; airier tagline ---------- */
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { display: inline-flex; align-items: center; justify-content: center; height: 40px; min-height: 40px; padding: 0 18px !important; margin: 2px 0; border-radius: 999px; font-family: var(--px-sans) !important; font-weight: 600 !important; font-variation-settings: normal; font-size: 14px !important; letter-spacing: .01em !important; text-transform: none !important; text-decoration: none !important; line-height: 1; transition: background .25s, color .25s, border-color .25s; }
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.4); color: #fff; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover { background: rgba(255,255,255,.18); border-color: #fff; }
+html body:has(.pc-hero, .hdr-px) .hdr-cta { background: #fff !important; color: #141B2A !important; border: 1px solid #fff; }
+html body:has(.pc-hero, .hdr-px) .hdr-cta:hover { background: transparent !important; color: #fff !important; }
+@media (max-width: 860px) { html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { height: 38px; min-height: 38px; padding: 0 14px !important; font-size: 13px !important; } }
+.pc-capbar .pc-tag { line-height: 1.12 !important; }

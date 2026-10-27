@@ -82,9 +82,16 @@ if (host) {
     let word = null;
     // "Chairlift" in extruded satin metal under the ring, held still
     if (!mini) fetch('/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
-      const geo = new TextGeometry('Chairlift', { font: new FontLoader().parse(data), size: 0.62, height: 0.07, curveSegments: 12, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.004, bevelSegments: 3 });
-      geo.center();
-      word = new THREE.Mesh(geo, wordMat);
+      const font = new FontLoader().parse(data), size = 0.62, track = 0.032;   // letters set one by one with a little air, so f and t never touch
+      word = new THREE.Group();
+      let x = 0;
+      for (const ch of 'Chairlift') {
+        const g = new TextGeometry(ch, { font, size, height: 0.07, curveSegments: 12, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.004, bevelSegments: 3 });
+        const m = new THREE.Mesh(g, wordMat); m.position.x = x; word.add(m);
+        x += (data.glyphs[ch] ? data.glyphs[ch].ha : 300) / data.resolution * size + track;
+      }
+      const bb = new THREE.Box3().setFromObject(word), mid = bb.getCenter(new THREE.Vector3());
+      word.children.forEach((m) => { m.position.x -= mid.x; m.position.y -= mid.y; });
       word.scale.setScalar(0.92);
       word.position.set(0, -1.48, 0);
       scene.add(word);
