@@ -279,13 +279,31 @@
       if (k < 1) requestAnimationFrame(step);
     })(t0);
   }
-  var labels = [].slice.call(document.querySelectorAll('main .sx-line, main .sx-label, .kn-engine__head span:first-child, .pc-pkgs .mono'))
+  // numbers roll like a departure board before they land
+  function tick(n) {
+    var final = n.textContent, t0 = performance.now(), dur = 900;
+    (function step(t) {
+      var k = Math.min(1, (t - t0) / dur), out = '';
+      for (var i = 0; i < final.length; i++) out += k > (i + 1) / (final.length + 1) ? final[i] : (Math.random() * 10 | 0);
+      n.textContent = k < 1 ? out : final;
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  // numbered index above each section title: 01 ———— 06
+  var heads = [].slice.call(document.querySelectorAll('main .sx-head'));
+  heads.forEach(function (h, i) {
+    var p = document.createElement('p'); p.className = 'kn-idx'; p.setAttribute('aria-hidden', 'true');
+    p.innerHTML = '<b>' + ('0' + (i + 1)).slice(-2) + '</b><i></i><b>' + ('0' + heads.length).slice(-2) + '</b>';
+    h.insertBefore(p, h.firstChild);
+  });
+  var labels = [].slice.call(document.querySelectorAll('main .sx-line, main .sx-label, .kn-engine__head span:first-child, .pc-pkgs .mono, .pc-benefits .mono, .kn-stage > .mono, .kn-sw__n'))
     .filter(function (n) { return !n.children.length; });
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { decode(e.target); io.unobserve(e.target); } });
+      es.forEach(function (e) { if (e.isIntersecting) { if (e.target.classList.contains('kn-idx')) { e.target.classList.add('in'); [].forEach.call(e.target.children, function (b) { if (b.tagName === 'B') tick(b); }); } else decode(e.target); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -12% 0px' });
     labels.forEach(function (n) { io.observe(n); });
+    heads.forEach(function (h) { io.observe(h.firstChild); });
   }
 
   /* ---------- precision cursor (mouse and trackpad only) ---------- */
@@ -321,4 +339,16 @@
       requestAnimationFrame(loop);
     };
   }
+})();
+
+/* the tag picker reports back like a terminal: > awaiting input, then > friction.tag [QUOTING] [BILLING] */
+(function () {
+  var log = document.querySelector('[data-log]'); if (!log) return;
+  var boxes = [].slice.call(document.querySelectorAll('.kn-tag input'));
+  function sync() {
+    var on = boxes.filter(function (b) { return b.checked; }).map(function (b) { return '[' + b.value.toUpperCase() + ']'; });
+    log.textContent = on.length ? '> friction.tag ' + on.join(' ') : '> awaiting input';
+    var c = document.createElement('i'); c.className = 'kn-caret'; c.setAttribute('aria-hidden', 'true'); log.appendChild(c);
+  }
+  boxes.forEach(function (b) { b.addEventListener('change', sync); });
 })();

@@ -58,8 +58,9 @@
   rv.forEach(function (el, i) { el.classList.add('rv'); var sib = [].indexOf.call(el.parentNode.children, el); el.style.setProperty('--rd', Math.min(sib, 6) * 90 + 'ms'); });
   if (reduce || !('IntersectionObserver' in window)) rv.forEach(function (el) { el.classList.add('in'); });
   else {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -12% 0px', threshold: .05 });
-    rv.forEach(function (el) { io.observe(el); });
+    // a clipped title has no visible area for the observer to see, so watch its header instead
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { (e.target._rv || e.target).classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -12% 0px', threshold: .05 });
+    rv.forEach(function (el) { var w = el.classList.contains('sx-title') && el.parentNode.classList.contains('sx-head') ? el.parentNode : el; w._rv = el; io.observe(w); });
   }
 
   // Ski Patrol exit check: desktop when the pointer leaves through the top, phones when someone switches away and comes back. Once per visit.

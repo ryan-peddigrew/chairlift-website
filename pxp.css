@@ -948,3 +948,20 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero,
   .patrol h2 { font-size: 21px; }
   html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { font-size: 11px !important; }
 }
+
+/* Swiss pass (2026-10-27): below the hero, one clean sans (Archivo) at real weights instead of light Hanken,
+   tight headings, mono for every label, and a numbered index above each section title that ticks in. */
+:root { --px-body: "Archivo", "Helvetica Neue", Arial, sans-serif; }
+.pc-sec p, .pc-sec li span, .pg-lede, .stage-sum, .lead-big, main p { font-weight: 400; letter-spacing: -.003em; }
+main h3, .kn-read h3, .pc-benefits h3, .pc-pkgs h3 { font-family: var(--px-sans) !important; font-weight: 700; letter-spacing: -.03em; font-variation-settings: "wdth" 100; }
+.pc-scrub__pin .pc-lead, .pc-lead { font-family: var(--px-sans); font-weight: 500; letter-spacing: -.035em; }
+.pc-scrub__pin .pc-lead--soft { font-weight: 400; }
+.pc-benefits article p:last-child, .pc-pkgs article p:last-child, .kn-read p, .kn-stage p { font-weight: 400; }
+.kn-sw { font-family: var(--px-sans); font-weight: 500; letter-spacing: -.01em; }
+.sx-line { letter-spacing: .1em; font-weight: 500 !important; }
+/* section index: 01 ——— 06, sits on the hairline above the title */
+.kn-idx { display: flex; align-items: center; gap: 14px; margin: 0 0 clamp(14px, 1.6vw, 22px); font: 500 12px/1 var(--px-mono); letter-spacing: .16em; text-transform: uppercase; opacity: .85; }
+.kn-idx i { flex: 1; height: 1px; background: currentColor; opacity: .35; transform-origin: 0 50%; transform: scaleX(var(--ix, 1)); transition: transform 1.1s cubic-bezier(.2,.7,.2,1); }
+.kn-idx b { font-weight: 500; min-width: 2ch; }
+.kn-js .kn-idx:not(.in) i { --ix: 0; }
+@media (prefers-reduced-motion: reduce) { .kn-idx i { transition: none; } html.kn-js .kn-idx:not(.in) i { --ix: 1; } }
