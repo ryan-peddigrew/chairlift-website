@@ -82,8 +82,10 @@ if (host) {
     const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.7, metalness: 0.3, roughness: 0.25, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
     let word = null;
     // "Chairlift" in extruded satin metal under the ring, held still
-    if (!mini) fetch('/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
-      const font = new FontLoader().parse(data), size = 0.62, track = 0.032;   // letters set one by one with a little air, so f and t never touch
+    // ?wfont=<name> previews another typeface for the word (vendor/w-<name>.json), fitted to the same width
+    const wfont = (new URLSearchParams(location.search).get('wfont') || '').replace(/[^a-z0-9]/g, '');
+    if (!mini) fetch(wfont ? '/vendor/w-' + wfont + '.json' : '/vendor/hanken-chairlift.json').then((r) => r.json()).then((data) => {
+      const font = new FontLoader().parse(data), size = 0.62, track = wfont ? 0.02 : 0.032;   // letters set one by one with a little air, so f and t never touch
       word = new THREE.Group();
       let x = 0;
       for (const ch of 'Chairlift') {
@@ -93,7 +95,7 @@ if (host) {
       }
       const bb = new THREE.Box3().setFromObject(word), mid = bb.getCenter(new THREE.Vector3());
       word.children.forEach((m) => { m.position.x -= mid.x; m.position.y -= mid.y; });
-      word.scale.setScalar(0.92);
+      word.scale.setScalar(wfont ? Math.min(0.92, 2.7 / (bb.max.x - bb.min.x)) : 0.92);
       word.position.set(0, -1.48, 0);
       scene.add(word);
     }).catch(() => {});
