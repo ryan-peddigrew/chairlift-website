@@ -790,3 +790,9 @@ a.pc-mini:hover .pc-mini__cap .ar { transform: translateX(4px); }
 .pc-scrollhint { bottom: 4svh; }
 @media (max-width: 860px) { .pc-capbar { bottom: 15svh; } .pc-capbar .pc-tag { font-size: 34px; } }
 .pc-hero { height: 112svh; }
+/* photo patroller: leans in from the right edge, full height */
+.patrol__guy { width: auto; height: min(88svh, 900px); right: 0; }
+.patrol__guy img { height: 100%; width: auto; filter: drop-shadow(-18px 14px 34px rgba(0,0,0,.5)); }
+.patrol__card { max-width: min(560px, 52vw); }
+@media (max-width: 860px) { .patrol__card { max-width: 100%; } .patrol__guy { height: 50svh; right: 0; } .patrol__guy img { width: auto; height: 100%; } .patrol { padding-top: 12svh; } }
+@media (min-width: 861px) { .patrol__card { width: min(720px, 56vw); max-width: none; } }

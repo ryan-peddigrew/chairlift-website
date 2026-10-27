@@ -65,24 +65,8 @@
     var KEY = 'pxpatrol', shown = false;
     try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
     if (location.pathname.indexOf('/5min') === 0 || location.pathname.indexOf('/thanks') === 0) return;
-    var armed = false; setTimeout(function () { armed = true; }, 6000);
-    var guy = '<svg viewBox="0 0 160 170" aria-hidden="true">' +
-      '<path d="M18 170c4-34 26-52 62-52s58 18 62 52z" fill="#C8312B"/>' +
-      '<path d="M80 118c-9 0-16 2-22 6l22 22 22-22c-6-4-13-6-22-6z" fill="#A9241F"/>' +
-      '<path d="M106 136h8v8h8v8h-8v8h-8v-8h-8v-8h8z" fill="#fff"/>' +
-      '<path d="M66 104h28v18c0 6-28 6-28 0z" fill="#E7B48F"/>' +
-      '<ellipse cx="80" cy="76" rx="34" ry="38" fill="#F1C29C"/>' +
-      '<ellipse cx="46" cy="80" rx="6" ry="9" fill="#E7B48F"/><ellipse cx="114" cy="80" rx="6" ry="9" fill="#E7B48F"/>' +
-      '<path d="M44 66c0-26 16-40 36-40s36 14 36 40c-10-6-24-9-36-9s-26 3-36 9z" fill="#141B2A"/>' +
-      '<path d="M48 60c8-4 20-6 32-6s24 2 32 6" stroke="#3DFFC1" stroke-width="3" fill="none"/>' +
-      '<path d="M50 72h60" stroke="#2a3346" stroke-width="3"/>' +
-      '<path d="M52 70h24c0 12-4 17-12 17s-12-6-12-17zM84 70h24c0 11-4 17-12 17s-12-5-12-17z" fill="#1B2A44" stroke="#c9d1de" stroke-width="2.2"/>' +
-      '<path d="M57 73l8 0M89 73l8 0" stroke="rgba(255,255,255,.55)" stroke-width="2.5" stroke-linecap="round"/>' +
-      '<path d="M80 80c-3 6-4 10 0 12" stroke="#C99673" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
-      '<path d="M52 100c6-9 16-10 28-6 12-4 22-3 28 6-6 2-10 7-16 7-5 0-9-3-12-5-3 2-7 5-12 5-6 0-10-5-16-7z" fill="#E9ECF1" stroke="#c4cad4" stroke-width="1"/>' +
-      '<path d="M70 108c4 3 16 3 20 0" stroke="#9b5e48" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
-      '<path d="M54 92c3 1 6 1 8 0M98 92c3 1 6 1 8 0" stroke="#d9a17d" stroke-width="1.6" fill="none"/>' +
-      '</svg>';
+    var armed = false; setTimeout(function () { armed = true; new Image().src = '/images/patrol/patroller.webp'; }, 6000);
+    var guy = '<img src="/images/patrol/patroller.webp" alt="" width="727" height="1280" decoding="async">';
     function open() {
       if (shown) return; shown = true;
       try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
