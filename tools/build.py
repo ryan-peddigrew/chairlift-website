@@ -188,22 +188,17 @@ PAPER_IMG = f'''<figure class="paper-shot">
       </figure>'''
 
 home = f'''
-  <section class="hero">
-    {STAIRS_BG}
+  <section class="hero hero--article">
     <div class="wrap">
-      <div class="hero-card hero-card--home">
-        <div class="hero-copy">
-        <span class="rule"></span>
-        <h1><span class="nowrap">Less busywork.</span> <span class="nowrap">More business.{ARROW}</span></h1>
-        <p class="lede">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <div class="ctas">
-          <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a>
-        </div>
-        </div>
-        <div class="flip" aria-label="Right now, and with Chairlift">
-          <div class="flip-before"><span class="flip-tag">Right now</span><p>A quote goes out. Nobody follows up.</p></div>
-          <div class="flip-after"><span class="flip-tag flip-tag--after">With Chairlift</span><p>The follow-up goes out on its own, in your words. The client replies.</p></div>
-        </div>
+      <p class="kicker">Chairlift<span> / </span>Established businesses</p>
+      <h1>Less busywork. <em>More business.</em></h1>
+      <p class="deck">We find the work slowing your team down, then build the fix. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
+      <div class="byline"><span>By <b>Ryan Peddigrew</b></span><span>Founder, Chairlift</span><span>{_dt.datetime.now(ZoneInfo("America/Toronto")).strftime("%B %-d, %Y")}</span></div>
+      <figure class="lead-photo"><img src="/images/ryan-peddigrew.jpg" alt="Ryan Peddigrew, founder of Chairlift" width="640" height="640" loading="eager" decoding="async"><figcaption>Ryan Peddigrew, founder of Chairlift, throughout a career in sales.</figcaption></figure>
+      <div class="article-col">
+        <p class="dropcap">We find the work slowing your team down, then build the fix, inside the tools you already use. Small tasks add up: the quote nobody followed up, the inquiry that waited overnight, the report built by hand again.</p>
+        <blockquote class="pull"><span class="pull-label">Right now</span>A quote goes out. Nobody follows up.<span class="pull-label pull-label--b">With Chairlift</span>The follow-up goes out on its own, in your words. The client replies.</blockquote>
+        <p class="article-cta"><a class="btn btn-ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Start a conversation</a></p>
       </div>
     </div>
   </section>
