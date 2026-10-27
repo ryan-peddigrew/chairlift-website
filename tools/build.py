@@ -957,6 +957,12 @@ for fn, title, desc, path, active, body, noindex in PAGES:
         f.write(page(title, desc, path, active, body, noindex))
     print("wrote", fn)
 
+# Swiss Kinetic concept: the home page is hand-built in tools/sk.py
+import sk
+with open(os.path.join(OUT, "index.html"), "w") as f:
+    f.write(sk.render_home())
+print("wrote index.html (kinetic)")
+
 urls = [p[3] for p in PAGES if not p[6]]
 with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
