@@ -906,8 +906,12 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover, html body:has(.pc
 .pc-how { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 8px; color: #fff; font-family: var(--px-sans); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
 .pc-how i { font-style: normal; }
 .pc-how:hover { text-decoration: underline; text-underline-offset: 5px; }
+.pc-story__eyebrow { margin: 0 0 14px; font-family: var(--px-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.82); text-shadow: 0 1px 10px rgba(0,0,0,.6); }
+.pc-story__eyebrow::before { content: ""; display: block; width: 28px; height: 2px; margin: 0 auto 12px; background: #3DFFC1; }
+.pc-story__proof { max-width: 52ch; margin: 12px auto 0; font-family: var(--px-body, var(--px-sans)); font-weight: 400; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.55; color: rgba(255,255,255,.78); text-shadow: 0 1px 12px rgba(0,0,0,.65); opacity: var(--sb, 0); transform: translateY(calc((1 - var(--sb, 0)) * 14px)); }
+@media (max-width: 860px) { .pc-story__eyebrow { font-size: 10.5px; letter-spacing: .14em; margin-bottom: 10px; } .pc-story__proof { font-size: 14px; max-width: 34ch; } }
 @media (max-width: 860px) { .pc-story__tag { font-size: 30px; } .pc-story__sub { font-size: 18px; } .pc-lift { width: min(100%, 320px); } }
-@media (prefers-reduced-motion: reduce) { .pc-story__sub, .pc-story__cta { opacity: 1; transform: none; } .pc-story .pc-story__cta a { pointer-events: auto; } }
+@media (prefers-reduced-motion: reduce) { .pc-story__sub, .pc-story__proof, .pc-story__cta { opacity: 1; transform: none; } .pc-story .pc-story__cta a { pointer-events: auto; } }
 
 /* iPhone shows its own big play button on background videos when autoplay is blocked (Low Power Mode): never show it */
 .pc-photo::-webkit-media-controls, .pc-band__vid::-webkit-media-controls,
