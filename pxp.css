@@ -908,3 +908,9 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover, html body:has(.pc
 .pc-how:hover { text-decoration: underline; text-underline-offset: 5px; }
 @media (max-width: 860px) { .pc-story__tag { font-size: 30px; } .pc-story__sub { font-size: 18px; } .pc-lift { width: min(100%, 320px); } }
 @media (prefers-reduced-motion: reduce) { .pc-story__sub, .pc-story__cta { opacity: 1; transform: none; } .pc-story .pc-story__cta a { pointer-events: auto; } }
+
+/* iPhone shows its own big play button on background videos when autoplay is blocked (Low Power Mode): never show it */
+.pc-photo::-webkit-media-controls, .pc-band__vid::-webkit-media-controls,
+.pc-photo::-webkit-media-controls-start-playback-button, .pc-band__vid::-webkit-media-controls-start-playback-button,
+.pc-photo::-webkit-media-controls-overlay-play-button, .pc-band__vid::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; opacity: 0 !important; }
+.pc-photo, .pc-band__vid { pointer-events: none; }

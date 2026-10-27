@@ -186,3 +186,12 @@
   window.addEventListener('resize', onScroll);
   frame();
 })();
+
+// background videos: if the phone blocked autoplay, start them on the first touch or scroll instead of showing a play button
+(function () {
+  var vids = [].slice.call(document.querySelectorAll('video.pc-photo'));
+  if (!vids.length) return;
+  function kick() { vids.forEach(function (v) { if (v.paused) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } }); }
+  ['touchstart', 'scroll', 'click'].forEach(function (ev) { window.addEventListener(ev, kick, { passive: true, once: true }); });
+  kick();
+})();
