@@ -105,11 +105,13 @@ if (host) {
     const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
     let visible = true;
     new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(host);
-    const t0 = performance.now();
+    const t0 = performance.now(); let spin = 0, last = t0;
     const frame = (now) => {
       requestAnimationFrame(frame);
       if (!visible) return;
-      const turn = (((now - t0) / 1000) % 8) / 8 * Math.PI * 2;   // always turning, one spin every 8 s; the word below stays still
+      const dkNow = mini ? 1 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dk')) || 0);
+      spin += Math.min(0.1, (now - last) / 1000) * Math.PI * 2 / (8 + 8 * dkNow); last = now;   // one turn every 8 s on the landing, a slow 16 s in the top bar
+      const turn = spin;
       emblem.rotation.y = reduce ? 0.5 : turn;
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
         const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
