@@ -69,6 +69,7 @@ def header(active=None):
     mob = "\n".join(f'    <a href="{href}"{cur(k)}>{label}</a>' for k, href, label in NAV)
     return f'''
 <header class="site-header">
+  <span class="hdr-px" hidden></span>
   <div class="wrap">
     <a class="brand" href="/" aria-label="Chairlift home">{LOGO.format(s=36, stroke="")}<span>Chairlift</span></a>
     <span class="hdr-dash" aria-hidden="true"></span><a class="hdr-cta" href="/5min/">Start a conversation</a>
