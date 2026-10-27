@@ -272,3 +272,28 @@ body main .example + .example { margin-top: 24px; padding-top: 28px; }
 .pc-photo { filter: saturate(.6) contrast(1.02) brightness(1.08); }
 .pc-sky::after { background: linear-gradient(180deg, #4d7db5 0%, rgba(70,110,165,.7) 45%, rgba(48,88,140,.45) 100%); }
 @media (max-width: 860px) { .pc-capbar .pc-tag { grid-column: 2; } }
+.pc-photo--wind { object-position: 50% 40%; filter: saturate(.9) contrast(1.05) brightness(1.15); }
+.pc-sky::after { background: linear-gradient(180deg, rgba(60,100,160,.55) 0%, rgba(50,90,150,.35) 50%, rgba(31,68,120,.5) 100%); }
+
+/* home: no header logo, just the menu button over the hero */
+body:has(.pc-hero) .site-header { position: absolute; left: 0; right: 0; top: 0; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 0; }
+body:has(.pc-hero) .site-header .brand, body:has(.pc-hero) .site-header .nav-link, body:has(.pc-hero) .site-header .nav-cta, body:has(.pc-hero) .site-header .nav > a { display: none; }
+body:has(.pc-hero) .site-header .nav { margin-left: auto; }
+body:has(.pc-hero) .site-header .menu-btn { display: inline-flex; background: rgba(20,27,42,.35); }
+body:has(.pc-hero) .mobile-menu { display: grid !important; position: absolute; right: 0; left: 0; top: 100%; background: var(--px-ink); }
+body:has(.pc-hero) .mobile-menu[hidden] { display: none !important; }
+body:has(.pc-hero) .pc-stage { padding-top: clamp(96px, 12vw, 150px); }
+
+/* 3D emblem */
+.pc-logo { width: clamp(150px, 17vw, 240px); height: clamp(150px, 17vw, 240px); top: auto; bottom: 7%; right: 5%; left: auto; perspective: none; }
+.pc-logo .pc-gl { width: 100%; height: 100%; display: block; }
+.pc-logo.is-3d .pc-coin { display: none; }
+@media (max-width: 860px) { .pc-logo { width: 150px; height: 150px; top: auto; bottom: 16%; right: 2%; } }
+
+/* squeezed PX-style display face for the big words */
+.pc-word, .hero--page h1.pg-title { font-weight: 700; font-variation-settings: "wdth" 70; letter-spacing: -.035em; line-height: .84; }
+.pc-word { font-size: clamp(88px, 24vw, 400px); }
+.hero--page h1.pg-title { font-size: clamp(76px, 20vw, 330px); }
+@media (max-width: 860px) { .pc-word { font-size: 31vw; } .hero--page h1.pg-title { font-size: 25vw; } }
+.pc-logo { right: 19%; bottom: 5%; }
+@media (max-width: 860px) { .pc-logo { right: 2%; bottom: 14%; } }
