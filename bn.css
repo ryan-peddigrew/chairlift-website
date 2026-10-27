@@ -73,3 +73,20 @@ h1, h2, h3, .bn-word, .bn-h2 { font-family: "Anton", "Hanken Grotesk", sans-seri
   .bn-founder { grid-template-columns: minmax(0, 1fr); }
   .bn-case { padding: 20px; }
 }
+
+/* Less neon: Midnight Ink leads, neon only as accent */
+.bn-hero { background: #1B2A44; border-bottom: 2px solid var(--ink); }
+.bn-card { box-shadow: 8px 8px 0 var(--neon); }
+.bn-ticker { background: var(--ink); color: var(--cream); }
+.bn-ticker__track span::after { color: var(--neon); }
+.bn-link--hot { background: var(--ink); color: var(--cream); }
+.bn-link--hot i { background: var(--neon); color: var(--ink); }
+.bn-tile--neon { background: var(--ink); color: var(--cream); }
+.bn-tile--neon .bn-chip { background: var(--neon); color: var(--ink); border-color: var(--neon); }
+.bn-sec--neon { background: var(--ink); color: var(--cream); }
+.bn-sec--neon .bn-h2 { color: var(--cream); }
+.bn-sec--neon .bn-stop { background: var(--cream); color: var(--ink); box-shadow: 5px 5px 0 var(--neon); }
+.bn-founder { background: var(--ink); color: var(--cream); box-shadow: 8px 8px 0 var(--neon); }
+.bn-founder__photo img { border-color: var(--neon); }
+.bn-founder .bn-link { background: var(--cream); color: var(--ink); }
+.footer, .site-footer { border-top-width: 4px; }
