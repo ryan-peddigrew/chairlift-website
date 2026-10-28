@@ -839,7 +839,7 @@ calculator = page_hero("Time-back calculator", "Where does your team's time go?"
         <span class="rule"></span>
         <p class="calc-label">Every week, that's</p>
         <p class="calc-big"><b data-hours>0</b> hours</p>
-        <p class="calc-sub">About <b data-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
+        <p class="calc-sub">About <b data-calc-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
         <p class="calc-note">Based on 48 working weeks and 8-hour days.</p>
         <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="calc-after">We'll pick the biggest one and show you how we'd take it off your plate.</p>
@@ -926,7 +926,7 @@ def home_variant(k, switcher=True):
     return h + (sw if switcher else '')
 
 PAGES = [
-    ("index.html", "Chairlift | Less busywork for GTA service businesses", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
+    ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
@@ -958,7 +958,7 @@ urls = [p[3] for p in PAGES if not p[6]]
 with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for u in urls:
-        f.write(f"  <url><loc>{SITE}{u}</loc><lastmod>2026-10-04</lastmod></url>\n")
+        f.write(f"  <url><loc>{SITE}{u}</loc><lastmod>{_dt.date.today().isoformat()}</lastmod></url>\n")
     f.write("</urlset>\n")
 with open(os.path.join(OUT, "robots.txt"), "w") as f:
     f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
