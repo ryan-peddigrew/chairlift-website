@@ -13,6 +13,7 @@
   [].forEach.call(document.querySelectorAll('.kn-sw'), function (b) {
     b.addEventListener('click', function () {
       [].forEach.call(document.querySelectorAll('.kn-sw'), function (o) { o.setAttribute('aria-checked', o === b ? 'true' : 'false'); });
+      [].forEach.call(document.querySelectorAll('.kn-strip li'), function (li) { li.classList.toggle('on', li.dataset.i === b.dataset.i); });
       var tpl = document.querySelector('template[data-dept="' + b.dataset.i + '"]');
       if (!tpl || !out) return;
       var f = tpl.content;
@@ -278,5 +279,6 @@
     log.textContent = on.length ? '> friction.tag ' + on.join(' ') : '> awaiting input';
     var c = document.createElement('i'); c.className = 'kn-caret'; c.setAttribute('aria-hidden', 'true'); log.appendChild(c);
   }
+  var send = document.querySelector('.kn-send'); if (send) send.parentNode.insertBefore(log, send);   // the echo sits right above the button
   boxes.forEach(function (b) { b.addEventListener('change', sync); });
 })();

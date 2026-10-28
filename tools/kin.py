@@ -47,8 +47,10 @@ def switchboard():
     tpl = "".join(
         f'<template data-dept="{i}"><b>{n}</b><h3>{h}</h3><p>{d}</p><i>{_e(t)}</i></template>'
         for i, (n, name, h, d, t) in enumerate(DEPTS))
+    strip = "".join(f'<li{" class=\"on\"" if i == 0 else ""} data-i="{i}"><b>{n}</b>{_e(name)}</li>' for i, (n, name, *_r) in enumerate(DEPTS))
     n, name, h, d, t = DEPTS[0]
     return f'''<link rel="stylesheet" href="/kin.css"><script src="/kin.js" defer></script>
+      <ol class="kn-strip mono" aria-hidden="true">{strip}</ol>
       <div class="kn-board">
         <div class="kn-board__sw" role="radiogroup" aria-label="Pick a department">{sw}</div>
         <div class="kn-read" aria-live="polite">

@@ -965,3 +965,14 @@ main h3, .kn-read h3, .pc-benefits h3, .pc-pkgs h3 { font-family: var(--px-sans)
 .kn-idx b { font-weight: 500; min-width: 2ch; }
 .kn-js .kn-idx:not(.in) i { --ix: 0; }
 @media (prefers-reduced-motion: reduce) { .kn-idx i { transition: none; } html.kn-js .kn-idx:not(.in) i { --ix: 1; } }
+
+/* Go round 1 (2026-10-27): hero proof scrim and horizon, pains underline as they light, solid Send it */
+.pc-story__proof { padding: 12px 18px; border-radius: 12px; background: rgba(14,22,40,.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); text-shadow: none; }
+.pc-hero .pc-sky::before { content: ""; position: absolute; left: 0; right: 0; z-index: 1; top: calc(56% + var(--p, 0) * 12%); height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); opacity: calc(var(--p, 0) * 1.3); pointer-events: none; }
+.pain .w { box-shadow: inset 0 -.1em 0 rgba(255,255,255,0); transition: box-shadow .5s, opacity .3s; }
+.pain .w.on { box-shadow: inset 0 -.1em 0 rgba(255,255,255,.85); }
+html body main .task-form .btn.kn-send { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 56px; margin-top: 6px; padding: 0 28px; border: 0 !important; border-radius: 6px; background: #fff !important; color: var(--px-ink) !important; font-family: var(--px-display) !important; font-size: 14px; font-weight: 400 !important; letter-spacing: .1em; text-transform: uppercase; box-shadow: inset 0 -3px 0 rgba(20,27,42,.14), 0 14px 34px rgba(0,0,0,.35); cursor: pointer; }
+html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
+.kn-tags + .field, .kn-log + .btn { margin-top: 6px; }
+.task-form .kn-log { margin: 4px 0 2px; }
+@media (prefers-reduced-motion: reduce) { .pain .w { transition: none; } }

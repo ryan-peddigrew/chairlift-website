@@ -217,7 +217,7 @@ home = f'''
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="sx-label">The problem</p>
-      <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
+      <p class="pc-lead" data-scrub>Does your team lose hours to <span class="pain">quotes nobody followed up</span>, <span class="pain">inquiries that waited overnight</span> and <span class="pain">details typed into three systems</span>? That work is small on its own and enormous added up.</p>
       <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
     </div></div>
   </section>
@@ -239,7 +239,6 @@ home = f'''
     <div class="pc-wrap">
       <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Built for whatever slows your company down.</p></div></header>
       <p class="kn-lede">Every business has different bottlenecks. Flip any department below to see how we take the manual grind off your team&rsquo;s plate.</p>
-      <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
       {kin.switchboard()}
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>
