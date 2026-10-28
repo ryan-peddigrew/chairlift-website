@@ -24,9 +24,9 @@ NAV = [
 ]
 
 
-# home intro option for review (?intro=1): only the spinning logo over a greyed sky until the first scroll, touch or mouse move
+# home intro: the spinning logo over a greyed sky on the first visit of a browser session (?intro=1 forces it, ?intro=0 skips it) until the first scroll, touch or mouse move
 INTRO_JS = """
-<script>try{if(/[?&]intro=1/.test(location.search)&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>"""
+<script>try{var q=location.search,on=/[?&]intro=1/.test(q);if(!on&&!/[?&]intro=0/.test(q)&&!sessionStorage.getItem('cl_intro')){on=true}sessionStorage.setItem('cl_intro','1');if(on&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>"""
 
 
 def head(title, desc, path, noindex=False):
