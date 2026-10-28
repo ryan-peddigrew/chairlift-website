@@ -626,7 +626,7 @@ html.nav-d body:has(.pc-hero, .hdr-px) .hdr-cta { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .pc-boarder, .pc-scrollhint .ar { animation: none; } }
 
 /* ---------- round 9: ChatGPT-reference section heads, thin brand body font, no grey text ---------- */
-:root { --px-mute: rgba(255,255,255,.88); --px-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; }
+:root { --px-mute: rgba(255,255,255,.88); --px-body: "Archivo", "Helvetica Neue", Arial, sans-serif; }
 .pc-sec p, .pc-sec li span, .pg-lede, .stage-sum, .lead-big, main p { font-family: var(--px-body); font-weight: 300; }
 .pc-sec--cream, .pc-sec--sky { --px-mute: rgba(20,27,42,.9); }
 .pc-cols p, .pc-benefits article p:last-child, .pc-pkgs article p:last-child, .pc-list li span { color: inherit; opacity: .9; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
@@ -993,3 +993,20 @@ html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
   .pc-band { height: 105svh; }
 }
 @media (min-width: 961px) { .pc-benefits article:nth-child(n+4)::before, .pc-benefits article:nth-child(n+4)::after { display: none; } }
+
+
+/* Polish four: moving type on two lines, press effect, sent animation */
+.pc-story__tag .kw { display: inline-block; opacity: 0; transform: translateY(.5em); transition: opacity .6s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i) * 110ms); }
+.pc-story__tag.kw-on .kw { opacity: 1; transform: none; }
+.pc-band__txt .kb { display: inline-block; opacity: clamp(0, calc(var(--k) * 5 - var(--i) * .8), 1); }
+.btn, .pc-lift, .hdr-cta, .nav-cta { transition: transform .15s ease; }
+.btn:active, .pc-lift:active, .hdr-cta:active, .nav-cta:active { transform: scale(.97); }
+@keyframes kn-pop { 0% { transform: scale(.92); opacity: 0; } 60% { transform: scale(1.04); } 100% { transform: scale(1); opacity: 1; } }
+.form-done .kn-send { animation: kn-pop .5s ease both; pointer-events: none; }
+.form-done .form-status { animation: kn-pop .6s .1s ease both; }
+.form-status a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .pc-story__tag .kw { opacity: 1; transform: none; transition: none; }
+  .btn:active, .pc-lift:active { transform: none; }
+  .form-done .kn-send, .form-done .form-status { animation: none; }
+}
