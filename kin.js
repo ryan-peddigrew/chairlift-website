@@ -41,6 +41,115 @@
       flow.dataset.way = w; cap.textContent = CAP[w]; count.textContent = COUNT[w];
       steps.forEach(function (s, i) { setTimeout(function () { s.classList.toggle('on', w === 1); }, w === 1 && !reduce ? i * 260 : 0); });
     }
+    /* live line: jobs queue up on the ground by hand, then ride the cable when Chairlift runs them */
+    (function () {
+      var cv = flow.querySelector('.kn-canvas'); if (!cv || !cv.getContext) return;
+      var g = cv.getContext('2d'), W = 0, H = 0, dpr = 1, vis = true, last = 0;
+      var chips = [], ghosts = [], flashes = [], jobNo = 13, done = 0, spawnT = 0, cableOff = 0, pulse = [0, 0, 0, 0];
+      var svc = [0, 3.4, 4.6, 3.2], busy = [null, null, null, null];   // seconds a person needs at each step by hand (step 1 is just the arrival)
+      var MONO = '500 10px "IBM Plex Mono", ui-monospace, Menlo, monospace';
+      function size() {
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+        W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      function sx(i) { return (i + .5) / 4 * W; }
+      function cy() { return H * .64; }
+      function spawn() { chips.push({ x: -50, y: 0, lift: 0, st: 0, w: 0, no: ++jobNo, state: 'run', q: 0, t: 0 }); }
+      function step(dt) {
+        var fast = flow.dataset.way === '1', sp = (fast ? 300 : 78) * W / 1000;
+        cableOff = (cableOff + (fast ? 170 : 14) * dt) % 26;
+        spawnT += dt;
+        var waiting = chips.filter(function (c) { return c.state === 'wait'; }).length;
+        if (spawnT > (fast ? .5 : 1.0) && (fast || waiting < 10)) { spawnT = 0; spawn(); }
+        for (var i = 0; i < 4; i++) pulse[i] = Math.max(0, pulse[i] - dt * 2.2);
+        var queues = [[], [], [], []];
+        chips.forEach(function (c) {
+          c.lift += ((fast ? 1 : 0) - c.lift) * Math.min(1, dt * 6);
+          if (c.state === 'run') {
+            c.x += sp * dt;
+            var s = c.st; if (s < 4) {
+              var gx = sx(s) - 24 - Math.min(58, W * .13) - 8;
+              if (!fast && s > 0 && c.x >= gx) { c.x = gx; c.state = 'wait'; c.t = 0; }
+              else if (c.x >= sx(s)) { c.st++; pulse[s] = 1; }
+            }
+            if (c.x > W + 50) { c.dead = 1; done++; flashes.push({ x: W - 12, y: cy(), t: 0 }); }
+          }
+          if (c.state === 'wait') { c.x = sx(c.st) - 24 - Math.min(58, W * .13) - 8; queues[c.st].push(c); }
+        });
+        // no overlapping: a moving job keeps a gap to the one ahead of it
+        var cw = Math.min(58, W * .13) + 8, mv = chips.filter(function (c) { return c.state === 'run'; }).sort(function (p, q) { return q.x - p.x; });
+        for (var m = 1; m < mv.length; m++) if (mv[m].x > mv[m - 1].x - cw) mv[m].x = mv[m - 1].x - cw;
+        for (var j = 0; j < 4; j++) {
+          var q = queues[j];
+          q.forEach(function (c, k) { c.q = k; });
+          if (!q.length) { busy[j] = null; continue; }
+          var head = q[0];
+          if (busy[j] !== head) { busy[j] = head; head.t = 0; }
+          head.t += dt;
+          var need = fast ? .12 : svc[j] * (.85 + (head.no * 7 % 5) * .08);
+          if (head.t >= need) {
+            head.state = 'run'; head.st = j + 1; pulse[j] = 1; busy[j] = null;
+            if (j === 2) for (var d = 0; d < 2; d++) ghosts.push({ x: sx(2) + 6, y: cy() - 22 - d * 22, t: 0, no: head.no });   // re-typed into more places
+          }
+        }
+        chips = chips.filter(function (c) { return !c.dead; });
+        ghosts.forEach(function (o) { o.t += dt; }); ghosts = ghosts.filter(function (o) { return o.t < 1.4; });
+        flashes.forEach(function (o) { o.t += dt; }); flashes = flashes.filter(function (o) { return o.t < .6; });
+      }
+      function chip(x, y, label, a, solid, hang) {
+        var w = Math.min(58, W * .13), h = 22;
+        g.globalAlpha = a;
+        if (hang) { g.strokeStyle = 'rgba(255,255,255,' + (.55 * hang) + ')'; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x + w / 2, cy()); g.lineTo(x + w / 2, y); g.stroke(); }
+        g.beginPath(); (g.roundRect ? g.roundRect(x, y, w, h, 6) : g.rect(x, y, w, h));
+        if (solid) { g.fillStyle = '#fff'; g.fill(); g.fillStyle = '#141B2A'; } else { g.strokeStyle = 'rgba(255,255,255,.6)'; g.lineWidth = 1; g.stroke(); g.fillStyle = 'rgba(255,255,255,.75)'; }
+        g.font = W < 520 ? MONO.replace('10px', '9px') : MONO; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(label, x + w / 2, y + h / 2 + .5);
+        g.globalAlpha = 1;
+      }
+      function draw(now) {
+        var fast = flow.dataset.way === '1', c0 = cy();
+        g.clearRect(0, 0, W, H);
+        // cable with moving ticks, and the ground line the queue sits on
+        g.strokeStyle = 'rgba(255,255,255,.28)'; g.lineWidth = 2; g.beginPath(); g.moveTo(0, c0); g.lineTo(W, c0); g.stroke();
+        g.strokeStyle = 'rgba(255,255,255,' + (fast ? .5 : .2) + ')'; g.lineWidth = 1; g.beginPath();
+        for (var x = -26 + cableOff; x < W; x += 26) { g.moveTo(x, c0 - 5); g.lineTo(x, c0 + 5); } g.stroke();
+        // stations
+        for (var i = 0; i < 4; i++) {
+          var X = sx(i), act = pulse[i], waitN = chips.filter(function (c) { return c.state === 'wait' && c.st === i; }).length;
+          g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 1; g.beginPath(); g.moveTo(X, c0 + 12); g.lineTo(X - 7, c0 + 46); g.moveTo(X, c0 + 12); g.lineTo(X + 7, c0 + 46); g.stroke();
+          g.beginPath(); g.arc(X, c0, 11 + act * 3, 0, 7); g.fillStyle = '#141B2A'; g.fill();
+          g.strokeStyle = 'rgba(255,255,255,' + (.5 + act * .5) + ')'; g.lineWidth = 2; g.stroke();
+          g.font = MONO; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = act > 0 ? '#fff' : 'rgba(255,255,255,.7)'; g.fillText(String(i + 1), X, c0 + .5);
+          if (busy[i] && !fast) {   // a person is working on it: progress ring
+            var need = svc[i] * (.85 + (busy[i].no * 7 % 5) * .08), k = Math.min(1, busy[i].t / need);
+            g.strokeStyle = '#fff'; g.lineWidth = 3; g.beginPath(); g.arc(X, c0, 17, -Math.PI / 2, -Math.PI / 2 + k * Math.PI * 2); g.stroke();
+          }
+          if (waitN > 0 && !fast) { g.font = MONO; g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.fillStyle = '#fff'; g.fillText(waitN + ' WAITING', X - 49, c0 - 30 - Math.min(waitN - 1, 3) * 22 - 6); }
+        }
+        // jobs
+        chips.forEach(function (c) {
+          if (c.state === 'wait' && c.q > 3) return;   // the rest of the pile is hidden behind the count
+          var y = c.state === 'wait' ? c0 - 30 - Math.min(c.q, 3) * 22 : c0 - 30 + c.lift * 44 + (fast ? Math.sin(now / 260 + c.no) * 1.5 : 0);
+          chip(c.x, y, 'JOB ' + c.no, c.state === 'wait' ? .85 : 1, c.state === 'run', c.lift);
+          c.y = y;
+        });
+        ghosts.forEach(function (o) { chip(o.x, o.y, 'JOB ' + o.no, Math.max(0, .7 - o.t / 2), false, 0); });
+        flashes.forEach(function (o) { g.beginPath(); g.arc(o.x, o.y, 8 + o.t * 40, 0, 7); g.strokeStyle = 'rgba(61,255,193,' + (.8 - o.t * 1.3) + ')'; g.lineWidth = 2; g.stroke(); });
+        // readout
+        var wn = chips.filter(function (c) { return c.state === 'wait'; }).length;
+        g.font = MONO; g.textBaseline = 'top'; g.textAlign = 'left'; g.fillStyle = 'rgba(255,255,255,.6)'; g.fillText('LIVE DEMO', 14, H - 20);
+        g.textAlign = 'right'; g.fillStyle = '#fff'; g.fillText('WAITING ' + ('0' + wn).slice(-2) + '   FINISHED ' + ('00' + done).slice(-3), W - 14, H - 20);
+      }
+      function loop(now) {
+        requestAnimationFrame(loop);
+        if (!vis) { last = now; return; }
+        var dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+        step(dt); draw(now);
+      }
+      size(); window.addEventListener('resize', size);
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(cv);
+      for (var n = 0; n < 420; n++) step(.05);   // start mid-day, with the work already backed up
+      if (reduce) draw(0); else requestAnimationFrame(loop);
+    })();
     btns.forEach(function (b) { b.addEventListener('click', function () { touched = true; set(+b.dataset.way); }); });
     set(0);
     // scroll it into view and it plays once by itself, so the point lands before anyone reads a word

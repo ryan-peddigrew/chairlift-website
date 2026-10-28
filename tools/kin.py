@@ -75,6 +75,7 @@ def shift_section():
             <button type="button" role="radio" aria-checked="false" data-way="1">With Chairlift</button></div>
           <p class="kn-flow__read" aria-live="polite"><span data-cap>Every step waits for a person to get to it.</span><small data-count>4 places a job can sit and wait</small></p>
         </div>
+        <div class="kn-rail" aria-hidden="true"><canvas class="kn-canvas"></canvas></div>
         <ol class="kn-track">{steps}</ol>
       </div>
     </div>
