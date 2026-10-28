@@ -3,6 +3,7 @@ import datetime as _dt
 from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(__file__))
 from common import *
+import kin
 
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,7 +57,7 @@ EXAMPLES = [
          lead="A quote request comes in through the website at 8:40 pm. The office is closed. By the time anyone reads it the next morning, the customer has already booked someone who answered first.",
          before=["The form lands in a shared inbox.", "Nobody sees it until the next morning.", "The first reply goes out a day later, if someone remembers.", "The customer has already moved on."],
          after=["The customer gets a friendly reply within minutes, explaining what happens next.", "The inquiry is tagged by service and area and assigned to the right person.", "Anything urgent is flagged to whoever is on call.", "First thing in the morning, the team sees a short list of what came in overnight."],
-         built="Your website form, your email, and the calendar or job software you already use."),
+         built="Your website form, your email, and the calendar or job system you already use."),
     dict(id="quotes", tag="Example · Trades and contractors", title="The quote that went quiet",
          lead="A salesperson sends a detailed quote and fully intends to follow up. Then the week happens. Two weeks later, nobody is sure whether the client ever replied.",
          before=["The quote is emailed as a PDF.", "Following up depends on someone remembering.", "Busy weeks mean check-ins slip, or never happen.", "Work is lost without anyone deciding to lose it."],
@@ -198,8 +199,10 @@ home = f'''
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
+        <p class="pc-story__eyebrow" aria-hidden="true">Operational infrastructure for business</p>
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
+        <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
         <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="/how-it-works/">See how it works <i aria-hidden="true">→</i></a></p>
       </div>
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
@@ -214,7 +217,7 @@ home = f'''
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="sx-label">The problem</p>
-      <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
+      <p class="pc-lead" data-scrub>Does your team lose hours to <span class="pain">quotes nobody followed up</span>, <span class="pain">inquiries that waited overnight</span> and <span class="pain">details typed into three systems</span>? That work is small on its own and enormous added up.</p>
       <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
     </div></div>
   </section>
@@ -222,7 +225,7 @@ home = f'''
   <section class="pc-sec pc-sec--dark pc-sec--introrest" aria-label="How Chairlift works">
     <div class="pc-wrap">
       <div class="pc-cols">
-        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting software. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
+        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
         <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
       </div>
       <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
@@ -234,26 +237,19 @@ home = f'''
 
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">What we take off your team's plate.</p></div></header>
-      <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
-      <ol class="pc-list">
-        <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
-        <li><b>Fast first replies</b><span>A new lead has been waiting since this morning. Now every inquiry gets a prompt, helpful reply and reaches the right person.</span></li>
-        <li><b>Scheduling and data entry</b><span>The same details typed into three systems. Now confirmations and updates happen in the background.</span></li>
-        <li><b>After-hours replies</b><span>It's 8:40 pm and the office is closed. Customers get a friendly reply within minutes.</span></li>
-        <li><b>Past customers and old leads</b><span>People who once said yes have gone quiet. A gentle check-in goes out at the right moment.</span></li>
-        <li><b>Reports without the legwork</b><span>The weekly report is built by hand, again. Now the numbers leadership needs arrive on their own.</span></li>
-      </ol>
+      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Built for whatever slows your company down.</p></div></header>
+      <p class="kn-lede">Every business has different bottlenecks. Flip any department below to see how we take the manual grind off your team&rsquo;s plate.</p>
+      {kin.switchboard()}
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">A whole new level. You'll wonder how you managed before.</p></div></header>
+      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Your business runs better when the heavy lifting happens behind the scenes.</p></div></header>
       <div class="pc-benefits">
         <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
-        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
+        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
         <article><p class="mono">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
         <article><p class="mono">04</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
         <article><p class="mono">05</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
@@ -262,15 +258,16 @@ home = f'''
   </section>
 
 
+{kin.shift_section()}
   <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
     <div class="pc-wrap">
       <div class="pc-ghost" aria-hidden="true"><span>Onboard &nbsp;&middot;&nbsp; Ride &nbsp;&middot;&nbsp; Summit</span></div>
-      <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Three stops to the top.</p></div></header>
+      <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Engineered around how your business already runs.</p></div></header>
       <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
       <div class="pc-pkgs">
-        <article><p class="mono">Stop 1</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
-        <article><p class="mono">Stop 2</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></article>
-        <article><p class="mono">Stop 3</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></article>
+        <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p><strong>We find the exact drag.</strong> You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
+        <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p><strong>We build the backbone.</strong> We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
+        <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p><strong>We keep the line moving.</strong> Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
       </div>
       <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i class="ar" aria-hidden="true"></i></a></p>
     </div>
@@ -362,7 +359,7 @@ services = page_hero("What we do", "Built around how you work.",
       <div class="intro">
         <span class="rule"></span>
         <h2 id="ladder-title">Start with the smallest fix.</h2>
-        <p>The question isn't whether you need AI. It's where your team does the same thing over and over. We begin with the simplest answer and only go further if it's worth it.</p>
+        <p>The question isn't whether you need new technology. It's where your team does the same thing over and over. We begin with the simplest answer and only go further if it's worth it.</p>
       </div>
       <div class="principles">
         <div class="principle"><b>01</b><div><h3>Quick fixes</h3><p>Reminders, forms, FAQ answers, scheduling and review requests.</p></div></div>
@@ -416,11 +413,11 @@ FAQ = [
     ("What happens in the five minutes? Is it a sales pitch?", ["We ask what slows your team down and tell you honestly whether there's a practical fix. If there isn't, we'll say so."]),
     ("Is this going to be expensive?", ["We won't quote until we understand the job, and you'll see the price before any work starts."]),
     ("I don't have time for another project.", ["It starts with five minutes, and after that we do the building. Your team just shows us how the work gets done today."]),
-    ("We tried software before and nobody used it.", ["That's why we don't sell software. We fix one task inside the tools you already use, and refine it with the people who use it."]),
+    ("We tried a new system before and nobody used it.", ["That's why we don't sell new tools. We fix one task inside the tools you already use, and refine it with the people who use it."]),
     ("Can I trust you with my accounts?", ["We're our own team of real people, never outsourced. We only touch what the fix needs, and you stay the owner of your tools and data."]),
     ("We're probably too small for this.", ["If your team does the same task every week, you're not too small. We start with one task and only go further if it's worth it."]),
     ("I don't want robots talking to my customers.", ["Neither do we. You always deal with real people, and nothing goes to your customers until you've signed off on it."]),
-    ("Do we need to buy new software?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, spreadsheets, and the booking or quoting software you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
+    ("Do we need to buy new tools?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, spreadsheets, and the booking or quoting tools you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
     ("Do we need someone technical on our team?", ["No. You need someone who knows how the work gets done today. We handle the technical side and explain everything in plain English."]),
     ("Is this about replacing staff?", ["No. It's about taking the repetitive parts of the job off people's plates, so they can spend more time with clients and on the work they're good at."]),
     ("How long does it take?", ["We'd rather do one thing well than ten things halfway. Once we understand how your business runs, we'll give you a realistic timeline for your first fix."]),
@@ -505,7 +502,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
       <div class="prose">
         <p>Throughout a career in sales, we've seen up close how established businesses really run. The talent was there. The tools were there.</p>
         <p>What was missing was someone to connect the two, so the routine work runs in the background and people can focus on clients, quality and growth.</p>
-        <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right fix in place, one at a time, so your team gets the benefit now, not after a big software project.</p>
+        <p>Chairlift exists to close that gap. We learn how a business actually runs, then put the right fix in place, one at a time, so your team gets the benefit now, not after a big tech project.</p>
       </div>
     </div>
   </section>
@@ -547,7 +544,7 @@ contact = page_hero("Get in touch", "Start a conversation.",
     <div class="wrap">
       <div class="cards cards--two">
         <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Email</span></div><h3>Write directly</h3><p>Prefer your own inbox? Email <a href="mailto:{EMAIL}">{EMAIL}</a> and it comes straight to Ryan.</p></div>
-        <div class="card"><div class="card-top">{icon("clock")}<span class="card-label">Before you write</span></div><h3>Common questions</h3><p>Pricing, timelines, software and data: the questions people usually ask first.</p><div class="card-foot"><a class="link-arrow" href="/how-it-works/#faq">Read the answers</a></div></div>
+        <div class="card"><div class="card-top">{icon("clock")}<span class="card-label">Before you write</span></div><h3>Common questions</h3><p>Pricing, timelines, tools and data: the questions people usually ask first.</p><div class="card-foot"><a class="link-arrow" href="/how-it-works/#faq">Read the answers</a></div></div>
       </div>
     </div>
   </section>
@@ -601,7 +598,7 @@ INDUSTRIES = [
              lead="Someone fills out the contact form at 11:30 pm. They're stressed, and they've messaged two other firms too. Whoever responds first, and responds well, usually gets the call.",
              before=["The message waits in the inbox overnight.", "The first reply goes out mid-morning.", "Booking a consultation takes a few more emails.", "By then, they've already spoken to someone else."],
              after=["They get a calm, professional reply within minutes.", "A short intake form collects the key details.", "A link lets them book a consultation right away.", "Your team starts the day with the full picture."],
-             built="Your website form, your email, and your calendar or practice software.")),
+             built="Your website form, your email, and your calendar or practice system.")),
     dict(slug="sales-teams", icon="pulse", name="Sales teams",
          blurb="Leads answered in minutes, proposals followed up and a CRM that keeps itself current.",
          title="For sales teams.",

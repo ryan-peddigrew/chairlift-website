@@ -906,11 +906,90 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover, html body:has(.pc
 .pc-how { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 8px; color: #fff; font-family: var(--px-sans); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
 .pc-how i { font-style: normal; }
 .pc-how:hover { text-decoration: underline; text-underline-offset: 5px; }
+.pc-story__eyebrow { margin: 0 0 14px; font-family: var(--px-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.82); text-shadow: 0 1px 10px rgba(0,0,0,.6); }
+.pc-story__eyebrow::before { content: ""; display: block; width: 28px; height: 2px; margin: 0 auto 12px; background: #3DFFC1; }
+.pc-story__proof { max-width: 52ch; margin: 12px auto 0; font-family: var(--px-body, var(--px-sans)); font-weight: 400; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.55; color: rgba(255,255,255,.78); text-shadow: 0 1px 12px rgba(0,0,0,.65); opacity: var(--sb, 0); transform: translateY(calc((1 - var(--sb, 0)) * 14px)); }
+@media (max-width: 860px) { .pc-story__eyebrow { font-size: 10.5px; letter-spacing: .14em; margin-bottom: 10px; } .pc-story__proof { font-size: 14px; max-width: 34ch; } }
 @media (max-width: 860px) { .pc-story__tag { font-size: 30px; } .pc-story__sub { font-size: 18px; } .pc-lift { width: min(100%, 320px); } }
-@media (prefers-reduced-motion: reduce) { .pc-story__sub, .pc-story__cta { opacity: 1; transform: none; } .pc-story .pc-story__cta a { pointer-events: auto; } }
+@media (prefers-reduced-motion: reduce) { .pc-story__sub, .pc-story__proof, .pc-story__cta { opacity: 1; transform: none; } .pc-story .pc-story__cta a { pointer-events: auto; } }
 
 /* iPhone shows its own big play button on background videos when autoplay is blocked (Low Power Mode): never show it */
 .pc-photo::-webkit-media-controls, .pc-band__vid::-webkit-media-controls,
 .pc-photo::-webkit-media-controls-start-playback-button, .pc-band__vid::-webkit-media-controls-start-playback-button,
 .pc-photo::-webkit-media-controls-overlay-play-button, .pc-band__vid::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; opacity: 0 !important; }
 .pc-photo, .pc-band__vid { pointer-events: none; }
+
+/* Home intro option (?intro=1): logo alone over a greyed sky, no menu, no headline. Lifts away on the first scroll, touch or mouse move. */
+.site-header { transition: transform .9s cubic-bezier(.2,.8,.2,1) .25s, opacity .9s ease .25s; }
+.pc-sky::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(12,16,24,.5); backdrop-filter: grayscale(1); -webkit-backdrop-filter: grayscale(1); opacity: 0; transition: opacity 1.2s ease; }
+.pc-story, .pc-word { transition: opacity .9s ease .35s; }
+html.px-intro .site-header { transform: translateY(-110%); opacity: 0; }
+html.px-intro .pc-sky::after { opacity: 1; }
+html.px-intro .pc-story, html.px-intro .pc-word { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .site-header, .pc-sky, .pc-story, .pc-word { transition: none; } }
+
+/* Display type matches the 3D wordmark (Michroma, chosen 2026-10-27): wide, engineered, one weight.
+   It runs much wider than Archivo, so sizes drop and the tight tracking opens back up. */
+:root { --px-display: "Michroma", "Archivo", "Helvetica Neue", Arial, sans-serif; }
+.pc-story__tag, .sx-title, .pg-title, .hero--page h1.pg-title, .pc-h2, .pc-capbar .pc-tag, .patrol h2, .ticket__big, .pc-lift,
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta {
+  font-family: var(--px-display) !important; font-weight: 400 !important; font-variation-settings: normal; font-synthesis: none; }
+.pc-story__tag { font-size: clamp(24px, 2.5vw, 38px); line-height: 1.22; letter-spacing: -.01em; }
+.sx-title, .hero--page h1.pg-title, .pg-title { font-size: clamp(34px, 7.4vw, 116px); line-height: 1; letter-spacing: -.03em; }
+.pc-h2 { font-size: clamp(30px, 5vw, 76px); line-height: 1.04; letter-spacing: -.025em; }
+.pc-capbar .pc-tag { font-size: clamp(22px, 3.2vw, 44px); letter-spacing: -.01em; }
+.patrol h2 { font-size: clamp(24px, 3.6vw, 50px); line-height: 1.05; letter-spacing: -.02em; }
+.ticket__big { font-size: clamp(28px, 4vw, 40px); letter-spacing: -.02em; }
+.pc-lift { letter-spacing: .08em; font-size: 14px; }
+html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { letter-spacing: .1em !important; font-size: 12px !important; }
+@media (max-width: 860px) {
+  .pc-story__tag { font-size: 23px; }
+  .sx-title, .hero--page h1.pg-title, .pg-title { font-size: 10vw; }
+  .patrol h2 { font-size: 21px; }
+  html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { font-size: 11px !important; }
+}
+
+/* Swiss pass (2026-10-27): below the hero, one clean sans (Archivo) at real weights instead of light Hanken,
+   tight headings, mono for every label, and a numbered index above each section title that ticks in. */
+:root { --px-body: "Archivo", "Helvetica Neue", Arial, sans-serif; }
+.pc-sec p, .pc-sec li span, .pg-lede, .stage-sum, .lead-big, main p { font-weight: 400; letter-spacing: -.003em; }
+main h3, .kn-read h3, .pc-benefits h3, .pc-pkgs h3 { font-family: var(--px-sans) !important; font-weight: 700; letter-spacing: -.03em; font-variation-settings: "wdth" 100; }
+.pc-scrub__pin .pc-lead, .pc-lead { font-family: var(--px-sans); font-weight: 500; letter-spacing: -.035em; }
+.pc-scrub__pin .pc-lead--soft { font-weight: 400; }
+.pc-benefits article p:last-child, .pc-pkgs article p:last-child, .kn-read p, .kn-stage p { font-weight: 400; }
+.kn-sw { font-family: var(--px-sans); font-weight: 500; letter-spacing: -.01em; }
+.sx-line { letter-spacing: .1em; font-weight: 500 !important; }
+/* section index: 01 ——— 06, sits on the hairline above the title */
+.kn-idx { display: flex; align-items: center; gap: 14px; margin: 0 0 clamp(14px, 1.6vw, 22px); font: 500 12px/1 var(--px-mono); letter-spacing: .16em; text-transform: uppercase; opacity: .85; }
+.kn-idx i { flex: 1; height: 1px; background: currentColor; opacity: .35; transform-origin: 0 50%; transform: scaleX(var(--ix, 1)); transition: transform 1.1s cubic-bezier(.2,.7,.2,1); }
+.kn-idx b { font-weight: 500; min-width: 2ch; }
+.kn-js .kn-idx:not(.in) i { --ix: 0; }
+@media (prefers-reduced-motion: reduce) { .kn-idx i { transition: none; } html.kn-js .kn-idx:not(.in) i { --ix: 1; } }
+
+/* Go round 1 (2026-10-27): hero proof scrim and horizon, pains underline as they light, solid Send it */
+.pc-story__proof { padding: 12px 18px; border-radius: 12px; background: rgba(14,22,40,.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); text-shadow: none; }
+.pc-hero .pc-sky::before { content: ""; position: absolute; left: 0; right: 0; z-index: 1; top: calc(56% + var(--p, 0) * 12%); height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); opacity: calc(var(--p, 0) * 1.3); pointer-events: none; }
+.pain .w { box-shadow: inset 0 -.1em 0 rgba(255,255,255,0); transition: box-shadow .5s, opacity .3s; }
+.pain .w.on { box-shadow: inset 0 -.1em 0 rgba(255,255,255,.85); }
+html body main .task-form .btn.kn-send { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 56px; margin-top: 6px; padding: 0 28px; border: 0 !important; border-radius: 6px; background: #fff !important; color: var(--px-ink) !important; font-family: var(--px-display) !important; font-size: 14px; font-weight: 400 !important; letter-spacing: .1em; text-transform: uppercase; box-shadow: inset 0 -3px 0 rgba(20,27,42,.14), 0 14px 34px rgba(0,0,0,.35); cursor: pointer; }
+html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
+.kn-tags + .field, .kn-log + .btn { margin-top: 6px; }
+.task-form .kn-log { margin: 4px 0 2px; }
+@media (prefers-reduced-motion: reduce) { .pain .w { transition: none; } }
+
+/* Tidy pass: straight Why us cards in 3+2, scan-lines on the hero only, tighter scroll gaps */
+.pc-benefits article.rv.in { animation: none !important; }
+.pc-benefits article { transform-origin: 50% 50%; }
+.pc-benefits { grid-template-columns: repeat(6, 1fr); }
+.pc-benefits article { grid-column: span 2; }
+.pc-benefits article:nth-child(n+4) { grid-column: span 3; }
+.pc-sec::before, .pc-band__stick::after { display: none; }
+.pc-sec--scrub { height: 190svh; }
+.pc-band { height: 115svh; }
+@media (max-width: 960px) {
+  .pc-benefits { grid-template-columns: 1fr; }
+  .pc-benefits article, .pc-benefits article:nth-child(n+4) { grid-column: auto; }
+  .pc-sec--scrub { height: 170svh; }
+  .pc-band { height: 105svh; }
+}
+@media (min-width: 961px) { .pc-benefits article:nth-child(n+4)::before, .pc-benefits article:nth-child(n+4)::after { display: none; } }

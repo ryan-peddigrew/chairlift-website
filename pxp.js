@@ -58,8 +58,9 @@
   rv.forEach(function (el, i) { el.classList.add('rv'); var sib = [].indexOf.call(el.parentNode.children, el); el.style.setProperty('--rd', Math.min(sib, 6) * 90 + 'ms'); });
   if (reduce || !('IntersectionObserver' in window)) rv.forEach(function (el) { el.classList.add('in'); });
   else {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -12% 0px', threshold: .05 });
-    rv.forEach(function (el) { io.observe(el); });
+    // a clipped title has no visible area for the observer to see, so watch its header instead
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { (e.target._rv || e.target).classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -12% 0px', threshold: .05 });
+    rv.forEach(function (el) { var w = el.classList.contains('sx-title') && el.parentNode.classList.contains('sx-head') ? el.parentNode : el; w._rv = el; io.observe(w); });
   }
 
   // Ski Patrol exit check: desktop when the pointer leaves through the top, phones when someone switches away and comes back. Once per visit.
@@ -132,7 +133,7 @@
         var inner = word.querySelector('span[aria-hidden]') || word;
         var wr = inner.getBoundingClientRect();
         var S1 = Math.max(90, word.offsetHeight * 1.9);
-        var cx0 = vw / 2, cy0 = ph * (vw < 861 ? .4 : .42);
+        var cx0 = vw / 2, cy0 = ph * ((vw < 861 ? .4 : .42) + intro * .1);   // intro: logo sits dead centre, then rises to make room for the word
         window._lb = cy0 + S0 * .5; root.style.setProperty('--lb', window._lb.toFixed(0) + 'px');   // headline sits right under the wordmark
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
         var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
@@ -180,6 +181,26 @@
       var bp = clamp((vh - r.top) / (r.height + vh));
       root.style.setProperty('--bp', bp.toFixed(3));
     }
+  }
+  // intro screen (?intro=1): page locked on the spinning logo; the first scroll, touch, key or mouse move opens the homepage
+  var intro = 0;
+  if (root.classList.contains('px-intro')) {
+    intro = 1; root.style.setProperty('--in', '1'); window.scrollTo(0, 0);
+    var mx = null, my = null, go = function () {
+      if (!root.classList.contains('px-intro')) return;
+      root.classList.remove('px-intro');
+      ['wheel', 'touchstart', 'keydown', 'pointerdown', 'mousemove'].forEach(function (t) { window.removeEventListener(t, gate, true); });
+      var t0 = performance.now(), dur = reduce ? 1 : 1100;
+      (function step(now) {
+        intro = 1 - ease(clamp((now - t0) / dur)); root.style.setProperty('--in', intro.toFixed(3)); frame();
+        if (intro > 0) requestAnimationFrame(step);
+      })(t0);
+    }, gate = function (e) {
+      if (e.type === 'mousemove') { if (mx === null) { mx = e.clientX; my = e.clientY; return; } if (Math.abs(e.clientX - mx) + Math.abs(e.clientY - my) < 6) return; }
+      if (e.type === 'wheel' || e.type === 'keydown') e.preventDefault();
+      go();
+    };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown', 'mousemove'].forEach(function (t) { window.addEventListener(t, gate, { capture: true, passive: false }); });
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
   window.addEventListener('scroll', onScroll, { passive: true });

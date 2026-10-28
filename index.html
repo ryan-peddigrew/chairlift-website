@@ -24,9 +24,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/pxp.css">
+<script>try{if(/[?&]intro=1/.test(location.search)&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -68,8 +69,10 @@
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
+        <p class="pc-story__eyebrow" aria-hidden="true">Operational infrastructure for business</p>
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
+        <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
         <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="/how-it-works/">See how it works <i aria-hidden="true">→</i></a></p>
       </div>
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
@@ -84,7 +87,7 @@
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="sx-label">The problem</p>
-      <p class="pc-lead" data-scrub>Does your team lose hours to quotes nobody followed up, inquiries that waited overnight and details typed into three systems? That work is small on its own and enormous added up.</p>
+      <p class="pc-lead" data-scrub>Does your team lose hours to <span class="pain">quotes nobody followed up</span>, <span class="pain">inquiries that waited overnight</span> and <span class="pain">details typed into three systems</span>? That work is small on its own and enormous added up.</p>
       <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
     </div></div>
   </section>
@@ -92,7 +95,7 @@
   <section class="pc-sec pc-sec--dark pc-sec--introrest" aria-label="How Chairlift works">
     <div class="pc-wrap">
       <div class="pc-cols">
-        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting software. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
+        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
         <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
       </div>
       <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
@@ -104,26 +107,35 @@
 
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">What we take off your team's plate.</p></div></header>
-      <figure class="retro retro--wide retro--tower" aria-hidden="true"><img src="/images/retro/lodge-05.jpg" alt="" width="1298" height="1800" loading="lazy" decoding="async"><figcaption>Trail map &middot; Six runs</figcaption></figure>
-      <ol class="pc-list">
-        <li><b>Follow-ups</b><span>A quote went out last week. Nobody's followed up. Now every follow-up goes out on time, in each salesperson's own voice.</span></li>
-        <li><b>Fast first replies</b><span>A new lead has been waiting since this morning. Now every inquiry gets a prompt, helpful reply and reaches the right person.</span></li>
-        <li><b>Scheduling and data entry</b><span>The same details typed into three systems. Now confirmations and updates happen in the background.</span></li>
-        <li><b>After-hours replies</b><span>It's 8:40 pm and the office is closed. Customers get a friendly reply within minutes.</span></li>
-        <li><b>Past customers and old leads</b><span>People who once said yes have gone quiet. A gentle check-in goes out at the right moment.</span></li>
-        <li><b>Reports without the legwork</b><span>The weekly report is built by hand, again. Now the numbers leadership needs arrive on their own.</span></li>
-      </ol>
+      <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Built for whatever slows your company down.</p></div></header>
+      <p class="kn-lede">Every business has different bottlenecks. Flip any department below to see how we take the manual grind off your team&rsquo;s plate.</p>
+      <link rel="stylesheet" href="/kin.css"><script src="/kin.js" defer></script>
+      <ol class="kn-strip mono" aria-hidden="true"><li class="on" data-i="0"><b>01</b>Sales &amp; pipeline momentum</li><li data-i="1"><b>02</b>Quoting, proposals &amp; scopes</li><li data-i="2"><b>03</b>Client handoffs &amp; onboarding</li><li data-i="3"><b>04</b>Scheduling, dispatch &amp; field ops</li><li data-i="4"><b>05</b>Billing, chasing &amp; back-office</li><li data-i="5"><b>06</b>Custom internal workflows</li></ol>
+      <div class="kn-board">
+        <div class="kn-board__sw" role="radiogroup" aria-label="Pick a department"><button class="kn-sw" type="button" role="radio" aria-checked="true" data-i="0">
+          <span class="kn-sw__n">01</span><span class="kn-sw__name">Sales &amp; pipeline momentum</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="1">
+          <span class="kn-sw__n">02</span><span class="kn-sw__name">Quoting, proposals &amp; scopes</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="2">
+          <span class="kn-sw__n">03</span><span class="kn-sw__name">Client handoffs &amp; onboarding</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="3">
+          <span class="kn-sw__n">04</span><span class="kn-sw__name">Scheduling, dispatch &amp; field ops</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="4">
+          <span class="kn-sw__n">05</span><span class="kn-sw__name">Billing, chasing &amp; back-office</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button><button class="kn-sw" type="button" role="radio" aria-checked="false" data-i="5">
+          <span class="kn-sw__n">06</span><span class="kn-sw__name">Custom internal workflows</span><span class="kn-sw__tog" aria-hidden="true"><span></span></span></button></div>
+        <div class="kn-read" aria-live="polite">
+          <p class="kn-read__bar mono"><span data-dept-code>Department 01</span><span><i class="kn-live" aria-hidden="true"></i>Our own team builds it</span></p>
+          <div class="kn-read__out" data-dept-out><h3>Every inquiry answered, routed and tracked until the deal is won.</h3><p>Instant lead capture, follow-up across email, phone and text, a tidy CRM, stalled-deal alerts, and the right rep on every lead without anyone lifting a finger.</p></div>
+          <p class="kn-read__foot mono" data-dept-tools>Built around: Your CRM · email · phone and text · web forms</p>
+        </div>
+        <template data-dept="0"><b>01</b><h3>Every inquiry answered, routed and tracked until the deal is won.</h3><p>Instant lead capture, follow-up across email, phone and text, a tidy CRM, stalled-deal alerts, and the right rep on every lead without anyone lifting a finger.</p><i>Your CRM · email · phone and text · web forms</i></template><template data-dept="1"><b>02</b><h3>Quotes out the same day, not the same week.</h3><p>Complex estimates, multi-line pricing and custom proposals go from an hours-long bottleneck to a quick sign-off.</p><i>Your price lists · quoting tools · spreadsheets · e-signature</i></template><template data-dept="2"><b>03</b><h3>The deal closes. The work starts. Nobody re-asks the client.</h3><p>The moment a deal closes, project folders, kickoff packets, team assignments and internal briefs are built and sent out.</p><i>Your CRM · shared drives · project boards · team chat</i></template><template data-dept="3"><b>04</b><h3>Nothing double-booked. Nothing forgotten.</h3><p>Crew coordination, calendar syncing, resource planning and real-time client updates wired together.</p><i>Your calendars · dispatch boards · text updates · maps</i></template><template data-dept="4"><b>05</b><h3>Invoices out when the work is done.</h3><p>Milestone invoices, overdue nudges, vendor paperwork and reconciliation handled quietly in the background.</p><i>Your accounting tools · bank feeds · vendor portals · inbox</i></template><template data-dept="5"><b>06</b><h3>Your one-of-a-kind process, running on rails.</h3><p>Have a messy process that only your company has? We map it, build around the tools you already use, and make it run on rails.</p><i>Whatever your team already uses</i></template>
+      </div>
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">A whole new level. You'll wonder how you managed before.</p></div></header>
+      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Your business runs better when the heavy lifting happens behind the scenes.</p></div></header>
       <div class="pc-benefits">
         <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
-        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting software. Nothing new for your team to learn.</p></article>
+        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
         <article><p class="mono">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
         <article><p class="mono">04</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
         <article><p class="mono">05</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
@@ -132,15 +144,32 @@
   </section>
 
 
+
+  <section class="pc-sec pc-sec--cream kn-shift" aria-labelledby="shift-title">
+    <div class="pc-wrap">
+      <header class="sx-head"><h2 id="shift-title" class="sx-title">The shift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">One job, two ways to run it.</p></div></header>
+      <div class="kn-flow" data-flow data-way="0">
+        <div class="kn-flow__bar">
+          <div class="kn-way" role="radiogroup" aria-label="How the job runs"><span class="kn-way__knob" aria-hidden="true"></span>
+            <button type="button" role="radio" aria-checked="true" data-way="0">By hand</button>
+            <button type="button" role="radio" aria-checked="false" data-way="1">With Chairlift</button></div>
+          <p class="kn-flow__read" aria-live="polite"><span data-cap>Every step waits for a person to get to it.</span><small data-count>4 places a job can sit and wait</small></p>
+        </div>
+        <div class="kn-rail" aria-hidden="true"><canvas class="kn-canvas"></canvas></div>
+        <ol class="kn-track"><li class="kn-step"><p class="kn-step__n">Step 01</p><h3 class="kn-step__t">New inquiry</h3><div class="kn-step__txt"><p class="kn-step__was">Sits in a shared inbox until someone has a minute.</p><p class="kn-step__now">Answered and sent to the right person right away.</p></div></li><li class="kn-step"><p class="kn-step__n">Step 02</p><h3 class="kn-step__t">The quote</h3><div class="kn-step__txt"><p class="kn-step__was">Rebuilt from an old spreadsheet, then waits for a review.</p><p class="kn-step__now">Built from your pricing and sent the same day.</p></div></li><li class="kn-step"><p class="kn-step__n">Step 03</p><h3 class="kn-step__t">Handoff to the team</h3><div class="kn-step__txt"><p class="kn-step__was">Details re-typed into three places. The client gets asked twice.</p><p class="kn-step__now">Every detail travels with the job.</p></div></li><li class="kn-step"><p class="kn-step__n">Step 04</p><h3 class="kn-step__t">Invoice</h3><div class="kn-step__txt"><p class="kn-step__was">Goes out when someone remembers. Late payments chased by hand.</p><p class="kn-step__now">Goes out when the work is done. Reminders on schedule.</p></div></li></ol>
+      </div>
+    </div>
+  </section>
+
   <section class="pc-sec pc-sec--blue" aria-labelledby="how-title">
     <div class="pc-wrap">
       <div class="pc-ghost" aria-hidden="true"><span>Onboard &nbsp;&middot;&nbsp; Ride &nbsp;&middot;&nbsp; Summit</span></div>
-      <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Three stops to the top.</p></div></header>
+      <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Engineered around how your business already runs.</p></div></header>
       <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
       <div class="pc-pkgs">
-        <article><p class="mono">Stop 1</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p>We learn how your team actually works today: where the hours go and what frustrates people most.</p></article>
-        <article><p class="mono">Stop 2</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p>We fix one task inside the tools you already use, and refine it with the people who use it.</p></article>
-        <article><p class="mono">Stop 3</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p>Your team gets time back for the work that matters. Then we look at what's next, together.</p></article>
+        <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p><strong>We find the exact drag.</strong> You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
+        <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p><strong>We build the backbone.</strong> We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
+        <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p><strong>We keep the line moving.</strong> Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
       </div>
       <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i class="ar" aria-hidden="true"></i></a></p>
     </div>
@@ -228,8 +257,9 @@
         <input type="hidden" name="_next" value="https://usechairlift.com/thanks/">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
         <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
+        <fieldset class="kn-tags"><legend>Where is the heaviest friction in your business right now? <em>(optional)</em></legend><label class="kn-tag"><input type="checkbox" name="friction" value="Sales &amp; lead follow-up"><span>Sales &amp; lead follow-up</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Quoting &amp; proposals"><span>Quoting &amp; proposals</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Onboarding &amp; handoffs"><span>Onboarding &amp; handoffs</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Scheduling &amp; dispatch"><span>Scheduling &amp; dispatch</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Invoicing &amp; back-office"><span>Invoicing &amp; back-office</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Reporting"><span>Reporting</span></label><label class="kn-tag"><input type="checkbox" name="friction" value="Something custom"><span>Something custom</span></label><p class="kn-log mono" aria-live="polite" data-log>&gt; awaiting input<i class="kn-caret" aria-hidden="true"></i></p></fieldset>
         <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
-        <button class="btn btn-white" type="submit">Send it</button>
+        <button class="btn btn-white kn-send" type="submit">Send it</button>
         <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>

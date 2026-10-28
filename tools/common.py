@@ -24,6 +24,11 @@ NAV = [
 ]
 
 
+# home intro option for review (?intro=1): only the spinning logo over a greyed sky until the first scroll, touch or mouse move
+INTRO_JS = """
+<script>try{if(/[?&]intro=1/.test(location.search)&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>"""
+
+
 def head(title, desc, path, noindex=False):
     full = f"{title}" if title.startswith("Chairlift") else f"{title} · Chairlift"
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
@@ -53,9 +58,9 @@ def head(title, desc, path, noindex=False):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/pxp.css">
+<link rel="stylesheet" href="/pxp.css">{INTRO_JS if path == "/" else ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -157,7 +162,7 @@ def contact_form():
         <fieldset class="form-step" data-step="2">
           <legend>Tell us about the task.</legend>
           <label class="field"><span>Describe it in a sentence or two</span><textarea name="message" rows="4" required placeholder="A few sentences is plenty: what your business does, and the task everyone wishes would just happen on its own."></textarea></label>
-          <label class="field"><span>Where does it live today? <em>(optional)</em></span><input type="text" name="tools" placeholder="Inbox, spreadsheet, CRM, quoting software"></label>
+          <label class="field"><span>Where does it live today? <em>(optional)</em></span><input type="text" name="tools" placeholder="Inbox, spreadsheet, CRM, quoting tool"></label>
           <p class="field-label">When would you like it handled?</p>
           {pills("timing", ["This month", "Next quarter", "Just exploring"])}
           <div class="form-nav"><button class="btn btn-line" type="button" data-back>Back</button><button class="btn btn-white" type="button" data-next>Next</button></div>
@@ -267,8 +272,8 @@ def task_band():
         <input type="hidden" name="_next" value="{SITE}/thanks/">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
         <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
-        <label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
-        <button class="btn btn-white" type="submit">Send it</button>
+        {__import__("kin").friction_tags()}<label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
+        <button class="btn btn-white kn-send" type="submit">Send it</button>
         <p class="form-fine">We only use this to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
