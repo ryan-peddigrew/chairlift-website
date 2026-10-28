@@ -626,7 +626,7 @@ html.nav-d body:has(.pc-hero, .hdr-px) .hdr-cta { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .pc-boarder, .pc-scrollhint .ar { animation: none; } }
 
 /* ---------- round 9: ChatGPT-reference section heads, thin brand body font, no grey text ---------- */
-:root { --px-mute: rgba(255,255,255,.88); --px-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; }
+:root { --px-mute: rgba(255,255,255,.88); --px-body: "Archivo", "Helvetica Neue", Arial, sans-serif; }
 .pc-sec p, .pc-sec li span, .pg-lede, .stage-sum, .lead-big, main p { font-family: var(--px-body); font-weight: 300; }
 .pc-sec--cream, .pc-sec--sky { --px-mute: rgba(20,27,42,.9); }
 .pc-cols p, .pc-benefits article p:last-child, .pc-pkgs article p:last-child, .pc-list li span { color: inherit; opacity: .9; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
@@ -890,8 +890,8 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover, html body:has(.pc
 .pc-capbar .pc-tag { line-height: 1.12 !important; }
 
 /* ---------- round 20: hero scroll story — headline settles, subhead, then the lift button ---------- */
-.pc-hero { height: 195svh; }
-@media (min-width: 861px) { .pc-hero { height: 200svh; } }
+.pc-hero { height: 150svh; }
+@media (min-width: 861px) { .pc-hero { height: 160svh; } }
 .pc-capbar { display: none !important; }
 .pc-story { position: absolute; left: 0; right: 0; top: calc(var(--lb, 62svh) + 6px); z-index: 5; padding: 0 20px; text-align: center; color: #fff; pointer-events: none; will-change: transform; }
 .pc-story__tag { margin: 0; font-family: var(--px-sans); font-weight: 800; font-variation-settings: "wdth" 118; font-size: clamp(30px, 3.4vw, 50px); line-height: 1.12; letter-spacing: -.035em; text-transform: none; text-shadow: 0 2px 20px rgba(0,0,0,.55); }
@@ -921,7 +921,7 @@ html body:has(.pc-hero, .hdr-px) .site-header .menu-btn:hover, html body:has(.pc
 
 /* Home intro option (?intro=1): logo alone over a greyed sky, no menu, no headline. Lifts away on the first scroll, touch or mouse move. */
 .site-header { transition: transform .9s cubic-bezier(.2,.8,.2,1) .25s, opacity .9s ease .25s; }
-.pc-sky::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(12,16,24,.5); backdrop-filter: grayscale(1); -webkit-backdrop-filter: grayscale(1); opacity: 0; transition: opacity 1.2s ease; }
+.pc-sky::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(12,16,24,.5); backdrop-filter: grayscale(1) blur(7px); -webkit-backdrop-filter: grayscale(1) blur(7px); opacity: 0; transition: opacity 1.2s ease; }
 .pc-story, .pc-word { transition: opacity .9s ease .35s; }
 html.px-intro .site-header { transform: translateY(-110%); opacity: 0; }
 html.px-intro .pc-sky::after { opacity: 1; }
@@ -993,3 +993,34 @@ html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
   .pc-band { height: 105svh; }
 }
 @media (min-width: 961px) { .pc-benefits article:nth-child(n+4)::before, .pc-benefits article:nth-child(n+4)::after { display: none; } }
+
+
+/* Polish four: moving type on two lines, press effect, sent animation */
+.pc-story__tag .kw { display: inline-block; opacity: 0; transform: translateY(.5em); transition: opacity .6s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i) * 110ms); }
+.pc-story__tag.kw-on .kw { opacity: 1; transform: none; }
+.pc-band__txt .kb { display: inline-block; opacity: clamp(0, calc(var(--k) * 5 - var(--i) * .8), 1); }
+.btn, .pc-lift, .hdr-cta, .nav-cta { transition: transform .15s ease; }
+.btn:active, .pc-lift:active, .hdr-cta:active, .nav-cta:active { transform: scale(.97); }
+@keyframes kn-pop { 0% { transform: scale(.92); opacity: 0; } 60% { transform: scale(1.04); } 100% { transform: scale(1); opacity: 1; } }
+.form-done .kn-send { animation: kn-pop .5s ease both; pointer-events: none; }
+.form-done .form-status { animation: kn-pop .6s .1s ease both; }
+.form-status a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .pc-story__tag .kw { opacity: 1; transform: none; transition: none; }
+  .btn:active, .pc-lift:active { transform: none; }
+  .form-done .kn-send, .form-done .form-status { animation: none; }
+}
+
+
+/* ---------- round 21: mid-page button and sticky bar on phones ---------- */
+.kn-cta { display: flex; justify-content: center; margin: clamp(28px, 4vw, 44px) 0 0; }
+.kn-shift .pc-lift { background: #141B2A; color: #fff; }
+.lift-bar { display: none; }
+@media (max-width: 860px) {
+  .lift-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; justify-content: center; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(20,27,42,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transform: translateY(110%); transition: transform .3s ease; pointer-events: none; }
+  .lift-bar.is-on { transform: none; pointer-events: auto; }
+  .lift-bar__btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: min(100%, 360px); min-height: 48px; background: #fff; color: #141B2A; border-radius: 3px; font-family: var(--px-sans); font-weight: 800; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; }
+  .lift-bar__btn i { font-style: normal; font-weight: 400; font-size: 17px; letter-spacing: 0; }
+  body:has(.lift-bar.is-on) .site-footer { padding-bottom: 72px; }
+}
+@media (prefers-reduced-motion: reduce) { .lift-bar { transition: none; } }

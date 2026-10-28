@@ -33,7 +33,12 @@
         .then(function (res) {
           if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
           form.classList.add('form-done');
-          status.textContent = "Thanks, your message is in. We'll read it properly and reply by email soon.";
+          if (form.classList.contains('task-form')) {
+            var sendBtn = form.querySelector('.kn-send'); if (sendBtn) sendBtn.textContent = 'Sent';
+            status.innerHTML = 'Thanks, it\u2019s in. We\u2019ll reply within a day with one practical idea. Rather talk now? <a href="/5min/">Book 5 minutes</a>.';
+          } else {
+            status.textContent = "Thanks, your message is in. We'll read it properly and reply by email soon.";
+          }
         })
         .catch(function () {
           submit.disabled = false;

@@ -21,7 +21,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adju
 .nowrap { white-space: nowrap; }
 body {
   margin: 0; background: var(--page); color: var(--text);
-  font-family: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased;
   border-top: 5px solid var(--ink);
 }
