@@ -748,12 +748,15 @@ def industry_page(i):
 {cta_band("Sound like your team?")}'''
 
 # ---------------------------------------------------------------- Privacy
-privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 6, 2026.") + f'''
+STATS_PRIVACY = """      <h2>Visit statistics</h2>
+      <p>We use Umami, a privacy-friendly tool, to count visits and see which pages help. It sets no cookies, doesn't follow you around the web, and doesn't collect personal information.</p>
+""" if UMAMI_ID else ""
+privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 28, 2026.") + f'''
   <section class="section section--soft section--tight">
     <div class="wrap prose">
       <h2>What we collect</h2>
       <p>Only what you choose to share with us: what you type into our contact form, the emails you send us, and the booking details you enter when you schedule a conversation through Cal.com.</p>
-      <h2>How we use it</h2>
+{STATS_PRIVACY}      <h2>How we use it</h2>
       <p>Only to respond to you and to schedule conversations. We don't sell your information, and we don't share it for marketing.</p>
       <h2>Client information</h2>
       <p>When we work with a client's business information, we use only what the client approves, and only for that project.</p>

@@ -1,4 +1,10 @@
 (function () {
+  // Visit statistics: count clicks on the booking button
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="/5min/"]');
+    if (a && window.umami) umami.track('Book click');
+  });
+
   // Phone and tablet menu
   var btn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
@@ -33,6 +39,7 @@
         .then(function (res) {
           if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
           form.classList.add('form-done');
+          if (window.umami) umami.track('Form sent');
           status.textContent = "Thanks, your message is in. We'll read it properly and reply by email soon.";
         })
         .catch(function () {

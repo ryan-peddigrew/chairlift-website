@@ -29,6 +29,11 @@ INTRO_JS = """
 <script>try{if(/[?&]intro=1/.test(location.search)&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>"""
 
 
+# Free visit statistics: Umami Cloud (Hobby plan). Paste the Website ID here to switch it on.
+UMAMI_ID = "1c2d08fe-7f1e-4640-8adb-77bf8559328b"
+ANALYTICS = f'<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}"></script>' if UMAMI_ID else ""
+
+
 def head(title, desc, path, noindex=False):
     full = f"{title}" if title.startswith("Chairlift") else f"{title} · Chairlift"
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
@@ -40,6 +45,7 @@ def head(title, desc, path, noindex=False):
 <title>{full}</title>
 <meta name="description" content="{desc}">{robots}
 <link rel="canonical" href="{SITE}{path}">
+{ANALYTICS}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Chairlift">
 <meta property="og:url" content="{SITE}{path}">
