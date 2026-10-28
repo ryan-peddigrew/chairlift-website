@@ -937,7 +937,7 @@ PAGES = [
     ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
     ("try/index.html", "Get your own morning paper", "Type in your name, city and top three for the day, see your own one-page morning paper take shape, and send us your request.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
-    ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
+    ("5min/index.html", "Book a five-minute conversation", "Five minutes, plain talk. Pick a time that works for you.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
 ] + [
