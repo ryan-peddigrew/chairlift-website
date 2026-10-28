@@ -2,7 +2,7 @@
   // Visit statistics: count clicks on the booking button
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href="/5min/"]');
-    if (a && window.plausible) plausible('Book click');
+    if (a && window.umami) umami.track('Book click');
   });
 
   // Phone and tablet menu
@@ -39,7 +39,7 @@
         .then(function (res) {
           if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
           form.classList.add('form-done');
-          if (window.plausible) plausible('Form sent');
+          if (window.umami) umami.track('Form sent');
           status.textContent = "Thanks, your message is in. We'll read it properly and reply by email soon.";
         })
         .catch(function () {

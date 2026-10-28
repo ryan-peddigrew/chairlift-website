@@ -16,7 +16,7 @@
     document.querySelector('[data-days]').textContent = fmt(year / 8);
   }
   var counted = false;
-  form.addEventListener('input', function () { if (!counted && window.plausible) { counted = true; plausible('Calculator used'); } update(); });
+  form.addEventListener('input', function () { if (!counted && window.umami) { counted = true; umami.track('Calculator used'); } update(); });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   update();
 })();
