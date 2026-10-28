@@ -30,7 +30,7 @@ INTRO_JS = """
 
 
 # Free visit statistics: Umami Cloud (Hobby plan). Paste the Website ID here to switch it on.
-UMAMI_ID = ""
+UMAMI_ID = "1c2d08fe-7f1e-4640-8adb-77bf8559328b"
 ANALYTICS = f'<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}"></script>' if UMAMI_ID else ""
 
 
