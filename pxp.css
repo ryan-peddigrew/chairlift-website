@@ -976,3 +976,20 @@ html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
 .kn-tags + .field, .kn-log + .btn { margin-top: 6px; }
 .task-form .kn-log { margin: 4px 0 2px; }
 @media (prefers-reduced-motion: reduce) { .pain .w { transition: none; } }
+
+/* Tidy pass: straight Why us cards in 3+2, scan-lines on the hero only, tighter scroll gaps */
+.pc-benefits article.rv.in { animation: none !important; }
+.pc-benefits article { transform-origin: 50% 50%; }
+.pc-benefits { grid-template-columns: repeat(6, 1fr); }
+.pc-benefits article { grid-column: span 2; }
+.pc-benefits article:nth-child(n+4) { grid-column: span 3; }
+.pc-sec::before, .pc-band__stick::after { display: none; }
+.pc-sec--scrub { height: 190svh; }
+.pc-band { height: 115svh; }
+@media (max-width: 960px) {
+  .pc-benefits { grid-template-columns: 1fr; }
+  .pc-benefits article, .pc-benefits article:nth-child(n+4) { grid-column: auto; }
+  .pc-sec--scrub { height: 170svh; }
+  .pc-band { height: 105svh; }
+}
+@media (min-width: 961px) { .pc-benefits article:nth-child(n+4)::before, .pc-benefits article:nth-child(n+4)::after { display: none; } }
