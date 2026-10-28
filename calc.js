@@ -15,7 +15,8 @@
     document.querySelector('[data-calc-year]').textContent = fmt(year);
     document.querySelector('[data-days]').textContent = fmt(year / 8);
   }
-  form.addEventListener('input', update);
+  var counted = false;
+  form.addEventListener('input', function () { if (!counted && window.plausible) { counted = true; plausible('Calculator used'); } update(); });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   update();
 })();

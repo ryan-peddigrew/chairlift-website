@@ -40,6 +40,8 @@ def head(title, desc, path, noindex=False):
 <title>{full}</title>
 <meta name="description" content="{desc}">{robots}
 <link rel="canonical" href="{SITE}{path}">
+<script defer data-domain="usechairlift.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible=window.plausible||function(){{(window.plausible.q=window.plausible.q||[]).push(arguments)}}</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Chairlift">
 <meta property="og:url" content="{SITE}{path}">
