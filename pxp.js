@@ -265,3 +265,27 @@
     band.style.setProperty('--n', i);
   }
 })();
+
+
+// sticky "Take the lift" bar on phones: appears after the hero, hides near the form and footer
+(function () {
+  var bar = document.querySelector('[data-lift-bar]');
+  if (!bar) return;
+  var link = bar.querySelector('a');
+  var hero = document.querySelector('.pc-hero');
+  var guards = [].slice.call(document.querySelectorAll('.site-footer, form, .pc-lift'));
+  function inView(el) { var r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }
+  function check() {
+    var past = hero ? hero.getBoundingClientRect().bottom < innerHeight * 0.4 : window.scrollY > innerHeight * 0.6;
+    var near = guards.some(function (g) { return g.closest('.lift-bar') ? false : inView(g); });
+    var on = past && !near && window.innerWidth <= 860 && !/^\/5min/.test(location.pathname);
+    bar.classList.toggle('is-on', on);
+    bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+    link.tabIndex = on ? 0 : -1;
+  }
+  var t = false;
+  function tick() { if (!t) { t = true; requestAnimationFrame(function () { t = false; check(); }); } }
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick);
+  check();
+})();
