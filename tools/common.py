@@ -152,11 +152,10 @@ def pills(name, options, required=True):
 
 def contact_form():
     """Three short steps. Without JavaScript every step shows at once and the form still posts."""
-    return f'''      <form class="contact-form steps-form" name="contact" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}" data-steps>
-        <input type="hidden" name="_subject" value="New message from usechairlift.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="{SITE}/thanks/">
-        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+    return f'''      <form class="contact-form steps-form" name="contact" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/" data-steps>
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" value="New message from usechairlift.com">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <p class="form-progress" data-progress aria-live="polite"><span class="form-progress-bar"><i></i></span><span data-progress-text>Step 1 of 3</span></p>
         <fieldset class="form-step" data-step="1">
           <legend>What's eating your team's time?</legend>
@@ -272,11 +271,10 @@ def task_band():
         <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="cta-or"><strong>Not ready to talk?</strong> Send us one task your team does over and over, and we'll reply within a day with one practical idea.</p>
       </div>
-      <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">
-        <input type="hidden" name="_subject" value="One task from usechairlift.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="{SITE}/thanks/">
-        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+      <form class="contact-form task-form" name="one-task" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/">
+        <input type="hidden" name="form-name" value="one-task">
+        <input type="hidden" name="subject" value="One task from usechairlift.com">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
         {__import__("kin").friction_tags()}<label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
         <button class="btn btn-white kn-send" type="submit">Send it</button>
