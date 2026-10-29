@@ -32,12 +32,11 @@
       status.textContent = 'Sending…';
       fetch(form.getAttribute('data-ajax'), {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
       })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
-        .then(function (res) {
-          if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
+                .then(function (res) {
+          if (!res.ok) throw new Error('not sent');
           form.classList.add('form-done');
           if (window.umami) umami.track('Form sent');
           status.textContent = "Thanks, your message is in. We'll read it properly and reply by email soon.";

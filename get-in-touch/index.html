@@ -79,11 +79,10 @@
         </ul>
         <p class="cta-direct">Prefer email? <a href="mailto:ryan@usechairlift.com">ryan@usechairlift.com</a></p>
       </div>
-      <form class="contact-form steps-form" name="contact" method="POST" action="https://formsubmit.co/ryan@usechairlift.com" data-ajax="https://formsubmit.co/ajax/ryan@usechairlift.com" data-steps>
-        <input type="hidden" name="_subject" value="New message from usechairlift.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://usechairlift.com/thanks/">
-        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+      <form class="contact-form steps-form" name="contact" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/" data-steps>
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" value="New message from usechairlift.com">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <p class="form-progress" data-progress aria-live="polite"><span class="form-progress-bar"><i></i></span><span data-progress-text>Step 1 of 3</span></p>
         <fieldset class="form-step" data-step="1">
           <legend>What's eating your team's time?</legend>

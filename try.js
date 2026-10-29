@@ -77,10 +77,9 @@
     e.preventDefault();
     btn.disabled = true;
     status.textContent = 'Sending…';
-    fetch(form.getAttribute('data-ajax'), { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
-      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
-      .then(function (res) {
-        if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
+    fetch(form.getAttribute('data-ajax'), { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+            .then(function (res) {
+        if (!res.ok) throw new Error('not sent');
         form.classList.add('form-done');
         status.textContent = '';
         if (after) { after.hidden = false; after.querySelector('h3').focus && after.scrollIntoView({ behavior: 'smooth', block: 'center' }); }

@@ -793,10 +793,10 @@ try_paper = f'''
         </div>
         <div class="try-formcard">
           <h2 id="try-title">Make it yours</h2>
-          <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
-            <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
-            <input type="hidden" name="_template" value="table">
-            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+          <form class="try-form" data-try-form name="morning-paper" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/">
+        <input type="hidden" name="form-name" value="morning-paper">
+            <input type="hidden" name="subject" value="Morning paper request from usechairlift.com">
+            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
             <div class="field-row">
               <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
               <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
