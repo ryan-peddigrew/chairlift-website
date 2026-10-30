@@ -54,7 +54,7 @@ def head(title, desc, path, noindex=False):
 <meta property="og:image" content="{SITE}/og-card-2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Chairlift: Less busywork. More business.">
+<meta property="og:image:alt" content="Chairlift: Leave the busywork at the base.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{full}">
 <meta name="twitter:description" content="{desc}">

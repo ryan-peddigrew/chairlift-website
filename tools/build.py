@@ -197,11 +197,11 @@ home = f'''
       <span class="pc-shade"></span><span class="pc-scan"></span>
     </div>
     <div class="pc-stage">
-      <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
+      <h1 class="pc-word"><span class="sr-only">Chairlift. Leave the busywork at the base.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
-        <p class="pc-story__eyebrow" aria-hidden="true">Operational infrastructure for business</p>
-        <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
-        <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
+        <p class="pc-story__eyebrow" aria-hidden="true">We do the work. Your team gets the hours back.</p>
+        <p class="pc-story__tag" aria-hidden="true">Leave the busywork<br>at the base.</p>
+        <p class="pc-story__sub">We build quiet, reliable systems with your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
         <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="/how-it-works/">See how it works <i aria-hidden="true">→</i></a></p>
       </div>
@@ -929,7 +929,7 @@ def home_variant(k, switcher=True):
     return h + (sw if switcher else '')
 
 PAGES = [
-    ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
+    ("index.html", "Chairlift | Leave the busywork at the base.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
