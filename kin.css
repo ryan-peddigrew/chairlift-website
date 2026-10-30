@@ -101,18 +101,6 @@
 .kn-stops .pc-pkgs article::before { content: ""; position: absolute; left: 28px; top: 0; width: 44px; height: 3px; background: #3DFFC1; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.2,1) .25s; }
 .kn-stops .pc-pkgs article.kn-lit::before { transform: none; }
 
-/* precision cursor */
-.kn-cur { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  .kn-cur-on, .kn-cur-on a, .kn-cur-on button, .kn-cur-on label, .kn-cur-on canvas { cursor: none; }
-  .kn-cur-on .kn-cur { display: block; position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none; mix-blend-mode: difference; }
-  .kn-cur__dot { position: absolute; width: 5px; height: 5px; margin: -2.5px; border-radius: 50%; background: #fff; }
-  .kn-cur__ring { position: absolute; width: 28px; height: 28px; margin: -14px; border: 1px solid rgba(255,255,255,.75); border-radius: 999px; transition: width .25s, height .25s, margin .25s, border-radius .25s, opacity .2s; }
-  .kn-cur-snap .kn-cur__ring { border-radius: 14px; border-color: #fff; }
-  .kn-cur-field .kn-cur__ring { opacity: 0; }
-  .kn-cur-field input, .kn-cur-field textarea { cursor: text; }
-}
-
 .kn-lede { max-width: 56ch; margin: calc(-1 * clamp(16px, 2.6vw, 34px)) 0 clamp(24px, 3vw, 36px); font-size: 19px; line-height: 1.55; color: rgba(20,27,42,.82); }
 .pc-pkgs article p strong { display: block; margin-bottom: 6px; font-weight: 600; color: #fff; }
 
