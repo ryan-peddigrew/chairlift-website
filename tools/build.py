@@ -199,7 +199,7 @@ home = f'''
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Leave the busywork at the base.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
-        <p class="pc-story__eyebrow" aria-hidden="true">We do the work. Your team gets the hours back.</p>
+        <p class="pc-story__eyebrow" aria-hidden="true">Done by our team. Hours back for yours.</p>
         <p class="pc-story__tag" aria-hidden="true">Leave the busywork<br>at the base.</p>
         <p class="pc-story__sub">We build quiet, reliable systems with your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
