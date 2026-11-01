@@ -227,3 +227,65 @@
     setTimeout(swap, 1500);
   });
 })();
+
+
+// Returning visitors get a short welcome-back line (remembered on their own browser only, nothing is sent anywhere).
+// Moving type: the hero line and "Your team's hours. Back." build in word by word.
+(function () {
+  var tag = document.querySelector('.pc-story__tag');
+  var seen = false;
+  try { seen = localStorage.getItem('cl_seen') === '1'; if (/[?&]first=1/.test(location.search)) { localStorage.removeItem('cl_seen'); seen = false; } localStorage.setItem('cl_seen', '1'); } catch (e) {}
+  function words(el, html) {
+    var parts = html.split('<br>'), n = 0;
+    el.innerHTML = parts.map(function (line) {
+      return line.split(' ').map(function (w) { return '<span class="kw" style="--i:' + (n++) + '">' + w + '</span>'; }).join(' ');
+    }).join('<br>');
+    return n;
+  }
+  if (tag) {
+    var html = seen ? 'Welcome back.<br>Ready to take the lift?' : 'Less busywork.<br>More business.';
+    words(tag, html);
+    var on = false;
+    function check() {
+      var o = parseFloat(getComputedStyle(tag).opacity);
+      if (!on && o > .3) { on = true; tag.classList.add('kw-on'); }
+      else if (on && o < .05) { on = false; tag.classList.remove('kw-on'); }
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    [100, 600, 1400, 2600].forEach(function (t) { setTimeout(check, t); });
+    check();
+  }
+  var band = document.querySelector('.pc-band__txt');
+  if (band) {
+    var i = 0;
+    [].forEach.call(band.querySelectorAll('span'), function (sp) {
+      sp.innerHTML = sp.textContent.split(' ').map(function (w) { return '<span class="kb" style="--i:' + (i++) + '">' + w + '</span>'; }).join(' ');
+    });
+    band.style.setProperty('--n', i);
+  }
+})();
+
+
+// sticky "Take the lift" bar on phones: appears after the hero, hides near the form and footer
+(function () {
+  var bar = document.querySelector('[data-lift-bar]');
+  if (!bar) return;
+  var link = bar.querySelector('a');
+  var hero = document.querySelector('.pc-hero');
+  var guards = [].slice.call(document.querySelectorAll('.site-footer, form, .pc-lift'));
+  function inView(el) { var r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }
+  function check() {
+    var past = hero ? hero.getBoundingClientRect().bottom < innerHeight * 0.4 : window.scrollY > innerHeight * 0.6;
+    var near = guards.some(function (g) { return g.closest('.lift-bar') ? false : inView(g); });
+    var on = past && !near && window.innerWidth <= 860 && !/^\/5min/.test(location.pathname);
+    bar.classList.toggle('is-on', on);
+    bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+    link.tabIndex = on ? 0 : -1;
+  }
+  var t = false;
+  function tick() { if (!t) { t = true; requestAnimationFrame(function () { t = false; check(); }); } }
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick);
+  check();
+})();

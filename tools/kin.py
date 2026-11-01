@@ -80,6 +80,7 @@ def shift_section():
         <div class="kn-rail" aria-hidden="true"><canvas class="kn-canvas"></canvas></div>
         <ol class="kn-track">{steps}</ol>
       </div>
+      <p class="kn-cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a></p>
     </div>
   </section>
 '''

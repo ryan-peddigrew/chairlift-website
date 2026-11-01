@@ -75,12 +75,17 @@ if (host) {
       emblem.add(inner);
     } else {
       inner.scale.setScalar(0.78);
-      ring = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.11, 48, 160), steel);
+      // a flat-edged band instead of a round tube: crisper and more rigid, with softer light so it throws less shadow
+      const band = new THREE.Shape(); band.absarc(0, 0, 1.43, 0, Math.PI * 2, false);
+      const hole = new THREE.Path(); hole.absarc(0, 0, 1.23, 0, Math.PI * 2, true); band.holes.push(hole);
+      const bandMat = new THREE.MeshPhysicalMaterial({ color: 0xeef2f8, metalness: 0.7, roughness: 0.36, envMapIntensity: 1.05 });
+      ring = new THREE.Mesh(new THREE.ExtrudeGeometry(band, { depth: 0.14, bevelEnabled: true, bevelThickness: 0.018, bevelSize: 0.018, bevelSegments: 3, curveSegments: 160 }), bandMat);
+      ring.geometry.translate(0, 0, -0.07);
       emblem.add(inner, ring);
     }
     emblem.scale.setScalar(0.72);
     const wordMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.7, metalness: 0.3, roughness: 0.25, clearcoat: 0.6, envMapIntensity: 1.2, transparent: true });
-    let word = null;
+    let word = null, wordScale = 0.92;
     // "Chairlift" in extruded satin metal under the ring, held still
     // ?wfont=<name> previews another typeface for the word (vendor/w-<name>.json), fitted to the same width
     const wfont = (new URLSearchParams(location.search).get('wfont') || 'michroma').replace(/[^a-z0-9]/g, '');   // Michroma chosen 2026-10-27
@@ -95,7 +100,7 @@ if (host) {
       }
       const bb = new THREE.Box3().setFromObject(word), mid = bb.getCenter(new THREE.Vector3());
       word.children.forEach((m) => { m.position.x -= mid.x; m.position.y -= mid.y; });
-      word.scale.setScalar(wfont ? Math.min(0.92, 2.7 / (bb.max.x - bb.min.x)) : 0.92);
+      wordScale = wfont ? Math.min(0.92, 2.7 / (bb.max.x - bb.min.x)) : 0.92; word.scale.setScalar(wordScale);
       word.position.set(0, -1.48, 0);
       scene.add(word);
     }).catch(() => {});
@@ -135,7 +140,8 @@ if (host) {
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
         const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
         const io = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--in')) || 0;   // intro screen: logo only, the word arrives after it
-        const o = Math.max(0, 1 - p / 0.25) * (1 - io); wordMat.opacity = o; word.visible = o > 0.01;
+        const o = Math.max(0, 1 - p / 0.25); wordMat.opacity = o; word.visible = o > 0.01;
+        word.scale.setScalar(wordScale * (1 - io * 0.4));   // small under the ring on the loading screen, full size once it lifts
       }
       const flip = moving && !reduce ? -ease(Math.min(1, dkNow / 0.95)) * Math.PI * 2 : 0;   // one forward flip on the way into the top bar
       emblem.rotation.x = reduce ? 0 : flip + (docked || moving ? 0 : Math.sin(now / 2600) * 0.08);
