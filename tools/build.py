@@ -928,6 +928,80 @@ def home_variant(k, switcher=True):
     sw = '<nav class="pc-switch" aria-label="Homepage mock-ups">' + "".join(f'<a href="/home-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abcd") + '</nav>'
     return h + (sw if switcher else '')
 
+
+# ---- homepage client story options (previews only, noindex; not on the live home) ----
+# Facts are only what Ryan supplied for WasteMind. Small Space Innovations shows a
+# placeholder until Ryan sends the facts; it must never go live as placeholder text.
+CS_HEAD = '<header class="sx-head"><h2 id="cs-title" class="sx-title">In practice<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">A real client. Real hours back.</p></div></header>'
+CASE_HOME = {
+"a": f'''
+  <section class="pc-sec pc-sec--dark cs cs--a" aria-labelledby="cs-title">
+    <div class="pc-wrap">
+      {CS_HEAD}
+      <div class="cs-a">
+        <div>
+          <p class="sx-label">Client story &middot; WasteMind</p>
+          <p class="cs-big">12&ndash;24 hours<span>to about 1.</span></p>
+          <p class="cs-txt">How long WasteMind&rsquo;s customers used to wait for a reply to a quote request or service call, and how long they wait now. We work with their team every week, one tested fix at a time.</p>
+          <p class="pc-links"><a class="pc-link" href="/examples/#wastemind">Read the WasteMind story <i class="ar" aria-hidden="true"></i></a></p>
+        </div>
+        <div class="cs-a__photos"><img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel"><img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue waste containers from WasteMind"></div>
+      </div>
+    </div>
+  </section>
+''',
+"b": f'''
+  <section class="pc-sec pc-sec--cream cs cs--b" aria-labelledby="cs-title">
+    <div class="pc-wrap">
+      {CS_HEAD}
+      <figure class="cs-b">
+        <img class="cs-b__logo" src="/images/wastemind-logo.png" width="528" height="216" alt="WasteMind">
+        <blockquote class="cs-b__q"><p>&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;</p></blockquote>
+        <figcaption class="cs-b__by"><span class="mono">Shane Fagan</span><span class="mono">WasteMind</span></figcaption>
+      </figure>
+      <div class="cs-b__strip">
+        <p><b>12&ndash;24 hrs</b><span>Reply time before</span></p>
+        <p><b>About 1 hr</b><span>Reply time now</span></p>
+        <p><b>Weekly</b><span>One tested fix at a time</span></p>
+      </div>
+      <p class="pc-links"><a class="pc-link pc-link--ink" href="/examples/#wastemind">Read the WasteMind story <i class="ar" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+''',
+"c": f'''
+  <section class="pc-sec pc-sec--dark cs cs--c" aria-labelledby="cs-title">
+    <div class="pc-wrap">
+      {CS_HEAD}
+      <div class="cs-c">
+        <a class="cs-c__card" href="/examples/#wastemind">
+          <img class="cs-c__img" src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="">
+          <div class="cs-c__body">
+            <p class="sx-label">WasteMind &middot; Waste equipment</p>
+            <p class="cs-c__stat">12&ndash;24 hours to about 1</p>
+            <p class="cs-c__txt">Replies to quote requests, service calls and inquiries. A new tested fix every week.</p>
+            <span class="pc-link">Read the story <i class="ar" aria-hidden="true"></i></span>
+          </div>
+        </a>
+        <div class="cs-c__card cs-c__card--todo">
+          <div class="cs-c__img cs-c__img--todo"><span>Photo from Ryan</span></div>
+          <div class="cs-c__body">
+            <p class="sx-label">Small Space Innovations &middot; Furniture for condos</p>
+            <p class="cs-c__stat">[Result from Ryan]</p>
+            <p class="cs-c__txt">[What we did, in Ryan&rsquo;s words. Placeholder for this preview only.]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+''',
+}
+def home_with_case(k):
+    band = '  <section class="pc-band"'
+    h = home.replace(band, CASE_HOME[k] + band, 1)
+    h = _MEDIA.sub(lambda m: HERO_MEDIA["e"], h, count=1).replace('class="pc-hero"', 'class="pc-hero pcv-c pcv-e"', 1)
+    sw = '<nav class="pc-switch" aria-label="Client story options">' + "".join(f'<a href="/home-story-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abc") + '</nav>'
+    return h + sw
+
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
@@ -942,6 +1016,8 @@ PAGES = [
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
 ] + [
     (f"home-{k}/index.html", f"Homepage mock-up {k.upper()}", "Preview of a homepage option.", f"/home-{k}/", None, home_variant(k), True) for k in "abcd"
+] + [
+    (f"home-story-{k}/index.html", f"Client story option {k.upper()}", "Preview of a homepage client story option.", f"/home-story-{k}/", None, home_with_case(k), True) for k in "abc"
 ] + [
     (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
 ] + [
