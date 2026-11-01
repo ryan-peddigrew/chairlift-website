@@ -29,6 +29,11 @@ INTRO_JS = """
 <script>try{var q=location.search,on=/[?&]intro=1/.test(q);if(!on&&!/[?&]intro=0/.test(q)&&!sessionStorage.getItem('cl_intro')){on=true}sessionStorage.setItem('cl_intro','1');if(on&&scrollY<10){document.documentElement.classList.add('px-intro');history.scrollRestoration='manual'}}catch(e){}</script>"""
 
 
+# Free visit statistics: Umami Cloud (Hobby plan). Paste the Website ID here to switch it on.
+UMAMI_ID = "1c2d08fe-7f1e-4640-8adb-77bf8559328b"
+ANALYTICS = f'<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}"></script>' if UMAMI_ID else ""
+
+
 def head(title, desc, path, noindex=False):
     full = f"{title}" if title.startswith("Chairlift") else f"{title} · Chairlift"
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
@@ -40,6 +45,7 @@ def head(title, desc, path, noindex=False):
 <title>{full}</title>
 <meta name="description" content="{desc}">{robots}
 <link rel="canonical" href="{SITE}{path}">
+{ANALYTICS}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Chairlift">
 <meta property="og:url" content="{SITE}{path}">
@@ -147,11 +153,10 @@ def pills(name, options, required=True):
 
 def contact_form():
     """Three short steps. Without JavaScript every step shows at once and the form still posts."""
-    return f'''      <form class="contact-form steps-form" name="contact" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}" data-steps>
-        <input type="hidden" name="_subject" value="New message from usechairlift.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="{SITE}/thanks/">
-        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+    return f'''      <form class="contact-form steps-form" name="contact" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/" data-steps>
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" value="New message from usechairlift.com">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <p class="form-progress" data-progress aria-live="polite"><span class="form-progress-bar"><i></i></span><span data-progress-text>Step 1 of 3</span></p>
         <fieldset class="form-step" data-step="1">
           <legend>What's eating your team's time?</legend>
@@ -267,11 +272,10 @@ def task_band():
         <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="cta-or"><strong>Not ready to talk?</strong> Send us one task your team does over and over, and we'll reply within a day with one practical idea.</p>
       </div>
-      <form class="contact-form task-form" name="one-task" method="POST" action="https://formsubmit.co/{EMAIL}" data-ajax="https://formsubmit.co/ajax/{EMAIL}">
-        <input type="hidden" name="_subject" value="One task from usechairlift.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="{SITE}/thanks/">
-        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+      <form class="contact-form task-form" name="one-task" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/">
+        <input type="hidden" name="form-name" value="one-task">
+        <input type="hidden" name="subject" value="One task from usechairlift.com">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <label class="field"><span>The task</span><textarea name="task" rows="3" required placeholder="Every Friday someone copies job notes from texts into the invoicing system."></textarea></label>
         {__import__("kin").friction_tags()}<label class="field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
         <button class="btn btn-white kn-send" type="submit">Send it</button>

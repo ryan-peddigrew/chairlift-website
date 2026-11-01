@@ -235,39 +235,6 @@
     heads.forEach(function (h) { io.observe(h.firstChild); });
   }
 
-  /* ---------- precision cursor (mouse and trackpad only) ---------- */
-  if (fine && !reduce) {
-    var cur = document.createElement('div');
-    cur.className = 'kn-cur'; cur.setAttribute('aria-hidden', 'true');
-    cur.innerHTML = '<span class="kn-cur__ring"></span><span class="kn-cur__dot"></span>';
-    document.body.appendChild(cur);
-    var ring = cur.firstChild, dot = cur.lastChild, mx = -100, my = -100, rx = mx, ry = my, snap = null, live = false;
-    window.addEventListener('pointermove', function (e) {
-      if (e.pointerType && e.pointerType !== 'mouse') return;
-      mx = e.clientX; my = e.clientY;
-      if (!live) { live = true; rx = mx; ry = my; root.classList.add('kn-cur-on'); loop(); }
-    }, { passive: true });
-    document.addEventListener('mouseleave', function () { root.classList.remove('kn-cur-on'); live = false; });
-    document.addEventListener('pointerover', function (e) {
-      var t = e.target.closest && e.target.closest('a, button, label, input, textarea, select, canvas');
-      snap = t && t.tagName !== 'CANVAS' && t.tagName !== 'INPUT' && t.tagName !== 'TEXTAREA' ? t : null;
-      root.classList.toggle('kn-cur-snap', !!snap);
-      root.classList.toggle('kn-cur-field', !!t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA'));
-    });
-    var loop = function () {
-      if (!live) return;
-      var tx = mx, ty = my, w = 28, h = 28;
-      if (snap) {
-        var r = snap.getBoundingClientRect();
-        if (r.width < 420 && r.height < 120) { tx = r.left + r.width / 2 + (mx - r.left - r.width / 2) * .15; ty = r.top + r.height / 2 + (my - r.top - r.height / 2) * .15; w = r.width + 12; h = r.height + 12; }
-      }
-      rx += (tx - rx) * .2; ry += (ty - ry) * .2;
-      ring.style.transform = 'translate(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px)';
-      ring.style.width = w + 'px'; ring.style.height = h + 'px'; ring.style.margin = (-h / 2) + 'px 0 0 ' + (-w / 2) + 'px';
-      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
-      requestAnimationFrame(loop);
-    };
-  }
 })();
 
 /* the tag picker reports back like a terminal: > awaiting input, then > friction.tag [QUOTING] [BILLING] */

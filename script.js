@@ -1,4 +1,10 @@
 (function () {
+  // Visit statistics: count clicks on the booking button
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="/5min/"]');
+    if (a && window.umami) umami.track('Book click');
+  });
+
   // Phone and tablet menu
   var btn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
@@ -26,13 +32,13 @@
       status.textContent = 'Sending…';
       fetch(form.getAttribute('data-ajax'), {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
       })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
-        .then(function (res) {
-          if (!res.ok || String(res.d.success) !== 'true') throw new Error('not sent');
+                .then(function (res) {
+          if (!res.ok) throw new Error('not sent');
           form.classList.add('form-done');
+          if (window.umami) umami.track('Form sent');
           if (form.classList.contains('task-form')) {
             var sendBtn = form.querySelector('.kn-send'); if (sendBtn) sendBtn.textContent = 'Sent';
             status.innerHTML = 'Thanks, it\u2019s in. We\u2019ll reply within a day with one practical idea. Rather talk now? <a href="/5min/">Book 5 minutes</a>.';

@@ -12,10 +12,11 @@
     var people = Math.max(1, num(form.querySelector('[data-people]')) || 1);
     var week = mins * people / 60, year = week * 48;
     document.querySelector('[data-hours]').textContent = fmt(week);
-    document.querySelector('[data-year]').textContent = fmt(year);
+    document.querySelector('[data-calc-year]').textContent = fmt(year);
     document.querySelector('[data-days]').textContent = fmt(year / 8);
   }
-  form.addEventListener('input', update);
+  var counted = false;
+  form.addEventListener('input', function () { if (!counted && window.umami) { counted = true; umami.track('Calculator used'); } update(); });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   update();
 })();

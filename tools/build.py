@@ -748,12 +748,15 @@ def industry_page(i):
 {cta_band("Sound like your team?")}'''
 
 # ---------------------------------------------------------------- Privacy
-privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 6, 2026.") + f'''
+STATS_PRIVACY = """      <h2>Visit statistics</h2>
+      <p>We use Umami, a privacy-friendly tool, to count visits and see which pages help. It sets no cookies, doesn't follow you around the web, and doesn't collect personal information.</p>
+""" if UMAMI_ID else ""
+privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 28, 2026.") + f'''
   <section class="section section--soft section--tight">
     <div class="wrap prose">
       <h2>What we collect</h2>
       <p>Only what you choose to share with us: what you type into our contact form, the emails you send us, and the booking details you enter when you schedule a conversation through Cal.com.</p>
-      <h2>How we use it</h2>
+{STATS_PRIVACY}      <h2>How we use it</h2>
       <p>Only to respond to you and to schedule conversations. We don't sell your information, and we don't share it for marketing.</p>
       <h2>Client information</h2>
       <p>When we work with a client's business information, we use only what the client approves, and only for that project.</p>
@@ -790,10 +793,10 @@ try_paper = f'''
         </div>
         <div class="try-formcard">
           <h2 id="try-title">Make it yours</h2>
-          <form class="try-form" data-try-form data-ajax="https://formsubmit.co/ajax/{EMAIL}">
-            <input type="hidden" name="_subject" value="Morning paper request from usechairlift.com">
-            <input type="hidden" name="_template" value="table">
-            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+          <form class="try-form" data-try-form name="morning-paper" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/">
+        <input type="hidden" name="form-name" value="morning-paper">
+            <input type="hidden" name="subject" value="Morning paper request from usechairlift.com">
+            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
             <div class="field-row">
               <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam Rivera" required></label>
               <label class="field"><span>Your city</span><input type="text" name="city" autocomplete="address-level2" placeholder="Toronto"></label>
@@ -839,7 +842,7 @@ calculator = page_hero("Time-back calculator", "Where does your team's time go?"
         <span class="rule"></span>
         <p class="calc-label">Every week, that's</p>
         <p class="calc-big"><b data-hours>0</b> hours</p>
-        <p class="calc-sub">About <b data-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
+        <p class="calc-sub">About <b data-calc-year>0</b> hours a year, or <b data-days>0</b> full workdays.</p>
         <p class="calc-note">Based on 48 working weeks and 8-hour days.</p>
         <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="calc-after">We'll pick the biggest one and show you how we'd take it off your plate.</p>
@@ -958,7 +961,7 @@ urls = [p[3] for p in PAGES if not p[6]]
 with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for u in urls:
-        f.write(f"  <url><loc>{SITE}{u}</loc><lastmod>2026-10-04</lastmod></url>\n")
+        f.write(f"  <url><loc>{SITE}{u}</loc><lastmod>{_dt.date.today().isoformat()}</lastmod></url>\n")
     f.write("</urlset>\n")
 with open(os.path.join(OUT, "robots.txt"), "w") as f:
     f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
