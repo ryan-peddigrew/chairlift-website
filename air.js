@@ -127,5 +127,30 @@
         }
       })(0);
     }
-  
+
+    // scroll chairlift: a cable down the left edge; the chair rides it with the page, down as you scroll down, up as you scroll up
+    (function () {
+      var header = document.querySelector('.site-header');
+      var lift = document.createElement('div'); lift.className = 'air-lift'; lift.setAttribute('aria-hidden', 'true');
+      lift.innerHTML = '<div class="air-lift__chair"><svg viewBox="0 0 26 44"><circle cx="13" cy="3" r="2.4"/><path d="M13 5.4V21"/><path d="M8 17v14"/><path class="air-lift__seat" d="M7.2 30.2h12.6a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1H7.2a1 1 0 0 1-1-1v-1.6a1 1 0 0 1 1-1z"/><path d="M8 34v5M19 34v5M9.5 39.5h8"/></svg></div>';
+      body.appendChild(lift);
+      var chair = lift.firstChild, cur = 0, target = 0, raf = 0, span = 0;
+      function measure() {
+        var h = header ? header.getBoundingClientRect().height : 64;
+        root.style.setProperty('--air-top', Math.round(h + 18) + 'px');
+        span = Math.max(0, lift.clientHeight - chair.clientHeight - 6);
+      }
+      function progress() { var max = root.scrollHeight - innerHeight; return max > 0 ? clamp(scrollY / max) : 0; }
+      function tick() {
+        raf = 0;
+        var d = target - cur;
+        if (reduce || Math.abs(d) < .0005) cur = target; else { cur += d * .14; raf = requestAnimationFrame(tick); }
+        chair.style.transform = 'translate3d(0,' + (cur * span).toFixed(1) + 'px,0)';
+      }
+      function onScroll() { target = progress(); if (!raf) raf = requestAnimationFrame(tick); }
+      measure(); onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', function () { measure(); onScroll(); });
+      if ('ResizeObserver' in window) new ResizeObserver(function () { measure(); onScroll(); }).observe(document.body);
+    })();
 })();
