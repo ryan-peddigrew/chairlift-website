@@ -199,7 +199,7 @@ home = f'''
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
-        <p class="pc-story__eyebrow" aria-hidden="true">Operational infrastructure for business</p>
+        <p class="pc-story__eyebrow" aria-hidden="true">Real people. Quiet systems.</p>
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
@@ -929,19 +929,6 @@ def home_variant(k, switcher=True):
     return h + (sw if switcher else '')
 
 
-# ---- homepage direction previews (2 Nov 2026): three evolutions of the live home, see preview.css / preview.js ----
-DIRECTIONS = {"a": "Base to summit", "b": "The lift line", "c": "Mountain air"}
-DIR_CLASS = {}
-def direction(k):
-    h = home
-    if k == "a":
-        coin = re.search(r'<span class="pc-coin">.*?</svg></b></span></span>', h, re.S).group(0).replace('id="chb"', 'id="chb-pv"').replace('url(#chb)', 'url(#chb-pv)')
-        h = h.replace('<div class="pc-route" aria-hidden="true">', '<div class="pv-chap" aria-hidden="true"><span><i>001</i>Onboard</span><span><i>002</i>Ride</span><span><i>003</i>Summit</span>'
-                      f'<div class="pv-coin">{coin}</div></div><div class="pc-route" aria-hidden="true">', 1)
-    DIR_CLASS[f"/preview/{k}/"] = f"dir-{k}"
-    return (f'<link rel="stylesheet" href="/preview.css"><script src="/preview.js" defer></script>'
-            f'<p class="pv-tag" aria-hidden="true">Direction <b>{k.upper()}</b> &middot; {DIRECTIONS[k]}</p>' + h)
-
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
@@ -954,8 +941,6 @@ PAGES = [
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
-] + [
-    (f"preview/{k}/index.html", f"Homepage direction {k.upper()}: {DIRECTIONS[k]}", "Preview of a homepage direction.", f"/preview/{k}/", None, direction(k), True) for k in "abc"
 ] + [
     (f"home-{k}/index.html", f"Homepage mock-up {k.upper()}", "Preview of a homepage option.", f"/home-{k}/", None, home_variant(k), True) for k in "abcd"
 ] + [
@@ -971,8 +956,6 @@ for fn, title, desc, path, active, body, noindex in PAGES:
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w") as f:
         html = page(title, desc, path, active, body, noindex)
-        if path in DIR_CLASS:
-            html = html.replace("<body>", f'<body class="{DIR_CLASS[path]}">', 1)
         f.write(html)
     print("wrote", fn)
 
