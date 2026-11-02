@@ -1,0 +1,93 @@
+/* Homepage direction previews (2 Nov 2026). Three evolutions of the live mountain home, each a thin layer on top of it.
+   dir-a "Base to summit": blur-to-focus tagline, step cards flip up as you scroll, chapter words behind a turning coin on The lift.
+   dir-b "The lift line": tagline letters scatter in, Solutions as a giant type list, lodge photos trail the pointer on the band.
+   dir-c "Mountain air": topo contour lines under The problem, tilting lift ticket, drag-to-clear divider on The shift, dot grid behind Why us.
+   Everything here is our own code. Switch off with (prefers-reduced-motion). */
+
+/* ---------- shared ---------- */
+.pv-tag { white-space: nowrap; position: fixed; left: 50%; bottom: max(10px, env(safe-area-inset-bottom, 0px)); z-index: 90; transform: translateX(-50%); padding: 8px 14px; border-radius: 999px; background: rgba(20,27,42,.9); color: #fff; font: 500 12px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.pv-tag b { color: #3DFFC1; font-weight: 500; }
+@media (max-width: 560px) { .pv-tag { font-size: 10.5px; padding: 7px 12px; } }
+
+/* ---------- A: Base to summit ---------- */
+.dir-a .pc-story__tag { animation: pv-focus 1.6s cubic-bezier(.2,.7,.2,1) .25s both; }
+@keyframes pv-focus { from { filter: blur(16px); opacity: 0; letter-spacing: .06em; } to { filter: blur(0); opacity: 1; letter-spacing: -.01em; } }
+
+/* step cards lie flat in a stack and flip up one by one as they arrive (3D image stack, effects lab) */
+.dir-a .kn-track { perspective: 1100px; }
+.dir-a .kn-step { --k: 0; transform-origin: 50% 100%; transform: translateY(calc((1 - var(--k)) * 70px)) rotateX(calc((1 - var(--k)) * -62deg)) scale(calc(.94 + var(--k) * .06)); opacity: calc(.15 + var(--k) * .85); transition: transform .9s cubic-bezier(.2,.7,.2,1), opacity .9s; }
+.dir-a .kn-step.pv-in { --k: 1; }
+
+/* chapters: one word at a time behind a turning coin (type behind object, pattern 16), in its own band above the stops */
+.dir-a .pc-ghost { display: none; }
+.dir-a .pv-chap { position: relative; height: clamp(150px, 26vw, 320px); margin: clamp(-20px, -2vw, -8px) 0 clamp(10px, 2vw, 24px); display: grid; place-items: center; overflow: visible; pointer-events: none; }
+.dir-a .pv-chap span { grid-area: 1 / 1; display: grid; justify-items: center; gap: 12px; font-family: var(--px-display, "Michroma", sans-serif); font-weight: 400; font-size: clamp(56px, 13vw, 210px); line-height: 1; letter-spacing: -.02em; color: rgba(255,255,255,.1); white-space: nowrap; opacity: 0; transform: translateY(30px) scale(.96); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+.dir-a .pv-chap span i { font: 500 clamp(12px, 1.2vw, 16px)/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .3em; color: rgba(255,255,255,.7); font-style: normal; }
+.dir-a .pv-chap span.on { opacity: 1; transform: none; }
+.dir-a .pv-coin { position: absolute; left: 50%; top: 56%; width: clamp(96px, 13vw, 190px); height: clamp(96px, 13vw, 190px); transform: translate(-50%, -50%); perspective: 900px; pointer-events: none; }
+.dir-a .pv-coin .pc-coin__in { opacity: 1 !important; animation: none; transform: rotateY(calc(var(--rp, 0) * 540deg)); transition: transform .2s linear; }
+@media (max-width: 860px) { .dir-a .pv-chap { height: 150px; } .dir-a .pv-chap span { font-size: 17vw; } }
+
+/* ---------- B: The lift line ---------- */
+.dir-b .pc-story__tag .pv-l { display: inline-block; animation: pv-land 1.1s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(.2s + var(--d, 0) * 1s); will-change: transform, filter; }
+@keyframes pv-land { from { transform: translate(calc(var(--x, 0) * 1px), calc(var(--y, 0) * 1px)) rotate(calc(var(--r, 0) * 1deg)); opacity: 0; filter: blur(6px); } to { transform: none; opacity: 1; filter: blur(0); } }
+
+/* Solutions as a giant type list (pattern 5): the department names ARE the menu, the rest blur */
+.dir-b .kn-strip { display: none; }
+.dir-b .kn-board { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: stretch; }
+.dir-b .kn-board__sw { padding: clamp(14px, 2vw, 28px) clamp(14px, 2.4vw, 32px); align-content: center; gap: 2px; }
+.dir-b .kn-sw { grid-template-columns: 1fr; gap: 0; min-height: 0; padding: 6px 0; border-radius: 0; background: none !important; color: rgba(20,27,42,.28); font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-variation-settings: "wdth" 66; font-size: clamp(30px, 4.2vw, 62px); line-height: .98; letter-spacing: -.02em; text-transform: uppercase; filter: blur(1.4px); transition: color .35s, filter .35s, transform .45s cubic-bezier(.2,.7,.2,1); }
+.dir-b .kn-sw + .kn-sw { margin-top: 0; }
+.dir-b .kn-sw__n, .dir-b .kn-sw__tog { display: none; }
+.dir-b .kn-sw:hover { color: rgba(20,27,42,.75); filter: blur(0); }
+.dir-b .kn-sw[aria-checked="true"] { color: var(--px-ink); filter: blur(0); transform: translateX(10px); }
+.dir-b .kn-sw[aria-checked="true"]::before { content: ""; display: inline-block; width: .32em; height: .32em; margin: 0 .22em .02em 0; border-radius: 50%; background: #3DFFC1; vertical-align: baseline; }
+@media (max-width: 860px) { .dir-b .kn-board { grid-template-columns: 1fr; } .dir-b .kn-sw { font-size: 9.6vw; filter: blur(1px); } .dir-b .kn-sw[aria-checked="true"] { transform: translateX(6px); } }
+@media (hover: none) { .dir-b .kn-sw { filter: none; color: rgba(20,27,42,.35); } }
+
+/* lodge photos trail the pointer across the band (image trail, effects lab) */
+.dir-b .pc-band__stick { cursor: crosshair; }
+.dir-b .pv-trail { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+.dir-b .pv-trail img { position: absolute; left: 0; top: 0; width: clamp(110px, 14vw, 210px); height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; box-shadow: 0 18px 40px rgba(0,0,0,.45); filter: saturate(.85); transform: translate(-50%, -50%) rotate(var(--r, 0deg)) scale(.6); opacity: 0; animation: pv-drop 1.5s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes pv-drop { 0% { transform: translate(-50%, -50%) rotate(var(--r, 0deg)) scale(.6); opacity: 0; } 18% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--r, 0deg)) scale(1); } 70% { opacity: 1; } 100% { transform: translate(-50%, calc(-50% + 40px)) rotate(var(--r, 0deg)) scale(1); opacity: 0; } }
+
+/* ---------- C: Mountain air ---------- */
+/* contour lines under The problem (ripple background, effects lab): a quiet topo map that bends toward the pointer */
+.dir-c .pc-scrub__pin { position: sticky; }
+.dir-c .pv-topo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; }
+.dir-c .pc-scrub__pin .pc-wrap { position: relative; z-index: 1; }
+
+/* the lift ticket leans with the pointer (hero object, pattern 1) */
+.dir-c .ticket.in { transform: perspective(900px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform .25s cubic-bezier(.2,.7,.2,1), opacity .9s; box-shadow: 0 30px 60px -28px rgba(0,0,0,.6); }
+@media (hover: none) { .dir-c .ticket.in { animation: pv-sway 7s ease-in-out infinite; } }
+@keyframes pv-sway { 0%, 100% { transform: perspective(900px) rotateX(4deg) rotateY(-7deg); } 50% { transform: perspective(900px) rotateX(-3deg) rotateY(7deg); } }
+
+/* drag-to-clear divider on The shift (reveal strip, pattern 20): left of the line runs with Chairlift */
+.dir-c .kn-track { position: relative; }
+.dir-c .pv-split { position: absolute; top: -12px; bottom: -12px; left: var(--x, 0%); z-index: 3; width: 44px; margin-left: -22px; cursor: ew-resize; touch-action: pan-y; }
+.dir-c .pv-split::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--px-ink); }
+.dir-c .pv-split__k { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--px-ink); color: #fff; display: grid; place-items: center; font: 600 13px/1 "IBM Plex Mono", ui-monospace, monospace; box-shadow: 0 10px 24px rgba(20,27,42,.35); }
+.dir-c .pv-split__k::after { content: "\2194"; font-size: 18px; }
+.dir-c .pv-split__lbl { position: absolute; top: -34px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--px-ink); background: #fff; padding: 6px 10px; border-radius: 999px; box-shadow: 0 1px 0 rgba(20,27,42,.08); }
+.dir-c .kn-step { transition: background .4s; }
+.dir-c .kn-step:not(.on) { background: #F7F8FA; }
+@media (max-width: 560px) {
+  .dir-c .pv-split { top: var(--x, 0%); left: -8px; right: -8px; bottom: auto; width: auto; height: 44px; margin: -22px 0 0; cursor: ns-resize; touch-action: pan-x; }
+  .dir-c .pv-split::before { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 2px; margin: -1px 0 0; }
+  .dir-c .pv-split__k::after { content: "\2195"; }
+  .dir-c .pv-split__lbl { top: 50%; left: auto; right: 54px; transform: translateY(-50%); }
+}
+
+/* dot grid behind Why us lights up around the pointer (hover chroma, effects lab) */
+.dir-c .pv-dots { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.dir-c .pc-sec--dark[aria-labelledby="why-title"] { position: relative; overflow: hidden; }
+.dir-c .pc-sec--dark[aria-labelledby="why-title"] .pc-wrap { position: relative; z-index: 1; }
+.dir-c .pc-benefits article { background: rgba(20,27,42,.72); backdrop-filter: blur(2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dir-a .pc-story__tag, .dir-b .pc-story__tag .pv-l, .dir-c .ticket.in { animation: none !important; }
+  .dir-a .kn-step { --k: 1; transition: none; }
+  .dir-a .pv-chap span { transition: none; }
+  .dir-b .pv-trail { display: none; }
+  .dir-c .pv-topo, .dir-c .pv-dots { display: none; }
+}
