@@ -1,0 +1,51 @@
+/* Homepage "Mountain air" layer (approved by Ryan, 2 Nov 2026). Four small moving parts on top of the home page:
+   contour lines under The problem, a lift ticket that leans with the pointer, a drag-to-clear divider on The shift, a dot grid behind Why us.
+   Our own code. All of it switches off under (prefers-reduced-motion). */
+/* contour lines under The problem (ripple background, effects lab): a quiet topo map that bends toward the pointer */
+.pc-scrub__pin { position: sticky; }
+.air-topo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; }
+.pc-scrub__pin .pc-wrap { position: relative; z-index: 1; }
+
+/* the lift ticket leans with the pointer (hero object, pattern 1) */
+.ticket.in { transform: perspective(900px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform .25s cubic-bezier(.2,.7,.2,1), opacity .9s; box-shadow: 0 30px 60px -28px rgba(0,0,0,.6); }
+@media (hover: none) { .ticket.in { animation: air-sway 7s ease-in-out infinite; } }
+@keyframes air-sway { 0%, 100% { transform: perspective(900px) rotateX(4deg) rotateY(-7deg); } 50% { transform: perspective(900px) rotateX(-3deg) rotateY(7deg); } }
+
+/* drag-to-clear divider on The shift (reveal strip, pattern 20): left of the line runs with Chairlift */
+.kn-track { position: relative; }
+.air-split { position: absolute; top: -12px; bottom: -12px; left: var(--x, 0%); z-index: 3; width: 44px; margin-left: -22px; cursor: ew-resize; touch-action: pan-y; }
+.air-split::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--px-ink); }
+.air-split__k { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--px-ink); color: #fff; display: grid; place-items: center; font: 600 13px/1 "IBM Plex Mono", ui-monospace, monospace; box-shadow: 0 10px 24px rgba(20,27,42,.35); }
+.air-split__k::after { content: "\2194"; font-size: 18px; }
+.air-split__lbl { position: absolute; top: -34px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--px-ink); background: #fff; padding: 6px 10px; border-radius: 999px; box-shadow: 0 1px 0 rgba(20,27,42,.08); }
+.kn-step { transition: background .4s; }
+.kn-step:not(.on) { background: #F7F8FA; }
+@media (max-width: 560px) {
+  .air-split { top: var(--x, 0%); left: -8px; right: -8px; bottom: auto; width: auto; height: 44px; margin: -22px 0 0; cursor: ns-resize; touch-action: pan-x; }
+  .air-split::before { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 2px; margin: -1px 0 0; }
+  .air-split__k { left: auto; right: 0; margin: -22px 0 0 0; }
+  .air-split__k::after { content: "\2195"; }
+  .air-split__lbl { top: 50%; left: auto; right: 54px; transform: translateY(-50%); }
+}
+
+/* dot grid behind Why us lights up around the pointer (hover chroma, effects lab) */
+.air-dots { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.pc-sec--dark[aria-labelledby="why-title"] { position: relative; overflow: hidden; }
+.pc-sec--dark[aria-labelledby="why-title"] .pc-wrap { position: relative; z-index: 1; }
+.pc-benefits article { background: rgba(20,27,42,.72); backdrop-filter: blur(2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket.in { animation: none !important; transform: none; }
+  .air-topo, .air-dots { display: none; }
+}
+
+/* ---------- scroll chairlift (Ryan, 2 Nov 2026): a cable down the left edge, a chair rides it with the page ---------- */
+.air-lift { position: fixed; left: max(6px, env(safe-area-inset-left, 0px)); top: var(--air-top, 84px); bottom: 18px; z-index: 40; width: 26px; pointer-events: none; mix-blend-mode: difference; color: #fff; }
+.air-lift::before { content: ""; position: absolute; left: 13px; top: 0; bottom: 0; width: 1px; background: currentColor; opacity: .45; }
+.air-lift::after { content: ""; position: absolute; left: 10px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .6; }
+.air-lift__chair { position: absolute; left: 0; top: 0; width: 26px; height: 44px; will-change: transform; }
+.air-lift__chair svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.air-lift__chair svg .air-lift__seat { fill: currentColor; stroke: none; }
+@media (max-width: 560px) { .air-lift { left: max(2px, env(safe-area-inset-left, 0px)); width: 20px; } .air-lift::before { left: 10px; } .air-lift::after { left: 7px; } .air-lift__chair { width: 20px; height: 34px; } }
+@media (prefers-reduced-motion: reduce) { .air-lift__chair { transition: none; } }

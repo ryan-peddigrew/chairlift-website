@@ -199,7 +199,7 @@ home = f'''
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
-        <p class="pc-story__eyebrow" aria-hidden="true">Operational infrastructure for business</p>
+        <p class="pc-story__eyebrow" aria-hidden="true">Real people. Quiet systems.</p>
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
@@ -928,6 +928,7 @@ def home_variant(k, switcher=True):
     sw = '<nav class="pc-switch" aria-label="Homepage mock-ups">' + "".join(f'<a href="/home-{x}/"{" aria-current=page" if x == k else ""}>{x.upper()}</a>' for x in "abcd") + '</nav>'
     return h + (sw if switcher else '')
 
+
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
@@ -954,7 +955,8 @@ for fn, title, desc, path, active, body, noindex in PAGES:
     out = os.path.join(OUT, fn)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w") as f:
-        f.write(page(title, desc, path, active, body, noindex))
+        html = page(title, desc, path, active, body, noindex)
+        f.write(html)
     print("wrote", fn)
 
 urls = [p[3] for p in PAGES if not p[6]]

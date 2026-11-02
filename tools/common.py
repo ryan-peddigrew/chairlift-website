@@ -66,7 +66,7 @@ def head(title, desc, path, noindex=False):
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/pxp.css">{INTRO_JS if path == "/" else ""}
+<link rel="stylesheet" href="/pxp.css">{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
