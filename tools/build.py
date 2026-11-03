@@ -929,6 +929,27 @@ def home_variant(k, switcher=True):
     return h + (sw if switcher else '')
 
 
+# ---- homepage: "In practice" client story (WasteMind, approved facts only) ----
+# Small Space Innovations is parked until Ryan sends its facts; no placeholder goes live.
+CASE_HEAD = '<header class="sx-head"><h2 id="cs-title" class="sx-title">In practice<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">A real client. Real hours back.</p></div></header>'
+CASE_A = f'''
+  <section class="pc-sec pc-sec--dark cs cs--a" aria-labelledby="cs-title">
+    <div class="pc-wrap">
+      {CASE_HEAD}
+      <div class="cs-a">
+        <div>
+          <p class="sx-label">Client story &middot; WasteMind</p>
+          <p class="cs-big">12&ndash;24 hours<span>down to about 1.</span></p>
+          <p class="cs-txt">That is how long WasteMind took to reply to quote requests, service calls and inquiries. We work with their team every week, one tested fix at a time.</p>
+          <p class="pc-links"><a class="pc-link" href="/examples/#wastemind">Read the WasteMind story <i class="ar" aria-hidden="true"></i></a></p>
+        </div>
+        <div class="cs-a__photos"><img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel"><img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue waste containers from WasteMind"></div>
+      </div>
+    </div>
+  </section>
+'''
+home = home.replace('  <section class="pc-band"', CASE_A + '  <section class="pc-band"', 1)
+
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
