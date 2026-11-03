@@ -76,12 +76,20 @@ EXAMPLES = [
 ]
 
 
+def lead_paras(t):
+    # long leads split after the second sentence (same words), so no paragraph runs past five lines on a phone
+    parts = re.split(r"(?<=[.!?]) ", t)
+    if len(t) < 150 or len(parts) < 3:
+        return f"<p>{t}</p>"
+    return f"<p>{' '.join(parts[:2])}</p><p>{' '.join(parts[2:])}</p>"
+
+
 def example_block(e, heading="h2"):
     return f'''      <article class="example" id="{e["id"]}">
         <div class="example-head">
           <span class="example-tag">{e["tag"]}</span>
           <{heading}>{e["title"]}</{heading}>
-          <p>{e["lead"]}</p>
+          {lead_paras(e["lead"])}
         </div>
         <div class="ba">
           <div class="ba-before"><h4>Before</h4>{ol(e["before"])}</div>
@@ -265,9 +273,9 @@ home = f'''
       <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Engineered around how your business already runs.</p></div></header>
       <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
       <div class="pc-pkgs">
-        <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p><strong>We find the exact drag.</strong> You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
-        <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p><strong>We build the backbone.</strong> We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
-        <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p><strong>We keep the line moving.</strong> Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
+        <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p class="pc-pkgs__lead"><strong>We find the exact drag.</strong></p><p>You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
+        <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p class="pc-pkgs__lead"><strong>We build the backbone.</strong></p><p>We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
+        <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p class="pc-pkgs__lead"><strong>We keep the line moving.</strong></p><p>Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
       </div>
       <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i class="ar" aria-hidden="true"></i></a></p>
     </div>

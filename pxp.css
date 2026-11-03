@@ -1006,3 +1006,6 @@ html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
   .cs-b__strip p, .cs-b__strip p + p { padding: 18px 0; border-left: 0; border-bottom: 1px solid var(--px-hair-d); }
   .cs-c__card { grid-template-rows: 220px auto; } .cs-c__img { height: 220px; }
 }
+/* the bold first line of each lift stop sits on its own line, so no paragraph runs past five lines on a phone (3 Nov 2026) */
+.pc-pkgs article p.pc-pkgs__lead { margin: 0 0 6px; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.5; color: inherit; }
+.site-footer .brand { display: inline-flex; align-items: center; min-height: 44px; }
