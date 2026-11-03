@@ -39,7 +39,7 @@ body { background: var(--px-ink); color: var(--px-text); font-family: var(--px-s
 .pc-sky { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .pc-photo { position: absolute; inset: -4%; width: 108%; max-width: none; height: 108%; object-fit: cover; object-position: 50% 40%; transform: translateY(calc(var(--p, 0) * 6%)) scale(calc(1.02 + var(--p, 0) * .12)); filter: saturate(.85) contrast(1.02); }
 .pc-cloud { position: absolute; left: 0; right: 0; height: 46%; background-repeat: repeat-x; background-size: auto 100%; pointer-events: none; }
-.pc-cloud--a { bottom: 6%; background-image: url(/images/cloud-a.png); opacity: .75; animation: pcdrift 150s linear infinite; }
+.pc-cloud--a { bottom: 6%; background-image: url(/images/cloud-a-1200.webp); opacity: .75; animation: pcdrift 150s linear infinite; }
 .pc-cloud--b { bottom: -4%; background-image: url(/images/cloud-b.png); opacity: .9; animation: pcdrift 95s linear infinite reverse; }
 @keyframes pcdrift { to { background-position-x: -1600px; } }
 .pc-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,27,42,.55) 0%, rgba(20,27,42,.05) 30%, rgba(20,27,42,.1) 60%, rgba(20,27,42,.85) 100%); }
@@ -51,7 +51,7 @@ body { background: var(--px-ink); color: var(--px-text); font-family: var(--px-s
 .pc-tag { grid-row: 3; margin: 14px 0 22px; color: #fff; font-size: 20px; font-weight: 300; letter-spacing: 0; }
 .pc-foot { grid-row: 4; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; border-top: 1px solid var(--px-hair); padding-top: 18px; }
 .pc-tile { position: relative; display: block; width: 168px; height: 92px; border-radius: 4px; overflow: hidden; color: #fff; text-decoration: none; }
-.pc-tile__img { position: absolute; inset: 0; background: url(/images/alps-blue.jpg) center/cover; filter: saturate(.8); }
+.pc-tile__img { position: absolute; inset: 0; background: url(/images/alps-blue-1200.webp) center/cover; filter: saturate(.8); }
 .pc-tile::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,27,42,.1), rgba(20,27,42,.8)); z-index: 1; }
 .pc-tile::after { content: "▶"; position: absolute; left: 10px; top: 8px; font-size: 11px; z-index: 2; }
 .pc-tile .mono { position: absolute; left: 10px; right: 10px; bottom: 8px; z-index: 2; font-size: 11px; line-height: 1.35; }

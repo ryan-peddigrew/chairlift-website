@@ -1,3 +1,4 @@
+import os, re
 SITE = "https://usechairlift.com"
 EMAIL = "ryan@usechairlift.com"
 # Leave blank to hide. Paste the full link to switch it on.
@@ -66,7 +67,7 @@ def head(title, desc, path, noindex=False):
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/pxp.css">{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
+<link rel="stylesheet" href="/pxp.css">{'<link rel="modulepreload" href="/vendor/pxp3d.bundle.js">' if path == "/" else ""}{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -132,8 +133,8 @@ def footer():
 <script src="/script.js" defer></script>
 <script src="/pxp.js" defer></script>
 <script src="/pxcloud.js" defer></script>
-<script type="importmap">{{"imports":{{"three":"/vendor/three.module.min.js"}}}}</script>
-<script type="module" src="/pxp3d.js"></script>
+<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). The home hero needs it right away; other pages fetch it once the page has finished loading. -->
+<script>(function(){{function go(){{var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';document.body.appendChild(s)}}if(document.querySelector('.pc-logo'))go();else addEventListener('load',function(){{(window.requestIdleCallback||function(f){{setTimeout(f,1200)}})(go,{{timeout:3000}})}})}})();</script>
 </body>
 </html>
 '''
@@ -257,7 +258,49 @@ def page(title, desc, path, active, body, noindex=False):
     import re
     # Brand accent: section titles end in a full stop that can take the mint accent
     body = re.sub(r'(<h2[^>]*>[^<]*?)\.</h2>', r'\1<span class="dot">.</span></h2>', body)
-    return head(title, desc, path, noindex) + header(active) + '\n<main id="main">\n' + body + '\n</main>\n' + footer()
+    html = head(title, desc, path, noindex) + header(active) + '\n<main id="main">\n' + body + '\n</main>\n' + footer()
+    return light_images(html)
+
+
+# Lighter photos (3 Nov 2026): tools/optimize_images.py writes name-800.webp and name-1200.webp next to each photo.
+# Every <img> that has those copies gets a srcset (phones take the 800, laptops the 1200; the original stays as fallback),
+# and video posters switch to the WebP copy. No markup changes needed in build.py.
+_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+def _webps(src):
+    base = os.path.splitext(src)[0]
+    out = []
+    for w in (800, 1200):
+        f = os.path.join(_ROOT, f"{base}-{w}.webp".lstrip("/"))
+        if os.path.exists(f):
+            from PIL import Image
+            with Image.open(f) as im:
+                out.append((f"{base}-{w}.webp", im.width))   # the real pixel width, so the browser picks correctly
+    return out
+
+def light_images(html):
+    def img(m):
+        tag = m.group(0)
+        if "srcset=" in tag:
+            return tag
+        src = re.search(r'src="(/images/[^"]+\.(?:jpe?g|png))"', tag)
+        ws = _webps(src.group(1)) if src else []
+        if not ws:
+            return tag
+        extra = ' srcset="' + ", ".join(f"{u} {w}w" for u, w in ws) + '"'
+        if "sizes=" not in tag:
+            extra += ' sizes="(max-width: 860px) 100vw, 1200px"'
+        if "decoding=" not in tag:
+            extra += ' decoding="async"'
+        return tag[:4] + extra + tag[4:]
+    html = re.sub(r"<img\b[^>]*>", img, html)
+    def poster(m):
+        ws = _webps(m.group(1))
+        return f'poster="{ws[0][0]}"' if ws else m.group(0)
+    html = re.sub(r'poster="(/images/[^"]+\.(?:jpe?g|png))"', poster, html)
+    def bg(m):
+        ws = _webps(m.group(1))
+        return f"url({ws[-1][0]})" if ws else m.group(0)
+    return re.sub(r'url\((/images/[^)"\']+\.(?:jpe?g|png))\)', bg, html)
 
 
 def task_band():

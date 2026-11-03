@@ -1,6 +1,6 @@
 /* The Daily Peddigrew: live sample paper (816 x 1056 design px, scaled to fit) */
 .dp-frame { position: relative; width: 100%; aspect-ratio: 816 / 1056; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(20, 27, 42, 0.16); background: #F5F5F3; }
-.dp { position: absolute; top: 0; left: 0; width: 816px; height: 1056px; transform-origin: 0 0; transform: scale(var(--dp-s, 0.5)); background: #F5F5F3; color: #111; padding: 26px 42px 0; font-family: 'Source Serif 4', Georgia, serif; line-height: 1.25; text-align: left; }
+.dp { content-visibility: auto; contain-intrinsic-size: 816px 1056px; position: absolute; top: 0; left: 0; width: 816px; height: 1056px; transform-origin: 0 0; transform: scale(var(--dp-s, 0.5)); background: #F5F5F3; color: #111; padding: 26px 42px 0; font-family: 'Source Serif 4', Georgia, serif; line-height: 1.25; text-align: left; }
 .dp *, .dp *::before, .dp *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .dp-mast { font-family: 'UnifrakturMaguntia', serif; font-size: 82px; line-height: 1; text-align: center; letter-spacing: 0.005em; white-space: nowrap; height: 88px; }
 .dp-date { margin-top: 3px; border-top: 1px solid #111; border-bottom: 3px double #111; padding: 6px 0 5px; text-align: center; font: 700 8.6px/1 Inter, sans-serif; letter-spacing: 0.29em; text-transform: uppercase; white-space: nowrap; }

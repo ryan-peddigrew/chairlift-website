@@ -50,6 +50,8 @@
   tick();
   setInterval(tick, 10000);
 
+  // live data only once the paper is close to the screen, so it never slows the first load
+  function live() {
   fetch('/.netlify/functions/paper?v=13').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
@@ -84,4 +86,7 @@
       });
     }
   }).catch(function () {});
+  }
+  if (!('IntersectionObserver' in window)) live();
+  else { var seen = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { seen.disconnect(); live(); } }, { rootMargin: '600px 0px' }); papers.forEach(function (f) { seen.observe(f); }); }
 })();

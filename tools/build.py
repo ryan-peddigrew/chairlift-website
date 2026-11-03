@@ -154,7 +154,7 @@ DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Three opti
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
+        <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
         <link rel="stylesheet" href="/paper.css">
         <script src="/paper.js" defer></script>
         <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, headlines, sports scores and the weather.">
@@ -179,7 +179,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
-                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" loading="lazy" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""></section>
               </div>
             </div>
             <div class="dp-foot"><span>The Daily Peddigrew</span></div>
@@ -276,7 +276,7 @@ home = f'''
   <section class="pc-band" aria-label="Your team’s hours, back.">
     <div class="pc-band__stick">
       <img class="pc-band__img" src="/images/alps-blue.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async">
-      <video class="pc-band__vid" muted loop playsinline preload="none" poster="/images/hero-reel-5-poster.jpg" data-src="/images/hero-reel-5.mp4"></video>
+      <video class="pc-band__vid" muted loop playsinline preload="none" data-poster="/images/hero-reel-5-poster-800.webp" data-src="/images/hero-reel-5.mp4"></video>
       <p class="pc-band__txt"><span>Your team&rsquo;s hours.</span><span>Back.</span></p>
     </div>
   </section>

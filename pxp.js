@@ -102,8 +102,12 @@
   // band video (reel 5) on phones only: portrait footage fits portrait screens; desktop keeps the full-res photo
   var bv = document.querySelector('.pc-band__vid');
   if (bv && matchMedia('(max-width: 860px)').matches && !reduce) {
-    bv.src = bv.getAttribute('data-src'); bv.classList.add('is-on');
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { var pr = bv.play(); if (pr && pr.catch) pr.catch(function () {}); } else bv.pause(); }); }).observe(bv);
+    // poster and footage load only when the band is close, so they never compete with the top of the page
+    var bvLoad = function () { if (bv.src) return; bv.poster = bv.getAttribute('data-poster'); bv.src = bv.getAttribute('data-src'); bv.classList.add('is-on'); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { bvLoad(); o.disconnect(); } }, { rootMargin: '800px 0px' }).observe(bv);
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { bvLoad(); var pr = bv.play(); if (pr && pr.catch) pr.catch(function () {}); } else bv.pause(); }); }).observe(bv);
+    } else bvLoad();
   }
   function clamp(v) { return Math.min(1, Math.max(0, v)); }
   function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
