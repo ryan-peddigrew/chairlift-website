@@ -5,6 +5,8 @@
 
 > Items marked **[CONFIRM]** are assumptions. Nothing here has been sent to anyone.
 
+**Also in this package:** [full email and LinkedIn set](open-house/emails.md) · [vendor spotlight invitation](open-house/vendor-invite.md) · [run sheet and day-of checklist](open-house/day-of-checklist.md) · website mock pages for the [sound stage](../mac-show-mock/sound-stage/index.html) and the [RSVP form](../mac-show-mock/open-house/index.html).
+
 ## What we are doing and why
 Build a permanent sound stage / long-term rental space at the shop, then launch it with an open house ("party") where clients and prospects walk through the stage, see the gear working, meet vendors and hear live music. The open house is a sales event: every guest should leave with a follow-up booked.
 

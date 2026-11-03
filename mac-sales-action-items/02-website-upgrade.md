@@ -10,6 +10,11 @@
 | Better SEO | New title and meta description built on "AV rentals" and "event production" + Toronto / GTA, canonical URL, Open Graph tags for link previews, LocalBusiness structured data (name, Toronto, LinkedIn, services), FAQ structured data on the resources page, `sitemap.xml` and `robots.txt` ready for launch. |
 | Sales resources on the site | New "Resources" section on the home page (planning checklist, package sheets and room AV guides, capabilities overview, insurance and WSIB documents, riders and stage plots, FAQ and glossary) and a new `/resources/` page with a quote checklist, FAQ and AV glossary. |
 | Navigation | Added "Resources"; main call to action now reads "Get a Quote". |
+| Service pages (round 2) | `/services/` index plus 9 pages, one per search term: AV rentals Toronto, event production, corporate event AV, festival and outdoor stages, LED walls, staging and draping, backline, hybrid and streaming, venue AV partnerships. Each has its own title, description, Service schema, what's included, who it's for, related services and a quote button. |
+| Standalone quote page | `/quote/` with the full form, so trade show QR codes, emails and ads can link straight to it. |
+| Sound stage page | `/sound-stage/`: uses, standing package and open house invite. All details marked to confirm. |
+| Open house RSVP | `/open-house/`: RSVP form with an opt-in to share details with spotlight vendors. |
+| Sitemap | Lists all 15 pages. |
 
 **Still a mock:** `noindex` stays on and `robots.txt` blocks crawlers until launch. Nothing was deployed.
 
@@ -39,7 +44,7 @@
 
 ## SEO plan (for the live site)
 1. **Google Business Profile:** claim/verify, correct categories (Audio visual equipment rental service, Event management company, Stage lighting equipment supplier), photos, services, and a routine to ask happy clients for reviews (also a 15 Sep action: improve Google Reviews).
-2. **Service pages** (one page each, so each can rank): AV rentals Toronto; event production; corporate event AV; festival and outdoor stage rentals; LED wall rental; staging and draping; backline rental; hybrid / streaming; venue in-house AV partnerships; sound stage rental (once live).
+2. **Service pages** (one page each, so each can rank): now built in the mock for all nine services plus the sound stage.
 3. **Segment pages** matching the target segments: corporate and agencies, hotels and venues, festivals and BIAs, concerts and touring, weddings and galas, AV partners / cross-rentals.
 4. **Case studies** in the playbook's Appendix E format, one per event type first. Only with client approval.
 5. **Technical:** fast images (already WebP), one H1 per page, descriptive alt text (done on the mock), schema, sitemap, HTTPS, Search Console + free analytics.

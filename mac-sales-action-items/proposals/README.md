@@ -19,4 +19,9 @@
 | General Consumer | Weddings, galas, private parties, milestone events | `consumer.md` |
 | Corporate / Conference | Meetings, conferences, AGMs, launches, hybrid events, RFP responses | `corporate-conference.md` |
 
-**Next step:** once the MAC Group branding decision is made, drop these into a branded Google Docs / Slides template so reps can copy and fill them.
+**Also here:**
+- `proposal-template.html`: the client-ready layout in the MAC Show look (cover, summary, priorities, scope by pillar, crew, timeline, why MAC, investment with totals only, sign-off). Open in a browser, edit the brackets, print to PDF.
+- `cover-emails.md`: sending, two follow-ups, RFP submission, won and lost emails.
+- `case-study-template.md`: case study format plus PM intake questions.
+
+**Next step:** once the MAC Group branding decision is made, swap the logo and colours in `proposal-template.html`, or rebuild it as a Google Docs template so reps can copy and fill it.

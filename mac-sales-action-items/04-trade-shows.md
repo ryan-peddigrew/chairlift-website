@@ -18,17 +18,21 @@
 | Timing vs our busy season (crew and gear free) | 15% |
 | Sponsorship / AV supplier opportunity (become the show's AV vendor) | 15% |
 
-## Candidate shortlist (verify dates and costs)
-| Show | Why it fits | Exhibit or walk | Typical timing [VERIFY] |
-|---|---|---|---|
-| IncentiveWorks (Toronto) | Canada's meetings and events industry show: corporate planners, agencies, venues | Exhibit | Summer |
-| Festivals & Events Ontario (FEO) conference | Festival and community event organizers, municipalities | Exhibit or sponsor | Late winter |
-| Ontario BIA Association (OBIAA) conference | BIA street festival organizers (39 BIA festivals already in tracker) | Exhibit or sponsor | Spring |
-| Canadian Music Week (Toronto) | Promoters, venues, artist management | Walk / sponsor | Spring |
-| CSAE / MPI Toronto chapter events | Association and corporate planners | Sponsor / walk | Various |
-| Canadian International AutoShow (Toronto) | Automakers and exhibit builders buy booth AV | Walk (prospect exhibitors and builders) | February |
-| Bridal / wedding shows (Toronto) | Weddings and galas segment, consumer leads | Exhibit (only if the consumer push goes ahead) | Winter / fall |
-| CITT Rendez-vous / LDI / InfoComm | Industry and gear; useful for partners and cross-rentals, low for direct buyers | Walk | Various |
+## Candidate shortlist (checked 3 Nov 2026)
+| Show | Why it fits | Exhibit or walk | Dates and place | Source / status |
+|---|---|---|---|---|
+| **OBIAA BIA Conference 2027** | BIA street festival organizers; 300+ delegates, 30+ exhibitors. The 2026 trade show sold out almost a month early | **Exhibit** (book now) | **25 to 28 April 2027, Oakville ON** | Confirmed on obiaa.com. Exhibitor registration and sponsorship package (Standard, Premium, Spotlight) linked from obiaa.com/conference/tradeshow-sponsor. Program ads: full page $650, half page $450, artwork due 19 Feb 2027 |
+| **Canadian Meetings & Events Expo (CMEExpo)**, formerly IncentiveWorks | Canada's meetings and events industry show: corporate planners, agencies, venues | **Exhibit** | 2026 edition: 11 to 12 Aug 2026, Metro Toronto Convention Centre. 2027 dates not yet published | [VERIFY] at cmeexpo.ca |
+| **Festivals & Events Ontario (FEO) conference** | Festival and community event organizers, municipalities | Exhibit or sponsor | 2026 edition: 23 to 25 Feb 2026, Kitchener. 2027 dates not yet published | [VERIFY] at festivalsandeventsontario.com. Usually late February, so it may fall right after the 30 Jan deadline: ask FEO now |
+| **Canadian International AutoShow** | Automakers and exhibit builders buy booth AV | **Walk** (prospect exhibitors and builders) | February 2027, Metro Toronto Convention Centre (a ticket listing shows 15 Feb 2027) | [VERIFY] exact dates at autoshow.ca |
+| Canadian Music Week (Toronto) | Promoters, venues, artist management | Walk / sponsor | Usually late spring / early June | [VERIFY] |
+| CSAE / MPI Toronto chapter events | Association and corporate planners | Sponsor / walk | Various | Check chapter calendars |
+| Canada's Bridal Show (Toronto) | Weddings and galas, consumer leads | Exhibit only if the consumer push goes ahead | Winter and fall editions, Metro Toronto Convention Centre | [VERIFY] |
+| CITT Rendez-vous / LDI / InfoComm | Industry and gear; partners and cross-rentals | Walk | Various | Low priority |
+
+**Act now:** OBIAA sold out early last year. If BIA festivals stay a target (39 BIA festivals are in the tracker), register for the trade show before the 30 Jan deadline.
+
+**Booth concepts:** three options drawn side by side in [booth-concepts.html](booth-concepts.html) (open in a browser).
 
 **Suggested approach:** pick 2 to exhibit and 3 to walk in 2027. Fill the scorecard for each with Mel by **20 Nov**.
 

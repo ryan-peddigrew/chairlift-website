@@ -404,3 +404,4 @@ body { background: var(--white); }
 .gloss dd { margin: 6px 0 0; color: var(--grey-l); }
 @media (max-width: 700px) { .gloss { grid-template-columns: 1fr; } }
 .form__row > label { min-width: 0; } .form select { width: 100%; min-width: 0; }
+.row__lead .ticks { margin-top: 18px; }

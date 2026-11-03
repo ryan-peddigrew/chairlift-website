@@ -3,6 +3,8 @@
 **Owner:** not set in the action items (suggest one posting owner + every rep re-sharing) · **Target:** ongoing
 **Status:** Weekly LinkedIn plan with 8 ready-to-edit posts, a draft tech photo policy, and a social scanning routine. Nothing has been posted or scheduled.
 
+**Also in this package:** [12-week LinkedIn calendar](marketing/linkedin-12-week-calendar.md) · [crew photo sheet and consent form](marketing/photo-consent-and-policy-sheet.md) · [social scanning setup with exact searches](marketing/social-scanning-setup.md)
+
 ## A. LinkedIn: weekly or more
 **Where:** MAC Show Systems company page, then re-shared by each rep with one personal line.
 **Cadence:** 1 company post a week minimum (Tuesday or Wednesday morning), plus reps commenting on 5 client / prospect posts a week.
