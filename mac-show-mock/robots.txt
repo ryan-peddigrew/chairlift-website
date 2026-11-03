@@ -1,0 +1,6 @@
+# MOCK: blocks all crawlers. At launch replace with:
+# User-agent: *
+# Allow: /
+# Sitemap: https://macshowsystems.com/sitemap.xml
+User-agent: *
+Disallow: /
