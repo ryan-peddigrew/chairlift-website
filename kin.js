@@ -173,6 +173,8 @@
   root.classList.add('kn-js');
 
   /* ---------- altimeter: base 1,200 m to summit 2,850 m as you scroll ---------- */
+  // the homepage chairlift on the left edge carries its own elevation readout, so the box only shows where there is no chairlift
+  if (!document.querySelector('.air-lift')) (function () {
   var alt = document.createElement('div');
   alt.className = 'kn-alt'; alt.setAttribute('aria-hidden', 'true');
   alt.innerHTML = '<span class="kn-alt__lbl">Elevation</span><b>1,200</b><span class="kn-alt__u">m</span><i class="kn-alt__bar"><i></i></i><span class="kn-alt__lbl kn-alt__state">Base</span>';
@@ -189,6 +191,7 @@
   }
   window.addEventListener('scroll', function () { requestAnimationFrame(altimeter); }, { passive: true });
   window.addEventListener('resize', altimeter); altimeter();
+  })();
 
   /* ---------- the lift: stops light up in order as you pass them ---------- */
   var stops = [].slice.call(document.querySelectorAll('.pc-pkgs article'));

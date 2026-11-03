@@ -1,4 +1,4 @@
-/* Homepage "Mountain air" layer (2 Nov 2026): contour lines, leaning ticket, drag-to-clear divider, dot grid. Our own code. See air.css. */
+/* Homepage "Mountain air" layer (2 Nov 2026): contour lines, season-pass ticket, drag-to-clear divider, dot grid. Our own code. See air.css. */
 (function () {
   'use strict';
   var body = document.body, root = document.documentElement;
@@ -59,17 +59,18 @@
       })(0);
     }
 
-    // the lift ticket leans with the pointer
-    var ticket = document.querySelector('.ticket');
+    // the lift ticket (season pass) tilts a little and its sheen follows the pointer
+    var ticket = document.querySelector('.pass');
     if (ticket && fine && !reduce) {
       var near = ticket.closest('.pc-sec') || ticket.parentNode;
       near.addEventListener('pointermove', function (e) {
-        var r = ticket.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        var dx = (e.clientX - cx) / (r.width * 1.2), dy = (e.clientY - cy) / (r.height * 1.2);
-        ticket.style.setProperty('--ty', (Math.max(-1, Math.min(1, dx)) * 12).toFixed(1) + 'deg');
-        ticket.style.setProperty('--tx', (Math.max(-1, Math.min(1, -dy)) * 10).toFixed(1) + 'deg');
+        var r = ticket.getBoundingClientRect(), dx = (e.clientX - (r.left + r.width / 2)) / (r.width * 1.2), dy = (e.clientY - (r.top + r.height / 2)) / (r.height * 1.2);
+        dx = Math.max(-1, Math.min(1, dx)); dy = Math.max(-1, Math.min(1, dy));
+        ticket.style.setProperty('--ty', (dx * 6).toFixed(1) + 'deg');
+        ticket.style.setProperty('--tx', (-dy * 5).toFixed(1) + 'deg');
+        ticket.style.setProperty('--sx', (50 - dx * 50).toFixed(0) + '%');
       });
-      near.addEventListener('pointerleave', function () { ticket.style.setProperty('--tx', '0deg'); ticket.style.setProperty('--ty', '0deg'); });
+      near.addEventListener('pointerleave', function () { ['--tx', '--ty', '--sx'].forEach(function (k) { ticket.style.removeProperty(k); }); });
     }
 
     // drag-to-clear divider on The shift
@@ -128,24 +129,35 @@
       })(0);
     }
 
-    // scroll chairlift: a cable down the left edge; the chair rides it with the page, down as you scroll down, up as you scroll up
+    // scroll chairlift: a cable down the left edge; the chair climbs it as you read down the page (base at the bottom, summit at the top),
+    // swings a little when it moves, and carries the elevation readout: base 1,200 m to summit 2,850 m
     (function () {
       var header = document.querySelector('.site-header');
       var lift = document.createElement('div'); lift.className = 'air-lift'; lift.setAttribute('aria-hidden', 'true');
-      lift.innerHTML = '<div class="air-lift__chair"><svg viewBox="0 0 26 44"><circle cx="13" cy="3" r="2.4"/><path d="M13 5.4V21"/><path d="M8 17v14"/><path class="air-lift__seat" d="M7.2 30.2h12.6a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1H7.2a1 1 0 0 1-1-1v-1.6a1 1 0 0 1 1-1z"/><path d="M8 34v5M19 34v5M9.5 39.5h8"/></svg></div>';
+      lift.innerHTML = '<i class="air-lift__end air-lift__end--top"></i><i class="air-lift__end air-lift__end--base"></i>' +
+        '<div class="air-lift__car"><div class="air-lift__read"><span class="air-lift__num">1,200 m</span><span class="air-lift__lbl">Base</span></div>' +
+        '<div class="air-lift__chair"><svg viewBox="-2 0 34 54" preserveAspectRatio="xMidYMin meet"><circle class="air-lift__grip" cx="15" cy="3" r="2.6"/><path d="M15 5.6V19"/><path d="M15 19H9.5V31"/><path class="air-lift__seat" d="M7.5 31h17a1.2 1.2 0 0 1 1.2 1.2v1.6a1.2 1.2 0 0 1-1.2 1.2h-17a1.2 1.2 0 0 1-1.2-1.2v-1.6A1.2 1.2 0 0 1 7.5 31z"/><path d="M15 19c5 0 9 2 9 7"/><path d="M22 35v7h5"/></svg></div></div>';
       body.appendChild(lift);
-      var chair = lift.firstChild, cur = 0, target = 0, raf = 0, span = 0;
+      var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), num = lift.querySelector('.air-lift__num'), lbl = lift.querySelector('.air-lift__lbl');
+      var cur = 0, target = 0, raf = 0, span = 0, shown = '';
       function measure() {
         var h = header ? header.getBoundingClientRect().height : 64;
         root.style.setProperty('--air-top', Math.round(h + 18) + 'px');
-        span = Math.max(0, lift.clientHeight - chair.clientHeight - 6);
+        // leave room above the chair for the readout so it never runs off the top of the cable
+        span = Math.max(0, lift.clientHeight - chair.clientHeight - 4);
       }
       function progress() { var max = root.scrollHeight - innerHeight; return max > 0 ? clamp(scrollY / max) : 0; }
       function tick() {
         raf = 0;
         var d = target - cur;
         if (reduce || Math.abs(d) < .0005) cur = target; else { cur += d * .14; raf = requestAnimationFrame(tick); }
-        chair.style.transform = 'translate3d(0,' + (cur * span).toFixed(1) + 'px,0)';
+        // the readout sits above the chair; near the top of the cable it flips below so it stays on screen
+        var y = (1 - cur) * span;   // base at the bottom of the cable, summit at the top: the chair climbs as you read down
+        car.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
+        lift.classList.toggle('air-lift--flip', y < 120);
+        if (!reduce) chair.style.transform = 'rotate(' + Math.max(-14, Math.min(14, -d * 900)).toFixed(1) + 'deg)';
+        var m = Math.round(1200 + cur * 1650), s = m.toLocaleString('en-CA') + ' m';
+        if (s !== shown) { shown = s; num.textContent = s; lbl.textContent = cur > .97 ? 'Summit' : cur < .03 ? 'Base' : 'Elevation'; lift.classList.toggle('air-lift--top', cur > .97); }
       }
       function onScroll() { target = progress(); if (!raf) raf = requestAnimationFrame(tick); }
       measure(); onScroll();

@@ -229,7 +229,7 @@ home = f'''
         <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
       </div>
       <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
-      <div class="ticket" aria-hidden="true"><div class="ticket__main"><p class="ticket__top"><span>Chairlift</span><span>Lift ticket</span></p><p class="ticket__big">One task<br>first<i>.</i></p><p class="ticket__route"><span>Base</span><i class="ar ar--r"></i><span>Summit</span></p></div><div class="ticket__stub"><span class="ticket__adm">Admit<br>one team</span><span class="ticket__bar"></span><span class="ticket__no">No. 0001</span></div></div>
+      <div class="pass" aria-hidden="true"><i class="pass__foil"></i><div class="pass__head"><span class="pass__brand">{LOGO.format(s=26, stroke=' stroke="rgba(255,255,255,0.3)" stroke-width="2"')}<b>Chairlift</b></span><span class="pass__kind">Lift ticket</span></div><p class="pass__big">One task first<i>.</i></p><div class="pass__route"><span><small>Base</small>1,200 m</span><i class="pass__line"></i><span><small>Summit</small>2,850 m</span></div><div class="pass__foot"><span>Admit one team</span><span>No. 0001</span></div></div>
       <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>

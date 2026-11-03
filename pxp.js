@@ -53,7 +53,7 @@
   var pins = [].slice.call(document.querySelectorAll('.pc-pinscrub'));
   pins.forEach(function (s) { s._w = [].slice.call(s.querySelectorAll('[data-scrub] .w')); });
   // reveal on enter
-  var rvSel = 'main h2, .stage, .pg-tiles, .sx-title, .sx-cap, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .ticket, .pc-band__txt, .retro--wide';
+  var rvSel = 'main h2, .stage, .pg-tiles, .sx-title, .sx-cap, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .pass, .pc-band__txt, .retro--wide';
   var rv = [].slice.call(document.querySelectorAll(rvSel));
   rv.forEach(function (el, i) { el.classList.add('rv'); var sib = [].indexOf.call(el.parentNode.children, el); el.style.setProperty('--rd', Math.min(sib, 6) * 90 + 'ms'); });
   if (reduce || !('IntersectionObserver' in window)) rv.forEach(function (el) { el.classList.add('in'); });

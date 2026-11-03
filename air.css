@@ -1,15 +1,35 @@
 /* Homepage "Mountain air" layer (approved by Ryan, 2 Nov 2026). Four small moving parts on top of the home page:
-   contour lines under The problem, a lift ticket that leans with the pointer, a drag-to-clear divider on The shift, a dot grid behind Why us.
+   contour lines under The problem, a season-pass lift ticket that tilts with the pointer, a drag-to-clear divider on The shift, a dot grid behind Why us.
    Our own code. All of it switches off under (prefers-reduced-motion). */
 /* contour lines under The problem (ripple background, effects lab): a quiet topo map that bends toward the pointer */
 .pc-scrub__pin { position: sticky; }
 .air-topo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; }
 .pc-scrub__pin .pc-wrap { position: relative; z-index: 1; }
 
-/* the lift ticket leans with the pointer (hero object, pattern 1) */
-.ticket.in { transform: perspective(900px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform .25s cubic-bezier(.2,.7,.2,1), opacity .9s; box-shadow: 0 30px 60px -28px rgba(0,0,0,.6); }
-@media (hover: none) { .ticket.in { animation: air-sway 7s ease-in-out infinite; } }
-@keyframes air-sway { 0%, 100% { transform: perspective(900px) rotateX(4deg) rotateY(-7deg); } 50% { transform: perspective(900px) rotateX(-3deg) rotateY(7deg); } }
+/* the lift ticket: a slim season pass (Ryan picked a redo, 3 Nov 2026). Sits square; on a mouse it tilts a little and the sheen follows the pointer. */
+.pass { position: relative; width: min(100%, 440px); aspect-ratio: 1.586; margin: 48px 0 8px; padding: 26px 26px 22px; border-radius: 20px; display: grid; grid-template-rows: auto 1fr auto auto; gap: 14px; overflow: hidden; color: #fff; font-family: var(--px-mono);
+  background: radial-gradient(120% 90% at 0% 0%, #26334C 0%, #18213A 45%, #10172A 100%); border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.12); }
+.pass.in { transform: perspective(900px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform .3s cubic-bezier(.2,.7,.2,1), opacity .9s; }
+.pass::before { content: ""; position: absolute; top: 14px; left: 50%; width: 54px; height: 9px; margin-left: -27px; border-radius: 9px; background: #0B101C; box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.08); }
+.pass::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.07) 45%, rgba(61,255,193,.10) 50%, rgba(255,255,255,.05) 55%, transparent 70%); background-size: 250% 100%; background-position: var(--sx, 100%) 0; transition: background-position .3s; }
+.pass__foil { position: absolute; top: 0; bottom: 0; right: 30px; width: 10px; background: linear-gradient(180deg, rgba(61,255,193,0), rgba(61,255,193,.35) 30%, rgba(160,200,255,.35) 60%, rgba(61,255,193,0)); opacity: .55; }
+.pass__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pass__brand { display: inline-flex; align-items: center; gap: 9px; font-family: "Hanken Grotesk", var(--px-sans); font-weight: 600; font-size: 16px; }
+.pass__brand svg { width: 26px; height: 26px; flex: none; }
+.pass__brand b { font-weight: 600; }
+.pass__kind, .pass__foot { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
+.pass__kind { opacity: .7; }
+.pass__big { margin: 0; align-self: end; font-family: var(--px-sans); font-weight: 800; font-size: 30px; line-height: 1.02; letter-spacing: -.01em; text-transform: uppercase; }
+.pass__big i { font-style: normal; color: #3DFFC1; }
+.pass__route { display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: 14px; font-size: 15px; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.pass__route small { display: block; margin-bottom: 4px; font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; opacity: .62; }
+.pass__route span:last-child { text-align: right; }
+.pass__line { position: relative; height: 1px; margin-bottom: 7px; background: linear-gradient(90deg, rgba(255,255,255,.5), rgba(255,255,255,.15)); }
+.pass__line::before, .pass__line::after { content: ""; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+.pass__line::before { left: 0; } .pass__line::after { right: 0; background: #3DFFC1; }
+.pass__foot { display: flex; justify-content: space-between; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.12); opacity: .75; }
+@media (max-width: 400px) { .pass { padding: 22px 20px 18px; gap: 10px; } .pass__big { font-size: 25px; } .pass__route { font-size: 13px; gap: 10px; } }
 
 /* drag-to-clear divider on The shift (reveal strip, pattern 20): left of the line runs with Chairlift */
 .kn-track { position: relative; }
@@ -35,17 +55,31 @@
 .pc-benefits article { background: rgba(20,27,42,.72); backdrop-filter: blur(2px); }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticket.in { animation: none !important; transform: none; }
+  .pass.in { transform: none; }
   .air-topo, .air-dots { display: none; }
 }
 
-/* ---------- scroll chairlift (Ryan, 2 Nov 2026): a cable down the left edge, a chair rides it with the page ---------- */
-.air-lift { position: fixed; left: max(6px, env(safe-area-inset-left, 0px)); top: var(--air-top, 84px); bottom: 18px; z-index: 40; width: 26px; pointer-events: none; mix-blend-mode: difference; color: #fff; }
-.air-lift::before { content: ""; position: absolute; left: 13px; top: 0; bottom: 0; width: 1px; background: currentColor; opacity: .45; }
-.air-lift::after { content: ""; position: absolute; left: 10px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .6; }
-.air-lift__chair { position: absolute; left: 0; top: 0; width: 26px; height: 44px; will-change: transform; }
+/* ---------- scroll chairlift (Ryan, 2-3 Nov 2026): a cable down the left edge, a chair rides it with the page and carries the elevation readout ---------- */
+.air-lift { position: fixed; left: max(8px, env(safe-area-inset-left, 0px)); top: var(--air-top, 84px); bottom: 20px; z-index: 40; width: 34px; pointer-events: none; mix-blend-mode: difference; color: #fff; font-family: var(--px-mono, "IBM Plex Mono", monospace); }
+.air-lift::before { content: ""; position: absolute; left: 17px; top: 0; bottom: 0; width: 1px; background: currentColor; opacity: .4; }
+.air-lift__end { position: absolute; left: 14px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .7; }
+.air-lift__end--top { top: -3px; } .air-lift__end--base { bottom: -3px; }
+.air-lift__car { position: absolute; left: 0; top: 0; width: 34px; will-change: transform; }
+.air-lift__read { position: absolute; left: 50%; bottom: 100%; margin-bottom: 8px; display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; transform: translateX(-50%); }
+.air-lift__read span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; line-height: 1; }
+.air-lift__num { font-size: 11px; letter-spacing: .08em; font-variant-numeric: tabular-nums; padding: 4px 0; background: transparent; }
+.air-lift__lbl { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
+.air-lift__chair { display: block; width: 34px; height: 54px; transform-origin: 17px 3px; will-change: transform; }
 .air-lift__chair svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .air-lift__chair svg .air-lift__seat { fill: currentColor; stroke: none; }
-@media (max-width: 560px) { .air-lift { left: max(2px, env(safe-area-inset-left, 0px)); width: 20px; } .air-lift::before { left: 10px; } .air-lift::after { left: 7px; } .air-lift__chair { width: 20px; height: 34px; } }
-@media (prefers-reduced-motion: reduce) { .air-lift__chair { transition: none; } }
+.air-lift__chair svg .air-lift__grip { fill: currentColor; }
+.air-lift--top .air-lift__lbl { opacity: 1; }
+.air-lift--flip .air-lift__read { bottom: auto; top: 100%; margin: 8px 0 0; flex-direction: column; }
+@media (max-width: 560px) {
+  .air-lift { left: max(1px, env(safe-area-inset-left, 0px)); width: 18px; top: calc(var(--air-top, 84px) + 6px); bottom: 14px; }
+  .air-lift::before { left: 9px; } .air-lift__end { left: 6px; }
+  .air-lift__car, .air-lift__chair { width: 18px; } .air-lift__chair { height: 29px; transform-origin: 9px 2px; }
+  .air-lift__num { font-size: 9px; } .air-lift__lbl { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .air-lift__chair { transform: none !important; } }
