@@ -194,10 +194,10 @@ body main .section { background: var(--px-ink); color: var(--px-text); border-ra
 body main .section--soft { background: #D9DDE3; color: var(--px-ink); }
 body main .section--ink { background: #1B2536; color: var(--px-text); }
 body main .section p, body main .section li, body main .section .intro p { font-weight: 300; }
-body main .section--soft p, body main .section--soft li { color: #2b3547; }
-body main .section:not(.section--soft) p, body main .section:not(.section--soft) li { color: var(--px-mute); }
-body main .section:not(.section--soft) :is(h1,h2,h3,h4,strong,b) { color: #fff; }
-body main .section--soft :is(h1,h2,h3,h4,strong,b) { color: var(--px-ink); }
+body main .section--soft p:not(.dp *), body main .section--soft li:not(.dp *) { color: #2b3547; }
+body main .section:not(.section--soft) p:not(.dp *), body main .section:not(.section--soft) li:not(.dp *) { color: var(--px-mute); }
+body main .section:not(.section--soft) :is(h1,h2,h3,h4,strong,b):not(.dp *) { color: #fff; }
+body main .section--soft :is(h1,h2,h3,h4,strong,b):not(.dp *) { color: var(--px-ink); }
 body main .rule, body main .card::before { display: none; }
 body main .eyebrow { font-family: var(--px-sans); font-weight: 300; letter-spacing: .04em; text-transform: none; font-size: 13px; color: inherit; opacity: .8; }
 body main .stage, body main .stages--swipe > * { background: transparent; border-radius: 0; box-shadow: none; }
@@ -1031,3 +1031,8 @@ html body main .task-form .btn.kn-send:hover { transform: translateY(-2px); }
   .cs-b__strip p, .cs-b__strip p + p { padding: 18px 0; border-left: 0; border-bottom: 1px solid var(--px-hair-d); }
   .cs-c__card { grid-template-rows: 220px auto; } .cs-c__img { height: 220px; }
 }
+/* Readable small labels and the calculator on the dark theme (WCAG AA contrast) */
+body main .section:not(.section--soft) :is(.card-label, .step-num) { color: var(--px-mute); }
+body main .section--soft :is(.card-label, .step-num) { color: #2b3547; }
+body main .calc-form { color: var(--px-ink); }
+body main .calc-form .calc-task { color: var(--px-ink); }
