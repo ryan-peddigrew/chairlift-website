@@ -240,7 +240,7 @@ home = f'''
   <div class="lift-status" aria-label="Lift status">
     <ul>
       <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
-      <li>Runs open <b>6 of 6</b></li>
+      <li>Runs open <b>8 of 8</b></li>
       <li>Conditions <b>Looking good</b></li>
       <li>Weather <b>Bluebird</b></li>
       <li class="lift-status__x">Next stop <b>Growth</b></li>
@@ -278,7 +278,7 @@ home = f'''
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
       <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Built for whatever slows your company down.</p></div></header>
-      <p class="kn-lede">Six runs, one mountain. Pick the run that sounds like your week, and see how we take the manual grind off your team&rsquo;s plate.</p>
+      <p class="kn-lede">Eight runs, one mountain, rated like a ski hill. Green runs are where most businesses start. Double blacks are our biggest builds. Pick the run that sounds like your week.</p>
       {kin.trailmap()}
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>

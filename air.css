@@ -138,11 +138,19 @@
 .tm-map svg text { font-family: var(--px-mono, "IBM Plex Mono", monospace); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; fill: #141B2A; }
 .tm-run { cursor: pointer; }
 .tm-run .hit { stroke: transparent; stroke-width: 30; fill: none; }
-.tm-run .case { stroke: #fff; stroke-width: 7; fill: none; opacity: .9; }
-.tm-run .line { stroke: #141B2A; stroke-width: 3; fill: none; stroke-dasharray: 10 7; }
-.tm-run.on .line { stroke-width: 5; stroke-dasharray: none; }
+.tm-run .case { stroke: #fff; stroke-width: 9; fill: none; opacity: .92; }
+.tm-run .line { stroke: var(--c, #141B2A); stroke-width: 4; fill: none; }
+.tm-run .line--steep { stroke-dasharray: 12 6; }
+#tm-svg.has-pick .tm-run:not(.on) { opacity: .72; }
+.tm-tag { cursor: pointer; }
+.tm-tag .bg { fill: #fff; stroke: rgba(20,27,42,.18); stroke-width: 1; filter: drop-shadow(0 2px 3px rgba(20,27,42,.25)); }
+.tm-tag text { font-family: var(--px-sans, "Hanken Grotesk", sans-serif) !important; font-weight: 800; font-size: 15px; letter-spacing: .02em !important; text-transform: uppercase; stroke: none !important; fill: #141B2A; }
+.tm-tag.on .bg { fill: #141B2A; stroke: #141B2A; }
+.tm-tag.on text { fill: #fff; }
+.tm-tag.on g > * { stroke: #fff; stroke-width: 1.5; }
+.tm-run.on .line { stroke-width: 6; stroke-dasharray: none; }
 .tm-run.on .case { stroke-width: 11; }
-.tm-run text { font-size: 17px; }
+
 .tm-lift .case { stroke: #141B2A; stroke-width: 7; }
 .tm-lift .line { stroke: #3DFFC1; stroke-width: 3.5; }
 .tm-lift circle { fill: #fff; stroke: #141B2A; stroke-width: 3; }
@@ -151,13 +159,31 @@
 .tm-callout text.big { font-family: var(--px-sans, "Hanken Grotesk", sans-serif); font-weight: 800; font-size: 22px; letter-spacing: .04em; }
 .tm-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; color: #141B2A; padding: 12px 6px 4px; }
 .tm-legend span { display: flex; align-items: center; gap: 8px; }
-.tm-legend svg { width: 16px; height: 16px; flex: none; }
+.tm-legend svg { width: 24px; height: 16px; flex: none; }
 .tm-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .tm-list button { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(20,27,42,.25); background: #fff; color: #141B2A; font: 500 15px var(--px-sans, "Hanken Grotesk", sans-serif); cursor: pointer; display: flex; align-items: center; gap: 8px; }
 .tm-list button[aria-pressed="true"] { background: #141B2A; color: #fff; border-color: #141B2A; }
-.tm-list svg { width: 12px; height: 12px; flex: none; }
+.tm-list svg { width: 22px; height: 14px; flex: none; }
+.tm-board { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0 0 12px; padding: 10px 14px; background: #141B2A; color: rgba(255,255,255,.7); border-radius: 6px; font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.tm-board b { color: #fff; font-weight: 500; margin-left: 6px; }
+.tm-card__k { display: flex; align-items: center; gap: 8px; }
+.tm-card__k svg { width: 26px; height: 16px; }
+.tm-card .tm-card__lead { font-weight: 600; color: #141B2A; }
 .tm-card { margin-top: 16px; background: #fff; color: #141B2A; border-radius: 12px; padding: 24px 26px; border-left: 6px solid #3DFFC1; display: grid; gap: 6px; }
 .tm-card .mono { color: #5B6578; }
 .tm-card h3 { margin: 4px 0; font-weight: 800; text-transform: uppercase; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.1; }
 .tm-card p { margin: 0; color: #3A4459; max-width: 70ch; }
 @media (max-width: 560px) { .tm-list { flex-wrap: nowrap; overflow-x: auto; margin-right: -16px; padding-right: 16px; scrollbar-width: none; } .tm-list button { flex: none; } .tm-poster { padding: 10px; margin-left: -6px; margin-right: -6px; } .tm-card { padding: 20px; } .tm-list button { font-size: 14px; } }
+/* phones: whole map fits the screen; bigger lines; only the picked run's sign shows */
+#tm-svg.tm-sm .tm-run .hit { stroke-width: 70; }
+#tm-svg.tm-sm .tm-run .case { stroke-width: 20; }
+#tm-svg.tm-sm .tm-run .line { stroke-width: 9; }
+#tm-svg.tm-sm .tm-run .line--steep { stroke-dasharray: 26 13; }
+#tm-svg.tm-sm .tm-run.on .line { stroke-width: 13; }
+#tm-svg.tm-sm .tm-run.on .case { stroke-width: 25; }
+#tm-svg.tm-sm .tm-lift .case { stroke-width: 15; }
+#tm-svg.tm-sm .tm-lift .line { stroke-width: 7; }
+#tm-svg.tm-sm .tm-lift circle { stroke-width: 6; }
+#tm-svg.tm-sm .tm-lift text.id { font-size: 42px; }
+#tm-svg.tm-sm .tm-tag:not(.on) { display: none; }
+#tm-svg.tm-sm .tm-callout text { stroke-width: 4px; }
