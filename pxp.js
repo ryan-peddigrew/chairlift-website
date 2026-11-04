@@ -53,7 +53,7 @@
   var pins = [].slice.call(document.querySelectorAll('.pc-pinscrub'));
   pins.forEach(function (s) { s._w = [].slice.call(s.querySelectorAll('[data-scrub] .w')); });
   // reveal on enter
-  var rvSel = 'main h2, .stage, .pg-tiles, .sx-title, .sx-cap, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .ticket, .pc-band__txt, .retro--wide';
+  var rvSel = 'main h2, .stage, .pg-tiles, .sx-title, .sx-cap, .pc-h2, .pc-list li, .pc-cols p, .pc-links, .pc-pkgs article, .pc-benefits article, .pc-founder, .paper-split > *, .pass-fan, .pc-band__txt, .retro--wide';
   var rv = [].slice.call(document.querySelectorAll(rvSel));
   rv.forEach(function (el, i) { el.classList.add('rv'); var sib = [].indexOf.call(el.parentNode.children, el); el.style.setProperty('--rd', Math.min(sib, 6) * 90 + 'ms'); });
   if (reduce || !('IntersectionObserver' in window)) rv.forEach(function (el) { el.classList.add('in'); });
@@ -102,8 +102,12 @@
   // band video (reel 5) on phones only: portrait footage fits portrait screens; desktop keeps the full-res photo
   var bv = document.querySelector('.pc-band__vid');
   if (bv && matchMedia('(max-width: 860px)').matches && !reduce) {
-    bv.src = bv.getAttribute('data-src'); bv.classList.add('is-on');
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { var pr = bv.play(); if (pr && pr.catch) pr.catch(function () {}); } else bv.pause(); }); }).observe(bv);
+    // poster and footage load only when the band is close, so they never compete with the top of the page
+    var bvLoad = function () { if (bv.src) return; bv.poster = bv.getAttribute('data-poster'); bv.src = bv.getAttribute('data-src'); bv.classList.add('is-on'); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { bvLoad(); o.disconnect(); } }, { rootMargin: '800px 0px' }).observe(bv);
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { bvLoad(); var pr = bv.play(); if (pr && pr.catch) pr.catch(function () {}); } else bv.pause(); }); }).observe(bv);
+    } else bvLoad();
   }
   function clamp(v) { return Math.min(1, Math.max(0, v)); }
   function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }

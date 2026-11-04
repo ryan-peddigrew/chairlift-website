@@ -76,12 +76,20 @@ EXAMPLES = [
 ]
 
 
+def lead_paras(t):
+    # long leads split after the second sentence (same words), so no paragraph runs past five lines on a phone
+    parts = re.split(r"(?<=[.!?]) ", t)
+    if len(t) < 150 or len(parts) < 3:
+        return f"<p>{t}</p>"
+    return f"<p>{' '.join(parts[:2])}</p><p>{' '.join(parts[2:])}</p>"
+
+
 def example_block(e, heading="h2"):
     return f'''      <article class="example" id="{e["id"]}">
         <div class="example-head">
           <span class="example-tag">{e["tag"]}</span>
           <{heading}>{e["title"]}</{heading}>
-          <p>{e["lead"]}</p>
+          {lead_paras(e["lead"])}
         </div>
         <div class="ba">
           <div class="ba-before"><h4>Before</h4>{ol(e["before"])}</div>
@@ -154,7 +162,7 @@ DP_INBOX = [("Wedding Planner", "Tasting menu options for Saturday", "Three opti
 DP_NEWS = [("CP24 hosts the final Toronto mayoral debate tonight", "CBC News"), ("Kawhi Leonard makes his Raptors regular-season debut", "CTV News"), ("Ontario to table fall fiscal update next week", "CP24")]
 
 PAPER_IMG = f'''<figure class="paper-shot">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
+        <link rel="stylesheet" media="print" data-lazy-css href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@600;700;800&display=swap">
         <link rel="stylesheet" href="/paper.css">
         <script src="/paper.js" defer></script>
         <div class="dp-frame" role="img" aria-label="A sample one-page morning paper with today's focus, calendar, inbox, follow-ups, headlines, sports scores and the weather.">
@@ -179,7 +187,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
               </div>
               <div class="dp-rule"></div>
               <div>
-                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""></section>
+                <section class="dp-sec dp-laugh">{dp_h("laugh", "The Funnies", "")}<div class="dp-cap">“Doc, Doc, there&#39;s something wrong with him!”</div><img class="dp-comic" loading="lazy" src="/images/paper-comic-strip-neutral.png" width="640" height="212" alt=""></section>
               </div>
             </div>
             <div class="dp-foot"><span>The Daily Peddigrew</span></div>
@@ -187,6 +195,23 @@ PAPER_IMG = f'''<figure class="paper-shot">
         </div>
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
+
+# Lift ticket (Ryan, 4 Nov 2026): Chairlift is the resort. Off-white Tyvek ticket folded over a wicket wire, sage admit bar,
+# big weekday letter behind the date, thermal-print edges on the date and barcode, barcode bleeding off both edges.
+PASS_FAN = ('<div class="pass-fan" aria-hidden="true"><div class="tkt"><i class="tkt__stack"></i><i class="tkt__stack tkt__stack--2"></i><div class="tkt__card">'
+    '<div class="tkt__fold"></div>'
+    '<p class="tkt__lifts"><span>All lifts</span><span>2026&ndash;27</span></p>'
+    '<div class="tkt__resort"><div class="tkt__name">' + LOGO.format(s=34, stroke='') + 'Chairlift</div><p class="tkt__tag">Less busywork. More business.</p></div>'
+    '<div class="tkt__mid"><span class="tkt__wm" data-tkt-wd>W</span><p class="tkt__type">One team<span>Full season</span></p><p class="tkt__date"><small data-tkt-yr>2026</small><span data-tkt-dt>Nov 4</span></p></div>'
+    '<p class="tkt__admit">Admit one team</p>'
+    '<div class="tkt__code"><i class="tkt__bars"></i><span class="tkt__no">No. 000001</span></div>'
+    '<p class="tkt__foot"><span>Base 1,200 m</span><span>Summit 2,850 m</span></p>'
+    '<svg class="tkt__tyvek" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#tkt-tyvek)"/></svg>'
+    '</div></div>'
+    '<svg width="0" height="0" style="position:absolute"><defs>'
+    '<filter id="tkt-thermal" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1" xChannelSelector="R" yChannelSelector="G"/></filter>'
+    '<filter id="tkt-tyvek" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="3" seed="3" result="t"/><feDiffuseLighting in="t" lighting-color="#fff" surfaceScale=".9" diffuseConstant="1.1"><feDistantLight azimuth="60" elevation="68"/></feDiffuseLighting></filter>'
+    '</defs></svg></div>')
 
 home = f'''
   <section class="pc-hero" aria-label="Chairlift">
@@ -199,7 +224,7 @@ home = f'''
     <div class="pc-stage">
       <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
-        <p class="pc-story__eyebrow" aria-hidden="true">Operational infrastructure for business</p>
+        <p class="pc-story__eyebrow" aria-hidden="true">Real people. Quiet systems.</p>
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
@@ -212,25 +237,40 @@ home = f'''
     </div>
   </section>
 
-
+  <div class="lift-status" aria-label="Lift status">
+    <ul>
+      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
+      <li>Runs open <b>6 of 6</b></li>
+      <li>Conditions <b>Looking good</b></li>
+      <li>Weather <b>Bluebird</b></li>
+      <li class="lift-status__x">Next stop <b>Growth</b></li>
+    </ul>
+  </div>
 
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="sx-label">The problem</p>
       <p class="pc-lead" data-scrub>Does your team lose hours to <span class="pain">quotes nobody followed up</span>, <span class="pain">inquiries that waited overnight</span> and <span class="pain">details typed into three systems</span>? That work is small on its own and enormous added up.</p>
-      <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
     </div></div>
   </section>
 
-  <section class="pc-sec pc-sec--dark pc-sec--introrest" aria-label="How Chairlift works">
+  <section class="pc-sec bw" aria-labelledby="bw-title">
     <div class="pc-wrap">
-      <div class="pc-cols">
-        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
+      <div class="bw__top"><div class="bw__intro">
+      <p class="bw__eyebrow">There&rsquo;s a better way</p>
+      <h2 id="bw-title" class="bw__title">One task first.</h2>
+      <p class="bw__lead">Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Our own team of real people sets it up, refines it with the people who use it, and keeps it running.</p>
       </div>
-      <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
-      <div class="ticket" aria-hidden="true"><div class="ticket__main"><p class="ticket__top"><span>Chairlift</span><span>Lift ticket</span></p><p class="ticket__big">One task<br>first<i>.</i></p><p class="ticket__route"><span>Base</span><i class="ar ar--r"></i><span>Summit</span></p></div><div class="ticket__stub"><span class="ticket__adm">Admit<br>one team</span><span class="ticket__bar"></span><span class="ticket__no">No. 0001</span></div></div>
-      <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
+      {PASS_FAN}
+      </div>
+      <div class="bw__cards">
+        <article><p class="bw__n">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
+        <article><p class="bw__n">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
+        <article><p class="bw__n">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
+      </div>
+      <div class="pass-row">
+      <p class="pc-links"><a class="pc-link pc-link--ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link pc-link--ink" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
+      </div>
     </div>
   </section>
 
@@ -238,8 +278,8 @@ home = f'''
   <section class="pc-sec pc-sec--cream" aria-labelledby="plate-title">
     <div class="pc-wrap">
       <header class="sx-head"><h2 id="plate-title" class="sx-title">Solutions<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Way beyond basic follow-ups. Built for whatever slows your company down.</p></div></header>
-      <p class="kn-lede">Every business has different bottlenecks. Flip any department below to see how we take the manual grind off your team&rsquo;s plate.</p>
-      {kin.switchboard()}
+      <p class="kn-lede">Six runs, one mountain. Pick the run that sounds like your week, and see how we take the manual grind off your team&rsquo;s plate.</p>
+      {kin.trailmap()}
       <p class="pc-links"><a class="pc-link pc-link--ink" href="/time-back/">Add up your team's hours <i class="ar" aria-hidden="true"></i></a></p>
     </div>
   </section>
@@ -247,12 +287,9 @@ home = f'''
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
       <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Your business runs better when the heavy lifting happens behind the scenes.</p></div></header>
-      <div class="pc-benefits">
-        <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
-        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
-        <article><p class="mono">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
-        <article><p class="mono">04</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
-        <article><p class="mono">05</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
+      <div class="pc-benefits pc-benefits--two">
+        <article><p class="mono">01</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
+        <article><p class="mono">02</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
       </div>
     </div>
   </section>
@@ -265,9 +302,9 @@ home = f'''
       <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Engineered around how your business already runs.</p></div></header>
       <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
       <div class="pc-pkgs">
-        <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p><strong>We find the exact drag.</strong> You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
-        <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p><strong>We build the backbone.</strong> We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
-        <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p><strong>We keep the line moving.</strong> Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
+        <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p class="pc-pkgs__lead"><strong>We find the exact drag.</strong></p><p>You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
+        <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p class="pc-pkgs__lead"><strong>We build the backbone.</strong></p><p>We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
+        <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p class="pc-pkgs__lead"><strong>We keep the line moving.</strong></p><p>Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
       </div>
       <p class="pc-links"><a class="pc-link" href="/how-it-works/">See the full process <i class="ar" aria-hidden="true"></i></a></p>
     </div>
@@ -276,7 +313,7 @@ home = f'''
   <section class="pc-band" aria-label="Your team’s hours, back.">
     <div class="pc-band__stick">
       <img class="pc-band__img" src="/images/alps-blue.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async">
-      <video class="pc-band__vid" muted loop playsinline preload="none" poster="/images/hero-reel-5-poster.jpg" data-src="/images/hero-reel-5.mp4"></video>
+      <video class="pc-band__vid" muted loop playsinline preload="none" data-poster="/images/hero-reel-5-poster-800.webp" data-src="/images/hero-reel-5.mp4"></video>
       <p class="pc-band__txt"><span>Your team&rsquo;s hours.</span><span>Back.</span></p>
     </div>
   </section>
@@ -1005,7 +1042,8 @@ for fn, title, desc, path, active, body, noindex in PAGES:
     out = os.path.join(OUT, fn)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w") as f:
-        f.write(page(title, desc, path, active, body, noindex))
+        html = page(title, desc, path, active, body, noindex)
+        f.write(html)
     print("wrote", fn)
 
 urls = [p[3] for p in PAGES if not p[6]]

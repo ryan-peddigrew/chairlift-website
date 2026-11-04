@@ -173,6 +173,7 @@ h1, h2, h3 { margin: 0; color: inherit; font-weight: 800; text-transform: upperc
 .example + .example { margin-top: 72px; padding-top: 72px; border-top: 1px solid var(--line); }
 .example-head h2, .example-head h3 { font-size: clamp(28px, 3.6vw, 40px); margin-top: 6px; }
 .example-head p { margin-top: 14px; color: var(--muted); }
+.example-head p + p { margin-top: 8px; }
 .example-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--muted); }
 .ba { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
 .ba > div { border-radius: var(--radius); padding: 26px; }

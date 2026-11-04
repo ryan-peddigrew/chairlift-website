@@ -1,5 +1,7 @@
 // The Daily Peddigrew sample: scale the page to fit, show the viewer's date,
 // and fill in live weather, Toronto news and sports from /.netlify/functions/paper.
+// paper fonts load without blocking the page (no inline onload, so the CSP stays strict)
+[].forEach.call(document.querySelectorAll('link[data-lazy-css]'), function (l) { l.media = 'all'; });
 (function () {
   var papers = document.querySelectorAll('.dp-frame');
   if (!papers.length) return;
@@ -16,7 +18,9 @@
 
   // One small scorecard per game: league and status on top, then a row per team (logo, name, score).
   function team(t, lose, pre, slot) {
-    var mark = t.logo ? '<img src="' + esc(t.logo) + '" alt="">' : '<span class="dp-noimg"></span>';
+    // team logos arrive as 500 px PNGs (about 75 KB each); ask ESPN's resizer for a 64 px copy instead
+    var logo = t.logo ? String(t.logo).replace(/^https:\/\/a\.espncdn\.com(\/i\/teamlogos\/[^?]+\.png)$/, 'https://a.espncdn.com/combiner/i?img=$1&w=64&h=64') : '';
+    var mark = logo ? '<img src="' + esc(logo) + '" alt="" width="32" height="32" loading="lazy">' : '<span class="dp-noimg"></span>';
     return '<div class="dp-tm' + (lose ? ' dp-lo' : '') + '">' + mark + '<small>' + (t.rel ? '<span class="dp-rel">' + t.rel + '</span> ' : '') + esc(t.abbr || t.name) + '</small>' + (t.rec ? '<i class="dp-rec">(' + esc(t.rec) + ')</i>' : '') + (t.ls ? '<span class="dp-ls">' + esc(t.ls) + '</span>' : '') + (pre ? '<em class="dp-sl">' + esc(slot || '') + '</em>' : '<b>' + esc(t.score) + '</b>') + '</div>';
   }
   function sportsHTML(boxes, next) {
@@ -50,6 +54,8 @@
   tick();
   setInterval(tick, 10000);
 
+  // live data only once the paper is close to the screen, so it never slows the first load
+  function live() {
   fetch('/.netlify/functions/paper?v=13').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d) return;
     if (d.weather) {
@@ -84,4 +90,7 @@
       });
     }
   }).catch(function () {});
+  }
+  if (!('IntersectionObserver' in window)) live();
+  else { var seen = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { seen.disconnect(); live(); } }, { rootMargin: '600px 0px' }); papers.forEach(function (f) { seen.observe(f); }); }
 })();

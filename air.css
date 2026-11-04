@@ -1,0 +1,161 @@
+/* Homepage "Mountain air" layer (approved by Ryan, 2 Nov 2026). Four small moving parts on top of the home page:
+   contour lines under The problem, a season-pass lift ticket that tilts with the pointer, a drag-to-clear divider on The shift, a dot grid behind Why us.
+   Our own code. All of it switches off under (prefers-reduced-motion). */
+/* contour lines under The problem (ripple background, effects lab): a quiet topo map that bends toward the pointer */
+.pc-scrub__pin { position: sticky; }
+.air-topo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; }
+.pc-scrub__pin .pc-wrap { position: relative; z-index: 1; }
+
+/* the lift ticket (Ryan, 4 Nov 2026): Chairlift is the resort. Folded over a wicket wire, off-white Tyvek, sage admit bar, thermal print. */
+.pass-row { margin-top: 40px; max-width: 700px; }
+.bw__top { display: grid; gap: 36px; align-items: center; }
+@media (min-width: 900px) { .bw__top { grid-template-columns: 1fr 300px; gap: 56px; } }
+.pass-row .pc-links { margin-top: 0; }
+.pass-fan { position: relative; display: flex; justify-content: center; padding: 10px 0 20px; }
+.tkt { position: relative; width: 260px; transform: rotate(-1deg); transform-origin: 50% 0; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.pass-fan--open .tkt { transform: rotate(0deg) translateY(-4px); }
+.tkt__stack { position: absolute; inset: 0; background: #ECE9E1; border-radius: 4px; box-shadow: 0 1px 2px rgba(20,27,42,.18); transform: translate(3px, 5px) rotate(1.2deg); }
+.tkt__stack--2 { background: #E6E3DA; transform: translate(-2px, 9px) rotate(-.8deg); }
+.tkt__card { position: relative; z-index: 1; background: #F4F1EA; color: #141B2A; border-radius: 3px 3px 4px 4px; overflow: hidden; box-shadow: 0 1px 1px rgba(20,27,42,.12), 0 18px 30px -18px rgba(20,27,42,.55); font-family: "Hanken Grotesk", var(--px-sans, sans-serif); }
+.tkt__card p { margin: 0; max-width: none; }
+.tkt__card .tkt__lifts, .tkt__card .tkt__tag, .tkt__card .tkt__admit, .tkt__card .tkt__foot, .tkt__card .tkt__no, .tkt__card .tkt__type span, .tkt__card .tkt__date small { font-family: var(--px-mono, "IBM Plex Mono", monospace) !important; text-transform: uppercase; }
+.tkt__card .tkt__lifts, .tkt__card .tkt__admit, .tkt__card .tkt__foot { letter-spacing: .16em !important; }
+.tkt__fold { position: relative; height: 18px; border-radius: 3px 3px 0 0; background: linear-gradient(180deg, #A9ABA4 0%, #DEDCD4 18%, #F9F7F1 42%, #F1EFE8 60%, #CFCDC5 82%, #7E817E 100%); }
+.tkt__fold::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: #6F726F; }
+.tkt__fold::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; z-index: 3; height: 9px; background: linear-gradient(180deg, rgba(20,27,42,.38), rgba(20,27,42,0)); }
+.tkt__tyvek { position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; pointer-events: none; opacity: .5; mix-blend-mode: multiply; }
+.tkt__card .tkt__lifts { display: flex; justify-content: space-between; background: #141B2A; color: #fff; padding: 9px 14px 7px; font: 600 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .16em; text-transform: uppercase; }
+.tkt__card .tkt__resort { padding: 14px 16px 10px; border-bottom: 1.5px solid #141B2A; }
+.tkt__card .tkt__name { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 34px; line-height: 1; letter-spacing: -.01em; }
+.tkt__card .tkt__name svg { width: 34px; height: 34px; flex: none; }
+.tkt__card .tkt__tag { margin-top: 6px !important; font: 500 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .12em; text-transform: uppercase; color: #4A5468; }
+.tkt__card .tkt__mid { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 8px; padding: 14px 16px 6px; }
+.tkt__card .tkt__wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%); font-weight: 800; font-size: 150px; line-height: 1; color: #141B2A; opacity: .06; pointer-events: none; }
+.tkt__card .tkt__type { position: relative; font-weight: 800; font-size: 13px; line-height: 1.2; text-transform: uppercase; }
+.tkt__card .tkt__type span { display: block; margin-top: 3px; font: 500 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .12em; color: #4A5468; }
+.tkt__card .tkt__date { position: relative; text-align: right; font-weight: 800; font-size: 46px; line-height: .85; letter-spacing: -.02em; text-transform: uppercase; }
+.tkt__card .tkt__date span { filter: url(#tkt-thermal); }
+.tkt__card .tkt__date small { display: block; margin-bottom: 4px; font: 600 11px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .14em; }
+.tkt__card .tkt__admit { margin: 8px 16px 0 !important; padding: 5px; border-radius: 2px; background: #A3B18A; color: #141B2A; text-align: center; font: 600 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .18em; text-transform: uppercase; }
+.tkt__card .tkt__code { display: grid; grid-template-columns: 1fr auto; align-items: end; padding: 10px 0 12px; }
+.tkt__card .tkt__bars { display: block; height: 30px; filter: url(#tkt-thermal); background: repeating-linear-gradient(90deg, #141B2A 0 2px, transparent 2px 4px, #141B2A 4px 5px, transparent 5px 8px, #141B2A 8px 11px, transparent 11px 12px, #141B2A 12px 13px, transparent 13px 15px, #141B2A 15px 16px, transparent 16px 19px); }
+.tkt__card .tkt__no { background: #F4F1EA; padding: 4px 16px 0 10px; font: 600 11px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .1em; }
+.tkt__card .tkt__foot { display: flex; justify-content: space-between; background: #141B2A; color: #fff; padding: 6px 14px; font: 500 9px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .14em; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { .tkt { transition: none; } }
+
+/* drag-to-clear divider on The shift (reveal strip, pattern 20): left of the line runs with Chairlift */
+.kn-track { position: relative; }
+.air-split { position: absolute; top: -12px; bottom: -12px; left: var(--x, 0%); z-index: 3; width: 44px; margin-left: -22px; cursor: ew-resize; touch-action: pan-y; }
+.air-split::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--px-ink); }
+.air-split__k { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--px-ink); color: #fff; display: grid; place-items: center; font: 600 13px/1 "IBM Plex Mono", ui-monospace, monospace; box-shadow: 0 10px 24px rgba(20,27,42,.35); }
+.air-split__k::after { content: "\2194"; font-size: 18px; }
+.air-split__lbl { position: absolute; top: -34px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--px-ink); background: #fff; padding: 6px 10px; border-radius: 999px; box-shadow: 0 1px 0 rgba(20,27,42,.08); }
+.kn-step { transition: background .4s; }
+.kn-step:not(.on) { background: #F7F8FA; }
+@media (max-width: 560px) {
+  .air-split { top: var(--x, 0%); left: -8px; right: -8px; bottom: auto; width: auto; height: 44px; margin: -22px 0 0; cursor: ns-resize; touch-action: pan-x; }
+  .air-split::before { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 2px; margin: -1px 0 0; }
+  .air-split__k { left: auto; right: 0; margin: -22px 0 0 0; }
+  .air-split__k::after { content: "\2195"; }
+  .air-split__lbl { top: 50%; left: auto; right: 54px; transform: translateY(-50%); }
+}
+
+/* dot grid behind Why us lights up around the pointer (hover chroma, effects lab) */
+.air-dots { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.pc-sec--dark[aria-labelledby="why-title"] { position: relative; overflow: hidden; }
+.pc-sec--dark[aria-labelledby="why-title"] .pc-wrap { position: relative; z-index: 1; }
+.pc-benefits article { background: rgba(20,27,42,.72); backdrop-filter: blur(2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  
+  .air-topo, .air-dots { display: none; }
+}
+
+
+/* lift status strip under the hero (Ryan, 4 Nov 2026: light ski touch) */
+.lift-status { background: #141B2A; color: #fff; border-top: 1px solid rgba(255,255,255,.12); font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.lift-status ul { list-style: none; margin: 0 auto; padding: 18px 16px; max-width: 1240px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 44px; }
+.lift-status li { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.62); white-space: nowrap; }
+.lift-status b { color: #fff; font-weight: 500; }
+.lift-status li i { width: 8px; height: 8px; border-radius: 50%; background: #3DFFC1; }
+@media (max-width: 640px) {
+  .lift-status ul { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; padding: 18px 20px; font-size: 11px; }
+  .lift-status li { flex-direction: column; align-items: flex-start; gap: 4px; position: relative; }
+  .lift-status li i { position: absolute; left: -14px; top: 4px; }
+  .lift-status ul { padding-left: 32px; }
+  .lift-status__x { display: none !important; }
+}
+
+/* There's a better way: clean white section with three cards */
+.bw { background: #fff; color: #141B2A; }
+.bw__eyebrow { margin: 0; font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #6B768C; }
+.bw__title { margin: 12px 0 18px; font-family: "Hanken Grotesk", system-ui, sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(36px, 5vw, 64px); line-height: .95; letter-spacing: -.01em; }
+.bw__lead { margin: 0; max-width: 60ch; color: #3A4459; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
+.bw__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+.bw__cards article { background: #EEF1F5; border-radius: 16px; padding: 28px; }
+.bw__cards h3 { margin: 10px 0 8px; font-family: "Hanken Grotesk", system-ui, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 20px; line-height: 1.1; }
+.bw__cards p { margin: 0; color: #3A4459; font-size: 16px; line-height: 1.55; }
+.bw__cards .bw__n { font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 11px; letter-spacing: .14em; color: #8E99AE; }
+@media (max-width: 860px) { .bw__cards { grid-template-columns: 1fr; } }
+.pc-benefits--two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 700px) { .pc-benefits--two { grid-template-columns: 1fr; } }
+/* ---------- scroll chairlift (Ryan, 2-3 Nov 2026): a cable down the left edge, a chair rides it with the page and carries the elevation readout ---------- */
+.air-lift { position: fixed; left: max(8px, env(safe-area-inset-left, 0px)); top: var(--air-top, 84px); bottom: 20px; z-index: 40; width: 34px; pointer-events: none; mix-blend-mode: difference; color: #fff; font-family: var(--px-mono, "IBM Plex Mono", monospace); }
+.air-lift::before { content: ""; position: absolute; left: 17px; top: 0; bottom: 0; width: 1px; background: currentColor; opacity: .4; }
+.air-lift__end { position: absolute; left: 14px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .7; }
+.air-lift__end--top { top: -3px; } .air-lift__end--base { bottom: -3px; }
+.air-lift__car { position: absolute; left: 0; top: 0; width: 34px; will-change: transform; }
+.air-lift__read { position: absolute; left: 24px; bottom: 100%; margin-bottom: 6px; display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; }
+.air-lift__read span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; line-height: 1; }
+.air-lift__num { font-size: 10px; letter-spacing: .06em; font-style: italic; font-variant-numeric: tabular-nums; padding: 4px 0; background: transparent; }
+.air-lift__lbl { font-size: 10px; letter-spacing: .06em; font-style: italic; text-transform: uppercase; }
+.air-lift__chair { display: block; width: 34px; height: 54px; transform-origin: 17px 3px; will-change: transform; }
+.air-lift__chair svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.air-lift__chair svg .air-lift__seat { fill: currentColor; stroke: none; }
+.air-lift__chair svg .air-lift__grip { fill: currentColor; stroke: none; }
+.air-lift--top .air-lift__lbl { opacity: 1; }
+.air-lift--flip .air-lift__read { bottom: auto; top: 100%; margin: 8px 0 0; flex-direction: column; }
+@media (max-width: 560px) {
+  .air-lift { left: max(1px, env(safe-area-inset-left, 0px)); width: 18px; top: calc(var(--air-top, 84px) + 6px); bottom: 14px; }
+  .air-lift::before { left: 9px; } .air-lift__end { left: 6px; }
+  .air-lift__car, .air-lift__chair { width: 18px; } .air-lift__chair { height: 29px; transform-origin: 9px 2px; }
+  .air-lift__num { font-size: 8px; } .air-lift__lbl { display: none; } .air-lift__read { left: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .air-lift__chair { transform: none !important; } }
+
+/* ---------- trail map in Solutions (Ryan, 4 Nov 2026): six runs = six departments, lifts A to D, summit and base lodge ---------- */
+.tm-poster { margin-top: 28px; background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 24px 50px -30px rgba(20,27,42,.55); }
+.tm-poster__top { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; align-items: center; color: #141B2A; padding: 4px 6px 12px; }
+.tm-poster__top b { font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: .02em; }
+.tm-poster .mono, .tm-card .mono { font-family: var(--px-mono, "IBM Plex Mono", monospace); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.tm-wrap { overflow-x: auto; border-radius: 6px; -webkit-overflow-scrolling: touch; }
+.tm-map { position: relative; min-width: 820px; aspect-ratio: 1600 / 1100; background: #C9D0DC; }
+.tm-map img, .tm-map svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.tm-map img { object-fit: cover; }
+.tm-map svg text { font-family: var(--px-mono, "IBM Plex Mono", monospace); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; fill: #141B2A; }
+.tm-run { cursor: pointer; }
+.tm-run .hit { stroke: transparent; stroke-width: 30; fill: none; }
+.tm-run .case { stroke: #fff; stroke-width: 7; fill: none; opacity: .9; }
+.tm-run .line { stroke: #141B2A; stroke-width: 3; fill: none; stroke-dasharray: 10 7; }
+.tm-run.on .line { stroke-width: 5; stroke-dasharray: none; }
+.tm-run.on .case { stroke-width: 11; }
+.tm-run text { font-size: 17px; }
+.tm-lift .case { stroke: #141B2A; stroke-width: 7; }
+.tm-lift .line { stroke: #3DFFC1; stroke-width: 3.5; }
+.tm-lift circle { fill: #fff; stroke: #141B2A; stroke-width: 3; }
+.tm-lift text.id { font-family: var(--px-sans, "Hanken Grotesk", sans-serif); font-weight: 800; font-size: 17px; stroke: none; letter-spacing: 0; }
+.tm-callout text { font-size: 15px; }
+.tm-callout text.big { font-family: var(--px-sans, "Hanken Grotesk", sans-serif); font-weight: 800; font-size: 22px; letter-spacing: .04em; }
+.tm-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; color: #141B2A; padding: 12px 6px 4px; }
+.tm-legend span { display: flex; align-items: center; gap: 8px; }
+.tm-legend svg { width: 16px; height: 16px; flex: none; }
+.tm-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.tm-list button { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(20,27,42,.25); background: #fff; color: #141B2A; font: 500 15px var(--px-sans, "Hanken Grotesk", sans-serif); cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.tm-list button[aria-pressed="true"] { background: #141B2A; color: #fff; border-color: #141B2A; }
+.tm-list svg { width: 12px; height: 12px; flex: none; }
+.tm-card { margin-top: 16px; background: #fff; color: #141B2A; border-radius: 12px; padding: 24px 26px; border-left: 6px solid #3DFFC1; display: grid; gap: 6px; }
+.tm-card .mono { color: #5B6578; }
+.tm-card h3 { margin: 4px 0; font-weight: 800; text-transform: uppercase; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.1; }
+.tm-card p { margin: 0; color: #3A4459; max-width: 70ch; }
+@media (max-width: 560px) { .tm-list { flex-wrap: nowrap; overflow-x: auto; margin-right: -16px; padding-right: 16px; scrollbar-width: none; } .tm-list button { flex: none; } .tm-poster { padding: 10px; margin-left: -6px; margin-right: -6px; } .tm-card { padding: 20px; } .tm-list button { font-size: 14px; } }
