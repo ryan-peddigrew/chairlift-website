@@ -1,5 +1,7 @@
 // The Daily Peddigrew sample: scale the page to fit, show the viewer's date,
 // and fill in live weather, Toronto news and sports from /.netlify/functions/paper.
+// paper fonts load without blocking the page (no inline onload, so the CSP stays strict)
+[].forEach.call(document.querySelectorAll('link[data-lazy-css]'), function (l) { l.media = 'all'; });
 (function () {
   var papers = document.querySelectorAll('.dp-frame');
   if (!papers.length) return;

@@ -192,7 +192,7 @@
 .dp-tm .dp-noimg { display: block; border-radius: 50%; background: #CFCFCF; }
 .dp-tm small { font: 700 8.6px/1 Inter, sans-serif; letter-spacing: 0.12em; }
 .dp-tm b { margin-left: auto; font: 800 17px/1 Inter, sans-serif; min-width: 14px; text-align: right; }
-.dp-tm.dp-lo b, .dp-tm.dp-lo small { color: #888888; font-weight: 600; }
+.dp-tm.dp-lo b, .dp-tm.dp-lo small { color: #666666; font-weight: 600; }
 .dp-sports .dp-game { padding: 6px 14px 5px 0; }
 .dp-sports .dp-game:nth-child(even) { padding: 6px 0 5px 14px; }
 .dp-gs { margin-bottom: 4px; }

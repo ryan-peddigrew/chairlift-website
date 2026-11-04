@@ -10,3 +10,9 @@
 /morning-paper   /paper/         301
 /morning-paper/  /paper/         301
 /5min   /5min/   301
+
+# Old homepage mock-ups stay in the repo but are hidden from the live site
+/home-a/*  /  301!
+/home-b/*  /  301!
+/home-c/*  /  301!
+/home-d/*  /  301!
