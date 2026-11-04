@@ -6,46 +6,42 @@
 .air-topo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; }
 .pc-scrub__pin .pc-wrap { position: relative; z-index: 1; }
 
-/* the lift ticket (Ryan, 4 Nov 2026: "more like" a classic printed ski pass): white card, Neon strip on top, mountain photo with the logo,
-   Ink bar, big ONE TEAM, a boxed 1, barcode, Ink strip with the heights. Three fanned like a stack at the ticket window. */
-.pass-row { display: grid; gap: 40px; margin-top: 48px; }
+/* the lift ticket (Ryan, 4 Nov 2026): Chairlift is the resort. Folded over a wicket wire, off-white Tyvek, sage admit bar, thermal print. */
+.pass-row { margin-top: 40px; max-width: 700px; }
+.bw__top { display: grid; gap: 36px; align-items: center; }
+@media (min-width: 900px) { .bw__top { grid-template-columns: 1fr 300px; gap: 56px; } }
 .pass-row .pc-links { margin-top: 0; }
-@media (min-width: 900px) { .pass-row { grid-template-columns: 1fr minmax(0, 520px); align-items: center; } .pass-row .pass-fan { order: 2; } }
-.pass-fan { position: relative; width: min(100%, 470px); height: 430px; margin: 0 auto; }
-.pass-fan.in { transition: opacity .9s; }
-.pass { position: absolute; left: 50%; top: 48px; width: 252px; margin-left: -126px; background: #fff; color: #141B2A; border-radius: 6px; font-family: var(--px-sans);
-  box-shadow: 0 30px 50px -22px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.25); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-.pass--c { transform: rotate(-4deg); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
-.pass-fan--open .pass--c { transform: translateY(-10px) rotate(0deg); }
-.pass__warn { margin: 0; border-radius: 6px 6px 0 0; padding: 6px 10px 6px; background: #3DFFC1; color: #141B2A; font-family: var(--px-mono); font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; text-align: center; border-bottom: 2px solid #141B2A; }
-.pass__photo { position: relative; height: 92px; background: #141B2A url(/images/alps-peaks-800.webp) center 35%/cover; }
-.pass__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,27,42,.75), rgba(20,27,42,0) 70%); }
-.pass__brand { position: absolute; left: 12px; bottom: 12px; z-index: 1; display: inline-flex; align-items: center; gap: 8px; color: #fff; font-family: "Hanken Grotesk", var(--px-sans); font-weight: 600; font-size: 21px; letter-spacing: -.01em; }
-.pass__brand svg { width: 30px; height: 30px; flex: none; }
-.pass__brand b { font-weight: 600; }
-.pass__bar { display: flex; justify-content: space-between; margin: 0; padding: 5px 10px; background: #141B2A; color: #fff; font-family: var(--px-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; }
-.pass__body { padding: 12px 14px 10px; display: grid; gap: 8px; }
-.pass__big { margin: 0; font-family: var(--px-sans); font-weight: 800; font-size: 42px; line-height: .95; letter-spacing: -.02em; text-transform: uppercase; }
-.pass__row { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
-.pass__box { display: grid; place-items: center; width: 48px; height: 48px; border: 2.5px solid #141B2A; font-family: var(--px-sans); font-weight: 800; font-size: 32px; line-height: 1; }
-.pass__row p { margin: 0; font-weight: 700; font-size: 14px; line-height: 1.25; text-transform: uppercase; letter-spacing: .01em; }
-.pass__code { display: grid; justify-items: center; gap: 3px; padding-top: 4px; }
-.pass__code i { display: block; width: 78%; height: 30px; background: repeating-linear-gradient(90deg, #141B2A 0 2px, transparent 2px 4px, #141B2A 4px 5px, transparent 5px 8px, #141B2A 8px 11px, transparent 11px 12px, #141B2A 12px 13px, transparent 13px 16px); }
-.pass__code span { font-family: var(--px-mono); font-size: 9px; letter-spacing: .2em; }
-.pass__foot { margin: 0; border-radius: 0 0 6px 6px; padding: 6px 10px; background: #141B2A; color: #fff; font-family: var(--px-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; text-align: center; }
-/* the wire wicket: a bent steel loop through two punched holes at the top, like a ticket clipped to a jacket zipper */
-.pass__wire { position: absolute; left: 50%; top: -44px; z-index: 2; width: 40px; height: 64px; margin-left: -20px; overflow: visible; pointer-events: none; }
-.pass__wire path { fill: none; stroke: #8A94A6; stroke-width: 2.6; stroke-linecap: round; }
-.pass__wire .pass__wire-hi { stroke: #E4E9F1; stroke-width: 1; transform: translate(-.6px, -.4px); }
-.pass__hole { position: absolute; top: 10px; z-index: 1; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: #0B101C; box-shadow: inset 0 1px 1px rgba(0,0,0,.6); }
-.pass__hole--l { left: calc(50% - 5.5px); } .pass__hole--r { left: calc(50% + 5.5px); }
-.pass__warn { padding-top: 20px; }
-@media (max-width: 420px) {
-  .pass-fan { height: 390px; }
-  .pass { width: 220px; margin-left: -110px; }
-  .pass__big { font-size: 36px; } .pass__photo { height: 80px; }
-}
-@media (prefers-reduced-motion: reduce) { .pass { transition: none; } }
+.pass-fan { position: relative; display: flex; justify-content: center; padding: 10px 0 20px; }
+.tkt { position: relative; width: 260px; transform: rotate(-1deg); transform-origin: 50% 0; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.pass-fan--open .tkt { transform: rotate(0deg) translateY(-4px); }
+.tkt__stack { position: absolute; inset: 0; background: #ECE9E1; border-radius: 4px; box-shadow: 0 1px 2px rgba(20,27,42,.18); transform: translate(3px, 5px) rotate(1.2deg); }
+.tkt__stack--2 { background: #E6E3DA; transform: translate(-2px, 9px) rotate(-.8deg); }
+.tkt__card { position: relative; z-index: 1; background: #F4F1EA; color: #141B2A; border-radius: 3px 3px 4px 4px; overflow: hidden; box-shadow: 0 1px 1px rgba(20,27,42,.12), 0 18px 30px -18px rgba(20,27,42,.55); font-family: "Hanken Grotesk", var(--px-sans, sans-serif); }
+.tkt__card p { margin: 0; max-width: none; }
+.tkt__card .tkt__lifts, .tkt__card .tkt__tag, .tkt__card .tkt__admit, .tkt__card .tkt__foot, .tkt__card .tkt__no, .tkt__card .tkt__type span, .tkt__card .tkt__date small { font-family: var(--px-mono, "IBM Plex Mono", monospace) !important; text-transform: uppercase; }
+.tkt__card .tkt__lifts, .tkt__card .tkt__admit, .tkt__card .tkt__foot { letter-spacing: .16em !important; }
+.tkt__fold { position: relative; height: 18px; border-radius: 3px 3px 0 0; background: linear-gradient(180deg, #A9ABA4 0%, #DEDCD4 18%, #F9F7F1 42%, #F1EFE8 60%, #CFCDC5 82%, #7E817E 100%); }
+.tkt__fold::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: #6F726F; }
+.tkt__fold::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; z-index: 3; height: 9px; background: linear-gradient(180deg, rgba(20,27,42,.38), rgba(20,27,42,0)); }
+.tkt__tyvek { position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; pointer-events: none; opacity: .5; mix-blend-mode: multiply; }
+.tkt__card .tkt__lifts { display: flex; justify-content: space-between; background: #141B2A; color: #fff; padding: 9px 14px 7px; font: 600 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .16em; text-transform: uppercase; }
+.tkt__card .tkt__resort { padding: 14px 16px 10px; border-bottom: 1.5px solid #141B2A; }
+.tkt__card .tkt__name { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 34px; line-height: 1; letter-spacing: -.01em; }
+.tkt__card .tkt__name svg { width: 34px; height: 34px; flex: none; }
+.tkt__card .tkt__tag { margin-top: 6px !important; font: 500 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .12em; text-transform: uppercase; color: #4A5468; }
+.tkt__card .tkt__mid { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 8px; padding: 14px 16px 6px; }
+.tkt__card .tkt__wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%); font-weight: 800; font-size: 150px; line-height: 1; color: #141B2A; opacity: .06; pointer-events: none; }
+.tkt__card .tkt__type { position: relative; font-weight: 800; font-size: 13px; line-height: 1.2; text-transform: uppercase; }
+.tkt__card .tkt__type span { display: block; margin-top: 3px; font: 500 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .12em; color: #4A5468; }
+.tkt__card .tkt__date { position: relative; text-align: right; font-weight: 800; font-size: 46px; line-height: .85; letter-spacing: -.02em; text-transform: uppercase; }
+.tkt__card .tkt__date span { filter: url(#tkt-thermal); }
+.tkt__card .tkt__date small { display: block; margin-bottom: 4px; font: 600 11px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .14em; }
+.tkt__card .tkt__admit { margin: 8px 16px 0 !important; padding: 5px; border-radius: 2px; background: #A3B18A; color: #141B2A; text-align: center; font: 600 10px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .18em; text-transform: uppercase; }
+.tkt__card .tkt__code { display: grid; grid-template-columns: 1fr auto; align-items: end; padding: 10px 0 12px; }
+.tkt__card .tkt__bars { display: block; height: 30px; filter: url(#tkt-thermal); background: repeating-linear-gradient(90deg, #141B2A 0 2px, transparent 2px 4px, #141B2A 4px 5px, transparent 5px 8px, #141B2A 8px 11px, transparent 11px 12px, #141B2A 12px 13px, transparent 13px 15px, #141B2A 15px 16px, transparent 16px 19px); }
+.tkt__card .tkt__no { background: #F4F1EA; padding: 4px 16px 0 10px; font: 600 11px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .1em; }
+.tkt__card .tkt__foot { display: flex; justify-content: space-between; background: #141B2A; color: #fff; padding: 6px 14px; font: 500 9px var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .14em; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { .tkt { transition: none; } }
 
 /* drag-to-clear divider on The shift (reveal strip, pattern 20): left of the line runs with Chairlift */
 .kn-track { position: relative; }
@@ -162,4 +158,4 @@
 .tm-card .mono { color: #5B6578; }
 .tm-card h3 { margin: 4px 0; font-weight: 800; text-transform: uppercase; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.1; }
 .tm-card p { margin: 0; color: #3A4459; max-width: 70ch; }
-@media (max-width: 560px) { .tm-poster { padding: 10px; margin-left: -6px; margin-right: -6px; } .tm-card { padding: 20px; } .tm-list button { font-size: 14px; } }
+@media (max-width: 560px) { .tm-list { flex-wrap: nowrap; overflow-x: auto; margin-right: -16px; padding-right: 16px; scrollbar-width: none; } .tm-list button { flex: none; } .tm-poster { padding: 10px; margin-left: -6px; margin-right: -6px; } .tm-card { padding: 20px; } .tm-list button { font-size: 14px; } }

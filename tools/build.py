@@ -196,15 +196,22 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
-# Lift ticket (Ryan, 4 Nov 2026): a classic printed ski pass, three fanned like a stack at the ticket window. Our own design and photo, Chairlift colours.
-_PASS_CARD = ('<div class="pass{cls}"><svg class="pass__wire" viewBox="0 0 40 64"><path d="M11 58V22C11 8 15 3 20 3s9 5 9 19v36"/><path class="pass__wire-hi" d="M11 58V22C11 8 15 3 20 3s9 5 9 19v36"/></svg><i class="pass__hole pass__hole--l"></i><i class="pass__hole pass__hole--r"></i><p class="pass__warn">Admit one team</p>'
-    '<div class="pass__photo"><span class="pass__brand">' + LOGO.format(s=30, stroke=' stroke="rgba(255,255,255,0.35)" stroke-width="2"') + '<b>Chairlift</b></span></div>'
-    '<p class="pass__bar"><span>usechairlift.com</span><span>Lift ticket</span></p>'
-    '<div class="pass__body"><p class="pass__big">One team</p>'
-    '<div class="pass__row"><b class="pass__box">1</b><p>One task first.<br>Base to summit.</p></div>'
-    '<div class="pass__code"><i></i><span>No. 0001</span></div></div>'
-    '<p class="pass__foot">Base 1,200 m &middot; Summit 2,850 m</p></div>')
-PASS_FAN = '<div class="pass-fan" aria-hidden="true">' + "".join(_PASS_CARD.format(cls=c) for c in (" pass--c",)) + '</div>'
+# Lift ticket (Ryan, 4 Nov 2026): Chairlift is the resort. Off-white Tyvek ticket folded over a wicket wire, sage admit bar,
+# big weekday letter behind the date, thermal-print edges on the date and barcode, barcode bleeding off both edges.
+PASS_FAN = ('<div class="pass-fan" aria-hidden="true"><div class="tkt"><i class="tkt__stack"></i><i class="tkt__stack tkt__stack--2"></i><div class="tkt__card">'
+    '<div class="tkt__fold"></div>'
+    '<p class="tkt__lifts"><span>All lifts</span><span>2026&ndash;27</span></p>'
+    '<div class="tkt__resort"><div class="tkt__name">' + LOGO.format(s=34, stroke='') + 'Chairlift</div><p class="tkt__tag">Less busywork. More business.</p></div>'
+    '<div class="tkt__mid"><span class="tkt__wm" data-tkt-wd>W</span><p class="tkt__type">One team<span>Full season</span></p><p class="tkt__date"><small data-tkt-yr>2026</small><span data-tkt-dt>Nov 4</span></p></div>'
+    '<p class="tkt__admit">Admit one team</p>'
+    '<div class="tkt__code"><i class="tkt__bars"></i><span class="tkt__no">No. 000001</span></div>'
+    '<p class="tkt__foot"><span>Base 1,200 m</span><span>Summit 2,850 m</span></p>'
+    '<svg class="tkt__tyvek" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#tkt-tyvek)"/></svg>'
+    '</div></div>'
+    '<svg width="0" height="0" style="position:absolute"><defs>'
+    '<filter id="tkt-thermal" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1" xChannelSelector="R" yChannelSelector="G"/></filter>'
+    '<filter id="tkt-tyvek" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="3" seed="3" result="t"/><feDiffuseLighting in="t" lighting-color="#fff" surfaceScale=".9" diffuseConstant="1.1"><feDistantLight azimuth="60" elevation="68"/></feDiffuseLighting></filter>'
+    '</defs></svg></div>')
 
 home = f'''
   <section class="pc-hero" aria-label="Chairlift">
@@ -249,16 +256,19 @@ home = f'''
 
   <section class="pc-sec bw" aria-labelledby="bw-title">
     <div class="pc-wrap">
+      <div class="bw__top"><div class="bw__intro">
       <p class="bw__eyebrow">There&rsquo;s a better way</p>
       <h2 id="bw-title" class="bw__title">One task first.</h2>
       <p class="bw__lead">Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Our own team of real people sets it up, refines it with the people who use it, and keeps it running.</p>
+      </div>
+      {PASS_FAN}
+      </div>
       <div class="bw__cards">
         <article><p class="bw__n">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
         <article><p class="bw__n">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
         <article><p class="bw__n">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
       </div>
       <div class="pass-row">
-      {PASS_FAN}
       <p class="pc-links"><a class="pc-link pc-link--ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link pc-link--ink" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
       </div>
     </div>

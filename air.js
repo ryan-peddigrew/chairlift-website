@@ -60,7 +60,15 @@
       })(0);
     }
 
-    // the lift tickets fan out a little further when the pointer is over them
+    // the ticket shows today's date and the weekday letter (en-CA)
+    try {
+      var tdt = document.querySelector('[data-tkt-dt]'), tyr = document.querySelector('[data-tkt-yr]'), twd = document.querySelector('[data-tkt-wd]'), now = new Date();
+      if (tdt) tdt.textContent = now.toLocaleDateString('en-CA', { month: 'short', day: 'numeric' }).replace('.', '');
+      if (tyr) tyr.textContent = now.getFullYear();
+      if (twd) twd.textContent = now.toLocaleDateString('en-CA', { weekday: 'long' }).charAt(0);
+    } catch (e) {}
+
+    // the ticket straightens a little when the pointer is over it
     var fan = document.querySelector('.pass-fan');
     if (fan && fine && !reduce) {
       fan.addEventListener('pointerenter', function () { fan.classList.add('pass-fan--open'); });
