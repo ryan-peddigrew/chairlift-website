@@ -461,7 +461,7 @@ for i, e in enumerate(EXAMPLES):
 '''
 
 examples = page_hero("In practice", "What this looks like in practice.",
-    "A real client first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
+    "Real client stories first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
   <section class="section section--soft section--tight" id="wastemind" aria-labelledby="wastemind-title">
     <div class="wrap split">
       <div>
@@ -480,6 +480,20 @@ examples = page_hero("In practice", "What this looks like in practice.",
       <div class="story-photos">
         <img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel in a parking garage">
         <img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue front-end-load waste containers from WasteMind">
+      </div>
+    </div>
+  </section>
+  <section class="section section--tight" id="small-space" aria-labelledby="small-space-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <div class="story-head"><span class="eyebrow">Client story</span></div>
+        <h2 id="small-space-title" class="sr-only">Small Space Innovations.</h2>
+        <p class="story-stat"><b>Small Space Innovations</b><span>a new website, and a way to see the furniture in your own room</span></p>
+      </div>
+      <div class="prose">
+        <p>Small Space Innovations is a small, upscale furniture brand for condos.</p>
+        <p><strong>What we did.</strong> We redesigned their whole website. We also built a tool that lets a customer take a photo of their room and see Small Space&rsquo;s products in it, to scale, with the exact measurements.</p>
       </div>
     </div>
   </section>
