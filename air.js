@@ -138,9 +138,9 @@
       var lift = document.createElement('div'); lift.className = 'air-lift'; lift.setAttribute('aria-hidden', 'true');
       lift.innerHTML = '<i class="air-lift__end air-lift__end--top"></i><i class="air-lift__end air-lift__end--base"></i>' +
         '<div class="air-lift__car"><div class="air-lift__read"><span class="air-lift__num">1,200&thinsp;m</span><span class="air-lift__lbl">Base</span></div>' +
-        '<div class="air-lift__chair"><svg viewBox="0 0 34 54" preserveAspectRatio="xMidYMin meet"><rect class="air-lift__grip" x="13.5" y="0" width="7" height="5" rx="1"/><path d="M17 5V13"/><path class="air-lift__seat" d="M8 13h18l3.5 5h-25z"/><rect x="5" y="18" width="24" height="28" rx="3.5"/><path d="M5 31H29"/></svg></div></div>';
+        '<div class="air-lift__chair"><svg viewBox="0 0 46 46" preserveAspectRatio="xMinYMin meet"><rect class="air-lift__grip" x="0" y="0" width="5" height="6" rx="1.2"/><path d="M4 3.3C13 3.3 19.5 3.6 23.2 6.6C26.2 9 27 11.2 27 15"/><g class="air-lift__swing"><rect class="air-lift__seat" x="23.5" y="14" width="7" height="3.6" rx=".8"/><path d="M13 37V22Q13 16.2 18.8 16.2H35.2Q41 16.2 41 22V37"/><rect class="air-lift__seat" x="17.5" y="22.5" width="19" height="4.2" rx=".9"/><path class="air-lift__seat" d="M16.8 31.4H37.2L40 37H14Z"/></g></svg></div></div>';
       body.appendChild(lift);
-      var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), num = lift.querySelector('.air-lift__num'), lbl = lift.querySelector('.air-lift__lbl');
+      var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), sw = lift.querySelector('.air-lift__swing'), ang = 0, av = 0, push = 0, swRaf = 0, num = lift.querySelector('.air-lift__num'), lbl = lift.querySelector('.air-lift__lbl');
       var cur = 0, target = 0, raf = 0, span = 0, shown = '';
       function measure() {
         var h = header ? header.getBoundingClientRect().height : 64;
@@ -157,9 +157,16 @@
         var y = (1 - cur) * span;   // base at the bottom of the cable, summit at the top: the chair climbs as you read down
         car.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
         lift.classList.toggle('air-lift--flip', y < 120);
-        if (!reduce) chair.style.transform = 'rotate(' + Math.max(-14, Math.min(14, -d * 900)).toFixed(1) + 'deg)';
+        if (!reduce) { push = d; if (!swRaf) swRaf = requestAnimationFrame(swing); }
         var m = Math.round(1200 + cur * 1650), s = m.toLocaleString('en-CA') + '\u2009m';
         if (s !== shown) { shown = s; num.textContent = s; lbl.textContent = cur > .97 ? 'Summit' : cur < .03 ? 'Base' : 'Elevation'; lift.classList.toggle('air-lift--top', cur > .97); }
+      }
+      // the chair swings on its arm like a pendulum: scrolling pushes it, then it settles
+      function swing() {
+        swRaf = 0;
+        av += -ang * .05 - Math.max(-.5, Math.min(.5, push * 25)); av *= .9; ang = Math.max(-10, Math.min(10, ang + av)); push *= .5;
+        sw.style.transform = 'rotate(' + ang.toFixed(2) + 'deg)';
+        if (Math.abs(ang) > .03 || Math.abs(av) > .03 || Math.abs(push) > .0002) swRaf = requestAnimationFrame(swing);
       }
       function onScroll() { target = progress(); if (!raf) raf = requestAnimationFrame(tick); }
       measure(); onScroll();
