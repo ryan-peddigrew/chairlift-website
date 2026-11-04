@@ -549,7 +549,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
         <span class="rule"></span>
         <div class="story-head"><span class="eyebrow">Client story</span></div>
         <h2 id="smith-long-title" class="sr-only">Smith &amp; Long<span class="dot">.</span></h2>
-        <p class="story-stat"><b>Smith &amp; Long</b><span>four divisions, one front door</span></p>
+        <p class="story-stat"><b>Smith &amp; Long</b><span>many divisions, one front door</span></p>
       </div>
       <div class="prose">
         <p>Smith &amp; Long is a Canadian enterprise with over 90 years of work in commercial and industrial electrical, mechanical, high-voltage and engineering services.</p>
