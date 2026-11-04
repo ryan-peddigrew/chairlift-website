@@ -75,3 +75,31 @@
   .air-topo, .air-dots { display: none; }
 }
 
+
+/* lift status strip under the hero (Ryan, 4 Nov 2026: light ski touch) */
+.lift-status { background: #141B2A; color: #fff; border-top: 1px solid rgba(255,255,255,.12); font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.lift-status ul { list-style: none; margin: 0 auto; padding: 18px 16px; max-width: 1240px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 44px; }
+.lift-status li { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.62); white-space: nowrap; }
+.lift-status b { color: #fff; font-weight: 500; }
+.lift-status li i { width: 8px; height: 8px; border-radius: 50%; background: #3DFFC1; }
+@media (max-width: 640px) {
+  .lift-status ul { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; padding: 18px 20px; font-size: 11px; }
+  .lift-status li { flex-direction: column; align-items: flex-start; gap: 4px; position: relative; }
+  .lift-status li i { position: absolute; left: -14px; top: 4px; }
+  .lift-status ul { padding-left: 32px; }
+  .lift-status__x { display: none !important; }
+}
+
+/* There's a better way: clean white section with three cards */
+.bw { background: #fff; color: #141B2A; }
+.bw__eyebrow { margin: 0; font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #6B768C; }
+.bw__title { margin: 12px 0 18px; font-family: "Hanken Grotesk", system-ui, sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(36px, 5vw, 64px); line-height: .95; letter-spacing: -.01em; }
+.bw__lead { margin: 0; max-width: 60ch; color: #3A4459; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
+.bw__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+.bw__cards article { background: #EEF1F5; border-radius: 16px; padding: 28px; }
+.bw__cards h3 { margin: 10px 0 8px; font-family: "Hanken Grotesk", system-ui, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 20px; line-height: 1.1; }
+.bw__cards p { margin: 0; color: #3A4459; font-size: 16px; line-height: 1.55; }
+.bw__cards .bw__n { font-family: var(--px-mono, "IBM Plex Mono", monospace); font-size: 11px; letter-spacing: .14em; color: #8E99AE; }
+@media (max-width: 860px) { .bw__cards { grid-template-columns: 1fr; } }
+.pc-benefits--two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 700px) { .pc-benefits--two { grid-template-columns: 1fr; } }

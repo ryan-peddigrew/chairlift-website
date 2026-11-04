@@ -230,26 +230,36 @@ home = f'''
     </div>
   </section>
 
-
+  <div class="lift-status" aria-label="Lift status">
+    <ul>
+      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
+      <li>Runs open <b>6 of 6</b></li>
+      <li>Conditions <b>Looking good</b></li>
+      <li>Weather <b>Bluebird</b></li>
+      <li class="lift-status__x">Next stop <b>Growth</b></li>
+    </ul>
+  </div>
 
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="sx-label">The problem</p>
       <p class="pc-lead" data-scrub>Does your team lose hours to <span class="pain">quotes nobody followed up</span>, <span class="pain">inquiries that waited overnight</span> and <span class="pain">details typed into three systems</span>? That work is small on its own and enormous added up.</p>
-      <p class="pc-lead pc-lead--soft" data-scrub><em class="nx">There's a better way.</em></p>
     </div></div>
   </section>
 
-  <section class="pc-sec pc-sec--dark pc-sec--introrest" aria-label="How Chairlift works">
+  <section class="pc-sec bw" aria-labelledby="bw-title">
     <div class="pc-wrap">
-      <div class="pc-cols">
-        <p>Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Quotes followed up. Inquiries answered. Reports sent. Nobody chasing.</p>
-        <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
+      <p class="bw__eyebrow">There&rsquo;s a better way</p>
+      <h2 id="bw-title" class="bw__title">One task first.</h2>
+      <p class="bw__lead">Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Our own team of real people sets it up, refines it with the people who use it, and keeps it running.</p>
+      <div class="bw__cards">
+        <article><p class="bw__n">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
+        <article><p class="bw__n">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
+        <article><p class="bw__n">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
       </div>
-      <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
       <div class="pass-row">
       {PASS_FAN}
-      <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
+      <p class="pc-links"><a class="pc-link pc-link--ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link pc-link--ink" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
       </div>
     </div>
   </section>
@@ -267,12 +277,9 @@ home = f'''
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
       <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Your business runs better when the heavy lifting happens behind the scenes.</p></div></header>
-      <div class="pc-benefits">
-        <article><p class="mono">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
-        <article><p class="mono">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
-        <article><p class="mono">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
-        <article><p class="mono">04</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
-        <article><p class="mono">05</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
+      <div class="pc-benefits pc-benefits--two">
+        <article><p class="mono">01</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
+        <article><p class="mono">02</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
       </div>
     </div>
   </section>
