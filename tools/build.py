@@ -460,6 +460,89 @@ for i, e in enumerate(EXAMPLES):
   </section>
 '''
 
+
+# ---------------------------------------------------------------- Trail Report tickets
+def _blueprint_svg(title, steps):
+    """Vertical flow of four steps drawn with solid lines and round nodes."""
+    h = 40 + 86 * len(steps)
+    parts = [f'<svg class="bp-svg" viewBox="0 0 320 {h}" role="img" aria-label="{title}">']
+    for i, (name, note) in enumerate(steps):
+        y = 36 + i * 86
+        if i < len(steps) - 1:
+            parts.append(f'<line x1="34" y1="{y + 14}" x2="34" y2="{y + 72}" class="bp-line"/>')
+            parts.append(f'<path d="M29 {y + 62} L34 {y + 72} L39 {y + 62}" class="bp-line bp-arrow"/>')
+        parts.append(f'<circle cx="34" cy="{y}" r="14" class="bp-node"/>')
+        parts.append(f'<text x="34" y="{y + 5}" text-anchor="middle" class="bp-num">{i + 1}</text>')
+        parts.append(f'<text x="62" y="{y - 2}" class="bp-name">{name}</text>')
+        parts.append(f'<text x="62" y="{y + 16}" class="bp-note">{note}</text>')
+    parts.append('</svg>')
+    return "".join(parts)
+
+def trail_ticket(t):
+    mech = "".join(f"<li><strong>{n}.</strong> {d}</li>" for n, d in t["mechanisms"])
+    tags = "".join(f"<li>{x}</li>" for x in t["tags"])
+    svg = _blueprint_svg(t["svg_title"], t["flow"])
+    return f"""
+    <article class="tt" id="{t['id']}" data-tt aria-labelledby="{t['id']}-title">
+      <div class="tt__inner">
+        <header class="tt__head">
+          <p class="tt__no">Ticket {t['no']}</p>
+          <p class="tt__rating"><span class="tt__mark tt__mark--{t['mark']}" aria-hidden="true"></span>{t['rating']}</p>
+          <h3 id="{t['id']}-title" class="tt__client">{t['client']}</h3>
+          <p class="tt__sector">{t['sector']}</p>
+          <ul class="tt__tags" aria-label="System parts">{tags}</ul>
+        </header>
+        <div class="tt__body">
+          <section><h4>At the base: the friction</h4><p>{t['base']}</p></section>
+          <section><h4>On the lift: the system built</h4><p>{t['lift']}</p></section>
+          <section><h4>At the summit: the operational result</h4><p>{t['summit']}</p></section>
+        </div>
+        <div class="tt__stamp" aria-hidden="true">{t['stamp']}</div>
+        <button class="tt__toggle" type="button" aria-expanded="false" aria-controls="{t['id']}-bp" data-bp-toggle>Inspect blueprint</button>
+        <div class="tt__bp" id="{t['id']}-bp" hidden>
+          <h4>Under the hood: system blueprint</h4>
+          <ol class="tt__mech">{mech}</ol>
+          {svg}
+        </div>
+        <footer class="tt__cta">
+          <p>Dealing with a similar climb?</p>
+          <a class="punch" href="/5min/"><span class="punch__hole" aria-hidden="true"></span>Start a conversation</a>
+        </footer>
+      </div>
+    </article>"""
+
+TICKETS = [
+  dict(id="small-space", no="01", client="Small Space Innovations",
+       sector="Space design, modular millwork and turnkey installation for commercial and multi-unit residential projects",
+       rating="Blue square: end-to-end sales-to-install pipeline", mark="blue",
+       tags=["Spec intake", "Quote cadence", "Job dispatch", "Milestone updates"],
+       base="Plenty of inquiries, but measurements were gathered by hand, quotes went out slowly, prospects went quiet, and details slipped between design, workshop and installers.",
+       lift="Four quiet systems: guided intake, timed quote follow-through, a job packet built when the deposit lands, and stage updates to the client.",
+       summit="Faster quote-to-deposit, no details dropped between design and the field, and hours of design time back each week.",
+       stamp="Summit reached",
+       mechanisms=[("Structured spec and dimension intake", "Clients submit exact room dimensions, site constraints and finish preferences before the first call."),
+                   ("Quiet quote follow-through cadence", "A timed, multi-stage track watches every open custom quote and keeps it moving toward a deposit, so designers do not chase."),
+                   ("One-click fabrication and install dispatch", "When a deposit lands, one job packet pulls together specs, site access rules and crew schedules."),
+                   ("Proactive milestone client updates", "Triggered updates go out at design sign-off, fabrication and installation day.")],
+       svg_title="How information flows through Small Space Innovations, from intake to client updates",
+       flow=[("Spec intake", "Dimensions, site, finishes"), ("Quote cadence", "Open quotes tracked to deposit"), ("Job dispatch", "One packet for the crews"), ("Client updates", "Triggered at each milestone")]),
+  dict(id="smith-long", no="02", client="Smith &amp; Long",
+       sector="Commercial and industrial electrical, mechanical, high-voltage and engineering services. A Canadian enterprise with over 90 years of work behind it",
+       rating="Black diamond: multi-division routing and pipeline", mark="black",
+       tags=["Inquiry switchboard", "Field relay", "Renewal tracker", "Tender cadence"],
+       base="Many divisions, long tender cycles, and upgrade chances spotted on site that never reached sales. Maintenance and compliance dates were tracked by hand.",
+       lift="Four quiet systems: a switchboard for inquiries, a field-to-sales relay, a renewal tracker, and set follow-up tracks for every tender.",
+       summit="Tighter coordination across divisions, expansion work captured from the field, predictable renewals, and no tender left to go cold.",
+       stamp="Summit reached",
+       mechanisms=[("Multi-division inquiry and tender switchboard", "Commercial, institutional and industrial tenders are sorted and sent to the right trade division and account executive."),
+                   ("Field-to-sales opportunity relay", "Technicians and project managers flag aging switchgear, lighting retrofits or mechanical upgrades onto the sales board in under 60 seconds."),
+                   ("Preventative compliance and renewal tracker", "Inspection windows, arc-flash audits and maintenance intervals are tracked, and the account lead is cued 60 days before renewal."),
+                   ("Multi-stakeholder tender cadence", "Set follow-up tracks across general contractors, property managers and facility directors keep six- and seven-figure bids moving.")],
+       svg_title="How information flows through Smith and Long, from inquiry to tender follow-up",
+       flow=[("Switchboard", "Inquiry to the right division"), ("Field relay", "On-site finds to the sales board"), ("Renewal tracker", "Lead cued 60 days ahead"), ("Tender cadence", "Every stakeholder followed")]),
+]
+TICKETS_HTML = "".join(trail_ticket(t) for t in TICKETS)
+
 examples = page_hero("In practice", "What this looks like in practice.",
     "Real client stories first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
   <section class="section section--soft section--tight" id="wastemind" aria-labelledby="wastemind-title">
@@ -483,27 +566,11 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
     </div>
   </section>
-  <section class="section section--tight" id="small-space" aria-labelledby="small-space-title">
-    <div class="wrap split">
-      <div>
-        <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span></div>
-        <h2 id="small-space-title" class="sr-only">Small Space Innovations<span class="dot">.</span></h2>
-        <p class="story-stat"><b>Small Space Innovations</b><span>a complete fresh start</span></p>
-      </div>
-      <div class="prose">
-        <p>Small Space Innovations is an upscale furniture brand for condos, with pieces made by a supplier in Italy and chosen for small spaces. It began as a furniture company for GTA condos.</p>
-        <p><strong>What we did.</strong> We gave it a complete fresh start.</p>
-        <ul class="story-list">
-          <li>Rebranded the company and redesigned the whole website.</li>
-          <li>Set up the domain.</li>
-          <li>Set up the business email, including email forwarding.</li>
-          <li>Built a tool that lets a customer take a photo of their room and see Small Space&rsquo;s products in it, to scale, with the exact measurements.</li>
-          <li>Replaced their quoting tool with a white-labelled one that carries their own brand.</li>
-          <li>Changed how they take payments, removing the third-party Stripe route.</li>
-          <li>Fine-tuned their accounting.</li>
-        </ul>
-      </div>
+  <section class="section section--tight trails" aria-labelledby="trail-title">
+    <div class="wrap">
+      <span class="rule"></span>
+      <h2 id="trail-title" class="trail__title">Trail reports</h2>
+      <div class="trail__list">{TICKETS_HTML}</div>
     </div>
   </section>
   <section class="section section--soft section--tight" id="duchess" aria-labelledby="duchess-title">
