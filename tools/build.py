@@ -237,16 +237,6 @@ home = f'''
     </div>
   </section>
 
-  <div class="lift-status" aria-label="Lift status">
-    <ul>
-      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
-      <li>Runs open <b>8 of 8</b></li>
-      <li>Conditions <b>Looking good</b></li>
-      <li>Weather <b>Bluebird</b></li>
-      <li class="lift-status__x">Next stop <b>Growth</b></li>
-    </ul>
-  </div>
-
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
       <p class="sx-label">The problem</p>
@@ -345,6 +335,17 @@ home = f'''
   </section>
 
   {task_band()}
+
+  <div class="lift-status lift-status--foot" aria-label="Mountain report">
+    <ul>
+      <li class="lift-status__h">Mountain report</li>
+      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
+      <li>Runs open <b>8 of 8</b></li>
+      <li>Conditions <b>Looking good</b></li>
+      <li>Weather <b>Bluebird</b></li>
+      <li class="lift-status__x">Next stop <b>Growth</b></li>
+    </ul>
+  </div>
 '''
 
 # ---------------------------------------------------------------- Services
