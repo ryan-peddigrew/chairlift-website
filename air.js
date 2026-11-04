@@ -137,7 +137,7 @@
       var header = document.querySelector('.site-header');
       var lift = document.createElement('div'); lift.className = 'air-lift'; lift.setAttribute('aria-hidden', 'true');
       lift.innerHTML = '<i class="air-lift__end air-lift__end--top"></i><i class="air-lift__end air-lift__end--base"></i>' +
-        '<div class="air-lift__car"><div class="air-lift__read"><span class="air-lift__num">1,200 m</span><span class="air-lift__lbl">Base</span></div>' +
+        '<div class="air-lift__car"><div class="air-lift__read"><span class="air-lift__num">1,200&thinsp;m</span><span class="air-lift__lbl">Base</span></div>' +
         '<div class="air-lift__chair"><svg viewBox="0 0 34 54" preserveAspectRatio="xMidYMin meet"><rect class="air-lift__grip" x="13.5" y="0" width="7" height="5" rx="1"/><path d="M17 5V13"/><path class="air-lift__seat" d="M8 13h18l3.5 5h-25z"/><rect x="5" y="18" width="24" height="28" rx="3.5"/><path d="M5 31H29"/></svg></div></div>';
       body.appendChild(lift);
       var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), num = lift.querySelector('.air-lift__num'), lbl = lift.querySelector('.air-lift__lbl');
@@ -158,7 +158,7 @@
         car.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
         lift.classList.toggle('air-lift--flip', y < 120);
         if (!reduce) chair.style.transform = 'rotate(' + Math.max(-14, Math.min(14, -d * 900)).toFixed(1) + 'deg)';
-        var m = Math.round(1200 + cur * 1650), s = m.toLocaleString('en-CA') + ' m';
+        var m = Math.round(1200 + cur * 1650), s = m.toLocaleString('en-CA') + '\u2009m';
         if (s !== shown) { shown = s; num.textContent = s; lbl.textContent = cur > .97 ? 'Summit' : cur < .03 ? 'Base' : 'Elevation'; lift.classList.toggle('air-lift--top', cur > .97); }
       }
       function onScroll() { target = progress(); if (!raf) raf = requestAnimationFrame(tick); }
