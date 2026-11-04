@@ -204,7 +204,7 @@ _PASS_CARD = ('<div class="pass{cls}"><svg class="pass__wire" viewBox="0 0 40 64
     '<div class="pass__row"><b class="pass__box">1</b><p>One task first.<br>Base to summit.</p></div>'
     '<div class="pass__code"><i></i><span>No. 0001</span></div></div>'
     '<p class="pass__foot">Base 1,200 m &middot; Summit 2,850 m</p></div>')
-PASS_FAN = '<div class="pass-fan" aria-hidden="true">' + "".join(_PASS_CARD.format(cls=c) for c in (" pass--c", " pass--l", " pass--r")) + '</div>'
+PASS_FAN = '<div class="pass-fan" aria-hidden="true">' + "".join(_PASS_CARD.format(cls=c) for c in (" pass--c",)) + '</div>'
 
 home = f'''
   <section class="pc-hero" aria-label="Chairlift">

@@ -15,12 +15,8 @@
 .pass-fan.in { transition: opacity .9s; }
 .pass { position: absolute; left: 50%; top: 48px; width: 252px; margin-left: -126px; background: #fff; color: #141B2A; border-radius: 6px; font-family: var(--px-sans);
   box-shadow: 0 30px 50px -22px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.25); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-.pass--c { transform: translateY(-14px); }
-.pass--l { transform: translateX(-96px) rotate(-9deg); }
-.pass--r { transform: translateX(96px) rotate(8deg); }
-.pass-fan--open .pass--l { transform: translateX(-118px) translateY(-4px) rotate(-12deg); }
-.pass-fan--open .pass--r { transform: translateX(118px) translateY(-4px) rotate(11deg); }
-.pass-fan--open .pass--c { transform: translateY(-26px); }
+.pass--c { transform: rotate(-4deg); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.pass-fan--open .pass--c { transform: translateY(-10px) rotate(0deg); }
 .pass__warn { margin: 0; border-radius: 6px 6px 0 0; padding: 6px 10px 6px; background: #3DFFC1; color: #141B2A; font-family: var(--px-mono); font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; text-align: center; border-bottom: 2px solid #141B2A; }
 .pass__photo { position: relative; height: 92px; background: #141B2A url(/images/alps-peaks-800.webp) center 35%/cover; }
 .pass__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,27,42,.75), rgba(20,27,42,0) 70%); }
@@ -47,7 +43,6 @@
 @media (max-width: 420px) {
   .pass-fan { height: 390px; }
   .pass { width: 220px; margin-left: -110px; }
-  .pass--l { transform: translateX(-62px) rotate(-8deg); } .pass--r { transform: translateX(62px) rotate(7deg); }
   .pass__big { font-size: 36px; } .pass__photo { height: 80px; }
 }
 @media (prefers-reduced-motion: reduce) { .pass { transition: none; } }
