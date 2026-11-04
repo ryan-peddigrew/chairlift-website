@@ -498,6 +498,54 @@ for i, e in enumerate(EXAMPLES):
 '''
 
 
+
+# ---------------------------------------------------------------- Full-width client stories
+def story_full(id_, name, line, intro, blocks, img, flip=False, w=1200):
+    body = "".join(blocks)
+    cls = "csf csf--flip" if flip else "csf"
+    return f"""  <section class="{cls}" id="{id_}" aria-labelledby="{id_}-title">
+    <picture class="csf__bg" aria-hidden="true"><source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+    <div class="csf__shade" aria-hidden="true"></div>
+    <div class="csf__wrap">
+      <div class="csf__head">
+        <span class="csf__tag">Client story</span>
+        <h2 id="{id_}-title" class="csf__name">{name}</h2>
+        <p class="csf__line">{line}</p>
+      </div>
+      <div class="csf__panel">
+        <p class="csf__intro">{intro}</p>
+{body}      </div>
+    </div>
+  </section>
+"""
+def _p(t): return f'        <p>{t}</p>\n'
+def _ul(items): return '        <ul class="csf__list">\n' + "".join(f'          <li>{i}</li>\n' for i in items) + '        </ul>\n'
+STORIES_HTML = "".join([
+  story_full("small-space", "Small Space Innovations", "From first inquiry to installation day",
+    "Small Space Innovations designs custom spaces, modular millwork and turnkey installations for commercial and multi-unit residential projects.",
+    [_p("<strong>The problem.</strong> Plenty of inquiries, but measurements were gathered by hand, quotes went out slowly, prospects went quiet, and details slipped between design, the workshop and the installers."),
+     _p("<strong>What we built.</strong>"),
+     _ul(["A guided intake, so clients send exact room dimensions, site details and finish choices before the first call.", "A timed follow-through on every open quote, so designers do not have to chase.", "One job packet, built the moment a deposit lands, with specs, site access rules and crew schedules.", "Updates sent to the client at design sign-off, fabrication and installation day."]),
+     _p("<strong>The result.</strong> Faster quote-to-deposit, no details dropped between design and the field, and hours of design time back each week.")],
+    "alps-peaks"),
+  story_full("smith-long", "Smith &amp; Long", "Many divisions, one front door",
+    "Smith &amp; Long is a Canadian enterprise with over 90 years of work in commercial and industrial electrical, mechanical, high-voltage and engineering services.",
+    [_p("<strong>The problem.</strong> Many divisions and long tender cycles. Upgrade chances spotted on site never reached sales, and maintenance and compliance dates were tracked by hand."),
+     _p("<strong>What we built.</strong>"),
+     _ul(["A switchboard that sends each inquiry and tender to the right division and account executive.", "A relay that lets technicians flag an upgrade onto the sales board in under 60 seconds.", "A tracker for inspection windows and maintenance dates, so the account lead is cued 60 days before renewal.", "Set follow-up tracks across contractors, property managers and facility directors, so large bids keep moving."]),
+     _p("<strong>The result.</strong> Tighter coordination across divisions, expansion work captured from the field, predictable renewals, and no tender left to go cold.")],
+    "alps-blue", flip=True),
+  story_full("danbury-trashers", "Danbury Trashers", "The official fan shop, online",
+    "Danbury Trashers runs an official online fan shop.",
+    [_p("<strong>What we did.</strong>"),
+     _ul(["Redesigned the website.", "Set up payments.", "Set up a dropshipping solution for fulfilling orders."])],
+    "hero-wind-poster"),
+  story_full("duchess", "Duchess Luxury Lashes", "Try the lashes on from a selfie",
+    "Duchess Luxury Lashes sells false eyelashes.",
+    [_p("<strong>What we did.</strong> We built a try-on tool for iPhone that also works in a web browser. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.")],
+    "hero-reel-1-poster", flip=True, w=800),
+])
+
 examples = page_hero("In practice", "What this looks like in practice.",
     "Real client stories first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
   <section class="section section--soft section--tight" id="wastemind" aria-labelledby="wastemind-title">
@@ -521,84 +569,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
     </div>
   </section>
-  <section class="section section--tight" id="small-space" aria-labelledby="small-space-title">
-    <div class="wrap split">
-      <div>
-        <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span></div>
-        <h2 id="small-space-title" class="sr-only">Small Space Innovations<span class="dot">.</span></h2>
-        <p class="story-stat"><b>Small Space Innovations</b><span>from first inquiry to installation day</span></p>
-      </div>
-      <div class="prose">
-        <p>Small Space Innovations designs custom spaces, modular millwork and turnkey installations for commercial and multi-unit residential projects.</p>
-        <p><strong>The problem.</strong> Plenty of inquiries, but measurements were gathered by hand, quotes went out slowly, prospects went quiet, and details slipped between design, the workshop and the installers.</p>
-        <p><strong>What we built.</strong></p>
-        <ul class="story-list">
-          <li>A guided intake, so clients send exact room dimensions, site details and finish choices before the first call.</li>
-          <li>A timed follow-through on every open quote, so designers do not have to chase.</li>
-          <li>One job packet, built the moment a deposit lands, with specs, site access rules and crew schedules.</li>
-          <li>Updates sent to the client at design sign-off, fabrication and installation day.</li>
-        </ul>
-        <p><strong>The result.</strong> Faster quote-to-deposit, no details dropped between design and the field, and hours of design time back each week.</p>
-      </div>
-    </div>
-  </section>
-  <section class="section section--soft section--tight" id="smith-long" aria-labelledby="smith-long-title">
-    <div class="wrap split">
-      <div>
-        <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span></div>
-        <h2 id="smith-long-title" class="sr-only">Smith &amp; Long<span class="dot">.</span></h2>
-        <p class="story-stat"><b>Smith &amp; Long</b><span>many divisions, one front door</span></p>
-      </div>
-      <div class="prose">
-        <p>Smith &amp; Long is a Canadian enterprise with over 90 years of work in commercial and industrial electrical, mechanical, high-voltage and engineering services.</p>
-        <p><strong>The problem.</strong> Many divisions and long tender cycles. Upgrade chances spotted on site never reached sales, and maintenance and compliance dates were tracked by hand.</p>
-        <p><strong>What we built.</strong></p>
-        <ul class="story-list">
-          <li>A switchboard that sends each inquiry and tender to the right division and account executive.</li>
-          <li>A relay that lets technicians flag an upgrade onto the sales board in under 60 seconds.</li>
-          <li>A tracker for inspection windows and maintenance dates, so the account lead is cued 60 days before renewal.</li>
-          <li>Set follow-up tracks across contractors, property managers and facility directors, so large bids keep moving.</li>
-        </ul>
-        <p><strong>The result.</strong> Tighter coordination across divisions, expansion work captured from the field, predictable renewals, and no tender left to go cold.</p>
-      </div>
-    </div>
-  </section>
-  <section class="section section--tight" id="danbury-trashers" aria-labelledby="danbury-trashers-title">
-    <div class="wrap split">
-      <div>
-        <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span></div>
-        <h2 id="danbury-trashers-title" class="sr-only">Danbury Trashers<span class="dot">.</span></h2>
-        <p class="story-stat"><b>Danbury Trashers</b><span>the official fan shop, online</span></p>
-      </div>
-      <div class="prose">
-        <p>Danbury Trashers runs an official online fan shop.</p>
-        <p><strong>What we did.</strong></p>
-        <ul class="story-list">
-          <li>Redesigned the website.</li>
-          <li>Set up payments.</li>
-          <li>Set up a dropshipping solution for fulfilling orders.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <section class="section section--soft section--tight" id="duchess" aria-labelledby="duchess-title">
-    <div class="wrap split">
-      <div>
-        <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span></div>
-        <h2 id="duchess-title" class="sr-only">Duchess Luxury Lashes.</h2>
-        <p class="story-stat"><b>Duchess Luxury Lashes</b><span>try the lashes on from a selfie</span></p>
-      </div>
-      <div class="prose">
-        <p>Duchess Luxury Lashes sells false eyelashes.</p>
-        <p><strong>What we did.</strong> We built a try-on tool for iPhone that also works in a web browser. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.</p>
-      </div>
-    </div>
-  </section>
-  <section class="section section--tight" aria-label="Illustrative examples">
+{STORIES_HTML}  <section class="section section--tight" aria-label="Illustrative examples">
     <div class="wrap">
 {"".join(example_block(e) for e in EXAMPLES)}    </div>
   </section>
