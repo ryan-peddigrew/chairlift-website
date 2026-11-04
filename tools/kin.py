@@ -62,33 +62,50 @@ def switchboard():
       </div>'''
 
 
-RUN_SHORT = ["Sales & pipeline", "Quoting & proposals", "Handoffs & onboarding", "Scheduling & dispatch", "Billing & back office", "Custom workflows"]
+# Trail map runs (Ryan, 4 Nov 2026): rated like a ski hill. Green = where we usually start, double black = the hardest builds.
+RUN_EXTRA = [
+    ("07", "Tool integrations", "Your tools, talking to each other.",
+     "We connect the systems you already pay for so details move between them without anyone re-typing: your CRM, inbox, calendars, accounting and forms.",
+     "Your CRM · accounting · calendars · forms · inbox"),
+    ("08", "White-label tools", "Tools with your name on them.",
+     "Client portals, quoting tools and internal dashboards built under your own brand, for your team or your customers.",
+     "Your brand · your domain · the tools you already use"),
+]
+RUN_SHORT = ["Sales & pipeline", "Quoting & proposals", "Handoffs & onboarding", "Scheduling & dispatch", "Billing & back office",
+             "Custom workflows", "Tool integrations", "White-label tools"]
+RUN_LEVEL = ["Easiest", "Easiest", "More involved", "More involved", "More involved", "Advanced", "Expert", "Expert"]
+LEGEND = (
+    ('<circle cx="12" cy="8" r="6" fill="#1F8A55"/>', "Easiest: where we usually start"),
+    ('<rect x="6" y="2" width="12" height="12" fill="#1E5FB4"/>', "More involved"),
+    ('<path d="M12 1l7 7-7 7-7-7z" fill="#141B2A"/>', "Advanced: custom builds"),
+    ('<path d="M6.5 1l6 7-6 7-6-7zM17.5 1l6 7-6 7-6-7z" fill="#141B2A"/>', "Expert: integrations and white-label"),
+    ('<path d="M1 8h22" stroke="#141B2A" stroke-width="6"/><path d="M1 8h22" stroke="#3DFFC1" stroke-width="3"/>', "Lifts A to D"),
+)
+
+
+def _run_card(i, n, name, h, d, t):
+    return (f'<p class="tm-card__k mono"><span data-mark></span>Run {n} &middot; {RUN_LEVEL[i]}</p><h3>{_e(name)}</h3>'
+            f'<p class="tm-card__lead">{h}</p><p>{d}</p><p class="tm-card__k mono">Built around: {_e(t)}</p>')
 
 
 def trailmap():
-    """Solutions as a trail map (Ryan, 4 Nov 2026): six runs on Chairlift Mountain, one per department. Drawn by trail.js."""
-    tpl = "".join(
-        f'''<template data-run="{i}" data-short="{_e(RUN_SHORT[i])}"><p class="tm-card__k mono">Run {n} &middot; {_e(name)}</p><h3>{h}</h3><p>{d}</p><p class="tm-card__k mono">Built around: {_e(t)}</p></template>'''
-        for i, (n, name, h, d, t) in enumerate(DEPTS))
-    first = DEPTS[0]
+    """Solutions as a trail map (Ryan, 4 Nov 2026): eight rated runs on Chairlift Mountain. Drawn by trail.js."""
+    runs = list(DEPTS) + RUN_EXTRA
+    tpl = "".join(f'<template data-run="{i}" data-short="{_e(RUN_SHORT[i])}">{_run_card(i, *r)}</template>' for i, r in enumerate(runs))
+    legend = "".join(f'<span><svg viewBox="0 0 24 16" aria-hidden="true">{svg}</svg>{label}</span>' for svg, label in LEGEND)
     return f'''<link rel="stylesheet" href="/kin.css"><script src="/kin.js" defer></script><script src="/trail.js" defer></script>
       <div class="tm-poster">
         <div class="tm-poster__top"><b>Chairlift Mountain</b><span class="mono">Trail map &middot; Winter season</span></div>
+        <ul class="tm-board mono" aria-label="Mountain report"><li>Runs open <b>8 of 8</b></li><li>Lifts open <b>4 of 4</b></li><li>Conditions <b>Bluebird</b></li><li>Grooming <b>Nightly</b></li></ul>
         <div class="tm-wrap"><div class="tm-map">
-          <picture><source type="image/webp" srcset="/images/trail-map-800.webp 800w, /images/trail-map-1200.webp 1200w" sizes="(max-width: 860px) 820px, 1180px"><img src="/images/trail-map.jpg" width="1200" height="825" loading="lazy" decoding="async" alt="Trail map of Chairlift Mountain: six runs, one for each department we work in, and four lifts from the base lodge to the summit"></picture>
+          <picture><source type="image/webp" srcset="/images/trail-map-800.webp 800w, /images/trail-map-1200.webp 1200w" sizes="(max-width: 860px) 820px, 1180px"><img src="/images/trail-map.jpg" width="1200" height="825" loading="lazy" decoding="async" alt="Trail map of Chairlift Mountain: eight runs rated from easiest to expert, one for each kind of work we do, and four lifts from the base lodge to the summit"></picture>
           <svg id="tm-svg" viewBox="0 0 1600 1100" aria-hidden="true"></svg>
         </div></div>
-        <div class="tm-legend mono">
-          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="#141B2A"/></svg>Where we usually start</span>
-          <span><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" fill="#141B2A"/></svg>Bigger fix</span>
-          <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l7 7-7 7-7-7z" fill="#141B2A"/></svg>Custom build</span>
-          <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h14" stroke="#141B2A" stroke-width="6"/><path d="M1 8h14" stroke="#3DFFC1" stroke-width="3"/></svg>Lifts A to D</span>
-        </div>
+        <div class="tm-legend mono">{legend}</div>
       </div>
       <div class="tm-list" id="tm-list" role="group" aria-label="Pick a run"></div>
-      <div class="tm-card" id="tm-card" aria-live="polite"><p class="tm-card__k mono">Run {first[0]} &middot; {_e(first[1])}</p><h3>{first[2]}</h3><p>{first[3]}</p><p class="tm-card__k mono">Built around: {_e(first[4])}</p></div>
+      <div class="tm-card" id="tm-card" aria-live="polite">{_run_card(0, *runs[0])}</div>
       {tpl}'''
-
 
 def shift_section():
     steps = "".join(

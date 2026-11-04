@@ -1014,3 +1014,13 @@ body main .section:not(.section--soft) :is(.card-label, .step-num) { color: var(
 body main .section--soft :is(.card-label, .step-num) { color: #2b3547; }
 body main .calc-form { color: var(--px-ink); }
 body main .calc-form .calc-task { color: var(--px-ink); }
+
+/* Type reset (Ryan, 2026-11-04): one family site-wide, Hanken Grotesk, the same font as the Chairlift wordmark in the
+   footer and email signature. Headlines bold in sentence case (only the first letter capitalised); small labels stay in caps mono. */
+:root { --px-display: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; --px-sans: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; --px-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; }
+.pc-story__tag, .sx-title, .pg-title, .hero--page h1.pg-title, .pc-h2, .patrol h2 { font-weight: 700 !important; letter-spacing: -.03em !important; }
+.pc-story__tag { font-size: clamp(30px, 3.4vw, 50px); line-height: 1.08; }
+.pc-lift, html body:has(.pc-hero, .hdr-px) .site-header .menu-btn, html body:has(.pc-hero, .hdr-px) .hdr-cta { font-weight: 600 !important; letter-spacing: .04em !important; }
+main h1, main h2, main h3, .bw__title, .tm-card h3, .tm-poster__top b { text-transform: none !important; }
+.bw__title, main h2 { letter-spacing: -.025em; }
+@media (max-width: 860px) { .pc-story__tag { font-size: 32px; } }
