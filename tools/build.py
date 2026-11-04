@@ -534,7 +534,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
       <div class="prose">
         <p>Duchess Luxury Lashes sells false eyelashes.</p>
-        <p><strong>What we did.</strong> We rebuilt their website and refreshed their logo. We also built a try-on tool that works on iPhone and in a web browser. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.</p>
+        <p><strong>What we did.</strong> We built a try-on tool for iPhone that also works in a web browser. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.</p>
       </div>
     </div>
   </section>
