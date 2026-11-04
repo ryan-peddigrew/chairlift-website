@@ -483,44 +483,26 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
     </div>
   </section>
-  <section class="section section--tight" id="start-a-company" aria-labelledby="start-title">
+  <section class="section section--tight" id="small-space" aria-labelledby="small-space-title">
     <div class="wrap split">
       <div>
         <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Illustrative example</span></div>
-        <h2 id="start-title" class="sr-only">Starting a company from scratch<span class="dot">.</span></h2>
-        <p class="story-stat"><b>A company, ready to open</b><span>everything set up in one place</span></p>
+        <div class="story-head"><span class="eyebrow">Client story</span></div>
+        <h2 id="small-space-title" class="sr-only">Small Space Innovations<span class="dot">.</span></h2>
+        <p class="story-stat"><b>Small Space Innovations</b><span>a complete fresh start</span></p>
       </div>
       <div class="prose">
-        <p>Say someone wants to start a furniture company for condos tomorrow and asks us to handle all of it. This is what we can set up. It is an illustrative example, not a client case study.</p>
-        <p><strong>The brand and the website.</strong></p>
+        <p>Small Space Innovations is an upscale furniture brand for condos, with pieces made by a supplier in Italy and chosen for small spaces. It began as a furniture company for GTA condos.</p>
+        <p><strong>What we did.</strong> We gave it a complete fresh start.</p>
         <ul class="story-list">
-          <li>Company name, logo and brand look.</li>
-          <li>A complete website, with the domain set up.</li>
-          <li>A tool that lets a customer take a photo of their room and see the products in it, to scale, with the exact measurements.</li>
+          <li>Rebranded the company and redesigned the whole website.</li>
+          <li>Set up the domain.</li>
+          <li>Set up the business email, including email forwarding.</li>
+          <li>Built a tool that lets a customer take a photo of their room and see Small Space&rsquo;s products in it, to scale, with the exact measurements.</li>
+          <li>Replaced their quoting tool with a white-labelled one that carries their own brand.</li>
+          <li>Changed how they take payments, removing the third-party Stripe route.</li>
+          <li>Fine-tuned their accounting.</li>
         </ul>
-        <p><strong>Email and customers.</strong></p>
-        <ul class="story-list">
-          <li>Business email, with forwarding and a shared inbox.</li>
-          <li>Booking and quoting on a white-labelled tool that carries their own brand.</li>
-          <li>Order updates and follow-ups, so customers always know what happens next.</li>
-        </ul>
-        <p><strong>Money and running it.</strong></p>
-        <ul class="story-list">
-          <li>Taking payments directly, without a middleman.</li>
-          <li>Accounting set up and fine-tuned from day one.</li>
-          <li>Supplier ordering and stock lists kept in one place.</li>
-        </ul>
-        <p><strong>Getting found and getting customers.</strong></p>
-        <ul class="story-list">
-          <li>A Google business listing and the social accounts, set up and matching the brand.</li>
-          <li>Pages for each condo neighbourhood, so local buyers find the right pieces.</li>
-          <li>A newsletter and customer photo reviews, with the customer&rsquo;s permission.</li>
-          <li>Pre-order drops, so one shipment from the supplier can be sold before it lands.</li>
-          <li>A referral offer for customers who send a friend.</li>
-        </ul>
-        <p><strong>What the owner gets.</strong> One place to see enquiries, quotes, orders and payments, and a company that already looks and works like an established one on day one.</p>
-        <p><strong>How we would measure it.</strong> Once it is running we track how long a quote takes to send, how many enquiries turn into orders, and how many customers use the room-photo tool before buying. Those are the numbers we would report, and we would only state them for a real client.</p>
       </div>
     </div>
   </section>
