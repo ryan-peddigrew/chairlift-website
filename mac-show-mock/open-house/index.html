@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- MOCK ONLY: remove the noindex line at launch -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Open House RSVP | MAC Show Systems</title>
+  <meta name="description" content="RSVP for the MAC Show Systems sound stage open house in Toronto.">
+  <link rel="canonical" href="https://macshowsystems.com/open-house/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MAC Show Systems">
+  <meta property="og:title" content="Open House RSVP | MAC Show Systems">
+  <meta property="og:description" content="RSVP for the MAC Show Systems sound stage open house in Toronto.">
+  <meta property="og:url" content="https://macshowsystems.com/open-house/">
+  <meta property="og:image" content="https://macshowsystems.com/images/hero.webp">
+  <meta property="og:locale" content="en_CA">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="font" href="../fonts/manrope-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<header class="nav is-scrolled" id="top">
+  <div class="nav__inner">
+    <a href="../" class="logo" aria-label="MAC Show Systems home"><img src="../images/mac-show-systems-logo.png" alt="MAC Show Systems" width="845" height="161"></a>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a href="../#about">Who We Are</a>
+      <a href="../services/">Services</a>
+      <a href="../#clients">Who We Work With</a>
+      <a href="../#work">Our Work</a>
+      <a href="../resources/">Resources</a>
+      <a href="../quote/" class="btn btn--light nav__cta">Get a Quote</a>
+    </nav>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section section--dark" style="padding-top:calc(var(--nav-h) + 20px)">
+    <div class="container contact">
+      <div class="contact__intro reveal">
+        <div class="title-box">
+          <p class="eyebrow"><b>RSVP</b>Open house</p>
+          <h1 style="font-size:clamp(34px,4.6vw,64px);text-transform:uppercase;line-height:1">You're invited</h1>
+        </div>
+        <p class="head__lead">Be one of the first through the door of the new MAC Show sound stage.</p>
+        <ul class="contact__details">
+          <li><span>When</span>[Date], 4 to 8 PM <!-- CONFIRM --></li>
+          <li><span>Where</span>[Shop address], Toronto <!-- CONFIRM --></li>
+          <li><span>What</span>Stage walk-throughs, vendor spotlights, live music, food and drinks</li>
+        </ul>
+      </div>
+      <form class="form reveal" id="quote-form" name="open-house-rsvp" method="POST" data-netlify="true" netlify-honeypot="company-website" novalidate>
+        <input type="hidden" name="form-name" value="open-house-rsvp">
+        <p class="hp" aria-hidden="true"><label>Leave this empty<input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+        <div class="form__row">
+          <label>Name *<input type="text" name="name" autocomplete="name" required></label>
+          <label>Company<input type="text" name="company" autocomplete="organization"></label>
+        </div>
+        <div class="form__row">
+          <label>Email *<input type="email" name="email" autocomplete="email" required></label>
+          <label>Guests with you<select name="plus"><option>Just me</option><option>+1</option><option>+2</option></select></label>
+        </div>
+        <label>What kind of events do you plan?
+          <select name="event_type"><option value="">Choose one</option><option>Corporate meetings and conferences</option><option>Festivals and outdoor events</option><option>Concerts and touring</option><option>Galas, weddings and private events</option><option>Venue / hotel</option><option>Agency / planner</option><option>Other</option></select>
+        </label>
+        <label>Your next event date (if known)<input type="date" name="next_event"></label>
+        <label class="check"><input type="checkbox" name="share_with_vendors" value="yes"><span>Share my details with the spotlight vendors</span></label>
+        <button type="submit" class="btn btn--light">RSVP</button>
+        <p class="form__note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="../" class="logo"><img src="../images/mac-show-systems-logo.png" alt="MAC Show Systems" width="845" height="161" loading="lazy"></a>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="../#about">Who We Are</a>
+      <a href="../services/">Services</a>
+      <a href="../sound-stage/">Sound Stage</a>
+      <a href="../resources/">Resources</a>
+      <a href="../quote/">Get a Quote</a>
+    </nav>
+  </div>
+  <div class="container footer__fine">
+    <p>&copy; MAC Show Systems · Toronto, Ontario</p>
+    <p>Mock-up for internal review.</p>
+  </div>
+</footer>
+
+<script src="../script.js" defer></script>
+</body>
+</html>

@@ -38,11 +38,26 @@
     items.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  // Visual-only quote form (no backend)
+  // Quote request form. Mock-up: checks required fields, then shows a note instead of sending.
+  // At launch: delete the preventDefault block below and Netlify Forms (data-netlify) will receive submissions.
   var form = document.getElementById('quote-form');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    form.querySelector('.form__note').textContent = 'Thanks. This is a mock-up, so nothing was sent.';
-    form.reset();
-  });
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = form.querySelector('.form__note');
+      var bad = [];
+      form.querySelectorAll('[required]').forEach(function (el) {
+        var ok = el.value.trim() !== '' && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
+        el.classList.toggle('is-invalid', !ok);
+        if (!ok) bad.push(el);
+      });
+      if (bad.length) {
+        note.textContent = 'Please fill in the fields marked with a star.';
+        bad[0].focus();
+        return;
+      }
+      note.textContent = 'Thanks. This is a mock-up, so nothing was sent.';
+      form.reset();
+    });
+  }
 })();

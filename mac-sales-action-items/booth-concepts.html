@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MAC Show booth concepts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+<style>
+:root{--bg:#f4f4f2;--card:#fff;--ink:#0b0b0b;--muted:#5e5e5e;--line:#d9d9d4;--led:#2a2a2a;--warm:#e9b44c;--font:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.5}
+.wrap{max-width:1280px;margin:0 auto;padding:40px max(16px,3vw) 64px}
+h1{font-size:clamp(30px,4vw,52px);text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin:0}
+.lead{max-width:70ch;color:var(--muted);margin:14px 0 0;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:32px}
+@media (max-width:1000px){.grid{grid-template-columns:1fr}}
+.c{background:var(--card);border-radius:14px;padding:22px;display:grid;gap:14px;align-content:start;border:1px solid var(--line)}
+.tag{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+h2{margin:0;font-size:24px;text-transform:uppercase;letter-spacing:-.01em}
+.plan{background:#fafaf8;border:1px solid var(--line);border-radius:10px;padding:10px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--font);font-size:11px;font-weight:700;fill:var(--ink)}
+svg .s{font-size:9px;font-weight:600;fill:var(--muted)}
+h3{margin:4px 0 0;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.meta b{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.note{margin-top:28px;font-size:14px;color:var(--muted);max-width:80ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Booth concepts</h1>
+  <p class="lead">Three ways to turn our own inventory into the booth, so the booth is the demo. Top-down plans, not to exact scale. Pick one per show based on the audience and the floor rules. Every concept uses gear we already own, which keeps build cost to graphics, show services and labour.</p>
+
+  <div class="grid">
+    <!-- A -->
+    <section class="c">
+      <span class="tag">Concept A · 10 x 20 ft</span>
+      <h2>The Stage</h2>
+      <div class="plan"><svg viewBox="0 0 400 230" role="img" aria-label="Top-down plan of a 10 by 20 foot booth set up as a mini stage">
+        <rect x="10" y="10" width="380" height="190" fill="#fff" stroke="#0b0b0b" stroke-width="2"/>
+        <rect x="40" y="18" width="320" height="16" fill="#2a2a2a"/><text x="200" y="30" text-anchor="middle" fill="#fff" style="fill:#fff">LED WALL</text>
+        <rect x="30" y="40" width="340" height="80" fill="#ededea" stroke="#0b0b0b"/><text x="200" y="84" text-anchor="middle">STAGE DECK 16 x 6 ft, 12 in high</text>
+        <rect x="18" y="22" width="12" height="100" fill="#0b0b0b"/><rect x="370" y="22" width="12" height="100" fill="#0b0b0b"/>
+        <text x="24" y="138" text-anchor="middle" class="s">ARRAY</text><text x="376" y="138" text-anchor="middle" class="s">ARRAY</text>
+        <line x1="30" y1="14" x2="370" y2="14" stroke="#0b0b0b" stroke-width="3" stroke-dasharray="6 4"/><text x="200" y="9" text-anchor="middle" class="s">TRUSS GOALPOST + LIGHTS</text>
+        <rect x="150" y="150" width="100" height="30" fill="#fff" stroke="#0b0b0b"/><text x="200" y="169" text-anchor="middle">DEMO CONSOLE</text>
+        <rect x="290" y="150" width="70" height="30" fill="#fff" stroke="#0b0b0b"/><text x="325" y="169" text-anchor="middle" class="s">COUNTER + QR</text>
+        <text x="200" y="222" text-anchor="middle" class="s">AISLE</text>
+      </svg></div>
+      <div class="meta"><b>Best for</b><span>Festival, BIA and concert audiences (OBIAA, FEO, Canadian Music Week)</span><b>Wow factor</b><span>High: lights, sound and video running all day</span><b>Watch for</b><span>Sound limits on the show floor, height limits, rigging rules</span></div>
+      <h3>Gear from inventory</h3>
+      <ul><li>Truss goalpost with moving heads and wash</li><li>LED wall with a loop of real shows</li><li>Two small line arrays (low level) and a demo console</li><li>Stage deck with skirting</li></ul>
+    </section>
+
+    <!-- B -->
+    <section class="c">
+      <span class="tag">Concept B · 10 x 10 ft</span>
+      <h2>The Control Room</h2>
+      <div class="plan"><svg viewBox="0 0 400 230" role="img" aria-label="Top-down plan of a 10 by 10 foot booth set up like a production control room">
+        <rect x="100" y="10" width="200" height="190" fill="#fff" stroke="#0b0b0b" stroke-width="2"/>
+        <rect x="110" y="18" width="180" height="16" fill="#2a2a2a"/><text x="200" y="30" text-anchor="middle" style="fill:#fff">LED WALL</text>
+        <rect x="110" y="40" width="20" height="60" fill="#ededea" stroke="#0b0b0b"/><rect x="270" y="40" width="20" height="60" fill="#ededea" stroke="#0b0b0b"/>
+        <text x="120" y="114" text-anchor="middle" class="s">DRAPE</text><text x="280" y="114" text-anchor="middle" class="s">DRAPE</text>
+        <rect x="130" y="130" width="140" height="34" fill="#0b0b0b"/><text x="200" y="151" text-anchor="middle" style="fill:#fff">CONSOLE AS COUNTER</text>
+        <circle cx="150" cy="182" r="7" fill="#fff" stroke="#0b0b0b"/><circle cx="200" cy="182" r="7" fill="#fff" stroke="#0b0b0b"/><circle cx="250" cy="182" r="7" fill="#fff" stroke="#0b0b0b"/>
+        <text x="200" y="222" text-anchor="middle" class="s">HEADPHONE DEMO STATIONS · AISLE</text>
+      </svg></div>
+      <div class="meta"><b>Best for</b><span>Quiet halls: planner and association shows (CMEExpo, CSAE, MPI)</span><b>Wow factor</b><span>Medium: hands-on, conversational</span><b>Watch for</b><span>Keep it uncluttered; one strong video loop</span></div>
+      <h3>Gear from inventory</h3>
+      <ul><li>LED wall or large display as the backdrop</li><li>Mixing or video switcher surface as the counter</li><li>Headphone stations to hear a show mix</li><li>Black drape sides, two LED uplights</li></ul>
+    </section>
+
+    <!-- C -->
+    <section class="c">
+      <span class="tag">Concept C · 10 x 20 ft corner</span>
+      <h2>The Venue Corner</h2>
+      <div class="plan"><svg viewBox="0 0 400 230" role="img" aria-label="Top-down plan of a 10 by 20 foot corner booth styled like a small ballroom">
+        <rect x="10" y="10" width="380" height="190" fill="#fff" stroke="#0b0b0b" stroke-width="2"/>
+        <path d="M14 14 Q30 22 46 14 Q62 22 78 14 Q94 22 110 14 Q126 22 142 14 Q158 22 174 14 Q190 22 206 14 Q222 22 238 14 Q254 22 270 14 Q286 22 302 14 Q318 22 334 14 Q350 22 366 14 Q378 22 386 14" fill="none" stroke="#0b0b0b"/>
+        <text x="200" y="38" text-anchor="middle" class="s">WHITE DRAPE WALL WITH UPLIGHTING</text>
+        <circle cx="30" cy="30" r="5" fill="#e9b44c"/><circle cx="110" cy="30" r="5" fill="#e9b44c"/><circle cx="200" cy="30" r="5" fill="#e9b44c"/><circle cx="290" cy="30" r="5" fill="#e9b44c"/><circle cx="370" cy="30" r="5" fill="#e9b44c"/>
+        <circle cx="120" cy="110" r="42" fill="#fff" stroke="#0b0b0b"/><text x="120" y="114" text-anchor="middle">ROUND OF 8</text>
+        <rect x="230" y="60" width="130" height="14" fill="#2a2a2a"/><text x="295" y="90" text-anchor="middle" class="s">SCREEN + PROJECTOR</text>
+        <rect x="240" y="120" width="40" height="28" fill="#ededea" stroke="#0b0b0b"/><text x="260" y="162" text-anchor="middle" class="s">LECTERN + MIC</text>
+        <rect x="300" y="160" width="80" height="30" fill="#fff" stroke="#0b0b0b"/><text x="340" y="179" text-anchor="middle" class="s">COUNTER + QR</text>
+        <text x="200" y="222" text-anchor="middle" class="s">OPEN ON TWO AISLES</text>
+      </svg></div>
+      <div class="meta"><b>Best for</b><span>Venues, hotels, galas and weddings (CMEExpo, bridal shows)</span><b>Wow factor</b><span>Medium-high: shows the room transformation buyers pay for</span><b>Watch for</b><span>Corner space costs more; book early</span></div>
+      <h3>Gear from inventory</h3>
+      <ul><li>Drape wall with colour-changing uplights</li><li>Screen, projector, lectern and speech mic</li><li>One dressed table (borrow decor from a vendor partner)</li><li>Small speaker pair for background music</li></ul>
+    </section>
+  </div>
+
+  <p class="note"><b>Same on all three:</b> MAC branding on the header or LED loop (waiting on the branding decision), a QR code to the quote form, a sign-up for the open house or sound stage tour, and every lead logged in HubSpot within 48 hours. Check each show's exhibitor manual for height limits, sound levels, rigging and who is allowed to set up AV (union or official contractor rules).</p>
+</div>
+</body>
+</html>

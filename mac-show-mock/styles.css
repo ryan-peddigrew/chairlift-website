@@ -366,3 +366,42 @@ body { background: var(--white); }
   .hero { min-height: 0; }
   .hero__content { padding: calc(var(--nav-h) + 28px) 0 56px; }
 }
+
+/* ---------- Sales resources links ---------- */
+.link-more { display: inline-flex; gap: 8px; margin-top: 18px; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+.link-more::after { content: "→"; letter-spacing: 0; }
+
+/* ---------- Quote request form (expanded) ---------- */
+.form__group { border: 0; margin: 0; padding: 0; display: grid; gap: 22px; }
+.form__group + .form__group { padding-top: 24px; border-top: 1px solid #DADAD6; }
+.form__group legend { padding: 0; margin-bottom: 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-l); }
+.form select { font: inherit; font-size: 16px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--black); background: transparent; border: 0; border-bottom: 1.5px solid var(--black); border-radius: 0; padding: 10px 0; }
+.form select:focus { outline: none; border-bottom-color: var(--grey-l); }
+.form input[type="file"] { font-size: 14px; letter-spacing: 0; text-transform: none; border: 0; padding: 8px 0; }
+.checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.form .check { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1.5px solid var(--black); border-radius: var(--r-sm); font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
+.form .check input { width: 18px; height: 18px; margin: 0; accent-color: var(--black); }
+.form .check:has(input:checked) { background: var(--black); color: var(--white); }
+.form .check:has(input:checked) input { accent-color: var(--white); }
+.form__fine { font-size: 14px; color: var(--grey-l); }
+.form .is-invalid { border-bottom-color: #B00020 !important; }
+.hp { position: absolute; left: -9999px; }
+@media (max-width: 600px) { .checks { grid-template-columns: 1fr; } }
+
+/* ---------- Resources page ---------- */
+.page-hero { background: var(--black); padding: calc(var(--nav-h) + 72px) 0 64px; }
+.page-hero h1 { font-size: clamp(38px, 6vw, 84px); text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.98; max-width: 14ch; }
+.page-hero p { margin-top: 22px; max-width: 560px; font-size: 18px; color: rgba(255,255,255,0.85); }
+.faq { display: grid; gap: 12px; }
+.faq details { background: var(--white); color: var(--black); border-radius: var(--r-sm); padding: 22px 26px; }
+.faq summary { cursor: pointer; font-weight: 800; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin-top: 12px; color: var(--grey-l); }
+.gloss { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.gloss div { background: var(--soft); border-radius: var(--r-sm); padding: 20px 22px; }
+.gloss dt { font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+.gloss dd { margin: 6px 0 0; color: var(--grey-l); }
+@media (max-width: 700px) { .gloss { grid-template-columns: 1fr; } }
+.form__row > label { min-width: 0; } .form select { width: 100%; min-width: 0; }
+.row__lead .ticks { margin-top: 18px; }
