@@ -497,6 +497,20 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
     </div>
   </section>
+  <section class="section section--soft section--tight" id="duchess" aria-labelledby="duchess-title">
+    <div class="wrap split">
+      <div>
+        <span class="rule"></span>
+        <div class="story-head"><span class="eyebrow">Client story</span></div>
+        <h2 id="duchess-title" class="sr-only">Duchess Luxury Lashes.</h2>
+        <p class="story-stat"><b>Duchess Luxury Lashes</b><span>try the lashes on from a selfie</span></p>
+      </div>
+      <div class="prose">
+        <p>Duchess Luxury Lashes sells false eyelashes.</p>
+        <p><strong>What we did.</strong> We rebuilt their website and refreshed their logo. We also built an app for iPhone that works in a web browser too. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.</p>
+      </div>
+    </div>
+  </section>
   <section class="section section--tight" aria-label="Illustrative examples">
     <div class="wrap">
 {"".join(example_block(e) for e in EXAMPLES)}    </div>
