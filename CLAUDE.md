@@ -30,7 +30,7 @@ Static site for Chairlift, hosted on Netlify. Every push to `main` publishes the
 - Never use "free call", "20-minute", "Sit back", "relax" or "cost/costs" in marketing copy. Buttons read "Start a conversation". Every "Start a conversation" button (hero, nav, closing banners) goes to the booking page (Ryan, 2026-10-26). The Daily Peddigrew paper is a hook only, never presented as a service: keep it as a small teaser low on the home page, never labelled "Just for fun" (Ryan, 2026-10-26 6:04 AM: no "Just for fun" label anywhere), never in the hero or next to the booking button (Ryan, 2026-10-26 4:01 AM).
 - Each idea lives in one place: don't repeat sections or sentences across pages. The full contact form appears only on /get-in-touch/; other pages end with the slim `cta_band`.
 - Phone: long card rows can swipe sideways (`cards--swipe`) to keep pages short. Booking link (cal.com/chairlift/5min) is on; LinkedIn stays off until Ryan sends it.
-- Font: Hanken Grotesk (headings ExtraBold 800, ALL CAPS). Email: Helvetica/Arial.
+- Font (Ryan, 2026-11-04, on preview): Hanken Grotesk everywhere, including the 3D hero wordmark (SemiBold 600, like the footer). Headlines bold 700 in sentence case, not all caps; small labels stay caps mono (IBM Plex Mono). Michroma and Archivo dropped. Email: Helvetica/Arial.
 - Content direction: problem first, technology second. Don't lead with "AI". No references to events, AV, trade shows or live production. Exception (Ryan, 2026-10-26): the Daily Peddigrew paper (/paper and the home sample) may mention events, since it's a personal briefing. No invented clients, stats or results. Say "established businesses", not "B2B".
 - Voice: professional and friendly. Don't assume a prospect's size, budget or competitors.
 

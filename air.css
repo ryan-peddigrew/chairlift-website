@@ -112,16 +112,18 @@
 .air-lift__chair { display: block; width: 46px; height: 46px; margin-left: 14.5px; }
 .air-lift__swing { transform-box: view-box; transform-origin: 27px 15px; will-change: transform; }
 .air-lift__chair svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .air-lift__chair svg .air-lift__seat { fill: currentColor; stroke: none; }
 .air-lift__chair svg .air-lift__grip { fill: currentColor; stroke: none; }
+.air-lift__chair svg .air-lift__fine { stroke-width: 1.1; }
+.air-lift__chair svg .air-lift__soft { fill: currentColor; fill-opacity: .28; }
 .air-lift--top .air-lift__lbl { opacity: 1; }
 .air-lift--flip .air-lift__read { bottom: auto; top: 100%; margin: 8px 0 0; flex-direction: column; }
 @media (max-width: 560px) {
   .air-lift { left: max(1px, env(safe-area-inset-left, 0px)); width: 18px; top: calc(var(--air-top, 84px) + 6px); bottom: 14px; }
   .air-lift::before { left: 9px; } .air-lift__end { left: 6px; }
   .air-lift__car { width: 18px; } .air-lift__chair { width: 26px; height: 26px; margin-left: 7.6px; }
-  .air-lift__chair svg * { stroke-width: 2.6; }
+  .air-lift__chair svg * { stroke-width: 2.3; } .air-lift__chair svg .air-lift__fine { stroke-width: 1.6; }
   .air-lift__num { font-size: 8px; } .air-lift__lbl { display: none; } .air-lift__read { left: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .air-lift__swing { transform: none !important; } }
