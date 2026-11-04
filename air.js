@@ -29,7 +29,8 @@
       }
       var sx = .5, sy = .5, sw = 0, ph = 0;
       (function loop(now) {
-        requestAnimationFrame(loop);
+        // phones: draw the contour lines once when they come into view, then stop, so nothing animates on battery
+        if (!vis || fine) requestAnimationFrame(loop);
         if (!vis) return;
         var r = cv.getBoundingClientRect(), tx, ty, tw;
         if (fine && now - pointer.t < 2500) { tx = (pointer.x - r.left) / W; ty = (pointer.y - r.top) / H; tw = 1; }
@@ -105,7 +106,7 @@
       sizeD(); window.addEventListener('resize', sizeD);
       if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { dvis = es[0].isIntersecting; }, { threshold: .05 }).observe(dc);
       (function loopD(now) {
-        requestAnimationFrame(loopD);
+        if (!dvis || fine) requestAnimationFrame(loopD);   // phones: one still frame, no constant redraw
         if (!dvis) return;
         var r = dc.getBoundingClientRect(), tx, ty;
         if (fine && now - pointer.t < 2500) { tx = pointer.x - r.left; ty = pointer.y - r.top; }
