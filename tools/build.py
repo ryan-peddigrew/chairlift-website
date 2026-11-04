@@ -226,7 +226,7 @@ home = f'''
       <div class="pc-story">
         <p class="pc-story__eyebrow" aria-hidden="true">Smoother operations.</p>
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
-        <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
+        <p class="pc-story__sub">We work with owners and operators to find the bottlenecks slowing the business down, then build and launch the fix, so you see the return right away.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
         <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="/how-it-works/">See how it works <i aria-hidden="true">→</i></a></p>
       </div>
@@ -259,7 +259,7 @@ home = f'''
       <div class="bw__top"><div class="bw__intro">
       <p class="bw__eyebrow">There&rsquo;s a better way</p>
       <h2 id="bw-title" class="bw__title">One task first.</h2>
-      <p class="bw__lead">Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. We set it up, refine it with the people who use it, and keep it running.</p>
+      <p class="bw__lead">We start with the bottleneck that pays back fastest and build the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. We launch it, refine it with the people who use it, and keep it running.</p>
       </div>
       {PASS_FAN}
       </div>
@@ -1016,7 +1016,7 @@ CASE_A = f'''
 home = home.replace('  <section class="pc-band"', CASE_A + '  <section class="pc-band"', 1)
 
 PAGES = [
-    ("index.html", "Chairlift | Less busywork. More business.", "Chairlift takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
+    ("index.html", "Chairlift | Less busywork. More business.", "Chairlift works with owners and operators to find operational bottlenecks, then builds and launches fixes that pay off right away, inside the tools you already use.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
