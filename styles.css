@@ -835,3 +835,5 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
   .try-formcard { padding: 22px 18px; }
 }
 .hero--page .try-formcard .btn-ink { background: var(--ink); color: #FFFFFF; }
+
+.story-list { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px; }
