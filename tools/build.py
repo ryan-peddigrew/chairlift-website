@@ -500,9 +500,13 @@ for i, e in enumerate(EXAMPLES):
 
 
 # ---------------------------------------------------------------- Full-width client stories
-def story_full(id_, name, line, intro, blocks, img, flip=False, w=1200):
-    body = "".join(blocks)
+def story_full(id_, name, line, stages, img, flip=False, w=1200):
     cls = "csf csf--flip" if flip else "csf"
+    cards = ""
+    for i, (label, text, chips) in enumerate(stages):
+        t = f'<p class="csf__txt">{text}</p>' if text else ""
+        c = ('<ul class="csf__chips">' + "".join(f"<li>{x}</li>" for x in chips) + "</ul>") if chips else ""
+        cards += f'<li class="csf__card" style="--i:{i}"><span class="csf__step">{label}</span>{t}{c}</li>'
     return f"""  <section class="{cls}" id="{id_}" aria-labelledby="{id_}-title">
     <picture class="csf__bg" aria-hidden="true"><source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
     <div class="csf__shade" aria-hidden="true"></div>
@@ -512,38 +516,29 @@ def story_full(id_, name, line, intro, blocks, img, flip=False, w=1200):
         <h2 id="{id_}-title" class="csf__name">{name}</h2>
         <p class="csf__line">{line}</p>
       </div>
-      <div class="csf__panel">
-        <p class="csf__intro">{intro}</p>
-{body}      </div>
+      <ol class="csf__flow">{cards}</ol>
     </div>
   </section>
 """
-def _p(t): return f'        <p>{t}</p>\n'
-def _ul(items): return '        <ul class="csf__list">\n' + "".join(f'          <li>{i}</li>\n' for i in items) + '        </ul>\n'
 STORIES_HTML = "".join([
-  story_full("small-space", "Small Space Innovations", "From first inquiry to installation day",
-    "Small Space Innovations designs custom spaces, modular millwork and turnkey installations for commercial and multi-unit residential projects.",
-    [_p("<strong>The problem.</strong> Plenty of inquiries, but measurements were gathered by hand, quotes went out slowly, prospects went quiet, and details slipped between design, the workshop and the installers."),
-     _p("<strong>What we built.</strong>"),
-     _ul(["A guided intake, so clients send exact room dimensions, site details and finish choices before the first call.", "A timed follow-through on every open quote, so designers do not have to chase.", "One job packet, built the moment a deposit lands, with specs, site access rules and crew schedules.", "Updates sent to the client at design sign-off, fabrication and installation day."]),
-     _p("<strong>The result.</strong> Faster quote-to-deposit, no details dropped between design and the field, and hours of design time back each week.")],
-    "alps-peaks"),
-  story_full("smith-long", "Smith &amp; Long", "Many divisions, one front door",
-    "Smith &amp; Long is a Canadian enterprise with over 90 years of work in commercial and industrial electrical, mechanical, high-voltage and engineering services.",
-    [_p("<strong>The problem.</strong> Many divisions and long tender cycles. Upgrade chances spotted on site never reached sales, and maintenance and compliance dates were tracked by hand."),
-     _p("<strong>What we built.</strong>"),
-     _ul(["A switchboard that sends each inquiry and tender to the right division and account executive.", "A relay that lets technicians flag an upgrade onto the sales board in under 60 seconds.", "A tracker for inspection windows and maintenance dates, so the account lead is cued 60 days before renewal.", "Set follow-up tracks across contractors, property managers and facility directors, so large bids keep moving."]),
-     _p("<strong>The result.</strong> Tighter coordination across divisions, expansion work captured from the field, predictable renewals, and no tender left to go cold.")],
-    "alps-blue", flip=True),
-  story_full("danbury-trashers", "Danbury Trashers", "The official fan shop, online",
-    "Danbury Trashers runs an official online fan shop.",
-    [_p("<strong>What we did.</strong>"),
-     _ul(["Redesigned the website.", "Set up payments.", "Set up a dropshipping solution for fulfilling orders."])],
-    "hero-wind-poster"),
-  story_full("duchess", "Duchess Luxury Lashes", "Try the lashes on from a selfie",
-    "Duchess Luxury Lashes sells false eyelashes.",
-    [_p("<strong>What we did.</strong> We built a try-on tool for iPhone that also works in a web browser. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.")],
-    "hero-reel-1-poster", flip=True, w=800),
+  story_full("small-space", "Small Space Innovations", "From first inquiry to installation day", [
+    ("Discovery", "Inquiries piled up. Measurements by hand, slow quotes, details lost between design, workshop and installers.", None),
+    ("Solution", None, ["Guided intake", "Quote follow-through", "Job packet", "Client updates"]),
+    ("Deployment", "Runs in the background. Quotes tracked to deposit. Job packet built the moment a deposit lands.", None),
+    ("Results", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
+  ], "alps-peaks"),
+  story_full("smith-long", "Smith &amp; Long", "Many divisions, one front door", [
+    ("Discovery", "Many divisions, long tenders. Field upgrades never reached sales. Renewals tracked by hand.", None),
+    ("Solution", None, ["Inquiry switchboard", "Field relay", "Renewal tracker", "Tender cadence"]),
+    ("Deployment", "Tenders go to the right division. Techs flag upgrades in under 60 seconds. Leads cued 60 days before renewal.", None),
+    ("Results", "Tighter coordination across divisions. Expansion work captured from the field. Predictable renewals. No tender left to go cold.", None),
+  ], "alps-blue", flip=True),
+  story_full("danbury-trashers", "Danbury Trashers", "The official fan shop, online", [
+    ("Solution", None, ["Website redesign", "Payments", "Dropshipping"]),
+  ], "hero-wind-poster"),
+  story_full("duchess", "Duchess Luxury Lashes", "Try the lashes on from a selfie", [
+    ("Solution", "A try-on tool for iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
+  ], "hero-reel-1-poster", flip=True, w=800),
 ])
 
 examples = page_hero("In practice", "What this looks like in practice.",

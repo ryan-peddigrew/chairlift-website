@@ -81,6 +81,16 @@
     });
   }
 
+  // Client stories: takeaway boxes slide in one after another
+  var cards = document.querySelectorAll('.csf__card');
+  if (cards.length && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(cards, function (c) { io.observe(c); });
+  }
+
   // Footer year
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
