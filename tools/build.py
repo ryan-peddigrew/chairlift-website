@@ -488,8 +488,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
         <span class="rule"></span>
         <div class="story-head"><span class="eyebrow">Client story</span><img class="story-logo" src="/images/wastemind-logo.png" width="528" height="216" alt="WasteMind logo"></div>
         <h2 id="wastemind-title" class="sr-only">WasteMind.</h2>
-        <p class="story-stat"><b>12 to 24 hours</b><span>down to about 1 hour</span></p>
-        <p class="story-note">Time to respond to quote requests, service calls and inquiries, roughly. More than 90% faster.</p>
+        <p class="story-stat"><b>Faster replies</b><span>to quote requests, service calls and inquiries</span></p>
       </div>
       <div class="prose">
         <p>WasteMind makes, installs and services multi-residential waste equipment for condos and apartment buildings across Ottawa, Toronto and the GTA.</p>
@@ -959,8 +958,8 @@ CASE_A = f'''
       <div class="cs-a">
         <div>
           <p class="sx-label">Client story &middot; WasteMind</p>
-          <p class="cs-big">12&ndash;24 hours<span>down to about 1.</span></p>
-          <p class="cs-txt">That is how long WasteMind took to reply to quote requests, service calls and inquiries. We work with their team every week, one tested fix at a time.</p>
+          <p class="cs-big">Faster replies.<span>Every week.</span></p>
+          <p class="cs-txt">Quote requests, service calls and inquiries at WasteMind get answered sooner. We work with their team every week, one tested fix at a time.</p>
           <p class="pc-links"><a class="pc-link" href="/examples/#wastemind">Read the WasteMind story <i class="ar" aria-hidden="true"></i></a></p>
         </div>
         <div class="cs-a__photos"><img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel"><img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue waste containers from WasteMind"></div>
