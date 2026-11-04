@@ -1,4 +1,4 @@
-/* Homepage "Mountain air" layer (2 Nov 2026): contour lines, season-pass ticket, drag-to-clear divider, dot grid. Our own code. See air.css. */
+/* Homepage "Mountain air" layer (2 Nov 2026): contour lines, lift tickets, drag-to-clear divider, dot grid. Our own code. See air.css. */
 (function () {
   'use strict';
   var body = document.body, root = document.documentElement;
@@ -59,18 +59,11 @@
       })(0);
     }
 
-    // the lift ticket (season pass) tilts a little and its sheen follows the pointer
-    var ticket = document.querySelector('.pass');
-    if (ticket && fine && !reduce) {
-      var near = ticket.closest('.pc-sec') || ticket.parentNode;
-      near.addEventListener('pointermove', function (e) {
-        var r = ticket.getBoundingClientRect(), dx = (e.clientX - (r.left + r.width / 2)) / (r.width * 1.2), dy = (e.clientY - (r.top + r.height / 2)) / (r.height * 1.2);
-        dx = Math.max(-1, Math.min(1, dx)); dy = Math.max(-1, Math.min(1, dy));
-        ticket.style.setProperty('--ty', (dx * 6).toFixed(1) + 'deg');
-        ticket.style.setProperty('--tx', (-dy * 5).toFixed(1) + 'deg');
-        ticket.style.setProperty('--sx', (50 - dx * 50).toFixed(0) + '%');
-      });
-      near.addEventListener('pointerleave', function () { ['--tx', '--ty', '--sx'].forEach(function (k) { ticket.style.removeProperty(k); }); });
+    // the lift tickets fan out a little further when the pointer is over them
+    var fan = document.querySelector('.pass-fan');
+    if (fan && fine && !reduce) {
+      fan.addEventListener('pointerenter', function () { fan.classList.add('pass-fan--open'); });
+      fan.addEventListener('pointerleave', function () { fan.classList.remove('pass-fan--open'); });
     }
 
     // drag-to-clear divider on The shift

@@ -196,6 +196,16 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
+# Lift ticket (Ryan, 4 Nov 2026): a classic printed ski pass, three fanned like a stack at the ticket window. Our own design and photo, Chairlift colours.
+_PASS_CARD = ('<div class="pass{cls}"><p class="pass__warn">Admit one team</p>'
+    '<div class="pass__photo"><span class="pass__brand">' + LOGO.format(s=30, stroke=' stroke="rgba(255,255,255,0.35)" stroke-width="2"') + '<b>Chairlift</b></span></div>'
+    '<p class="pass__bar"><span>usechairlift.com</span><span>Lift ticket</span></p>'
+    '<div class="pass__body"><p class="pass__big">One team</p>'
+    '<div class="pass__row"><b class="pass__box">1</b><p>One task first.<br>Base to summit.</p></div>'
+    '<div class="pass__code"><i></i><span>No. 0001</span></div></div>'
+    '<p class="pass__foot">Base 1,200 m &middot; Summit 2,850 m</p></div>')
+PASS_FAN = '<div class="pass-fan" aria-hidden="true">' + "".join(_PASS_CARD.format(cls=c) for c in (" pass--c", " pass--l", " pass--r")) + '</div>'
+
 home = f'''
   <section class="pc-hero" aria-label="Chairlift">
     <div class="pc-pin">
@@ -237,8 +247,10 @@ home = f'''
         <p>We start with one task. Our own team of real people sets it up, refines it with the people who use it, and keeps it running. Your people get their best hours back for clients and growth.</p>
       </div>
       <figure class="retro retro--color retro--wide" aria-hidden="true"><img src="/images/retro/lodge-01.jpg" alt="" width="1600" height="1016" loading="lazy" decoding="async"><figcaption>Double chair &middot; Base to summit</figcaption></figure>
-      <div class="pass" aria-hidden="true"><i class="pass__foil"></i><div class="pass__head"><span class="pass__brand">{LOGO.format(s=26, stroke=' stroke="rgba(255,255,255,0.3)" stroke-width="2"')}<b>Chairlift</b></span><span class="pass__kind">Lift ticket</span></div><p class="pass__big">One task first<i>.</i></p><div class="pass__route"><span><small>Base</small>1,200 m</span><i class="pass__line"></i><span><small>Summit</small>2,850 m</span></div><div class="pass__foot"><span>Admit one team</span><span>No. 0001</span></div></div>
+      <div class="pass-row">
+      {PASS_FAN}
       <p class="pc-links"><a class="pc-link" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
+      </div>
     </div>
   </section>
 
