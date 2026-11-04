@@ -349,7 +349,7 @@ services = page_hero("What we do", "Built around how you work.",
     "We find the task slowing your team down and fix it with the simplest thing that works, inside the tools you already have. One problem, one tested fix, by our own team.") + f'''
   <section class="section section--tight" aria-label="What we do">
     <div class="wrap">
-      <div class="stages--swipe">
+      <div class="stages--swipe" tabindex="0" role="region" aria-label="What we do, swipe sideways for more">
 {svc_blocks}      </div>
     </div>
   </section>
@@ -468,8 +468,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
         <span class="rule"></span>
         <div class="story-head"><span class="eyebrow">Client story</span><img class="story-logo" src="/images/wastemind-logo.png" width="528" height="216" alt="WasteMind logo"></div>
         <h2 id="wastemind-title" class="sr-only">WasteMind.</h2>
-        <p class="story-stat"><b>12 to 24 hours</b><span>down to about 1 hour</span></p>
-        <p class="story-note">Time to respond to quote requests, service calls and inquiries, roughly. More than 90% faster.</p>
+        <p class="story-stat"><b>Faster replies</b><span>to quote requests, service calls and inquiries</span></p>
       </div>
       <div class="prose">
         <p>WasteMind makes, installs and services multi-residential waste equipment for condos and apartment buildings across Ottawa, Toronto and the GTA.</p>
@@ -751,19 +750,48 @@ def industry_page(i):
 STATS_PRIVACY = """      <h2>Visit statistics</h2>
       <p>We use Umami, a privacy-friendly tool, to count visits and see which pages help. It sets no cookies, doesn't follow you around the web, and doesn't collect personal information.</p>
 """ if UMAMI_ID else ""
-privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated October 28, 2026.") + f'''
+privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and only about what we actually do. Last updated November 4, 2026.") + f'''
   <section class="section section--soft section--tight">
     <div class="wrap prose">
       <h2>What we collect</h2>
       <p>Only what you choose to share with us: what you type into our contact form, the emails you send us, and the booking details you enter when you schedule a conversation through Cal.com.</p>
 {STATS_PRIVACY}      <h2>How we use it</h2>
       <p>Only to respond to you and to schedule conversations. We don't sell your information, and we don't share it for marketing.</p>
+      <h2>Who helps us run this site</h2>
+      <p>Netlify hosts this website and passes form messages to our inbox. Cal.com handles bookings. Google Fonts supplies the lettering. Umami counts visits. Each one gets only what it needs to do that job.</p>
+      <h2>How long we keep it</h2>
+      <p>Only as long as we need it to reply to you or to work together. Ask us and we'll delete it sooner.</p>
+      <h2>How we protect it</h2>
+      <p>This site only loads over an encrypted connection (HTTPS), blocks content from unapproved sources, and filters spam out of every form.</p>
       <h2>Client information</h2>
       <p>When we work with a client's business information, we use only what the client approves, and only for that project.</p>
       <h2>Your choices</h2>
-      <p>To ask about your information or to have it deleted, email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+      <p>We follow Canada's federal privacy law (PIPEDA). To see the information we hold about you, correct it or have it deleted, email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
       <h2>Changes</h2>
-      <p>If this page changes, we'll update the "Last updated" date at the top.</p>
+      <p>If this page changes, we'll update the "Last updated" date at the top. Using this site is also covered by our <a href="/terms/">terms of use</a>.</p>
+    </div>
+  </section>
+'''
+
+terms = page_hero("Terms", "Terms of use.", "Plain English, and only about this website. Last updated November 4, 2026.") + f'''
+  <section class="section section--soft section--tight">
+    <div class="wrap prose">
+      <h2>Using this site</h2>
+      <p>This website tells you about Chairlift and how to reach us. You're welcome to read it, share links to it and get in touch through it.</p>
+      <h2>Our content</h2>
+      <p>The words, logo, photos and design on this site belong to Chairlift or are used with permission. Please ask before you copy or reuse them.</p>
+      <h2>General information only</h2>
+      <p>We keep this site accurate, but it's general information, not advice for your specific business. Any work we do together is set out in a written agreement, and that agreement is what counts.</p>
+      <h2>Other websites</h2>
+      <p>Some links go to other services, like Cal.com for booking. Their own terms and privacy policies apply there, and we're not responsible for their content.</p>
+      <h2>Please don't misuse the site</h2>
+      <p>Don't try to break into it, overload it, or send spam or harmful files through its forms.</p>
+      <h2>Limits</h2>
+      <p>To the extent the law allows, Chairlift isn't liable for any loss that comes from using this website.</p>
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of Ontario and the federal laws of Canada that apply there.</p>
+      <h2>Questions</h2>
+      <p>Email <a href="mailto:{EMAIL}">{EMAIL}</a>. How we handle your information is in our <a href="/privacy/">privacy policy</a>.</p>
     </div>
   </section>
 '''
@@ -939,8 +967,8 @@ CASE_A = f'''
       <div class="cs-a">
         <div>
           <p class="sx-label">Client story &middot; WasteMind</p>
-          <p class="cs-big">12&ndash;24 hours<span>down to about 1.</span></p>
-          <p class="cs-txt">That is how long WasteMind took to reply to quote requests, service calls and inquiries. We work with their team every week, one tested fix at a time.</p>
+          <p class="cs-big">Faster replies.<span>Every week.</span></p>
+          <p class="cs-txt">Quote requests, service calls and inquiries at WasteMind get answered sooner. We work with their team every week, one tested fix at a time.</p>
           <p class="pc-links"><a class="pc-link" href="/examples/#wastemind">Read the WasteMind story <i class="ar" aria-hidden="true"></i></a></p>
         </div>
         <div class="cs-a__photos"><img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel"><img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue waste containers from WasteMind"></div>
@@ -968,6 +996,7 @@ PAGES = [
     (f"who-we-help/{i['slug']}/index.html", i["name"], i["lede"].replace('\u201c','').replace('\u201d','').replace('"',''), f"/who-we-help/{i['slug']}/", "industries", industry_page(i), False) for i in INDUSTRIES
 ] + [
     ("privacy/index.html", "Privacy policy", "How Chairlift handles the information you send through this website.", "/privacy/", None, privacy, False),
+    ("terms/index.html", "Terms of use", "The plain-English terms for using the Chairlift website.", "/terms/", None, terms, False),
     ("thanks/index.html", "Thanks", "Your message has been sent to Chairlift.", "/thanks/", None, thanks, True),
     ("404.html", "Page not found", "This page could not be found.", "/404.html", None, notfound, True),
 ]
@@ -988,3 +1017,53 @@ with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
 with open(os.path.join(OUT, "robots.txt"), "w") as f:
     f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 print("wrote sitemap.xml robots.txt")
+
+# ---- security headers (Netlify reads _headers). The CSP allows only our own files plus
+# the few outside services the site uses, and pins every inline script by its hash, so the
+# list rebuilds itself whenever an inline script changes.
+import hashlib, base64, glob as _glob
+_inline = set()
+for _p in _glob.glob(os.path.join(OUT, "**", "*.html"), recursive=True):
+    if os.sep + "vendor" + os.sep in _p or os.sep + "brand" + os.sep in _p:
+        continue
+    for _m in re.finditer(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", open(_p).read(), re.S):
+        if _m.group(1).strip():
+            _inline.add("'sha256-" + base64.b64encode(hashlib.sha256(_m.group(1).encode()).digest()).decode() + "'")
+CSP = "; ".join([
+    "default-src 'self'",
+    "script-src 'self' " + " ".join(sorted(_inline)) + " https://cloud.umami.is https://app.cal.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' data: https://fonts.gstatic.com",
+    "img-src 'self' data: blob: https:",
+    "media-src 'self' blob:",
+    "connect-src 'self' https://cloud.umami.is https://gateway.umami.is https://api-gateway.umami.dev https://app.cal.com https://api.cal.com https://fonts.googleapis.com https://fonts.gstatic.com",
+    "frame-src https://app.cal.com https://cal.com",
+    "worker-src 'self' blob:",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "upgrade-insecure-requests",
+])
+with open(os.path.join(OUT, "_headers"), "w") as f:
+    f.write(f"""# Generated by tools/build.py. Do not edit by hand.
+/*
+  Content-Security-Policy: {CSP}
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+/vendor/*
+  Cache-Control: public, max-age=2592000
+
+/images/*
+  Cache-Control: public, max-age=604800
+""")
+_exp = (_dt.date.today() + _dt.timedelta(days=365)).isoformat()
+os.makedirs(os.path.join(OUT, ".well-known"), exist_ok=True)
+with open(os.path.join(OUT, ".well-known", "security.txt"), "w") as f:
+    f.write(f"Contact: mailto:{EMAIL}\nExpires: {_exp}T05:00:00.000Z\nPreferred-Languages: en\nCanonical: {SITE}/.well-known/security.txt\n")
+print("wrote _headers .well-known/security.txt")

@@ -34,6 +34,11 @@ UMAMI_ID = "1c2d08fe-7f1e-4640-8adb-77bf8559328b"
 ANALYTICS = f'<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}"></script>' if UMAMI_ID else ""
 
 
+# Tells search engines who the business is (name, site, logo, contact). Home page only.
+ORG_LD = f'''
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"Chairlift","url":"{SITE}/","logo":"{SITE}/icon-512.png","email":"{EMAIL}"}}</script>'''
+
+
 def head(title, desc, path, noindex=False):
     full = f"{title}" if title.startswith("Chairlift") else f"{title} · Chairlift"
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
@@ -60,7 +65,9 @@ def head(title, desc, path, noindex=False):
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITE}/og-card-2.jpg">
 <meta name="theme-color" content="#141B2A">
-<link rel="icon" href="{FAVICON}">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">{ORG_LD if path == "/" else ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
@@ -105,6 +112,7 @@ FOOTER_LINKS = [
     ("/who-we-are/", "Who we are"),
     ("/get-in-touch/", "Get in touch"),
     ("/privacy/", "Privacy"),
+    ("/terms/", "Terms"),
 ]
 
 
