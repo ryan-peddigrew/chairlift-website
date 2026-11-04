@@ -197,7 +197,7 @@ PAPER_IMG = f'''<figure class="paper-shot">
       </figure>'''
 
 # Lift ticket (Ryan, 4 Nov 2026): a classic printed ski pass, three fanned like a stack at the ticket window. Our own design and photo, Chairlift colours.
-_PASS_CARD = ('<div class="pass{cls}"><p class="pass__warn">Admit one team</p>'
+_PASS_CARD = ('<div class="pass{cls}"><svg class="pass__wire" viewBox="0 0 40 64"><path d="M11 58V22C11 8 15 3 20 3s9 5 9 19v36"/><path class="pass__wire-hi" d="M11 58V22C11 8 15 3 20 3s9 5 9 19v36"/></svg><i class="pass__hole pass__hole--l"></i><i class="pass__hole pass__hole--r"></i><p class="pass__warn">Admit one team</p>'
     '<div class="pass__photo"><span class="pass__brand">' + LOGO.format(s=30, stroke=' stroke="rgba(255,255,255,0.35)" stroke-width="2"') + '<b>Chairlift</b></span></div>'
     '<p class="pass__bar"><span>usechairlift.com</span><span>Lift ticket</span></p>'
     '<div class="pass__body"><p class="pass__big">One team</p>'

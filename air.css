@@ -11,9 +11,9 @@
 .pass-row { display: grid; gap: 40px; margin-top: 48px; }
 .pass-row .pc-links { margin-top: 0; }
 @media (min-width: 900px) { .pass-row { grid-template-columns: 1fr minmax(0, 520px); align-items: center; } .pass-row .pass-fan { order: 2; } }
-.pass-fan { position: relative; width: min(100%, 470px); height: 400px; margin: 0 auto; }
+.pass-fan { position: relative; width: min(100%, 470px); height: 430px; margin: 0 auto; }
 .pass-fan.in { transition: opacity .9s; }
-.pass { position: absolute; left: 50%; top: 18px; width: 252px; margin-left: -126px; background: #fff; color: #141B2A; border-radius: 6px; overflow: hidden; font-family: var(--px-sans);
+.pass { position: absolute; left: 50%; top: 48px; width: 252px; margin-left: -126px; background: #fff; color: #141B2A; border-radius: 6px; font-family: var(--px-sans);
   box-shadow: 0 30px 50px -22px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.25); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
 .pass--c { transform: translateY(-14px); }
 .pass--l { transform: translateX(-96px) rotate(-9deg); }
@@ -21,7 +21,7 @@
 .pass-fan--open .pass--l { transform: translateX(-118px) translateY(-4px) rotate(-12deg); }
 .pass-fan--open .pass--r { transform: translateX(118px) translateY(-4px) rotate(11deg); }
 .pass-fan--open .pass--c { transform: translateY(-26px); }
-.pass__warn { margin: 0; padding: 6px 10px; background: #3DFFC1; color: #141B2A; font-family: var(--px-mono); font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; text-align: center; border-bottom: 2px solid #141B2A; }
+.pass__warn { margin: 0; border-radius: 6px 6px 0 0; padding: 6px 10px 6px; background: #3DFFC1; color: #141B2A; font-family: var(--px-mono); font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; text-align: center; border-bottom: 2px solid #141B2A; }
 .pass__photo { position: relative; height: 92px; background: #141B2A url(/images/alps-peaks-800.webp) center 35%/cover; }
 .pass__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,27,42,.75), rgba(20,27,42,0) 70%); }
 .pass__brand { position: absolute; left: 12px; bottom: 12px; z-index: 1; display: inline-flex; align-items: center; gap: 8px; color: #fff; font-family: "Hanken Grotesk", var(--px-sans); font-weight: 600; font-size: 21px; letter-spacing: -.01em; }
@@ -36,9 +36,16 @@
 .pass__code { display: grid; justify-items: center; gap: 3px; padding-top: 4px; }
 .pass__code i { display: block; width: 78%; height: 30px; background: repeating-linear-gradient(90deg, #141B2A 0 2px, transparent 2px 4px, #141B2A 4px 5px, transparent 5px 8px, #141B2A 8px 11px, transparent 11px 12px, #141B2A 12px 13px, transparent 13px 16px); }
 .pass__code span { font-family: var(--px-mono); font-size: 9px; letter-spacing: .2em; }
-.pass__foot { margin: 0; padding: 6px 10px; background: #141B2A; color: #fff; font-family: var(--px-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; text-align: center; }
+.pass__foot { margin: 0; border-radius: 0 0 6px 6px; padding: 6px 10px; background: #141B2A; color: #fff; font-family: var(--px-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; text-align: center; }
+/* the wire wicket: a bent steel loop through two punched holes at the top, like a ticket clipped to a jacket zipper */
+.pass__wire { position: absolute; left: 50%; top: -44px; z-index: 2; width: 40px; height: 64px; margin-left: -20px; overflow: visible; pointer-events: none; }
+.pass__wire path { fill: none; stroke: #8A94A6; stroke-width: 2.6; stroke-linecap: round; }
+.pass__wire .pass__wire-hi { stroke: #E4E9F1; stroke-width: 1; transform: translate(-.6px, -.4px); }
+.pass__hole { position: absolute; top: 10px; z-index: 1; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: #0B101C; box-shadow: inset 0 1px 1px rgba(0,0,0,.6); }
+.pass__hole--l { left: calc(50% - 5.5px); } .pass__hole--r { left: calc(50% + 5.5px); }
+.pass__warn { padding-top: 20px; }
 @media (max-width: 420px) {
-  .pass-fan { height: 360px; }
+  .pass-fan { height: 390px; }
   .pass { width: 220px; margin-left: -110px; }
   .pass--l { transform: translateX(-62px) rotate(-8deg); } .pass--r { transform: translateX(62px) rotate(7deg); }
   .pass__big { font-size: 36px; } .pass__photo { height: 80px; }
