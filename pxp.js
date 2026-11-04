@@ -4,6 +4,7 @@
   try { var nv = (location.search.match(/nav=([a-d])/) || [])[1] || sessionStorage.getItem('pxnav'); if (nv) { document.documentElement.classList.add('nav-' + nv); sessionStorage.setItem('pxnav', nv); } } catch (e) {}
   var hero = document.querySelector('.pc-hero');
   var band = document.querySelector('.pc-band');
+  var bands = [].slice.call(document.querySelectorAll('.pc-band'));
   var root = document.documentElement;
   var logo = hero && hero.querySelector('.pc-logo');
   var story = hero && hero.querySelector('.pc-story');
@@ -185,6 +186,10 @@
       var bp = clamp((vh - r.top) / (r.height + vh));
       root.style.setProperty('--bp', bp.toFixed(3));
     }
+    bands.forEach(function (b) {   // every band keeps its own progress, so several can sit on one page
+      var br = b.getBoundingClientRect();
+      b.style.setProperty('--bp', clamp((vh - br.top) / (br.height + vh)).toFixed(3));
+    });
   }
   // intro screen (?intro=1): page locked on the spinning logo; the first scroll, touch, key or mouse move opens the homepage
   var intro = 0;

@@ -839,33 +839,3 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 
 .story-list { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px; }
 .story-list + p { margin-top: 16px; }
-
-/* ---- Full-width client stories: photo background, Ink overlay, quick-takeaway flow ---- */
-.csf { position: relative; isolation: isolate; overflow: hidden; background: #141B2A; color: #fff; padding: 96px 0; }
-.csf__bg, .csf__bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-.csf__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(20,27,42,.55) 0%, rgba(20,27,42,.82) 100%); }
-.csf__wrap { width: min(1200px, 100% - 48px); margin: 0 auto; display: grid; gap: 40px; }
-.csf__head { display: grid; gap: 14px; }
-.csf--flip .csf__head { text-align: right; justify-items: end; }
-.csf__tag { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.85); border-top: 4px solid #fff; padding-top: 12px; width: fit-content; }
-.csf .csf__name { margin: 0; font-size: clamp(40px, 7vw, 96px); line-height: .94; letter-spacing: -.02em; text-transform: uppercase; color: #fff; text-wrap: balance; opacity: 1 !important; transform: none !important; }
-.csf__line { margin: 0; font-size: clamp(18px, 2.2vw, 24px); color: rgba(255,255,255,.9); }
-.csf__flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; counter-reset: step; }
-.csf__card { position: relative; display: grid; gap: 12px; align-content: start; background: rgba(20,27,42,.72); border: 1px solid rgba(255,255,255,.24); border-radius: 18px; padding: 22px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: transform .25s ease, border-color .25s ease; }
-.csf__card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.6); }
-.csf__card::after { content: "\2192"; position: absolute; top: 50%; right: -17px; width: 16px; margin-top: -12px; font-size: 20px; line-height: 1; color: #fff; z-index: 2; }
-.csf__card:last-child::after { content: none; }
-.csf__step { font-size: 14px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff; border-bottom: 2px solid rgba(255,255,255,.5); padding-bottom: 10px; }
-.csf__txt { margin: 0; color: #fff; font-size: 17px; line-height: 1.4; }
-.csf__chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.csf__chips li { border: 1.5px solid rgba(255,255,255,.7); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 600; color: #fff; }
-.js .csf__card { opacity: 0; transform: translateY(18px); }
-.js .csf__card.is-in { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease, border-color .25s ease; transition-delay: calc(var(--i) * 110ms); }
-.js .csf__card.is-in:hover { transform: translateY(-4px); transition-delay: 0ms; }
-@media (prefers-reduced-motion: reduce) { .js .csf__card { opacity: 1; transform: none; } .csf__card { transition: none; } }
-@media (max-width: 860px) {
-  .csf { padding: 64px 0; }
-  .csf--flip .csf__head { text-align: left; justify-items: start; }
-  .csf__flow { grid-template-columns: minmax(0, 1fr); gap: 22px; }
-  .csf__card::after { content: "\2193"; top: auto; bottom: -22px; right: auto; left: 28px; margin: 0; width: auto; }
-}

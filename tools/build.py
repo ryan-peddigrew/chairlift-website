@@ -499,46 +499,56 @@ for i, e in enumerate(EXAMPLES):
 
 
 
-# ---------------------------------------------------------------- Full-width client stories
-def story_full(id_, name, line, stages, img, flip=False, w=1200):
-    cls = "csf csf--flip" if flip else "csf"
+# ---------------------------------------------------------------- Client stories (homepage band + stops)
+TRAIL = ["circle", "square", "diamond", "diamond"]
+def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200):
+    """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
+    name = f"{name_a} {name_b}"
     cards = ""
-    for i, (label, text, chips) in enumerate(stages):
-        t = f'<p class="csf__txt">{text}</p>' if text else ""
-        c = ('<ul class="csf__chips">' + "".join(f"<li>{x}</li>" for x in chips) + "</ul>") if chips else ""
-        cards += f'<li class="csf__card" style="--i:{i}"><span class="csf__step">{label}</span>{t}{c}</li>'
-    return f"""  <section class="{cls}" id="{id_}" aria-labelledby="{id_}-title">
-    <picture class="csf__bg" aria-hidden="true"><source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
-    <div class="csf__shade" aria-hidden="true"></div>
-    <div class="csf__wrap">
-      <div class="csf__head">
-        <span class="csf__tag">Client story</span>
-        <h2 id="{id_}-title" class="csf__name">{name}</h2>
-        <p class="csf__line">{line}</p>
-      </div>
-      <ol class="csf__flow">{cards}</ol>
+    for i, (label, lead, text, chips) in enumerate(stages):
+        t = f"<p>{text}</p>" if text else ""
+        c = ('<ul class="csb__chips">' + "".join(f"<li>{x}</li>" for x in chips) + "</ul>") if chips else ""
+        cards += (f'<article><p class="mono">Stop {i + 1} &middot; {label}</p>'
+                  f'<h3><i class="trail trail--{TRAIL[i % 4]}" aria-hidden="true"></i>{label}</h3>'
+                  f'<p class="pc-pkgs__lead"><strong>{lead}</strong></p>{t}{c}</article>')
+    n = len(stages)
+    ghost = " &nbsp;&middot;&nbsp; ".join(x[0] for x in stages)
+    return f"""  <section class="pc-band csb" id="{id_}" aria-label="{name}">
+    <div class="pc-band__stick">
+      <picture><source type="image/webp" srcset="/images/{img}-{w}.webp"><img class="pc-band__img" src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+      <p class="csb__tag">Client story &middot; {kind}</p>
+      <h2 class="pc-band__txt"><span>{name_a}</span><span>{name_b}</span></h2>
+    </div>
+  </section>
+  <section class="pc-sec pc-sec--{tone}" aria-label="{name}: the story">
+    <div class="pc-wrap">
+      <div class="pc-ghost" aria-hidden="true"><span>{ghost}</span></div>
+      <header class="sx-head"><p class="sx-title csb__h">{name}<i aria-hidden="true">.</i></p><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">{line}</p></div></header>
+      <div class="pc-pkgs pc-pkgs--{n}">{cards}</div>
     </div>
   </section>
 """
 STORIES_HTML = "".join([
-  story_full("small-space", "Small Space Innovations", "From first inquiry to installation day", [
-    ("Discovery", "Inquiries piled up. Measurements by hand, slow quotes, details lost between design, workshop and installers.", None),
-    ("Solution", None, ["Guided intake", "Quote follow-through", "Job packet", "Client updates"]),
-    ("Deployment", "Runs in the background. Quotes tracked to deposit. Job packet built the moment a deposit lands.", None),
-    ("Results", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
-  ], "alps-peaks"),
-  story_full("smith-long", "Smith &amp; Long", "Many divisions, one front door", [
-    ("Discovery", "Many divisions, long tenders. Field upgrades never reached sales. Renewals tracked by hand.", None),
-    ("Solution", None, ["Inquiry switchboard", "Field relay", "Renewal tracker", "Tender cadence"]),
-    ("Deployment", "Tenders go to the right division. Techs flag upgrades in under 60 seconds. Leads cued 60 days before renewal.", None),
-    ("Results", "Tighter coordination across divisions. Expansion work captured from the field. Predictable renewals. No tender left to go cold.", None),
-  ], "alps-blue", flip=True),
-  story_full("danbury-trashers", "Danbury Trashers", "The official fan shop, online", [
-    ("Solution", None, ["Website redesign", "Payments", "Dropshipping"]),
-  ], "hero-wind-poster"),
-  story_full("duchess", "Duchess Luxury Lashes", "Try the lashes on from a selfie", [
-    ("Solution", "A try-on tool for iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
-  ], "hero-reel-1-poster", flip=True, w=800),
+  story_full("small-space", "Small Space", "Innovations", "From first inquiry to installation day.", "Space design and installation", [
+    ("Discovery", "Where it stuck.", "Inquiries piled up. Measurements by hand, slow quotes, details lost between design, workshop and installers.", None),
+    ("Solution", "What we built.", None, ["Guided intake", "Quote follow-through", "Job packet", "Client updates"]),
+    ("Deployment", "How it runs.", "In the background. Quotes tracked to deposit. A job packet built the moment a deposit lands.", None),
+    ("Results", "What changed.", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
+  ], "alps-peaks", tone="blue"),
+  story_full("smith-long", "Smith", "&amp; Long", "Many divisions, one front door.", "Electrical, mechanical and engineering", [
+    ("Discovery", "Where it stuck.", "Many divisions, long tenders. Field upgrades never reached sales. Renewals tracked by hand.", None),
+    ("Solution", "What we built.", None, ["Inquiry switchboard", "Field relay", "Renewal tracker", "Tender cadence"]),
+    ("Deployment", "How it runs.", "Tenders go to the right division. Techs flag upgrades in under 60 seconds. Leads cued 60 days before renewal.", None),
+    ("Results", "What changed.", "Tighter coordination across divisions. Expansion work captured from the field. Predictable renewals. No tender left to go cold.", None),
+  ], "alps-blue", tone="dark"),
+  story_full("danbury-trashers", "Danbury", "Trashers", "The official fan shop, online.", "Online store", [
+    ("Web redesign", "A new storefront.", "A redesigned online store.", None),
+    ("Payments", "Taking the order.", "Payments set up for the store.", None),
+    ("Dropshipping", "Fulfilling the order.", "A dropshipping set-up to get orders out.", None),
+  ], "hero-wind-poster", tone="cream"),
+  story_full("duchess", "Duchess Luxury", "Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
+    ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
+  ], "hero-reel-1-poster", tone="blue", w=800),
 ])
 
 examples = page_hero("In practice", "What this looks like in practice.",
