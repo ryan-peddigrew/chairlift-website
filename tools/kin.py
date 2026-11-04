@@ -62,6 +62,34 @@ def switchboard():
       </div>'''
 
 
+RUN_SHORT = ["Sales & pipeline", "Quoting & proposals", "Handoffs & onboarding", "Scheduling & dispatch", "Billing & back office", "Custom workflows"]
+
+
+def trailmap():
+    """Solutions as a trail map (Ryan, 4 Nov 2026): six runs on Chairlift Mountain, one per department. Drawn by trail.js."""
+    tpl = "".join(
+        f'''<template data-run="{i}" data-short="{_e(RUN_SHORT[i])}"><p class="tm-card__k mono">Run {n} &middot; {_e(name)}</p><h3>{h}</h3><p>{d}</p><p class="tm-card__k mono">Built around: {_e(t)}</p></template>'''
+        for i, (n, name, h, d, t) in enumerate(DEPTS))
+    first = DEPTS[0]
+    return f'''<link rel="stylesheet" href="/kin.css"><script src="/kin.js" defer></script><script src="/trail.js" defer></script>
+      <div class="tm-poster">
+        <div class="tm-poster__top"><b>Chairlift Mountain</b><span class="mono">Trail map &middot; Winter season</span></div>
+        <div class="tm-wrap"><div class="tm-map">
+          <picture><source type="image/webp" srcset="/images/trail-map-800.webp 800w, /images/trail-map-1200.webp 1200w" sizes="(max-width: 860px) 820px, 1180px"><img src="/images/trail-map.jpg" width="1200" height="825" loading="lazy" decoding="async" alt="Trail map of Chairlift Mountain: six runs, one for each department we work in, and four lifts from the base lodge to the summit"></picture>
+          <svg id="tm-svg" viewBox="0 0 1600 1100" aria-hidden="true"></svg>
+        </div></div>
+        <div class="tm-legend mono">
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="#141B2A"/></svg>Where we usually start</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" fill="#141B2A"/></svg>Bigger fix</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l7 7-7 7-7-7z" fill="#141B2A"/></svg>Custom build</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h14" stroke="#141B2A" stroke-width="6"/><path d="M1 8h14" stroke="#3DFFC1" stroke-width="3"/></svg>Lifts A to D</span>
+        </div>
+      </div>
+      <div class="tm-list" id="tm-list" role="group" aria-label="Pick a run"></div>
+      <div class="tm-card" id="tm-card" aria-live="polite"><p class="tm-card__k mono">Run {first[0]} &middot; {_e(first[1])}</p><h3>{first[2]}</h3><p>{first[3]}</p><p class="tm-card__k mono">Built around: {_e(first[4])}</p></div>
+      {tpl}'''
+
+
 def shift_section():
     steps = "".join(
         f'''<li class="kn-step"><p class="kn-step__n">Step 0{i + 1}</p><h3 class="kn-step__t">{_e(t)}</h3><div class="kn-step__txt"><p class="kn-step__was">{was}</p><p class="kn-step__now">{now}</p></div></li>'''

@@ -67,7 +67,7 @@
       <h1 class="pg-title">Thanks, your message is in<i>.</i></h1>
       <div class="pg-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><div><p class="pg-line">We'll read it properly and reply by email soon. In the meantime, here are a few things worth a look.</p></div></div>
       <div class="ctas"><a class="btn btn-ink" href="/examples/">See examples</a><a class="btn btn-line" href="/">Back to home</a></div>
-      <div class="pg-tiles" aria-hidden="true"><span class="retro retro--color" style="background-image:url(/images/retro/lodge-10.jpg)"><em>Base lodge</em></span><span class="retro retro--color" style="background-image:url(/images/retro/lodge-14.jpg)"><em>Mountain hotel</em></span></div>
+      <div class="pg-tiles" aria-hidden="true"><span class="retro retro--color" style="background-image:url(/images/retro/lodge-10-1200.webp)"><em>Base lodge</em></span><span class="retro retro--color" style="background-image:url(/images/retro/lodge-14-1200.webp)"><em>Mountain hotel</em></span></div>
     </div>
   </section>
 
@@ -99,7 +99,7 @@
 <script src="/script.js" defer></script>
 <script src="/pxp.js" defer></script>
 <script src="/pxcloud.js" defer></script>
-<script type="importmap">{"imports":{"three":"/vendor/three.module.min.js"}}</script>
-<script type="module" src="/pxp3d.js"></script>
+<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). The home hero needs it right away; other pages fetch it once the page has finished loading. -->
+<script>(function(){function go(){var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';document.body.appendChild(s)}if(document.querySelector('.pc-logo'))go();else addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,1200)})(go,{timeout:3000})})})();</script>
 </body>
 </html>

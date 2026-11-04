@@ -1,3 +1,15 @@
 # Live data for the morning paper sample on /morning-paper/
 [functions]
   directory = "netlify/functions"
+
+# Speed (3 Nov 2026): photos, video and the 3D logo bundle are kept by browsers for a day,
+# then quietly refreshed in the background, so repeat visits load almost nothing.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"

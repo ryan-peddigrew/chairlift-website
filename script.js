@@ -81,30 +81,6 @@
     });
   }
 
-  // Trail Report tickets: blueprint toggle and gentle tilt
-  var tickets = document.querySelectorAll('[data-tt]');
-  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  Array.prototype.forEach.call(tickets, function (t) {
-    var btn = t.querySelector('[data-bp-toggle]');
-    var bp = t.querySelector('.tt__bp');
-    if (btn && bp) {
-      btn.addEventListener('click', function () {
-        var open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-        btn.textContent = open ? 'Inspect blueprint' : 'Close blueprint';
-        bp.hidden = open;
-      });
-    }
-    var inner = t.querySelector('.tt__inner');
-    if (!inner || calm || !window.matchMedia('(hover: hover)').matches) return;
-    t.addEventListener('pointermove', function (e) {
-      var r = inner.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      inner.style.transform = 'rotateY(' + (x * 4).toFixed(2) + 'deg) rotateX(' + (-y * 4).toFixed(2) + 'deg)';
-    });
-    t.addEventListener('pointerleave', function () { inner.style.transform = ''; });
-  });
-
   // Footer year
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
