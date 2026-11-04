@@ -102,15 +102,15 @@
 /* ---------- scroll chairlift (Ryan, 2-3 Nov 2026): a cable down the left edge, a chair rides it with the page and carries the elevation readout ---------- */
 .air-lift { position: fixed; left: max(8px, env(safe-area-inset-left, 0px)); top: var(--air-top, 84px); bottom: 20px; z-index: 40; width: 34px; pointer-events: none; mix-blend-mode: difference; color: #fff; font-family: var(--px-mono, "IBM Plex Mono", monospace); }
 .air-lift::before { content: ""; position: absolute; left: 17px; top: 0; bottom: 0; width: 1px; background: currentColor; opacity: .4; }
-.air-lift__end { position: absolute; left: 14px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .7; }
-.air-lift__end--top { top: -3px; } .air-lift__end--base { bottom: -3px; }
+.air-lift__end { position: absolute; left: 15.5px; width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: .7; }
+.air-lift__end--top { top: -2px; } .air-lift__end--base { bottom: -2px; }
 .air-lift__car { position: absolute; left: 0; top: 0; width: 34px; will-change: transform; }
 .air-lift__read { position: absolute; left: 24px; bottom: 100%; margin-bottom: 6px; display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; }
 .air-lift__read span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; line-height: 1; }
 .air-lift__num { font-size: 10px; letter-spacing: .06em; font-style: italic; font-variant-numeric: tabular-nums; padding: 4px 0; background: transparent; }
 .air-lift__lbl { font-size: 10px; letter-spacing: .06em; font-style: italic; text-transform: uppercase; }
 .air-lift__chair { display: block; width: 46px; height: 46px; margin-left: 14.5px; }
-.air-lift__swing { transform-box: view-box; transform-origin: 15px 6.8px; will-change: transform; }
+.air-lift__swing { transform-box: view-box; transform-origin: 15px 8.6px; will-change: transform; }
 .air-lift__chair svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .air-lift__chair svg * { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .air-lift__chair svg .air-lift__seat { fill: currentColor; stroke: none; }
@@ -121,7 +121,7 @@
 .air-lift--flip .air-lift__read { bottom: auto; top: 100%; margin: 8px 0 0; flex-direction: column; }
 @media (max-width: 560px) {
   .air-lift { left: max(1px, env(safe-area-inset-left, 0px)); width: 18px; top: calc(var(--air-top, 84px) + 6px); bottom: 14px; }
-  .air-lift::before { left: 9px; } .air-lift__end { left: 6px; }
+  .air-lift::before { left: 9px; } .air-lift__end { left: 7.5px; }
   .air-lift__car { width: 18px; } .air-lift__chair { width: 26px; height: 26px; margin-left: 7.6px; }
   .air-lift__chair svg * { stroke-width: 2.4; } .air-lift__chair svg .air-lift__bold { stroke-width: 4; }
   .air-lift__num { font-size: 8px; } .air-lift__lbl { display: none; } .air-lift__read { left: 12px; }
