@@ -483,27 +483,34 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
     </div>
   </section>
-  <section class="section section--tight" id="small-space" aria-labelledby="small-space-title">
+  <section class="section section--tight" id="start-a-company" aria-labelledby="start-title">
     <div class="wrap split">
       <div>
         <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span></div>
-        <h2 id="small-space-title" class="sr-only">Small Space Innovations.</h2>
-        <p class="story-stat"><b>Small Space Innovations</b><span>a whole company, set up from day one</span></p>
+        <div class="story-head"><span class="eyebrow">Illustrative example</span></div>
+        <h2 id="start-title" class="sr-only">Starting a company from scratch<span class="dot">.</span></h2>
+        <p class="story-stat"><b>A company, ready to open</b><span>everything set up in one place</span></p>
       </div>
       <div class="prose">
-        <p>Small Space Innovations is a small, upscale furniture brand for condos. It started as a furniture company for GTA condos. We gave it a complete fresh start.</p>
-        <p><strong>What we did.</strong></p>
+        <p>Say someone wants to start a furniture company for condos tomorrow and asks us to handle all of it. This is what we can set up. It is an illustrative example, not a client case study.</p>
+        <p><strong>The brand and the website.</strong></p>
         <ul class="story-list">
-          <li>Rebranded the company and redesigned the whole website.</li>
-          <li>Set up the domain.</li>
-          <li>Set up the business email, including email forwarding.</li>
-          <li>Built a tool that lets a customer take a photo of their room and see Small Space&rsquo;s products in it, to scale, with the exact measurements.</li>
-          <li>Replaced their quoting tool with a white-labelled one that carries their own brand.</li>
-          <li>Changed how they take payments, removing the third-party Stripe route.</li>
-          <li>Fine-tuned their accounting.</li>
+          <li>Company name, logo and brand look.</li>
+          <li>A complete website, with the domain set up.</li>
+          <li>A tool that lets a customer take a photo of their room and see the products in it, to scale, with the exact measurements.</li>
         </ul>
-        <p>Everything a new company needs, set up in one place.</p>
+        <p><strong>Email and customers.</strong></p>
+        <ul class="story-list">
+          <li>Business email, with forwarding and a shared inbox.</li>
+          <li>Booking and quoting on a white-labelled tool that carries their own brand.</li>
+          <li>Order updates and follow-ups, so customers always know what happens next.</li>
+        </ul>
+        <p><strong>Money and running it.</strong></p>
+        <ul class="story-list">
+          <li>Taking payments directly, without a middleman.</li>
+          <li>Accounting set up and fine-tuned from day one.</li>
+          <li>Supplier ordering and stock lists kept in one place.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -517,7 +524,7 @@ examples = page_hero("In practice", "What this looks like in practice.",
       </div>
       <div class="prose">
         <p>Duchess Luxury Lashes sells false eyelashes.</p>
-        <p><strong>What we did.</strong> We rebuilt their website and refreshed their logo. We also built an app for iPhone that works in a web browser too. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.</p>
+        <p><strong>What we did.</strong> We rebuilt their website and refreshed their logo. We also built a try-on tool that works on iPhone and in a web browser. A customer takes a selfie, scrolls through the lashes on the website, and sees each pair on her own eyes. If a pair looks a little off, she can make it smaller to get a better idea of the fit.</p>
       </div>
     </div>
   </section>
