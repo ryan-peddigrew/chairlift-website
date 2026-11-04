@@ -193,3 +193,11 @@
 .lift-status--foot { margin: 24px 16px 0; border-radius: 16px; border-top: 0; }
 .lift-status__h { color: #fff !important; font-weight: 500; }
 @media (max-width: 640px) { .lift-status--foot li.lift-status__h { grid-column: 1 / -1; } }
+/* lodge-sign lettering on the trail map (Ryan, 4 Nov): same family as the rest of the site, normal case, no typewriter mono */
+.tm-map svg text { font-family: "Hanken Grotesk", system-ui, sans-serif !important; font-weight: 600; letter-spacing: .01em; text-transform: none; }
+.tm-tag text { font-weight: 600; letter-spacing: 0 !important; text-transform: none; font-size: 16px; }
+.tm-callout text { font-size: 15px; font-weight: 500; }
+.tm-callout text.big { font-weight: 700; font-size: 24px; letter-spacing: -.01em; text-transform: none; }
+.tm-lift text.id { font-weight: 700; }
+.tm-legend, .tm-poster__top .mono { font-family: "Hanken Grotesk", system-ui, sans-serif !important; letter-spacing: .01em !important; text-transform: none !important; font-size: 14px !important; font-weight: 500; }
+.tm-board { font-family: "Hanken Grotesk", system-ui, sans-serif; font-size: 13px; letter-spacing: .02em; text-transform: none; } .tm-board b { font-weight: 700; }
