@@ -138,7 +138,7 @@
       var lift = document.createElement('div'); lift.className = 'air-lift'; lift.setAttribute('aria-hidden', 'true');
       lift.innerHTML = '<i class="air-lift__end air-lift__end--top"></i><i class="air-lift__end air-lift__end--base"></i>' +
         '<div class="air-lift__car"><div class="air-lift__read"><span class="air-lift__num">1,200 m</span><span class="air-lift__lbl">Base</span></div>' +
-        '<div class="air-lift__chair"><svg viewBox="0 0 34 54" preserveAspectRatio="xMidYMin meet"><rect class="air-lift__grip" x="13.5" y="0" width="7" height="5" rx="1"/><path d="M17 5V15"/><path d="M4 15H30"/><path d="M5 15V40M29 15V40"/><rect x="7.5" y="23" width="19" height="9" rx="1.2"/><path d="M7.5 27.5H26.5"/><path class="air-lift__seat" d="M3.5 36h27a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-27a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z"/><path d="M10 41v7H24v-7"/></svg></div></div>';
+        '<div class="air-lift__chair"><svg viewBox="0 0 34 54" preserveAspectRatio="xMidYMin meet"><rect class="air-lift__grip" x="13.5" y="0" width="7" height="5" rx="1"/><path d="M17 5V13"/><path class="air-lift__seat" d="M8 13h18l3.5 5h-25z"/><rect x="5" y="18" width="24" height="28" rx="3.5"/><rect x="8.5" y="21.5" width="7.5" height="9" rx="1.2"/><rect x="18" y="21.5" width="7.5" height="9" rx="1.2"/><path class="air-lift__seat" d="M6 35h22v3.2H6z"/><path d="M11 50h12"/></svg></div></div>';
       body.appendChild(lift);
       var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), num = lift.querySelector('.air-lift__num'), lbl = lift.querySelector('.air-lift__lbl');
       var cur = 0, target = 0, raf = 0, span = 0, shown = '';

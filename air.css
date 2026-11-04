@@ -105,7 +105,7 @@
 .air-lift__end { position: absolute; left: 14px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .7; }
 .air-lift__end--top { top: -3px; } .air-lift__end--base { bottom: -3px; }
 .air-lift__car { position: absolute; left: 0; top: 0; width: 34px; will-change: transform; }
-.air-lift__read { position: absolute; left: 50%; bottom: 100%; margin-bottom: 8px; display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; transform: translateX(-50%); }
+.air-lift__read { position: absolute; left: 24px; bottom: 100%; margin-bottom: 6px; display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; }
 .air-lift__read span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; line-height: 1; }
 .air-lift__num { font-size: 11px; letter-spacing: .08em; font-variant-numeric: tabular-nums; padding: 4px 0; background: transparent; }
 .air-lift__lbl { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
@@ -120,7 +120,7 @@
   .air-lift { left: max(1px, env(safe-area-inset-left, 0px)); width: 18px; top: calc(var(--air-top, 84px) + 6px); bottom: 14px; }
   .air-lift::before { left: 9px; } .air-lift__end { left: 6px; }
   .air-lift__car, .air-lift__chair { width: 18px; } .air-lift__chair { height: 29px; transform-origin: 9px 2px; }
-  .air-lift__num { font-size: 9px; } .air-lift__lbl { display: none; }
+  .air-lift__num { font-size: 9px; } .air-lift__lbl { display: none; } .air-lift__read { left: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .air-lift__chair { transform: none !important; } }
 
