@@ -889,3 +889,4 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 .tt .punch .punch__hole { background: var(--tt-paper); }
 .tt .tt__head h3 { font-family: inherit; letter-spacing: 0; }
 .trails { overflow-x: clip; }
+.tt__mark--green { background: var(--tt-sage); border-radius: 50%; }

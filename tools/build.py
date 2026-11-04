@@ -540,6 +540,19 @@ TICKETS = [
                    ("Multi-stakeholder tender cadence", "Set follow-up tracks across general contractors, property managers and facility directors keep six- and seven-figure bids moving.")],
        svg_title="How information flows through Smith and Long, from inquiry to tender follow-up",
        flow=[("Switchboard", "Inquiry to the right division"), ("Field relay", "On-site finds to the sales board"), ("Renewal tracker", "Lead cued 60 days ahead"), ("Tender cadence", "Every stakeholder followed")]),
+  dict(id="danbury-trashers", no="03", client="Danbury Trashers",
+       sector="Official fan shop: an online merchandise store",
+       rating="Green circle: online store set-up", mark="green",
+       tags=["Web redesign", "Payments", "Dropshipping"],
+       base="A fan shop that needed a fresh storefront, a way to take payments, and a way to get orders to customers.",
+       lift="Three parts: a redesigned website, payments set up, and a dropshipping solution for fulfilling orders.",
+       summit="A redesigned store, payments in place, and orders fulfilled through dropshipping.",
+       stamp="Summit reached",
+       mechanisms=[("Web redesign", "A redesigned online store."),
+                   ("Payments", "Payments set up for the store."),
+                   ("Dropshipping solution", "A dropshipping set-up to fulfil orders.")],
+       svg_title="How the Danbury Trashers store fits together, from the site to fulfilment",
+       flow=[("Web redesign", "The storefront"), ("Payments", "Taking the order"), ("Dropshipping", "Fulfilling the order")]),
 ]
 TICKETS_HTML = "".join(trail_ticket(t) for t in TICKETS)
 
