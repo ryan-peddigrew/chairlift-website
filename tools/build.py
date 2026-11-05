@@ -228,7 +228,7 @@ home = f'''
         <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
-        <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="/how-it-works/">See how it works <i aria-hidden="true">→</i></a></p>
+        <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="#case-studies">See our case studies <i aria-hidden="true">→</i></a></p>
       </div>
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
       <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
@@ -501,7 +501,7 @@ for i, e in enumerate(EXAMPLES):
 
 # ---------------------------------------------------------------- Client stories (homepage band + stops)
 TRAIL = ["circle", "square", "diamond", "diamond"]
-def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200):
+def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None):
     """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
     name = f"{name_a} {name_b}"
     cards = ""
@@ -525,6 +525,7 @@ def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200
       <div class="pc-ghost" aria-hidden="true"><span>{ghost}</span></div>
       <header class="sx-head"><p class="sx-title csb__h">{name}<i aria-hidden="true">.</i></p><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">{line}</p></div></header>
       <div class="pc-pkgs pc-pkgs--{n}">{cards}</div>
+      {('<blockquote class="csb__quote"><p>' + quote[0] + '</p><cite>' + quote[1] + '</cite></blockquote>') if quote else ''}
     </div>
   </section>
 """
@@ -549,31 +550,19 @@ STORIES_HTML = "".join([
   story_full("duchess", "Duchess Luxury", "Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
     ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
   ], "hero-reel-1-poster", tone="blue", w=800),
+  story_full("wastemind", "Waste", "Mind", "Making, installing and servicing waste equipment for condos and apartment buildings.", "Waste equipment", [
+    ("Discovery", "Where it stuck.", "Shane Fagan was growing WasteMind and working out how to scale it.", None),
+    ("Solution", "What we did.", "We looked for where time and money were leaking, put fixes in, tracked the return and measured it.", None),
+    ("Deployment", "How it runs.", "We work with WasteMind every week, one tested fix at a time.", None),
+    ("Results", "What changed.", "Faster replies to quote requests, service calls and inquiries.", None),
+  ], "wastemind-containers", tone="dark", quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind")),
+  story_full("fleury14", "Theo", "Fleury", "A full website redesign for Fleury 14 Enterprises.", "Website redesign", [
+    ("Website redesign", "A complete refresh.", "A full redesign of the Fleury 14 website, built on Theo&rsquo;s own logo and colours.", None),
+  ], "alps-blue", tone="blue"),
 ])
 
 examples = page_hero("In practice", "What this looks like in practice.",
     "Real client stories first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
-  <section class="section section--soft section--tight" id="wastemind" aria-labelledby="wastemind-title">
-    <div class="wrap split">
-      <div>
-        <span class="rule"></span>
-        <div class="story-head"><span class="eyebrow">Client story</span><img class="story-logo" src="/images/wastemind-logo.png" width="528" height="216" alt="WasteMind logo"></div>
-        <h2 id="wastemind-title" class="sr-only">WasteMind.</h2>
-        <p class="story-stat"><b>Faster replies</b><span>to quote requests, service calls and inquiries</span></p>
-      </div>
-      <div class="prose">
-        <p>WasteMind makes, installs and services multi-residential waste equipment for condos and apartment buildings across Ottawa, Toronto and the GTA.</p>
-        <p><strong>The situation.</strong> Shane Fagan was growing WasteMind and working out how to scale it.</p>
-        <p><strong>What we did.</strong> We looked for the places where time and money were leaking, put fixes in, tracked the return, measured it, and then went looking for the next one.</p>
-        <p><strong>How it works now.</strong> We work with WasteMind every week, one tested fix at a time.</p>
-        <blockquote class="story-quote"><p>&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;</p><cite>Shane Fagan, WasteMind</cite></blockquote>
-      </div>
-      <div class="story-photos">
-        <img src="/images/wastemind-technician.jpg" width="700" height="1054" loading="lazy" alt="A WasteMind technician servicing a waste equipment control panel in a parking garage">
-        <img src="/images/wastemind-containers.jpg" width="880" height="542" loading="lazy" alt="Blue front-end-load waste containers from WasteMind">
-      </div>
-    </div>
-  </section>
 {STORIES_HTML}  <section class="section section--tight" aria-label="Illustrative examples">
     <div class="wrap">
 {"".join(example_block(e) for e in EXAMPLES)}    </div>
@@ -1067,7 +1056,7 @@ CASE_A = f'''
     </div>
   </section>
 '''
-home = home.replace('  <section class="pc-band"', CASE_A + '  <section class="pc-band"', 1)
+home = home.replace('  <section class="pc-sec bw"', '  <div id="case-studies"></div>\n' + STORIES_HTML + '  <section class="pc-sec bw"', 1)
 
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),

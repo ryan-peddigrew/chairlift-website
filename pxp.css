@@ -1027,3 +1027,6 @@ body main .calc-form .calc-task { color: var(--px-ink); }
 .csb__chips li { border: 1.5px solid rgba(255,255,255,.75); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 600; color: #fff; }
 @media (max-width: 1100px) { .pc-pkgs--4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 860px) { .pc-pkgs--4 { grid-template-columns: 1fr; } .csb .csb__tag { top: 88px; } }
+.csb__quote { margin: 40px 0 0; padding: 0 0 0 22px; border-left: 4px solid #fff; position: relative; z-index: 1; }
+.csb__quote p { margin: 0 0 8px; font-size: clamp(20px, 2.4vw, 30px); font-weight: 600; line-height: 1.25; color: #fff; }
+.csb__quote cite { font-style: normal; color: rgba(255,255,255,.75); font-size: 15px; }

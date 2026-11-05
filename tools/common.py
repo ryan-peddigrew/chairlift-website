@@ -19,7 +19,7 @@ ARROW = '<svg class="climb-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d
 NAV = [
     ("how", "/how-it-works/", "How it works"),
     ("services", "/what-we-do/", "What we do"),
-    ("examples", "/examples/", "In practice"),
+    ("examples", "/examples/", "Case studies"),
     ("industries", "/who-we-help/", "Who we help"),
     ("about", "/who-we-are/", "Who we are"),
 ]
@@ -109,7 +109,7 @@ def header(active=None):
 FOOTER_LINKS = [
     ("/how-it-works/", "How it works"),
     ("/what-we-do/", "What we do"),
-    ("/examples/", "In practice"),
+    ("/examples/", "Case studies"),
     ("/who-we-are/", "Who we are"),
     ("/get-in-touch/", "Get in touch"),
     ("/privacy/", "Privacy"),
