@@ -556,9 +556,6 @@ STORIES_HTML = "".join([
     ("Deployment", "How it runs.", "We work with WasteMind every week, one tested fix at a time.", None),
     ("Results", "What changed.", "Faster replies to quote requests, service calls and inquiries.", None),
   ], "wastemind-containers", tone="dark", quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind")),
-  story_full("fleury14", "Theo", "Fleury", "A full website redesign for Fleury 14 Enterprises.", "Website redesign", [
-    ("Website redesign", "A complete refresh.", "A full redesign of the Fleury 14 website, built on Theo&rsquo;s own logo and colours.", None),
-  ], "alps-blue", tone="blue"),
 ])
 
 examples = page_hero("In practice", "What this looks like in practice.",
