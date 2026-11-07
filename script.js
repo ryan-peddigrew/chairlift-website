@@ -81,6 +81,21 @@
     });
   }
 
+  // Case studies carousel: arrows and dots follow the swipe
+  var csw = document.querySelector('.csw');
+  if (csw) {
+    var track = csw.querySelector('.csw__track'), dots = [].slice.call(csw.querySelectorAll('.csw__dot'));
+    var calmCsw = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var goTo = function (i) { i = Math.max(0, Math.min(dots.length - 1, i)); track.scrollTo({ left: i * track.clientWidth, behavior: calmCsw ? 'auto' : 'smooth' }); };
+    var cur = function () { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); };
+    var mark = function () { var c = cur(); dots.forEach(function (d, i) { d.classList.toggle('is-on', i === c); }); };
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(mark); }, { passive: true });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+    [].forEach.call(csw.querySelectorAll('.csw__arrow'), function (a) { a.addEventListener('click', function () { goTo(cur() + parseInt(a.getAttribute('data-dir'), 10)); }); });
+    track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); goTo(cur() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(cur() - 1); } });
+    mark();
+  }
+
   // Footer year
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

@@ -501,8 +501,10 @@ for i, e in enumerate(EXAMPLES):
 
 # ---------------------------------------------------------------- Client stories (homepage band + stops)
 TRAIL = ["circle", "square", "diamond", "diamond"]
+STORY_DATA = []
 def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None):
     """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
+    STORY_DATA.append(dict(id_=id_, name=f"{name_a} {name_b}", line=line, kind=kind, stages=stages, img=img, w=w, quote=quote))
     name = f"{name_a} {name_b}"
     cards = ""
     for i, (label, lead, text, chips) in enumerate(stages):
@@ -557,6 +559,32 @@ STORIES_HTML = "".join([
     ("Results", "What changed.", "Faster replies to quote requests, service calls and inquiries.", None),
   ], "wastemind-containers", tone="dark", quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind")),
 ])
+
+
+def story_carousel():
+    slides = ""
+    dots = ""
+    for k, d in enumerate(STORY_DATA):
+        cards = ""
+        for i, (label, lead, text, chips) in enumerate(d["stages"]):
+            t = f"<p>{text}</p>" if text else ""
+            c = ('<ul class="csw__chips">' + "".join(f"<li>{x}</li>" for x in chips) + "</ul>") if chips else ""
+            cards += f'<li class="csw__card"><span class="csw__step">{label}</span><strong>{lead}</strong>{t}{c}</li>'
+        q = d["quote"]
+        qh = f'<blockquote class="csw__quote"><p>{q[0]}</p><cite>{q[1]}</cite></blockquote>' if q else ""
+        slides += f"""<article class="csw__slide" id="cs-{d['id_']}" aria-label="{d['name']}" aria-roledescription="slide">
+        <picture class="csw__bg" aria-hidden="true"><source type="image/webp" srcset="/images/{d['img']}-{d['w']}.webp"><img src="/images/{d['img']}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+        <div class="csw__shade" aria-hidden="true"></div>
+        <div class="csw__body"><p class="csw__kind">Client story &middot; {d['kind']}</p><h3 class="csw__name">{d['name']}</h3><p class="csw__line">{d['line']}</p>
+        <ul class="csw__cards csw__cards--{len(d['stages'])}">{cards}</ul>{qh}</div></article>"""
+        dots += f'<button type="button" class="csw__dot" aria-label="Show {d["name"]}" data-i="{k}"></button>'
+    return f"""  <section class="csw" id="case-studies" aria-labelledby="csw-title">
+    <div class="csw__top"><h2 id="csw-title" class="csw__title">Case studies<i aria-hidden="true">.</i></h2><p class="csw__hint">Swipe to see them all <span aria-hidden="true">&rarr;</span></p></div>
+    <div class="csw__track" role="region" aria-label="Case studies, swipe sideways" tabindex="0">{slides}</div>
+    <div class="csw__nav"><button type="button" class="csw__arrow" data-dir="-1" aria-label="Previous case study">&larr;</button><div class="csw__dots">{dots}</div><button type="button" class="csw__arrow" data-dir="1" aria-label="Next case study">&rarr;</button></div>
+  </section>
+"""
+CAROUSEL_HTML = story_carousel()
 
 examples = page_hero("In practice", "What this looks like in practice.",
     "Real client stories first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
@@ -1053,7 +1081,7 @@ CASE_A = f'''
     </div>
   </section>
 '''
-home = home.replace('  <section class="pc-sec bw"', '  <div id="case-studies"></div>\n' + STORIES_HTML + '  <section class="pc-sec bw"', 1)
+home = home.replace('  <section class="pc-sec bw"', CAROUSEL_HTML + '  <section class="pc-sec bw"', 1)
 
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
