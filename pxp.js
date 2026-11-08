@@ -169,7 +169,8 @@
     pins.forEach(function (sec) {
       var r = sec.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
-      var sp = reduce ? 1 : clamp(-r.top / Math.max(1, r.height - vh) * 1.12);
+      // a section shorter than the screen plays as it scrolls into view; a taller one plays while it is pinned
+      var sp = reduce ? 1 : r.height < vh ? clamp((vh * .9 - r.top) / (vh * .55)) : clamp(-r.top / Math.max(1, r.height - vh) * 1.12);
       sec.style.setProperty('--fp', sp.toFixed(3));
       sec.style.setProperty('--ro', (1 - Math.min(sp * 1.5, 1)).toFixed(3));
       var ws = sec._w, lit = sp * (ws.length + 4);
