@@ -13,6 +13,11 @@
     square: '<rect x="-8" y="-8" width="16" height="16" fill="#141B2A" stroke="#fff" stroke-width="3"/>',
     diamond: '<path d="M0 -11L11 0L0 11L-11 0Z" fill="#141B2A" stroke="#fff" stroke-width="3"/>'
   };
+  var BIG = {
+    dot: '<circle r="17" fill="#141B2A" stroke="#fff" stroke-width="3.5"/>',
+    square: '<rect x="-15" y="-15" width="30" height="30" fill="#141B2A" stroke="#fff" stroke-width="3.5"/>',
+    diamond: '<path d="M0 -21L21 0L0 21L-21 0Z" fill="#141B2A" stroke="#fff" stroke-width="3.5"/>'
+  };
   var tpls = [].slice.call(document.querySelectorAll('template[data-run]'));
   var SHORT = tpls.map(function (t) { return t.getAttribute('data-short'); });
   MAP.lifts.forEach(function (l) {
@@ -27,12 +32,10 @@
   var runs = MAP.runs.map(function (r, i) {
     var g = el('g', { 'class': 'tm-run' }, svg), pd = d(r.pts);
     el('path', { d: pd, 'class': 'hit' }, g); el('path', { d: pd, 'class': 'case' }, g); el('path', { d: pd, 'class': 'line' }, g);
-    var n = r.pts.length, seg = r.pts.slice(Math.floor(n * .26), Math.floor(n * .74));
-    var dy = seg[seg.length - 1][1] - seg[0][1], dx = seg[seg.length - 1][0] - seg[0][0];
-    if (Math.abs(dy) > Math.abs(dx) && dy > 0) seg = seg.slice().reverse();
-    el('path', { id: 'tm-lp' + i, d: d(seg.map(function (p) { return [p[0] - 10, p[1]]; })), fill: 'none' }, g);
-    var t = el('text', {}, g), tp = el('textPath', { href: '#tm-lp' + i, startOffset: '50%', 'text-anchor': 'middle' }, t); tp.textContent = SHORT[i] || '';
-    var s = r.pts[Math.floor(n * .22)], m = el('g', { transform: 'translate(' + s[0] + ' ' + s[1] + ')' }, g); m.innerHTML = SHAPE[r.rating];
+    var n = r.pts.length;
+    // each run carries its number inside its trail-rating marker; the picked run's name reads large in the open sky above the summit
+    var s = r.pts[Math.floor(n * .22)], m = el('g', { transform: 'translate(' + s[0] + ' ' + s[1] + ')', 'class': 'tm-mark' }, g); m.innerHTML = BIG[r.rating];
+    el('text', { y: 7, 'text-anchor': 'middle', 'class': 'num' }, m).textContent = i + 1;
     g.addEventListener('mouseenter', function () { pick(i); }); g.addEventListener('click', function () { pick(i); });
     return g;
   });
@@ -42,10 +45,12 @@
     var b = el('text', { x: p[0], y: p[1] + dy + 22, 'text-anchor': 'middle' }, g); b.textContent = small;
   }
   callout(MAP.summit, 'Summit', '2,850 m', -30);
-  callout([MAP.base[0] + 170, MAP.base[1] - 34], 'Base lodge', '1,200 m · your team today', 0);
+  callout([MAP.base[0] + (innerWidth < 561 ? 190 : 330), MAP.base[1] - 52], 'Base lodge', '1,200 m · your team today', 0);
+  var sky = el('text', { x: 800, y: 74, 'text-anchor': 'middle', 'class': 'tm-sky' }, svg);
   MAP.runs.forEach(function (r, i) {
     var b = document.createElement('button'); b.type = 'button';
     b.innerHTML = '<svg viewBox="-12 -12 24 24" aria-hidden="true">' + SHAPE[r.rating].replace('#141B2A', 'currentColor').replace('stroke="#fff"', 'stroke="none"') + '</svg>';
+    var k = document.createElement('b'); k.className = 'tm-no'; k.textContent = ('0' + (i + 1)).slice(-2); b.appendChild(k);
     b.appendChild(document.createTextNode(SHORT[i] || ''));
     b.addEventListener('click', function () { pick(i); });
     list.appendChild(b);
@@ -53,6 +58,7 @@
   function pick(i) {
     runs.forEach(function (g, j) { g.classList.toggle('on', i === j); });
     [].forEach.call(list.children, function (b, j) { b.setAttribute('aria-pressed', i === j ? 'true' : 'false'); });
+    sky.textContent = 'Run ' + ('0' + (i + 1)).slice(-2) + ' \u00b7 ' + (SHORT[i] || '');
     if (tpls[i]) { card.innerHTML = ''; card.appendChild(tpls[i].content.cloneNode(true)); }
   }
   pick(0);

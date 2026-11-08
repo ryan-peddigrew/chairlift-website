@@ -200,27 +200,6 @@
   }
   if (stops.length && !reduce) { root.classList.add('kn-stops'); window.addEventListener('scroll', function () { requestAnimationFrame(light); }, { passive: true }); light(); }
 
-  /* ---------- section labels decode as they appear ---------- */
-  var GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·/+';
-  function decode(n) {
-    var final = n.textContent, len = final.length, t0 = performance.now(), dur = 650;
-    (function step(t) {
-      var k = Math.min(1, (t - t0) / dur), out = '';
-      for (var i = 0; i < len; i++) { var c = final[i]; out += (c === ' ' || i < k * len) ? c : GLYPHS[(Math.random() * GLYPHS.length) | 0]; }
-      n.textContent = k < 1 ? out : final;
-      if (k < 1) requestAnimationFrame(step);
-    })(t0);
-  }
-  // numbers roll like a departure board before they land
-  function tick(n) {
-    var final = n.textContent, t0 = performance.now(), dur = 900;
-    (function step(t) {
-      var k = Math.min(1, (t - t0) / dur), out = '';
-      for (var i = 0; i < final.length; i++) out += k > (i + 1) / (final.length + 1) ? final[i] : (Math.random() * 10 | 0);
-      n.textContent = k < 1 ? out : final;
-      if (k < 1) requestAnimationFrame(step);
-    })(t0);
-  }
   // numbered index above each section title: 01 ———— 06
   var heads = [].slice.call(document.querySelectorAll('main .sx-head'));
   heads.forEach(function (h, i) {
@@ -228,15 +207,13 @@
     p.innerHTML = '<b>' + ('0' + (i + 1)).slice(-2) + '</b><i></i><b>' + ('0' + heads.length).slice(-2) + '</b>';
     h.insertBefore(p, h.firstChild);
   });
-  var labels = [].slice.call(document.querySelectorAll('main .sx-line, main .sx-label, .kn-engine__head span:first-child, .pc-pkgs .mono, .pc-benefits .mono, .kn-stage > .mono, .kn-sw__n'))
-    .filter(function (n) { return !n.children.length; });
+  // the index rule draws in as it appears; labels and numbers are never scrambled (they stay readable at any scroll speed)
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { if (e.target.classList.contains('kn-idx')) { e.target.classList.add('in'); [].forEach.call(e.target.children, function (b) { if (b.tagName === 'B') tick(b); }); } else decode(e.target); io.unobserve(e.target); } });
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -12% 0px' });
-    labels.forEach(function (n) { io.observe(n); });
     heads.forEach(function (h) { io.observe(h.firstChild); });
-  }
+  } else heads.forEach(function (h) { h.firstChild.classList.add('in'); });
 
 })();
 

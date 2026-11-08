@@ -1,0 +1,140 @@
+/* Fine-tune pass (Nov 2026): spacing, wrapping and framing fixes only. Same layout, colours, fonts, logo, photos and copy.
+   Loaded last on every page (tools/common.py), so these rules settle the cascade in pxp.css, air.css and kin.css. */
+
+/* ---------- Orphans: no heading, caption or short paragraph ends on one lonely word ---------- */
+h1, h2, h3, h4, .sx-title, .sx-line, .sx-label, .pc-band__txt, figcaption, .mono, .tm-card h3, .tm-card__k, .kn-read__foot, .pc-story__sub, .bw__cards p, .pc-pkgs article p, .pc-benefits article p, .kn-step__txt p, .card p, .lead, .hero--page p { text-wrap: balance; }
+p, li, blockquote { text-wrap: pretty; }
+
+/* ---------- Dead space: one tighter rhythm for every section on the home page ---------- */
+html body .pc-sec { padding-top: clamp(44px, 5vw, 76px); padding-bottom: clamp(44px, 5vw, 76px); }
+html body .kn-idx { margin-bottom: clamp(10px, 1.2vw, 16px); }
+/* cards size to their text; cards in one row still share one height */
+html body .pc-benefits article, html body .pc-pkgs article { min-height: 0; padding: clamp(22px, 2vw, 28px); }
+html body .pc-benefits h3, html body .pc-pkgs h3 { margin-top: 18px; }
+html body .pc-benefits { margin-top: 64px; }
+html body .bw__cards { margin-top: 32px; }
+html body .pass-row { margin-top: 28px; }
+
+/* One task first: the text column runs up to the ticket, no 150px gap */
+@media (min-width: 900px) { html body .bw__top { grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; } html body .bw__lead { max-width: none; } }
+
+/* The shift: step cards fit their text (the by-hand and with-Chairlift lines share one cell instead of a fixed 6em box) */
+html body .kn-step { padding: 20px 20px 22px; }
+html body .kn-step__txt { display: grid; min-height: 0; }
+html body .kn-step__was, html body .kn-step__now { position: relative; inset: auto; grid-area: 1 / 1; }
+/* the connector and its running dot sit at mid-height inside the gap between cards, never on a heading */
+html body .kn-step:not(:last-child)::before { top: 0; bottom: 0; margin: auto 0; }
+html body .kn-step:not(:last-child)::after { top: 0; bottom: 0; margin: auto 0; }
+html body .kn-step:not(:last-child)::before { right: -21px; }
+@keyframes kn-run-mid { from { transform: translateX(-13px); } to { transform: translateX(13px); } }
+html body .kn-step.on:not(:last-child)::before { animation-name: kn-run-mid; }
+@media (max-width: 560px) {
+  html body .kn-step:not(:last-child)::before, html body .kn-step:nth-child(2)::before { top: auto; bottom: -21px; margin: 0; }
+  html body .kn-step:not(:last-child)::after, html body .kn-step:nth-child(2)::after { top: auto; bottom: -34px; margin: 0; }
+  @keyframes kn-run-mid-v { from { transform: translateY(-13px); } to { transform: translateY(13px); } }
+  html body .kn-step.on:not(:last-child)::before { animation-name: kn-run-mid-v; }
+}
+/* the job rail: soft edges so jobs slide in and out instead of being cut off, and room underneath for the drag pill */
+html body .kn-rail { margin-bottom: 52px; }
+html body .kn-rail::before, html body .kn-rail::after { content: ""; position: absolute; top: 0; bottom: 0; width: 7%; z-index: 1; pointer-events: none; background: linear-gradient(90deg, #141B2A, rgba(20,27,42,0)); }
+html body .kn-rail::before { left: 0; } html body .kn-rail::after { right: 0; transform: scaleX(-1); }
+html body .kn-step { grid-template-rows: auto auto 1fr; }
+html body .kn-step:last-of-type::before, html body .kn-step:last-of-type::after { display: none; }
+/* "Drag to clear" pill always sits fully inside the row: it leans right at the start and left at the end */
+html body .air-split__lbl { transform: translateX(calc(-1 * var(--x, 0%))); left: 50%; }
+@media (max-width: 560px) { html body .kn-rail { margin-bottom: 22px; } html body .air-split__lbl { transform: translateY(-50%); left: auto; } }
+
+/* Photo band before Mornings: a tighter frame around "Your team's hours. Back." */
+html body .pc-band:not(.csb), html body .pc-band:not(.csb) .pc-band__stick { height: 72svh; }
+/* client photo bands end exactly where the photo ends: no ink strip between the photo and its story */
+html body .pc-band.csb { height: 100svh; }
+html body .pc-band:not(.csb) .pc-band__img { object-position: 50% 62%; }
+
+/* Founder note: the frame hugs the quote instead of a full screen */
+html body .pc-fq.pc-pinscrub { padding: clamp(48px, 5.5vw, 84px) 0 !important; }
+html body .pc-fq__pin { height: auto; min-height: 0; position: relative; }
+/* founder photo: the approved headshot cropped to a clean circle inside the ring (no square corners, no cut-off head) */
+html body .pc-fq .pc-fq__photo { max-width: 360px; }
+html body .pc-fq .pc-fq__photo img { inset: 0; width: 100%; height: 100%; border-radius: 0; object-fit: cover; object-position: 50% 50%; clip-path: circle(45.6% at 50% 50%); }
+
+/* Base lodge photo and closing form: no empty band above the box, none below the privacy line */
+html body .pc-sec--lodge { padding-bottom: 0; }
+html body main .cta { padding-top: clamp(24px, 3vw, 40px); padding-bottom: clamp(32px, 4vw, 56px); }
+html body main .cta-box--doors { padding: clamp(28px, 4vw, 56px); }
+html body main .task-form .form-fine { margin-bottom: 0; }
+html body main .task-form .form-status:empty { display: none; }
+
+/* Footer: no empty band above the copyright line; the links sit level with the brand text */
+html body .footer-top { padding-top: 40px; padding-bottom: 28px; align-items: center; }
+@media (max-width: 560px) { html body .footer-top { padding-top: 36px; padding-bottom: 24px; align-items: flex-start; } }
+
+/* ---------- Menu: the hero logo never floats over the open menu; one real button, no empty outline ---------- */
+html:has(.menu-btn[aria-expanded="true"]) .pc-logo { opacity: 0 !important; visibility: hidden; }
+html:has(.menu-btn[aria-expanded="true"]) body .site-header .brand { display: inline-flex !important; }
+html:has(.menu-btn[aria-expanded="true"]) body .site-header .brand svg { display: block !important; visibility: visible !important; }
+html:has(.menu-btn[aria-expanded="true"]) body .site-header .brand span { opacity: 1 !important; }
+html body .mobile-menu .btn { justify-self: start; display: inline-flex; align-items: center; justify-content: center; min-width: 240px; min-height: 54px; margin: 22px 0 6px; padding: 0 28px; background: #fff !important; color: #141B2A !important; border: 0 !important; border-radius: 3px; font-family: var(--px-sans); font-weight: 800; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
+@media (max-width: 560px) { html body .mobile-menu .btn { justify-self: stretch; width: 100%; } }
+
+/* ---------- Client stories ---------- */
+/* the band already shows the client's name in big type; the panel underneath doesn't repeat it (still read out by screen readers) */
+html body .csb__h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html body .pc-sec .sx-head:has(.csb__h) .sx-cap { margin-top: 0; }
+html body .pc-sec:has(.csb__h) .pc-ghost { display: none; }
+/* every stop is fully readable, not dimmed while another stop is lit */
+html body .pc-sec:has(.csb__h) .pc-pkgs article { opacity: 1; }
+html body .pc-sec--dark:has(.csb__h) .pc-pkgs article p:last-child, html body .pc-sec--blue:has(.csb__h) .pc-pkgs article p:last-child { color: rgba(255,255,255,.9); opacity: 1; }
+/* four stops in a row: all four headings on one line, so the body text lines up */
+html body .pc-pkgs--4 h3 { font-size: clamp(22px, 1.85vw, 30px); white-space: nowrap; }
+/* Danbury (three stops on the light panel): white cards, ink text */
+html body .pc-sec--cream .pc-pkgs { border-color: rgba(20,27,42,.14); }
+html body .pc-sec--cream .pc-pkgs article { background: #fff; color: #141B2A; border-color: rgba(20,27,42,.14); }
+html body .pc-sec--cream .pc-pkgs article.is-on { background: #fff; }
+html body .pc-sec--cream .pc-pkgs article p:last-child, html body .pc-sec--cream .pc-pkgs article .mono { color: #2B3547; opacity: 1; }
+/* Duchess (one stop): label and heading on the left, the detail on the right, no empty box */
+@media (min-width: 861px) {
+  html body .pc-pkgs--1 article { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); column-gap: 40px; align-items: start; }
+  html body .pc-pkgs--1 article > * { grid-column: 1; }
+  html body .pc-pkgs--1 article > p:last-child { grid-column: 2; grid-row: 1 / span 3; align-self: center; font-size: clamp(19px, 1.6vw, 24px); }
+}
+/* photo crops: titles sit on a clean area */
+html body #wastemind .pc-band__img { object-position: 50% 30%; }
+html body #duchess .pc-band__img { object-position: 50% 15%; }
+
+/* ---------- Trail map: bigger labels that read flat; a stacked run list on phones ---------- */
+@media (min-width: 561px) { html body .tm-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); } html body .tm-list button { justify-content: flex-start; } }
+@media (max-width: 560px) {
+  html body .tm-list { display: grid; grid-template-columns: 1fr; gap: 8px; overflow: visible; margin-right: 0; padding-right: 0; }
+  html body .tm-list button { justify-content: flex-start; width: 100%; min-height: 48px; font-size: 16px; }
+}
+
+/* ---------- Mornings: the sample page larger and flat, like on /try/ ---------- */
+@media (min-width: 861px) { html body .paper-teaser .paper-split { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 56px; } }
+html body .paper-teaser .paper-shot { max-width: 620px; }
+html body .paper-split > :last-child { transform: none; transition: none; }
+
+/* ---------- Photos: no scan-line texture over any photo ---------- */
+html body .pc-scan, html body .retro::before, html body .pg::before, html body .pg-tiles .retro::before, html body .pc-mini__win::after, html body .pc-sec::before, html body .pc-band__stick::after { display: none; }
+
+/* ---------- Left elevation rail: in from the edge and easier to read ---------- */
+@media (min-width: 761px) {
+  html body .air-lift { left: max(18px, env(safe-area-inset-left, 0px)); }
+  html body .air-lift__num, html body .air-lift__lbl { font-size: 12px; font-weight: 500; letter-spacing: .08em; }
+}
+@media (max-width: 760px) { html body .air-lift__num { font-size: 9.5px; font-weight: 500; } }
+
+/* ---------- Hero: less scroll before the copy and both buttons are in view ---------- */
+html body .pc-hero { height: 150svh; }
+html body .tm-map svg text.num { font-family: var(--px-sans, "Hanken Grotesk", sans-serif); font-weight: 800; font-size: 20px; letter-spacing: 0; fill: #fff; stroke: none; }
+html body .tm-map svg text.tm-sky { font-family: var(--px-sans, "Hanken Grotesk", sans-serif); font-weight: 800; font-size: 34px; letter-spacing: .02em; stroke-width: 9px; }
+html body .tm-map svg .tm-callout text { font-size: 18px; stroke-width: 6px; }
+html body .tm-map svg .tm-callout text.big { font-size: 26px; }
+html body .tm-run.on .tm-mark { transform-box: fill-box; }
+html body .tm-list .tm-no { font: 500 12px/1 var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .08em; opacity: .7; }
+@media (max-width: 560px) { html body .tm-map svg text.tm-sky { font-size: 44px; } html body .tm-map svg text.num { font-size: 22px; } html body .tm-map svg .tm-callout text { font-size: 20px; } html body .tm-map svg .tm-callout text.big { font-size: 32px; } }
+
+/* ---------- Subpages ---------- */
+/* page-top photo tiles: crop just inside the old print's white border */
+html body .pg-tiles span.retro { background-size: 110% auto; }
+/* booking calendar: the placeholder height lets go once the calendar is in, so no empty band under it */
+html body #cal-inline:has(iframe) { min-height: 0 !important; }
