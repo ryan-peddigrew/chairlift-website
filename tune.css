@@ -9,8 +9,9 @@ p, li, blockquote { text-wrap: pretty; }
 html body .pc-sec { padding-top: clamp(44px, 5vw, 76px); padding-bottom: clamp(44px, 5vw, 76px); }
 html body .kn-idx { margin-bottom: clamp(10px, 1.2vw, 16px); }
 /* cards size to their text; cards in one row still share one height */
-html body .pc-benefits article, html body .pc-pkgs article { min-height: 0; padding: clamp(22px, 2vw, 28px); }
-html body .pc-benefits h3, html body .pc-pkgs h3 { margin-top: 18px; }
+/* client story panels (sx-head with a story title) keep their live card sizes */
+html body .pc-benefits article, html body .pc-sec:not(:has(.csb__h)) .pc-pkgs article { min-height: 0; padding: clamp(22px, 2vw, 28px); }
+html body .pc-benefits h3, html body .pc-sec:not(:has(.csb__h)) .pc-pkgs h3 { margin-top: 18px; }
 html body .pc-benefits { margin-top: 64px; }
 html body .bw__cards { margin-top: 32px; }
 html body .pass-row { margin-top: 28px; }
@@ -44,11 +45,8 @@ html body .kn-step:last-of-type::before, html body .kn-step:last-of-type::after 
 html body .air-split__lbl { transform: translateX(calc(-1 * var(--x, 0%))); left: 50%; }
 @media (max-width: 560px) { html body .kn-rail { margin-bottom: 22px; } html body .air-split__lbl { transform: translateY(-50%); left: auto; } }
 
-/* Photo band before Mornings: a tighter frame around "Your team's hours. Back." */
-html body .pc-band:not(.csb), html body .pc-band:not(.csb) .pc-band__stick { height: 72svh; }
 /* client photo bands end exactly where the photo ends: no ink strip between the photo and its story */
 html body .pc-band.csb { height: 100svh; }
-html body .pc-band:not(.csb) .pc-band__img { object-position: 50% 62%; }
 
 /* Founder note: the frame hugs the quote instead of a full screen */
 html body .pc-fq.pc-pinscrub { padding: clamp(48px, 5.5vw, 84px) 0 !important; }
@@ -76,27 +74,7 @@ html:has(.menu-btn[aria-expanded="true"]) body .site-header .brand span { opacit
 html body .mobile-menu .btn { justify-self: start; display: inline-flex; align-items: center; justify-content: center; min-width: 240px; min-height: 54px; margin: 22px 0 6px; padding: 0 28px; background: #fff !important; color: #141B2A !important; border: 0 !important; border-radius: 3px; font-family: var(--px-sans); font-weight: 800; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
 @media (max-width: 560px) { html body .mobile-menu .btn { justify-self: stretch; width: 100%; } }
 
-/* ---------- Client stories ---------- */
-/* the band already shows the client's name in big type; the panel underneath doesn't repeat it (still read out by screen readers) */
-html body .csb__h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-html body .pc-sec .sx-head:has(.csb__h) .sx-cap { margin-top: 0; }
-html body .pc-sec:has(.csb__h) .pc-ghost { display: none; }
-/* every stop is fully readable, not dimmed while another stop is lit */
-html body .pc-sec:has(.csb__h) .pc-pkgs article { opacity: 1; }
-html body .pc-sec--dark:has(.csb__h) .pc-pkgs article p:last-child, html body .pc-sec--blue:has(.csb__h) .pc-pkgs article p:last-child { color: rgba(255,255,255,.9); opacity: 1; }
-/* four stops in a row: all four headings on one line, so the body text lines up */
-html body .pc-pkgs--4 h3 { font-size: clamp(22px, 1.85vw, 30px); white-space: nowrap; }
-/* Danbury (three stops on the light panel): white cards, ink text */
-html body .pc-sec--cream .pc-pkgs { border-color: rgba(20,27,42,.14); }
-html body .pc-sec--cream .pc-pkgs article { background: #fff; color: #141B2A; border-color: rgba(20,27,42,.14); }
-html body .pc-sec--cream .pc-pkgs article.is-on { background: #fff; }
-html body .pc-sec--cream .pc-pkgs article p:last-child, html body .pc-sec--cream .pc-pkgs article .mono { color: #2B3547; opacity: 1; }
-/* Duchess (one stop): label and heading on the left, the detail on the right, no empty box */
-@media (min-width: 861px) {
-  html body .pc-pkgs--1 article { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); column-gap: 40px; align-items: start; }
-  html body .pc-pkgs--1 article > * { grid-column: 1; }
-  html body .pc-pkgs--1 article > p:last-child { grid-column: 2; grid-row: 1 / span 3; align-self: center; font-size: clamp(19px, 1.6vw, 24px); }
-}
+/* ---------- Client stories: panels keep the live layout (Ryan, 9 Nov) ---------- */
 /* photo crops: titles sit on a clean area */
 html body #wastemind .pc-band__img { object-position: 50% 30%; }
 html body #duchess .pc-band__img { object-position: 50% 15%; }
