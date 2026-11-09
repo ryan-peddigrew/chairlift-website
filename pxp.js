@@ -138,7 +138,7 @@
         var inner = word.querySelector('span[aria-hidden]') || word;
         var wr = inner.getBoundingClientRect();
         var S1 = Math.max(90, word.offsetHeight * 1.9);
-        var cx0 = vw / 2, cy0 = ph * ((vw < 861 ? .4 : .42) + intro * .1);   // intro: logo sits dead centre, then rises to make room for the word
+        var cx0 = vw / 2, cy0 = ph * ((vw < 861 ? .4 : .37) + intro * .1);   // intro: logo sits dead centre, then rises to make room for the word
         window._lb = cy0 + S0 * .5; root.style.setProperty('--lb', window._lb.toFixed(0) + 'px');   // headline sits right under the wordmark
         var cx1 = Math.min(vw - S1 / 2 - 8, wr.right - sr.left + 10 + S1 / 2);
         var cy1 = (wr.top + wr.bottom) / 2 - sr.top + wr.height * .04;   // centred on the word's letters
@@ -169,7 +169,8 @@
     pins.forEach(function (sec) {
       var r = sec.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
-      var sp = reduce ? 1 : clamp(-r.top / Math.max(1, r.height - vh) * 1.12);
+      // a section shorter than the screen plays as it scrolls into view; a taller one plays while it is pinned
+      var sp = reduce ? 1 : r.height < vh ? clamp((vh * .9 - r.top) / (vh * .55)) : clamp(-r.top / Math.max(1, r.height - vh) * 1.12);
       sec.style.setProperty('--fp', sp.toFixed(3));
       sec.style.setProperty('--ro', (1 - Math.min(sp * 1.5, 1)).toFixed(3));
       var ws = sec._w, lit = sp * (ws.length + 4);

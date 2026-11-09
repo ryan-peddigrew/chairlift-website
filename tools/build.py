@@ -547,7 +547,7 @@ STORIES_HTML = "".join([
     ("Payments", "Taking the order.", "Payments set up for the store.", None),
     ("Dropshipping", "Fulfilling the order.", "A dropshipping set-up to get orders out.", None),
   ], "hero-wind-poster", tone="cream"),
-  story_full("duchess", "Duchess Luxury", "Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
+  story_full("duchess", "Duchess", "Luxury Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
     ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
   ], "hero-reel-1-poster", tone="blue", w=800),
   story_full("wastemind", "Waste", "Mind", "Making, installing and servicing waste equipment for condos and apartment buildings.", "Waste equipment", [
