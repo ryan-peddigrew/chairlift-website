@@ -541,12 +541,6 @@ STORIES = [
     ("Deployment", "How it runs.", "In the background. Quotes tracked to deposit. A job packet built the moment a deposit lands.", None),
     ("Results", "What changed.", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
   ], "alps-peaks", dict(tone="blue")),
-  ("smith-long", "Smith", "&amp; Long", "Many divisions, one front door.", "Electrical, mechanical and engineering", [
-    ("Discovery", "Where it stuck.", "Many divisions, long tenders. Field upgrades never reached sales. Renewals tracked by hand.", None),
-    ("Solution", "What we built.", None, ["Inquiry switchboard", "Field relay", "Renewal tracker", "Tender cadence"]),
-    ("Deployment", "How it runs.", "Tenders go to the right division. Techs flag upgrades in under 60 seconds. Leads cued 60 days before renewal.", None),
-    ("Results", "What changed.", "Tighter coordination across divisions. Expansion work captured from the field. Predictable renewals. No tender left to go cold.", None),
-  ], "alps-blue", dict(tone="dark")),
   ("danbury-trashers", "Danbury", "Trashers", "The official fan shop, online.", "Online store", [
     ("Web redesign", "A new storefront.", "A redesigned online store.", None),
     ("Payments", "Taking the order.", "Payments set up for the store.", None),
