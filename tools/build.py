@@ -501,9 +501,7 @@ for i, e in enumerate(EXAMPLES):
 
 # ---------------------------------------------------------------- Client stories (homepage band + stops)
 TRAIL = ["circle", "square", "diamond", "diamond"]
-def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None):
-    """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
-    name = f"{name_a} {name_b}"
+def story_cards(stages):
     cards = ""
     for i, (label, lead, text, chips) in enumerate(stages):
         t = f"<p>{text}</p>" if text else ""
@@ -511,6 +509,13 @@ def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200
         cards += (f'<article><p class="mono">Stop {i + 1} &middot; {label}</p>'
                   f'<h3><i class="trail trail--{TRAIL[i % 4]}" aria-hidden="true"></i>{label}</h3>'
                   f'<p class="pc-pkgs__lead"><strong>{lead}</strong></p>{t}{c}</article>')
+    return cards
+
+
+def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None):
+    """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
+    name = f"{name_a} {name_b}"
+    cards = story_cards(stages)
     n = len(stages)
     ghost = " &nbsp;&middot;&nbsp; ".join(x[0] for x in stages)
     return f"""  <section class="pc-band csb" id="{id_}" aria-label="{name}">
@@ -529,34 +534,36 @@ def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200
     </div>
   </section>
 """
-STORIES_HTML = "".join([
-  story_full("small-space", "Small Space", "Innovations", "From first inquiry to installation day.", "Space design and installation", [
+STORIES = [
+  ("small-space", "Small Space", "Innovations", "From first inquiry to installation day.", "Space design and installation", [
     ("Discovery", "Where it stuck.", "Inquiries piled up. Measurements by hand, slow quotes, details lost between design, workshop and installers.", None),
     ("Solution", "What we built.", None, ["Guided intake", "Quote follow-through", "Job packet", "Client updates"]),
     ("Deployment", "How it runs.", "In the background. Quotes tracked to deposit. A job packet built the moment a deposit lands.", None),
     ("Results", "What changed.", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
-  ], "alps-peaks", tone="blue"),
-  story_full("smith-long", "Smith", "&amp; Long", "Many divisions, one front door.", "Electrical, mechanical and engineering", [
+  ], "alps-peaks", dict(tone="blue")),
+  ("smith-long", "Smith", "&amp; Long", "Many divisions, one front door.", "Electrical, mechanical and engineering", [
     ("Discovery", "Where it stuck.", "Many divisions, long tenders. Field upgrades never reached sales. Renewals tracked by hand.", None),
     ("Solution", "What we built.", None, ["Inquiry switchboard", "Field relay", "Renewal tracker", "Tender cadence"]),
     ("Deployment", "How it runs.", "Tenders go to the right division. Techs flag upgrades in under 60 seconds. Leads cued 60 days before renewal.", None),
     ("Results", "What changed.", "Tighter coordination across divisions. Expansion work captured from the field. Predictable renewals. No tender left to go cold.", None),
-  ], "alps-blue", tone="dark"),
-  story_full("danbury-trashers", "Danbury", "Trashers", "The official fan shop, online.", "Online store", [
+  ], "alps-blue", dict(tone="dark")),
+  ("danbury-trashers", "Danbury", "Trashers", "The official fan shop, online.", "Online store", [
     ("Web redesign", "A new storefront.", "A redesigned online store.", None),
     ("Payments", "Taking the order.", "Payments set up for the store.", None),
     ("Dropshipping", "Fulfilling the order.", "A dropshipping set-up to get orders out.", None),
-  ], "hero-wind-poster", tone="cream"),
-  story_full("duchess", "Duchess", "Luxury Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
+  ], "hero-wind-poster", dict(tone="cream")),
+  ("duchess", "Duchess", "Luxury Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
     ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
-  ], "hero-reel-1-poster", tone="blue", w=800),
-  story_full("wastemind", "Waste", "Mind", "Making, installing and servicing waste equipment for condos and apartment buildings.", "Waste equipment", [
+  ], "hero-reel-1-poster", dict(tone="blue", w=800)),
+  ("wastemind", "Waste", "Mind", "Making, installing and servicing waste equipment for condos and apartment buildings.", "Waste equipment", [
     ("Discovery", "Where it stuck.", "Shane Fagan was growing WasteMind and working out how to scale it.", None),
     ("Solution", "What we did.", "We looked for where time and money were leaking, put fixes in, tracked the return and measured it.", None),
     ("Deployment", "How it runs.", "We work with WasteMind every week, one tested fix at a time.", None),
     ("Results", "What changed.", "Faster replies to quote requests, service calls and inquiries.", None),
-  ], "wastemind-containers", tone="dark", quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind")),
-])
+  ], "wastemind-containers", dict(tone="dark", quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind"))),
+]
+STORIES_HTML = "".join(story_full(*a[:7], **a[7]) for a in STORIES)
+
 
 examples = page_hero("In practice", "What this looks like in practice.",
     "Real client stories first, then four tasks we often fix, step by step. The four are illustrative examples, not client case studies.") + f'''
@@ -1053,7 +1060,36 @@ CASE_A = f'''
     </div>
   </section>
 '''
-home = home.replace('  <section class="pc-sec bw"', '  <div id="case-studies"></div>\n' + STORIES_HTML + '  <section class="pc-sec bw"', 1)
+# Homepage: all client stories in ONE section. One story shows at a time; a row of tabs
+# (swipes sideways on phones) switches between them (Ryan, 2026-11-10).
+TAB_NAMES = {"wastemind": "WasteMind"}
+def story_tabs():
+    tabs, panels = "", ""
+    for k, (id_, name_a, name_b, line, kind, stages, img, opt) in enumerate(STORIES):
+        name = TAB_NAMES.get(id_, f"{name_a} {name_b}")
+        w, quote, on = opt.get("w", 1200), opt.get("quote"), k == 0
+        tabs += (f'<button type="button" role="tab" class="cst__tab" id="cst-tab-{id_}" aria-controls="cst-{id_}" '
+                 f'aria-selected="{"true" if on else "false"}"{"" if on else " tabindex=\"-1\""} data-story="{id_}">'
+                 f'<span class="cst__num">{k + 1:02d}</span>{name}</button>')
+        q = ('<blockquote class="csb__quote"><p>' + quote[0] + '</p><cite>' + quote[1] + '</cite></blockquote>') if quote else ''
+        panels += f"""      <div class="cst__panel" role="tabpanel" id="cst-{id_}" aria-labelledby="cst-tab-{id_}" tabindex="0"{"" if on else " hidden"}>
+        <div class="cst__media"><picture><source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+          <p class="cst__tag">Client story &middot; {kind}</p>
+          <h3 class="cst__name">{name}</h3>
+        </div>
+        <div class="sx-cap cst__cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">{line}</p></div>
+        <div class="pc-pkgs pc-pkgs--{len(stages)}">{story_cards(stages)}</div>
+        {q}
+      </div>
+"""
+    return f"""  <section class="pc-sec pc-sec--blue cst" id="case-studies" aria-labelledby="cs-title">
+    <div class="pc-wrap">
+      <header class="sx-head"><h2 id="cs-title" class="sx-title">Case studies<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Real clients. Pick a story.</p></div></header>
+      <div class="cst__bar"><div class="cst__tabs" role="tablist" aria-label="Client stories">{tabs}</div><button type="button" class="cst__more" aria-label="Scroll to more stories"><i class="ar ar--r" aria-hidden="true"></i></button></div>
+{panels}    </div>
+  </section>
+"""
+home = home.replace('  <section class="pc-sec bw"', story_tabs() + '  <section class="pc-sec bw"', 1)
 
 PAGES = [
     ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),

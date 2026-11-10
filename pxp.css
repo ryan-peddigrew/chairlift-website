@@ -1030,3 +1030,44 @@ body main .calc-form .calc-task { color: var(--px-ink); }
 .csb__quote { margin: 40px 0 0; padding: 0 0 0 22px; border-left: 4px solid #fff; position: relative; z-index: 1; }
 .csb__quote p { margin: 0 0 8px; font-size: clamp(20px, 2.4vw, 30px); font-weight: 600; line-height: 1.25; color: #fff; }
 .csb__quote cite { font-style: normal; color: rgba(255,255,255,.75); font-size: 15px; }
+
+/* ---- Homepage case studies: one section, one story at a time, tabs that scroll sideways (Ryan, 2026-11-10) ---- */
+.cst__bar { position: relative; margin: clamp(28px, 4vw, 44px) 0 clamp(22px, 3vw, 32px); }
+.cst__tabs { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding: 0 20px; scrollbar-width: none; padding: 2px 64px 2px 2px; -webkit-overflow-scrolling: touch; }
+.cst__tabs::-webkit-scrollbar { display: none; }
+.cst__tab { flex: 0 0 auto; scroll-snap-align: start; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 1.5px solid rgba(255,255,255,.55); border-radius: 999px; background: transparent; color: #fff; font: 600 16px/1 var(--px-sans, "Hanken Grotesk", sans-serif); letter-spacing: -.01em; white-space: nowrap; cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+.cst__tab:hover { border-color: #fff; }
+.cst__tab[aria-selected="true"] { background: #fff; color: #141B2A; border-color: #fff; }
+.cst__tab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.cst__num { font-family: var(--px-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; opacity: .7; }
+.cst__more { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: 0; border-radius: 999px; background: #fff; color: #141B2A; display: grid; place-items: center; font-size: 20px; cursor: pointer; box-shadow: -24px 0 24px 6px #1B2A44; transition: opacity .25s; }
+.cst__more.is-end { opacity: 0; pointer-events: none; }
+.cst__panel[hidden] { display: none; }
+.cst__panel { animation: cstIn .45s cubic-bezier(.2,.7,.2,1); }
+.cst__panel:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 6px; }
+@keyframes cstIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.cst__media { position: relative; overflow: hidden; border-radius: 18px; aspect-ratio: 21 / 8; background: #141B2A; }
+.cst__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.cst__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,27,42,.15) 30%, rgba(20,27,42,.75)); }
+.cst__tag { position: absolute; z-index: 1; left: clamp(20px, 3vw, 40px); top: clamp(18px, 2.4vw, 30px); margin: 0; color: #fff; font-family: var(--px-mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
+.cst__name { position: absolute; z-index: 1; left: clamp(20px, 3vw, 40px); right: 20px; bottom: clamp(16px, 2.4vw, 30px); margin: 0; color: #fff; font-weight: 800; font-size: clamp(36px, 6vw, 92px); line-height: .95; letter-spacing: -.04em; }
+.cst__cap { margin: clamp(22px, 3vw, 32px) 0; }
+.cst .pc-pkgs article, .cst .pc-pkgs article.rv { opacity: 1 !important; transform: none !important; }
+.cst .pc-pkgs article::after { transform: scaleX(1) !important; }
+@media (max-width: 860px) {
+  .cst__media { aspect-ratio: 4 / 3; border-radius: 14px; }
+  .cst__tab { font-size: 15px; padding: 0 16px; }
+  .cst__tabs { margin-right: -20px; }
+}
+@media (prefers-reduced-motion: reduce) { .cst__panel { animation: none; } }
+.cst .cst__cap, .cst .cst__cap.rv { opacity: 1 !important; transform: none !important; display: flex; align-items: center; gap: 20px; }
+.cst__cap .sx-line { margin: 0; }
+@media (max-width: 860px) {
+  .cst__media { aspect-ratio: 5 / 4; }
+  .cst__tag { right: 20px; font-size: 11px; line-height: 1.5; }
+  .cst__more { width: 44px; height: 44px; box-shadow: -18px 0 18px 10px #1B2A44; right: -4px; }
+  .cst .pc-pkgs { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; border: 0; margin-right: -20px; padding-right: 20px; scrollbar-width: none; }
+  .cst .pc-pkgs::-webkit-scrollbar { display: none; }
+  .cst .pc-pkgs article { flex: 0 0 84%; scroll-snap-align: start; border: 1px solid rgba(255,255,255,.16) !important; border-radius: 14px; }
+  .cst .pc-pkgs--1 article { flex-basis: 100%; }
+}
