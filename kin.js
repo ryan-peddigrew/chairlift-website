@@ -140,16 +140,19 @@
         g.font = MONO; g.textBaseline = 'top'; g.textAlign = 'left'; g.fillStyle = 'rgba(255,255,255,.6)'; g.fillText('LIVE DEMO', 14, H - 20);
         g.textAlign = 'right'; g.fillStyle = '#fff'; g.fillText('WAITING ' + ('0' + wn).slice(-2) + '   FINISHED ' + ('00' + done).slice(-3), W - 14, H - 20);
       }
+      var running = false;
+      function kick() { if (!running && !reduce) { running = true; requestAnimationFrame(loop); } }
       function loop(now) {
-        requestAnimationFrame(loop);
-        if (!vis) { last = now; return; }
+        running = false;
+        if (!vis) { last = 0; return; }   // off screen: the demo stops completely and picks up when it scrolls back
+        kick();
         var dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
         step(dt); draw(now);
       }
       size(); window.addEventListener('resize', size);
-      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(cv);
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; if (vis) kick(); }).observe(cv);
       for (var n = 0; n < 420; n++) step(.05);   // start mid-day, with the work already backed up
-      if (reduce) draw(0); else requestAnimationFrame(loop);
+      if (reduce) draw(0); else kick();
     })();
     btns.forEach(function (b) { b.addEventListener('click', function () { touched = true; set(+b.dataset.way); }); });
     set(0);

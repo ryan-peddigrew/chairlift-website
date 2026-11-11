@@ -81,6 +81,17 @@
     });
   }
 
+  // Home closer on phones: the "send us one task" form stays folded behind one button until someone wants it (shorter page).
+  // Without JavaScript, and on a computer, the form simply shows.
+  var doors = document.querySelector('.cta-box--doors'), opener = doors && doors.querySelector('.task-open');
+  if (opener) {
+    doors.classList.add('is-folded');
+    opener.addEventListener('click', function () {
+      doors.classList.remove('is-folded');
+      var t = doors.querySelector('textarea'); if (t) t.focus();
+    });
+  }
+
   // Footer year
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

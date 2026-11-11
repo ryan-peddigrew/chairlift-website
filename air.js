@@ -18,7 +18,9 @@
       var g = cv.getContext('2d'), W = 0, H = 0, dpr = 1, vis = false;
       function sizeT() { dpr = Math.min(1.5, window.devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); }
       sizeT(); window.addEventListener('resize', sizeT);
-      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }, { threshold: .05 }).observe(cv);
+      var runT = false, kickT = function () { if (!runT) { runT = true; requestAnimationFrame(loop); } };
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; if (vis) kickT(); }, { threshold: .05 }).observe(cv);
+      else { vis = true; }
       // a small, smooth height field: a few soft hills, plus a dent that follows the pointer
       var hills = [[.22, .3, .9], [.7, .25, .7], [.5, .8, .8], [.85, .7, .6], [.1, .85, .5]];
       function h(x, y, px, py, pw) {
@@ -28,10 +30,12 @@
         return v;
       }
       var sx = .5, sy = .5, sw = 0, ph = 0;
-      (function loop(now) {
-        // phones: draw the contour lines once when they come into view, then stop, so nothing animates on battery
-        if (!vis || fine) requestAnimationFrame(loop);
+      function loop(now) {
+        // phones: draw the contour lines once when they come into view, then stop, so nothing animates on battery.
+        // Nothing runs at all while the section is off screen (it used to check 60 times a second).
+        runT = false;
         if (!vis) return;
+        if (fine) kickT();
         var r = cv.getBoundingClientRect(), tx, ty, tw;
         if (fine && now - pointer.t < 2500) { tx = (pointer.x - r.left) / W; ty = (pointer.y - r.top) / H; tw = 1; }
         else { ph += .004; tx = .5 + Math.sin(ph) * .3; ty = .5 + Math.cos(ph * .7) * .3; tw = .7; }
@@ -57,7 +61,8 @@
           }
         }
         g.stroke();
-      })(0);
+      }
+      kickT();
     }
 
     // the ticket shows today's date and the weekday letter (en-CA)
@@ -112,10 +117,13 @@
       var dg = dc.getContext('2d'), DW = 0, DH = 0, ddpr = 1, dvis = false, dph = 0, dsx = .5, dsy = .5;
       function sizeD() { ddpr = Math.min(1.5, window.devicePixelRatio || 1); DW = dc.clientWidth; DH = dc.clientHeight; dc.width = DW * ddpr; dc.height = DH * ddpr; dg.setTransform(ddpr, 0, 0, ddpr, 0, 0); }
       sizeD(); window.addEventListener('resize', sizeD);
-      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { dvis = es[0].isIntersecting; }, { threshold: .05 }).observe(dc);
-      (function loopD(now) {
-        if (!dvis || fine) requestAnimationFrame(loopD);   // phones: one still frame, no constant redraw
-        if (!dvis) return;
+      var runD = false, kickD = function () { if (!runD) { runD = true; requestAnimationFrame(loopD); } };
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { dvis = es[0].isIntersecting; if (dvis) kickD(); }, { threshold: .05 }).observe(dc);
+      else { dvis = true; }
+      function loopD(now) {
+        runD = false;
+        if (!dvis) return;                 // off screen: nothing runs
+        if (fine) kickD();                 // phones: one still frame, no constant redraw
         var r = dc.getBoundingClientRect(), tx, ty;
         if (fine && now - pointer.t < 2500) { tx = pointer.x - r.left; ty = pointer.y - r.top; }
         else { dph += .006; tx = DW * (.5 + Math.sin(dph) * .4); ty = DH * (.5 + Math.cos(dph * .8) * .4); }
@@ -128,7 +136,8 @@
           dg.fillStyle = k > .02 ? 'rgba(61,255,193,' + a.toFixed(3) + ')' : 'rgba(255,255,255,' + a.toFixed(3) + ')';
           dg.beginPath(); dg.arc(x, y, rad, 0, 7); dg.fill();
         }
-      })(0);
+      }
+      kickD();
     }
 
     // scroll chairlift: a cable down the left edge; the chair climbs it as you read down the page (base at the bottom, summit at the top),
@@ -139,7 +148,7 @@
       lift.innerHTML = '<i class="air-lift__end air-lift__end--top"></i><i class="air-lift__end air-lift__end--base"></i>' +
         '<div class="air-lift__car"><div class="air-lift__read"><span class="air-lift__num">1,200&thinsp;m</span><span class="air-lift__lbl">Base</span></div>' +
         '<div class="air-lift__chair"><svg viewBox="0 0 34 54" preserveAspectRatio="xMidYMin meet"><rect class="air-lift__grip" x="13.5" y="0" width="7" height="5" rx="1"/><path d="M17 5V13"/><path class="air-lift__seat" d="M8 13h18l3.5 5h-25z"/><rect x="5" y="18" width="24" height="28" rx="3.5"/><path d="M5 31H29"/></svg></div></div>';
-      body.appendChild(lift);
+      body.appendChild(lift); root.classList.add('has-lift');   // phone layout keeps a clear lane for the cable (tune.css)
       var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), num = lift.querySelector('.air-lift__num'), lbl = lift.querySelector('.air-lift__lbl');
       var cur = 0, target = 0, raf = 0, span = 0, shown = '';
       function measure() {

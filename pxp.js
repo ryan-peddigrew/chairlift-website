@@ -15,7 +15,7 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sps = [].slice.call(document.querySelectorAll('.pc-hero ~ section, .pc-hero ~ .pc-band, .paper-split, .retro--wide, .pc-ridge'));
   var scrubs = [].slice.call(document.querySelectorAll('[data-scrub]'));
-  var route = document.querySelector('.pc-pkgs'), stops = route ? [].slice.call(route.children) : [];
+  var routes = [].slice.call(document.querySelectorAll('.pc-pkgs'));   // every row of stops lights up as it arrives (was: only the first row on the page, which left later rows faded)
   // split scrub paragraphs into words, keeping inline <em> wrappers
   scrubs.forEach(function (el) {
     (function walk(node) {
@@ -32,24 +32,7 @@
       });
     })(el);
   });
-  var lits = [].slice.call(document.querySelectorAll('.pg-lede, .lead-big, .stage-sum, .pc-cols p, .pc-lead--small, .pc-list li span'));
-  lits.forEach(function (el) {
-    el.setAttribute('data-lit', '');
-    (function walk(node) {
-      [].slice.call(node.childNodes).forEach(function (n) {
-        if (n.nodeType === 3) {
-          var f = document.createDocumentFragment();
-          n.nodeValue.split(/(\s+)/).forEach(function (t) {
-            if (!t) return;
-            if (/^\s+$/.test(t)) { f.appendChild(document.createTextNode(' ')); return; }
-            var s = document.createElement('span'); s.className = 'w'; s.textContent = t; f.appendChild(s);
-          });
-          n.parentNode.replaceChild(f, n);
-        } else if (n.nodeType === 1 && n.tagName !== 'A') walk(n);
-      });
-    })(el);
-    el._w = [].slice.call(el.querySelectorAll('.w'));
-  });
+  // (the old word-by-word light-up on ledes was switched off in CSS; its word splitting and per-scroll checks were removed 11 Nov 2026)
   var words = scrubs.length ? [].slice.call(document.querySelectorAll('[data-scrub] .w')) : [];
   var pins = [].slice.call(document.querySelectorAll('.pc-pinscrub'));
   pins.forEach(function (s) { s._w = [].slice.call(s.querySelectorAll('[data-scrub] .w')); });
@@ -64,11 +47,13 @@
     rv.forEach(function (el) { var w = el.classList.contains('sx-title') && el.parentNode.classList.contains('sx-head') ? el.parentNode : el; w._rv = el; io.observe(w); });
   }
 
-  // Ski Patrol exit check: desktop when the pointer leaves through the top, phones when someone switches away and comes back. Once per visit.
+  // Ski Patrol exit check: desktop only, when the pointer leaves through the top. Once per visit.
   (function () {
     var KEY = 'pxpatrol', shown = false;
     try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
     if (location.pathname.indexOf('/5min') === 0 || location.pathname.indexOf('/thanks') === 0) return;
+    // phones and tablets: off (11 Nov 2026). Switching to a text and back is not leaving, and the full-screen card got in the way.
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     var armed = false; setTimeout(function () { armed = true; new Image().src = '/images/patrol/patroller.webp'; }, 6000);
     var guy = '<img src="/images/patrol/patroller.webp" alt="" width="727" height="1280" decoding="async">';
     function open() {
@@ -93,11 +78,6 @@
       requestAnimationFrame(function () { d.classList.add('is-on'); d.querySelector('.patrol__go').focus({ preventScroll: true }); });
     }
     document.addEventListener('mouseout', function (e) { if (armed && !e.relatedTarget && e.clientY <= 0) open(); });
-    var away = 0;
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) away = Date.now();
-      else if (armed && away && Date.now() - away > 1500 && matchMedia('(hover: none)').matches) open();
-    });
   })();
 
   // band video (reel 5) on phones only: portrait footage fits portrait screens; desktop keeps the full-res photo
@@ -152,16 +132,11 @@
         var cx = cx0 + (tx - cx0) * e, cy = cy0 + (ty - cy0) * e, s = 1 + (S1d / S0 - 1) * e;
         logo.style.transform = 'translate(' + (cx - S0 / 2).toFixed(1) + 'px,' + (cy - S0 / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
         root.classList.toggle('logo-docked', logo.classList.contains('is-3d'));
+        root.classList.toggle('logo-parked', e >= .99);
         root.style.setProperty('--dk', e.toFixed(3));
+        window.__px = { dk: e, p: p, intro: intro, ds: S1d };
       }
     }
-    lits.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.bottom < -50 || r.top > vh + 50) return;
-      var lp = reduce ? 1 : clamp((vh * .92 - r.top) / (vh * .5));
-      var n = el._w.length, lit = lp * (n + 3);
-      el._w.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
-    });
     sps.forEach(function (el) {
       var r = el.getBoundingClientRect();
       el.style.setProperty('--sp', clamp((vh - r.top) / (r.height + vh)).toFixed(3));
@@ -176,12 +151,15 @@
       var ws = sec._w, lit = sp * (ws.length + 4);
       ws.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
     });
-    if (route) {
+    routes.forEach(function (route) {
       var rr = route.getBoundingClientRect();
-      var rp = clamp((vh * .78 - rr.top) / (Math.min(rr.height, vh) * 1.1));
+      if (!rr.width || rr.bottom < -vh || rr.top > vh * 2) return;
+      var stops = route.children, n = stops.length;
+      var swipe = route.scrollWidth > route.clientWidth + 8;   // phones: the row swipes sideways, so the little chair follows the swipe
+      var rp = swipe ? clamp(route.scrollLeft / Math.max(1, route.scrollWidth - route.clientWidth)) : clamp((vh * .78 - rr.top) / (Math.min(rr.height, vh) * 1.1));
       route.parentNode.style.setProperty('--rp', rp.toFixed(3));
-      stops.forEach(function (s, i) { s.classList.toggle('is-on', rp >= i / stops.length + .02); });
-    }
+      for (var i = 0; i < n; i++) stops[i].classList.toggle('is-on', swipe || rp >= i / n + .02);
+    });
     if (band) {
       var r = band.getBoundingClientRect();
       var bp = clamp((vh - r.top) / (r.height + vh));
@@ -215,11 +193,12 @@
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
+  routes.forEach(function (r) { r.addEventListener('scroll', onScroll, { passive: true }); });
   frame();
 })();
 
 // background videos: iPhones in Low Power Mode refuse to autoplay video and show a play button instead.
-// Moving images still play there, so if the hero video is blocked, swap in an animated WebP of the same footage.
+// If the hero video is blocked, show its still photo with a slow push-in (CSS, no download) so the hero still moves.
 (function () {
   var vids = [].slice.call(document.querySelectorAll('video.pc-photo'));
   vids.forEach(function (v) {
@@ -227,9 +206,8 @@
     function swap() {
       if (swapped || !v.paused) return; swapped = true;
       var img = new Image();
-      img.className = v.className; img.alt = ''; img.decoding = 'async';
-      img.src = (v.getAttribute('src') || '').replace(/\.mp4$/, '.webp');
-      img.onerror = function () { img.src = v.getAttribute('poster'); };
+      img.className = v.className + ' pc-photo--drift'; img.alt = ''; img.decoding = 'async';
+      img.src = v.getAttribute('poster');
       v.parentNode.replaceChild(img, v);
     }
     var pr = v.play();
