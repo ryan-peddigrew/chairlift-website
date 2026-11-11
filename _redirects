@@ -11,6 +11,38 @@
 /morning-paper/  /paper/         301
 /5min   /5min/   301
 
+# Typed or remembered booking addresses all land on the booking page
+/5-minute      /5min/   301
+/5-minute/     /5min/   301
+/5-minutes     /5min/   301
+/5-minutes/    /5min/   301
+/5minute       /5min/   301
+/5minute/      /5min/   301
+/5minutes      /5min/   301
+/5minutes/     /5min/   301
+/5-min         /5min/   301
+/5-min/        /5min/   301
+/5-mins        /5min/   301
+/5-mins/       /5min/   301
+/5mins         /5min/   301
+/5mins/        /5min/   301
+/five-minute   /5min/   301
+/five-minute/  /5min/   301
+/five-minutes  /5min/   301
+/five-minutes/ /5min/   301
+/fiveminute    /5min/   301
+/fiveminute/   /5min/   301
+/fiveminutes   /5min/   301
+/fiveminutes/  /5min/   301
+/book          /5min/   301
+/book/         /5min/   301
+/booking       /5min/   301
+/booking/      /5min/   301
+/schedule      /5min/   301
+/schedule/     /5min/   301
+/calendar      /5min/   301
+/calendar/     /5min/   301
+
 # Old homepage mock-ups stay in the repo but are hidden from the live site
 /home-a/*  /  301!
 /home-b/*  /  301!
