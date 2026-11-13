@@ -244,14 +244,14 @@ home = f'''
       <div class="bw__top"><div class="bw__intro">
       <p class="bw__eyebrow">There&rsquo;s a better way</p>
       <h2 id="bw-title" class="bw__title">One task first.</h2>
-      <p class="bw__lead">Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Our own team of real people sets it up, refines it with the people who use it, and keeps it running.</p>
+      <p class="bw__lead">Chairlift finds the routine work slowing your team down, then builds the fix inside the tools you already use: your inbox, calendar, spreadsheets and quoting tools. Our own team sets it up, refines it with the people who use it, and keeps it running.</p>
       </div>
       {PASS_FAN}
       </div>
       <div class="bw__cards">
         <article><p class="bw__n">01</p><h3>Nobody chasing</h3><p>Follow-ups, replies and reports happen on their own, so nobody keeps a list in their head.</p></article>
         <article><p class="bw__n">02</p><h3>Inside your tools</h3><p>Your inbox, calendar, spreadsheets and quoting tools. Nothing new for your team to learn.</p></article>
-        <article><p class="bw__n">03</p><h3>Our own team</h3><p>Real people on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
+        <article><p class="bw__n">03</p><h3>Our own team</h3><p>Our team on every step, from the first conversation to the last fix. Never a bot, never outsourced.</p></article>
       </div>
       <div class="pass-row">
       <p class="pc-links"><a class="pc-link pc-link--ink" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift <i class="ar" aria-hidden="true"></i></a><a class="pc-link pc-link--ink" href="/how-it-works/">How it works <i class="ar" aria-hidden="true"></i></a></p>
@@ -436,7 +436,7 @@ FAQ = [
     ("Is this going to be expensive?", ["We won't quote until we understand the job, and you'll see the price before any work starts."]),
     ("I don't have time for another project.", ["It starts with five minutes, and after that we do the building. Your team just shows us how the work gets done today."]),
     ("We tried a new system before and nobody used it.", ["That's why we don't sell new tools. We fix one task inside the tools you already use, and refine it with the people who use it."]),
-    ("Can I trust you with my accounts?", ["We're our own team of real people, never outsourced. We only touch what the fix needs, and you stay the owner of your tools and data."]),
+    ("Can I trust you with my accounts?", ["We're our own team, never outsourced. We only touch what the fix needs, and you stay the owner of your tools and data."]),
     ("We're probably too small for this.", ["If your team does the same task every week, you're not too small. We start with one task and only go further if it's worth it."]),
     ("I don't want robots talking to my customers.", ["Neither do we. You always deal with real people, and nothing goes to your customers until you've signed off on it."]),
     ("Do we need to buy new tools?", ["In most cases, no. We build inside the tools you already use: your inbox, calendar, spreadsheets, and the booking or quoting tools you already pay for.", "If something genuinely needs adding, we'll explain why before anything changes."]),
@@ -953,7 +953,7 @@ FIVE_FAQ = "".join(f"""        <details>
 BRING = ["Quotes that go quiet", "Inquiries that sit overnight", "Reports built by hand", "Old customers who went silent", "The same details typed three times", "A handover that means forwarding dozens of emails"]
 
 five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
-    "One real person from our own team. Tell us about the work slowing people down, whether it's a team, a company or just you, and we'll say honestly if there's a fix worth trying.",
+    "One person from our own team. Tell us about the work slowing people down, whether it's a team, a company or just you, and we'll say honestly if there's a fix worth trying.",
     extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Take the lift</a></div>') + f'''
   <section class="section section--tight" aria-labelledby="five-title">
     <div class="wrap">
@@ -1073,7 +1073,7 @@ def story_tabs():
 home = home.replace('  <section class="pc-sec bw"', story_tabs() + '  <section class="pc-sec bw"', 1)
 
 PAGES = [
-    ("index.html", "Chairlift | Less busywork. More business.", "Our own team of real people takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
+    ("index.html", "Chairlift | Less busywork. More business.", "Our own team takes follow-ups, quotes and admin off your team's plate, inside the tools you already use. Book a five-minute conversation.", "/", None, home_variant("e", False), False),
     ("what-we-do/index.html", "What we do", "Inquiries answered fast, quotes followed up, reviews on repeat, and scheduling that runs itself, built inside the tools your team already uses.", "/what-we-do/", "services", services, False),
     ("how-it-works/index.html", "How it works", "Onboard, Ride, Summit: how Chairlift learns how your team works, fixes one task at a time, and refines it with the people who use it.", "/how-it-works/", "how", how, False),
     ("who-we-help/index.html", "Who we help", "How Chairlift helps trades and contractors, manufacturers, professional services firms and sales teams take the follow-ups and admin that slow them down off their plate.", "/who-we-help/", "industries", industries, False),
@@ -1081,7 +1081,7 @@ PAGES = [
     ("paper/index.html", "One page for your mornings", "A one-page morning briefing with your focus, calendar and follow-ups, on paper, by email or on your desktop. Start with a five-minute conversation.", "/paper/", None, morning_paper, False),
     ("try/index.html", "Get your own morning paper", "Type in your name, city and top three for the day, see your own one-page morning paper take shape, and send us your request.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
-    ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
+    ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
 ] + [
