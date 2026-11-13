@@ -210,8 +210,13 @@
       img.src = v.getAttribute('poster');
       v.parentNode.replaceChild(img, v);
     }
-    var pr = v.play();
-    if (pr && pr.catch) pr.catch(swap);
-    setTimeout(swap, 1500);
+    function start() {
+      if (v.getAttribute('data-src') && !v.getAttribute('src')) { v.src = v.getAttribute('data-src'); v.preload = 'auto'; }
+      var pr = v.play();
+      if (pr && pr.catch) pr.catch(swap);
+      setTimeout(swap, 1500);
+    }
+    // the poster paints first; the video itself loads once the page has finished loading
+    if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
   });
 })();
