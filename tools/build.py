@@ -525,7 +525,7 @@ STORIES = [
     ("Solution", "What we built.", None, ["Guided intake", "Quote follow-through", "Job packet", "Client updates"]),
     ("Deployment", "How it runs.", "In the background. Quotes tracked to deposit. A job packet built the moment a deposit lands.", None),
     ("Results", "What changed.", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
-  ], "cs-small-space", dict(tone="blue")),
+  ], "cs-small-space", dict(tone="blue", wide=True)),
   ("danbury-trashers", "Danbury", "Trashers", "The official fan shop, online.", "Online store", [
     ("Web redesign", "A new storefront.", "A redesigned online store.", None),
     ("Payments", "Taking the order.", "Payments set up for the store.", None),
