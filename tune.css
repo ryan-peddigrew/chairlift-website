@@ -137,7 +137,6 @@ html body { --gl: 20px; --gr: 20px; }
   html body main .pc-wrap { padding-left: var(--gl); padding-right: var(--gr); }
   html.has-lift body main .cta { padding-left: 26px; padding-right: 12px; }
   html.has-lift body .site-footer .wrap { padding-left: var(--gl); }
-  html.has-lift body .lift-status ul { padding-left: 44px; }
   html body .cst .pc-pkgs { margin-right: calc(var(--gr) * -1); padding-right: var(--gr); }
 
   /* ---- More room for words: slimmer padding inside boxes, so paragraphs run wider and shorter ---- */
@@ -201,3 +200,8 @@ html.no-3d.over-hero body .site-header .brand svg { opacity: var(--dk, 0); }
 @media (max-width: 560px) {
   html.has-lift body .tm-poster { margin-left: 2px; margin-right: -6px; }
 }
+
+/* ---------- Lift status now sits in the footer (Ryan, 13 Nov 2026): quiet strip above the copyright line ---------- */
+.site-footer .lift-status { background: transparent; border-top: 1px solid rgba(255,255,255,.12); }
+.site-footer .lift-status ul { padding-top: 22px; padding-bottom: 22px; }
+@media (max-width: 640px) { html body .site-footer .lift-status ul { padding-left: calc(var(--gl) + 14px); padding-right: var(--gr); } }

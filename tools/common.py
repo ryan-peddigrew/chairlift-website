@@ -279,11 +279,26 @@ def page_hero(eyebrow, title, lede, extra=""):
 '''
 
 
+# Lift status (Ryan, 13 Nov 2026): lives in the footer of the home page, no longer under the hero.
+LIFT_STATUS = '''  <div class="lift-status" aria-label="Lift status">
+    <ul>
+      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
+      <li>Runs open <b>6 of 6</b></li>
+      <li>Conditions <b>Looking good</b></li>
+      <li>Weather <b>Bluebird</b></li>
+      <li class="lift-status__x">Next stop <b>Growth</b></li>
+    </ul>
+  </div>
+'''
+
+
 def page(title, desc, path, active, body, noindex=False):
     import re
     # Brand accent: section titles end in a full stop that can take the mint accent
     body = re.sub(r'(<h2[^>]*>[^<]*?)\.</h2>', r'\1<span class="dot">.</span></h2>', body)
     html = head(title, desc, path, noindex) + header(active) + '\n<main id="main">\n' + body + '\n</main>\n' + footer()
+    if path == "/":
+        html = html.replace('  <div class="footer-bottom">', LIFT_STATUS + '  <div class="footer-bottom">', 1)
     return light_images(html)
 
 
