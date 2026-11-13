@@ -1,6 +1,6 @@
-Case study photos (images/cs-*.jpg) are tinted copies (Ink duotone) of:
-- cs-small-space: "Built-in wardrobe assembled in late 2001 in Barinas, Venezuela.jpg", Wikimedia Commons, CC BY-SA 4.0 (author credit still to add before a publish)
-- cs-danbury-trashers: "Interior of Riverside Arena in Austin, MN.jpg", Wikimedia Commons, CC0 (no credit needed)
-- cs-duchess: "Human eyelashes.jpg", Wikimedia Commons, CC BY-SA 4.0 (author credit still to add before a publish)
-- cs-wastemind: WasteMind's own photo (wastemind-containers.jpg)
-These stand in until each client's own photos are available. Swap the files, keep the names.
+Case study images (images/cs-*):
+- cs-danbury-trashers (+ -wide): screenshots of the live Danbury Trashers fan shop (dbtrashers.com) that we built, in a device frame.
+- cs-wastemind: WasteMind's own photo (wastemind-containers.jpg), Ink wash.
+- cs-small-space: "Built-in wardrobe assembled in late 2001 in Barinas, Venezuela.jpg", Wikimedia Commons, CC BY-SA 4.0. Stand-in; author credit needed before a publish if kept.
+- cs-duchess: "Human eyelashes.jpg", Wikimedia Commons, CC BY-SA 4.0. Stand-in; author credit needed before a publish if kept.
+Stand-ins get replaced by screenshots of the quoting tool, lash builder and room-photo tool. Swap the files, keep the names, run tools/optimize_images.py.

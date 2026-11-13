@@ -497,7 +497,7 @@ def story_cards(stages):
     return cards
 
 
-def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None):
+def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None, wide=False):
     """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
     name = f"{name_a} {name_b}"
     cards = story_cards(stages)
@@ -530,7 +530,7 @@ STORIES = [
     ("Web redesign", "A new storefront.", "A redesigned online store.", None),
     ("Payments", "Taking the order.", "Payments set up for the store.", None),
     ("Dropshipping", "Fulfilling the order.", "A dropshipping set-up to get orders out.", None),
-  ], "cs-danbury-trashers", dict(tone="cream")),
+  ], "cs-danbury-trashers", dict(tone="cream", wide=True)),
   ("duchess", "Duchess", "Luxury Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
     ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
   ], "cs-duchess", dict(tone="blue", w=800)),
@@ -1052,7 +1052,7 @@ def story_tabs():
                  f'<span class="cst__num">{k + 1:02d}</span>{name}</button>')
         q = ('<blockquote class="csb__quote"><p>' + quote[0] + '</p><cite>' + quote[1] + '</cite></blockquote>') if quote else ''
         panels += f"""      <div class="cst__panel" role="tabpanel" id="cst-{id_}" aria-labelledby="cst-tab-{id_}" tabindex="0"{"" if on else " hidden"}>
-        <div class="cst__media"><picture><source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+        <div class="cst__media{" cst__media--screen" if opt.get("wide") else ""}"><picture>{('<source media="(min-width: 861px)" type="image/webp" srcset="/images/' + img + '-wide-1200.webp">') if opt.get("wide") else ''}<source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
           <p class="cst__tag">Client story &middot; {kind}</p>
           <h3 class="cst__name">{name}</h3>
         </div>
