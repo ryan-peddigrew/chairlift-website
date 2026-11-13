@@ -1004,8 +1004,10 @@ five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
 
 # ---- homepage mock-up variants (previews, noindex) ----
 _MEDIA = re.compile(r'<video class="pc-photo pc-photo--wind".*?</video>', re.S)
+# Speed (13 Nov 2026): the hero video starts once the page has finished loading. Until then the poster (the video's
+# first frame, preloaded) shows, so the first screen paints from a 58 KB still and not a 577 KB video. pxp.js sets src.
 def _vid(src, poster, cls=""):
-    return f'<video class="pc-photo pc-photo--wind {cls}" src="{src}" poster="{poster}" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>'
+    return f'<video class="pc-photo pc-photo--wind {cls}" data-src="{src}" poster="{poster}" autoplay muted loop playsinline preload="none" disablepictureinpicture></video>'
 HERO_MEDIA = {
     "a": _vid("/images/hero-wind.mp4", "/images/hero-wind-poster.jpg"),
     "b": _vid("/images/hero-reel-1.mp4", "/images/hero-reel-1-poster.jpg", "pc-photo--reel") if os.path.exists(os.path.join(OUT, "images/hero-reel-1.mp4")) else '<img class="pc-photo pc-photo--wind pc-photo--reel" src="/images/hero-reel-1-poster.jpg" alt="">',
