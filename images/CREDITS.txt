@@ -1,0 +1,6 @@
+Case study images (images/cs-*, plus -wide for laptops). Every image is a real or drawn screen of work we built, in an Ink wash.
+- cs-danbury-trashers: screenshots of the live Danbury Trashers fan shop (dbtrashers.com).
+- cs-wastemind: screenshots of the WasteMind plan estimator (ryan-peddigrew.github.io/sites/wastemind/), the quoting tool.
+- cs-duchess: screenshots of The Crown Fitting try-on and its iPhone app preview (ryan-peddigrew.github.io/sites/duchess-luxury-lashes/).
+- cs-small-space: illustrative drawing of the room-design tool, made for the site at Ryan's request. Not a screenshot of the real tool.
+To replace one: swap the files, keep the names, run tools/optimize_images.py, then python3 tools/build.py.

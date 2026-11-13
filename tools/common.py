@@ -40,6 +40,23 @@ ORG_LD = f'''
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"Chairlift","url":"{SITE}/","logo":"{SITE}/icon-512.png","email":"{EMAIL}"}}</script>'''
 
 
+# Fonts (11 Nov 2026): the four site typefaces are served from our own /fonts/ folder instead of Google Fonts.
+# Same lettering, but phones no longer wait on two extra servers before the first screen can show.
+# The Daily Peddigrew sample keeps its own newspaper fonts from Google, loaded late (see PAPER_IMG in build.py).
+_LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+def _face(family, file, weight, extra=""):
+    return f"@font-face{{font-family:'{family}';font-style:normal;font-weight:{weight};{extra}font-display:swap;src:url(/fonts/{file}.woff2) format('woff2');unicode-range:{_LATIN}}}"
+FONT_CSS = "".join([
+    _face("Archivo", "archivo", "400 800", "font-stretch:62% 125%;"),
+    _face("Hanken Grotesk", "hanken-grotesk", "300 800"),
+    _face("Michroma", "michroma", "400"),
+    _face("IBM Plex Mono", "ibm-plex-mono-400", "400"),
+    _face("IBM Plex Mono", "ibm-plex-mono-500", "500"),
+])
+# The home hero's still photo is the first big thing a visitor sees, so the browser is told to fetch it first.
+HERO_PRELOAD = '\n<link rel="preload" as="image" href="/images/hero-reel-4-poster-800.webp" type="image/webp" fetchpriority="high">'
+
+
 def head(title, desc, path, noindex=False):
     full = f"{title}" if title.startswith("Chairlift") else f"{title} · Chairlift"
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
@@ -69,12 +86,11 @@ def head(title, desc, path, noindex=False):
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">{ORG_LD if path == "/" else ""}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/michroma.woff2" as="font" type="font/woff2" crossorigin>{HERO_PRELOAD if path == "/" else ""}
+<style>{FONT_CSS}</style>
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/pxp.css">{'<link rel="modulepreload" href="/vendor/pxp3d.bundle.js">' if path == "/" else ""}{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
+<link rel="stylesheet" href="/pxp.css">{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
 <link rel="stylesheet" href="/tune.css">
 </head>
 <body>
@@ -142,8 +158,8 @@ def footer():
 <script src="/script.js" defer></script>
 <script src="/pxp.js" defer></script>
 <script src="/pxcloud.js" defer></script>
-<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). The home hero needs it right away; other pages fetch it once the page has finished loading. -->
-<script>(function(){{function go(){{var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';document.body.appendChild(s)}}if(document.querySelector('.pc-logo'))go();else addEventListener('load',function(){{(window.requestIdleCallback||function(f){{setTimeout(f,1200)}})(go,{{timeout:3000}})}})}})();</script>
+<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). On a computer the home hero starts it right away. On phones it starts once the page has finished loading (13 Nov 2026), so the hero photo paints first. Other pages fetch it once the page has finished loading. -->
+<script>(function(){{function go(){{var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';s.onerror=function(){{document.documentElement.classList.add('no-3d')}};document.body.appendChild(s)}}function idle(t){{(window.requestIdleCallback||function(f){{setTimeout(f,300)}})(go,{{timeout:t}})}}var home=document.querySelector('.pc-logo'),phone=matchMedia('(max-width: 860px), (hover: none)').matches;if(home&&!phone)go();else if(home){{if(document.readyState==='complete')idle(500);else addEventListener('load',function(){{idle(500)}})}}else addEventListener('load',function(){{idle(3000)}})}})();</script>
 </body>
 </html>
 '''
@@ -263,11 +279,26 @@ def page_hero(eyebrow, title, lede, extra=""):
 '''
 
 
+# Lift status (Ryan, 13 Nov 2026): lives in the footer of the home page, no longer under the hero.
+LIFT_STATUS = '''  <div class="lift-status" aria-label="Lift status">
+    <ul>
+      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
+      <li>Runs open <b>6 of 6</b></li>
+      <li>Conditions <b>Looking good</b></li>
+      <li>Weather <b>Bluebird</b></li>
+      <li class="lift-status__x">Next stop <b>Growth</b></li>
+    </ul>
+  </div>
+'''
+
+
 def page(title, desc, path, active, body, noindex=False):
     import re
     # Brand accent: section titles end in a full stop that can take the mint accent
     body = re.sub(r'(<h2[^>]*>[^<]*?)\.</h2>', r'\1<span class="dot">.</span></h2>', body)
     html = head(title, desc, path, noindex) + header(active) + '\n<main id="main">\n' + body + '\n</main>\n' + footer()
+    if path == "/":
+        html = html.replace('  <div class="footer-bottom">', LIFT_STATUS + '  <div class="footer-bottom">', 1)
     return light_images(html)
 
 
@@ -322,8 +353,9 @@ def task_band():
         <p>Five minutes. We'll tell you if there's a practical fix, whether or not we end up working together.</p>
         <a class="btn btn-white" href="{MAIN_CTA}"{MAIN_CTA_ATTRS}>Take the lift</a>
         <p class="cta-or"><strong>Not ready to talk?</strong> Send us one task your team does over and over, and we'll reply within a day with one practical idea.</p>
+        <button class="btn btn-white task-open" type="button" aria-controls="task-form">Send us one task</button>
       </div>
-      <form class="contact-form task-form" name="one-task" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/">
+      <form class="contact-form task-form" id="task-form" name="one-task" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" data-ajax="/">
         <input type="hidden" name="form-name" value="one-task">
         <input type="hidden" name="subject" value="One task from usechairlift.com">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>

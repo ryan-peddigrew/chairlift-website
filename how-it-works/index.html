@@ -24,10 +24,9 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/michroma.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Archivo';font-style:normal;font-weight:400 800;font-stretch:62% 125%;font-display:swap;src:url(/fonts/archivo.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:300 800;font-display:swap;src:url(/fonts/hanken-grotesk.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Michroma';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/michroma.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/ibm-plex-mono-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/pxp.css">
 <link rel="stylesheet" href="/tune.css">
@@ -214,7 +213,7 @@
 <script src="/script.js" defer></script>
 <script src="/pxp.js" defer></script>
 <script src="/pxcloud.js" defer></script>
-<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). The home hero needs it right away; other pages fetch it once the page has finished loading. -->
-<script>(function(){function go(){var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';document.body.appendChild(s)}if(document.querySelector('.pc-logo'))go();else addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,1200)})(go,{timeout:3000})})})();</script>
+<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). On a computer the home hero starts it right away. On phones it starts once the page has finished loading (13 Nov 2026), so the hero photo paints first. Other pages fetch it once the page has finished loading. -->
+<script>(function(){function go(){var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';s.onerror=function(){document.documentElement.classList.add('no-3d')};document.body.appendChild(s)}function idle(t){(window.requestIdleCallback||function(f){setTimeout(f,300)})(go,{timeout:t})}var home=document.querySelector('.pc-logo'),phone=matchMedia('(max-width: 860px), (hover: none)').matches;if(home&&!phone)go();else if(home){if(document.readyState==='complete')idle(500);else addEventListener('load',function(){idle(500)})}else addEventListener('load',function(){idle(3000)})})();</script>
 </body>
 </html>

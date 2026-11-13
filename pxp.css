@@ -1071,3 +1071,6 @@ body main .calc-form .calc-task { color: var(--px-ink); }
   .cst .pc-pkgs article { flex: 0 0 84%; scroll-snap-align: start; border: 1px solid rgba(255,255,255,.16) !important; border-radius: 14px; }
   .cst .pc-pkgs--1 article { flex-basis: 100%; }
 }
+
+/* case study card that shows a real screen of the work: lighter fade so the screen stays bright */
+.cst__media--screen::after { background: linear-gradient(180deg, rgba(20,27,42,0) 52%, rgba(20,27,42,.62)); }

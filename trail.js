@@ -39,13 +39,15 @@
     g.addEventListener('mouseenter', function () { pick(i); }); g.addEventListener('click', function () { pick(i); });
     return g;
   });
-  function callout(p, big, small, dy) {
+  function callout(p, big, small, dy, anchor) {
     var g = el('g', { 'class': 'tm-callout' }, svg);
-    var a = el('text', { x: p[0], y: p[1] + dy, 'text-anchor': 'middle', 'class': 'big' }, g); a.textContent = big;
-    var b = el('text', { x: p[0], y: p[1] + dy + 22, 'text-anchor': 'middle' }, g); b.textContent = small;
+    var a = el('text', { x: p[0], y: p[1] + dy, 'text-anchor': anchor || 'middle', 'class': 'big' }, g); a.textContent = big;
+    var b = el('text', { x: p[0], y: p[1] + dy + 22, 'text-anchor': anchor || 'middle' }, g); b.textContent = small;
   }
   callout(MAP.summit, 'Summit', '2,850 m', -30);
-  callout([MAP.base[0] + (innerWidth < 561 ? 190 : 330), MAP.base[1] - 52], 'Base lodge', '1,200 m · your team today', 0);
+  // on a phone the map is panned, so the base label sits right beside the lodge (inside the part you see) and is short enough to never clip
+  if (innerWidth < 561) callout([MAP.base[0] + 48, MAP.base[1] - 20], 'Base lodge', '1,200 m', 0, 'start');
+  else callout([MAP.base[0] + 330, MAP.base[1] - 52], 'Base lodge', '1,200 m \u00b7 your team today', 0);
   var sky = el('text', { x: 800, y: 74, 'text-anchor': 'middle', 'class': 'tm-sky' }, svg);
   MAP.runs.forEach(function (r, i) {
     var b = document.createElement('button'); b.type = 'button';
@@ -60,6 +62,7 @@
     [].forEach.call(list.children, function (b, j) { b.setAttribute('aria-pressed', i === j ? 'true' : 'false'); });
     sky.textContent = 'Run ' + ('0' + (i + 1)).slice(-2) + ' \u00b7 ' + (SHORT[i] || '');
     if (tpls[i]) { card.innerHTML = ''; card.appendChild(tpls[i].content.cloneNode(true)); }
+    if (window.__type) window.__type(card.querySelector('.tm-card__k'));   // the run label types itself in, with the flashing cursor (script.js)
   }
   pick(0);
   var mw = document.querySelector('.tm-wrap');

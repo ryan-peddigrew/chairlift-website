@@ -14,7 +14,14 @@ if (host) {
   try {
     const canvas = document.createElement('canvas');
     canvas.className = 'pc-gl';
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    // No graphics chip (software drawing only)? Then skip the 3D logo and keep the flat one: drawing it in software makes the whole page stutter.
+    // ?gl=force overrides this for testing.
+    const force = /[?&]gl=force/.test(location.search);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, failIfMajorPerformanceCaveat: !force });
+    if (!force) {
+      const g = renderer.getContext(), di = g.getExtension('WEBGL_debug_renderer_info');
+      if (di && /swiftshader|llvmpipe|software|basic render/i.test(String(g.getParameter(di.UNMASKED_RENDERER_WEBGL)))) { renderer.dispose(); throw new Error('software graphics'); }
+    }
     renderer.setClearColor(0x000000, 0);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.0;
@@ -104,10 +111,18 @@ if (host) {
     const key = new THREE.DirectionalLight(0xdfe9ff, 1.6); key.position.set(2.5, 3, 4); scene.add(key);
     const rim = new THREE.DirectionalLight(0x6fa0e8, 1.2); rim.position.set(-3, -1, -2); scene.add(rim);
 
+    // Phones and tablets (11 Nov 2026): once the logo is parked in the top bar it is shown small, so it is drawn small
+    // (about 7 times fewer pixels) and redrawn 30 times a second instead of 60. Same look, far less battery. Desktop is untouched.
+    const phone = window.matchMedia('(max-width: 860px), (hover: none)').matches;
+    let parked = false;
     const size = () => {
       const w = host.clientWidth || 200, dpr = Math.min(window.devicePixelRatio || 1, 2);
-      renderer.setPixelRatio(dpr); renderer.setSize(w, w, false);
+      const ds = (window.__px && window.__px.ds) || 76;
+      renderer.setPixelRatio(parked ? Math.min(dpr, ds * Math.min(window.devicePixelRatio || 1, 3) / w) : dpr); renderer.setSize(w, w, false);
     };
+    // scroll numbers come straight from pxp.js (window.__px); reading them from CSS made the browser recompute styles on every frame
+    const css = (n) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(n)) || 0;
+    const px = () => window.__px || { dk: css('--dk'), p: css('--p'), intro: css('--in') };
     size(); window.addEventListener('resize', size);
     host.appendChild(canvas); host.classList.add('is-3d'); document.documentElement.classList.add('logo-docked');
 
@@ -119,12 +134,17 @@ if (host) {
     const frame = (now) => {
       requestAnimationFrame(frame);
       if (!visible) return;
-      const dkNow = mini ? 1 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dk')) || 0);
+      const st = mini ? null : px();
+      const dkNow = mini ? 1 : st.dk;
       const docked = mini || dkNow >= 0.99, moving = !docked && dkNow > 0.01;
+      if (phone) {
+        if (docked && now - last < 30) return;        // parked: 30 frames a second is plenty for a ring that takes 9 s a turn
+        if (!mini && docked !== parked) { parked = docked; size(); }
+      }
       const dt = Math.min(0.1, (now - last) / 1000); last = now;
       const face = (a) => Math.round(a / (Math.PI * 2)) * Math.PI * 2;
-      if (docked) {                                 // in the top bar: the three bars hold still, only the ring turns around them (16 s a turn)
-        spin = face(spin); ringSpin += dt * Math.PI * 2 / 16;
+      if (docked) {                                 // in the top bar: the three bars hold still, only the ring turns around them (9 s a turn; Ryan, 13 Nov 2026: 16 s was too slow)
+        spin = face(spin); ringSpin += dt * Math.PI * 2 / 9;
       } else if (moving) {                          // flying up: settle face-on so the flip is one clean somersault
         spin += (face(spin) - spin) * 0.2; ringSpin += (face(ringSpin) - ringSpin) * 0.2;
       } else {                                      // landing: the whole logo turns, one spin every 8 s
@@ -133,8 +153,7 @@ if (host) {
       emblem.rotation.y = reduce ? 0.5 : spin;
       if (ring) ring.rotation.y = reduce ? 0 : ringSpin;
       if (word) {                                   // word shows only on the opening screen, gone once the logo moves beside the title
-        const p = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--p')) || 0;
-        const io = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--in')) || 0;   // intro screen: logo only, the word arrives after it
+        const p = st.p, io = st.intro || 0;   // intro screen: logo only, the word arrives after it
         const o = Math.max(0, 1 - p / 0.25) * (1 - io); wordMat.opacity = o; word.visible = o > 0.01;
       }
       const flip = moving && !reduce ? -ease(Math.min(1, dkNow / 0.95)) * Math.PI * 2 : 0;   // one forward flip on the way into the top bar
@@ -142,5 +161,9 @@ if (host) {
       renderer.render(scene, camera);
     };
     requestAnimationFrame(frame);
-  } catch (e) { /* keep CSS coin */ }
+  } catch (e) {
+    // no 3D on this device: the home hero shows the flat logo and wordmark instead (tune.css, html.no-3d); other pages keep the flat logo in the top bar
+    if (mini && host.parentNode) host.parentNode.removeChild(host);
+    document.documentElement.classList.add('no-3d');
+  }
 }

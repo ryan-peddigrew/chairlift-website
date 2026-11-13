@@ -40,6 +40,7 @@
       if (w === way) return; way = w;
       btns.forEach(function (b) { var on = +b.dataset.way === w; b.setAttribute('aria-checked', on ? 'true' : 'false'); });
       flow.dataset.way = w; cap.textContent = CAP[w]; count.textContent = COUNT[w];
+      if (window.__type) window.__type(count);   // the count types itself in, with the flashing cursor (script.js)
       steps.forEach(function (s, i) { setTimeout(function () { s.classList.toggle('on', w === 1); }, w === 1 && !reduce ? i * 260 : 0); });
     }
     /* live line: jobs queue up on the ground by hand, then ride the cable when Chairlift runs them */
@@ -140,16 +141,19 @@
         g.font = MONO; g.textBaseline = 'top'; g.textAlign = 'left'; g.fillStyle = 'rgba(255,255,255,.6)'; g.fillText('LIVE DEMO', 14, H - 20);
         g.textAlign = 'right'; g.fillStyle = '#fff'; g.fillText('WAITING ' + ('0' + wn).slice(-2) + '   FINISHED ' + ('00' + done).slice(-3), W - 14, H - 20);
       }
+      var running = false;
+      function kick() { if (!running && !reduce) { running = true; requestAnimationFrame(loop); } }
       function loop(now) {
-        requestAnimationFrame(loop);
-        if (!vis) { last = now; return; }
+        running = false;
+        if (!vis) { last = 0; return; }   // off screen: the demo stops completely and picks up when it scrolls back
+        kick();
         var dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
         step(dt); draw(now);
       }
       size(); window.addEventListener('resize', size);
-      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(cv);
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; if (vis) kick(); }).observe(cv);
       for (var n = 0; n < 420; n++) step(.05);   // start mid-day, with the work already backed up
-      if (reduce) draw(0); else requestAnimationFrame(loop);
+      if (reduce) draw(0); else kick();
     })();
     btns.forEach(function (b) { b.addEventListener('click', function () { touched = true; set(+b.dataset.way); }); });
     set(0);
@@ -172,18 +176,18 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   root.classList.add('kn-js');
 
-  /* ---------- altimeter: base 1,200 m to summit 2,850 m as you scroll ---------- */
+  /* ---------- altimeter: 0 m to the 2,850 m summit as you scroll ---------- */
   // the homepage chairlift on the left edge carries its own elevation readout, so the box only shows where there is no chairlift
   if (!document.querySelector('.air-lift')) (function () {
   var alt = document.createElement('div');
   alt.className = 'kn-alt'; alt.setAttribute('aria-hidden', 'true');
-  alt.innerHTML = '<span class="kn-alt__lbl">Elevation</span><b>1,200</b><span class="kn-alt__u">m</span><i class="kn-alt__bar"><i></i></i><span class="kn-alt__lbl kn-alt__state">Base</span>';
+  alt.innerHTML = '<span class="kn-alt__lbl">Elevation</span><b>0</b><span class="kn-alt__u">m</span><i class="kn-alt__bar"><i></i></i><span class="kn-alt__lbl kn-alt__state">Base</span>';
   document.body.appendChild(alt);
   var altN = alt.querySelector('b'), altFill = alt.querySelector('.kn-alt__bar i'), altState = alt.querySelector('.kn-alt__state');
   var hero = document.querySelector('.pc-hero, .pc-pin');
   function altimeter() {
     var max = Math.max(1, document.documentElement.scrollHeight - innerHeight), k = Math.min(1, Math.max(0, scrollY / max));
-    altN.textContent = Math.round(1200 + k * 1650).toLocaleString('en-CA');
+    altN.textContent = Math.round(k * 2850).toLocaleString('en-CA');
     altFill.style.transform = 'scaleY(' + k.toFixed(3) + ')';
     altState.textContent = k > .97 ? 'Summit' : k < .03 ? 'Base' : 'Riding';
     alt.classList.toggle('on', !hero || hero.getBoundingClientRect().bottom < innerHeight * .5);

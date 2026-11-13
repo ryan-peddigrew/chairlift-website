@@ -196,21 +196,17 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
-# Lift ticket (Ryan, 4 Nov 2026): Chairlift is the resort. Off-white Tyvek ticket folded over a wicket wire, sage admit bar,
-# big weekday letter behind the date, thermal-print edges on the date and barcode, barcode bleeding off both edges.
-PASS_FAN = ('<div class="pass-fan" aria-hidden="true"><div class="tkt"><i class="tkt__stack"></i><i class="tkt__stack tkt__stack--2"></i><div class="tkt__card">'
-    '<div class="tkt__fold"></div>'
-    '<p class="tkt__lifts"><span>All lifts</span><span>2026&ndash;27</span></p>'
-    '<div class="tkt__resort"><div class="tkt__name">' + LOGO.format(s=34, stroke='') + 'Chairlift</div><p class="tkt__tag">Less busywork. More business.</p></div>'
-    '<div class="tkt__mid"><span class="tkt__wm" data-tkt-wd>W</span><p class="tkt__type">One team<span>Full season</span></p><p class="tkt__date"><small data-tkt-yr>2026</small><span data-tkt-dt>Nov 4</span></p></div>'
-    '<p class="tkt__admit">Admit one team</p>'
-    '<div class="tkt__code"><i class="tkt__bars"></i><span class="tkt__no">No. 000001</span></div>'
-    '<p class="tkt__foot"><span>Base 1,200 m</span><span>Summit 2,850 m</span></p>'
-    '<svg class="tkt__tyvek" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#tkt-tyvek)"/></svg>'
+# Lift ticket (Ryan, 13 Nov 2026): the same season pass as the Instagram post. Flat cream card on a hard Ink backing,
+# Season pass band, logo and wordmark, sage admit bar, barcode with its number, Founders Notch Resort band with the gold peaks.
+PASS_FAN = ('<div class="pass-fan" aria-hidden="true"><div class="tkt"><div class="tkt__card">'
+    '<p class="tkt__lifts">Season pass - 2026/2027</p>'
+    '<div class="tkt__resort"><div class="tkt__name">' + LOGO.format(s=40, stroke='') + 'Chairlift</div><p class="tkt__tag">Less busywork. More business.</p></div>'
+    '<p class="tkt__admit">Admit <span>one team</span></p>'
+    '<div class="tkt__code"><i class="tkt__bars"></i><span class="tkt__no">4 817209 360158</span></div>'
+    '<p class="tkt__foot"><svg viewBox="0 0 30 16" aria-hidden="true"><path d="M0 16 8.5 3 13 9.5 19.5 0 30 16Z"/></svg>Founders Notch Resort</p>'
     '</div></div>'
     '<svg width="0" height="0" style="position:absolute"><defs>'
     '<filter id="tkt-thermal" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1" xChannelSelector="R" yChannelSelector="G"/></filter>'
-    '<filter id="tkt-tyvek" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="3" seed="3" result="t"/><feDiffuseLighting in="t" lighting-color="#fff" surfaceScale=".9" diffuseConstant="1.1"><feDistantLight azimuth="60" elevation="68"/></feDiffuseLighting></filter>'
     '</defs></svg></div>')
 
 home = f'''
@@ -222,30 +218,19 @@ home = f'''
       <span class="pc-shade"></span><span class="pc-scan"></span>
     </div>
     <div class="pc-stage">
-      <h1 class="pc-word"><span class="sr-only">Chairlift. Less busywork. More business.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
+      <h1 class="pc-word"><span class="sr-only">Chairlift. Your business runs better when the heavy lifting happens behind the scenes.</span><span aria-hidden="true">Chairlift<i></i></span></h1>
       <div class="pc-story">
-        <p class="pc-story__eyebrow" aria-hidden="true">Real people. Quiet systems.</p>
-        <p class="pc-story__tag" aria-hidden="true">Less busywork.<br>More business.</p>
+        <p class="pc-story__tag pc-story__tag--one" aria-hidden="true">Your business runs better when the heavy lifting happens behind the scenes.</p>
         <p class="pc-story__sub">We build quiet, reliable systems behind your team so deals don’t stall and details don’t slip.</p>
         <p class="pc-story__proof">From sales pipelines and complex quoting to scheduling, handoffs and back-office execution, we wire your entire operation to move without friction.</p>
         <p class="pc-story__cta"><a class="pc-lift" href="/5min/">Take the lift <i aria-hidden="true">→</i></a><a class="pc-how" href="#case-studies">See our case studies <i aria-hidden="true">→</i></a></p>
       </div>
       <svg class="pc-cable" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path id="pcc" d="M-20 700 Q 800 560 1620 330" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><g class="pc-chair"><line x1="0" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="1.6"/><rect x="-11" y="20" width="22" height="5" fill="#fff"/><rect x="-11" y="13" width="3" height="12" fill="#fff"/><animateMotion dur="80s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#pcc"/></animateMotion></g></svg>
-      <div class="pc-logo" aria-hidden="true"><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
+      <div class="pc-logo" aria-hidden="true"><span class="pc-flat">{LOGO.format(s=96, stroke=' stroke="rgba(255,255,255,0.3)" stroke-width="1"')}<b>Chairlift</b></span><span class="pc-coin"><span class="pc-coin__in"><i class="pc-edge" style="--z:-9px"></i><i class="pc-edge" style="--z:-7px"></i><i class="pc-edge" style="--z:-5px"></i><i class="pc-edge" style="--z:-3px"></i><i class="pc-edge" style="--z:-1px"></i><i class="pc-edge" style="--z:1px"></i><i class="pc-edge" style="--z:3px"></i><i class="pc-edge" style="--z:5px"></i><i class="pc-edge" style="--z:7px"></i><i class="pc-edge" style="--z:9px"></i><b class="pc-face pc-face--f"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b><b class="pc-face pc-face--b"><svg viewBox="8 12 48 40" aria-hidden="true"><defs><linearGradient id="chb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9C4D8"/><stop offset=".55" stop-color="#8794AE"/><stop offset="1" stop-color="#EEF3FB"/></linearGradient></defs><rect x="10" y="42.5" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="22" y="29" width="20" height="7" rx="1.2" fill="url(#chb)"/><rect x="34" y="15.5" width="20" height="7" rx="1.2" fill="url(#chb)"/></svg></b></span></span></div>
     </div>
       <div class="pc-scrollhint" aria-hidden="true"><svg class="pc-chev" viewBox="0 0 32 18"><path d="M2 2l14 14L30 2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
   </section>
-
-  <div class="lift-status" aria-label="Lift status">
-    <ul>
-      <li><i aria-hidden="true"></i>Lift status <b>Open</b></li>
-      <li>Runs open <b>6 of 6</b></li>
-      <li>Conditions <b>Looking good</b></li>
-      <li>Weather <b>Bluebird</b></li>
-      <li class="lift-status__x">Next stop <b>Growth</b></li>
-    </ul>
-  </div>
 
   <section class="pc-sec pc-sec--dark pc-sec--scrub pc-pinscrub" id="intro" aria-label="Introduction">
     <div class="pc-scrub__pin"><div class="pc-wrap">
@@ -286,7 +271,7 @@ home = f'''
 
   <section class="pc-sec pc-sec--dark" aria-labelledby="why-title">
     <div class="pc-wrap">
-      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Your business runs better when the heavy lifting happens behind the scenes.</p></div></header>
+      <header class="sx-head"><h2 id="why-title" class="sx-title">Why us<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Operations, processes and systems, with the heavy lifting taken care of.</p></div></header>
       <div class="pc-benefits pc-benefits--two">
         <article><p class="mono">01</p><h3>One task first</h3><p>We prove it on a single task before anything else, so you see the hours come back.</p></article>
         <article><p class="mono">02</p><h3>Flexible and scalable</h3><p>Add the next task when you're ready. Pause whenever the business needs.</p></article>
@@ -301,7 +286,7 @@ home = f'''
       <div class="pc-ghost" aria-hidden="true"><span>Onboard &nbsp;&middot;&nbsp; Ride &nbsp;&middot;&nbsp; Summit</span></div>
       <header class="sx-head"><h2 id="how-title" class="sx-title">The lift<i aria-hidden="true">.</i></h2><div class="sx-cap"><span class="pg-arrow" aria-hidden="true"><i class="ar ar--r"></i></span><p class="sx-line">Engineered around how your business already runs.</p></div></header>
       <div class="pc-route" aria-hidden="true"><i class="pc-route__chair"></i></div>
-      <div class="pc-pkgs">
+      <div class="pc-pkgs pc-pkgs--ride">
         <article><p class="mono">Stop 1 · Audit &amp; map</p><h3><i class="trail trail--circle" aria-hidden="true"></i>Onboard</h3><p class="pc-pkgs__lead"><strong>We find the exact drag.</strong></p><p>You don&rsquo;t need a 60-page consulting deck. We look directly at how work moves through your company today and isolate where time, money and details are leaking.</p></article>
         <article><p class="mono">Stop 2 · Custom build</p><h3><i class="trail trail--square" aria-hidden="true"></i>Ride</h3><p class="pc-pkgs__lead"><strong>We build the backbone.</strong></p><p>We connect your existing tools, build the missing bridges and put rock-solid workflows in place, so your team doesn&rsquo;t have to learn a complicated new way of working.</p></article>
         <article><p class="mono">Stop 3 · Quiet execution</p><h3><i class="trail trail--diamond" aria-hidden="true"></i>Summit</h3><p class="pc-pkgs__lead"><strong>We keep the line moving.</strong></p><p>Once live, your systems run quietly in the background around the clock. As your business grows and new bottlenecks appear, we expand the system right alongside you.</p></article>
@@ -512,7 +497,7 @@ def story_cards(stages):
     return cards
 
 
-def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None):
+def story_full(id_, name_a, name_b, line, kind, stages, img, tone="blue", w=1200, quote=None, wide=False):
     """A pinned photo band with the client name sliding in, then Discovery / Solution / Deployment / Results stops."""
     name = f"{name_a} {name_b}"
     cards = story_cards(stages)
@@ -540,21 +525,21 @@ STORIES = [
     ("Solution", "What we built.", None, ["Guided intake", "Quote follow-through", "Job packet", "Client updates"]),
     ("Deployment", "How it runs.", "In the background. Quotes tracked to deposit. A job packet built the moment a deposit lands.", None),
     ("Results", "What changed.", "Faster quote-to-deposit. No details dropped between design and the field. Hours of design time back each week.", None),
-  ], "alps-peaks", dict(tone="blue")),
+  ], "cs-small-space", dict(tone="blue", wide=True)),
   ("danbury-trashers", "Danbury", "Trashers", "The official fan shop, online.", "Online store", [
     ("Web redesign", "A new storefront.", "A redesigned online store.", None),
     ("Payments", "Taking the order.", "Payments set up for the store.", None),
     ("Dropshipping", "Fulfilling the order.", "A dropshipping set-up to get orders out.", None),
-  ], "hero-wind-poster", dict(tone="cream")),
+  ], "cs-danbury-trashers", dict(tone="cream", wide=True)),
   ("duchess", "Duchess", "Luxury Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
     ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
-  ], "hero-reel-1-poster", dict(tone="blue", w=800)),
+  ], "cs-duchess", dict(tone="blue", wide=True)),
   ("wastemind", "Waste", "Mind", "Making, installing and servicing waste equipment for condos and apartment buildings.", "Waste equipment", [
     ("Discovery", "Where it stuck.", "Shane Fagan was growing WasteMind and working out how to scale it.", None),
     ("Solution", "What we did.", "We looked for where time and money were leaking, put fixes in, tracked the return and measured it.", None),
     ("Deployment", "How it runs.", "We work with WasteMind every week, one tested fix at a time.", None),
     ("Results", "What changed.", "Faster replies to quote requests, service calls and inquiries.", None),
-  ], "wastemind-containers", dict(tone="dark", quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind"))),
+  ], "cs-wastemind", dict(tone="dark", wide=True, quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind"))),
 ]
 STORIES_HTML = "".join(story_full(*a[:7], **a[7]) for a in STORIES)
 
@@ -836,7 +821,7 @@ privacy = page_hero("Privacy", "Privacy policy.", "Plain English, short, and onl
 {STATS_PRIVACY}      <h2>How we use it</h2>
       <p>Only to respond to you and to schedule conversations. We don't sell your information, and we don't share it for marketing.</p>
       <h2>Who helps us run this site</h2>
-      <p>Netlify hosts this website and passes form messages to our inbox. Cal.com handles bookings. Google Fonts supplies the lettering. Umami counts visits. Each one gets only what it needs to do that job.</p>
+      <p>Netlify hosts this website and passes form messages to our inbox. Cal.com handles bookings. Google Fonts supplies some of the lettering. Umami counts visits. Each one gets only what it needs to do that job.</p>
       <h2>How long we keep it</h2>
       <p>Only as long as we need it to reply to you or to work together. Ask us and we'll delete it sooner.</p>
       <h2>How we protect it</h2>
@@ -1019,8 +1004,10 @@ five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
 
 # ---- homepage mock-up variants (previews, noindex) ----
 _MEDIA = re.compile(r'<video class="pc-photo pc-photo--wind".*?</video>', re.S)
+# Speed (13 Nov 2026): the hero video starts once the page has finished loading. Until then the poster (the video's
+# first frame, preloaded) shows, so the first screen paints from a 58 KB still and not a 577 KB video. pxp.js sets src.
 def _vid(src, poster, cls=""):
-    return f'<video class="pc-photo pc-photo--wind {cls}" src="{src}" poster="{poster}" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>'
+    return f'<video class="pc-photo pc-photo--wind {cls}" data-src="{src}" poster="{poster}" autoplay muted loop playsinline preload="none" disablepictureinpicture></video>'
 HERO_MEDIA = {
     "a": _vid("/images/hero-wind.mp4", "/images/hero-wind-poster.jpg"),
     "b": _vid("/images/hero-reel-1.mp4", "/images/hero-reel-1-poster.jpg", "pc-photo--reel") if os.path.exists(os.path.join(OUT, "images/hero-reel-1.mp4")) else '<img class="pc-photo pc-photo--wind pc-photo--reel" src="/images/hero-reel-1-poster.jpg" alt="">',
@@ -1067,7 +1054,7 @@ def story_tabs():
                  f'<span class="cst__num">{k + 1:02d}</span>{name}</button>')
         q = ('<blockquote class="csb__quote"><p>' + quote[0] + '</p><cite>' + quote[1] + '</cite></blockquote>') if quote else ''
         panels += f"""      <div class="cst__panel" role="tabpanel" id="cst-{id_}" aria-labelledby="cst-tab-{id_}" tabindex="0"{"" if on else " hidden"}>
-        <div class="cst__media"><picture><source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+        <div class="cst__media{" cst__media--screen" if opt.get("wide") else ""}"><picture>{('<source media="(min-width: 861px)" type="image/webp" srcset="/images/' + img + '-wide-1200.webp">') if opt.get("wide") else ''}<source type="image/webp" srcset="/images/{img}-{w}.webp"><img src="/images/{img}.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
           <p class="cst__tag">Client story &middot; {kind}</p>
           <h3 class="cst__name">{name}</h3>
         </div>
@@ -1169,6 +1156,9 @@ with open(os.path.join(OUT, "_headers"), "w") as f:
 
 /images/*
   Cache-Control: public, max-age=604800
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 """)
 _exp = (_dt.date.today() + _dt.timedelta(days=365)).isoformat()
 os.makedirs(os.path.join(OUT, ".well-known"), exist_ok=True)

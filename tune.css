@@ -17,7 +17,7 @@ html body .bw__cards { margin-top: 32px; }
 html body .pass-row { margin-top: 28px; }
 
 /* One task first: the text column runs up to the ticket, no 150px gap */
-@media (min-width: 900px) { html body .bw__top { grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; } html body .bw__lead { max-width: none; } }
+@media (min-width: 900px) { html body .bw__top { grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; } html body .bw__lead { max-width: none; } }
 
 /* The shift: step cards fit their text (the by-hand and with-Chairlift lines share one cell instead of a fixed 6em box) */
 html body .kn-step { padding: 20px 20px 22px; }
@@ -97,9 +97,7 @@ html body .pc-scan, html body .retro::before, html body .pg::before, html body .
 /* ---------- Left elevation rail: in from the edge and easier to read ---------- */
 @media (min-width: 761px) {
   html body .air-lift { left: max(18px, env(safe-area-inset-left, 0px)); }
-  html body .air-lift__num, html body .air-lift__lbl { font-size: 12px; font-weight: 500; letter-spacing: .08em; }
 }
-@media (max-width: 760px) { html body .air-lift__num { font-size: 9.5px; font-weight: 500; } }
 
 /* ---------- Hero: less scroll before the copy and both buttons are in view ---------- */
 html body .pc-hero { height: 150svh; }
@@ -109,10 +107,106 @@ html body .tm-map svg .tm-callout text { font-size: 18px; stroke-width: 6px; }
 html body .tm-map svg .tm-callout text.big { font-size: 26px; }
 html body .tm-run.on .tm-mark { transform-box: fill-box; }
 html body .tm-list .tm-no { font: 500 12px/1 var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .08em; opacity: .7; }
-@media (max-width: 560px) { html body .tm-map svg text.tm-sky { font-size: 44px; } html body .tm-map svg text.num { font-size: 22px; } html body .tm-map svg .tm-callout text { font-size: 20px; } html body .tm-map svg .tm-callout text.big { font-size: 32px; } }
+@media (max-width: 560px) { html body .tm-map svg text.tm-sky { font-size: 32px; stroke-width: 8px; } html body .tm-map svg text.num { font-size: 22px; } html body .tm-map svg .tm-callout text { font-size: 20px; } html body .tm-map svg .tm-callout text.big { font-size: 32px; } }
 
 /* ---------- Subpages ---------- */
 /* page-top photo tiles: crop just inside the old print's white border */
 html body .pg-tiles span.retro { background-size: 110% auto; }
 /* booking calendar: the placeholder height lets go once the calendar is in, so no empty band under it */
 html body #cal-inline:has(iframe) { min-height: 0 !important; }
+
+/* ================= Phone pass (11 Nov 2026) =================
+   Same site, same effects, tuned for small screens. Nothing below changes screens wider than 860px
+   except the Low Power Mode photo drift (only ever shown when a phone refuses to play the hero video). */
+
+/* Low Power Mode on iPhone: the hero video is blocked, so its still photo shows with a slow push-in (no extra download) */
+@keyframes pc-drift { from { transform: scale(1.02); } to { transform: scale(1.12) translateY(-1.5%); } }
+html body .pc-photo--drift { animation: pc-drift 24s ease-in-out infinite alternate; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { html body .pc-photo--drift { animation: none; } }
+
+/* the "send us one task" opener only exists on phones */
+html body main .task-open { display: none; }
+
+html body { --gl: 20px; --gr: 20px; }
+@media (max-width: 860px) {
+  /* 3D logo parked in the top bar: no soft shadow to recompute on every frame (it sat on the dark bar, unseen) */
+  html.logo-parked body .pc-logo .pc-gl { filter: none; }
+
+  /* ---- A clear lane for the scroll chairlift: text starts to the right of the cable instead of under it ---- */
+  html.has-lift body { --gl: 30px; --gr: 16px; }
+  html body main .pc-wrap { padding-left: var(--gl); padding-right: var(--gr); }
+  html.has-lift body main .cta { padding-left: 26px; padding-right: 12px; }
+  html.has-lift body .site-footer .wrap { padding-left: var(--gl); }
+  html body .cst .pc-pkgs { margin-right: calc(var(--gr) * -1); padding-right: var(--gr); }
+
+  /* ---- More room for words: slimmer padding inside boxes, so paragraphs run wider and shorter ---- */
+  html body .bw__cards article { padding: 22px 20px 24px; }
+  html body .pc-benefits article, html body .pc-sec:not(:has(.csb__h)) .pc-pkgs article { padding: 22px 20px 24px; }
+  html body main .cta-box--doors { padding: 28px 20px; }
+  html body .tm-card { padding-left: 18px; padding-right: 18px; }
+  html body .pc-story__proof { max-width: 42ch; padding: 12px 16px; }
+
+  /* ---- Shorter page, same content: stacked cards become one sideways swipe, like the case studies ---- */
+  html body .bw__cards, html body .pc-pkgs--ride { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-right: calc(var(--gr) * -1); padding-right: var(--gr); scrollbar-width: none; }
+  html body .bw__cards::-webkit-scrollbar, html body .pc-pkgs--ride::-webkit-scrollbar { display: none; }
+  html body .bw__cards article, html body .pc-pkgs--ride article { flex: 0 0 min(84%, 360px); scroll-snap-align: start; }
+  html body .pc-pkgs--ride { border: 0; }
+  html body .pc-pkgs--ride article, html body .pc-pkgs--ride article.rv { border: 1px solid rgba(255,255,255,.16) !important; border-radius: 14px; opacity: 1 !important; transform: none !important; }
+
+  /* ---- Small labels: nothing a visitor is meant to read sits under 12.5px ---- */
+  html body .pc-story__eyebrow { font-size: 12px; letter-spacing: .12em; }
+  html body .lift-status ul { font-size: 12.5px; letter-spacing: .08em; }
+  html body .tm-legend, html body .tm-legend span { font-size: 12.5px; letter-spacing: .06em; }
+  html body .bw__cards .bw__n, html body .bw__eyebrow, html body .kn-step__n, html body .tm-card__k, html body .sx-label, html body .kn-idx, html body .kn-idx b, html body .cst__num, html body .kn-flow__read small, html body .retro figcaption, html body .air-split__lbl, html body .pc-sec .mono { font-size: 13px; }
+  html body .cst__tag { font-size: 12.5px; }
+  html body .sx-line { font-size: 14px; letter-spacing: .08em; }
+  html body .pc-link, html body main .btn, html body main .btn-white, html body main .btn-ink { font-size: 13.5px; }
+}
+@media (max-width: 760px) {
+  /* ---- Home closer: the second form stays folded behind one button until someone asks for it ---- */
+  html body main .cta-box--doors.is-folded .task-form { display: none; }
+  html body main .cta-box--doors.is-folded .task-open { display: flex; margin-top: 18px; }
+}
+
+/* ---- Home hero logo: three clean states (11 Nov 2026) ----
+   1. Before the 3D logo is ready: nothing (the old spinning CSS coin flashed first and looked like a different logo).
+   2. 3D ready: it fades in.
+   3. No 3D on this device (no graphics chip): the flat logo and wordmark sit in its place and hand over to the top bar on scroll. */
+html body .pc-logo .pc-coin { display: none; }
+@keyframes pc-gl-in { from { opacity: 0; } to { opacity: 1; } }
+html body .pc-logo .pc-gl { animation: pc-gl-in .7s ease both; }
+html body .pc-flat { display: none; }
+html.no-3d body .pc-flat { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9%; padding-top: 14%; opacity: calc(1 - var(--dk, 0) * 2.5); }
+html.no-3d body .pc-flat svg { width: 34%; height: auto; filter: drop-shadow(0 10px 28px rgba(0,0,0,.55)); }
+html.no-3d body .pc-flat b { font-family: var(--px-display, "Michroma", sans-serif); font-weight: 400; font-size: clamp(40px, 13.4vw, 76px); line-height: 1; letter-spacing: -.01em; color: #fff; white-space: nowrap; text-shadow: 0 2px 24px rgba(8,12,22,.55); }
+html.no-3d.over-hero body .site-header .brand svg { opacity: var(--dk, 0); }
+@media (prefers-reduced-motion: reduce) { html body .pc-logo .pc-gl { animation: none; } }
+
+/* ---------- Terminal touches (Ryan, 13 Nov 2026): caption lines type in and end on a flashing block cursor (script.js) ---------- */
+.tw-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.tw-off { opacity: 0; }
+.tw-caret { position: relative; }
+.tw-caret::after { content: ""; position: absolute; left: 100%; top: 50%; width: .56em; height: 1.08em; margin: -.56em 0 0 .06em; background: currentColor; animation: tw-blink 1.06s steps(1) infinite; }
+@keyframes tw-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tw-caret::after { animation: none; } }
+
+/* ---------- Elevation tag on phones (13 Nov 2026): tiny, and the text lane starts just past it ---------- */
+@media (max-width: 560px) {
+  html.has-lift body { --gl: 36px; }
+  html body .air-read { font-size: 9px; padding: 2px 2px 1px; gap: 1px; letter-spacing: 0; }
+}
+
+/* ---------- Trail map on phones (13 Nov 2026): run name smaller so it never fills the map, card clear of the elevation tag ---------- */
+@media (max-width: 560px) {
+  html.has-lift body .tm-poster { margin-left: 2px; margin-right: -6px; }
+}
+
+/* ---------- Lift status now sits in the footer (Ryan, 13 Nov 2026): quiet strip above the copyright line ---------- */
+.site-footer .lift-status { background: transparent; border-top: 1px solid rgba(255,255,255,.12); }
+.site-footer .lift-status ul { padding-top: 22px; padding-bottom: 22px; }
+@media (max-width: 640px) { html body .site-footer .lift-status ul { padding-left: calc(var(--gl) + 14px); padding-right: var(--gr); } }
+
+/* ---------- Hero: one subtitle instead of two lines (Ryan, 13 Nov 2026), still under the short Neon bar ---------- */
+html body .pc-story__tag.pc-story__tag--one { max-width: 19em; margin: 0 auto; font-family: var(--px-sans) !important; font-weight: 500 !important; font-variation-settings: "wdth" 100 !important; font-size: clamp(22px, 2.3vw, 34px); line-height: 1.28; letter-spacing: -.012em; text-wrap: balance; } /* Archivo, not Michroma: Michroma's capital Y has a split arm that looked broken (Ryan, 13 Nov) */
+html body .pc-story__tag--one::before { content: ""; display: block; width: 28px; height: 2px; margin: 0 auto 14px; background: #3DFFC1; }
+@media (max-width: 860px) { html body .pc-story__tag--one { font-size: 22px; max-width: 16em; } }
