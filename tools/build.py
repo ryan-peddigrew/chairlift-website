@@ -999,7 +999,7 @@ five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
         <span class="rule"></span>
         <h2 id="book-title">Pick your time.</h2>
       </div>
-      <p class="section-note section-note--top">Calendar not loading? <a href="{BOOKING_URL}">Open it in a new page</a>.</p>
+      <p class="section-note section-note--top">Calendar not loading? <a href="/get-in-touch/">Send us a note instead</a> and we'll find a time.</p>
       <div id="cal-inline" style="min-height:640px"></div>
     </div>
   </section>
