@@ -107,7 +107,7 @@ html body .tm-map svg .tm-callout text { font-size: 18px; stroke-width: 6px; }
 html body .tm-map svg .tm-callout text.big { font-size: 26px; }
 html body .tm-run.on .tm-mark { transform-box: fill-box; }
 html body .tm-list .tm-no { font: 500 12px/1 var(--px-mono, "IBM Plex Mono", monospace); letter-spacing: .08em; opacity: .7; }
-@media (max-width: 560px) { html body .tm-map svg text.tm-sky { font-size: 44px; } html body .tm-map svg text.num { font-size: 22px; } html body .tm-map svg .tm-callout text { font-size: 20px; } html body .tm-map svg .tm-callout text.big { font-size: 32px; } }
+@media (max-width: 560px) { html body .tm-map svg text.tm-sky { font-size: 32px; stroke-width: 8px; } html body .tm-map svg text.num { font-size: 22px; } html body .tm-map svg .tm-callout text { font-size: 20px; } html body .tm-map svg .tm-callout text.big { font-size: 32px; } }
 
 /* ---------- Subpages ---------- */
 /* page-top photo tiles: crop just inside the old print's white border */
@@ -195,4 +195,9 @@ html.no-3d.over-hero body .site-header .brand svg { opacity: var(--dk, 0); }
 @media (max-width: 560px) {
   html.has-lift body { --gl: 36px; }
   html body .air-read { font-size: 9px; padding: 2px 2px 1px; gap: 1px; letter-spacing: 0; }
+}
+
+/* ---------- Trail map on phones (13 Nov 2026): run name smaller so it never fills the map, card clear of the elevation tag ---------- */
+@media (max-width: 560px) {
+  html.has-lift body .tm-poster { margin-left: 2px; margin-right: -6px; }
 }
