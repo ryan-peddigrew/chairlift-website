@@ -1,6 +1,6 @@
-Case study images (images/cs-*):
-- cs-danbury-trashers (+ -wide): screenshots of the live Danbury Trashers fan shop (dbtrashers.com) that we built, in a device frame.
-- cs-wastemind: WasteMind's own photo (wastemind-containers.jpg), Ink wash.
-- cs-small-space (+ -wide): illustrative drawing of the room-design tool idea (floor plan and 3D room with furniture), made for the site at Ryan's request. Not a screenshot of the real tool.
-- cs-duchess: "Human eyelashes.jpg", Wikimedia Commons, CC BY-SA 4.0. Stand-in; author credit needed before a publish if kept.
-Stand-ins get replaced by screenshots of the quoting tool, lash builder and room-photo tool. Swap the files, keep the names, run tools/optimize_images.py.
+Case study images (images/cs-*, plus -wide for laptops). Every image is a real or drawn screen of work we built, in an Ink wash.
+- cs-danbury-trashers: screenshots of the live Danbury Trashers fan shop (dbtrashers.com).
+- cs-wastemind: screenshots of the WasteMind plan estimator (ryan-peddigrew.github.io/sites/wastemind/), the quoting tool.
+- cs-duchess: screenshots of The Crown Fitting try-on and its iPhone app preview (ryan-peddigrew.github.io/sites/duchess-luxury-lashes/).
+- cs-small-space: illustrative drawing of the room-design tool, made for the site at Ryan's request. Not a screenshot of the real tool.
+To replace one: swap the files, keep the names, run tools/optimize_images.py, then python3 tools/build.py.

@@ -533,13 +533,13 @@ STORIES = [
   ], "cs-danbury-trashers", dict(tone="cream", wide=True)),
   ("duchess", "Duchess", "Luxury Lashes", "Try the lashes on from a selfie.", "Try-on tool", [
     ("Solution", "A try-on tool.", "For iPhone and the web. Take a selfie, scroll the lashes, see each pair on your eyes. Make them smaller to fit.", None),
-  ], "cs-duchess", dict(tone="blue", w=800)),
+  ], "cs-duchess", dict(tone="blue", wide=True)),
   ("wastemind", "Waste", "Mind", "Making, installing and servicing waste equipment for condos and apartment buildings.", "Waste equipment", [
     ("Discovery", "Where it stuck.", "Shane Fagan was growing WasteMind and working out how to scale it.", None),
     ("Solution", "What we did.", "We looked for where time and money were leaking, put fixes in, tracked the return and measured it.", None),
     ("Deployment", "How it runs.", "We work with WasteMind every week, one tested fix at a time.", None),
     ("Results", "What changed.", "Faster replies to quote requests, service calls and inquiries.", None),
-  ], "cs-wastemind", dict(tone="dark", w=800, quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind"))),
+  ], "cs-wastemind", dict(tone="dark", wide=True, quote=("&ldquo;Every week there&rsquo;s another small fix, and it all adds up. We&rsquo;re faster and I&rsquo;m not chasing things anymore.&rdquo;", "Shane Fagan, WasteMind"))),
 ]
 STORIES_HTML = "".join(story_full(*a[:7], **a[7]) for a in STORIES)
 
