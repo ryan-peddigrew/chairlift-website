@@ -90,7 +90,7 @@ def head(title, desc, path, noindex=False):
 <link rel="preload" href="/fonts/michroma.woff2" as="font" type="font/woff2" crossorigin>{HERO_PRELOAD if path == "/" else ""}
 <style>{FONT_CSS}</style>
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/pxp.css">{'<link rel="modulepreload" href="/vendor/pxp3d.bundle.js" fetchpriority="low">' if path == "/" else ""}{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
+<link rel="stylesheet" href="/pxp.css">{'<link rel="stylesheet" href="/air.css"><script src="/air.js" defer></script>' if path == "/" else ""}{INTRO_JS if path == "/" else ""}
 <link rel="stylesheet" href="/tune.css">
 </head>
 <body>
@@ -158,8 +158,8 @@ def footer():
 <script src="/script.js" defer></script>
 <script src="/pxp.js" defer></script>
 <script src="/pxcloud.js" defer></script>
-<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). On a computer the home hero starts it right away. On phones it starts just after the first screen has painted, so the page shows first. Other pages fetch it once the page has finished loading. -->
-<script>(function(){{function go(){{var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';s.onerror=function(){{document.documentElement.classList.add('no-3d')}};document.body.appendChild(s)}}function idle(t){{(window.requestIdleCallback||function(f){{setTimeout(f,300)}})(go,{{timeout:t}})}}var home=document.querySelector('.pc-logo'),phone=matchMedia('(max-width: 860px), (hover: none)').matches;if(home&&!phone)go();else if(home)requestAnimationFrame(function(){{setTimeout(function(){{idle(500)}},60)}});else addEventListener('load',function(){{idle(3000)}})}})();</script>
+<!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). On a computer the home hero starts it right away. On phones it starts once the page has finished loading (13 Nov 2026), so the hero photo paints first. Other pages fetch it once the page has finished loading. -->
+<script>(function(){{function go(){{var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';s.onerror=function(){{document.documentElement.classList.add('no-3d')}};document.body.appendChild(s)}}function idle(t){{(window.requestIdleCallback||function(f){{setTimeout(f,300)}})(go,{{timeout:t}})}}var home=document.querySelector('.pc-logo'),phone=matchMedia('(max-width: 860px), (hover: none)').matches;if(home&&!phone)go();else if(home){{if(document.readyState==='complete')idle(500);else addEventListener('load',function(){{idle(500)}})}}else addEventListener('load',function(){{idle(3000)}})}})();</script>
 </body>
 </html>
 '''
