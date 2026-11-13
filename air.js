@@ -133,7 +133,7 @@
     }
 
     // scroll chairlift: a cable down the left edge; the chair climbs it as you read down the page (base at the bottom, summit at the top),
-    // swings a little when it moves, and carries the elevation readout: base 1200 m to summit 2850 m.
+    // swings a little when it moves, and carries the elevation readout: 0 m at the top of the page to the 2850 m summit at the bottom (Ryan, 13 Nov 2026: start at 0).
     // The readout (Ryan, 13 Nov 2026) is one small horizontal line, whole metres and an "m", always white: it lives outside the
     // blended cable layer (which inverts against the page) on its own small Ink tag, so it stays white on any background.
     (function () {
@@ -142,7 +142,7 @@
       lift.innerHTML = '<i class="air-lift__end air-lift__end--top"></i><i class="air-lift__end air-lift__end--base"></i>' +
         '<div class="air-lift__car">' +
         '<div class="air-lift__chair"><svg viewBox="0 0 34 54" preserveAspectRatio="xMidYMin meet"><rect class="air-lift__grip" x="13.5" y="0" width="7" height="5" rx="1"/><path d="M17 5V13"/><path class="air-lift__seat" d="M8 13h18l3.5 5h-25z"/><rect x="5" y="18" width="24" height="28" rx="3.5"/><path d="M5 31H29"/></svg></div></div>';
-      var read = document.createElement('div'); read.className = 'air-read'; read.setAttribute('aria-hidden', 'true'); read.innerHTML = '<b>1200</b><i>m</i>';
+      var read = document.createElement('div'); read.className = 'air-read'; read.setAttribute('aria-hidden', 'true'); read.innerHTML = '<b>0</b><i>m</i>';
       body.appendChild(lift); body.appendChild(read); root.classList.add('has-lift');   // phone layout keeps a clear lane for the cable (tune.css)
       var car = lift.querySelector('.air-lift__car'), chair = lift.querySelector('.air-lift__chair'), num = read.firstChild;
       var cur = 0, target = 0, raf = 0, span = 0, shown = -1, lx = 0, ly = 0, ch = 54, rh = 14;
@@ -163,7 +163,7 @@
         var ry = y < rh + 10 ? y + ch + 5 : y - rh - 5;
         read.style.transform = 'translate3d(' + lx.toFixed(1) + 'px,' + (ly + ry).toFixed(1) + 'px,0)';
         if (!reduce) chair.style.transform = 'rotate(' + Math.max(-14, Math.min(14, -d * 900)).toFixed(1) + 'deg)';
-        var m = Math.round(1200 + cur * 1650);
+        var m = Math.round(cur * 2850);
         if (m !== shown) { shown = m; num.textContent = m; }
       }
       function onScroll() { target = progress(); if (!raf) raf = requestAnimationFrame(tick); }

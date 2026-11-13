@@ -176,18 +176,18 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   root.classList.add('kn-js');
 
-  /* ---------- altimeter: base 1,200 m to summit 2,850 m as you scroll ---------- */
+  /* ---------- altimeter: 0 m to the 2,850 m summit as you scroll ---------- */
   // the homepage chairlift on the left edge carries its own elevation readout, so the box only shows where there is no chairlift
   if (!document.querySelector('.air-lift')) (function () {
   var alt = document.createElement('div');
   alt.className = 'kn-alt'; alt.setAttribute('aria-hidden', 'true');
-  alt.innerHTML = '<span class="kn-alt__lbl">Elevation</span><b>1,200</b><span class="kn-alt__u">m</span><i class="kn-alt__bar"><i></i></i><span class="kn-alt__lbl kn-alt__state">Base</span>';
+  alt.innerHTML = '<span class="kn-alt__lbl">Elevation</span><b>0</b><span class="kn-alt__u">m</span><i class="kn-alt__bar"><i></i></i><span class="kn-alt__lbl kn-alt__state">Base</span>';
   document.body.appendChild(alt);
   var altN = alt.querySelector('b'), altFill = alt.querySelector('.kn-alt__bar i'), altState = alt.querySelector('.kn-alt__state');
   var hero = document.querySelector('.pc-hero, .pc-pin');
   function altimeter() {
     var max = Math.max(1, document.documentElement.scrollHeight - innerHeight), k = Math.min(1, Math.max(0, scrollY / max));
-    altN.textContent = Math.round(1200 + k * 1650).toLocaleString('en-CA');
+    altN.textContent = Math.round(k * 2850).toLocaleString('en-CA');
     altFill.style.transform = 'scaleY(' + k.toFixed(3) + ')';
     altState.textContent = k > .97 ? 'Summit' : k < .03 ? 'Base' : 'Riding';
     alt.classList.toggle('on', !hero || hero.getBoundingClientRect().bottom < innerHeight * .5);
