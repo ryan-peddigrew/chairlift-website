@@ -207,6 +207,6 @@ html.no-3d.over-hero body .site-header .brand svg { opacity: var(--dk, 0); }
 @media (max-width: 640px) { html body .site-footer .lift-status ul { padding-left: calc(var(--gl) + 14px); padding-right: var(--gr); } }
 
 /* ---------- Hero: one subtitle instead of two lines (Ryan, 13 Nov 2026), still under the short Neon bar ---------- */
-html body .pc-story__tag--one { max-width: 19em; margin: 0 auto; font-weight: 600; font-size: clamp(22px, 2.3vw, 34px); line-height: 1.28; letter-spacing: -.015em; text-wrap: balance; }
+html body .pc-story__tag.pc-story__tag--one { max-width: 19em; margin: 0 auto; font-family: var(--px-sans) !important; font-weight: 500 !important; font-variation-settings: "wdth" 100 !important; font-size: clamp(22px, 2.3vw, 34px); line-height: 1.28; letter-spacing: -.012em; text-wrap: balance; } /* Archivo, not Michroma: Michroma's capital Y has a split arm that looked broken (Ryan, 13 Nov) */
 html body .pc-story__tag--one::before { content: ""; display: block; width: 28px; height: 2px; margin: 0 auto 14px; background: #3DFFC1; }
 @media (max-width: 860px) { html body .pc-story__tag--one { font-size: 22px; max-width: 16em; } }
