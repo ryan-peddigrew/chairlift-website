@@ -138,13 +138,13 @@ if (host) {
       const dkNow = mini ? 1 : st.dk;
       const docked = mini || dkNow >= 0.99, moving = !docked && dkNow > 0.01;
       if (phone) {
-        if (docked && now - last < 30) return;        // parked: 30 frames a second is plenty for a ring that takes 16 s a turn
+        if (docked && now - last < 30) return;        // parked: 30 frames a second is plenty for a ring that takes 9 s a turn
         if (!mini && docked !== parked) { parked = docked; size(); }
       }
       const dt = Math.min(0.1, (now - last) / 1000); last = now;
       const face = (a) => Math.round(a / (Math.PI * 2)) * Math.PI * 2;
-      if (docked) {                                 // in the top bar: the three bars hold still, only the ring turns around them (16 s a turn)
-        spin = face(spin); ringSpin += dt * Math.PI * 2 / 16;
+      if (docked) {                                 // in the top bar: the three bars hold still, only the ring turns around them (9 s a turn; Ryan, 13 Nov 2026: 16 s was too slow)
+        spin = face(spin); ringSpin += dt * Math.PI * 2 / 9;
       } else if (moving) {                          // flying up: settle face-on so the flip is one clean somersault
         spin += (face(spin) - spin) * 0.2; ringSpin += (face(ringSpin) - ringSpin) * 0.2;
       } else {                                      // landing: the whole logo turns, one spin every 8 s

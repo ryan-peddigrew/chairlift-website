@@ -196,21 +196,17 @@ PAPER_IMG = f'''<figure class="paper-shot">
         <figcaption>Sample page. Date, scores, news and weather are live.</figcaption>
       </figure>'''
 
-# Lift ticket (Ryan, 4 Nov 2026): Chairlift is the resort. Off-white Tyvek ticket folded over a wicket wire, sage admit bar,
-# big weekday letter behind the date, thermal-print edges on the date and barcode, barcode bleeding off both edges.
-PASS_FAN = ('<div class="pass-fan" aria-hidden="true"><div class="tkt"><i class="tkt__stack"></i><i class="tkt__stack tkt__stack--2"></i><div class="tkt__card">'
-    '<div class="tkt__fold"></div>'
-    '<p class="tkt__lifts"><span>All lifts</span><span>2026&ndash;27</span></p>'
-    '<div class="tkt__resort"><div class="tkt__name">' + LOGO.format(s=34, stroke='') + 'Chairlift</div><p class="tkt__tag">Less busywork. More business.</p></div>'
-    '<div class="tkt__mid"><span class="tkt__wm" data-tkt-wd>W</span><p class="tkt__type">One team<span>Full season</span></p><p class="tkt__date"><small data-tkt-yr>2026</small><span data-tkt-dt>Nov 4</span></p></div>'
-    '<p class="tkt__admit">Admit one team</p>'
-    '<div class="tkt__code"><i class="tkt__bars"></i><span class="tkt__no">No. 000001</span></div>'
-    '<p class="tkt__foot"><span>Base 1,200 m</span><span>Summit 2,850 m</span></p>'
-    '<svg class="tkt__tyvek" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#tkt-tyvek)"/></svg>'
+# Lift ticket (Ryan, 13 Nov 2026): the same season pass as the Instagram post. Flat cream card on a hard Ink backing,
+# Season pass band, logo and wordmark, sage admit bar, barcode with its number, Founders Notch Resort band with the gold peaks.
+PASS_FAN = ('<div class="pass-fan" aria-hidden="true"><div class="tkt"><div class="tkt__card">'
+    '<p class="tkt__lifts">Season pass - 2026/2027</p>'
+    '<div class="tkt__resort"><div class="tkt__name">' + LOGO.format(s=40, stroke='') + 'Chairlift</div><p class="tkt__tag">Less busywork. More business.</p></div>'
+    '<p class="tkt__admit">Admit <span>one team</span></p>'
+    '<div class="tkt__code"><i class="tkt__bars"></i><span class="tkt__no">4 817209 360158</span></div>'
+    '<p class="tkt__foot"><svg viewBox="0 0 30 16" aria-hidden="true"><path d="M0 16 8.5 3 13 9.5 19.5 0 30 16Z"/></svg>Founders Notch Resort</p>'
     '</div></div>'
     '<svg width="0" height="0" style="position:absolute"><defs>'
     '<filter id="tkt-thermal" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1" xChannelSelector="R" yChannelSelector="G"/></filter>'
-    '<filter id="tkt-tyvek" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="3" seed="3" result="t"/><feDiffuseLighting in="t" lighting-color="#fff" surfaceScale=".9" diffuseConstant="1.1"><feDistantLight azimuth="60" elevation="68"/></feDiffuseLighting></filter>'
     '</defs></svg></div>')
 
 home = f'''

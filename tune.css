@@ -17,7 +17,7 @@ html body .bw__cards { margin-top: 32px; }
 html body .pass-row { margin-top: 28px; }
 
 /* One task first: the text column runs up to the ticket, no 150px gap */
-@media (min-width: 900px) { html body .bw__top { grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; } html body .bw__lead { max-width: none; } }
+@media (min-width: 900px) { html body .bw__top { grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; } html body .bw__lead { max-width: none; } }
 
 /* The shift: step cards fit their text (the by-hand and with-Chairlift lines share one cell instead of a fixed 6em box) */
 html body .kn-step { padding: 20px 20px 22px; }
@@ -97,9 +97,7 @@ html body .pc-scan, html body .retro::before, html body .pg::before, html body .
 /* ---------- Left elevation rail: in from the edge and easier to read ---------- */
 @media (min-width: 761px) {
   html body .air-lift { left: max(18px, env(safe-area-inset-left, 0px)); }
-  html body .air-lift__num, html body .air-lift__lbl { font-size: 12px; font-weight: 500; letter-spacing: .08em; }
 }
-@media (max-width: 760px) { html body .air-lift__num { font-size: 9.5px; font-weight: 500; } }
 
 /* ---------- Hero: less scroll before the copy and both buttons are in view ---------- */
 html body .pc-hero { height: 150svh; }
@@ -184,3 +182,17 @@ html.no-3d body .pc-flat svg { width: 34%; height: auto; filter: drop-shadow(0 1
 html.no-3d body .pc-flat b { font-family: var(--px-display, "Michroma", sans-serif); font-weight: 400; font-size: clamp(40px, 13.4vw, 76px); line-height: 1; letter-spacing: -.01em; color: #fff; white-space: nowrap; text-shadow: 0 2px 24px rgba(8,12,22,.55); }
 html.no-3d.over-hero body .site-header .brand svg { opacity: var(--dk, 0); }
 @media (prefers-reduced-motion: reduce) { html body .pc-logo .pc-gl { animation: none; } }
+
+/* ---------- Terminal touches (Ryan, 13 Nov 2026): caption lines type in and end on a flashing block cursor (script.js) ---------- */
+.tw-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.tw-off { opacity: 0; }
+.tw-caret { position: relative; }
+.tw-caret::after { content: ""; position: absolute; left: 100%; top: 50%; width: .56em; height: 1.08em; margin: -.56em 0 0 .06em; background: currentColor; animation: tw-blink 1.06s steps(1) infinite; }
+@keyframes tw-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tw-caret::after { animation: none; } }
+
+/* ---------- Elevation tag on phones (13 Nov 2026): tiny, and the text lane starts just past it ---------- */
+@media (max-width: 560px) {
+  html.has-lift body { --gl: 36px; }
+  html body .air-read { font-size: 9px; padding: 2px 2px 1px; gap: 1px; letter-spacing: 0; }
+}

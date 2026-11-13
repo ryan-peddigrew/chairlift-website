@@ -139,3 +139,36 @@
   window.addEventListener('hashchange', fromHash);
   fromHash();
 })();
+
+// Terminal touches (Ryan, 13 Nov 2026): the small typewriter-style caption lines type themselves in when they come into view
+// and end on a flashing block cursor, like an old terminal. The whole line is in the page from the start (the part not typed
+// yet is only invisible), so nothing moves while it types. Screen readers get one hidden copy of the full sentence.
+// Other scripts call window.__type(el) after they swap a label's words (trail map card, by hand / with Chairlift count).
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function type(el, instant, wait) {
+    if (!el) return;
+    clearTimeout(el._tw);
+    var sr = el.querySelector('.tw-sr'), t = (sr ? sr.textContent : el.textContent).replace(/\s+/g, ' ').trim();
+    if (!t) return;
+    el.textContent = ''; el.classList.add('tw');
+    // the cursor hangs off the last typed letter (an empty cursor element of its own can drop onto a new line)
+    var say = document.createElement('span'), show = document.createElement('span'), on = document.createElement('span'), c = document.createElement('span'), off = document.createElement('span');
+    say.className = 'tw-sr'; say.textContent = t; show.setAttribute('aria-hidden', 'true'); c.className = 'tw-caret'; off.className = 'tw-off';
+    show.appendChild(on); show.appendChild(c); show.appendChild(off); el.appendChild(say); el.appendChild(show);
+    var n = t.length, i = 0, gap = Math.max(14, Math.min(34, 1100 / n));
+    function put(k) { on.textContent = t.slice(0, k - 1); c.textContent = t.charAt(k - 1); off.textContent = t.slice(k); }
+    if (reduce || instant) { put(n); return; }
+    off.textContent = t;                       // all there, nothing showing yet
+    el._twGo = function () { el._twGo = null; (function step() { i++; put(i); if (i < n) el._tw = setTimeout(step, gap); })(); };
+    if (!wait) el._twGo();
+  }
+  window.__type = type;
+  var lines = [].slice.call(document.querySelectorAll('.sx-line, .sx-label, .bw__eyebrow, .lift-status li:first-child b, .tm-card > .tm-card__k:first-child, .kn-flow__read [data-count]'));
+  if (!lines.length) return;
+  if (reduce || !('IntersectionObserver' in window)) { lines.forEach(function (el) { type(el, true); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); if (e.target._twGo) e.target._twGo(); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: .4 });
+  lines.forEach(function (el) { type(el, false, true); io.observe(el); });   // blank until it scrolls into view, then it types
+})();

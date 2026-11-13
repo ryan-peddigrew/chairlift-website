@@ -60,6 +60,7 @@
     [].forEach.call(list.children, function (b, j) { b.setAttribute('aria-pressed', i === j ? 'true' : 'false'); });
     sky.textContent = 'Run ' + ('0' + (i + 1)).slice(-2) + ' \u00b7 ' + (SHORT[i] || '');
     if (tpls[i]) { card.innerHTML = ''; card.appendChild(tpls[i].content.cloneNode(true)); }
+    if (window.__type) window.__type(card.querySelector('.tm-card__k'));   // the run label types itself in, with the flashing cursor (script.js)
   }
   pick(0);
   var mw = document.querySelector('.tm-wrap');

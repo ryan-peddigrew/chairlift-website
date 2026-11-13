@@ -40,6 +40,7 @@
       if (w === way) return; way = w;
       btns.forEach(function (b) { var on = +b.dataset.way === w; b.setAttribute('aria-checked', on ? 'true' : 'false'); });
       flow.dataset.way = w; cap.textContent = CAP[w]; count.textContent = COUNT[w];
+      if (window.__type) window.__type(count);   // the count types itself in, with the flashing cursor (script.js)
       steps.forEach(function (s, i) { setTimeout(function () { s.classList.toggle('on', w === 1); }, w === 1 && !reduce ? i * 260 : 0); });
     }
     /* live line: jobs queue up on the ground by hand, then ride the cable when Chairlift runs them */
