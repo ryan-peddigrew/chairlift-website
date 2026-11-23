@@ -562,7 +562,8 @@ TEAM = [dict(name="Emilie", role="Sales &amp; Marketing Coordinator", photo="tea
              bio=["Emilie is studying Marketing at the Ted Rogers School of Management, where she is VP of Marketing at Enactus TMU and Social Media Manager at the Ted Rogers Students' Society.",
                   "A background in hospitality keeps her focused on what turns a first impression into a lasting relationship."]),
         dict(name="Amanda", role="Office Manager", photo="team-amanda.jpg", email="amanda@usechairlift.com",
-             bio=["Amanda keeps the office running smoothly, so every client project stays organized and on track from the first call onward."])]
+             bio=["Amanda brings more than a decade of experience in education and learning, with a background in hospitality and marketing. She gives Chairlift a structured backbone, keeping every project and moving part in check.",
+                  "She holds a degree from Ontario Tech University and a post-graduate credential from Seneca."])]
 
 def crew_item(m):
     if m["photo"]:
