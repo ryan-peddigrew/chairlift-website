@@ -561,7 +561,7 @@ TEAM_CALL = ("tel:+16474537926", "(647) 453-7926")
 TEAM = [dict(name="Emilie", role="Sales &amp; Marketing Coordinator", photo="team-emilie.jpg", email="emilie@usechairlift.com",
              bio=["Emilie is studying Marketing at the Ted Rogers School of Management, where she is VP of Marketing at Enactus TMU and Social Media Manager at the Ted Rogers Students' Society.",
                   "A background in hospitality keeps her focused on what turns a first impression into a lasting relationship."]),
-        dict(name="Amanda", role="Office Manager", photo="team-amanda.jpg", email="",
+        dict(name="Amanda", role="Office Manager", photo="team-amanda.jpg", email="amanda@usechairlift.com",
              bio=["Amanda keeps the office running smoothly, so every client project stays organized and on track from the first call onward."])]
 
 def crew_item(m):
