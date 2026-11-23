@@ -553,6 +553,9 @@ examples = page_hero("In practice", "What this looks like in practice.",
 {cta_band("Recognize one of these?")}'''
 
 # ---------------------------------------------------------------- About
+# Team shown under the founder note on Who we are. First names only (Ryan, 23 Nov 2026).
+TEAM = [("Emilie", "Sales &amp; Marketing Coordinator"),
+        ("Amanda", "Office Manager")]
 about = page_hero("Who we are", "Why we started Chairlift.",
     "Great teams shouldn't lose their best hours to follow-ups and admin work.") + f'''
   <section class="section section--soft section--tight" aria-labelledby="gap-title">
@@ -594,6 +597,11 @@ about = page_hero("Who we are", "Why we started Chairlift.",
           <p>Chairlift fixes that, one process at a time, with our own team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
+        <div class="crew" role="group" aria-labelledby="crew-title">
+          <h2 class="eyebrow" id="crew-title">The team</h2>
+          <ul class="crew__list">
+{"".join(f'            <li class="crew__item"><span class="crew__mark" aria-hidden="true">{n[0]}</span><span class="crew__who"><strong>{n}</strong><span>{r}</span></span></li>{chr(10)}' for n, r in TEAM)}          </ul>
+        </div>
       </div>
     </div>
   </section>

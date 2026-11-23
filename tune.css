@@ -210,3 +210,14 @@ html.no-3d.over-hero body .site-header .brand svg { opacity: var(--dk, 0); }
 html body .pc-story__tag.pc-story__tag--one { max-width: 19em; margin: 0 auto; font-family: var(--px-sans) !important; font-weight: 500 !important; font-variation-settings: "wdth" 100 !important; font-size: clamp(22px, 2.3vw, 34px); line-height: 1.28; letter-spacing: -.012em; text-wrap: balance; } /* Archivo, not Michroma: Michroma's capital Y has a split arm that looked broken (Ryan, 13 Nov) */
 html body .pc-story__tag--one::before { content: ""; display: block; width: 28px; height: 2px; margin: 0 auto 14px; background: #3DFFC1; }
 @media (max-width: 860px) { html body .pc-story__tag--one { font-size: 22px; max-width: 16em; } }
+
+/* Team under the founder note on Who we are (23 Nov 2026): first names only, Ink initial circles, no photos */
+.crew { margin-top: clamp(32px, 4vw, 44px); padding-top: clamp(24px, 3vw, 32px); border-top: 1px solid rgba(20,27,42,.14); }
+.crew .eyebrow { display: block; margin: 0 0 18px; }
+.crew__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 18px 48px; }
+.crew__item { display: flex; align-items: center; gap: 18px; }
+.crew__mark { flex: none; width: 72px; height: 72px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: 30px; line-height: 1; }
+.crew__who { display: grid; gap: 2px; }
+.crew__who strong { font-size: 18px; }
+.crew__who span { color: var(--muted); font-size: 16px; }
+@media (max-width: 640px) { .crew__list { grid-template-columns: minmax(0, 1fr); } .crew__mark { width: 64px; height: 64px; font-size: 26px; } }
