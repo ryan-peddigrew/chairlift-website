@@ -553,9 +553,20 @@ examples = page_hero("In practice", "What this looks like in practice.",
 {cta_band("Recognize one of these?")}'''
 
 # ---------------------------------------------------------------- About
-# Team shown under the founder note on Who we are. First names only (Ryan, 23 Nov 2026).
-TEAM = [("Emilie", "Sales &amp; Marketing Coordinator"),
-        ("Amanda", "Office Manager")]
+# Team shown under the founder note on Who we are. First names only, never last names (Ryan, 23 Nov 2026).
+# photo: a round head-and-shoulders crop in images/ (Emilie's comes from her approved welcome graphic). No photo = Ink initial circle.
+# bio: only wording Ryan supplies.
+TEAM = [dict(name="Emilie", role="Sales &amp; Marketing Coordinator", photo="team-emilie.jpg", bio=""),
+        dict(name="Amanda", role="Office Manager", photo="", bio="")]
+
+def crew_item(m):
+    if m["photo"]:
+        mark = f'<img class="crew__photo" src="/images/{m["photo"]}" alt="{m["name"]}, {m["role"]} at Chairlift" width="600" height="600" loading="lazy" decoding="async">'
+    else:
+        mark = f'<span class="crew__mark" aria-hidden="true">{m["name"][0]}</span>'
+    bio = f'<p>{m["bio"]}</p>' if m["bio"] else ''
+    return f'            <li class="crew__item">{mark}<span class="crew__who"><strong>{m["name"]}</strong><span>{m["role"]}</span>{bio}</span></li>\n'
+
 about = page_hero("Who we are", "Why we started Chairlift.",
     "Great teams shouldn't lose their best hours to follow-ups and admin work.") + f'''
   <section class="section section--soft section--tight" aria-labelledby="gap-title">
@@ -600,7 +611,7 @@ about = page_hero("Who we are", "Why we started Chairlift.",
         <div class="crew" role="group" aria-labelledby="crew-title">
           <h2 class="eyebrow" id="crew-title">The team</h2>
           <ul class="crew__list">
-{"".join(f'            <li class="crew__item"><span class="crew__mark" aria-hidden="true">{n[0]}</span><span class="crew__who"><strong>{n}</strong><span>{r}</span></span></li>{chr(10)}' for n, r in TEAM)}          </ul>
+{"".join(crew_item(m) for m in TEAM)}          </ul>
         </div>
       </div>
     </div>
