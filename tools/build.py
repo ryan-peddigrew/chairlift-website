@@ -558,10 +558,10 @@ examples = page_hero("In practice", "What this looks like in practice.",
 # No photo = Ink initial circle. bio: built only from what Ryan supplies (Emilie: his LinkedIn welcome post).
 # Every Call button rings Ryan's cell, the number on the approved email signature (Ryan, 23 Nov 2026).
 TEAM_CALL = ("tel:+16474537926", "(647) 453-7926")
-TEAM = [dict(name="Emilie", role="Sales &amp; Marketing Coordinator", photo="team-emilie.jpg", email="emilie@usechairlift.com",
+TEAM = [dict(name="Emilie", role="Sales &amp; Marketing Coordinator", photo=None, email="emilie@usechairlift.com",
              bio=["Emilie is studying Marketing at the Ted Rogers School of Management, where she is VP of Marketing at Enactus TMU and Social Media Manager at the Ted Rogers Students' Society.",
                   "A background in hospitality keeps her focused on what turns a first impression into a lasting relationship."]),
-        dict(name="Amanda", role="Office Manager", photo="team-amanda.jpg", email="amanda@usechairlift.com",
+        dict(name="Amanda", role="Office Manager", photo=None, email="amanda@usechairlift.com",
              bio=["Amanda brings more than a decade of experience in education and learning, with a background in hospitality and marketing. She gives Chairlift a structured backbone, keeping every project and moving part in check.",
                   "She holds a degree from Ontario Tech University and a post-graduate credential from Seneca."])]
 
@@ -569,7 +569,7 @@ def crew_item(m):
     if m["photo"]:
         mark = f'<img class="crew__photo" src="/images/{m["photo"]}" alt="{m["name"]}, {m["role"]} at Chairlift" width="600" height="600" loading="lazy" decoding="async">'
     else:
-        mark = f'<span class="crew__mark" aria-hidden="true">{m["name"][0]}</span>'
+        mark = ''  # no headshots until Ryan approves photos (24 Nov 2026)
     bio = "".join(f'<p>{t}</p>' for t in m["bio"])
     mail = f'<a class="crew__mail" href="mailto:{m["email"]}">{m["email"]}</a>' if m["email"] else ''
     call = f'<a class="crew__call" href="{TEAM_CALL[0]}" aria-label="Call Chairlift at {TEAM_CALL[1]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4.3-2.1 1.5a12.5 12.5 0 0 0 6.2 6.2l1.5-2.1 4.3 1.4v2.6a2.1 2.1 0 0 1-2.3 2.1A16.5 16.5 0 0 1 4.5 5.8a2.1 2.1 0 0 1 2.1-2.3z"/></svg>Call</a>'
