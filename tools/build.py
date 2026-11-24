@@ -553,6 +553,29 @@ examples = page_hero("In practice", "What this looks like in practice.",
 {cta_band("Recognize one of these?")}'''
 
 # ---------------------------------------------------------------- About
+# Team shown under the founder note on Who we are. First names only, never last names (Ryan, 23 Nov 2026).
+# photo: round head-and-shoulders crop in images/ on the ski-lodge backdrop (Emilie's from her approved welcome graphic).
+# No photo = Ink initial circle. bio: built only from what Ryan supplies (Emilie: his LinkedIn welcome post).
+# Every Call button rings Ryan's cell, the number on the approved email signature (Ryan, 23 Nov 2026).
+TEAM_CALL = ("tel:+16474537926", "(647) 453-7926")
+TEAM = [dict(name="Emilie", role="Sales &amp; Marketing Coordinator", photo=None, email="emilie@usechairlift.com",
+             bio=["Emilie is studying Marketing at the Ted Rogers School of Management, where she is VP of Marketing at Enactus TMU and Social Media Manager at the Ted Rogers Students' Society.",
+                  "A background in hospitality keeps her focused on what turns a first impression into a lasting relationship."]),
+        dict(name="Amanda", role="Office Manager", photo=None, email="amanda@usechairlift.com",
+             bio=["Amanda brings more than a decade of experience in education and learning, with a background in hospitality and marketing. She gives Chairlift a structured backbone, keeping every project and moving part in check.",
+                  "She holds a degree from Ontario Tech University and a post-graduate credential from Seneca."])]
+
+def crew_item(m):
+    if m["photo"]:
+        mark = f'<img class="crew__photo" src="/images/{m["photo"]}" alt="{m["name"]}, {m["role"]} at Chairlift" width="600" height="600" loading="lazy" decoding="async">'
+    else:
+        mark = ''  # no headshots until Ryan approves photos (24 Nov 2026)
+    bio = "".join(f'<p>{t}</p>' for t in m["bio"])
+    mail = f'<a class="crew__mail" href="mailto:{m["email"]}">{m["email"]}</a>' if m["email"] else ''
+    call = f'<a class="crew__call" href="{TEAM_CALL[0]}" aria-label="Call Chairlift at {TEAM_CALL[1]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4.3-2.1 1.5a12.5 12.5 0 0 0 6.2 6.2l1.5-2.1 4.3 1.4v2.6a2.1 2.1 0 0 1-2.3 2.1A16.5 16.5 0 0 1 4.5 5.8a2.1 2.1 0 0 1 2.1-2.3z"/></svg>Call</a>'
+    return (f'            <li class="crew__item"><div class="crew__head">{mark}<div class="crew__who"><strong>{m["name"]}</strong><span>{m["role"]}</span></div></div>'
+            f'<div class="crew__bio">{bio}</div><div class="crew__acts">{call}{mail}</div></li>\n')
+
 about = page_hero("Who we are", "Why we started Chairlift.",
     "Great teams shouldn't lose their best hours to follow-ups and admin work.") + f'''
   <section class="section section--soft section--tight" aria-labelledby="gap-title">
@@ -594,6 +617,11 @@ about = page_hero("Who we are", "Why we started Chairlift.",
           <p>Chairlift fixes that, one process at a time, with our own team and no outsourcing. Send a few lines about how your business runs, and you'll get specific ideas back.</p>
         </blockquote>
         <div class="founder-sign"><strong>Ryan Peddigrew</strong><span>Founder, Chairlift · <a href="mailto:{EMAIL}">{EMAIL}</a></span></div>
+        <div class="crew" role="group" aria-labelledby="crew-title">
+          <h2 class="eyebrow" id="crew-title">The team</h2>
+          <ul class="crew__list">
+{"".join(crew_item(m) for m in TEAM)}          </ul>
+        </div>
       </div>
     </div>
   </section>
