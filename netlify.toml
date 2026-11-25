@@ -13,3 +13,8 @@
   for = "/vendor/*"
   [headers.values]
     Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+# Credit saving (24 Nov 2026): only the main branch builds on Netlify, so pull request
+# previews and other branches skip the build. Git still holds every change.
+[build]
+  ignore = "if [ \"$BRANCH\" = \"main\" ]; then exit 1; else exit 0; fi"
