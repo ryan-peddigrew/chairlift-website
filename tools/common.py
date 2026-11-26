@@ -293,7 +293,7 @@ LIFT_STATUS = '''  <div class="lift-status" aria-label="Lift status">
 
 
 # HSMAI giveaway pop-up (Ryan, 26 Nov 2026). Set GIVEAWAY = False and rebuild to remove it from every page.
-GIVEAWAY = True
+GIVEAWAY = False
 
 
 def giveaway():
