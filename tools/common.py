@@ -254,7 +254,7 @@ def cta_band(title):
 PAGE_TONE = {"What we do": ("002", "dark"), "How it works": ("003", "blue"), "In practice": ("004", "grey"),
              "Who we help": ("005", "dark"), "Who we are": ("006", "blue"), "Get in touch": ("007", "grey"),
              "The Daily Peddigrew": ("008", "blue"), "Time-back calculator": ("009", "dark"),
-             "Five minutes. No pitch.": ("010", "grey")}
+             "Five minutes. No pitch.": ("010", "grey"), "Fifteen minutes. One real task.": ("012", "grey")}
 
 
 _TILE_SETS = [("lodge-01", "retro--color", "Double chair", "lodge-05", "", "Tower 5"), ("lodge-12", "retro--color", "Race day", "lodge-04", "", "Lift line"), ("lodge-10", "retro--color", "Base lodge", "lodge-14", "retro--color", "Mountain hotel"), ("lodge-13", "retro--color", "Mountain hotel", "lodge-11", "retro--color", "First tracks")]
