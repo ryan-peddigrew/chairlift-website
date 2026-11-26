@@ -163,5 +163,32 @@
 <script src="/pxcloud.js" defer></script>
 <!-- 3D logo: one trimmed bundle (tools/bundle3d.sh builds it from pxp3d.js). On a computer the home hero starts it right away. On phones it starts once the page has finished loading (13 Nov 2026), so the hero photo paints first. Other pages fetch it once the page has finished loading. -->
 <script>(function(){function go(){var s=document.createElement('script');s.type='module';s.src='/vendor/pxp3d.bundle.js';s.onerror=function(){document.documentElement.classList.add('no-3d')};document.body.appendChild(s)}function idle(t){(window.requestIdleCallback||function(f){setTimeout(f,300)})(go,{timeout:t})}var home=document.querySelector('.pc-logo'),phone=matchMedia('(max-width: 860px), (hover: none)').matches;if(home&&!phone)go();else if(home){if(document.readyState==='complete')idle(500);else addEventListener('load',function(){idle(500)})}else addEventListener('load',function(){idle(3000)})})();</script>
+
+<div class="gw" id="gw" role="dialog" aria-modal="true" aria-labelledby="gw-title" hidden>
+  <div class="gw-panel">
+    <button class="gw-x" type="button" data-gw-close aria-label="Close">&times;</button>
+    <p class="gw-kicker">HSMAI giveaway</p>
+    <h2 id="gw-title">Enter the draw.</h2>
+    <p class="gw-lede">One entrant wins a consulting evaluation from Chairlift: we look at where your team's time goes and show you what we'd take off their plate.</p>
+    <form class="gw-form" name="hsmai-giveaway" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="hsmai-giveaway">
+      <input type="hidden" name="subject" value="HSMAI giveaway entry">
+      <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+      <label class="field"><span>Company</span><input type="text" name="company" autocomplete="organization" required></label>
+      <button class="btn btn-white gw-submit" type="submit">Enter the draw</button>
+      <p class="gw-status" aria-live="polite"></p>
+      <p class="gw-small">We use your details only for the draw and to follow up.</p>
+    </form>
+    <div class="gw-done" hidden>
+      <h2>You're in.</h2>
+      <p class="gw-lede">Good luck. We'll be in touch after the draw.</p>
+      <button class="btn btn-white" type="button" data-gw-close>Back to the site</button>
+    </div>
+    <p class="gw-alt"><button class="gw-skip" type="button" data-gw-close>No thanks</button> <span aria-hidden="true">&middot;</span> <a href="/5min/">Book a 5-minute conversation</a></p>
+  </div>
+</div>
+<script src="/giveaway.js" defer></script>
 </body>
 </html>

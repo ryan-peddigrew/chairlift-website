@@ -839,3 +839,25 @@ main > .section:not(.section--ink):not(.section--soft):last-of-type { padding-bo
 
 .story-list { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px; }
 .story-list + p { margin-top: 16px; }
+
+/* HSMAI giveaway pop-up (26 Nov 2026). Off switch: GIVEAWAY in tools/common.py */
+.gw { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(20, 27, 42, 0.62); overflow-y: auto; }
+.gw[hidden] { display: none; }
+html.gw-open { overflow: hidden; }
+.gw-panel { position: relative; width: 100%; max-width: 440px; margin: auto; background: var(--ink); color: var(--on-ink); border-radius: 20px; padding: 30px 24px 22px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+.gw-kicker { margin: 0 0 10px; font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--on-ink-muted); }
+.gw-kicker::before { content: ""; display: block; width: 36px; height: 4px; border-radius: 2px; background: var(--neon); margin-bottom: 14px; }
+.gw h2 { margin: 0 0 10px; color: #fff; font-size: 28px; line-height: 1.1; text-transform: uppercase; }
+.gw-lede { margin: 0 0 18px; font-size: 16px; line-height: 1.5; color: var(--on-ink); }
+.gw-form { display: grid; gap: 12px; }
+.gw-submit { width: 100%; margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
+.gw-status { margin: 0; min-height: 0; font-size: 14px; }
+.gw-status:empty { display: none; }
+.gw-small { margin: 0; font-size: 13px; color: var(--on-ink-muted); }
+.gw-done .btn { width: 100%; }
+.gw-x { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; border-radius: 999px; background: transparent; color: #fff; font-size: 30px; line-height: 1; cursor: pointer; }
+.gw-x:hover { background: rgba(255,255,255,.1); }
+.gw-alt { margin: 14px 0 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 10px; font-size: 14px; color: var(--on-ink-muted); }
+.gw-alt a, .gw-skip { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; color: #fff; font: inherit; font-size: 14px; background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 480px) { .gw-panel { padding: 26px 18px 16px; } .gw h2 { font-size: 24px; } .gw-lede { font-size: 15px; margin-bottom: 14px; } }
+.gw-form .hp { position: absolute; left: -9999px; }

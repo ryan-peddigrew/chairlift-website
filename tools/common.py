@@ -292,11 +292,48 @@ LIFT_STATUS = '''  <div class="lift-status" aria-label="Lift status">
 '''
 
 
+# HSMAI giveaway pop-up (Ryan, 26 Nov 2026). Set GIVEAWAY = False and rebuild to remove it from every page.
+GIVEAWAY = True
+
+
+def giveaway():
+    return '''
+<div class="gw" id="gw" role="dialog" aria-modal="true" aria-labelledby="gw-title" hidden>
+  <div class="gw-panel">
+    <button class="gw-x" type="button" data-gw-close aria-label="Close">&times;</button>
+    <p class="gw-kicker">HSMAI giveaway</p>
+    <h2 id="gw-title">Enter the draw.</h2>
+    <p class="gw-lede">One entrant wins a consulting evaluation from Chairlift: we look at where your team's time goes and show you what we'd take off their plate.</p>
+    <form class="gw-form" name="hsmai-giveaway" method="POST" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="hsmai-giveaway">
+      <input type="hidden" name="subject" value="HSMAI giveaway entry">
+      <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+      <label class="field"><span>Company</span><input type="text" name="company" autocomplete="organization" required></label>
+      <button class="btn btn-white gw-submit" type="submit">Enter the draw</button>
+      <p class="gw-status" aria-live="polite"></p>
+      <p class="gw-small">We use your details only for the draw and to follow up.</p>
+    </form>
+    <div class="gw-done" hidden>
+      <h2>You're in.</h2>
+      <p class="gw-lede">Good luck. We'll be in touch after the draw.</p>
+      <button class="btn btn-white" type="button" data-gw-close>Back to the site</button>
+    </div>
+    <p class="gw-alt"><button class="gw-skip" type="button" data-gw-close>No thanks</button> <span aria-hidden="true">&middot;</span> <a href="/5min/">Book a 5-minute conversation</a></p>
+  </div>
+</div>
+<script src="/giveaway.js" defer></script>
+'''
+
+
 def page(title, desc, path, active, body, noindex=False):
     import re
     # Brand accent: section titles end in a full stop that can take the mint accent
     body = re.sub(r'(<h2[^>]*>[^<]*?)\.</h2>', r'\1<span class="dot">.</span></h2>', body)
     html = head(title, desc, path, noindex) + header(active) + '\n<main id="main">\n' + body + '\n</main>\n' + footer()
+    if GIVEAWAY and path not in ("/thanks/", "/5min/"):
+        html = html.replace("</body>", giveaway() + "</body>", 1)
     if path == "/":
         html = html.replace('  <div class="footer-bottom">', LIFT_STATUS + '  <div class="footer-bottom">', 1)
     return light_images(html)
