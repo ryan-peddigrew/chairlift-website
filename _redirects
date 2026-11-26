@@ -48,3 +48,24 @@
 /home-b/*  /  301!
 /home-c/*  /  301!
 /home-d/*  /  301!
+
+# 15-minute booking page (26 Nov 2026)
+/15min   /15min/   301
+/15-minute   /15min/   301
+/15-minute/  /15min/   301
+/15-minutes   /15min/   301
+/15-minutes/  /15min/   301
+/15minute   /15min/   301
+/15minute/  /15min/   301
+/15minutes   /15min/   301
+/15minutes/  /15min/   301
+/15-min   /15min/   301
+/15-min/  /15min/   301
+/15-mins   /15min/   301
+/15-mins/  /15min/   301
+/15mins   /15min/   301
+/15mins/  /15min/   301
+/fifteen-minute   /15min/   301
+/fifteen-minute/  /15min/   301
+/fifteen-minutes   /15min/   301
+/fifteen-minutes/  /15min/   301

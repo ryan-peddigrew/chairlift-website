@@ -1030,6 +1030,38 @@ five_min = page_hero("Five minutes. No pitch.", "Where is the busywork hiding?",
 '''
 
 
+# 15-minute booking page (Ryan, 26 Nov 2026): for people Ryan sends a longer slot to.
+# Same Cal.com event as /5min/ (it has a hidden 15-minute length), opened at 15 minutes.
+# Not in the menu; every "Take the lift" button still goes to /5min/.
+fifteen_min = page_hero("Fifteen minutes. One real task.", "Room to walk us through it.",
+    "Bring the task that eats the most time. We'll look at how it runs today, ask the useful questions, and tell you plainly what we'd fix first.",
+    extra='\n        <div class="ctas"><a class="btn btn-white" href="#book">Take the lift</a></div>') + f'''
+  <section class="section section--tight" aria-labelledby="fifteen-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="fifteen-title">What fifteen minutes looks like.</h2>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="card-top">{icon("chat")}<span class="card-label">Minutes 1 to 5</span></div><h3>You walk us through it</h3><p>The task, the tools it runs on, and who touches it along the way.</p></div>
+        <div class="card"><div class="card-top">{icon("people")}<span class="card-label">Minutes 6 to 12</span></div><h3>We dig into the details</h3><p>Where it stalls, what you've tried, and what a good week would look like.</p></div>
+        <div class="card"><div class="card-top">{icon("pulse")}<span class="card-label">Minutes 13 to 15</span></div><h3>You leave with a next step</h3><p>The first fix we'd try and how we'd start, or an honest "that's not us."</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--soft section--tight" id="book" aria-labelledby="book15-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="rule"></span>
+        <h2 id="book15-title">Pick your time.</h2>
+      </div>
+      <p class="section-note section-note--top">Calendar not loading? <a href="/get-in-touch/">Send us a note instead</a> and we'll find a time.</p>
+      <div id="cal-inline" data-cal-duration="15" style="min-height:640px"></div>
+    </div>
+  </section>
+  <script src="/cal-embed.js"></script>
+'''
+
 # ---- homepage mock-up variants (previews, noindex) ----
 _MEDIA = re.compile(r'<video class="pc-photo pc-photo--wind".*?</video>', re.S)
 # Speed (13 Nov 2026): the hero video starts once the page has finished loading. Until then the poster (the video's
@@ -1110,6 +1142,7 @@ PAGES = [
     ("try/index.html", "Get your own morning paper", "Type in your name, city and top three for the day, see your own one-page morning paper take shape, and send us your request.", "/try/", None, try_paper, False),
     ("time-back/index.html", "Time-back calculator", "Add up the hours your team spends on routine tasks each week, using your own numbers.", "/time-back/", None, calculator, False),
     ("5min/index.html", "Book a five-minute conversation", "Pick a time for a five-minute conversation with Chairlift. A real person from our own team, and no sales pitch.", "/5min/", None, five_min, True),
+    ("15min/index.html", "Book a fifteen-minute conversation", "Pick a time for a fifteen-minute conversation with Chairlift about one task that slows your team down.", "/15min/", None, fifteen_min, True),
     ("who-we-are/index.html", "Who we are", "Why Chairlift exists: great teams shouldn't lose their best hours to follow-ups and admin. We connect the talent and the tools so they don't.", "/who-we-are/", "about", about, False),
     ("get-in-touch/index.html", "Get in touch", "Tell Chairlift a little about how your business runs, and we'll come back with a few specific ideas for what to fix first.", "/get-in-touch/", "contact", contact, False),
 ] + [
